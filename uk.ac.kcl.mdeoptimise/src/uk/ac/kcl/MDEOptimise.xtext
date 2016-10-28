@@ -1,0 +1,9 @@
+grammar uk.ac.kcl.MDEOptimise with org.eclipse.xtext.common.Terminals
+
+generate mDEOptimise "http://www.ac.uk/kcl/MDEOptimise"
+
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';
