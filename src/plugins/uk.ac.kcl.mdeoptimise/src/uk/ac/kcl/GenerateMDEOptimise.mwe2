@@ -4,9 +4,9 @@ import org.eclipse.xtext.xtext.generator.*
 import org.eclipse.xtext.xtext.generator.model.project.*
 
 var rootPath = ".."
-
+var testPath = "../../tests"
 Workflow {
-	
+
 	component = XtextGenerator {
 		configuration = {
 			project = StandardProjectConfig {

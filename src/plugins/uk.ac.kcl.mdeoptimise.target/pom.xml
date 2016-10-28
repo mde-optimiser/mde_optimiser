@@ -5,6 +5,7 @@
 		<groupId>uk.ac.kcl.mdeoptimise</groupId>
 		<artifactId>uk.ac.kcl.mdeoptimise.parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../../</relativePath>
 	</parent>
 	<artifactId>uk.ac.kcl.mdeoptimise.target</artifactId>
 	<packaging>eclipse-target-definition</packaging>

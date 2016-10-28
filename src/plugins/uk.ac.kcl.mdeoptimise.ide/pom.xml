@@ -5,8 +5,9 @@
 		<groupId>uk.ac.kcl.mdeoptimise</groupId>
 		<artifactId>uk.ac.kcl.mdeoptimise.parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../../</relativePath>
 	</parent>
-	<artifactId>uk.ac.kcl.mdeoptimise.ui</artifactId>
+	<artifactId>uk.ac.kcl.mdeoptimise.ide</artifactId>
 	<packaging>eclipse-plugin</packaging>
 
 	<build>

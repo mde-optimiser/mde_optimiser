@@ -14,14 +14,14 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 	<modules>
-		<module>uk.ac.kcl.mdeoptimise</module>
-		<module>uk.ac.kcl.mdeoptimise.ide</module>
-		<module>uk.ac.kcl.mdeoptimise.ui</module>
-		<module>uk.ac.kcl.mdeoptimise.target</module>
-		<module>uk.ac.kcl.mdeoptimise.feature</module>
-		<module>uk.ac.kcl.mdeoptimise.repository</module>
-		<module>uk.ac.kcl.mdeoptimise.tests</module>
-		<module>uk.ac.kcl.mdeoptimise.ui.tests</module>
+		<module>features/uk.ac.kcl.mdeoptimise.feature</module>
+		<module>plugins/uk.ac.kcl.mdeoptimise</module>
+		<module>plugins/uk.ac.kcl.mdeoptimise.ide</module>
+		<module>plugins/uk.ac.kcl.mdeoptimise.ui</module>
+		<module>plugins/uk.ac.kcl.mdeoptimise.target</module>
+		<module>plugins/uk.ac.kcl.mdeoptimise.tests</module>
+		<module>plugins/uk.ac.kcl.mdeoptimise.ui.tests</module>
+		<module>releng/uk.ac.kcl.mdeoptimise.repository</module>
 	</modules>
 	<build>
 		<plugins>
