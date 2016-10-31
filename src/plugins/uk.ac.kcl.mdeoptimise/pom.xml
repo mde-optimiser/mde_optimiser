@@ -5,7 +5,7 @@
 		<groupId>uk.ac.kcl.mdeoptimise</groupId>
 		<artifactId>uk.ac.kcl.mdeoptimise.parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
-		<relativePath>../../</relativePath>
+        <relativePath>../../</relativePath>
 	</parent>
 	<artifactId>uk.ac.kcl.mdeoptimise</artifactId>
 	<packaging>eclipse-plugin</packaging>
@@ -58,7 +58,7 @@
 				<groupId>org.eclipse.xtend</groupId>
 				<artifactId>xtend-maven-plugin</artifactId>
 			</plugin>
-	
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-clean-plugin</artifactId>

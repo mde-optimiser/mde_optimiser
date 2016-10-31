@@ -14,14 +14,14 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 	<modules>
-		<module>features/uk.ac.kcl.mdeoptimise.feature</module>
 		<module>plugins/uk.ac.kcl.mdeoptimise</module>
-		<module>plugins/uk.ac.kcl.mdeoptimise.ide</module>
+        <module>plugins/uk.ac.kcl.mdeoptimise.ide</module>
 		<module>plugins/uk.ac.kcl.mdeoptimise.ui</module>
 		<module>plugins/uk.ac.kcl.mdeoptimise.target</module>
+		<module>features/uk.ac.kcl.mdeoptimise.feature</module>
+        <module>releng/uk.ac.kcl.mdeoptimise.repository</module>
 		<module>plugins/uk.ac.kcl.mdeoptimise.tests</module>
 		<module>plugins/uk.ac.kcl.mdeoptimise.ui.tests</module>
-		<module>releng/uk.ac.kcl.mdeoptimise.repository</module>
 	</modules>
 	<build>
 		<plugins>
@@ -237,7 +237,7 @@
 					</configuration>
 				</plugin>
 				<plugin>
-					<!-- 
+					<!--
 						Can be removed after first generator execution
 						https://bugs.eclipse.org/bugs/show_bug.cgi?id=480097
 					-->
