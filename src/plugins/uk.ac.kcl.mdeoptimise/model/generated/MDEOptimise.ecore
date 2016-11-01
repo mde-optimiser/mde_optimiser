@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="mDEOptimise" nsURI="http://www.ac.uk/kcl/MDEOptimise" nsPrefix="mDEOptimise">
-  <eClassifiers xsi:type="ecore:EClass" name="Model">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="greetings" upperBound="-1"
-        eType="#//Greeting" containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Optimisation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="basepath" eType="#//BasepathSpec"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="metamodel" eType="#//MetaModelSpec"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fitness" upperBound="-1"
+        eType="#//FitnessFunctionSpec" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="evolvers" upperBound="-1"
+        eType="#//EvolverSpec" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Greeting">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BasepathSpec">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MetaModelSpec">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FitnessFunctionSpec">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="class" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EvolverSpec">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rule_location" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

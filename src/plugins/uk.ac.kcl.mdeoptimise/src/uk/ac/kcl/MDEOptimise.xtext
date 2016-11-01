@@ -1,9 +1,42 @@
 grammar uk.ac.kcl.MDEOptimise with org.eclipse.xtext.common.Terminals
 
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 generate mDEOptimise "http://www.ac.uk/kcl/MDEOptimise"
 
-Model:
-	greetings+=Greeting*;
-	
-Greeting:
-	'Hello' name=ID '!';
+Optimisation:
+	basepath=BasepathSpec
+	metamodel=MetaModelSpec
+	fitness+=FitnessFunctionSpec+
+	evolvers+=EvolverSpec+
+;
+
+/**
+ * Use this to identify a basepath to be set in the HenshinResourceSet so that Henshin 
+ * transformations referencing file-based meta-models through relative paths will work 
+ * correctly. This will happen mainly when working with dynamic instances rather than 
+ * fully generated and registered metamodels. All further URLs should be either absolute 
+ * or relative to this basepath.
+ */
+BasepathSpec:
+	"basepath" location=URL
+;
+
+MetaModelSpec:
+	"metamodel" location=URL
+;
+
+FitnessFunctionSpec:
+	"fitness" class=STRING
+;
+
+EvolverSpec:
+	// This expects to be passed in a Henshin model
+	// TODO We may also want to allow the specification of parameters, but not for now. 
+	"evolve" "using" rule_location=URL
+	         "unit" unit=STRING
+;
+
+terminal URL returns ecore::EString:
+	// TODO: We can probably provide a more fine-grained specification here
+	'<' (!('>'))* '>'
+;
