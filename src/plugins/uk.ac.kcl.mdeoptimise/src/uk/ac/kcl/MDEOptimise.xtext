@@ -7,6 +7,7 @@ Optimisation:
 	basepath=BasepathSpec
 	metamodel=MetaModelSpec
 	fitness+=FitnessFunctionSpec+
+	objectives+=OclInterpreterSpec+
 	evolvers+=EvolverSpec+
 ;
 
@@ -29,6 +30,10 @@ FitnessFunctionSpec:
 	"fitness" class=STRING
 ;
 
+OclInterpreterSpec:
+	"objective" objectiveType=OBJECTIVE_TYPE objectiveName=OBJECTIVE_NAME "{" oclQuery=STRING "}"
+;
+
 EvolverSpec:
 	// This expects to be passed in a Henshin model
 	// TODO We may also want to allow the specification of parameters, but not for now. 
@@ -39,4 +44,16 @@ EvolverSpec:
 terminal URL returns ecore::EString:
 	// TODO: We can probably provide a more fine-grained specification here
 	'<' (!('>'))* '>'
+;
+
+terminal OBJECTIVE_TYPE returns ecore::EString:
+	('minimise'|'maximise')
+;
+
+terminal OBJECTIVE_NAME returns ecore::EString:
+	('a'..'z'|'A'..'Z')*
+;
+
+terminal OBJECTIVE_OCL returns ecore::EString:
+	("{" STRING "}")+
 ;

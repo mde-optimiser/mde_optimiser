@@ -10,6 +10,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/basepath"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/metamodel"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/fitness"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/objectives"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/evolvers"/>
     </genClasses>
     <genClasses ecoreClass="MDEOptimise.ecore#//BasepathSpec">
@@ -20,6 +21,11 @@
     </genClasses>
     <genClasses ecoreClass="MDEOptimise.ecore#//FitnessFunctionSpec">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//FitnessFunctionSpec/class"/>
+    </genClasses>
+    <genClasses ecoreClass="MDEOptimise.ecore#//OclInterpreterSpec">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//OclInterpreterSpec/objectiveType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//OclInterpreterSpec/objectiveName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//OclInterpreterSpec/oclQuery"/>
     </genClasses>
     <genClasses ecoreClass="MDEOptimise.ecore#//EvolverSpec">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//EvolverSpec/rule_location"/>
