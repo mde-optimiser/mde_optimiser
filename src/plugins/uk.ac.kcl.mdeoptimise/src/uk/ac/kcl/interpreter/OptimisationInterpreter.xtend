@@ -15,7 +15,7 @@ import org.eclipse.emf.henshin.interpreter.impl.EngineImpl
 import org.eclipse.emf.henshin.interpreter.impl.UnitApplicationImpl
 import org.eclipse.emf.henshin.model.Unit
 import org.eclipse.emf.henshin.model.resource.HenshinResourceSet
-import uk.ac.kcl.mDEOptimise.Optimisation
+import uk.ac.kcl.mdeoptimise.Optimisation
 
 /**
  * An interpreter for optimisation specifications. This class provides the basic functionality
