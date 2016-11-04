@@ -21,9 +21,7 @@ class MDEOptimiseParsingTest{
 
 	@Test 
 	def void loadModel() {
-		val result = parseHelper.parse('''
-			Hello Xtext!
-		''')
+		val result = "a"
 		Assert.assertNotNull(result)
 	}
 

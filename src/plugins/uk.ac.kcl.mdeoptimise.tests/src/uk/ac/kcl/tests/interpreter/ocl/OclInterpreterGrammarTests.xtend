@@ -9,7 +9,8 @@ import org.junit.Before
 import org.junit.runner.RunWith
 import uk.ac.kcl.mdeoptimise.Optimisation
 import uk.ac.kcl.tests.FullTestInjector
-import uk.ac.kcl.interpreter.IModelProvider
+import org.junit.Test
+import static org.junit.Assert.*
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)
@@ -25,7 +26,7 @@ class OclInterpreterGrammarTests {
 	
 	@Before
 	def void bootstrapParser() {
-		 model = parser.parse('''
+		model = parser.parse('''
 			basepath <model/basepath>
 			metamodel <ABC>
 			fitness "ABC"
@@ -41,8 +42,8 @@ class OclInterpreterGrammarTests {
 	//	oclModelProvider.loadModel
 	}
 	
-//	@Test
-//	def void assertThatEmptyOclStringIsValid() {
-//	
-//	}
+	@Test
+	def void assertThatEmptyOclStringIsValid() {
+		assertTrue(true)
+	}
 }
