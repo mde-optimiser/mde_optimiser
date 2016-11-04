@@ -7,7 +7,7 @@ import org.eclipse.emf.ecore.EPackage
 /**
  * Strategy for generating initial models.
  */
-interface ModelProvider {
+interface IModelProvider {
     /**
      * Lazily generate initial models given a meta-model. This has to make sure that all models returned are instances of the given meta-model (in particular for dynamic model instances!).
      */

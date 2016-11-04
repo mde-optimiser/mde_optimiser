@@ -28,14 +28,11 @@ class GrammarParsingTest {
 		 model = parser.parse('''
 			basepath <model/basepath>
 			metamodel <ABC>
-			fitness "ABC"
-			objective minimise coupling { 
-				"Valid.OclString()"
-			}
+			objective name minimise    java { "src/models/fitness/Fitness.java" }
+			objective name maximise    ocl { "Valid.OclString()" }
 			evolve using <ABC> unit "XYZ"
 			evolve using <CDE> unit "LMN"
 		''')
-		System.out.println("123");
 	}
 	
 	@Test
@@ -60,14 +57,22 @@ class GrammarParsingTest {
 	}
 	
 	@Test
-	def void assertObjectiveFunctionJavaPathIsParsed() {
-		assertEquals("ABC", model.fitness.get(0).getFitnessClass)
+	def void assertJavaObjectiveSignatureAndSpecIsParsed() {
+		
+		//First objective JAVA
+		assertEquals("java", model.objectives.get(0).getObjectiveType())
+		assertEquals("name", model.objectives.get(0).getObjectiveName())
+		assertEquals("src/models/fitness/Fitness.java", model.objectives.get(0).getObjectiveSpec())
+		assertEquals("minimise", model.objectives.get(0).getObjectiveTendency())
+		
 	}
 	
 	@Test
-	def void assertObjectiveFunctionOclQueryIsParsed() {
-		assertEquals("minimise", model.objectives.get(0).getObjectiveType())
-		assertEquals("coupling", model.objectives.get(0).getObjectiveName())
-		assertEquals("Valid.OclString()", model.objectives.get(0).getOclQuery())
+	def void assertOclObjectiveSignatureAndSpecIsParsed() {
+		//Second objective OCL
+		assertEquals("ocl", model.objectives.get(1).getObjectiveType())
+		assertEquals("name", model.objectives.get(1).getObjectiveName())
+		assertEquals("Valid.OclString()", model.objectives.get(1).getObjectiveSpec())
+		assertEquals("maximise", model.objectives.get(1).getObjectiveTendency())
 	}
 }

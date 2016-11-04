@@ -6,8 +6,8 @@ generate mdeoptimise "http://www.ac.uk/kcl/MDEOptimise"
 Optimisation:
 	basepath=BasepathSpec
 	metamodel=MetaModelSpec
-	fitness+=FitnessFunctionSpec+
-	objectives+=OclInterpreterSpec+
+	/*fitness+=FitnessFunctionSpec+*/
+	objectives+=ObjectiveInterpreterSpec+
 	evolvers+=EvolverSpec+
 ;
 
@@ -26,12 +26,27 @@ MetaModelSpec:
 	"metamodel" location=URL
 ;
 
+/* 
 FitnessFunctionSpec:
 	"fitness" fitnessClass=STRING
-;
+;*/
 
-OclInterpreterSpec:
-	"objective" objectiveType=OBJECTIVE_TYPE objectiveName=OBJECTIVE_NAME "{" oclQuery=STRING "}"
+//objective objective_name minimise java/ocl => java_file / ocl query
+/*
+
+objective SecondaryOneStringName minimise java {
+	src/uk/ac/kcl/mdeoptimise/FitnessFunction.java
+}
+
+objective ValidOneStringName minimise ocl {
+	Ocl query
+}
+
+*/
+
+
+ObjectiveInterpreterSpec:
+	"objective" objectiveName=OBJECTIVE_NAME objectiveTendency=OBJECTIVE_TENDENCY objectiveType=OBJECTIVE_TYPE "{" (objectiveSpec=STRING) "}"
 ;
 
 EvolverSpec:
@@ -46,14 +61,14 @@ terminal URL returns ecore::EString:
 	'<' (!('>'))* '>'
 ;
 
-terminal OBJECTIVE_TYPE returns ecore::EString:
+terminal OBJECTIVE_TENDENCY returns ecore::EString:
 	('minimise'|'maximise')
 ;
 
-terminal OBJECTIVE_NAME returns ecore::EString:
-	('a'..'z'|'A'..'Z')*
+terminal OBJECTIVE_TYPE returns ecore::EString:
+	('java'|'ocl')
 ;
 
-terminal OBJECTIVE_OCL returns ecore::EString:
-	("{" STRING "}")+
+terminal OBJECTIVE_NAME returns ecore::EString:
+	('a'..'z'|'A'..'Z')+
 ;

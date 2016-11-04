@@ -1,13 +1,13 @@
 package uk.ac.kcl.interpreter.algorithms
 
 import java.util.ArrayList
-import uk.ac.kcl.interpreter.OptimisationAlgorithm
 import uk.ac.kcl.interpreter.OptimisationInterpreter
+import uk.ac.kcl.interpreter.IOptimisationAlgorithm
 
 /**
  * A simple multi-objective optimisation algorithm.
  */
-class SimpleMO implements OptimisationAlgorithm {
+class SimpleMO implements IOptimisationAlgorithm {
 
     /**
      * Maximum number of iterations to run for

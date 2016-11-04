@@ -16,6 +16,7 @@ import org.eclipse.emf.henshin.interpreter.impl.UnitApplicationImpl
 import org.eclipse.emf.henshin.model.Unit
 import org.eclipse.emf.henshin.model.resource.HenshinResourceSet
 import uk.ac.kcl.mdeoptimise.Optimisation
+import uk.ac.kcl.interpreter.objectives.ocl.OclFitnessFunction
 
 /**
  * An interpreter for optimisation specifications. This class provides the basic functionality
@@ -35,13 +36,13 @@ class OptimisationInterpreter {
      * Strategy object for optimisation algorithms.
      */
     // TODO Eventually want to be able to inject this from a launch configuration or similar
-    private OptimisationAlgorithm optimisationStrategy
+    private IOptimisationAlgorithm optimisationStrategy
 
     /**
      * Strategy for generating initial models
      */
     // TODO Eventually want to be able to inject this from a launch configuration or similar
-    private ModelProvider initalModelProvider
+    private IModelProvider initalModelProvider
 
     private HenshinResourceSet henshinResourceSet = null
 
@@ -55,9 +56,9 @@ class OptimisationInterpreter {
     /**
      * Cache for the fitness function object
      */
-    private List<FitnessFunction> fitnessFunctions = null
+    private List<IFitnessFunction> fitnessFunctions = null
 
-    new(Optimisation model, OptimisationAlgorithm algorithm, ModelProvider initalModelProvider) {
+    new(Optimisation model, IOptimisationAlgorithm algorithm, IModelProvider initalModelProvider) {
         this.optimisationModel = model
         optimisationStrategy = algorithm
         this.initalModelProvider = initalModelProvider
@@ -87,20 +88,20 @@ class OptimisationInterpreter {
 			
 			fitnessFunctions = new LinkedList();
 			
-			//Instantiate functions using defined paths
-			if(!optimisationModel.fitness.empty){
-				fitnessFunctions.addAll(optimisationModel.fitness.map [ f |
-					val Class<? extends FitnessFunction> fitnessClass = Class.forName(
-						f.fitnessClass) as Class<? extends FitnessFunction>
-					fitnessClass.newInstance
-				])
-			}
-			
-			//Create OCL interpreter fitness functions
-			if(!optimisationModel.objectives.empty){
-				fitnessFunctions.addAll(optimisationModel.objectives.map [ o |
-					new OclFitnessFunction(o)])
-			}
+//			//Instantiate functions using defined paths
+//			if(!optimisationModel.fitness.empty){
+//				fitnessFunctions.addAll(optimisationModel.fitness.map [ f |
+//					val Class<? extends IFitnessFunction> fitnessClass = Class.forName(
+//						f.fitnessClass) as Class<? extends IFitnessFunction>
+//					fitnessClass.newInstance
+//				])
+//			}
+//			
+//			//Create OCL interpreter fitness functions
+//			if(!optimisationModel.objectives.empty){
+//				fitnessFunctions.addAll(optimisationModel.objectives.map [ o |
+//					new OclFitnessFunction(o)])
+//			}
 
 		}
 
