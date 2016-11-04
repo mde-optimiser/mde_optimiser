@@ -10,7 +10,8 @@ import org.eclipse.xtext.junit4.util.ParseHelper
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
-import uk.ac.kcl.mDEOptimise.Optimisation
+import uk.ac.kcl.mdeoptimise.Optimisation
+import uk.ac.kcl.tests.MDEOptimiseInjectorProvider
 
 @RunWith(XtextRunner)
 @InjectWith(MDEOptimiseInjectorProvider)
@@ -26,5 +27,4 @@ class MDEOptimiseParsingTest{
 		''')
 		Assert.assertNotNull(result)
 	}
-
 }

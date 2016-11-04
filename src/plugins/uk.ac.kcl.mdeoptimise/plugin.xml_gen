@@ -4,7 +4,7 @@
 	<extension point="org.eclipse.emf.ecore.generated_package">
 		<package 
 			uri = "http://www.ac.uk/kcl/MDEOptimise"
-			class = "uk.ac.kcl.mDEOptimise.MDEOptimisePackage"
+			class = "uk.ac.kcl.mdeoptimise.MdeoptimisePackage"
 			genModel = "model/generated/MDEOptimise.genmodel" />
 	</extension>
 </plugin>
