@@ -5,7 +5,7 @@ import org.eclipse.emf.ecore.EObject
 /**
  * This interface defines the contract for fitness functions.
  */
-interface FitnessFunction {
+interface IFitnessFunction {
     /**
      * Return the fitness of the given model. Higher fitness values are better.
      */

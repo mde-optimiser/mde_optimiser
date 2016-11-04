@@ -1,13 +1,13 @@
 package uk.ac.kcl.interpreter.algorithms
 
-import uk.ac.kcl.interpreter.OptimisationAlgorithm
 import uk.ac.kcl.interpreter.OptimisationInterpreter
+import uk.ac.kcl.interpreter.IOptimisationAlgorithm
 
 /**
  * A strategy implementing random hill climbing over models.
  * This is single objective only, using only the objective function named first in the specification.
  */
-class RandomHillClimbing implements OptimisationAlgorithm {
+class RandomHillClimbing implements IOptimisationAlgorithm {
 
     /**
      * Maximum number of iterations to run for

@@ -1,4 +1,4 @@
-package uk.ac.kcl.interpreter
+package uk.ac.kcl.interpreter.objectives.ocl
 
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EClassifier
@@ -8,9 +8,9 @@ import org.eclipse.ocl.ParserException
 import org.eclipse.ocl.ecore.Constraint
 import org.eclipse.ocl.ecore.EcoreEnvironmentFactory
 import org.eclipse.ocl.helper.OCLHelper
-import uk.ac.kcl.mdeoptimise.OclInterpreterSpec
+import uk.ac.kcl.mdeoptimise.ObjectiveInterpreterSpec
 
-class OclFitnessFunction implements FitnessFunction {
+class OclFitnessFunction implements uk.ac.kcl.interpreter.IFitnessFunction {
 	
 	private String objectiveName;
 	private String oclQuery
@@ -19,14 +19,19 @@ class OclFitnessFunction implements FitnessFunction {
 	private OCL<?, EClassifier, ?, ?, ?, ?, ?, ?, ?, Constraint, EClass, EObject>  ocl
    	private OCLHelper<EClassifier, ?, ?, Constraint> oclHelper
 	
+	new(OCL<?, EClassifier, ?, ?, ?, ?, ?, ?, ?, Constraint, EClass, EObject>  ocl, OCLHelper<EClassifier, ?, ?, Constraint> oclHelper){
+		this.ocl = ocl;
+		this.oclHelper = oclHelper;
+	}
 	
-	new(OclInterpreterSpec objective){
+	new(ObjectiveInterpreterSpec objective){
 		
-		this.objectiveName = objective.objectiveName
-		this.oclQuery = objective.oclQuery
-		this.objectiveType = objective.getObjectiveType
-				ocl = OCL.newInstance(EcoreEnvironmentFactory.INSTANCE)
-		oclHelper = ocl.createOCLHelper();
+//		this.objectiveName = objective.objectiveName
+//		this.oclQuery = objective.oclQuery
+//		this.objectiveType = objective.getObjectiveType
+//		ocl = OCL.newInstance(EcoreEnvironmentFactory.INSTANCE)
+//		oclHelper = ocl.createOCLHelper();
+		
 	}
 	
 	/**
@@ -52,5 +57,4 @@ class OclFitnessFunction implements FitnessFunction {
          System.out.println(fitness)
       return fitness;
 	}
-	
 }

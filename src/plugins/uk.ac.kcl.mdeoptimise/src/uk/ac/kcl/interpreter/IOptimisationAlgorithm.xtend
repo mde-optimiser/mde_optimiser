@@ -6,7 +6,7 @@ import org.eclipse.emf.ecore.EObject
 /**
  * A specific optimisation algorithm
  */
-interface OptimisationAlgorithm {
+interface IOptimisationAlgorithm {
 
     /**
      * Run the optimisation algorithm and return its results (this may be a single solution or a
