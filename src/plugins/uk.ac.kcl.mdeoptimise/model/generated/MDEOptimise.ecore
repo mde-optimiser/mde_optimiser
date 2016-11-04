@@ -8,6 +8,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="fitness" upperBound="-1"
         eType="#//FitnessFunctionSpec" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="objectives" upperBound="-1"
+        eType="#//OclInterpreterSpec" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="evolvers" upperBound="-1"
         eType="#//EvolverSpec" containment="true"/>
   </eClassifiers>
@@ -19,6 +21,11 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FitnessFunctionSpec">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="class" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OclInterpreterSpec">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="objectiveType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="objectiveName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="oclQuery" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EvolverSpec">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="rule_location" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

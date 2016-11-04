@@ -7,7 +7,7 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<tycho-version>0.23.1</tycho-version>
+		<tycho-version>0.26.0</tycho-version>
 		<xtextVersion>2.10.0</xtextVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -255,7 +255,7 @@
 		<repository>
 			<id>neon</id>
 			<layout>p2</layout>
-			<url>http://download.eclipse.org/releases/neon</url>
+			<url>http://download.eclipse.org/releases/neon/</url>
 		</repository>
 		<repository>
 			<id>henshin</id>

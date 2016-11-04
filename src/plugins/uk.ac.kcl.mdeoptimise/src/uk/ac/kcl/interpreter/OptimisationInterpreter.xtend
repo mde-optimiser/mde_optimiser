@@ -25,10 +25,11 @@ import uk.ac.kcl.mdeoptimise.Optimisation
 // TODO: Add a combine method to support cross-over like steps for multi-objective optimisers. Use something like EMF Diff/Merge for implementation (see {@see http://wiki.eclipse.org/EMF_DiffMerge/Programmatic_Usage}).
 class OptimisationInterpreter {
 
-    /**
-     * The model describing the optimisation problem and evolution operators
-     */
-    private Optimisation model
+	/**
+	 * The model describing the optimisation problem and evolution operators
+	 */
+	private Optimisation optimisationModel
+
 
     /**
      * Strategy object for optimisation algorithms.
@@ -57,7 +58,7 @@ class OptimisationInterpreter {
     private List<FitnessFunction> fitnessFunctions = null
 
     new(Optimisation model, OptimisationAlgorithm algorithm, ModelProvider initalModelProvider) {
-        this.model = model
+        this.optimisationModel = model
         optimisationStrategy = algorithm
         this.initalModelProvider = initalModelProvider
     }
@@ -73,24 +74,39 @@ class OptimisationInterpreter {
         initalModelProvider.initialModels(metamodel)
     }
 
-    /**
-     * This will compute the fitness for the given candidate solution
-     */
-    def List<Double> fitness(EObject candidateSolution) {
-        if (candidateSolution == null) {
-            throw new NullPointerException();
-        }
+	/**
+	 * This will compute the fitness for the given candidate solution
+	 */
+	def List<Double> fitness(EObject candidateSolution) {
+		
+		if (candidateSolution == null) {
+			throw new NullPointerException();
+		}
 
-        if (fitnessFunctions == null) {
-            fitnessFunctions = new LinkedList(model.fitness.map [ f |
-                val Class<? extends FitnessFunction> fitnessClass = Class.forName(
-                        f.class_) as Class<? extends FitnessFunction>
-                fitnessClass.newInstance
-            ])
-        }
+		if (fitnessFunctions == null) {
+			
+			fitnessFunctions = new LinkedList();
+			
+			//Instantiate functions using defined paths
+			if(!optimisationModel.fitness.empty){
+				fitnessFunctions.addAll(optimisationModel.fitness.map [ f |
+					val Class<? extends FitnessFunction> fitnessClass = Class.forName(
+						f.class_) as Class<? extends FitnessFunction>
+					fitnessClass.newInstance
+				])
+			}
+			
+			//Create OCL interpreter fitness functions
+			if(!optimisationModel.objectives.empty){
+				fitnessFunctions.addAll(optimisationModel.objectives.map [ o |
+					new OclFitnessFunction(o)])
+			}
 
-        fitnessFunctions.map[f|f.computeFitness(candidateSolution)]
-    }
+		}
+
+		fitnessFunctions.map[f|f.computeFitness(candidateSolution)]
+	}
+
 
     /**
      * Produce a new solution from the given one using one of the evolvers defined in the optimisation model.
@@ -101,7 +117,7 @@ class OptimisationInterpreter {
         // Extract Henshin evolvers if necessary
         if (henshinEvolvers == null) {
             val hrs = resourceSet
-            henshinEvolvers = model.evolvers.map [ e |
+            henshinEvolvers = optimisationModel.evolvers.map [ e |
                 hrs.getModule(URI.createURI(e.rule_location), false).getUnit(e.unit)
             ]
         }
@@ -138,7 +154,7 @@ class OptimisationInterpreter {
 
     def getResourceSet() {
         if (henshinResourceSet == null) {
-            henshinResourceSet = new HenshinResourceSet(model.basepath.location)
+            henshinResourceSet = new HenshinResourceSet(optimisationModel.basepath.location)
         }
 
         henshinResourceSet
@@ -146,7 +162,7 @@ class OptimisationInterpreter {
 
     def getMetamodel() {
         if (theMetamodel == null) {
-            theMetamodel = resourceSet.registerDynamicEPackages(model.metamodel.location).head
+            theMetamodel = resourceSet.registerDynamicEPackages(optimisationModel.metamodel.location).head
         }
 
         theMetamodel
