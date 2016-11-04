@@ -27,7 +27,7 @@ MetaModelSpec:
 ;
 
 FitnessFunctionSpec:
-	"fitness" class=STRING
+	"fitness" fitnessClass=STRING
 ;
 
 OclInterpreterSpec:

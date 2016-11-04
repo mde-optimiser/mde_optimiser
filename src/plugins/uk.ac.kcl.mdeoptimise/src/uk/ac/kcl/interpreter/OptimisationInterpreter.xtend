@@ -91,7 +91,7 @@ class OptimisationInterpreter {
 			if(!optimisationModel.fitness.empty){
 				fitnessFunctions.addAll(optimisationModel.fitness.map [ f |
 					val Class<? extends FitnessFunction> fitnessClass = Class.forName(
-						f.class_) as Class<? extends FitnessFunction>
+						f.fitnessClass) as Class<? extends FitnessFunction>
 					fitnessClass.newInstance
 				])
 			}
