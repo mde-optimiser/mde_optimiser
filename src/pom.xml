@@ -262,6 +262,11 @@
 			<layout>p2</layout>
 			<url>http://download.eclipse.org/modeling/emft/henshin/updates/release/</url>
 		</repository>
+		<repository>
+			<id>ocl</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/modeling/mdt/ocl/updates</url>
+		</repository>
 	</repositories>
 	<dependencies>
 	</dependencies>

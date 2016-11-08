@@ -57,8 +57,7 @@ EvolverSpec:
 ;
 
 terminal URL returns ecore::EString:
-	// TODO: We can probably provide a more fine-grained specification here
-	'<' (!('>'))* '>'
+	'<' -> '>'
 ;
 
 terminal OBJECTIVE_TENDENCY returns ecore::EString:
