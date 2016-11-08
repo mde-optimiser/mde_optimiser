@@ -6,55 +6,60 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.ocl.OCL
 import org.eclipse.ocl.ParserException
 import org.eclipse.ocl.ecore.Constraint
-import org.eclipse.ocl.ecore.EcoreEnvironmentFactory
 import org.eclipse.ocl.helper.OCLHelper
+import uk.ac.kcl.interpreter.IFitnessFunction
 import uk.ac.kcl.mdeoptimise.ObjectiveInterpreterSpec
 
-class OclFitnessFunction implements uk.ac.kcl.interpreter.IFitnessFunction {
-	
-	private String objectiveName;
-	private String oclQuery
-	private String objectiveType
+class OclFitnessFunction implements IFitnessFunction {
 	
 	private OCL<?, EClassifier, ?, ?, ?, ?, ?, ?, ?, Constraint, EClass, EObject>  ocl
    	private OCLHelper<EClassifier, ?, ?, Constraint> oclHelper
+   	private ObjectiveInterpreterSpec objectiveInterpreterSpec
 	
-	new(OCL<?, EClassifier, ?, ?, ?, ?, ?, ?, ?, Constraint, EClass, EObject>  ocl, OCLHelper<EClassifier, ?, ?, Constraint> oclHelper){
+	new(OCL<?, EClassifier, ?, ?, ?, ?, ?, ?, ?, Constraint, EClass, EObject>  ocl, 
+		OCLHelper<EClassifier, ?, ?, Constraint> oclHelper,
+		ObjectiveInterpreterSpec objectiveInterpreterSpec
+	){
 		this.ocl = ocl;
 		this.oclHelper = oclHelper;
-	}
-	
-	new(ObjectiveInterpreterSpec objective){
-		
-//		this.objectiveName = objective.objectiveName
-//		this.oclQuery = objective.oclQuery
-//		this.objectiveType = objective.getObjectiveType
-//		ocl = OCL.newInstance(EcoreEnvironmentFactory.INSTANCE)
-//		oclHelper = ocl.createOCLHelper();
-		
-	}
-	
-	/**
-	 * Instantiate a function using the given DSL ocl identifiers.
-	 */
-	new (String objectiveName, String oclQuery, String objectiveType){
-		this.objectiveName = objectiveName
-		this.oclQuery = oclQuery
-		this.objectiveType = objectiveType
-		ocl = OCL.newInstance(EcoreEnvironmentFactory.INSTANCE)
-		oclHelper = ocl.createOCLHelper();
+		this.objectiveInterpreterSpec = objectiveInterpreterSpec
 	}
 	
 	override computeFitness(EObject model) {
 		
-		oclHelper.setContext(model.eClass);
 		var fitness = 0.0
+        
         try {
-        	fitness = 1.0d * ocl.evaluate(model, oclHelper.createQuery(oclQuery)) as Integer;
+        	
+			oclHelper.setContext(model.eClass)
+        	
+        	val oclQueryExpression = oclHelper.createQuery(objectiveInterpreterSpec.getObjectiveSpec);
+        	
+        	fitness = getNumericFitnessValue(ocl.evaluate(model, oclQueryExpression))
+        	        
         } catch(ParserException exception){
-        	exception.printStackTrace();
+        	
+        	//Poor man's logger
+        	//exception.printStackTrace
+        	
+        	//TODO logger
+        	throw exception
         }
-         System.out.println(fitness)
+        
       return fitness;
+      
 	}
+	
+	def double getNumericFitnessValue(Object fitnessValue){
+		
+		if(fitnessValue instanceof Integer){
+			return 1.0d * fitnessValue as Integer
+		} else if (fitnessValue instanceof Float) {
+			return 1.0d * fitnessValue as Float
+		} else if (fitnessValue instanceof Double) {
+			return 1.0d * fitnessValue as Double
+		} else if (fitnessValue instanceof Long) {
+			return 1.0d * fitnessValue as Long
+		}
+	}	
 }

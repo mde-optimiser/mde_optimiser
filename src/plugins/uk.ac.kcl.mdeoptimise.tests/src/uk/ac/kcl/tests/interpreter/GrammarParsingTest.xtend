@@ -28,8 +28,8 @@ class GrammarParsingTest {
 		 model = parser.parse('''
 			basepath <model/basepath>
 			metamodel <ABC>
-			objective name minimise    java { "src/models/fitness/Fitness.java" }
-			objective name maximise    ocl { "Valid.OclString()" }
+			objective name minimise java { "src/models/fitness/Fitness.java" }
+			objective name maximise ocl { "Valid.OclString()" }
 			evolve using <ABC> unit "XYZ"
 			evolve using <CDE> unit "LMN"
 		''')
@@ -48,31 +48,31 @@ class GrammarParsingTest {
 	
 	@Test
 	def void assertBasePathIsParsed() {
-		assertEquals("<model/basepath>", model.getBasepath.location)
+		assertEquals("model/basepath", model.getBasepath.location)
 	}
 	
 	@Test
 	def void assertMetamodelPathIsParsed() {
-		assertEquals("<ABC>", model.getMetamodel.location)
+		assertEquals("ABC", model.getMetamodel.location)
 	}
 	
 	@Test
 	def void assertJavaObjectiveSignatureAndSpecIsParsed() {
 		
 		//First objective JAVA
-		assertEquals("java", model.objectives.get(0).getObjectiveType())
-		assertEquals("name", model.objectives.get(0).getObjectiveName())
-		assertEquals("src/models/fitness/Fitness.java", model.objectives.get(0).getObjectiveSpec())
-		assertEquals("minimise", model.objectives.get(0).getObjectiveTendency())
+		assertEquals("Could not get java objective type.", "java", model.objectives.get(0).getObjectiveType())
+		assertEquals("Could not get java objective name.", "name", model.objectives.get(0).getObjectiveName())
+		assertEquals("Could not get expected java objective path.", "src/models/fitness/Fitness.java", model.objectives.get(0).getObjectiveSpec())
+		assertEquals("Could not get java objective tendency.", "minimise", model.objectives.get(0).getObjectiveTendency())
 		
 	}
 	
 	@Test
 	def void assertOclObjectiveSignatureAndSpecIsParsed() {
 		//Second objective OCL
-		assertEquals("ocl", model.objectives.get(1).getObjectiveType())
-		assertEquals("name", model.objectives.get(1).getObjectiveName())
-		assertEquals("Valid.OclString()", model.objectives.get(1).getObjectiveSpec())
-		assertEquals("maximise", model.objectives.get(1).getObjectiveTendency())
+		assertEquals("Could not get ocl objective type.", "ocl", model.objectives.get(1).getObjectiveType())
+		assertEquals("Could not get ocl objective name.", "name", model.objectives.get(1).getObjectiveName())
+		assertEquals("Could not get expected ocl objective query.", "Valid.OclString()", model.objectives.get(1).getObjectiveSpec())
+		assertEquals("Could not get ocl objective tendency.", "maximise", model.objectives.get(1).getObjectiveTendency())
 	}
 }
