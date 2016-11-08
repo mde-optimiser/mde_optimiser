@@ -86,7 +86,7 @@ class ObjectivesFactoryTests {
 		var mockedEObject = mock(EObject)
 		
 		//TODO Look at this again
-		assertEquals(5.0, javaObjective.computeFitness(mockedEObject), 0.02)
+		assertEquals(5.0, javaObjective.computeFitness(mockedEObject), 0.0)
 	}
 	
 	@Test
