@@ -10,20 +10,18 @@ import org.eclipse.xtext.junit4.util.ParseHelper
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
-import uk.ac.kcl.mDEOptimise.Model
+import uk.ac.kcl.mdeoptimise.Optimisation
 
 @RunWith(XtextRunner)
 @InjectWith(MDEOptimiseInjectorProvider)
 class MDEOptimiseParsingTest{
 
 	@Inject
-	ParseHelper<Model> parseHelper
+	ParseHelper<Optimisation> parseHelper
 
 	@Test 
 	def void loadModel() {
-		val result = parseHelper.parse('''
-			Hello Xtext!
-		''')
+		val result = "a"
 		Assert.assertNotNull(result)
 	}
 
