@@ -255,7 +255,7 @@
 		<repository>
 			<id>neon</id>
 			<layout>p2</layout>
-			<url>http://download.eclipse.org/releases/neon/</url>
+			<url>http://download.eclipse.org/releases/neon/201610111000/</url>
 		</repository>
 		<repository>
 			<id>henshin</id>
@@ -265,7 +265,7 @@
 		<repository>
 			<id>ocl</id>
 			<layout>p2</layout>
-			<url>http://download.eclipse.org/modeling/mdt/ocl/updates</url>
+			<url>http://download.eclipse.org/modeling/mdt/ocl/updates/releases/6.1.1/</url>
 		</repository>
 		<repository>
 			<id>orbit</id>

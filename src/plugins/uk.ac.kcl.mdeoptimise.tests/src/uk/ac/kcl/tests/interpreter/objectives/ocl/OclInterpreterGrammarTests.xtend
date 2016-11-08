@@ -1,22 +1,21 @@
 package uk.ac.kcl.tests.interpreter.objectives.ocl
 
 import javax.inject.Inject
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.EPackage
+import org.eclipse.emf.henshin.model.resource.HenshinResourceSet
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.util.ParseHelper
 import org.eclipse.xtext.junit4.validation.ValidationTestHelper
-import org.junit.Before
+import org.junit.Test
 import org.junit.runner.RunWith
+import uk.ac.kcl.interpreter.objectives.ObjectivesFactory
 import uk.ac.kcl.mdeoptimise.Optimisation
 import uk.ac.kcl.tests.FullTestInjector
-import org.junit.Test
+
 import static org.junit.Assert.*
-import uk.ac.kcl.interpreter.objectives.ObjectivesFactory
 import static org.mockito.Mockito.*
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.emf.henshin.model.resource.HenshinResourceSet
-import org.eclipse.emf.ecore.EPackage
-import uk.ac.kcl.interpreter.OptimisationInterpreter
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)
