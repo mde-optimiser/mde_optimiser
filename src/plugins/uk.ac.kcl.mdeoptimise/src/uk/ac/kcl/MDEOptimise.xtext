@@ -9,6 +9,7 @@ Optimisation:
 	/*fitness+=FitnessFunctionSpec+*/
 	objectives+=ObjectiveInterpreterSpec+
 	evolvers+=EvolverSpec+
+	optimisation=OptimisationSpec
 ;
 
 /**
@@ -26,25 +27,6 @@ MetaModelSpec:
 	"metamodel" location=URL
 ;
 
-/* 
-FitnessFunctionSpec:
-	"fitness" fitnessClass=STRING
-;*/
-
-//objective objective_name minimise java/ocl => java_file / ocl query
-/*
-
-objective SecondaryOneStringName minimise java {
-	src/uk/ac/kcl/mdeoptimise/FitnessFunction.java
-}
-
-objective ValidOneStringName minimise ocl {
-	Ocl query
-}
-
-*/
-
-
 ObjectiveInterpreterSpec:
 	"objective" objectiveName=OBJECTIVE_NAME objectiveTendency=OBJECTIVE_TENDENCY objectiveType=OBJECTIVE_TYPE "{" (objectiveSpec=STRING) "}"
 ;
@@ -54,6 +36,22 @@ EvolverSpec:
 	// TODO We may also want to allow the specification of parameters, but not for now. 
 	"evolve" "using" rule_location=URL
 	         "unit" unit=STRING
+;
+
+OptimisationSpec:
+	"optimisation" "provider" algorithmFactory=ALGORITHM_FACTORY
+				"algorithm" algorithmName=ALGORITHM_NAME
+				"evolutions" algorithmEvolutions=INT
+				"population" algorithmPopulation=INT
+;
+
+terminal ALGORITHM_FACTORY returns ecore::EString:
+	('moea'|'ecj')
+;
+
+//One initial algorithm
+terminal ALGORITHM_NAME returns ecore::EString:
+	('nsga-II')
 ;
 
 terminal URL returns ecore::EString:

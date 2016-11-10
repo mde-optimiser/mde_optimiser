@@ -10,6 +10,8 @@
         eType="#//ObjectiveInterpreterSpec" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="evolvers" upperBound="-1"
         eType="#//EvolverSpec" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="optimisation" eType="#//OptimisationSpec"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BasepathSpec">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -26,5 +28,11 @@
   <eClassifiers xsi:type="ecore:EClass" name="EvolverSpec">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="rule_location" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OptimisationSpec">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="algorithmFactory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="algorithmName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="algorithmEvolutions" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="algorithmPopulation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
 </ecore:EPackage>
