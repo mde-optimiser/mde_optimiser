@@ -34,7 +34,9 @@ Export-Package: uk.ac.kcl.validation,
  uk.ac.kcl.interpreter,
  uk.ac.kcl.interpreter.objectives,
  uk.ac.kcl.interpreter.objectives.java,
- uk.ac.kcl.interpreter.objectives.ocl
+ uk.ac.kcl.interpreter.objectives.ocl,
+ uk.ac.kcl.optimisation,
+ uk.ac.kcl.optimisation.moea
 Import-Package: org.apache.log4j,
  org.eclipse.emf.henshin.interpreter,
  org.eclipse.emf.ecore,

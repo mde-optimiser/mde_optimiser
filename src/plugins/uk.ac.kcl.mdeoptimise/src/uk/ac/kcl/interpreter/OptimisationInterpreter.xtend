@@ -17,6 +17,8 @@ import org.eclipse.emf.henshin.model.Unit
 import org.eclipse.emf.henshin.model.resource.HenshinResourceSet
 import uk.ac.kcl.mdeoptimise.Optimisation
 import uk.ac.kcl.interpreter.objectives.ocl.OclFitnessFunction
+import uk.ac.kcl.mdeoptimise.ObjectiveInterpreterSpec
+import uk.ac.kcl.interpreter.objectives.ObjectivesFactory
 
 /**
  * An interpreter for optimisation specifications. This class provides the basic functionality
@@ -63,6 +65,8 @@ class OptimisationInterpreter {
         optimisationStrategy = algorithm
         this.initalModelProvider = initalModelProvider
     }
+    
+    
 
     public def execute() {
         optimisationStrategy.execute(this)
@@ -88,24 +92,15 @@ class OptimisationInterpreter {
 			
 			fitnessFunctions = new LinkedList();
 			
-//			//Instantiate functions using defined paths
-//			if(!optimisationModel.fitness.empty){
-//				fitnessFunctions.addAll(optimisationModel.fitness.map [ f |
-//					val Class<? extends IFitnessFunction> fitnessClass = Class.forName(
-//						f.fitnessClass) as Class<? extends IFitnessFunction>
-//					fitnessClass.newInstance
-//				])
-//			}
-//			
-//			//Create OCL interpreter fitness functions
-//			if(!optimisationModel.objectives.empty){
-//				fitnessFunctions.addAll(optimisationModel.objectives.map [ o |
-//					new OclFitnessFunction(o)])
-//			}
-
+			val objectivesFactory = new ObjectivesFactory()
+			
+			for (ObjectiveInterpreterSpec objectiveSpec : optimisationModel.objectives){
+				fitnessFunctions.add(objectivesFactory.loadObjective(objectiveSpec))
+			}
 		}
 
 		fitnessFunctions.map[f|f.computeFitness(candidateSolution)]
+	
 	}
 
     /**

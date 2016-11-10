@@ -32,6 +32,7 @@ class GrammarParsingTest {
 			objective name maximise ocl { "Valid.OclString()" }
 			evolve using <ABC> unit "XYZ"
 			evolve using <CDE> unit "LMN"
+			optimisation provider ecj algorithm nsga-II evolutions 100 population 100
 		''')
 	}
 	
@@ -74,5 +75,13 @@ class GrammarParsingTest {
 		assertEquals("Could not get ocl objective name.", "name", model.objectives.get(1).getObjectiveName())
 		assertEquals("Could not get expected ocl objective query.", "Valid.OclString()", model.objectives.get(1).getObjectiveSpec())
 		assertEquals("Could not get ocl objective tendency.", "maximise", model.objectives.get(1).getObjectiveTendency())
+	}
+	
+	@Test
+	def void assertOptimisationProvidersAreParsed() {
+		assertEquals("Could not get optimisation algorithm provider framework", "ecj", model.optimisation.algorithmFactory)
+		assertEquals("Could not get optimisation algorithm name", "nsga-II", model.optimisation.algorithmName)
+		assertEquals("Could not get optimisation population size", 100, model.optimisation.algorithmPopulation)
+		assertEquals("Could not get optimisation evolutions number", 100, model.optimisation.algorithmEvolutions)
 	}
 }
