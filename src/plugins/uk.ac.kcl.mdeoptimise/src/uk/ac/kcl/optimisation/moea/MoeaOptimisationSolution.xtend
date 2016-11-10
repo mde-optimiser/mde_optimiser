@@ -9,6 +9,7 @@ class MoeaOptimisationSolution extends Solution {
 	SolutionGenerator solutionGenerator
 	
 	private EObject model;
+	public int evolutionsCounter = 0;
 	
 	new(MoeaOptimisationSolution moeaOptimisationSolution){
 		super(moeaOptimisationSolution.numberOfVariables, moeaOptimisationSolution.numberOfObjectives)
@@ -18,10 +19,12 @@ class MoeaOptimisationSolution extends Solution {
 		for(var i = 0; i < moeaOptimisationSolution.numberOfVariables; i++){
 			this.setVariable(0, new MoeaOptimisationVariable(moeaOptimisationSolution.getModel(), solutionGenerator))
 		}
+		this.evolutionsCounter = moeaOptimisationSolution.evolutionsCounter;
 	}
 	
 	new(int numberOfVariables, int numberOfObjectives) {
 		super(numberOfVariables, numberOfObjectives)
+		System.out.println("New solution created")
 	}
 	
 	new(SolutionGenerator solutionGenerator){
@@ -35,6 +38,8 @@ class MoeaOptimisationSolution extends Solution {
 		this.setVariable(0, 
 			new MoeaOptimisationVariable(getModel(), solutionGenerator)
 		)
+		
+		System.out.println("Generating new solution with initial model")
 
 	}
 	

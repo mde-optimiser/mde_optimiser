@@ -92,7 +92,12 @@ class SolutionGenerator {
         } while (!evolversToTry.empty)
 
         // We didn't find any applicable evolvers...
-        null
+        //null
+        //Start from scratch if cannot apply evolvers to this model?
+        System.out.println("Very bad model with no evolvers applicable.....")
+        //initialModelProvider.initialModels(theMetamodel).head
+    	object
+    
     }
 	
 }
