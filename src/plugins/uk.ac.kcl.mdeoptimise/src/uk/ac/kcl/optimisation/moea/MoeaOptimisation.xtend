@@ -43,10 +43,7 @@ class MoeaOptimisation implements IOptimisation {
 		
 		//Define the selection operator with the tournament size and dominance comparator
 		//
-		var selection = new TournamentSelection(2, 
-				new ChainedComparator(
-						new ParetoDominanceComparator(),
-						new CrowdingComparator()));
+		var selection = new TournamentSelection(1, new ParetoDominanceComparator());
 		
 		//Define the crossover / mutation operator
 		var variation = new MoeaOptimisationVariation(solutionGenerator)	
@@ -60,8 +57,10 @@ class MoeaOptimisation implements IOptimisation {
 				initialization
 			);
 		
-		while (algorithm.getNumberOfEvaluations() < optimisationSpec.algorithmEvolutions) {
+		var step = 0;
+		while (step < optimisationSpec.algorithmEvolutions) {
 			algorithm.step()
+			System.out.println("Running step " + step++)
 		}
 		
 		var result = algorithm.getResult();
@@ -70,20 +69,15 @@ class MoeaOptimisation implements IOptimisation {
 		var plot = new Plot()
 			.add("NSGAII", result)
 			.show();
-			
+		
+		Thread.sleep(6000)
 			System.out.println()
 		
 		var results = new ArrayList<EObject>()
 		
-		for(Solution object : result.toList) {
-			
+		for(Solution object : result.toList) {			
 			var solution = object as MoeaOptimisationSolution;
-			for(var i = 0; i < solution.numberOfVariables; i++){
-				
-				var variable = solution.getVariable(i) as MoeaOptimisationVariable;
-				results.add(variable.getModel)
-					
-			}
+			results.add(solution.model)
 		}
 	
 		results

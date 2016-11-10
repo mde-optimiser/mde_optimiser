@@ -23,6 +23,7 @@ class MoeaOptimisationVariable implements Variable {
 	override randomize() {
 				//Apply evolvers on the model
 		this.model = solutionGenerator.evolveModel(this.model)
+		System.out.println("Runnging variable randomize")
 	}
 	
 	def getModel(){

@@ -73,16 +73,14 @@ class MoeaOptimisationTests {
 			model = parser.parse('''
 				basepath <src/models/cra/>
 				metamodel <architectureCRA.ecore>
-				objective name maximise ocl { "Class.allInstances()->size()" }
-				objective name maximise ocl { 
-				"Method.allInstances()->select(m : Method | 
-							m.dataDependency->exists(a : Attribute | a.isEncapsulatedBy <> m.isEncapsulatedBy) or
-							m.functionalDependency->exists(m1 : Method | m1.isEncapsulatedBy <> m.isEncapsulatedBy))
-					   ->size()"
-							}
+				objective name maximise java { "models.moea.MinimiseClasslessFeatures" }
+				objective name maximise java { "models.moea.MaximiseCRA" }
+				
 				evolve using <craEvolvers.henshin> unit "createClass"
 				evolve using <craEvolvers.henshin> unit "assignFeature"
-				optimisation provider moea algorithm nsga-II evolutions 100 population 1000
+				evolve using <craEvolvers.henshin> unit "moveFeature"
+				evolve using <craEvolvers.henshin> unit "deleteEmptyClass"
+				optimisation provider moea algorithm nsga-II evolutions 10 population 200
 			''')
 			
 			
