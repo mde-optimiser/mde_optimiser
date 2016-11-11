@@ -17,6 +17,8 @@ import java.util.List
 import org.moeaframework.core.Solution
 import org.moeaframework.core.comparator.ChainedComparator
 import org.moeaframework.core.comparator.CrowdingComparator
+import org.moeaframework.core.spi.OperatorFactory
+import org.moeaframework.algorithm.SPEA2
 
 class MoeaOptimisation implements IOptimisation {
 	
@@ -35,29 +37,42 @@ class MoeaOptimisation implements IOptimisation {
 	
 	def List<EObject> bootstrapOptimisation(OptimisationSpec optimisationSpec){		
 			
+			
+		//OperatorFactory.getInstance().addProvider(new MoeaOptimmisationVariationsProvider());
+		
 		//Define the problem with variables and objectives
-		var moeaOptimisationProblem = new MoeaOptimisationProblem(solutionGenerator, optimisationSpec.algorithmPopulation)
+		var moeaOptimisationProblem = new MoeaOptimisationProblem(solutionGenerator, 1)
 	
 		//Create an initial random population of population size
 		var initialization = new RandomInitialization(moeaOptimisationProblem, optimisationSpec.algorithmPopulation)
+		//println(initialization.initialize.length)
 		
 		//Define the selection operator with the tournament size and dominance comparator
 		//
-		var selection = new TournamentSelection(1, new ParetoDominanceComparator());
+		var selection = new TournamentSelection()//(1, new ParetoDominanceComparator());
 		
 		//Define the crossover / mutation operator
 		var variation = new MoeaOptimisationVariation(solutionGenerator)	
 	
-		var algorithm = new NSGAII(
+//		var algorithm = new NSGAIII(
+//				moeaOptimisationProblem,
+//				new NondominatedSortingPopulation(),
+//				null, // no archive
+//				selection,
+//				variation,
+//				initialization
+//			);
+
+		var algorithm = new SPEA2(
 				moeaOptimisationProblem,
-				new NondominatedSortingPopulation(),
-				null, // no archive
-				selection,
+				initialization,
 				variation,
-				initialization
+				optimisationSpec.algorithmPopulation,
+				1
 			);
 		
 		var step = 0;
+		
 		while (step < optimisationSpec.algorithmEvolutions) {
 			algorithm.step()
 			System.out.println("Running step " + step++)
@@ -65,12 +80,14 @@ class MoeaOptimisation implements IOptimisation {
 		
 		var result = algorithm.getResult();
 	
+	    println(result.length)
+	
 		//Show the results
 		var plot = new Plot()
 			.add("NSGAII", result)
 			.show();
 		
-		Thread.sleep(6000)
+			Thread.sleep(6000)
 			System.out.println()
 		
 		var results = new ArrayList<EObject>()

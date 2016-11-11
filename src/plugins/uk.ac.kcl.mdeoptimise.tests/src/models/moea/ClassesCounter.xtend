@@ -18,6 +18,11 @@ class ClassesCounter extends AbstractModelQueryFitnessFunction {
 		*/
 		var fitness = -1.0 * (model.getFeature("classes") as EList<EObject>).filter[class | (class.getFeature("encapsulates") as EList<EObject>).empty].size;
 		fitness;
-	}	
+	}
+	
+	override getName() {
+		return "Classes counter"
+	}
+	
 }
 		

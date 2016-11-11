@@ -3,6 +3,7 @@ package uk.ac.kcl.optimisation.moea
 import org.eclipse.emf.ecore.EObject
 import org.moeaframework.core.Variable
 import uk.ac.kcl.optimisation.SolutionGenerator
+import java.util.Random
 
 //This is a representation of the evolved model
 class MoeaOptimisationVariable implements Variable {
@@ -21,9 +22,8 @@ class MoeaOptimisationVariable implements Variable {
 	
 	//Used to create the initial population
 	override randomize() {
-				//Apply evolvers on the model
-		this.model = solutionGenerator.evolveModel(this.model)
-		System.out.println("Runnging variable randomize")
+		//Apply evolvers on the model
+		this.model = solutionGenerator.evolveModel(this.model)	
 	}
 	
 	def getModel(){

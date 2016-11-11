@@ -5,7 +5,9 @@ import uk.ac.kcl.tests.models.TestModelProvider
 class MoeaModelProvider extends TestModelProvider {
 	
 	override getModelPaths() {
-		#["src/models/moea/TTC_InputRDG_A.xmi"]
+		#[
+			"src/models/cra/TTC_InputRDG_A.xmi"
+		]
 	}
 	
 }

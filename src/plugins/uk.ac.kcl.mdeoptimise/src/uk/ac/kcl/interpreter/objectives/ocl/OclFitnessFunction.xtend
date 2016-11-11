@@ -15,6 +15,7 @@ class OclFitnessFunction implements IFitnessFunction {
 	private OCL<?, EClassifier, ?, ?, ?, ?, ?, ?, ?, Constraint, EClass, EObject>  ocl
    	private OCLHelper<EClassifier, ?, ?, Constraint> oclHelper
    	private ObjectiveInterpreterSpec objectiveInterpreterSpec
+	private String objectiveName;
 	
 	new(OCL<?, EClassifier, ?, ?, ?, ?, ?, ?, ?, Constraint, EClass, EObject>  ocl, 
 		OCLHelper<EClassifier, ?, ?, Constraint> oclHelper,
@@ -23,7 +24,9 @@ class OclFitnessFunction implements IFitnessFunction {
 		this.ocl = ocl;
 		this.oclHelper = oclHelper;
 		this.objectiveInterpreterSpec = objectiveInterpreterSpec
+		this.objectiveName = objectiveInterpreterSpec.objectiveName
 	}
+	
 	
 	override computeFitness(EObject model) {
 		
@@ -61,5 +64,10 @@ class OclFitnessFunction implements IFitnessFunction {
 		} else if (fitnessValue instanceof Long) {
 			return 1.0d * fitnessValue as Long
 		}
-	}	
+	}
+	
+	override getName() {
+		this.objectiveName
+	}
+	
 }

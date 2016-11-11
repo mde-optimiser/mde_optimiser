@@ -63,6 +63,7 @@ class OclInterpreterGrammarTests {
 				objective name maximise ocl { "Class.allInstances()->size()" }
 				evolve using <ABC> unit "XYZ"
 				evolve using <CDE> unit "LMN"
+				optimisation provider ecj algorithm nsga-II evolutions 100 population 100
 			''')
 			
 			var oclObjective = objectivesFactory.loadObjective(model.getObjectives().get(0))
@@ -91,6 +92,7 @@ class OclInterpreterGrammarTests {
 				objective name maximise ocl { "Class.allInstances()->size()" }
 				evolve using <ABC> unit "XYZ"
 				evolve using <CDE> unit "LMN"
+				optimisation provider ecj algorithm nsga-II evolutions 100 population 100
 			''')
 			
 			var oclObjective = objectivesFactory.loadObjective(model.getObjectives().get(0))
@@ -115,6 +117,7 @@ class OclInterpreterGrammarTests {
 				objective name maximise ocl { "Class.allInstances().size()" }
 				evolve using <ABC> unit "XYZ"
 				evolve using <CDE> unit "LMN"
+				optimisation provider ecj algorithm nsga-II evolutions 100 population 100
 			''')
 			
 			var oclObjective = objectivesFactory.loadObjective(model.getObjectives().get(0))
@@ -145,6 +148,7 @@ class OclInterpreterGrammarTests {
 				}
 				evolve using <ABC> unit "XYZ"
 				evolve using <CDE> unit "LMN"
+				optimisation provider ecj algorithm nsga-II evolutions 100 population 100
 			''')
 			
 			var oclObjective = objectivesFactory.loadObjective(model.getObjectives().get(0))
