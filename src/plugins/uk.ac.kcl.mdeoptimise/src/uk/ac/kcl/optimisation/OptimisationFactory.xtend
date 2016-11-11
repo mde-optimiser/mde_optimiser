@@ -9,7 +9,6 @@ class OptimisationFactory implements IOptimisation {
 
 	private MoeaOptimisation moeaOptimisation;
 	
-	
 	override execute(OptimisationSpec optimisationSpec, SolutionGenerator solutionGenerator) {
 		
 		initializeOptimisation(optimisationSpec.algorithmFactory).execute(optimisationSpec, solutionGenerator);
@@ -21,12 +20,11 @@ class OptimisationFactory implements IOptimisation {
 		switch optimisationFactory {
 			case "moea":
 				return new MoeaOptimisation()
+				
 			default:
 			
 				//TODO perhaps this is not the best exception to use here. Implement our own?
-				throw new InvalidObjectException("Invalid algorithm factory: " 
-					+ optimisationFactory
-				)
+				throw new InvalidObjectException("Invalid algorithm factory specified: " + optimisationFactory)
 		}
 		
 	}

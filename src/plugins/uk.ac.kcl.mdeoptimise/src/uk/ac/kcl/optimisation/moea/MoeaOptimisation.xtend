@@ -14,6 +14,9 @@ import uk.ac.kcl.mdeoptimise.OptimisationSpec
 import uk.ac.kcl.optimisation.SolutionGenerator
 import org.moeaframework.core.NondominatedSortingPopulation
 import org.moeaframework.core.EpsilonBoxDominanceArchive
+import java.util.Properties
+import org.moeaframework.Executor
+import java.util.Iterator
 
 class MoeaOptimisation implements IOptimisation {
 	
@@ -27,12 +30,47 @@ class MoeaOptimisation implements IOptimisation {
 		//bootstrapOptimisation(optimisationSpec)
 		this.solutionGenerator = solutionGenerator;
 		
-		bootstrapOptimisation(optimisationSpec)
+		var optimisationProperties = getOptimisationProperties(optimisationSpec)
+		
+		//Run the optimisation executor
+		val population = runOptimisation(optimisationSpec.algorithmName, optimisationProperties);
+	
+		return getOptimisationOutcomeObjects(population);
 	}
 	
+	def Iterator<EObject> getOptimisationOutcomeObjects(NondominatedPopulation population){
+		return population.iterator.map[ p | (p as MoeaOptimisationSolution).model]
+	}
+	
+	/**
+	 * This can be passed in the algorithm factory.
+	 * Properties can be extracted through a decorator based on the algorithm name/type?
+	 */
+	def Properties getOptimisationProperties(OptimisationSpec optimisationSpec) {
+		//return new Properties();
+		
+		var properties = new Properties();
+		
+		properties.put("population", optimisationSpec.algorithmPopulation)
+		properties.put("maxEvaluations", optimisationSpec.algorithmEvolutions)
+		
+		return properties
+	}
+	
+	def NondominatedPopulation runOptimisation(String algorithmName, Properties optimisationProperties) {
+		
+		new Executor()
+	       .withAlgorithm(algorithmName)
+	       .withProblemClass(MoeaOptimisation)
+	       .withProperties(optimisationProperties)
+	       .distributeOnAllCores() //Leave this on for now. Should perhaps be configurable.
+	       //Todo look at distribution service available
+	       .run()
+	}
+	
+	
 	def List<EObject> bootstrapOptimisation(OptimisationSpec optimisationSpec){		
-			
-			
+		
 		//OperatorFactory.getInstance().addProvider(new MoeaOptimmisationVariationsProvider());
 		
 		//Define the problem with variables and objectives
@@ -90,10 +128,11 @@ class MoeaOptimisation implements IOptimisation {
 		var plot = new Plot()
 			.add("NSGAII", result)
 			.show();
-		
-			Thread.sleep(6000)
-			System.out.println()
-		
+			
+		//Show the graph for a bit
+		Thread.sleep(6000)
+		System.out.println()
+	
 		var results = new ArrayList<EObject>()
 		
 		for(Solution object : result.toList) {			
