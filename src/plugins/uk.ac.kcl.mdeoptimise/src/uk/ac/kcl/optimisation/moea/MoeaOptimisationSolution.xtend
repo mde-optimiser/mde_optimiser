@@ -24,7 +24,6 @@ class MoeaOptimisationSolution extends Solution {
 	
 	new(int numberOfVariables, int numberOfObjectives) {
 		super(numberOfVariables, numberOfObjectives)
-		System.out.println("New solution created")
 	}
 	
 	new(SolutionGenerator solutionGenerator){
@@ -35,11 +34,7 @@ class MoeaOptimisationSolution extends Solution {
 		this.solutionGenerator = solutionGenerator;
 		setModel(solutionGenerator.initialSolutions.head)
 		//Set variables with initial models to be used in initial population generation
-		this.setVariable(0, 
-			new MoeaOptimisationVariable(getModel(), solutionGenerator)
-		)
-		
-		System.out.println("Generating new solution with initial model")
+		this.setVariable(0, new MoeaOptimisationVariable(getModel(), solutionGenerator))
 
 	}
 	

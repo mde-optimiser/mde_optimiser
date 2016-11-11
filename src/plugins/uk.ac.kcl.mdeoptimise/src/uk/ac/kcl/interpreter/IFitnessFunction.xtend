@@ -10,4 +10,5 @@ interface IFitnessFunction {
      * Return the fitness of the given model. Higher fitness values are better.
      */
     def double computeFitness (EObject model)
+    def String getName()
 }

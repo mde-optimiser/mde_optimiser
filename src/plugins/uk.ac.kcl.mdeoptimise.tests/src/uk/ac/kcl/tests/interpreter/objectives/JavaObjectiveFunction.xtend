@@ -9,4 +9,8 @@ class JavaObjectiveFunction implements IFitnessFunction {
 		return 5
 	}
 	
+	override getName() {
+		return "Java objective name"
+	}
+	
 }

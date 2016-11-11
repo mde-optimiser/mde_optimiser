@@ -9,11 +9,11 @@ import java.util.List
 import java.util.LinkedList
 import uk.ac.kcl.interpreter.objectives.ObjectivesFactory
 import uk.ac.kcl.mdeoptimise.ObjectiveInterpreterSpec
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 
 class MoeaOptimisationProblem extends AbstractProblem {
 	
-	
-	//variables - number of models generated for each iteration. Should normally be 1 I assume
+	//variables - number of models generated for each iteration. Should normally be 1
 	// objectives - number of fitness functions for each model as defined in the spec
 	private SolutionGenerator solutionGenerator
 	
@@ -29,6 +29,10 @@ class MoeaOptimisationProblem extends AbstractProblem {
 		this(numberOfVariables, solutionGenerator.optimisationModel.objectives.size());
 		
 		this.solutionGenerator = solutionGenerator
+	}
+	
+	def SolutionGenerator getSolutionGenerator(){
+		this.solutionGenerator
 	}
 	
 	def getFitnessFunctions(){
@@ -53,13 +57,12 @@ class MoeaOptimisationProblem extends AbstractProblem {
 	}
 	
 	override evaluate(Solution solution) {
-		//throw new UnsupportedOperationException("TODO: auto-generated method stub")
-		
-		val moeaSolution = solution as MoeaOptimisationSolution;
 
+		val moeaSolution = solution as MoeaOptimisationSolution;
+		
 		for(var i = 0; i < getFitnessFunctions.size; i++){
 			val fitnessValue = getFitnessFunctions.get(i).computeFitness(moeaSolution.getModel);
-			System.out.println("Found fitness value " + fitnessValue + " for objective " + i)
+			System.out.println("Found fitness value " + fitnessValue + " for objective " + getFitnessFunctions.get(i).name)				
 			moeaSolution.setObjective(i, fitnessValue)
 		}		
 		

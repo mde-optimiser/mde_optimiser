@@ -20,6 +20,10 @@ import uk.ac.kcl.optimisation.SolutionGenerator
 import uk.ac.kcl.optimisation.moea.MoeaOptimisation
 import java.text.SimpleDateFormat
 import java.util.Date
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import java.util.stream.Collectors
+import org.eclipse.emf.ecore.EObject
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)
@@ -73,33 +77,27 @@ class MoeaOptimisationTests {
 			model = parser.parse('''
 				basepath <src/models/cra/>
 				metamodel <architectureCRA.ecore>
-				objective name maximise java { "models.moea.MinimiseClasslessFeatures" }
-				objective name maximise java { "models.moea.MaximiseCRA" }
 				
+								objective MaximiseClasses maximise ocl { "Class.allInstances()->size()" }
+				objective MaximiseCRA maximise java { "models.moea.MaximiseCRA" }
 				evolve using <craEvolvers.henshin> unit "createClass"
 				evolve using <craEvolvers.henshin> unit "assignFeature"
 				evolve using <craEvolvers.henshin> unit "moveFeature"
 				evolve using <craEvolvers.henshin> unit "deleteEmptyClass"
-				optimisation provider moea algorithm nsga-II evolutions 10 population 200
+				optimisation provider moea algorithm nsga-II evolutions 50 population 100
 			''')
-			
-			
-//new(Optimisation optimisationModel, List<Unit> henshinEvolvers, HenshinResourceSet henshinResourceSet, IModelProvider modelProvider){
-			
+	
 			val oclModelProvider = new MoeaModelProvider()
 			
 			var solutionGenerator = new SolutionGenerator(model, henshinEvolvers, henshinResourceSet, oclModelProvider, getMetamodel);
 
-
-//override execute(OptimisationSpec optimisationSpec, SolutionGenerator solutionGenerator) {
-
-
 			var optimisation = new MoeaOptimisation().execute(model.optimisation, solutionGenerator)
 	
-			oclModelProvider.storeModels(optimisation, pathPrefix + "/final")
-	
+			for(EObject modelElement : optimisation){
+				oclModelProvider.storeModelAndInfo(modelElement, pathPrefix + "/final", oclModelProvider.modelPaths.head)
+			}		
+							
 			model.assertNoIssues
 
-
-	}
+	}	
 }

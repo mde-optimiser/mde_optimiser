@@ -15,6 +15,7 @@ import org.eclipse.emf.henshin.interpreter.impl.UnitApplicationImpl
 import java.util.ArrayList
 import java.util.Iterator
 import uk.ac.kcl.interpreter.IModelProvider
+import org.eclipse.emf.henshin.interpreter.Engine
 
 class SolutionGenerator {
 	
@@ -31,12 +32,18 @@ class SolutionGenerator {
 	
 	IModelProvider initialModelProvider
 
+	public Engine engine;
+	public UnitApplicationImpl runner;
+
 	new(Optimisation optimisationModel, List<Unit> henshinEvolvers, HenshinResourceSet henshinResourceSet, IModelProvider modelProvider, EPackage metamodel){
 		this.optimisationModel = optimisationModel
 		this.henshinEvolvers = henshinEvolvers
 		this.henshinResourceSet = henshinResourceSet
 		this.initialModelProvider = modelProvider
 		this.theMetamodel = metamodel;
+		this.engine = new EngineImpl
+		engine.getOptions().put(Engine.OPTION_DETERMINISTIC, false);
+		this.runner = new UnitApplicationImpl(engine)
 	}
 
     /**
@@ -80,8 +87,7 @@ class SolutionGenerator {
             // TODO: Some of these objects we may actually be able to reuse across evolver calls.
             // Waiting to define a test with multiple evolvers before doing this so that I can safely assess whether it will break anything.
             val graph = new EGraphImpl(candidateSolution)
-            val engine = new EngineImpl
-            val runner = new UnitApplicationImpl(engine)
+
             runner.EGraph = graph
 
             runner.unit = evolver
@@ -94,7 +100,7 @@ class SolutionGenerator {
         // We didn't find any applicable evolvers...
         //null
         //Start from scratch if cannot apply evolvers to this model?
-        System.out.println("Very bad model with no evolvers applicable.....")
+        System.out.println("Model with no evolvers applicable.....")
         //initialModelProvider.initialModels(theMetamodel).head
     	object
     
