@@ -42,6 +42,7 @@ class ObjectivesFactoryTests {
 			objective name maximise ocl { "Valid.OclString()" }
 			evolve using <ABC> unit "XYZ"
 			evolve using <CDE> unit "LMN"
+			optimisation provider moea algorithm nsga-II evolutions 2000 population 100
 		''')
 	
 		oclModelProvider = new OclModelProvider	
@@ -85,7 +86,6 @@ class ObjectivesFactoryTests {
 		
 		var mockedEObject = mock(EObject)
 		
-		//TODO Look at this again
 		assertEquals(5.0, javaObjective.computeFitness(mockedEObject), 0.0)
 	}
 	

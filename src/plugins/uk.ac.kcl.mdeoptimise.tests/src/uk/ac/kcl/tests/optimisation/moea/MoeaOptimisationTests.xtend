@@ -24,6 +24,7 @@ import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.util.stream.Collectors
 import org.eclipse.emf.ecore.EObject
+import org.junit.Ignore
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)
@@ -70,6 +71,7 @@ class MoeaOptimisationTests {
     }
 
 	@Test
+	@Ignore
 	def void runMoeaOptimisation() {
 		
 			val pathPrefix = "gen/models/ttc/" + new SimpleDateFormat("yyMMdd-HHmmss").format(new Date())
