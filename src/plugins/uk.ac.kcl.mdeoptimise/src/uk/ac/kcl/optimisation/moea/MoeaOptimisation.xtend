@@ -1,24 +1,19 @@
 package uk.ac.kcl.optimisation.moea
 
 import java.util.ArrayList
+import java.util.List
 import org.eclipse.emf.ecore.EObject
-import org.moeaframework.Executor
-import org.moeaframework.algorithm.NSGAII
+import org.moeaframework.algorithm.EpsilonMOEA
+import org.moeaframework.analysis.plot.Plot
 import org.moeaframework.core.NondominatedPopulation
-import org.moeaframework.core.NondominatedSortingPopulation
-import org.moeaframework.core.comparator.ParetoDominanceComparator
+import org.moeaframework.core.Solution
 import org.moeaframework.core.operator.RandomInitialization
 import org.moeaframework.core.operator.TournamentSelection
 import uk.ac.kcl.interpreter.IOptimisation
 import uk.ac.kcl.mdeoptimise.OptimisationSpec
 import uk.ac.kcl.optimisation.SolutionGenerator
-import org.moeaframework.analysis.plot.Plot
-import java.util.List
-import org.moeaframework.core.Solution
-import org.moeaframework.core.comparator.ChainedComparator
-import org.moeaframework.core.comparator.CrowdingComparator
-import org.moeaframework.core.spi.OperatorFactory
-import org.moeaframework.algorithm.SPEA2
+import org.moeaframework.core.NondominatedSortingPopulation
+import org.moeaframework.core.EpsilonBoxDominanceArchive
 
 class MoeaOptimisation implements IOptimisation {
 	
@@ -63,12 +58,21 @@ class MoeaOptimisation implements IOptimisation {
 //				initialization
 //			);
 
-		var algorithm = new SPEA2(
+//		var algorithm = new SPEA2(
+//				moeaOptimisationProblem,
+//				initialization,
+//				variation,
+//				optimisationSpec.algorithmPopulation,
+//				1
+//			);
+		
+		var algorithm = new EpsilonMOEA(
 				moeaOptimisationProblem,
-				initialization,
+				new NondominatedSortingPopulation(),
+				new EpsilonBoxDominanceArchive(1000),
+				selection, 
 				variation,
-				optimisationSpec.algorithmPopulation,
-				1
+				initialization
 			);
 		
 		var step = 0;
