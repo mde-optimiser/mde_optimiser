@@ -77,14 +77,14 @@ class MoeaOptimisationTests {
 			model = parser.parse('''
 				basepath <src/models/cra/>
 				metamodel <architectureCRA.ecore>
-				
-								objective MaximiseClasses maximise ocl { "Class.allInstances()->size()" }
 				objective MaximiseCRA maximise java { "models.moea.MaximiseCRA" }
+				objective MaximiseClasses maximise ocl { "Class.allInstances()->size()" }
+				objective MinimiseClasslessFeatures maximise java { "models.moea.MinimiseClasslessFeatures" }
 				evolve using <craEvolvers.henshin> unit "createClass"
 				evolve using <craEvolvers.henshin> unit "assignFeature"
 				evolve using <craEvolvers.henshin> unit "moveFeature"
 				evolve using <craEvolvers.henshin> unit "deleteEmptyClass"
-				optimisation provider moea algorithm nsga-II evolutions 50 population 100
+				optimisation provider moea algorithm nsga-II evolutions 2000 population 100
 			''')
 	
 			val oclModelProvider = new MoeaModelProvider()
