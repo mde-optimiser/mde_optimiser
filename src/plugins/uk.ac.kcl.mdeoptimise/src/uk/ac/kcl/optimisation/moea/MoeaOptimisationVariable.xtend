@@ -23,11 +23,11 @@ class MoeaOptimisationVariable implements Variable {
 	//Used to create the initial population
 	override randomize() {
 		//Apply evolvers on the model
-		this.model = solutionGenerator.evolveModel(this.model)	
+		model = solutionGenerator.evolveModel(this.model)	
 	}
 	
 	def getModel(){
-		return this.model;
+		model;
 	}
 	
 }
