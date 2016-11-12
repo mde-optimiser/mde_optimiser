@@ -17,24 +17,23 @@ import org.moeaframework.core.EpsilonBoxDominanceArchive
 import java.util.Properties
 import org.moeaframework.Executor
 import java.util.Iterator
+import org.moeaframework.core.spi.AlgorithmFactory
 
 class MoeaOptimisation implements IOptimisation {
 	
 	SolutionGenerator solutionGenerator
-	NondominatedPopulation results
 	
 	//This will have to 
 	override execute(OptimisationSpec optimisationSpec, SolutionGenerator solutionGenerator) {
 		
-		//Load the optimisation engine
-		//bootstrapOptimisation(optimisationSpec)
 		this.solutionGenerator = solutionGenerator;
 		
 		var optimisationProperties = getOptimisationProperties(optimisationSpec)
 		
 		//Run the optimisation executor
 		val population = runOptimisation(optimisationSpec.algorithmName, optimisationProperties);
-	
+		
+		//Extract optimisation models from the problem solutions
 		return getOptimisationOutcomeObjects(population);
 	}
 	
@@ -47,28 +46,32 @@ class MoeaOptimisation implements IOptimisation {
 	 * Properties can be extracted through a decorator based on the algorithm name/type?
 	 */
 	def Properties getOptimisationProperties(OptimisationSpec optimisationSpec) {
-		//return new Properties();
 		
-		var properties = new Properties();
+		var properties = new Properties()
 		
 		properties.put("population", optimisationSpec.algorithmPopulation)
 		properties.put("maxEvaluations", optimisationSpec.algorithmEvolutions)
-		
+		properties.put("solutionGenerator", solutionGenerator)
 		return properties
 	}
 	
 	def NondominatedPopulation runOptimisation(String algorithmName, Properties optimisationProperties) {
 		
+		val algorithmFactory = new AlgorithmFactory();
+		algorithmFactory.addProvider(new MoeaOptimisationAlgorithmProvider)
+		
 		new Executor()
+		   .usingAlgorithmFactory(algorithmFactory)
 	       .withAlgorithm(algorithmName)
-	       .withProblemClass(MoeaOptimisation)
+	       //Initialize problem with our solution generator
+	       .withProblemClass(MoeaOptimisationProblem, solutionGenerator)
 	       .withProperties(optimisationProperties)
-	       .distributeOnAllCores() //Leave this on for now. Should perhaps be configurable.
+	       //.distributeOnAllCores() //Leave this on for now. Should perhaps be configurable.
 	       //Todo look at distribution service available
 	       .run()
 	}
 	
-	
+	//TODO remove once the correct implementation is proven to work
 	def List<EObject> bootstrapOptimisation(OptimisationSpec optimisationSpec){		
 		
 		//OperatorFactory.getInstance().addProvider(new MoeaOptimmisationVariationsProvider());

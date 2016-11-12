@@ -71,7 +71,6 @@ class MoeaOptimisationTests {
     }
 
 	@Test
-	@Ignore
 	def void runMoeaOptimisation() {
 		
 			val pathPrefix = "gen/models/ttc/" + new SimpleDateFormat("yyMMdd-HHmmss").format(new Date())
@@ -86,20 +85,25 @@ class MoeaOptimisationTests {
 				evolve using <craEvolvers.henshin> unit "assignFeature"
 				evolve using <craEvolvers.henshin> unit "moveFeature"
 				evolve using <craEvolvers.henshin> unit "deleteEmptyClass"
-				optimisation provider moea algorithm nsga-II evolutions 2000 population 100
+				optimisation provider moea algorithm NSGAII evolutions 20 population 10
 			''')
-	
-			val oclModelProvider = new MoeaModelProvider()
-			
-			var solutionGenerator = new SolutionGenerator(model, henshinEvolvers, henshinResourceSet, oclModelProvider, getMetamodel);
 
-			var optimisation = new MoeaOptimisation().execute(model.optimisation, solutionGenerator)
-	
-			for(EObject modelElement : optimisation){
-				oclModelProvider.storeModelAndInfo(modelElement, pathPrefix + "/final", oclModelProvider.modelPaths.head)
-			}		
-							
+			//Assert that there are no grammar issues
 			model.assertNoIssues
 
+			val oclModelProvider = new MoeaModelProvider()
+			
+			var solutionGenerator = new SolutionGenerator(
+											model, 
+											henshinEvolvers, 
+											henshinResourceSet, 
+											oclModelProvider, 
+											getMetamodel);
+
+			var optimisation = new MoeaOptimisation()
+									.execute(model.optimisation, solutionGenerator)
+			
+			optimisation
+				.forEach[model | oclModelProvider.storeModelAndInfo(model, pathPrefix + "/final", oclModelProvider.modelPaths.head)]
 	}	
 }

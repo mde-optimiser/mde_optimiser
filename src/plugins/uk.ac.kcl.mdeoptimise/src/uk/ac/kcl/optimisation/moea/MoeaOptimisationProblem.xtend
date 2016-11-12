@@ -1,15 +1,11 @@
 package uk.ac.kcl.optimisation.moea
 
-import org.moeaframework.problem.AbstractProblem
-import org.moeaframework.core.Solution
-import org.eclipse.emf.ecore.EObject
-import uk.ac.kcl.optimisation.SolutionGenerator
-import uk.ac.kcl.interpreter.IFitnessFunction
 import java.util.List
-import java.util.LinkedList
+import org.moeaframework.core.Solution
+import org.moeaframework.problem.AbstractProblem
+import uk.ac.kcl.interpreter.IFitnessFunction
 import uk.ac.kcl.interpreter.objectives.ObjectivesFactory
-import uk.ac.kcl.mdeoptimise.ObjectiveInterpreterSpec
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
+import uk.ac.kcl.optimisation.SolutionGenerator
 
 class MoeaOptimisationProblem extends AbstractProblem {
 	
@@ -31,6 +27,10 @@ class MoeaOptimisationProblem extends AbstractProblem {
 		this.solutionGenerator = solutionGenerator
 	}
 	
+	new(SolutionGenerator solutionGenerator){
+		this(solutionGenerator, 1)
+	}
+	
 	def SolutionGenerator getSolutionGenerator(){
 		this.solutionGenerator
 	}
@@ -44,15 +44,9 @@ class MoeaOptimisationProblem extends AbstractProblem {
 	}
 	
 	def void setFitnessFunctions(){
-		if (fitnessFunctions == null) {
-			
-			this.fitnessFunctions = new LinkedList();
-			
-			val objectivesFactory = new ObjectivesFactory()
-			
-			for (ObjectiveInterpreterSpec objectiveSpec : solutionGenerator.optimisationModel.objectives){
-				fitnessFunctions.add(objectivesFactory.loadObjective(objectiveSpec))
-			}
+		if (fitnessFunctions == null) {			
+			this.fitnessFunctions = solutionGenerator.optimisationModel.objectives
+				.map[ objective | new ObjectivesFactory().loadObjective(objective)]
 		}
 	}
 	
@@ -60,12 +54,10 @@ class MoeaOptimisationProblem extends AbstractProblem {
 
 		val moeaSolution = solution as MoeaOptimisationSolution;
 		
-		for(var i = 0; i < getFitnessFunctions.size; i++){
-			val fitnessValue = getFitnessFunctions.get(i).computeFitness(moeaSolution.getModel);
-			System.out.println("Found fitness value " + fitnessValue + " for objective " + getFitnessFunctions.get(i).name)				
-			moeaSolution.setObjective(i, fitnessValue)
-		}		
-		
+		getFitnessFunctions
+			.forEach[ fitnessFunction, objectiveId | 
+						(solution as MoeaOptimisationSolution)
+							.setObjective(objectiveId, fitnessFunction.computeFitness(moeaSolution.model))]
 	}
 	
 	override newSolution() {
