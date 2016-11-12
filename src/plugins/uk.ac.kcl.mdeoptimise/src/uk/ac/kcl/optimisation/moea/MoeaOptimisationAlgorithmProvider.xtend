@@ -27,7 +27,7 @@ class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
 	
 	def Algorithm createNSGAII(Problem problem, Properties properties) {
 		//Create an initial random population of population size
-		var initialization = new RandomInitialization(problem, properties.get("population") as Integer)
+		var initialization = new RandomInitialization(problem, properties.get("populationSize") as Integer)
 		
 		//Define the selection operator with the tournament size and dominance comparator
 		var selection = new TournamentSelection(1)//(1, new ParetoDominanceComparator());

@@ -49,7 +49,8 @@ class MoeaOptimisation implements IOptimisation {
 		
 		var properties = new Properties()
 		
-		properties.put("population", optimisationSpec.algorithmPopulation)
+		properties.put("populationSize", optimisationSpec.algorithmPopulation)
+		//This does not seem to be picked up from here in the executor. Needs manual setting
 		properties.put("maxEvaluations", optimisationSpec.algorithmEvolutions)
 		properties.put("solutionGenerator", solutionGenerator)
 		return properties
@@ -66,6 +67,7 @@ class MoeaOptimisation implements IOptimisation {
 	       //Initialize problem with our solution generator
 	       .withProblemClass(MoeaOptimisationProblem, solutionGenerator)
 	       .withProperties(optimisationProperties)
+	       .withMaxEvaluations(optimisationProperties.get("maxEvaluations") as Integer)
 	       //.distributeOnAllCores() //Leave this on for now. Should perhaps be configurable.
 	       //Todo look at distribution service available
 	       .run()

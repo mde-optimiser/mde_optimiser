@@ -85,7 +85,7 @@ class MoeaOptimisationTests {
 				evolve using <craEvolvers.henshin> unit "assignFeature"
 				evolve using <craEvolvers.henshin> unit "moveFeature"
 				evolve using <craEvolvers.henshin> unit "deleteEmptyClass"
-				optimisation provider moea algorithm NSGAII evolutions 20 population 10
+				optimisation provider moea algorithm NSGAII evolutions 200 population 40
 			''')
 
 			//Assert that there are no grammar issues
