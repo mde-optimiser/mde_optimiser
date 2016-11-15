@@ -14,6 +14,7 @@ class MoeaOptimisationVariable implements Variable {
 	new(EObject model, SolutionGenerator solutionGenerator){
 		this.model = model;
 		this.solutionGenerator = solutionGenerator;
+//		System.out.println("Generated variable.")
 	}
 	
 	override copy() {

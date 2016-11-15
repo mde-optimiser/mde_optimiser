@@ -1,9 +1,8 @@
 package uk.ac.kcl.optimisation.moea
 
-import org.moeaframework.core.Variation
 import org.moeaframework.core.Solution
+import org.moeaframework.core.Variation
 import uk.ac.kcl.optimisation.SolutionGenerator
-import org.eclipse.emf.ecore.EObject
 
 class MoeaOptimisationVariation implements Variation {
 	
@@ -15,10 +14,14 @@ class MoeaOptimisationVariation implements Variation {
 	
 	//USed to evolve a solution using the henshin evolvers
 	override evolve(Solution[] parents) {
-		
-		val parentSolution = parents.head as MoeaOptimisationSolution;
-		parentSolution.setModel(solutionGenerator.evolveModel(parentSolution.model));
-		#[parentSolution]
+
+		var parentSolution = parents.head as MoeaOptimisationSolution;
+		var newSolution = parentSolution.copy
+			
+		newSolution.setModel(solutionGenerator.evolveModel(parentSolution.model));
+		newSolution.evolutionsCounter++
+		//System.out.println("Evolved solution " + newSolution.evolutionsCounter)
+		#[newSolution]
 
 	}
 	

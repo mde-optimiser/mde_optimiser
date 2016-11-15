@@ -4,7 +4,7 @@ import org.moeaframework.core.spi.OperatorProvider
 import org.moeaframework.core.Problem
 import java.util.Properties
 
-class MoeaOptimmisationVariationsProvider extends OperatorProvider {
+class MoeaOptimisationVariationsProvider extends OperatorProvider {
 	
 	override getMutationHint(Problem problem) {
 		val solution = problem.newSolution();

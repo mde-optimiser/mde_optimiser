@@ -8,34 +8,28 @@ class MoeaOptimisationSolution extends Solution {
 
 	SolutionGenerator solutionGenerator
 	
-	private EObject model;
 	public int evolutionsCounter = 0;
-	
+	public boolean initialSolution = false;
+	public int evaluatedCounter = 0;
 	new(MoeaOptimisationSolution moeaOptimisationSolution){
-		super(moeaOptimisationSolution.numberOfVariables, moeaOptimisationSolution.numberOfObjectives)
+		super(1, moeaOptimisationSolution.numberOfObjectives)
 		this.model = moeaOptimisationSolution.getModel
 		this.solutionGenerator = moeaOptimisationSolution.getSolutionGenerator
-		
-		for(var i = 0; i < moeaOptimisationSolution.numberOfVariables; i++){
-			this.setVariable(0, new MoeaOptimisationVariable(moeaOptimisationSolution.getModel(), solutionGenerator))
-		}
 		this.evolutionsCounter = moeaOptimisationSolution.evolutionsCounter;
 	}
 	
-	new(int numberOfVariables, int numberOfObjectives) {
-		super(numberOfVariables, numberOfObjectives)
+	new(int numberOfObjectives) {
+		super(1, numberOfObjectives)
 	}
 	
 	new(SolutionGenerator solutionGenerator){
 		
 		//1 variable - our model, fitness function objectives
-		this(1, solutionGenerator.optimisationModel.objectives.size())
+		this(solutionGenerator.optimisationModel.objectives.size())
 		
 		this.solutionGenerator = solutionGenerator;
-		setModel(solutionGenerator.initialSolutions.head)
-		//Set variables with initial models to be used in initial population generation
-		this.setVariable(0, new MoeaOptimisationVariable(getModel(), solutionGenerator))
-
+		setModel(solutionGenerator.evolveModel(solutionGenerator.initialSolutions.head))
+		//System.out.println("Generated solution.")
 	}
 	
 	override MoeaOptimisationSolution copy(){
@@ -43,11 +37,11 @@ class MoeaOptimisationSolution extends Solution {
 	}
 	
 	def EObject getModel(){
-		this.model;
+		(getVariable(0) as MoeaOptimisationVariable).model
 	}
 	
 	def void setModel(EObject model) {
-		this.model = model
+		setVariable(0, new MoeaOptimisationVariable(model, solutionGenerator))
 	}
 	
 	def SolutionGenerator getSolutionGenerator(){
