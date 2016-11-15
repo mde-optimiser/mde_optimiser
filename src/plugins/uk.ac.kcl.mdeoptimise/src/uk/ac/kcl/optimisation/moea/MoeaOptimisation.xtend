@@ -1,23 +1,24 @@
 package uk.ac.kcl.optimisation.moea
 
 import java.util.ArrayList
+import java.util.Iterator
 import java.util.List
+import java.util.Properties
 import org.eclipse.emf.ecore.EObject
+import org.moeaframework.Executor
 import org.moeaframework.algorithm.EpsilonMOEA
 import org.moeaframework.analysis.plot.Plot
+import org.moeaframework.core.EpsilonBoxDominanceArchive
 import org.moeaframework.core.NondominatedPopulation
+import org.moeaframework.core.NondominatedSortingPopulation
 import org.moeaframework.core.Solution
 import org.moeaframework.core.operator.RandomInitialization
 import org.moeaframework.core.operator.TournamentSelection
+import org.moeaframework.core.spi.AlgorithmFactory
 import uk.ac.kcl.interpreter.IOptimisation
 import uk.ac.kcl.mdeoptimise.OptimisationSpec
 import uk.ac.kcl.optimisation.SolutionGenerator
-import org.moeaframework.core.NondominatedSortingPopulation
-import org.moeaframework.core.EpsilonBoxDominanceArchive
-import java.util.Properties
-import org.moeaframework.Executor
-import java.util.Iterator
-import org.moeaframework.core.spi.AlgorithmFactory
+import org.moeaframework.core.spi.OperatorFactory
 
 class MoeaOptimisation implements IOptimisation {
 	
@@ -50,13 +51,14 @@ class MoeaOptimisation implements IOptimisation {
 		var properties = new Properties()
 		
 		properties.put("populationSize", optimisationSpec.algorithmPopulation)
-		//This does not seem to be picked up from here in the executor. Needs manual setting
-		properties.put("maxEvaluations", optimisationSpec.algorithmEvolutions)
+		properties.put("maxEvolutions", optimisationSpec.algorithmEvolutions)
 		properties.put("solutionGenerator", solutionGenerator)
 		return properties
 	}
 	
 	def NondominatedPopulation runOptimisation(String algorithmName, Properties optimisationProperties) {
+		
+		OperatorFactory.getInstance().addProvider(new MoeaOptimisationVariationsProvider());
 		
 		val algorithmFactory = new AlgorithmFactory();
 		algorithmFactory.addProvider(new MoeaOptimisationAlgorithmProvider)
@@ -67,10 +69,12 @@ class MoeaOptimisation implements IOptimisation {
 	       //Initialize problem with our solution generator
 	       .withProblemClass(MoeaOptimisationProblem, solutionGenerator)
 	       .withProperties(optimisationProperties)
-	       .withMaxEvaluations(optimisationProperties.get("maxEvaluations") as Integer)
+	       .withMaxEvaluations(optimisationProperties.get("maxEvolutions") as Integer)
+	       
 	       //.distributeOnAllCores() //Leave this on for now. Should perhaps be configurable.
 	       //Todo look at distribution service available
 	       .run()
+	   
 	}
 	
 	//TODO remove once the correct implementation is proven to work
@@ -88,7 +92,10 @@ class MoeaOptimisation implements IOptimisation {
 		//Define the selection operator with the tournament size and dominance comparator
 		//
 		var selection = new TournamentSelection()//(1, new ParetoDominanceComparator());
-		
+//				var selection = new TournamentSelection(2, 
+//				new ChainedComparator(
+//						new ParetoDominanceComparator(),
+//						new CrowdingComparator()));
 		//Define the crossover / mutation operator
 		var variation = new MoeaOptimisationVariation(solutionGenerator)	
 	

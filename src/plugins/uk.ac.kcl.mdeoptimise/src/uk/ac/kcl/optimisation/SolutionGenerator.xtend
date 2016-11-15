@@ -16,6 +16,9 @@ import java.util.ArrayList
 import java.util.Iterator
 import uk.ac.kcl.interpreter.IModelProvider
 import org.eclipse.emf.henshin.interpreter.Engine
+import org.eclipse.emf.henshin.model.Rule
+import org.eclipse.emf.henshin.interpreter.Match
+import org.eclipse.emf.henshin.interpreter.impl.RuleApplicationImpl
 
 class SolutionGenerator {
 	
@@ -61,49 +64,47 @@ class SolutionGenerator {
      */
     def EObject evolveModel(EObject object) {
     	
-    	var currentObject = object;
-    
+    	// Extract Henshin evolvers if necessary
+		if (henshinEvolvers == null) {
+			val hrs = henshinResourceSet
+			// Explicitly creating a list here to make sure the map is only invoked once not every time we try and evolve a model
+			henshinEvolvers = new ArrayList(optimisationModel.evolvers.map [ e |
+				hrs.getModule(URI.createURI(e.rule_location), false).getUnit(e.unit)
+			])
+		}
 
-        // Extract Henshin evolvers if necessary
-        if (henshinEvolvers == null) {
-            val hrs = henshinResourceSet
-            henshinEvolvers = optimisationModel.evolvers.map [ e |
-                hrs.getModule(URI.createURI(e.rule_location), false).getUnit(e.unit)
-            ]
-        }
+		val candidateSolution = EcoreUtil.copy(object)
 
-        // Make a copy of the evolvers list so that we can keep track of which evolvers we have already tried.
-        val evolversToTry = new ArrayList(henshinEvolvers.toList)
+		// Get all matches
+		val graph = new EGraphImpl(candidateSolution)
+		val matchesView = henshinEvolvers.map [ evolver |
+			engine.findMatches(evolver as Rule, graph, null).map[m | new Pair<Rule, Match>(evolver as Rule, m)]
+		].flatten
 
-        do {
-            // 1. Pick an evolver
-            val evolver = evolversToTry.remove(new Random().nextInt(evolversToTry.size))
+		val matches = new ArrayList<Pair<Rule, Match>>(matchesView.toList)
 
-            // 2. Make a copy of the current candidate solution
-            // Doing this here just in case unsuccessfully applying an evolver has already made changes
-            val candidateSolution = EcoreUtil.copy(currentObject)
+		if (!matches.empty) {
+			// Randomly pick one match
+			val matchToUse = matches.get(new Random().nextInt(matches.size))
 
-            // 3. Apply the transformation
-            // TODO: Some of these objects we may actually be able to reuse across evolver calls.
-            // Waiting to define a test with multiple evolvers before doing this so that I can safely assess whether it will break anything.
-            val graph = new EGraphImpl(candidateSolution)
-
-            runner.EGraph = graph
-
-            runner.unit = evolver
-            if (runner.execute(null)) {
-                // 4. Return the transformed solution
-                return graph.roots.head
-            }
-        } while (!evolversToTry.empty)
-
+			// Apply the match
+			val runner = new RuleApplicationImpl(engine)
+			runner.EGraph = graph
+			runner.unit = matchToUse.key
+			runner.partialMatch = matchToUse.value
+			
+			if (runner.execute(null)) {
+				return graph.roots.head
+			}
+		} 
+		
         // We didn't find any applicable evolvers...
         //null
         //Start from scratch if cannot apply evolvers to this model?
         System.out.println("Model with no evolvers applicable.....")
         //initialModelProvider.initialModels(theMetamodel).head
-    	object
-    
+    	//object
+    	null
     }
 	
 }

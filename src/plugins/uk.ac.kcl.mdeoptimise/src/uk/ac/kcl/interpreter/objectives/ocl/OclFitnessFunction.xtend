@@ -9,6 +9,7 @@ import org.eclipse.ocl.ecore.Constraint
 import org.eclipse.ocl.helper.OCLHelper
 import uk.ac.kcl.interpreter.IFitnessFunction
 import uk.ac.kcl.mdeoptimise.ObjectiveInterpreterSpec
+import org.eclipse.ocl.expressions.OCLExpression
 
 class OclFitnessFunction implements IFitnessFunction {
 	
@@ -16,6 +17,7 @@ class OclFitnessFunction implements IFitnessFunction {
    	private OCLHelper<EClassifier, ?, ?, Constraint> oclHelper
    	private ObjectiveInterpreterSpec objectiveInterpreterSpec
 	private String objectiveName;
+	private OCLExpression<EClassifier> oclQueryExpression;
 	
 	new(OCL<?, EClassifier, ?, ?, ?, ?, ?, ?, ?, Constraint, EClass, EObject>  ocl, 
 		OCLHelper<EClassifier, ?, ?, Constraint> oclHelper,
@@ -31,12 +33,14 @@ class OclFitnessFunction implements IFitnessFunction {
 	override computeFitness(EObject model) {
 		
 		var fitness = 0.0
-        
+		
         try {
         	
 			oclHelper.setContext(model.eClass)
-        	
-        	val oclQueryExpression = oclHelper.createQuery(objectiveInterpreterSpec.getObjectiveSpec);
+        	if(oclQueryExpression == null){
+        		oclQueryExpression = oclHelper.createQuery(objectiveInterpreterSpec.getObjectiveSpec)
+        	}
+        	//val oclQueryExpression = ;
         	
         	fitness = getNumericFitnessValue(ocl.evaluate(model, oclQueryExpression))
         	        

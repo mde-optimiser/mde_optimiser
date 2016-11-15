@@ -15,7 +15,7 @@ class MoeaOptimisationProblem extends AbstractProblem {
 	
 	private List<IFitnessFunction> fitnessFunctions;
 	
-		
+	private int evaluationsCounter = 0;
 	new(int numberOfVariables, int numberOfObjectives) {
 		super(numberOfVariables, numberOfObjectives)
 	}
@@ -53,15 +53,27 @@ class MoeaOptimisationProblem extends AbstractProblem {
 	override evaluate(Solution solution) {
 
 		val moeaSolution = solution as MoeaOptimisationSolution;
-		
 		getFitnessFunctions
 			.forEach[ fitnessFunction, objectiveId | 
 						(solution as MoeaOptimisationSolution)
-							.setObjective(objectiveId, fitnessFunction.computeFitness(moeaSolution.model))]
+							.setObjective(objectiveId, fitnessFunction.computeFitness(moeaSolution.model))	
+						]
+		this.evaluationsCounter++
+		moeaSolution.evaluatedCounter++
+//		System.out.println("Evaluations for this solution: " + moeaSolution.evaluatedCounter)
+//		System.out.println("Evolutions for this solution: " + moeaSolution.evolutionsCounter)
+//		System.out.println("Total evaluations: " + this.evaluationsCounter)
+//		System.out.println("Evaluating an initial solution: " + moeaSolution.initialSolution)
+		moeaSolution.objectives.forEach[ x, index | System.out.println("Objective " + index + " value is " + x.doubleValue)]
+
 	}
 	
 	override newSolution() {
-		new MoeaOptimisationSolution(solutionGenerator)
+		System.out.println("Generated new solution at evaluation " + this.evaluationsCounter);
+		
+		var a = new MoeaOptimisationSolution(solutionGenerator)
+		a.initialSolution = true
+		a
 	}
 
 }

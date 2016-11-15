@@ -30,7 +30,7 @@ class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
 		var initialization = new RandomInitialization(problem, properties.get("populationSize") as Integer)
 		
 		//Define the selection operator with the tournament size and dominance comparator
-		var selection = new TournamentSelection(1)//(1, new ParetoDominanceComparator());
+		var selection = new TournamentSelection(2)//(1, new ParetoDominanceComparator());
 		
 		//Define the crossover / mutation operator
 		var variation = new MoeaOptimisationVariation(properties.get("solutionGenerator") as SolutionGenerator)	
