@@ -1,14 +1,15 @@
 package uk.ac.kcl.optimisation.moea
 
 import java.util.Properties
-import org.moeaframework.core.Problem
-import org.moeaframework.core.spi.AlgorithmProvider
-import org.moeaframework.core.operator.RandomInitialization
-import uk.ac.kcl.optimisation.SolutionGenerator
-import org.moeaframework.core.operator.TournamentSelection
-import org.moeaframework.core.Algorithm
 import org.moeaframework.algorithm.NSGAII
+import org.moeaframework.core.Algorithm
+import org.moeaframework.core.EpsilonBoxDominanceArchive
 import org.moeaframework.core.NondominatedSortingPopulation
+import org.moeaframework.core.Problem
+import org.moeaframework.core.operator.RandomInitialization
+import org.moeaframework.core.operator.TournamentSelection
+import org.moeaframework.core.spi.AlgorithmProvider
+import uk.ac.kcl.optimisation.SolutionGenerator
 
 class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
 	
@@ -30,7 +31,7 @@ class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
 		var initialization = new RandomInitialization(problem, properties.get("populationSize") as Integer)
 		
 		//Define the selection operator with the tournament size and dominance comparator
-		var selection = new TournamentSelection(2)//(1, new ParetoDominanceComparator());
+		var selection = new TournamentSelection(2);
 		
 		//Define the crossover / mutation operator
 		var variation = new MoeaOptimisationVariation(properties.get("solutionGenerator") as SolutionGenerator)	
@@ -38,7 +39,7 @@ class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
 		var algorithm = new NSGAII(
 				problem,
 				new NondominatedSortingPopulation(),
-				null, // no archive
+				new EpsilonBoxDominanceArchive(2), // no archive
 				selection,
 				variation,
 				initialization

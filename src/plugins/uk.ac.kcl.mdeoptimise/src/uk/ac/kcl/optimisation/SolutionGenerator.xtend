@@ -45,7 +45,7 @@ class SolutionGenerator {
 		this.initialModelProvider = modelProvider
 		this.theMetamodel = metamodel;
 		this.engine = new EngineImpl
-		engine.getOptions().put(Engine.OPTION_DETERMINISTIC, false);
+		//engine.getOptions().put(Engine.OPTION_DETERMINISTIC, false);
 		this.runner = new UnitApplicationImpl(engine)
 	}
 
@@ -64,7 +64,7 @@ class SolutionGenerator {
      */
     def EObject evolveModel(EObject object) {
     	
-    	// Extract Henshin evolvers if necessary
+		// Extract Henshin evolvers if necessary
 		if (henshinEvolvers == null) {
 			val hrs = henshinResourceSet
 			// Explicitly creating a list here to make sure the map is only invoked once not every time we try and evolve a model
@@ -97,14 +97,13 @@ class SolutionGenerator {
 				return graph.roots.head
 			}
 		} 
-		
         // We didn't find any applicable evolvers...
         //null
         //Start from scratch if cannot apply evolvers to this model?
         System.out.println("Model with no evolvers applicable.....")
         //initialModelProvider.initialModels(theMetamodel).head
     	//object
-    	null
+    	object
     }
 	
 }

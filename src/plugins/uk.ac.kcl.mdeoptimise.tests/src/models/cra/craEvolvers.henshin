@@ -247,4 +247,37 @@
     </rhs>
     <mappings xmi:id="_g7LychXcEeaaFYH0yhaZhQ" origin="_g7LycBXcEeaaFYH0yhaZhQ" image="_g7LycRXcEeaaFYH0yhaZhQ"/>
   </units>
+  <units xsi:type="henshin:Rule" xmi:id="_6zLgYKtnEeaLg8W8LlOs0w" name="reassignFeature">
+    <lhs xmi:id="_6zd0QKtnEeaLg8W8LlOs0w" name="Lhs">
+      <nodes xmi:id="__EVMgKtnEeaLg8W8LlOs0w" name="assignedClass" incoming="_tdCJMKtoEeaLg8W8LlOs0w">
+        <type href="architectureCRA.ecore#//Class"/>
+      </nodes>
+      <nodes xmi:id="_KJ_5YKtoEeaLg8W8LlOs0w" outgoing="_tdCJMKtoEeaLg8W8LlOs0w">
+        <type href="architectureCRA.ecore#//Feature"/>
+      </nodes>
+      <nodes xmi:id="_OpXAoKtoEeaLg8W8LlOs0w" name="class">
+        <type href="architectureCRA.ecore#//Class"/>
+      </nodes>
+      <edges xmi:id="_tdCJMKtoEeaLg8W8LlOs0w" source="_KJ_5YKtoEeaLg8W8LlOs0w" target="__EVMgKtnEeaLg8W8LlOs0w">
+        <type href="architectureCRA.ecore#//Feature/isEncapsulatedBy"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_6zebUKtnEeaLg8W8LlOs0w" name="Rhs">
+      <nodes xmi:id="__EVMgatnEeaLg8W8LlOs0w" name="assignedClass">
+        <type href="architectureCRA.ecore#//Class"/>
+      </nodes>
+      <nodes xmi:id="_KJ_5YatoEeaLg8W8LlOs0w" outgoing="_yjMKsKtoEeaLg8W8LlOs0w">
+        <type href="architectureCRA.ecore#//Feature"/>
+      </nodes>
+      <nodes xmi:id="_OpXAoatoEeaLg8W8LlOs0w" name="class" incoming="_yjMKsKtoEeaLg8W8LlOs0w">
+        <type href="architectureCRA.ecore#//Class"/>
+      </nodes>
+      <edges xmi:id="_yjMKsKtoEeaLg8W8LlOs0w" source="_KJ_5YatoEeaLg8W8LlOs0w" target="_OpXAoatoEeaLg8W8LlOs0w">
+        <type href="architectureCRA.ecore#//Feature/isEncapsulatedBy"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="__EVMgqtnEeaLg8W8LlOs0w" origin="__EVMgKtnEeaLg8W8LlOs0w" image="__EVMgatnEeaLg8W8LlOs0w"/>
+    <mappings xmi:id="_KJ_5YqtoEeaLg8W8LlOs0w" origin="_KJ_5YKtoEeaLg8W8LlOs0w" image="_KJ_5YatoEeaLg8W8LlOs0w"/>
+    <mappings xmi:id="_OpXAoqtoEeaLg8W8LlOs0w" origin="_OpXAoKtoEeaLg8W8LlOs0w" image="_OpXAoatoEeaLg8W8LlOs0w"/>
+  </units>
 </henshin:Module>

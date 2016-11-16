@@ -8,25 +8,18 @@ class MoeaOptimisationSolution extends Solution {
 
 	SolutionGenerator solutionGenerator
 	
-	public int evolutionsCounter = 0;
-	public boolean initialSolution = false;
-	public int evaluatedCounter = 0;
 	new(MoeaOptimisationSolution moeaOptimisationSolution){
-		super(1, moeaOptimisationSolution.numberOfObjectives)
+		super(1, moeaOptimisationSolution.numberOfObjectives, 1)
 		this.model = moeaOptimisationSolution.getModel
 		this.solutionGenerator = moeaOptimisationSolution.getSolutionGenerator
-		this.evolutionsCounter = moeaOptimisationSolution.evolutionsCounter;
 	}
 	
 	new(int numberOfObjectives) {
-		super(1, numberOfObjectives)
+		super(1, numberOfObjectives, 1)
 	}
 	
 	new(SolutionGenerator solutionGenerator){
-		
-		//1 variable - our model, fitness function objectives
 		this(solutionGenerator.optimisationModel.objectives.size())
-		
 		this.solutionGenerator = solutionGenerator;
 		setModel(solutionGenerator.evolveModel(solutionGenerator.initialSolutions.head))
 		//System.out.println("Generated solution.")

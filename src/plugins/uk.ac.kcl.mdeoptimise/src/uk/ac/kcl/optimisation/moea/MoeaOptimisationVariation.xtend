@@ -18,15 +18,14 @@ class MoeaOptimisationVariation implements Variation {
 		var parentSolution = parents.head as MoeaOptimisationSolution;
 		var newSolution = parentSolution.copy
 			
-		newSolution.setModel(solutionGenerator.evolveModel(parentSolution.model));
-		newSolution.evolutionsCounter++
+		newSolution.setModel(solutionGenerator.evolveModel(newSolution.model));
 		//System.out.println("Evolved solution " + newSolution.evolutionsCounter)
 		#[newSolution]
 
 	}
 	
 	override getArity() {
-		return 1;
+		return 10;
 	}
 	
 }
