@@ -8,6 +8,7 @@ Optimisation:
 	metamodel=MetaModelSpec
 	/*fitness+=FitnessFunctionSpec+*/
 	objectives+=ObjectiveInterpreterSpec+
+	constraints?=ConstraintsInterpreterSpec?
 	evolvers+=EvolverSpec+
 	optimisation=OptimisationSpec
 ;
@@ -28,7 +29,11 @@ MetaModelSpec:
 ;
 
 ObjectiveInterpreterSpec:
-	"objective" objectiveName=OBJECTIVE_NAME objectiveTendency=OBJECTIVE_TENDENCY objectiveType=OBJECTIVE_TYPE "{" (objectiveSpec=STRING) "}"
+	"objective" objectiveName=ENTITY_NAME objectiveTendency=OBJECTIVE_TENDENCY objectiveType=ENTITY_TYPE "{" (objectiveSpec=STRING) "}"
+;
+
+ConstraintsInterpreterSpec:
+	"constraint" constraintName=ENTITY_NAME constraintType=ENTITY_TYPE "{" (constraintSpec=STRING) "}"
 ;
 
 EvolverSpec:
@@ -63,10 +68,10 @@ terminal OBJECTIVE_TENDENCY returns ecore::EString:
 	('minimise'|'maximise')
 ;
 
-terminal OBJECTIVE_TYPE returns ecore::EString:
+terminal ENTITY_TYPE returns ecore::EString:
 	('java'|'ocl')
 ;
 
-terminal OBJECTIVE_NAME returns ecore::EString:
+terminal ENTITY_NAME returns ecore::EString:
 	('a'..'z'|'A'..'Z')+
 ;

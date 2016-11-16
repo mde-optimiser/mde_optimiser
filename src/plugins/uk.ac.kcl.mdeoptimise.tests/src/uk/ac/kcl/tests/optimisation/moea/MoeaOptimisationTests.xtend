@@ -77,14 +77,14 @@ class MoeaOptimisationTests {
 			
 			model = parser.parse('''
 				basepath <src/models/cra/>
-				metamodel <architectureCRA.ecore>
+				metamodel <architectureCRA.ecore>			
 				objective MinimiseClasslessFeatures minimise java { "models.moea.MinimiseClasslessFeatures" }
-				objective MaximiseCRA maximise java { "models.moea.MaximiseCRA" }
+				objective MinimiseCoupling maximise java { "models.moea.MaximiseCRA" }
 				evolve using <craEvolvers.henshin> unit "createClass"
 				evolve using <craEvolvers.henshin> unit "assignFeature"
 				evolve using <craEvolvers.henshin> unit "moveFeature"
 				evolve using <craEvolvers.henshin> unit "deleteEmptyClass"
-				optimisation provider moea algorithm NSGAII evolutions 10000 population 100
+				optimisation provider moea algorithm NSGAII evolutions 100000 population 50
 			''')
 
 			//Assert that there are no grammar issues

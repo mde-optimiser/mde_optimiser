@@ -58,12 +58,12 @@ class MoeaOptimisation implements IOptimisation {
 	
 	def NondominatedPopulation runOptimisation(String algorithmName, Properties optimisationProperties) {
 		
-		OperatorFactory.getInstance().addProvider(new MoeaOptimisationVariationsProvider());
+		//OperatorFactory.getInstance().addProvider(new MoeaOptimisationVariationsProvider());
 		
 		val algorithmFactory = new AlgorithmFactory();
 		algorithmFactory.addProvider(new MoeaOptimisationAlgorithmProvider)
 		
-		new Executor()
+		val result = new Executor()
 		   .usingAlgorithmFactory(algorithmFactory)
 	       .withAlgorithm(algorithmName)
 	       //Initialize problem with our solution generator
@@ -75,6 +75,9 @@ class MoeaOptimisation implements IOptimisation {
 	       //Todo look at distribution service available
 	       .run()
 	   
+
+		
+		result
 	}
 	
 	//TODO remove once the correct implementation is proven to work
@@ -91,7 +94,7 @@ class MoeaOptimisation implements IOptimisation {
 		
 		//Define the selection operator with the tournament size and dominance comparator
 		//
-		var selection = new TournamentSelection()//(1, new ParetoDominanceComparator());
+		var selection = new TournamentSelection(2)//(1, new ParetoDominanceComparator());
 //				var selection = new TournamentSelection(2, 
 //				new ChainedComparator(
 //						new ParetoDominanceComparator(),

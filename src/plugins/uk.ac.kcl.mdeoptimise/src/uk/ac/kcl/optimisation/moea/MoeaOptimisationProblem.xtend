@@ -14,16 +14,13 @@ class MoeaOptimisationProblem extends AbstractProblem {
 	private SolutionGenerator solutionGenerator
 	
 	private List<IFitnessFunction> fitnessFunctions;
-	
-	private int evaluationsCounter = 0;
+
 	new(int numberOfVariables, int numberOfObjectives) {
-		super(numberOfVariables, numberOfObjectives)
+		super(numberOfVariables, numberOfObjectives, 1)
 	}
 	
 	new(SolutionGenerator solutionGenerator, int numberOfVariables){
-		//One variable - aka 1 model in this solution, fitness functions objectives
-		this(numberOfVariables, solutionGenerator.optimisationModel.objectives.size());
-		
+		this(numberOfVariables, solutionGenerator.optimisationModel.objectives.size());		
 		this.solutionGenerator = solutionGenerator
 	}
 	
@@ -55,25 +52,19 @@ class MoeaOptimisationProblem extends AbstractProblem {
 		val moeaSolution = solution as MoeaOptimisationSolution;
 		getFitnessFunctions
 			.forEach[ fitnessFunction, objectiveId | 
-						(solution as MoeaOptimisationSolution)
+						moeaSolution
 							.setObjective(objectiveId, fitnessFunction.computeFitness(moeaSolution.model))	
 						]
-		this.evaluationsCounter++
-		moeaSolution.evaluatedCounter++
-//		System.out.println("Evaluations for this solution: " + moeaSolution.evaluatedCounter)
-//		System.out.println("Evolutions for this solution: " + moeaSolution.evolutionsCounter)
-//		System.out.println("Total evaluations: " + this.evaluationsCounter)
-//		System.out.println("Evaluating an initial solution: " + moeaSolution.initialSolution)
-		moeaSolution.objectives.forEach[ x, index | System.out.println("Objective " + index + " value is " + x.doubleValue)]
-
+		
+		moeaSolution.setConstraint(0, moeaSolution.getObjective(0))
+		
+		moeaSolution.objectives.forEach[ o, index | println("Objective " + index + " has value " + o.doubleValue)]
+		
+		moeaSolution.constraints.forEach[ o, index | println("Constraint " + index + " has value " + o.doubleValue)]
 	}
 	
 	override newSolution() {
-		System.out.println("Generated new solution at evaluation " + this.evaluationsCounter);
-		
-		var a = new MoeaOptimisationSolution(solutionGenerator)
-		a.initialSolution = true
-		a
+		new MoeaOptimisationSolution(solutionGenerator)
 	}
 
 }
