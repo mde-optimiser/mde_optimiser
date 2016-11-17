@@ -23,7 +23,7 @@ import uk.ac.kcl.interpreter.guidance.ocl.OclGuidanceFunction
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)
-class ObjectivesFactoryTests {
+class GuidanceFunctionsFactoryTests {
 
 	@Inject
 	ParseHelper<Optimisation> parser
@@ -55,7 +55,7 @@ class ObjectivesFactoryTests {
 	}
 	
 	@Test
-	def void assertThatObjectivesFactoryReturnsTheCorrectObjectiveTypeGivenAJavaObjective(){
+	def void assertThatGuidanceFunctionsFactoryReturnsTheCorrectObjectiveTypeGivenAJavaObjective(){
 		
 		val objectivesFactory = new GuidanceFunctionsFactory();
 		
@@ -67,7 +67,7 @@ class ObjectivesFactoryTests {
 	}
 	
 	@Test
-	def void assertThatObjectivesFactoryReturnsTheCorrectObjectiveTypeGivenAnOclObjective(){
+	def void assertThatGuidanceFunctionsFactoryReturnsTheCorrectObjectiveTypeGivenAnOclObjective(){
 		
 		val objectivesFactory = new GuidanceFunctionsFactory();
 		
