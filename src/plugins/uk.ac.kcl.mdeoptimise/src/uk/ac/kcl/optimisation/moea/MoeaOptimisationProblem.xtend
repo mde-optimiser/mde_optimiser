@@ -10,8 +10,6 @@ import uk.ac.kcl.interpreter.IGuidanceFunction
 
 class MoeaOptimisationProblem extends AbstractProblem {
 	
-	//variables - number of models generated for each iteration. Should normally be 1
-	// objectives - number of fitness functions for each model as defined in the spec
 	private SolutionGenerator solutionGenerator
 	
 	private List<IGuidanceFunction> fitnessFunctions;
@@ -21,15 +19,13 @@ class MoeaOptimisationProblem extends AbstractProblem {
 		super(numberOfVariables, numberOfObjectives, numberOfConstraints)
 	}
 	
-
-	
 	new(SolutionGenerator solutionGenerator) {
 		//Number of variables is for now always one.
-		this(1, solutionGenerator.optimisationModel.objectives.size(), solutionGenerator.optimisationModel.constraints.size());		
+		this(1, solutionGenerator.optimisationModel.objectives.size(), solutionGenerator.optimisationModel.constraints.size())	
 		this.solutionGenerator = solutionGenerator
 	}
 	
-	def SolutionGenerator getSolutionGenerator(){
+	def SolutionGenerator getSolutionGenerator() {
 		this.solutionGenerator
 	}
 	
@@ -56,7 +52,7 @@ class MoeaOptimisationProblem extends AbstractProblem {
 		this.fitnessFunctions
 	}
 	
-	def void setFitnessFunctions(){
+	def void setFitnessFunctions() {
 		if (fitnessFunctions == null) {			
 			this.fitnessFunctions = solutionGenerator.optimisationModel.objectives
 				.map[ objective | new GuidanceFunctionsFactory().loadFunction(new GuidanceFunctionAdapter(objective))]
@@ -73,13 +69,15 @@ class MoeaOptimisationProblem extends AbstractProblem {
 		getFitnessFunctions
 			.forEach[ fitnessFunction, objectiveId | 
 						moeaSolution
-							.setObjective(objectiveId, fitnessFunction.computeFitness(moeaSolution.model))	]
+							.setObjective(objectiveId, fitnessFunction.computeFitness(moeaSolution.model))]
 		
 		//Set Constraints
 		getConstraintFunctions
 			.forEach[ constraintFunction, objectiveId | 
 						moeaSolution
-							.setConstraint(objectiveId, constraintFunction.computeFitness(moeaSolution.model))	]
+							.setConstraint(objectiveId, constraintFunction.computeFitness(moeaSolution.model))]
+							
+		println("Constraint value: "+  moeaSolution.getConstraint(0))
 	}
 	
 	override newSolution() {

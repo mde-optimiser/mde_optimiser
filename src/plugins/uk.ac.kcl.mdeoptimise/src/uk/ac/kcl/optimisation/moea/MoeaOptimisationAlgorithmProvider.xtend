@@ -10,6 +10,8 @@ import org.moeaframework.core.operator.RandomInitialization
 import org.moeaframework.core.operator.TournamentSelection
 import org.moeaframework.core.spi.AlgorithmProvider
 import uk.ac.kcl.optimisation.SolutionGenerator
+import org.moeaframework.algorithm.ReferencePointNondominatedSortingPopulation
+import org.moeaframework.algorithm.SPEA2
 
 class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
 	
@@ -21,6 +23,8 @@ class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
 		switch algorithm {
 			case "NSGAII":
 				return createNSGAII(problem, properties)
+			case "SPEA2":
+				return createSPEA2(problem, properties)
 			default:
 				throw new Exception("Invalid algorithm given: " + algorithm)
 		}
@@ -30,21 +34,35 @@ class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
 		//Create an initial random population of population size
 		var initialization = new RandomInitialization(problem, properties.get("populationSize") as Integer)
 		
-		//Define the selection operator with the tournament size and dominance comparator
 		var selection = new TournamentSelection(2);
 		
-		//Define the crossover / mutation operator
 		var variation = new MoeaOptimisationVariation(properties.get("solutionGenerator") as SolutionGenerator)	
 	
 		var algorithm = new NSGAII(
 				problem,
 				new NondominatedSortingPopulation(),
-				new EpsilonBoxDominanceArchive(2), // no archive
+				null, // no archive
 				selection,
 				variation,
 				initialization
 			);
 			println(algorithm.numberOfEvaluations)
+			algorithm
+	}
+	
+	def Algorithm createSPEA2(Problem problem, Properties properties) {
+				//Create an initial random population of population size
+		var initialization = new RandomInitialization(problem, properties.get("populationSize") as Integer)
+		
+		var variation = new MoeaOptimisationVariation(properties.get("solutionGenerator") as SolutionGenerator)	
+	
+		var algorithm = new SPEA2(
+				problem,
+				initialization,
+				variation,
+				properties.get("populationSize") as Integer,
+				1
+			);
 			algorithm
 	}
 	

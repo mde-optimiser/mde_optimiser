@@ -30,6 +30,6 @@ class GuidanceFunctionAdapter {
 		 * Moea is degisned to minimise objectives. To maximise an objective, it should be negated.
 		 * Output maximised objectives will be displayed with their negative values.
 		 */
-		if (this.functionTendency.equals("minimise")) 1 else -1
+		if (this.functionTendency.equals("minimise")) -1 else 1
 	}
 }

@@ -22,7 +22,6 @@ class MoeaOptimisationSolution extends Solution {
 		this(solutionGenerator.optimisationModel.objectives.size())
 		this.solutionGenerator = solutionGenerator;
 		setModel(solutionGenerator.evolveModel(solutionGenerator.initialSolutions.head))
-		//System.out.println("Generated solution.")
 	}
 	
 	override MoeaOptimisationSolution copy(){
