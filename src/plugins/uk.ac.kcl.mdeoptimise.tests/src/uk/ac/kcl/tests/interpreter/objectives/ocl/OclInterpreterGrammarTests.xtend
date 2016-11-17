@@ -35,6 +35,16 @@ class OclInterpreterGrammarTests {
 
     private EPackage theMetamodel
 	
+	def objectiveGrammarBootstrap(String objective) {
+		return '''
+			basepath <src/models/ocl/>
+			metamodel <architectureCRA.ecore>
+			''' + objective + '''
+			evolve using <ABC> unit "XYZ"
+			evolve using <CDE> unit "LMN"
+			optimisation provider ecj algorithm nsga-II evolutions 100 population 100
+		'''
+	}
 	
 	def getResourceSet() {
         if (henshinResourceSet == null) {
@@ -58,14 +68,7 @@ class OclInterpreterGrammarTests {
 		try {
 			val objectivesFactory = new GuidanceFunctionsFactory();
 			
-			model = parser.parse('''
-				basepath <src/models/ocl/>
-				metamodel <architectureCRA.ecore>
-				objective name maximise ocl { "Class.allInstances()->size()" }
-				evolve using <ABC> unit "XYZ"
-				evolve using <CDE> unit "LMN"
-				optimisation provider ecj algorithm nsga-II evolutions 100 population 100
-			''')
+			model = parser.parse(objectiveGrammarBootstrap("objective name maximise ocl { \"Class.allInstances()->size()\" }"))
 			
 			var oclObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(0)))
 			
@@ -86,15 +89,7 @@ class OclInterpreterGrammarTests {
 			val objectivesFactory = new GuidanceFunctionsFactory();
 			
 			oclModelProvider = new OclModelProvider
-
-			model = parser.parse('''
-				basepath <src/models/ocl/>
-				metamodel <architectureCRA.ecore>
-				objective name maximise ocl { "Class.allInstances()->size()" }
-				evolve using <ABC> unit "XYZ"
-				evolve using <CDE> unit "LMN"
-				optimisation provider ecj algorithm NSGAII evolutions 100 population 100
-			''')
+			model = parser.parse(objectiveGrammarBootstrap("objective name maximise ocl { \"Class.allInstances()->size()\" }"))
 			
 			var oclObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(0)))
 			
@@ -111,16 +106,8 @@ class OclInterpreterGrammarTests {
 			val objectivesFactory = new GuidanceFunctionsFactory();
 			
 			oclModelProvider = new OclModelProvider
+			model = parser.parse(objectiveGrammarBootstrap("objective name maximise ocl { \"Class.allInstances().size()\" }"))
 
-			model = parser.parse('''
-				basepath <src/models/ocl/>
-				metamodel <architectureCRA.ecore>
-				objective name maximise ocl { "Class.allInstances().size()" }
-				evolve using <ABC> unit "XYZ"
-				evolve using <CDE> unit "LMN"
-				optimisation provider ecj algorithm NSGAII evolutions 100 population 100
-			''')
-			
 			var oclObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(0)))
 			
 			var initialModelObject = oclModelProvider.initialModels(getMetamodel()).head
@@ -140,17 +127,9 @@ class OclInterpreterGrammarTests {
 			val objectivesFactory = new GuidanceFunctionsFactory();
 			
 			oclModelProvider = new OclModelProvider
-
-			model = parser.parse('''
-				basepath <src/models/ocl/>
-				metamodel <architectureCRA.ecore>
-				objective name maximise ocl { 
-					"let att : String = 'A2' in Feature.allInstances()->select(f : Feature | f.name = att)->size()"
-				}
-				evolve using <ABC> unit "XYZ"
-				evolve using <CDE> unit "LMN"
-				optimisation provider ecj algorithm NSGAII evolutions 100 population 100
-			''')
+			model = parser.parse(objectiveGrammarBootstrap("objective name maximise ocl { \"let att : String = 'A2' in "+
+				"Feature.allInstances()->select(f : Feature | f.name = att)->size()\"}"
+			))
 			
 			var oclObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(0)))
 			
