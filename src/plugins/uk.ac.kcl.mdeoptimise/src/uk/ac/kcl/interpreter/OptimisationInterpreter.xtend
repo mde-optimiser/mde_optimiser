@@ -17,8 +17,8 @@ import org.eclipse.emf.henshin.model.Unit
 import org.eclipse.emf.henshin.model.resource.HenshinResourceSet
 import uk.ac.kcl.mdeoptimise.Optimisation
 import uk.ac.kcl.mdeoptimise.ObjectiveInterpreterSpec
-import uk.ac.kcl.interpreter.objectives.GuidanceFunctionsFactory
-import uk.ac.kcl.interpreter.objectives.GuidanceFunctionAdapter
+import uk.ac.kcl.interpreter.guidance.GuidanceFunctionsFactory
+import uk.ac.kcl.interpreter.guidance.GuidanceFunctionAdapter
 
 /**
  * An interpreter for optimisation specifications. This class provides the basic functionality

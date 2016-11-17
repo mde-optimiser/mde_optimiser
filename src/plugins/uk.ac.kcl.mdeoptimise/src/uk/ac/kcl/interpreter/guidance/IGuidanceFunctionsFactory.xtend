@@ -1,4 +1,4 @@
-package uk.ac.kcl.interpreter.objectives
+package uk.ac.kcl.interpreter.guidance
 
 import uk.ac.kcl.interpreter.IGuidanceFunction
 
