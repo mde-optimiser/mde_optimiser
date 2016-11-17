@@ -86,7 +86,7 @@ class MoeaOptimisation implements IOptimisation {
 		//OperatorFactory.getInstance().addProvider(new MoeaOptimmisationVariationsProvider());
 		
 		//Define the problem with variables and objectives
-		var moeaOptimisationProblem = new MoeaOptimisationProblem(solutionGenerator, 1)
+		var moeaOptimisationProblem = new MoeaOptimisationProblem(solutionGenerator)
 	
 		//Create an initial random population of population size
 		var initialization = new RandomInitialization(moeaOptimisationProblem, optimisationSpec.algorithmPopulation)

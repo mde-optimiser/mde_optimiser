@@ -16,9 +16,9 @@ import org.eclipse.emf.henshin.interpreter.impl.UnitApplicationImpl
 import org.eclipse.emf.henshin.model.Unit
 import org.eclipse.emf.henshin.model.resource.HenshinResourceSet
 import uk.ac.kcl.mdeoptimise.Optimisation
-import uk.ac.kcl.interpreter.objectives.ocl.OclFitnessFunction
 import uk.ac.kcl.mdeoptimise.ObjectiveInterpreterSpec
-import uk.ac.kcl.interpreter.objectives.ObjectivesFactory
+import uk.ac.kcl.interpreter.objectives.GuidanceFunctionsFactory
+import uk.ac.kcl.interpreter.objectives.GuidanceFunctionAdapter
 
 /**
  * An interpreter for optimisation specifications. This class provides the basic functionality
@@ -58,7 +58,7 @@ class OptimisationInterpreter {
     /**
      * Cache for the fitness function object
      */
-    private List<IFitnessFunction> fitnessFunctions = null
+    private List<IGuidanceFunction> fitnessFunctions = null
 
     new(Optimisation model, IOptimisationAlgorithm algorithm, IModelProvider initalModelProvider) {
         this.optimisationModel = model
@@ -92,10 +92,10 @@ class OptimisationInterpreter {
 			
 			fitnessFunctions = new LinkedList();
 			
-			val objectivesFactory = new ObjectivesFactory()
+			val objectivesFactory = new GuidanceFunctionsFactory()
 			
 			for (ObjectiveInterpreterSpec objectiveSpec : optimisationModel.objectives){
-				fitnessFunctions.add(objectivesFactory.loadObjective(objectiveSpec))
+				fitnessFunctions.add(objectivesFactory.loadFunction(new GuidanceFunctionAdapter(objectiveSpec)))
 			}
 		}
 

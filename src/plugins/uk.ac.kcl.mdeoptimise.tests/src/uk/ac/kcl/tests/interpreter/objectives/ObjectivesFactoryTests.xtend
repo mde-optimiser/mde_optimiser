@@ -9,7 +9,6 @@ import org.eclipse.xtext.junit4.validation.ValidationTestHelper
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import uk.ac.kcl.interpreter.objectives.ObjectivesFactory
 import uk.ac.kcl.mdeoptimise.Optimisation
 import uk.ac.kcl.tests.FullTestInjector
 import uk.ac.kcl.tests.interpreter.objectives.ocl.OclModelProvider
@@ -17,8 +16,10 @@ import uk.ac.kcl.tests.interpreter.objectives.ocl.OclModelProvider
 import static org.hamcrest.CoreMatchers.instanceOf
 import static org.junit.Assert.*
 import static org.mockito.Mockito.*
-import uk.ac.kcl.interpreter.objectives.ocl.OclFitnessFunction
 import java.io.InvalidObjectException
+import uk.ac.kcl.interpreter.objectives.GuidanceFunctionsFactory
+import uk.ac.kcl.interpreter.objectives.GuidanceFunctionAdapter
+import uk.ac.kcl.interpreter.objectives.ocl.OclGuidanceFunction
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)
@@ -56,9 +57,9 @@ class ObjectivesFactoryTests {
 	@Test
 	def void assertThatObjectivesFactoryReturnsTheCorrectObjectiveTypeGivenAJavaObjective(){
 		
-		val objectivesFactory = new ObjectivesFactory();
+		val objectivesFactory = new GuidanceFunctionsFactory();
 		
-		var javaObjective = objectivesFactory.loadObjective(model.getObjectives().get(0))
+		var javaObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(0)))
 		
 		assertThat("Produced objectives factory for java objective type is an instance of the Java fitness class.", 
 			javaObjective, instanceOf(JavaObjectiveFunction)
@@ -68,21 +69,21 @@ class ObjectivesFactoryTests {
 	@Test
 	def void assertThatObjectivesFactoryReturnsTheCorrectObjectiveTypeGivenAnOclObjective(){
 		
-		val objectivesFactory = new ObjectivesFactory();
+		val objectivesFactory = new GuidanceFunctionsFactory();
 		
-		var oclObjective = objectivesFactory.loadObjective(model.getObjectives().get(1))
+		var oclObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(1)))
 		
 		assertThat("Produced objectives factory for ocl objective type is an instance of the OCL fitness class.", 
-			oclObjective, instanceOf(OclFitnessFunction)
+			oclObjective, instanceOf(OclGuidanceFunction)
 		)
 	}
 	
 	@Test
 	def void assertThatReturnedJavaFunctionReturnsExpectedFitnessValue(){
 		
-		val objectivesFactory = new ObjectivesFactory();
+		val objectivesFactory = new GuidanceFunctionsFactory();
 		
-		var javaObjective = objectivesFactory.loadObjective(model.getObjectives().get(0))
+		var javaObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(0)))
 		
 		var mockedEObject = mock(EObject)
 		
@@ -93,12 +94,12 @@ class ObjectivesFactoryTests {
 	def void assertThatInvalidJavaObejectivePathThrowsAnException(){
 		
 		try {
-			val objectivesFactory = new ObjectivesFactory();
+			val objectivesFactory = new GuidanceFunctionsFactory();
 			
 			var objectiveInterpreter = model.getObjectives().get(0);
 			objectiveInterpreter.objectiveSpec = "random-class";
 	
-			objectivesFactory.loadObjective(model.getObjectives().get(0))
+			objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(0)))
 		} catch(ClassNotFoundException e) {
 			assertEquals("Invalid objective class path: random-class", e.getMessage())
 		}
@@ -108,12 +109,12 @@ class ObjectivesFactoryTests {
 	def void assertThatForAnUnknownObjectiveTypeAnExceptionIsThrown() {
 		
 		try {
-			val objectivesFactory = new ObjectivesFactory();
+			val objectivesFactory = new GuidanceFunctionsFactory();
 			
 			var objectiveInterpreter = model.getObjectives().get(0);
 			objectiveInterpreter.objectiveType = "random";
 	
-			objectivesFactory.loadObjective(model.getObjectives().get(0))
+			objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(0)))
 		} catch(InvalidObjectException e) {
 			assertEquals("Invalid objective type: random", e.getMessage())
 		}

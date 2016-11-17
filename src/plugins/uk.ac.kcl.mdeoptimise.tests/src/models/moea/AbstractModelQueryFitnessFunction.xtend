@@ -2,9 +2,9 @@ package models.moea
 
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.EObject
-import uk.ac.kcl.interpreter.IFitnessFunction
+import uk.ac.kcl.interpreter.IGuidanceFunction
 
-abstract class AbstractModelQueryFitnessFunction implements IFitnessFunction {
+abstract class AbstractModelQueryFitnessFunction implements IGuidanceFunction {
 	/**
 	 * Helper function getting the value of the named feature (if it exists) for the given EObject.
 	 */

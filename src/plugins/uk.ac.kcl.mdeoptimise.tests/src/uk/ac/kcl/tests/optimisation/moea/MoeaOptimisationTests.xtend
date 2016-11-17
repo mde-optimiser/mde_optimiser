@@ -1,30 +1,24 @@
 package uk.ac.kcl.tests.optimisation.moea
 
-import uk.ac.kcl.mdeoptimise.Optimisation
 import com.google.inject.Inject
-import org.eclipse.xtext.junit4.util.ParseHelper
-import org.eclipse.xtext.junit4.validation.ValidationTestHelper
-import org.junit.runner.RunWith
-import org.eclipse.xtext.junit4.InjectWith
-import org.eclipse.xtext.junit4.XtextRunner
-import uk.ac.kcl.tests.FullTestInjector
-import org.junit.Test
-import uk.ac.kcl.interpreter.objectives.ObjectivesFactory
-import uk.ac.kcl.tests.interpreter.objectives.ocl.OclModelProvider
-import org.eclipse.emf.henshin.model.resource.HenshinResourceSet
-import org.eclipse.emf.ecore.EPackage
-import java.util.List
-import org.eclipse.emf.henshin.model.Unit
-import org.eclipse.emf.common.util.URI
-import uk.ac.kcl.optimisation.SolutionGenerator
-import uk.ac.kcl.optimisation.moea.MoeaOptimisation
 import java.text.SimpleDateFormat
 import java.util.Date
-import java.io.BufferedReader
-import java.io.InputStreamReader
-import java.util.stream.Collectors
-import org.eclipse.emf.ecore.EObject
-import org.junit.Ignore
+import java.util.List
+import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.ecore.EPackage
+import org.eclipse.emf.henshin.model.Unit
+import org.eclipse.emf.henshin.model.resource.HenshinResourceSet
+import org.eclipse.xtext.junit4.InjectWith
+import org.eclipse.xtext.junit4.XtextRunner
+import org.eclipse.xtext.junit4.util.ParseHelper
+import org.eclipse.xtext.junit4.validation.ValidationTestHelper
+import org.junit.Test
+import org.junit.runner.RunWith
+import uk.ac.kcl.mdeoptimise.Optimisation
+import uk.ac.kcl.optimisation.SolutionGenerator
+import uk.ac.kcl.optimisation.moea.MoeaOptimisation
+import uk.ac.kcl.tests.FullTestInjector
+import uk.ac.kcl.tests.interpreter.objectives.ocl.OclModelProvider
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)
@@ -80,6 +74,7 @@ class MoeaOptimisationTests {
 				metamodel <architectureCRA.ecore>			
 				objective MinimiseClasslessFeatures minimise java { "models.moea.MinimiseClasslessFeatures" }
 				objective MinimiseCoupling maximise java { "models.moea.MaximiseCRA" }
+				constraint MinimiseClasslessFeatures java { "models.moea.MinimiseClasslessFeatures" }
 				evolve using <craEvolvers.henshin> unit "createClass"
 				evolve using <craEvolvers.henshin> unit "assignFeature"
 				evolve using <craEvolvers.henshin> unit "moveFeature"
