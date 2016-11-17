@@ -1,4 +1,4 @@
-package uk.ac.kcl.interpreter.objectives
+package uk.ac.kcl.interpreter.guidance
 
 import uk.ac.kcl.mdeoptimise.ObjectiveInterpreterSpec
 import uk.ac.kcl.mdeoptimise.ConstraintInterpreterSpec
@@ -22,5 +22,14 @@ class GuidanceFunctionAdapter {
 		functionName = constraintInterpreterSpec.constraintName
 		functionType = constraintInterpreterSpec.constraintType
 		functionSpec = constraintInterpreterSpec.constraintSpec
+	}
+	
+	def double getNumericalTendency(){
+		
+		/**
+		 * Moea is degisned to minimise objectives. To maximise an objective, it should be negated.
+		 * Output maximised objectives will be displayed with their negative values.
+		 */
+		if (this.functionTendency.equals("minimise")) 1 else -1
 	}
 }

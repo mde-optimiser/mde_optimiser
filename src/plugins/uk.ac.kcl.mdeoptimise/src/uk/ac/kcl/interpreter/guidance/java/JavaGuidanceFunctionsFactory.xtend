@@ -1,9 +1,9 @@
-package uk.ac.kcl.interpreter.objectives.java
+package uk.ac.kcl.interpreter.guidance.java
 
 import java.util.HashMap
 import uk.ac.kcl.interpreter.IGuidanceFunction
-import uk.ac.kcl.interpreter.objectives.GuidanceFunctionAdapter
-import uk.ac.kcl.interpreter.objectives.IGuidanceFunctionsFactory
+import uk.ac.kcl.interpreter.guidance.GuidanceFunctionAdapter
+import uk.ac.kcl.interpreter.guidance.IGuidanceFunctionsFactory
 
 class JavaGuidanceFunctionsFactory implements IGuidanceFunctionsFactory {
 	

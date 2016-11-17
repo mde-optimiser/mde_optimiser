@@ -4,8 +4,8 @@ import java.util.List
 import org.moeaframework.core.Solution
 import org.moeaframework.problem.AbstractProblem
 import uk.ac.kcl.optimisation.SolutionGenerator
-import uk.ac.kcl.interpreter.objectives.GuidanceFunctionsFactory
-import uk.ac.kcl.interpreter.objectives.GuidanceFunctionAdapter
+import uk.ac.kcl.interpreter.guidance.GuidanceFunctionsFactory
+import uk.ac.kcl.interpreter.guidance.GuidanceFunctionAdapter
 import uk.ac.kcl.interpreter.IGuidanceFunction
 
 class MoeaOptimisationProblem extends AbstractProblem {

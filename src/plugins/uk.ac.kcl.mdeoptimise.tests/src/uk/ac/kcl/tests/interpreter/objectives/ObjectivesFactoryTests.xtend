@@ -17,9 +17,9 @@ import static org.hamcrest.CoreMatchers.instanceOf
 import static org.junit.Assert.*
 import static org.mockito.Mockito.*
 import java.io.InvalidObjectException
-import uk.ac.kcl.interpreter.objectives.GuidanceFunctionsFactory
-import uk.ac.kcl.interpreter.objectives.GuidanceFunctionAdapter
-import uk.ac.kcl.interpreter.objectives.ocl.OclGuidanceFunction
+import uk.ac.kcl.interpreter.guidance.GuidanceFunctionsFactory
+import uk.ac.kcl.interpreter.guidance.GuidanceFunctionAdapter
+import uk.ac.kcl.interpreter.guidance.ocl.OclGuidanceFunction
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)
@@ -43,7 +43,7 @@ class ObjectivesFactoryTests {
 			objective name maximise ocl { "Valid.OclString()" }
 			evolve using <ABC> unit "XYZ"
 			evolve using <CDE> unit "LMN"
-			optimisation provider moea algorithm nsga-II evolutions 2000 population 100
+			optimisation provider moea algorithm NSGAII evolutions 2000 population 100
 		''')
 	
 		oclModelProvider = new OclModelProvider	

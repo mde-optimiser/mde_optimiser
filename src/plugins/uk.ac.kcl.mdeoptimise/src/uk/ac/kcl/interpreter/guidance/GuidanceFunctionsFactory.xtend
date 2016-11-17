@@ -1,8 +1,8 @@
-package uk.ac.kcl.interpreter.objectives
+package uk.ac.kcl.interpreter.guidance
 
 import java.io.InvalidObjectException
-import uk.ac.kcl.interpreter.objectives.ocl.OclGuidanceFunctionsFactory
-import uk.ac.kcl.interpreter.objectives.java.JavaGuidanceFunctionsFactory
+import uk.ac.kcl.interpreter.guidance.ocl.OclGuidanceFunctionsFactory
+import uk.ac.kcl.interpreter.guidance.java.JavaGuidanceFunctionsFactory
 
 class GuidanceFunctionsFactory implements IGuidanceFunctionsFactory {
 	

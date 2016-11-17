@@ -32,7 +32,7 @@ class GrammarParsingTest {
 			objective name maximise ocl { "Valid.OclString()" }
 			evolve using <ABC> unit "XYZ"
 			evolve using <CDE> unit "LMN"
-			optimisation provider ecj algorithm nsga-II evolutions 100 population 100
+			optimisation provider ecj algorithm NSGAII evolutions 100 population 100
 		''')
 	}
 	
@@ -80,7 +80,7 @@ class GrammarParsingTest {
 	@Test
 	def void assertOptimisationProvidersAreParsed() {
 		assertEquals("Could not get optimisation algorithm provider framework", "ecj", model.optimisation.algorithmFactory)
-		assertEquals("Could not get optimisation algorithm name", "nsga-II", model.optimisation.algorithmName)
+		assertEquals("Could not get optimisation algorithm name", "NSGAII", model.optimisation.algorithmName)
 		assertEquals("Could not get optimisation population size", 100, model.optimisation.algorithmPopulation)
 		assertEquals("Could not get optimisation evolutions number", 100, model.optimisation.algorithmEvolutions)
 	}

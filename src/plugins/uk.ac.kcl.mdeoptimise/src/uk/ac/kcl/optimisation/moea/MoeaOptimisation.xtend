@@ -70,8 +70,7 @@ class MoeaOptimisation implements IOptimisation {
 	       .withProblemClass(MoeaOptimisationProblem, solutionGenerator)
 	       .withProperties(optimisationProperties)
 	       .withMaxEvaluations(optimisationProperties.get("maxEvolutions") as Integer)
-	       
-	       //.distributeOnAllCores() //Leave this on for now. Should perhaps be configurable.
+	       .distributeOnAllCores() //Leave this on for now. Should perhaps be configurable.
 	       //Todo look at distribution service available
 	       .run()
 	   

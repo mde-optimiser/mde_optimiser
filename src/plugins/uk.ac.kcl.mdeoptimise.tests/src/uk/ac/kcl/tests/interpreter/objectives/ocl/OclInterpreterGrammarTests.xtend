@@ -15,8 +15,8 @@ import uk.ac.kcl.tests.FullTestInjector
 
 import static org.junit.Assert.*
 import static org.mockito.Mockito.*
-import uk.ac.kcl.interpreter.objectives.GuidanceFunctionsFactory
-import uk.ac.kcl.interpreter.objectives.GuidanceFunctionAdapter
+import uk.ac.kcl.interpreter.guidance.GuidanceFunctionsFactory
+import uk.ac.kcl.interpreter.guidance.GuidanceFunctionAdapter
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)
@@ -93,7 +93,7 @@ class OclInterpreterGrammarTests {
 				objective name maximise ocl { "Class.allInstances()->size()" }
 				evolve using <ABC> unit "XYZ"
 				evolve using <CDE> unit "LMN"
-				optimisation provider ecj algorithm nsga-II evolutions 100 population 100
+				optimisation provider ecj algorithm NSGAII evolutions 100 population 100
 			''')
 			
 			var oclObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(0)))
@@ -118,7 +118,7 @@ class OclInterpreterGrammarTests {
 				objective name maximise ocl { "Class.allInstances().size()" }
 				evolve using <ABC> unit "XYZ"
 				evolve using <CDE> unit "LMN"
-				optimisation provider ecj algorithm nsga-II evolutions 100 population 100
+				optimisation provider ecj algorithm NSGAII evolutions 100 population 100
 			''')
 			
 			var oclObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(0)))
@@ -149,7 +149,7 @@ class OclInterpreterGrammarTests {
 				}
 				evolve using <ABC> unit "XYZ"
 				evolve using <CDE> unit "LMN"
-				optimisation provider ecj algorithm nsga-II evolutions 100 population 100
+				optimisation provider ecj algorithm NSGAII evolutions 100 population 100
 			''')
 			
 			var oclObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(0)))

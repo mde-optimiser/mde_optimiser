@@ -1,4 +1,4 @@
-package uk.ac.kcl.interpreter.objectives.ocl
+package uk.ac.kcl.interpreter.guidance.ocl
 
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EClassifier
@@ -7,8 +7,8 @@ import org.eclipse.ocl.OCL
 import org.eclipse.ocl.ecore.Constraint
 import org.eclipse.ocl.ecore.EcoreEnvironmentFactory
 import org.eclipse.ocl.helper.OCLHelper
-import uk.ac.kcl.interpreter.objectives.GuidanceFunctionAdapter
-import uk.ac.kcl.interpreter.objectives.IGuidanceFunctionsFactory
+import uk.ac.kcl.interpreter.guidance.GuidanceFunctionAdapter
+import uk.ac.kcl.interpreter.guidance.IGuidanceFunctionsFactory
 
 class OclGuidanceFunctionsFactory implements IGuidanceFunctionsFactory {
 	

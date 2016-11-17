@@ -1,4 +1,4 @@
-package uk.ac.kcl.interpreter.objectives.ocl
+package uk.ac.kcl.interpreter.guidance.ocl
 
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EClassifier
@@ -9,7 +9,7 @@ import org.eclipse.ocl.ecore.Constraint
 import org.eclipse.ocl.expressions.OCLExpression
 import org.eclipse.ocl.helper.OCLHelper
 import uk.ac.kcl.interpreter.IGuidanceFunction
-import uk.ac.kcl.interpreter.objectives.GuidanceFunctionAdapter
+import uk.ac.kcl.interpreter.guidance.GuidanceFunctionAdapter
 
 class OclGuidanceFunction implements IGuidanceFunction {
 	
@@ -32,12 +32,12 @@ class OclGuidanceFunction implements IGuidanceFunction {
 	
 	override computeFitness(EObject model) {
 		
-		var fitness = 0.0
+		var fitness = 0.0 * guidanceFunctionAdapter.numericalTendency
 		
         try {
-        	
-			oclHelper.setContext(model.eClass)
+ 
         	if(oclQueryExpression == null){
+        		oclHelper.setContext(model.eClass)
         		oclQueryExpression = oclHelper.createQuery(guidanceFunctionAdapter.functionSpec)
         	}
         	//val oclQueryExpression = ;
