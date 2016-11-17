@@ -63,20 +63,16 @@ class MoeaOptimisation implements IOptimisation {
 		val algorithmFactory = new AlgorithmFactory();
 		algorithmFactory.addProvider(new MoeaOptimisationAlgorithmProvider)
 		
-		val result = new Executor()
+		new Executor()
 		   .usingAlgorithmFactory(algorithmFactory)
 	       .withAlgorithm(algorithmName)
 	       //Initialize problem with our solution generator
 	       .withProblemClass(MoeaOptimisationProblem, solutionGenerator)
 	       .withProperties(optimisationProperties)
 	       .withMaxEvaluations(optimisationProperties.get("maxEvolutions") as Integer)
-	       .distributeOnAllCores() //Leave this on for now. Should perhaps be configurable.
+	       //.distributeOnAllCores() //Leave this on for now. Should perhaps be configurable.
 	       //Todo look at distribution service available
 	       .run()
-	   
-
-		
-		result
 	}
 	
 	//TODO remove once the correct implementation is proven to work
