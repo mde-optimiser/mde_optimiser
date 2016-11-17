@@ -8,7 +8,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="objectives" upperBound="-1"
         eType="#//ObjectiveInterpreterSpec" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="constraints" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" upperBound="-1"
+        eType="#//ConstraintInterpreterSpec" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="evolvers" upperBound="-1"
         eType="#//EvolverSpec" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="optimisation" eType="#//OptimisationSpec"
@@ -26,7 +27,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="objectiveType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="objectiveSpec" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ConstraintsInterpreterSpec">
+  <eClassifiers xsi:type="ecore:EClass" name="ConstraintInterpreterSpec">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="constraintName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="constraintType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="constraintSpec" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

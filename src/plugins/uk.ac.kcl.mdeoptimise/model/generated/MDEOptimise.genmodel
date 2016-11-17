@@ -10,7 +10,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/basepath"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/metamodel"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/objectives"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//Optimisation/constraints"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/constraints"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/evolvers"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/optimisation"/>
     </genClasses>
@@ -26,10 +26,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//ObjectiveInterpreterSpec/objectiveType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//ObjectiveInterpreterSpec/objectiveSpec"/>
     </genClasses>
-    <genClasses ecoreClass="MDEOptimise.ecore#//ConstraintsInterpreterSpec">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//ConstraintsInterpreterSpec/constraintName"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//ConstraintsInterpreterSpec/constraintType"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//ConstraintsInterpreterSpec/constraintSpec"/>
+    <genClasses ecoreClass="MDEOptimise.ecore#//ConstraintInterpreterSpec">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//ConstraintInterpreterSpec/constraintName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//ConstraintInterpreterSpec/constraintType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//ConstraintInterpreterSpec/constraintSpec"/>
     </genClasses>
     <genClasses ecoreClass="MDEOptimise.ecore#//EvolverSpec">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//EvolverSpec/rule_location"/>

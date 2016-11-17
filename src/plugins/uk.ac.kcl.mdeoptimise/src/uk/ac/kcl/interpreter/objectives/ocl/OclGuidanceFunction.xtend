@@ -6,27 +6,27 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.ocl.OCL
 import org.eclipse.ocl.ParserException
 import org.eclipse.ocl.ecore.Constraint
-import org.eclipse.ocl.helper.OCLHelper
-import uk.ac.kcl.interpreter.IFitnessFunction
-import uk.ac.kcl.mdeoptimise.ObjectiveInterpreterSpec
 import org.eclipse.ocl.expressions.OCLExpression
+import org.eclipse.ocl.helper.OCLHelper
+import uk.ac.kcl.interpreter.IGuidanceFunction
+import uk.ac.kcl.interpreter.objectives.GuidanceFunctionAdapter
 
-class OclFitnessFunction implements IFitnessFunction {
+class OclGuidanceFunction implements IGuidanceFunction {
 	
 	private OCL<?, EClassifier, ?, ?, ?, ?, ?, ?, ?, Constraint, EClass, EObject>  ocl
    	private OCLHelper<EClassifier, ?, ?, Constraint> oclHelper
-   	private ObjectiveInterpreterSpec objectiveInterpreterSpec
+   	private GuidanceFunctionAdapter guidanceFunctionAdapter
 	private String objectiveName;
 	private OCLExpression<EClassifier> oclQueryExpression;
 	
 	new(OCL<?, EClassifier, ?, ?, ?, ?, ?, ?, ?, Constraint, EClass, EObject>  ocl, 
 		OCLHelper<EClassifier, ?, ?, Constraint> oclHelper,
-		ObjectiveInterpreterSpec objectiveInterpreterSpec
+		GuidanceFunctionAdapter guidanceFunctionAdapter
 	){
 		this.ocl = ocl;
 		this.oclHelper = oclHelper;
-		this.objectiveInterpreterSpec = objectiveInterpreterSpec
-		this.objectiveName = objectiveInterpreterSpec.objectiveName
+		this.guidanceFunctionAdapter = guidanceFunctionAdapter
+		this.objectiveName = guidanceFunctionAdapter.functionName
 	}
 	
 	
@@ -38,7 +38,7 @@ class OclFitnessFunction implements IFitnessFunction {
         	
 			oclHelper.setContext(model.eClass)
         	if(oclQueryExpression == null){
-        		oclQueryExpression = oclHelper.createQuery(objectiveInterpreterSpec.getObjectiveSpec)
+        		oclQueryExpression = oclHelper.createQuery(guidanceFunctionAdapter.functionSpec)
         	}
         	//val oclQueryExpression = ;
         	

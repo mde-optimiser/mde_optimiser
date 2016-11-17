@@ -10,12 +10,13 @@ import org.eclipse.xtext.junit4.util.ParseHelper
 import org.eclipse.xtext.junit4.validation.ValidationTestHelper
 import org.junit.Test
 import org.junit.runner.RunWith
-import uk.ac.kcl.interpreter.objectives.ObjectivesFactory
 import uk.ac.kcl.mdeoptimise.Optimisation
 import uk.ac.kcl.tests.FullTestInjector
 
 import static org.junit.Assert.*
 import static org.mockito.Mockito.*
+import uk.ac.kcl.interpreter.objectives.GuidanceFunctionsFactory
+import uk.ac.kcl.interpreter.objectives.GuidanceFunctionAdapter
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)
@@ -55,7 +56,7 @@ class OclInterpreterGrammarTests {
 	def void assertThatEmptyOclStringIsInvalid() {
 		
 		try {
-			val objectivesFactory = new ObjectivesFactory();
+			val objectivesFactory = new GuidanceFunctionsFactory();
 			
 			model = parser.parse('''
 				basepath <src/models/ocl/>
@@ -66,7 +67,7 @@ class OclInterpreterGrammarTests {
 				optimisation provider ecj algorithm nsga-II evolutions 100 population 100
 			''')
 			
-			var oclObjective = objectivesFactory.loadObjective(model.getObjectives().get(0))
+			var oclObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(0)))
 			
 			var mockedEObject = mock(EObject)
 
@@ -82,7 +83,7 @@ class OclInterpreterGrammarTests {
 	@Test
 	def void assertThatNonEmptyCorrectOclStringIsValidAndReturnsExpectedFitnessValue() {
 			
-			val objectivesFactory = new ObjectivesFactory();
+			val objectivesFactory = new GuidanceFunctionsFactory();
 			
 			oclModelProvider = new OclModelProvider
 
@@ -95,7 +96,7 @@ class OclInterpreterGrammarTests {
 				optimisation provider ecj algorithm nsga-II evolutions 100 population 100
 			''')
 			
-			var oclObjective = objectivesFactory.loadObjective(model.getObjectives().get(0))
+			var oclObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(0)))
 			
 			var initialModelObject = oclModelProvider.initialModels(getMetamodel()).head
 			
@@ -107,7 +108,7 @@ class OclInterpreterGrammarTests {
 	def void assertThatASemanticExceptionIsThrownForInvalidOcl(){
 		
 		try {
-			val objectivesFactory = new ObjectivesFactory();
+			val objectivesFactory = new GuidanceFunctionsFactory();
 			
 			oclModelProvider = new OclModelProvider
 
@@ -120,7 +121,7 @@ class OclInterpreterGrammarTests {
 				optimisation provider ecj algorithm nsga-II evolutions 100 population 100
 			''')
 			
-			var oclObjective = objectivesFactory.loadObjective(model.getObjectives().get(0))
+			var oclObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(0)))
 			
 			var initialModelObject = oclModelProvider.initialModels(getMetamodel()).head
 			
@@ -136,7 +137,7 @@ class OclInterpreterGrammarTests {
 	@Test
 	def void assertThatOclQueriesWorkWithLetExpressions(){
 			
-			val objectivesFactory = new ObjectivesFactory();
+			val objectivesFactory = new GuidanceFunctionsFactory();
 			
 			oclModelProvider = new OclModelProvider
 
@@ -151,7 +152,7 @@ class OclInterpreterGrammarTests {
 				optimisation provider ecj algorithm nsga-II evolutions 100 population 100
 			''')
 			
-			var oclObjective = objectivesFactory.loadObjective(model.getObjectives().get(0))
+			var oclObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(0)))
 			
 			var initialModelObject = oclModelProvider.initialModels(getMetamodel()).head
 			

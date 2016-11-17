@@ -8,7 +8,7 @@ Optimisation:
 	metamodel=MetaModelSpec
 	/*fitness+=FitnessFunctionSpec+*/
 	objectives+=ObjectiveInterpreterSpec+
-	constraints?=ConstraintsInterpreterSpec?
+	constraints+=ConstraintInterpreterSpec?
 	evolvers+=EvolverSpec+
 	optimisation=OptimisationSpec
 ;
@@ -32,7 +32,7 @@ ObjectiveInterpreterSpec:
 	"objective" objectiveName=ENTITY_NAME objectiveTendency=OBJECTIVE_TENDENCY objectiveType=ENTITY_TYPE "{" (objectiveSpec=STRING) "}"
 ;
 
-ConstraintsInterpreterSpec:
+ConstraintInterpreterSpec:
 	"constraint" constraintName=ENTITY_NAME constraintType=ENTITY_TYPE "{" (constraintSpec=STRING) "}"
 ;
 
