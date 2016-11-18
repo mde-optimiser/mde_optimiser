@@ -247,7 +247,7 @@
 					<configuration>
 						<compilerArgument>-err:-forbidden</compilerArgument>
 					</configuration>
-				</plugin>
+				</plugin>		
 			</plugins>
 		</pluginManagement>
 	</build>
