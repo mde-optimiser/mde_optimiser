@@ -21,7 +21,11 @@
 				<artifactId>tycho-surefire-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
-					<failIfNoTests>false</failIfNoTests>
+					<failIfNoTests>true</failIfNoTests>
+					<includes>
+            			<include>**/*Tests.java</include>
+            			<include>**/*Test.java</include>
+          			</includes>
 				</configuration>
 			</plugin>
 		</plugins>

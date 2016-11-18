@@ -13,7 +13,7 @@ import static org.junit.Assert.*
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)
-class GrammarParsingTest {
+class GrammarParsingTests {
 
 	@Inject extension ValidationTestHelper
 	@Inject TestModelHelper testModelHelper
