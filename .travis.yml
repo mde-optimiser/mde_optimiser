@@ -1,0 +1,11 @@
+# Travis CI build file
+
+language: java
+jdk:
+    - oraclejdk8
+
+before_script: 
+    - cd src/
+    - pwd
+script:
+    - mvn test
