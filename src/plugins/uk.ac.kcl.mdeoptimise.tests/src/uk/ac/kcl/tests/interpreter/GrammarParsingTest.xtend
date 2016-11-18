@@ -3,63 +3,53 @@ package uk.ac.kcl.tests.interpreter
 import javax.inject.Inject
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.xtext.junit4.util.ParseHelper
-import org.junit.Before
+import org.eclipse.xtext.junit4.validation.ValidationTestHelper
 import org.junit.Test
 import org.junit.runner.RunWith
-import uk.ac.kcl.mdeoptimise.Optimisation
 import uk.ac.kcl.tests.FullTestInjector
+import uk.ac.kcl.tests.TestModelHelper
 
 import static org.junit.Assert.*
-import org.eclipse.xtext.junit4.validation.ValidationTestHelper
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)
 class GrammarParsingTest {
 
-	@Inject
-	ParseHelper<Optimisation> parser
 	@Inject extension ValidationTestHelper
-	
-	Optimisation model
-	
-	@Before
-	def void bootstrapParser() {
-		 model = parser.parse('''
-			basepath <model/basepath>
-			metamodel <ABC>
-			objective name minimise java { "models.fitness.Fitness.java" }
-			objective name maximise ocl { "Valid.OclString()" }
-			constraint name ocl { "Valid.OclString()" }
-			constraint name java { "models.constraint.Constraint.java" }
-			evolve using <ABC> unit "XYZ"
-			evolve using <CDE> unit "LMN"
-			optimisation provider ecj algorithm NSGAII evolutions 100 population 100
-		''')
-	}
+	@Inject TestModelHelper testModelHelper
 	
 	@Test
-	def void assertThatThereAreNoParsingIssues() {
+	def void assertThatThereAreNoParsingIssues() {	
+		val model = testModelHelper.parsedFullValidModel
 		model.assertNoIssues
 	}
 	
 	@Test
 	def void assertParsedOptimisationModelIsNotNull() {
+		var model = testModelHelper.parsedFullValidModel
 		assertNotNull(model)
 	}
 	
 	@Test
 	def void assertBasePathIsParsed() {
-		assertEquals("model/basepath", model.getBasepath.location)
+		val model = testModelHelper.parsedFullValidModel
+		assertEquals("src/models/cra/", model.getBasepath.location)
 	}
 	
 	@Test
 	def void assertMetamodelPathIsParsed() {
-		assertEquals("ABC", model.getMetamodel.location)
+		
+		val model = testModelHelper.parsedFullValidModel
+		
+		assertEquals("architectureCRA.ecore", model.getMetamodel.location)
 	}
 	
 	@Test
 	def void assertJavaObjectiveSignatureAndSpecIsParsed() {
+		
+		val javaObjective = "objective name minimise java { \"models.fitness.Fitness.java\""
+		
+		val model = testModelHelper.getParsedFullValidModelWithCustomObjectives(javaObjective)
 		
 		//First objective JAVA
 		assertEquals("Could not get java objective type.", "java", model.objectives.get(0).getObjectiveType())
@@ -71,47 +61,59 @@ class GrammarParsingTest {
 	
 	@Test
 	def void assertOclObjectiveSignatureAndSpecIsParsed() {
+		
+		val oclObjective = "objective name maximise ocl { \"Class.allInstances()->size()\""
+		
+		val model = testModelHelper.getParsedFullValidModelWithCustomObjectives(oclObjective)
+		
 		//Second objective OCL
-		assertEquals("Could not get ocl objective type.", "ocl", model.objectives.get(1).getObjectiveType())
-		assertEquals("Could not get ocl objective name.", "name", model.objectives.get(1).getObjectiveName())
-		assertEquals("Could not get expected ocl objective query.", "Valid.OclString()", model.objectives.get(1).getObjectiveSpec())
-		assertEquals("Could not get ocl objective tendency.", "maximise", model.objectives.get(1).getObjectiveTendency())
+		assertEquals("Could not get ocl objective type.", "ocl", model.objectives.get(0).getObjectiveType())
+		assertEquals("Could not get ocl objective name.", "name", model.objectives.get(0).getObjectiveName())
+		assertEquals("Could not get expected ocl objective query.", "Class.allInstances()->size()", model.objectives.get(0).getObjectiveSpec())
+		assertEquals("Could not get ocl objective tendency.", "maximise", model.objectives.get(0).getObjectiveTendency())
 	}
 	
 	@Test
 	def void assertOptimisationProvidersAreParsed() {
-		assertEquals("Could not get optimisation algorithm provider framework", "ecj", model.optimisation.algorithmFactory)
+		
+		val customOptimisation = "optimisation provider moea algorithm NSGAII evolutions 100000 population 100"
+		
+		val model = testModelHelper.getParsedFullValidModelWithCustomOptimisation(customOptimisation)
+		
+		assertEquals("Could not get optimisation algorithm provider framework", "moea", model.optimisation.algorithmFactory)
 		assertEquals("Could not get optimisation algorithm name", "NSGAII", model.optimisation.algorithmName)
 		assertEquals("Could not get optimisation population size", 100, model.optimisation.algorithmPopulation)
-		assertEquals("Could not get optimisation evolutions number", 100, model.optimisation.algorithmEvolutions)
+		assertEquals("Could not get optimisation evolutions number", 100000, model.optimisation.algorithmEvolutions)
 	}
 	
 	@Test
 	def void assertOclConstraintProvidersAreParsed() {
-		assertEquals("Could not get ocl constraint name", "name", model.constraints.get(0).constraintName)
+		
+		val oclConstraint = "constraint constraintName ocl { \"Class.allInstances->size()\" }"
+		
+		val model = testModelHelper.getParsedFullValidModelWithCustomConstraints(oclConstraint)
+		
+		assertEquals("Could not get ocl constraint name", "constraintName", model.constraints.get(0).constraintName)
 		assertEquals("Could not get ocl constraint type", "ocl", model.constraints.get(0).constraintType)
-		assertEquals("Could not get ocl constraint spec", "Valid.OclString()", model.constraints.get(0).constraintSpec)
+		assertEquals("Could not get ocl constraint spec", "Class.allInstances->size()", model.constraints.get(0).constraintSpec)
 	}
 	
 	@Test
 	def void assertJavaConstraintProvidersAreParsed() {
 
-		assertEquals("Could not get java constraint name", "name", model.constraints.get(1).constraintName)
-		assertEquals("Could not get java constraint type", "java", model.constraints.get(1).constraintType)
-		assertEquals("Could not get java constraint spec", "models.constraint.Constraint.java", model.constraints.get(1).constraintSpec)
+		val javaConstraint = "constraint constraintName java { \"models.constraints.Constraint.java\" }"
+		
+		val model = testModelHelper.getParsedFullValidModelWithCustomConstraints(javaConstraint)
+		
+		assertEquals("Could not get java constraint name", "constraintName", model.constraints.get(0).constraintName)
+		assertEquals("Could not get java constraint type", "java", model.constraints.get(0).constraintType)
+		assertEquals("Could not get java constraint spec", "models.constraints.Constraint.java", model.constraints.get(0).constraintSpec)
 	}
 	
 	@Test
 	def void assertThatConstraintsAreOptional() {
-		model = parser.parse('''
-			basepath <model/basepath>
-			metamodel <ABC>
-			objective name minimise java { "models.fitness.Fitness.java" }
-			objective name maximise ocl { "Valid.OclString()" }
-			evolve using <ABC> unit "XYZ"
-			evolve using <CDE> unit "LMN"
-			optimisation provider ecj algorithm NSGAII evolutions 100 population 100
-		''')
+		
+		val model = testModelHelper.getParsedFullValidModelWithCustomConstraints("")
 		
 		assertEquals("There are no parsed constraints when no constraint specified", 
 			0, model.getConstraints().size()
