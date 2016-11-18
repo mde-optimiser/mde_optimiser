@@ -3,7 +3,6 @@ package uk.ac.kcl.optimisation.moea
 import org.eclipse.emf.ecore.EObject
 import org.moeaframework.core.Variable
 import uk.ac.kcl.optimisation.SolutionGenerator
-import java.util.Random
 
 //This is a representation of the evolved model
 class MoeaOptimisationVariable implements Variable {

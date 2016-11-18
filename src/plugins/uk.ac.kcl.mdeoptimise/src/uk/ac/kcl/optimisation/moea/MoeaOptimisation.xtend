@@ -18,7 +18,6 @@ import org.moeaframework.core.spi.AlgorithmFactory
 import uk.ac.kcl.interpreter.IOptimisation
 import uk.ac.kcl.mdeoptimise.OptimisationSpec
 import uk.ac.kcl.optimisation.SolutionGenerator
-import org.moeaframework.core.spi.OperatorFactory
 
 class MoeaOptimisation implements IOptimisation {
 	
