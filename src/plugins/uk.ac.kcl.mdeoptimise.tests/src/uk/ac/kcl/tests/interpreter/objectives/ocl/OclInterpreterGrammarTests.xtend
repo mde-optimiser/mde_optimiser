@@ -42,7 +42,7 @@ class OclInterpreterGrammarTests {
 			''' + objective + '''
 			evolve using <ABC> unit "XYZ"
 			evolve using <CDE> unit "LMN"
-			optimisation provider ecj algorithm nsga-II evolutions 100 population 100
+			optimisation provider ecj algorithm NSGAII evolutions 100 population 100
 		'''
 	}
 	
