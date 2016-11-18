@@ -20,6 +20,7 @@ import java.io.InvalidObjectException
 import uk.ac.kcl.interpreter.guidance.GuidanceFunctionsFactory
 import uk.ac.kcl.interpreter.guidance.GuidanceFunctionAdapter
 import uk.ac.kcl.interpreter.guidance.ocl.OclGuidanceFunction
+import org.junit.Ignore
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)
@@ -41,6 +42,8 @@ class GuidanceFunctionsFactoryTests {
 			metamodel <ABC>
 			objective name minimise java { "uk.ac.kcl.tests.interpreter.objectives.JavaObjectiveFunction" }
 			objective name maximise ocl { "Valid.OclString()" }
+			constraint name java { "uk.ac.kcl.tests.interpreter.objectives.JavaObjectiveFunction" }
+			constraint name ocl { "Valid.OclString()" }
 			evolve using <ABC> unit "XYZ"
 			evolve using <CDE> unit "LMN"
 			optimisation provider moea algorithm NSGAII evolutions 2000 population 100
@@ -54,20 +57,22 @@ class GuidanceFunctionsFactoryTests {
 		model.assertNoIssues
 	}
 	
+	// Objectives
+	
 	@Test
-	def void assertThatGuidanceFunctionsFactoryReturnsTheCorrectObjectiveTypeGivenAJavaObjective(){
+	def void assertThatGuidanceFunctionsFactoryReturnsTheCorrectObjectiveTypeGivenAJavaObjective() {
 		
 		val objectivesFactory = new GuidanceFunctionsFactory();
 		
 		var javaObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(0)))
 		
-		assertThat("Produced objectives factory for java objective type is an instance of the Java fitness class.", 
+		assertThat("Produced guidance function for a Java objective spec has type of the Java fitness class.", 
 			javaObjective, instanceOf(JavaObjectiveFunction)
 		)
 	}
 	
 	@Test
-	def void assertThatGuidanceFunctionsFactoryReturnsTheCorrectObjectiveTypeGivenAnOclObjective(){
+	def void assertThatGuidanceFunctionsFactoryReturnsTheCorrectObjectiveTypeGivenAnOclObjective() {
 		
 		val objectivesFactory = new GuidanceFunctionsFactory();
 		
@@ -79,7 +84,7 @@ class GuidanceFunctionsFactoryTests {
 	}
 	
 	@Test
-	def void assertThatReturnedJavaFunctionReturnsExpectedFitnessValue(){
+	def void assertThatReturnedJavaFunctionReturnsExpectedFitnessValue() {
 		
 		val objectivesFactory = new GuidanceFunctionsFactory();
 		
@@ -91,7 +96,7 @@ class GuidanceFunctionsFactoryTests {
 	}
 	
 	@Test
-	def void assertThatInvalidJavaObejectivePathThrowsAnException(){
+	def void assertThatInvalidJavaObejectivePathThrowsAnException() {
 		
 		try {
 			val objectivesFactory = new GuidanceFunctionsFactory();
@@ -120,5 +125,49 @@ class GuidanceFunctionsFactoryTests {
 		}
 		
 	}
+	
+	//Constraints
+	
+	@Test
+	def void assertThatGuidanceFunctionsFactoryReturnsTheCorrectConstraintTypeGivenAJavaConstraint() {
+		val constraintsFactory = new GuidanceFunctionsFactory();
+		
+		val javaConstraint = constraintsFactory.loadFunction(new GuidanceFunctionAdapter(model.getConstraints().get(0)))
+		
+		assertThat("Produced guidance function for a Java constraint spec has type of the Java fitness class",
+			javaConstraint, instanceOf(JavaObjectiveFunction)
+		)
+	}
+	
+	@Test
+	def void assertThatGuidanceFunctionsFactoryReturnsTheCorrectConstraintTypeGivenAOclConstraint() {
+		val constraintsFactory = new GuidanceFunctionsFactory();
+		
+		val oclConstraint = constraintsFactory.loadFunction(new GuidanceFunctionAdapter(model.getConstraints().get(1)))
+		
+		assertThat("Produced guidance function for an Ocl constraint spec has type of the Ocl constraint class",
+			oclConstraint, instanceOf(OclGuidanceFunction)
+		)
+	}
+	
+	@Test
+	@Ignore
+	def void assertThatReturnedOclConstraintReturnsTheCorrectValue() {
+		
+	}
+	
+	@Test
+	def void assertThatReturnedJavaConstraintReturnsTheCorrectValue(){
+		
+		val objectivesFactory = new GuidanceFunctionsFactory();
+		
+		var javaOclConstraint = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getConstraints().get(0)))
+		
+		var mockedEObject = mock(EObject)
+		
+		assertEquals(5.0, javaOclConstraint.computeFitness(mockedEObject), 0.0)
+	}
+	
+	
 	
 }
