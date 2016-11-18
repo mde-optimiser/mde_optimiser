@@ -1,4 +1,4 @@
-package uk.ac.kcl.tests.interpreter.objectives
+package models.java
 
 import org.eclipse.emf.ecore.EObject
 import uk.ac.kcl.interpreter.IGuidanceFunction
