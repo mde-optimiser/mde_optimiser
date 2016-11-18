@@ -25,6 +25,7 @@ class JavaGuidanceFunctionsFactory implements IGuidanceFunctionsFactory {
 	 * @return instance of the fitness function described in the objective intereter
 	 */
 	override loadFunction(GuidanceFunctionAdapter guidanceFunctionAdapter) {
+		
 		//Is there is a key for the given function path cached, return it
 		if(functions.containsKey(guidanceFunctionAdapter.functionSpec)){
 			functions.get(guidanceFunctionAdapter.functionSpec)
