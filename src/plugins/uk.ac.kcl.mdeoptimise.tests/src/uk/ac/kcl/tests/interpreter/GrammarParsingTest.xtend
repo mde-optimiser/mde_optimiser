@@ -28,10 +28,13 @@ class GrammarParsingTest {
 		 model = parser.parse('''
 			basepath <model/basepath>
 			metamodel <ABC>
-			objective name minimise java { "src/models/fitness/Fitness.java" }
+			objective name minimise java { "models.fitness.Fitness.java" }
 			objective name maximise ocl { "Valid.OclString()" }
+			constraint name ocl { "Valid.OclString()" }
+			constraint name java { "models.constraint.Constraint.java" }
 			evolve using <ABC> unit "XYZ"
 			evolve using <CDE> unit "LMN"
+			optimisation provider ecj algorithm NSGAII evolutions 100 population 100
 		''')
 	}
 	
@@ -44,7 +47,6 @@ class GrammarParsingTest {
 	def void assertParsedOptimisationModelIsNotNull() {
 		assertNotNull(model)
 	}
-	
 	
 	@Test
 	def void assertBasePathIsParsed() {
@@ -62,7 +64,7 @@ class GrammarParsingTest {
 		//First objective JAVA
 		assertEquals("Could not get java objective type.", "java", model.objectives.get(0).getObjectiveType())
 		assertEquals("Could not get java objective name.", "name", model.objectives.get(0).getObjectiveName())
-		assertEquals("Could not get expected java objective path.", "src/models/fitness/Fitness.java", model.objectives.get(0).getObjectiveSpec())
+		assertEquals("Could not get expected java objective path.", "models.fitness.Fitness.java", model.objectives.get(0).getObjectiveSpec())
 		assertEquals("Could not get java objective tendency.", "minimise", model.objectives.get(0).getObjectiveTendency())
 		
 	}
@@ -74,5 +76,45 @@ class GrammarParsingTest {
 		assertEquals("Could not get ocl objective name.", "name", model.objectives.get(1).getObjectiveName())
 		assertEquals("Could not get expected ocl objective query.", "Valid.OclString()", model.objectives.get(1).getObjectiveSpec())
 		assertEquals("Could not get ocl objective tendency.", "maximise", model.objectives.get(1).getObjectiveTendency())
+	}
+	
+	@Test
+	def void assertOptimisationProvidersAreParsed() {
+		assertEquals("Could not get optimisation algorithm provider framework", "ecj", model.optimisation.algorithmFactory)
+		assertEquals("Could not get optimisation algorithm name", "NSGAII", model.optimisation.algorithmName)
+		assertEquals("Could not get optimisation population size", 100, model.optimisation.algorithmPopulation)
+		assertEquals("Could not get optimisation evolutions number", 100, model.optimisation.algorithmEvolutions)
+	}
+	
+	@Test
+	def void assertOclConstraintProvidersAreParsed() {
+		assertEquals("Could not get ocl constraint name", "name", model.constraints.get(0).constraintName)
+		assertEquals("Could not get ocl constraint type", "ocl", model.constraints.get(0).constraintType)
+		assertEquals("Could not get ocl constraint spec", "Valid.OclString()", model.constraints.get(0).constraintSpec)
+	}
+	
+	@Test
+	def void assertJavaConstraintProvidersAreParsed() {
+
+		assertEquals("Could not get java constraint name", "name", model.constraints.get(1).constraintName)
+		assertEquals("Could not get java constraint type", "java", model.constraints.get(1).constraintType)
+		assertEquals("Could not get java constraint spec", "models.constraint.Constraint.java", model.constraints.get(1).constraintSpec)
+	}
+	
+	@Test
+	def void assertThatConstraintsAreOptional() {
+		model = parser.parse('''
+			basepath <model/basepath>
+			metamodel <ABC>
+			objective name minimise java { "models.fitness.Fitness.java" }
+			objective name maximise ocl { "Valid.OclString()" }
+			evolve using <ABC> unit "XYZ"
+			evolve using <CDE> unit "LMN"
+			optimisation provider ecj algorithm NSGAII evolutions 100 population 100
+		''')
+		
+		assertEquals("There are no parsed constraints when no constraint specified", 
+			0, model.getConstraints().size()
+		)
 	}
 }

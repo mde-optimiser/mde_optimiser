@@ -5,5 +5,14 @@
 	<classpathentry kind="src" path="xtend-gen"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="lib" path="lib/moea/commons-cli-1.2.jar"/>
+	<classpathentry kind="lib" path="lib/moea/commons-codec-1.8.jar"/>
+	<classpathentry kind="lib" path="lib/moea/commons-lang3-3.1.jar"/>
+	<classpathentry kind="lib" path="lib/moea/commons-math3-3.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/moea/jcommon-1.0.20.jar"/>
+	<classpathentry kind="lib" path="lib/moea/jfreechart-1.0.15.jar"/>
+	<classpathentry kind="lib" path="lib/moea/JMetal-4.3.jar"/>
+	<classpathentry kind="lib" path="lib/moea/MOEAFramework-2.11.jar"/>
+	<classpathentry kind="lib" path="lib/moea/rsyntaxtextarea.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

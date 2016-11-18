@@ -1,4 +1,4 @@
-package uk.ac.kcl.interpreter.objectives.ocl
+package uk.ac.kcl.interpreter.guidance.ocl
 
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EClassifier
@@ -7,10 +7,10 @@ import org.eclipse.ocl.OCL
 import org.eclipse.ocl.ecore.Constraint
 import org.eclipse.ocl.ecore.EcoreEnvironmentFactory
 import org.eclipse.ocl.helper.OCLHelper
-import uk.ac.kcl.interpreter.objectives.IObjectiveEngine
-import uk.ac.kcl.mdeoptimise.ObjectiveInterpreterSpec
+import uk.ac.kcl.interpreter.guidance.GuidanceFunctionAdapter
+import uk.ac.kcl.interpreter.guidance.IGuidanceFunctionsFactory
 
-class OclObjectiveEngine implements IObjectiveEngine {
+class OclGuidanceFunctionsFactory implements IGuidanceFunctionsFactory {
 	
 	private final static OCL<?, EClassifier, ?, ?, ?, ?, ?, ?, ?, Constraint, EClass, EObject>  oclInterpreter = OCL.newInstance(EcoreEnvironmentFactory.INSTANCE)
    	private final static OCLHelper<EClassifier, ?, ?, Constraint> oclHelper = oclInterpreter.createOCLHelper();
@@ -20,8 +20,9 @@ class OclObjectiveEngine implements IObjectiveEngine {
 	 * name - objective name
 	 * objectiveString - string to be converted to fitness function
 	 * 
-	 */
-	override loadObjective(ObjectiveInterpreterSpec objectiveInterpreter) {
-		return new OclFitnessFunction(oclInterpreter, oclHelper, objectiveInterpreter)
+	 */	
+	override loadFunction(GuidanceFunctionAdapter guidanceFunctionAdapter) {
+		return new OclGuidanceFunction(oclInterpreter, oclHelper, guidanceFunctionAdapter)
 	}
+	
 }

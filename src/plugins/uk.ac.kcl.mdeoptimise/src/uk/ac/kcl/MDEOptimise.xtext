@@ -8,7 +8,9 @@ Optimisation:
 	metamodel=MetaModelSpec
 	/*fitness+=FitnessFunctionSpec+*/
 	objectives+=ObjectiveInterpreterSpec+
+	constraints+=ConstraintInterpreterSpec*
 	evolvers+=EvolverSpec+
+	optimisation=OptimisationSpec
 ;
 
 /**
@@ -26,27 +28,12 @@ MetaModelSpec:
 	"metamodel" location=URL
 ;
 
-/* 
-FitnessFunctionSpec:
-	"fitness" fitnessClass=STRING
-;*/
-
-//objective objective_name minimise java/ocl => java_file / ocl query
-/*
-
-objective SecondaryOneStringName minimise java {
-	src/uk/ac/kcl/mdeoptimise/FitnessFunction.java
-}
-
-objective ValidOneStringName minimise ocl {
-	Ocl query
-}
-
-*/
-
-
 ObjectiveInterpreterSpec:
-	"objective" objectiveName=OBJECTIVE_NAME objectiveTendency=OBJECTIVE_TENDENCY objectiveType=OBJECTIVE_TYPE "{" (objectiveSpec=STRING) "}"
+	"objective" objectiveName=ENTITY_NAME objectiveTendency=OBJECTIVE_TENDENCY objectiveType=ENTITY_TYPE "{" (objectiveSpec=STRING) "}"
+;
+
+ConstraintInterpreterSpec:
+	"constraint" constraintName=ENTITY_NAME constraintType=ENTITY_TYPE "{" (constraintSpec=STRING) "}"
 ;
 
 EvolverSpec:
@@ -54,6 +41,23 @@ EvolverSpec:
 	// TODO We may also want to allow the specification of parameters, but not for now. 
 	"evolve" "using" rule_location=URL
 	         "unit" unit=STRING
+;
+
+OptimisationSpec:
+	"optimisation" "provider" algorithmFactory=ALGORITHM_FACTORY
+				"algorithm" algorithmName=ALGORITHM_NAME
+				"evolutions" algorithmEvolutions=INT
+				"population" algorithmPopulation=INT
+;
+
+terminal ALGORITHM_FACTORY returns ecore::EString:
+	('moea'|'ecj')
+;
+
+//One initial algorithm - org.moeaframework.algorithm.StandardAlgorithms
+//These should each require its own properties 
+terminal ALGORITHM_NAME returns ecore::EString:
+	('eMOEA' | 'eNSGAII' | 'NSGAII'| 'NSGAIII' | 'SPEA2')
 ;
 
 terminal URL returns ecore::EString:
@@ -64,10 +68,10 @@ terminal OBJECTIVE_TENDENCY returns ecore::EString:
 	('minimise'|'maximise')
 ;
 
-terminal OBJECTIVE_TYPE returns ecore::EString:
+terminal ENTITY_TYPE returns ecore::EString:
 	('java'|'ocl')
 ;
 
-terminal OBJECTIVE_NAME returns ecore::EString:
+terminal ENTITY_NAME returns ecore::EString:
 	('a'..'z'|'A'..'Z')+
 ;
