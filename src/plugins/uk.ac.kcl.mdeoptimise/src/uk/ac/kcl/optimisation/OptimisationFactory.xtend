@@ -6,8 +6,6 @@ import java.io.InvalidObjectException
 import uk.ac.kcl.optimisation.moea.MoeaOptimisation
 
 class OptimisationFactory implements IOptimisation {
-
-	private MoeaOptimisation moeaOptimisation;
 	
 	override execute(OptimisationSpec optimisationSpec, SolutionGenerator solutionGenerator) {
 		
