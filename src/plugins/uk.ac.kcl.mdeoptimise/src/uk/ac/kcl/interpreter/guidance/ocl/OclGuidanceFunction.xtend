@@ -1,4 +1,4 @@
-package uk.ac.kcl.interpreter.objectives.ocl
+package uk.ac.kcl.interpreter.guidance.ocl
 
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EClassifier
@@ -6,34 +6,41 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.ocl.OCL
 import org.eclipse.ocl.ParserException
 import org.eclipse.ocl.ecore.Constraint
+import org.eclipse.ocl.expressions.OCLExpression
 import org.eclipse.ocl.helper.OCLHelper
-import uk.ac.kcl.interpreter.IFitnessFunction
-import uk.ac.kcl.mdeoptimise.ObjectiveInterpreterSpec
+import uk.ac.kcl.interpreter.IGuidanceFunction
+import uk.ac.kcl.interpreter.guidance.GuidanceFunctionAdapter
 
-class OclFitnessFunction implements IFitnessFunction {
+class OclGuidanceFunction implements IGuidanceFunction {
 	
 	private OCL<?, EClassifier, ?, ?, ?, ?, ?, ?, ?, Constraint, EClass, EObject>  ocl
    	private OCLHelper<EClassifier, ?, ?, Constraint> oclHelper
-   	private ObjectiveInterpreterSpec objectiveInterpreterSpec
+   	private GuidanceFunctionAdapter guidanceFunctionAdapter
+	private String objectiveName;
+	private OCLExpression<EClassifier> oclQueryExpression;
 	
 	new(OCL<?, EClassifier, ?, ?, ?, ?, ?, ?, ?, Constraint, EClass, EObject>  ocl, 
 		OCLHelper<EClassifier, ?, ?, Constraint> oclHelper,
-		ObjectiveInterpreterSpec objectiveInterpreterSpec
+		GuidanceFunctionAdapter guidanceFunctionAdapter
 	){
 		this.ocl = ocl;
 		this.oclHelper = oclHelper;
-		this.objectiveInterpreterSpec = objectiveInterpreterSpec
+		this.guidanceFunctionAdapter = guidanceFunctionAdapter
+		this.objectiveName = guidanceFunctionAdapter.functionName
 	}
+	
 	
 	override computeFitness(EObject model) {
 		
-		var fitness = 0.0
-        
+		var fitness = 0.0 * guidanceFunctionAdapter.numericalTendency
+		
         try {
-        	
-			oclHelper.setContext(model.eClass)
-        	
-        	val oclQueryExpression = oclHelper.createQuery(objectiveInterpreterSpec.getObjectiveSpec);
+ 
+        	if(oclQueryExpression == null){
+        		oclHelper.setContext(model.eClass)
+        		oclQueryExpression = oclHelper.createQuery(guidanceFunctionAdapter.functionSpec)
+        	}
+        	//val oclQueryExpression = ;
         	
         	fitness = getNumericFitnessValue(ocl.evaluate(model, oclQueryExpression))
         	        
@@ -61,5 +68,10 @@ class OclFitnessFunction implements IFitnessFunction {
 		} else if (fitnessValue instanceof Long) {
 			return 1.0d * fitnessValue as Long
 		}
-	}	
+	}
+	
+	override getName() {
+		this.objectiveName
+	}
+	
 }
