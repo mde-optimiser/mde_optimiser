@@ -8,4 +8,5 @@ before_script:
     - cd src/
     - pwd
 script:
+    - mvn clean install -u
     - mvn test
