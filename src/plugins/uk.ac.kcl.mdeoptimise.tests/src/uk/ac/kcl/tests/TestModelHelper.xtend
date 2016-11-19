@@ -10,6 +10,10 @@ class TestModelHelper {
 	ParseHelper<Optimisation> parser = new ParseHelper<Optimisation>()
 	
 	//optimisation helpers
+	def Optimisation getParsedFullValidModel(String model) {
+		return parser.parse(model)
+	}
+	
 	def Optimisation getParsedFullValidModel() {
 		return parser.parse(getFullValidModel())
 	}
