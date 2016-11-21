@@ -247,7 +247,7 @@
 					<configuration>
 						<compilerArgument>-err:-forbidden</compilerArgument>
 					</configuration>
-				</plugin>		
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
@@ -271,6 +271,11 @@
 			<id>orbit</id>
 			<layout>p2</layout>
 			<url>http://download.eclipse.org/tools/orbit/downloads/drops/R20160520211859/repository/</url>
+		</repository>
+		<repository>
+			<id>local-p2</id>
+			<layout>p2</layout>
+			<url>file:../lib/uk.ac.kcl.mdeoptimise.lib/target/repository/</url>
 		</repository>
 	</repositories>
 	<dependencies>

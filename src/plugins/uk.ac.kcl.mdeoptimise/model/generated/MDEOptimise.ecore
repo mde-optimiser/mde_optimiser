@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="mdeoptimise" nsURI="http://www.ac.uk/kcl/MDEOptimise" nsPrefix="mdeoptimise">
+  <eClassifiers xsi:type="ecore:EClass" name="Optimisation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="basepath" eType="#//BasepathSpec"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="metamodel" eType="#//MetaModelSpec"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="objectives" upperBound="-1"
+        eType="#//ObjectiveInterpreterSpec" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" upperBound="-1"
+        eType="#//ConstraintInterpreterSpec" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="evolvers" upperBound="-1"
+        eType="#//EvolverSpec" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="optimisation" eType="#//OptimisationSpec"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BasepathSpec">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MetaModelSpec">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ObjectiveInterpreterSpec">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="objectiveName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="objectiveTendency" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="objectiveType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="objectiveSpec" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConstraintInterpreterSpec">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="constraintName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="constraintType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="constraintSpec" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EvolverSpec">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rule_location" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OptimisationSpec">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="algorithmFactory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="algorithmName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="algorithmEvolutions" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="algorithmPopulation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+</ecore:EPackage>
