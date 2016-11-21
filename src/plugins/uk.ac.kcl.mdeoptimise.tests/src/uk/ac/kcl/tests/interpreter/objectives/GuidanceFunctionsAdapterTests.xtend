@@ -72,4 +72,25 @@ class GuidanceFunctionsAdapterTests {
 		assertEquals(1, adapter.getNumericalTendency, 0.0)
 	}
 	
+	@Test
+	def void assertThatIsObjectiveReturnsTrueForObjective() {
+		val oclObjective = "objective objectiveName maximise ocl { \"Class.allInstances()->size()\""
+		
+		val model = testModelHelper.getParsedFullValidModelWithCustomObjectives(oclObjective)
+		
+		val adapter = new GuidanceFunctionAdapter(model.objectives.get(0))
+		
+		assertTrue("This is an objective function",adapter.isObjectiveFunction)
+	}
+	
+	@Test
+	def void assertThatIsObjectiveReturnsTrueForConstraint() {
+		val oclObjective = "constraint constraintName ocl { \"Class.allInstances()->size()\""
+		
+		val model = testModelHelper.getParsedFullValidModelWithCustomConstraints(oclObjective)
+		
+		val adapter = new GuidanceFunctionAdapter(model.constraints.get(0))
+		
+		assertFalse("This is not a constraint function",adapter.isObjectiveFunction)
+	}
 }

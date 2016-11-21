@@ -71,7 +71,6 @@ class MoeaOptimisationTests {
     //Some tests to run optimisation manually for now
 
 	@Test
-	@Ignore
 	def void runMoeaOptimisationNSGA2() {
 		
 			val pathPrefix = "gen/models/ttc/" + new SimpleDateFormat("yyMMdd-HHmmss").format(new Date())
@@ -81,7 +80,7 @@ class MoeaOptimisationTests {
 				metamodel <architectureCRA.ecore>			
 				objective MinimiseClasslessFeatures minimise java { "models.moea.MinimiseClasslessFeatures" }
 				objective MinimiseCoupling maximise java { "models.moea.MaximiseCRA" }
-				constraint MinimiseClasslessFeatures java { "models.moea.MinimiseClasslessFeatures" }
+				constraint MinimiseClasslessFeatures ocl { "Class.allInstances()->size()" }
 				evolve using <craEvolvers.henshin> unit "createClass"
 				evolve using <craEvolvers.henshin> unit "assignFeature"
 				evolve using <craEvolvers.henshin> unit "moveFeature"
