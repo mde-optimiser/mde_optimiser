@@ -275,7 +275,7 @@
 		<repository>
 			<id>local-p2</id>
 			<layout>p2</layout>
-			<url>file:../lib/uk.ac.kcl.mdeoptimise.lib/target/repository/</url>
+			<url>http://blog.onboot.org/mopt-p2-repo/target/repository/</url>
 		</repository>
 	</repositories>
 	<dependencies>
