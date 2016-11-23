@@ -71,6 +71,7 @@ class MoeaOptimisationTests {
     //Some tests to run optimisation manually for now
 
 	@Test
+	@Ignore
 	def void runMoeaOptimisationNSGA2() {
 		
 			val pathPrefix = "gen/models/ttc/" + new SimpleDateFormat("yyMMdd-HHmmss").format(new Date())
@@ -80,12 +81,12 @@ class MoeaOptimisationTests {
 				metamodel <architectureCRA.ecore>			
 				objective MinimiseClasslessFeatures minimise java { "models.moea.MinimiseClasslessFeatures" }
 				objective MinimiseCoupling maximise java { "models.moea.MaximiseCRA" }
-				constraint MinimiseClasslessFeatures ocl { "Class.allInstances()->size()" }
+				constraint MinimiseClasslessFeatures java { "models.moea.MinimiseClasslessFeatures" }
 				evolve using <craEvolvers.henshin> unit "createClass"
 				evolve using <craEvolvers.henshin> unit "assignFeature"
 				evolve using <craEvolvers.henshin> unit "moveFeature"
 				evolve using <craEvolvers.henshin> unit "deleteEmptyClass"
-				optimisation provider moea algorithm NSGAII evolutions 100000 population 100
+				optimisation provider moea algorithm NSGAII evolutions 10000 population 100
 			''')
 
 			//Assert that there are no grammar issues
@@ -107,7 +108,6 @@ class MoeaOptimisationTests {
 				.forEach[model | oclModelProvider.storeModelAndInfo(model, pathPrefix + "/final", oclModelProvider.modelPaths.head)]
 	}	
 	
-
 	@Test
 	@Ignore
 	def void runMoeaOptimisationSPEA2() {
@@ -124,7 +124,7 @@ class MoeaOptimisationTests {
 				evolve using <craEvolvers.henshin> unit "assignFeature"
 				evolve using <craEvolvers.henshin> unit "moveFeature"
 				evolve using <craEvolvers.henshin> unit "deleteEmptyClass"
-				optimisation provider moea algorithm SPEA2 evolutions 100000 population 100
+				optimisation provider moea algorithm SPEA2 evolutions 10000 population 100
 			''')
 
 			//Assert that there are no grammar issues
@@ -163,7 +163,7 @@ class MoeaOptimisationTests {
 				evolve using <craEvolvers.henshin> unit "assignFeature"
 				evolve using <craEvolvers.henshin> unit "moveFeature"
 				evolve using <craEvolvers.henshin> unit "deleteEmptyClass"
-				optimisation provider moea algorithm eMOEA evolutions 100000 population 100
+				optimisation provider moea algorithm eMOEA evolutions 10000 population 100
 			''')
 
 			//Assert that there are no grammar issues
@@ -179,8 +179,7 @@ class MoeaOptimisationTests {
 											getMetamodel);
 
 			var optimisation = new MoeaOptimisation()
-									.execute(model.optimisation, solutionGenerator)
-			
+									.execute(model.optimisation, solutionGenerator)		
 			optimisation
 				.forEach[model | oclModelProvider.storeModelAndInfo(model, pathPrefix + "/final", oclModelProvider.modelPaths.head)]
 	}
