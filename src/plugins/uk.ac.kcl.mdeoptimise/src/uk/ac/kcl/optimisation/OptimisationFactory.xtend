@@ -8,9 +8,7 @@ import uk.ac.kcl.optimisation.moea.MoeaOptimisation
 class OptimisationFactory implements IOptimisation {
 	
 	override execute(OptimisationSpec optimisationSpec, SolutionGenerator solutionGenerator) {
-		
 		initializeOptimisation(optimisationSpec.algorithmFactory).execute(optimisationSpec, solutionGenerator);
-
 	}
 	
 	def IOptimisation initializeOptimisation(String optimisationFactory) {
