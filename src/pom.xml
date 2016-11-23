@@ -258,11 +258,6 @@
 			<url>http://download.eclipse.org/releases/neon/201610111000/</url>
 		</repository>
 		<repository>
-			<id>henshin</id>
-			<layout>p2</layout>
-			<url>http://download.eclipse.org/modeling/emft/henshin/updates/release/</url>
-		</repository>
-		<repository>
 			<id>ocl</id>
 			<layout>p2</layout>
 			<url>http://download.eclipse.org/modeling/mdt/ocl/updates/releases/6.1.1/</url>
@@ -275,7 +270,7 @@
 		<repository>
 			<id>local-p2</id>
 			<layout>p2</layout>
-			<url>http://blog.onboot.org/mopt-p2-repo/target/repository/</url>
+			<url>file:///home/alxbrd/projects/alxbrd/github/eclipse_lib_repository/target/repository</url>
 		</repository>
 	</repositories>
 	<dependencies>
