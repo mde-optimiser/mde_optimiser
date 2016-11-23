@@ -9,7 +9,6 @@ target
 *.xtendbin
 *.java._trace
 *.java_trace
-src-gen/
 xtend-gen/
 
 # Ignore specific eclipse project files
