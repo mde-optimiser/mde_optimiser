@@ -272,6 +272,11 @@
 			<layout>p2</layout>
 			<url>http://download.eclipse.org/tools/orbit/downloads/drops/R20160520211859/repository/</url>
 		</repository>
+		<repository>
+			<id>local-p2</id>
+			<layout>p2</layout>
+			<url>http://blog.onboot.org/mopt-p2-repo/target/repository/</url>
+		</repository>
 	</repositories>
 	<dependencies>
 	</dependencies>
