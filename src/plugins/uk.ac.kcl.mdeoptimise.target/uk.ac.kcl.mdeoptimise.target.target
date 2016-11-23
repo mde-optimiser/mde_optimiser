@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="uk.ac.kcl.mdeoptimise.target" sequenceNumber="2">
+<?pde version="3.8"?><target name="uk.ac.kcl.mdeoptimise.target" sequenceNumber="12">
 <locations>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
+<unit id="org.eclipse.emf.mwe2.launcher.feature.group" version="0.0.0"/>
+<repository location="http://download.eclipse.org/modeling/emft/mwe/updates/releases/2.8.1/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
 <unit id="org.eclipse.jdt.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.platform.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.pde.feature.group" version="0.0.0"/>
@@ -12,14 +16,23 @@
 <unit id="org.eclipse.xtend.typesystem.emf" version="0.0.0"/>
 <repository location="http://download.eclipse.org/releases/mars/"/>
 </location>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.emf.mwe2.launcher.feature.group" version="0.0.0"/>
-<repository location="http://download.eclipse.org/modeling/emft/mwe/updates/releases/2.8.1/"/>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
+<unit id="org.eclipse.ocl.examples.unified.feature.group" version="4.1.1.v20160808-1615"/>
+<unit id="org.eclipse.ocl.examples.classic.feature.group" version="5.2.1.v20160808-1416"/>
+<unit id="org.eclipse.ocl.master.feature.group" version="6.1.1.v20160808-1615"/>
+<unit id="org.eclipse.ocl.examples.feature.group" version="6.1.1.v20160808-1615"/>
+<repository location="http://download.eclipse.org/modeling/mdt/ocl/updates/releases/6.1.1/"/>
 </location>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
 <unit id="org.eclipse.xtext.sdk.feature.group" version="0.0.0"/>
 <repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.10.0/"/>
 </location>
-<location path="../../../lib/uk.ac.kcl.mdeoptimise.lib/target/repository" type="Directory"/>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
+<unit id="org.moeaframework" version="2.11.0"/>
+<unit id="org.eclipse.emf.henshin.interpreter" version="1.4.0.201606151103"/>
+<unit id="org.mockito.mockito-all" version="1.9.5"/>
+<unit id="org.eclipse.emf.henshin.model" version="1.4.0.201606151103"/>
+<repository location="http://blog.onboot.org/mopt-p2-repo/target/repository/"/>
+</location>
 </locations>
 </target>
