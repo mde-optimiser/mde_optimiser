@@ -16,7 +16,6 @@ class OptimisationFactory implements IOptimisation {
 		switch optimisationFactory {
 			case "moea":
 				return new MoeaOptimisation()
-				
 			default:
 			
 				//TODO perhaps this is not the best exception to use here. Implement our own?
