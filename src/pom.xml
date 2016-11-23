@@ -267,10 +267,12 @@
 			<layout>p2</layout>
 			<url>http://download.eclipse.org/tools/orbit/downloads/drops/R20160520211859/repository/</url>
 		</repository>
+		<!-- This is a temp solution until a better alternative that works with tycho and maven jars
+		is found without having to check in the jars. -->
 		<repository>
 			<id>local-p2</id>
 			<layout>p2</layout>
-			<url>file:///home/alxbrd/projects/alxbrd/github/eclipse_lib_repository/target/repository</url>
+			<url>http://blog.onboot.org/mopt-p2-repo/target/repository/</url>
 		</repository>
 	</repositories>
 	<dependencies>
