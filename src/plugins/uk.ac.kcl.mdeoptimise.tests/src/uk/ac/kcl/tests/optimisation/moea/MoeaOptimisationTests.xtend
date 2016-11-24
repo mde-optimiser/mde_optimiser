@@ -12,14 +12,17 @@ import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.util.ParseHelper
 import org.eclipse.xtext.junit4.validation.ValidationTestHelper
+import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
 import uk.ac.kcl.mdeoptimise.Optimisation
 import uk.ac.kcl.optimisation.SolutionGenerator
 import uk.ac.kcl.optimisation.moea.MoeaOptimisation
 import uk.ac.kcl.tests.FullTestInjector
-import uk.ac.kcl.tests.interpreter.objectives.ocl.OclModelProvider
-import org.junit.Ignore
+import uk.ac.kcl.tests.TestModelHelper
+
+import static org.junit.Assert.*
+import static org.mockito.Mockito.*
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)
@@ -65,7 +68,18 @@ class MoeaOptimisationTests {
     
     @Test
     def void assertThatGetOptimisationPropertiesReturnsTheCorrectValueForCorrectSpec() {
+    
+    	val testModelHelper = new TestModelHelper()
+    	model = testModelHelper.getParsedFullValidModel(testModelHelper.fullValidModel)
     	
+		var solutionGenerator = mock(SolutionGenerator)
+//		properties.put("populationSize", optimisationSpec.algorithmPopulation)
+//		properties.put("maxEvolutions", optimisationSpec.algorithmEvolutions)
+//		properties.put("solutionGenerator", solutionGenerator)
+		var optimisation = new MoeaOptimisation().getOptimisationProperties(model.optimisation)
+		assertEquals(100, optimisation.get("populationSize"))
+		assertEquals(100000, optimisation.get("maxEvolutions"))
+		//verify solutiongenerator instance
     }
     
     //Some tests to run optimisation manually for now
