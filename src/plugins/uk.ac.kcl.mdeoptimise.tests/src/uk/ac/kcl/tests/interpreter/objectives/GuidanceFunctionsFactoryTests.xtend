@@ -36,7 +36,7 @@ class GuidanceFunctionsFactoryTests {
 		val javaObjectiveFunction = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(0)))
 		
 		assertThat("Produced guidance function for a Java objective spec has type of the Java fitness class.", 
-			javaObjectiveFunction, instanceOf(models.java.JavaObjectiveFunction)
+			javaObjectiveFunction, instanceOf(JavaObjectiveFunction)
 		)
 	}
 	
@@ -52,7 +52,7 @@ class GuidanceFunctionsFactoryTests {
 		val oclObjectiveFunction = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(0)))
 		
 		assertThat("Produced objectives factory for ocl objective type is an instance of the OCL fitness class.", 
-			oclObjectiveFunction, instanceOf(uk.ac.kcl.interpreter.guidance.ocl.OclGuidanceFunction)
+			oclObjectiveFunction, instanceOf(OclGuidanceFunction)
 		)
 	}
 	
@@ -120,7 +120,7 @@ class GuidanceFunctionsFactoryTests {
 		val javaConstraintFunction = constraintsFactory.loadFunction(new GuidanceFunctionAdapter(model.getConstraints().get(0)))
 		
 		assertThat("Produced guidance function for a Java constraint spec has type of the Java fitness class",
-			javaConstraintFunction, instanceOf(models.java.JavaObjectiveFunction)
+			javaConstraintFunction, instanceOf(JavaObjectiveFunction)
 		)
 	}
 	
@@ -136,7 +136,7 @@ class GuidanceFunctionsFactoryTests {
 		val oclConstraintFunction = constraintsFactory.loadFunction(new GuidanceFunctionAdapter(model.getConstraints().get(0)))
 		
 		assertThat("Produced guidance function for an Ocl constraint spec has type of the Ocl constraint class",
-			oclConstraintFunction, instanceOf(uk.ac.kcl.interpreter.guidance.ocl.OclGuidanceFunction)
+			oclConstraintFunction, instanceOf(OclGuidanceFunction)
 		)
 	}	
 }
