@@ -8,6 +8,10 @@ git clone -b gh-pages git@github.com:alxbrd/mde_optimiser.git gh-pages
 
 cd gh-pages
 
+pwd
+
+ls -la
+
 mkdir -p downloads/eclipse/repository/
 
 rm -rf downloads/eclipse/repository/*
