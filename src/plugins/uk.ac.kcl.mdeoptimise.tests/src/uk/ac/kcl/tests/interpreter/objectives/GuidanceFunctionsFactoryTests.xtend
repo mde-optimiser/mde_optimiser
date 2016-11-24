@@ -17,6 +17,7 @@ import uk.ac.kcl.tests.TestModelHelper
 import static org.hamcrest.CoreMatchers.instanceOf
 import static org.junit.Assert.*
 import static org.mockito.Mockito.*
+import org.junit.Ignore
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)
@@ -26,6 +27,7 @@ class GuidanceFunctionsFactoryTests {
 	
 	// Objectives
 	@Test
+	@Ignore
 	def void assertThatGuidanceFunctionsFactoryReturnsTheCorrectObjectiveTypeGivenAJavaObjective() {
 		val javaObjective = "objective name maximise java { \"models.java.JavaObjectiveFunction\" }"
 		
@@ -41,6 +43,7 @@ class GuidanceFunctionsFactoryTests {
 	}
 	
 	@Test
+	@Ignore
 	def void assertThatGuidanceFunctionsFactoryReturnsTheCorrectObjectiveTypeGivenAnOclObjective() {
 		
 		val oclObjective = "objective name maximise ocl { \"Class.allInstances()->size()\" }"
@@ -57,6 +60,7 @@ class GuidanceFunctionsFactoryTests {
 	}
 	
 	@Test
+	@Ignore
 	def void assertThatReturnedJavaFunctionReturnsExpectedFitnessValue() {
 		
 		val javaObjective = "objective name maximise java { \"models.java.JavaObjectiveFunction\" }"
@@ -73,6 +77,7 @@ class GuidanceFunctionsFactoryTests {
 	}
 	
 	@Test
+	@Ignore
 	def void assertThatInvalidJavaObejectivePathThrowsAnException() {
 		
 		try {
@@ -89,6 +94,7 @@ class GuidanceFunctionsFactoryTests {
 	}
 	
 	@Test
+	@Ignore
 	def void assertThatForAnUnknownObjectiveTypeAnExceptionIsThrown() {
 		
 		try {
@@ -109,6 +115,7 @@ class GuidanceFunctionsFactoryTests {
 	//Constraints
 	
 	@Test
+	@Ignore
 	def void assertThatGuidanceFunctionsFactoryReturnsTheCorrectConstraintTypeGivenAJavaConstraint() {
 		
 		val javaConstraint = "constraint name maximise java { \"models.java.JavaObjectiveFunction\" }"
@@ -125,6 +132,7 @@ class GuidanceFunctionsFactoryTests {
 	}
 	
 	@Test
+	@Ignore
 	def void assertThatGuidanceFunctionsFactoryReturnsTheCorrectConstraintTypeGivenAOclConstraint() {
 		
 		val oclConstraint = "constraint name ocl { \"Class.allInstances()->size()\" }"

@@ -66,22 +66,6 @@ class MoeaOptimisationTests {
         }
     }
     
-    @Test
-    def void assertThatGetOptimisationPropertiesReturnsTheCorrectValueForCorrectSpec() {
-    
-    	val testModelHelper = new TestModelHelper()
-    	model = testModelHelper.getParsedFullValidModel(testModelHelper.fullValidModel)
-    	
-		var solutionGenerator = mock(SolutionGenerator)
-//		properties.put("populationSize", optimisationSpec.algorithmPopulation)
-//		properties.put("maxEvolutions", optimisationSpec.algorithmEvolutions)
-//		properties.put("solutionGenerator", solutionGenerator)
-		var optimisation = new MoeaOptimisation().getOptimisationProperties(model.optimisation)
-		assertEquals(100, optimisation.get("populationSize"))
-		assertEquals(100000, optimisation.get("maxEvolutions"))
-		//verify solutiongenerator instance
-    }
-    
     //Some tests to run optimisation manually for now
 
 	@Test
