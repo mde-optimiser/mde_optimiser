@@ -20,8 +20,8 @@ mv ../mde_optimiser/src/releng/uk.ac.kcl.mdeoptimise.repository/target/* downloa
 
 git add --all
 
-git config user.name = "Travis CI"
-git config user.email = "alex+git-CIBUILD@onboot.org"
+git config user.name "Travis CI"
+git config user.email "alex+git-CIBUILD@onboot.org"
 
 git commit -m "Updated source"
 
