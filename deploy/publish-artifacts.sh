@@ -23,7 +23,7 @@ git add --all
 git config user.name "Travis CI"
 git config user.email "alex+git-CIBUILD@onboot.org"
 
-git commit -m "Published build id: $TRAVIS_BUILD_ID"
+git commit -m "Published build id: $TRAVIS_BUILD_NUMBER"
 
 git push origin gh-pages
 
