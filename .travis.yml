@@ -29,5 +29,5 @@ script:
     - mvn clean install -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.ignore.validity.dates=true
 
 after_success:
-    - bash ./deploy/publish-artifacts.sh
+    - bash ../deploy/publish-artifacts.sh
 
