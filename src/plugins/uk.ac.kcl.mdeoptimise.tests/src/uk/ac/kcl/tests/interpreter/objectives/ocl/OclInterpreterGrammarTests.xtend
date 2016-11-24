@@ -2,23 +2,19 @@ package uk.ac.kcl.tests.interpreter.objectives.ocl
 
 import javax.inject.Inject
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.emf.ecore.EPackage
-import org.eclipse.emf.henshin.model.resource.HenshinResourceSet
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.xtext.junit4.util.ParseHelper
 import org.eclipse.xtext.junit4.validation.ValidationTestHelper
 import org.junit.Test
 import org.junit.runner.RunWith
-import uk.ac.kcl.mdeoptimise.Optimisation
+import uk.ac.kcl.interpreter.guidance.GuidanceFunctionAdapter
+import uk.ac.kcl.interpreter.guidance.GuidanceFunctionsFactory
 import uk.ac.kcl.tests.FullTestInjector
+import uk.ac.kcl.tests.TestModelHelper
+import uk.ac.kcl.tests.TestModelLoader
 
 import static org.junit.Assert.*
 import static org.mockito.Mockito.*
-import uk.ac.kcl.interpreter.guidance.GuidanceFunctionsFactory
-import uk.ac.kcl.interpreter.guidance.GuidanceFunctionAdapter
-import uk.ac.kcl.tests.TestModelHelper
-import uk.ac.kcl.tests.TestModelLoader
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)
