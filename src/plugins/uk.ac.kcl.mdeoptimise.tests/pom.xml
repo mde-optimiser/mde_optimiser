@@ -21,6 +21,8 @@
 				<artifactId>tycho-surefire-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
+				    <reuseForks>false</reuseForks>	
+        			<forkCount>1</forkCount>
 					<failIfNoTests>true</failIfNoTests>
 					<includes>
             			<include>**/*Tests.java</include>
