@@ -1,79 +1,96 @@
 package uk.ac.kcl.tests.interpreter.objectives
 
-import javax.inject.Inject
-import org.eclipse.xtext.junit4.InjectWith
+import com.google.inject.Inject
 import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.xtext.junit4.util.ParseHelper
-import org.junit.Before
+import org.junit.Test
 import org.junit.runner.RunWith
 import uk.ac.kcl.interpreter.guidance.GuidanceFunctionAdapter
-import uk.ac.kcl.mdeoptimise.Optimisation
-import uk.ac.kcl.tests.FullTestInjector
+import uk.ac.kcl.tests.TestModelHelper
 
 import static org.junit.Assert.*
-import org.junit.Test
+import uk.ac.kcl.tests.FullTestInjector
+import org.eclipse.xtext.junit4.InjectWith
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)
 class GuidanceFunctionsAdapterTests {
 
 	@Inject
-	ParseHelper<Optimisation> parser
-	
-	Optimisation model
-	
+	TestModelHelper testModelHelper
 
-	@Before
-	def void bootstrapParser() {
-		model = parser.parse('''
-			basepath <model/basepath>
-			metamodel <ABC>
-			objective name minimise java { "uk.ac.kcl.tests.interpreter.objectives.JavaObjectiveFunction" }
-			objective name maximise ocl { "Valid.OclString()" }
-			constraint name java { "models.moea.MinimiseClasslessFeatures" }
-			evolve using <ABC> unit "XYZ"
-			evolve using <CDE> unit "LMN"
-			optimisation provider moea algorithm NSGAII evolutions 2000 population 100
-		''')
-	
-	}
-	
 	@Test
 	def void assertThatObjectiveInterpreterSpecIsAdaptedCorrectly() {
+	
+		val oclObjective = "objective objectiveName maximise ocl { \"Class.allInstances()->size()\""
 		
-		var adapter = new GuidanceFunctionAdapter(model.objectives.get(0))
+		val model = testModelHelper.getParsedFullValidModelWithCustomObjectives(oclObjective)
+		
+		val adapter = new GuidanceFunctionAdapter(model.objectives.get(0))
 
-		assertEquals("name", adapter.functionName)
-		assertEquals("minimise", adapter.functionTendency)
-		assertEquals("java", adapter.functionType)
-		assertEquals("uk.ac.kcl.tests.interpreter.objectives.JavaObjectiveFunction", adapter.functionSpec)
+		assertEquals("objectiveName", adapter.functionName)
+		assertEquals("maximise", adapter.functionTendency)
+		assertEquals("ocl", adapter.functionType)
+		assertEquals("Class.allInstances()->size()", adapter.functionSpec)
 	}
 	
 	@Test
 	def void assertThatConstraintInterpreterSpecIsAdapterCorrectly() {
 		
-		var adapter = new GuidanceFunctionAdapter(model.constraints.get(0))
+		val oclConstraint = "constraint constraintName ocl { \"Class.allInstances()->size()\""
+		
+		val model = testModelHelper.getParsedFullValidModelWithCustomConstraints(oclConstraint)
+		
+		val adapter = new GuidanceFunctionAdapter(model.constraints.get(0))
 
-		assertEquals("name", adapter.functionName)
+		assertEquals("constraintName", adapter.functionName)
 		assertEquals(null, adapter.functionTendency)
-		assertEquals("java", adapter.functionType)
-		assertEquals("models.moea.MinimiseClasslessFeatures", adapter.functionSpec)
+		assertEquals("ocl", adapter.functionType)
+		assertEquals("Class.allInstances()->size()", adapter.functionSpec)
 	}
 	
 	@Test
-	def void assertThatNumericalTendencyReturnsCorrectlyForMinimise() {
+	def void assertThatObjectiveAdapterNumericalTendencyReturnsCorrectlyForMinimise() {
 		
-		var adapter = new GuidanceFunctionAdapter(model.objectives.get(0))
+		val oclObjective = "objective objectiveName minimise ocl { \"Class.allInstances()->size()\""
+		
+		val model = testModelHelper.getParsedFullValidModelWithCustomObjectives(oclObjective)
+		
+		val adapter = new GuidanceFunctionAdapter(model.objectives.get(0))
 
 		assertEquals(-1, adapter.getNumericalTendency, 0.0)
 	}
 		
 	@Test
-	def void assertThatNumericalTendencyReturnsCorrectlyForMaximise() {
+	def void assertThatObjectiveAdapterNumericalTendencyReturnsCorrectlyForMaximise() {
 		
-		var adapter = new GuidanceFunctionAdapter(model.objectives.get(1))
+		val oclObjective = "objective objectiveName maximise ocl { \"Class.allInstances()->size()\""
+		
+		val model = testModelHelper.getParsedFullValidModelWithCustomObjectives(oclObjective)
+		
+		val adapter = new GuidanceFunctionAdapter(model.objectives.get(0))
 
 		assertEquals(1, adapter.getNumericalTendency, 0.0)
 	}
 	
+	@Test
+	def void assertThatIsObjectiveReturnsTrueForObjective() {
+		val oclObjective = "objective objectiveName maximise ocl { \"Class.allInstances()->size()\""
+		
+		val model = testModelHelper.getParsedFullValidModelWithCustomObjectives(oclObjective)
+		
+		val adapter = new GuidanceFunctionAdapter(model.objectives.get(0))
+		
+		assertTrue("This is an objective function",adapter.isObjectiveFunction)
+	}
+	
+	@Test
+	def void assertThatIsObjectiveReturnsTrueForConstraint() {
+		val oclObjective = "constraint constraintName ocl { \"Class.allInstances()->size()\""
+		
+		val model = testModelHelper.getParsedFullValidModelWithCustomConstraints(oclObjective)
+		
+		val adapter = new GuidanceFunctionAdapter(model.constraints.get(0))
+		
+		assertFalse("This is not a constraint function",adapter.isObjectiveFunction)
+	}
 }
