@@ -32,7 +32,11 @@ class OclGuidanceFunction implements IGuidanceFunction {
 	
 	override computeFitness(EObject model) {
 		
-		var fitness = 0.0 * guidanceFunctionAdapter.numericalTendency
+		var fitness = 0.0
+		
+		if(guidanceFunctionAdapter.isObjectiveFunction) {
+			fitness *= guidanceFunctionAdapter.numericalTendency
+		}
 		
         try {
  
@@ -40,15 +44,10 @@ class OclGuidanceFunction implements IGuidanceFunction {
         		oclHelper.setContext(model.eClass)
         		oclQueryExpression = oclHelper.createQuery(guidanceFunctionAdapter.functionSpec)
         	}
-        	//val oclQueryExpression = ;
         	
         	fitness = getNumericFitnessValue(ocl.evaluate(model, oclQueryExpression))
         	        
         } catch(ParserException exception){
-        	
-        	//Poor man's logger
-        	//exception.printStackTrace
-        	
         	//TODO logger
         	throw exception
         }

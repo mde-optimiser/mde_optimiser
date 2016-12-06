@@ -10,12 +10,10 @@ import org.moeaframework.core.operator.RandomInitialization
 import org.moeaframework.core.operator.TournamentSelection
 import org.moeaframework.core.spi.AlgorithmProvider
 import uk.ac.kcl.optimisation.SolutionGenerator
+import org.moeaframework.algorithm.EpsilonMOEA
+import org.moeaframework.core.EpsilonBoxDominanceArchive
 
 class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
-	
-	def getAlgorithm(){
-		
-	}
 	
 	override getAlgorithm(String algorithm, Properties properties, Problem problem) {
 		switch algorithm {
@@ -23,6 +21,8 @@ class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
 				return createNSGAII(problem, properties)
 			case "SPEA2":
 				return createSPEA2(problem, properties)
+			case "eMOEA":
+				return createeMOEA(problem, properties)
 			default:
 				throw new Exception("Invalid algorithm given: " + algorithm)
 		}
@@ -36,7 +36,7 @@ class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
 		
 		var variation = new MoeaOptimisationVariation(properties.get("solutionGenerator") as SolutionGenerator)	
 	
-		var algorithm = new NSGAII(
+		new NSGAII(
 				problem,
 				new NondominatedSortingPopulation(),
 				null, // no archive
@@ -44,24 +44,41 @@ class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
 				variation,
 				initialization
 			);
-			println(algorithm.numberOfEvaluations)
-			algorithm
 	}
 	
 	def Algorithm createSPEA2(Problem problem, Properties properties) {
-				//Create an initial random population of population size
+		
 		var initialization = new RandomInitialization(problem, properties.get("populationSize") as Integer)
 		
 		var variation = new MoeaOptimisationVariation(properties.get("solutionGenerator") as SolutionGenerator)	
 	
-		var algorithm = new SPEA2(
+		new SPEA2(
 				problem,
 				initialization,
 				variation,
 				properties.get("populationSize") as Integer,
 				1
 			);
-			algorithm
+	}
+	
+	def Algorithm createeMOEA(Problem problem, Properties properties) {
+		
+		//Create an initial random population of population size
+		var initialization = new RandomInitialization(problem, properties.get("populationSize") as Integer)
+		
+		
+		var selection = new TournamentSelection(2);
+		
+		var variation = new MoeaOptimisationVariation(properties.get("solutionGenerator") as SolutionGenerator)	
+	
+		new EpsilonMOEA(
+				problem,
+				new NondominatedSortingPopulation(),
+				new EpsilonBoxDominanceArchive(0.01),
+				selection, 
+				variation,
+				initialization
+			);
 	}
 	
 }
