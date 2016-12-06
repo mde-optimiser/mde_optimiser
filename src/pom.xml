@@ -236,18 +236,6 @@
 						</lifecycleMappingMetadata>
 					</configuration>
 				</plugin>
-				<plugin>
-					<!--
-						Can be removed after first generator execution
-						https://bugs.eclipse.org/bugs/show_bug.cgi?id=480097
-					-->
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>tycho-compiler-plugin</artifactId>
-					<version>${tycho-version}</version>
-					<configuration>
-						<compilerArgument>-err:-forbidden</compilerArgument>
-					</configuration>
-				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
@@ -258,11 +246,6 @@
 			<url>http://download.eclipse.org/releases/neon/201610111000/</url>
 		</repository>
 		<repository>
-			<id>henshin</id>
-			<layout>p2</layout>
-			<url>http://download.eclipse.org/modeling/emft/henshin/updates/release/</url>
-		</repository>
-		<repository>
 			<id>ocl</id>
 			<layout>p2</layout>
 			<url>http://download.eclipse.org/modeling/mdt/ocl/updates/releases/6.1.1/</url>
@@ -271,6 +254,13 @@
 			<id>orbit</id>
 			<layout>p2</layout>
 			<url>http://download.eclipse.org/tools/orbit/downloads/drops/R20160520211859/repository/</url>
+		</repository>
+		<!-- This is a temp solution until a better alternative that works with tycho and maven jars
+		is found without having to check in the jars. -->
+		<repository>
+			<id>local-p2</id>
+			<layout>p2</layout>
+			<url>http://blog.onboot.org/mopt-p2-repo/target/repository/</url>
 		</repository>
 	</repositories>
 	<dependencies>

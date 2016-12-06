@@ -37,4 +37,10 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.pde.PluginNature</nature>
 	</natures>
+	<variableList>
+		<variable>
+			<name>Local</name>
+			<value>file:/home/alxbrd/projects/alxbrd/github/mde_optimiser_dsl/lib/uk.ac.kcl.mdeoptimise.lib/target/repository/plugins</value>
+		</variable>
+	</variableList>
 </projectDescription>
