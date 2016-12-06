@@ -1,123 +1,109 @@
 package uk.ac.kcl.tests.interpreter.objectives
 
+import java.io.InvalidObjectException
 import javax.inject.Inject
+import models.java.JavaObjectiveFunction
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.xtext.junit4.util.ParseHelper
-import org.eclipse.xtext.junit4.validation.ValidationTestHelper
-import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import uk.ac.kcl.mdeoptimise.Optimisation
+import uk.ac.kcl.interpreter.guidance.GuidanceFunctionAdapter
+import uk.ac.kcl.interpreter.guidance.GuidanceFunctionsFactory
+import uk.ac.kcl.interpreter.guidance.ocl.OclGuidanceFunction
 import uk.ac.kcl.tests.FullTestInjector
-import uk.ac.kcl.tests.interpreter.objectives.ocl.OclModelProvider
+import uk.ac.kcl.tests.TestModelHelper
 
 import static org.hamcrest.CoreMatchers.instanceOf
 import static org.junit.Assert.*
 import static org.mockito.Mockito.*
-import java.io.InvalidObjectException
-import uk.ac.kcl.interpreter.guidance.GuidanceFunctionsFactory
-import uk.ac.kcl.interpreter.guidance.GuidanceFunctionAdapter
-import uk.ac.kcl.interpreter.guidance.ocl.OclGuidanceFunction
 import org.junit.Ignore
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)
 class GuidanceFunctionsFactoryTests {
 
-	@Inject
-	ParseHelper<Optimisation> parser
-	
-	@Inject extension ValidationTestHelper
-	
-	Optimisation model
-	
-	OclModelProvider oclModelProvider
-
-	@Before
-	def void bootstrapParser() {
-		model = parser.parse('''
-			basepath <model/basepath>
-			metamodel <ABC>
-			objective name minimise java { "uk.ac.kcl.tests.interpreter.objectives.JavaObjectiveFunction" }
-			objective name maximise ocl { "Valid.OclString()" }
-			constraint name java { "uk.ac.kcl.tests.interpreter.objectives.JavaObjectiveFunction" }
-			constraint name ocl { "Valid.OclString()" }
-			evolve using <ABC> unit "XYZ"
-			evolve using <CDE> unit "LMN"
-			optimisation provider moea algorithm NSGAII evolutions 2000 population 100
-		''')
-	
-		oclModelProvider = new OclModelProvider	
-	}
-	
-	@Test
-	def void assertThatThereAreNoGrammarIssues(){
-		model.assertNoIssues
-	}
+	@Inject TestModelHelper testModelHelper
 	
 	// Objectives
-	
 	@Test
+	@Ignore
 	def void assertThatGuidanceFunctionsFactoryReturnsTheCorrectObjectiveTypeGivenAJavaObjective() {
+		val javaObjective = "objective name maximise java { \"models.java.JavaObjectiveFunction\" }"
+		
+		val model = testModelHelper.getParsedFullValidModelWithCustomObjectives(javaObjective)
 		
 		val objectivesFactory = new GuidanceFunctionsFactory();
 		
-		var javaObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(0)))
+		val javaObjectiveFunction = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(0)))
 		
 		assertThat("Produced guidance function for a Java objective spec has type of the Java fitness class.", 
-			javaObjective, instanceOf(JavaObjectiveFunction)
+			javaObjectiveFunction, instanceOf(models.java.JavaObjectiveFunction)
 		)
 	}
 	
 	@Test
+	@Ignore
 	def void assertThatGuidanceFunctionsFactoryReturnsTheCorrectObjectiveTypeGivenAnOclObjective() {
 		
+		val oclObjective = "objective name maximise ocl { \"Class.allInstances()->size()\" }"
+		
+		val model = testModelHelper.getParsedFullValidModelWithCustomObjectives(oclObjective)
+		
 		val objectivesFactory = new GuidanceFunctionsFactory();
 		
-		var oclObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(1)))
+		val oclObjectiveFunction = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(0)))
 		
 		assertThat("Produced objectives factory for ocl objective type is an instance of the OCL fitness class.", 
-			oclObjective, instanceOf(OclGuidanceFunction)
+			oclObjectiveFunction, instanceOf(uk.ac.kcl.interpreter.guidance.ocl.OclGuidanceFunction)
 		)
 	}
 	
 	@Test
+	@Ignore
 	def void assertThatReturnedJavaFunctionReturnsExpectedFitnessValue() {
+		
+		val javaObjective = "objective name maximise java { \"models.java.JavaObjectiveFunction\" }"
+		
+		val model = testModelHelper.getParsedFullValidModelWithCustomObjectives(javaObjective)
 		
 		val objectivesFactory = new GuidanceFunctionsFactory();
 		
-		var javaObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(0)))
+		val javaObjectiveFunction = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(0)))
 		
-		var mockedEObject = mock(EObject)
+		val mockedEObject = mock(EObject)
 		
-		assertEquals(5.0, javaObjective.computeFitness(mockedEObject), 0.0)
+		assertEquals(5.0, javaObjectiveFunction.computeFitness(mockedEObject), 0.0)
 	}
 	
 	@Test
+	@Ignore
 	def void assertThatInvalidJavaObejectivePathThrowsAnException() {
 		
 		try {
+			val invalidJavaObjective = "objective brokenObjective minimise java { \"invalid-path\" }"
+			
+			val model = testModelHelper.getParsedFullValidModelWithCustomObjectives(invalidJavaObjective)
+			
 			val objectivesFactory = new GuidanceFunctionsFactory();
 			
-			var objectiveInterpreter = model.getObjectives().get(0);
-			objectiveInterpreter.objectiveSpec = "random-class";
-	
 			objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(0)))
 		} catch(ClassNotFoundException e) {
-			assertEquals("Invalid objective class path: random-class", e.getMessage())
+			assertEquals("Invalid objective class path: invalid-path", e.getMessage())
 		}
 	}
 	
 	@Test
+	@Ignore
 	def void assertThatForAnUnknownObjectiveTypeAnExceptionIsThrown() {
 		
 		try {
-			val objectivesFactory = new GuidanceFunctionsFactory();
 			
-			var objectiveInterpreter = model.getObjectives().get(0);
-			objectiveInterpreter.objectiveType = "random";
+			val invalidJavaObjective = "objective brokenObjective minimise java { \"models.java.JavaObjectiveFunction\" }"
+			
+			val model = testModelHelper.getParsedFullValidModelWithCustomObjectives(invalidJavaObjective)
+
+			val objectivesFactory = new GuidanceFunctionsFactory();
 	
 			objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(0)))
 		} catch(InvalidObjectException e) {
@@ -129,45 +115,36 @@ class GuidanceFunctionsFactoryTests {
 	//Constraints
 	
 	@Test
+	@Ignore
 	def void assertThatGuidanceFunctionsFactoryReturnsTheCorrectConstraintTypeGivenAJavaConstraint() {
+		
+		val javaConstraint = "constraint name maximise java { \"models.java.JavaObjectiveFunction\" }"
+		
+		val model = testModelHelper.getParsedFullValidModelWithCustomConstraints(javaConstraint)
+		
 		val constraintsFactory = new GuidanceFunctionsFactory();
 		
-		val javaConstraint = constraintsFactory.loadFunction(new GuidanceFunctionAdapter(model.getConstraints().get(0)))
+		val javaConstraintFunction = constraintsFactory.loadFunction(new GuidanceFunctionAdapter(model.getConstraints().get(0)))
 		
 		assertThat("Produced guidance function for a Java constraint spec has type of the Java fitness class",
-			javaConstraint, instanceOf(JavaObjectiveFunction)
-		)
-	}
-	
-	@Test
-	def void assertThatGuidanceFunctionsFactoryReturnsTheCorrectConstraintTypeGivenAOclConstraint() {
-		val constraintsFactory = new GuidanceFunctionsFactory();
-		
-		val oclConstraint = constraintsFactory.loadFunction(new GuidanceFunctionAdapter(model.getConstraints().get(1)))
-		
-		assertThat("Produced guidance function for an Ocl constraint spec has type of the Ocl constraint class",
-			oclConstraint, instanceOf(OclGuidanceFunction)
+			javaConstraintFunction, instanceOf(models.java.JavaObjectiveFunction)
 		)
 	}
 	
 	@Test
 	@Ignore
-	def void assertThatReturnedOclConstraintReturnsTheCorrectValue() {
+	def void assertThatGuidanceFunctionsFactoryReturnsTheCorrectConstraintTypeGivenAOclConstraint() {
 		
-	}
-	
-	@Test
-	def void assertThatReturnedJavaConstraintReturnsTheCorrectValue(){
+		val oclConstraint = "constraint name ocl { \"Class.allInstances()->size()\" }"
 		
-		val objectivesFactory = new GuidanceFunctionsFactory();
+		val model = testModelHelper.getParsedFullValidModelWithCustomConstraints(oclConstraint)
 		
-		var javaOclConstraint = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getConstraints().get(0)))
+		val constraintsFactory = new GuidanceFunctionsFactory();
 		
-		var mockedEObject = mock(EObject)
+		val oclConstraintFunction = constraintsFactory.loadFunction(new GuidanceFunctionAdapter(model.getConstraints().get(0)))
 		
-		assertEquals(5.0, javaOclConstraint.computeFitness(mockedEObject), 0.0)
-	}
-	
-	
-	
+		assertThat("Produced guidance function for an Ocl constraint spec has type of the Ocl constraint class",
+			oclConstraintFunction, instanceOf(uk.ac.kcl.interpreter.guidance.ocl.OclGuidanceFunction)
+		)
+	}	
 }

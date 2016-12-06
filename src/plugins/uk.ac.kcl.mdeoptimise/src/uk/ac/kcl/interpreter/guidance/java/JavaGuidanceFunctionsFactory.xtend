@@ -40,6 +40,7 @@ class JavaGuidanceFunctionsFactory implements IGuidanceFunctionsFactory {
 			return function
 			
 		} catch( ClassNotFoundException exception) {
+			exception.printStackTrace
 			//TODO logger
 			throw new ClassNotFoundException("Invalid objective class path: " + guidanceFunctionAdapter.functionSpec);
 		}	

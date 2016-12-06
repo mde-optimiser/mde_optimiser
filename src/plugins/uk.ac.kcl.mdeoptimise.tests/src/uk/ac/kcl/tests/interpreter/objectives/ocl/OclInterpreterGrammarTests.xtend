@@ -2,38 +2,28 @@ package uk.ac.kcl.tests.interpreter.objectives.ocl
 
 import javax.inject.Inject
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.emf.ecore.EPackage
-import org.eclipse.emf.henshin.model.resource.HenshinResourceSet
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.xtext.junit4.util.ParseHelper
 import org.eclipse.xtext.junit4.validation.ValidationTestHelper
 import org.junit.Test
 import org.junit.runner.RunWith
-import uk.ac.kcl.mdeoptimise.Optimisation
+import uk.ac.kcl.interpreter.guidance.GuidanceFunctionAdapter
+import uk.ac.kcl.interpreter.guidance.GuidanceFunctionsFactory
 import uk.ac.kcl.tests.FullTestInjector
+import uk.ac.kcl.tests.TestModelHelper
+import uk.ac.kcl.tests.TestModelLoader
 
 import static org.junit.Assert.*
 import static org.mockito.Mockito.*
-import uk.ac.kcl.interpreter.guidance.GuidanceFunctionsFactory
-import uk.ac.kcl.interpreter.guidance.GuidanceFunctionAdapter
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)
 class OclInterpreterGrammarTests {
 
 	@Inject
-	ParseHelper<Optimisation> parser
+	TestModelHelper testModelHelper
 	
 	@Inject extension ValidationTestHelper
-	
-	Optimisation model
-	
-	OclModelProvider oclModelProvider
-	
-	private HenshinResourceSet henshinResourceSet
-
-    private EPackage theMetamodel
 	
 	def objectiveGrammarBootstrap(String objective) {
 		return '''
@@ -46,37 +36,22 @@ class OclInterpreterGrammarTests {
 		'''
 	}
 	
-	def getResourceSet() {
-        if (henshinResourceSet == null) {
-            henshinResourceSet = new HenshinResourceSet(model.basepath.location)
-        }
-
-        henshinResourceSet
-    }
-
-    def getMetamodel() {
-        if (theMetamodel == null) {
-            theMetamodel = getResourceSet.registerDynamicEPackages(model.metamodel.location).head
-        }
-
-        theMetamodel
-    }
-	
 	@Test
 	def void assertThatEmptyOclStringIsInvalid() {
 		
 		try {
+			
+			val objectiveSpec = "objective name maximise ocl { \"Class.allInstances()->size()\" }"
+			
+			val testModel = testModelHelper.getParsedFullValidModel(objectiveGrammarBootstrap(objectiveSpec))
+			
 			val objectivesFactory = new GuidanceFunctionsFactory();
 			
-			model = parser.parse(objectiveGrammarBootstrap("objective name maximise ocl { \"Class.allInstances()->size()\" }"))
-			
-			var oclObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(0)))
-			
-			var mockedEObject = mock(EObject)
+			val oclObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(testModel.getObjectives().get(0)))
 
-			oclObjective.computeFitness(mockedEObject)	
+			oclObjective.computeFitness(mock(EObject))	
 			
-			model.assertNoIssues
+			testModel.assertNoIssues
 			
 		} catch(Exception e) {
 			assertEquals("The 'no null' constraint is violated", e.getMessage())
@@ -86,16 +61,19 @@ class OclInterpreterGrammarTests {
 	@Test
 	def void assertThatNonEmptyCorrectOclStringIsValidAndReturnsExpectedFitnessValue() {
 			
+			val objectiveSpec = "objective name maximise ocl { \"Class.allInstances()->size()\" }"
+			
+			val testModel = testModelHelper.getParsedFullValidModel(objectiveGrammarBootstrap(objectiveSpec))
+			
 			val objectivesFactory = new GuidanceFunctionsFactory();
 			
-			oclModelProvider = new OclModelProvider
-			model = parser.parse(objectiveGrammarBootstrap("objective name maximise ocl { \"Class.allInstances()->size()\" }"))
+			val oclObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(testModel.getObjectives().get(0)))
+
+			val testModelLoader = new TestModelLoader(testModel);
+
+			val initialModelObject = new OclModelProvider().initialModels(testModelLoader.getMetamodel()).head
 			
-			var oclObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(0)))
-			
-			var initialModelObject = oclModelProvider.initialModels(getMetamodel()).head
-			
-			model.assertNoIssues
+			testModel.assertNoIssues
 			assertEquals(2.0d, oclObjective.computeFitness(initialModelObject), 0.0)
 	}
 	
@@ -103,18 +81,21 @@ class OclInterpreterGrammarTests {
 	def void assertThatASemanticExceptionIsThrownForInvalidOcl(){
 		
 		try {
+
+			val objectiveSpec = "objective name maximise ocl { \"Class.allInstances().size()\" }"
+			val testModel = testModelHelper.getParsedFullValidModel(objectiveGrammarBootstrap(objectiveSpec))
+			
 			val objectivesFactory = new GuidanceFunctionsFactory();
 			
-			oclModelProvider = new OclModelProvider
-			model = parser.parse(objectiveGrammarBootstrap("objective name maximise ocl { \"Class.allInstances().size()\" }"))
+			val oclObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(testModel.getObjectives().get(0)))
 
-			var oclObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(0)))
-			
-			var initialModelObject = oclModelProvider.initialModels(getMetamodel()).head
+			val testModelLoader = new TestModelLoader(testModel);
+
+			var initialModelObject = new OclModelProvider().initialModels(testModelLoader.getMetamodel()).head
 			
 			oclObjective.computeFitness(initialModelObject)
 			
-			model.assertNoIssues
+			testModel.assertNoIssues
 			
 		} catch(Exception exception){
 			assertEquals("Cannot find operation (size()) for the type (Class)", exception.getMessage)
@@ -124,18 +105,18 @@ class OclInterpreterGrammarTests {
 	@Test
 	def void assertThatOclQueriesWorkWithLetExpressions(){
 			
+			val objectiveSpec = "objective name maximise ocl { \"let att : String = 'A2' in "+
+				"Feature.allInstances()->select(f : Feature | f.name = att)->size()\"}"
+			
+			val testModel = testModelHelper.getParsedFullValidModel(objectiveGrammarBootstrap(objectiveSpec))
+			
 			val objectivesFactory = new GuidanceFunctionsFactory();
 			
-			oclModelProvider = new OclModelProvider
-			model = parser.parse(objectiveGrammarBootstrap("objective name maximise ocl { \"let att : String = 'A2' in "+
-				"Feature.allInstances()->select(f : Feature | f.name = att)->size()\"}"
-			))
+			val oclObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(testModel.getObjectives().get(0)))
+
+			val initialModelObject = new OclModelProvider().initialModels(new TestModelLoader(testModel).getMetamodel()).head
 			
-			var oclObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(0)))
-			
-			var initialModelObject = oclModelProvider.initialModels(getMetamodel()).head
-			
-			model.assertNoIssues
+			testModel.assertNoIssues
 			assertEquals(1.0d, oclObjective.computeFitness(initialModelObject), 0.0)
 	}
 	
