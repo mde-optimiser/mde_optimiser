@@ -37,6 +37,10 @@ Workflow {
 			}
 			validator = {
 				// composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
+			}			
+			newProjectWizardForEclipse = {
+				generate = true
+				pluginProject=false
 			}
 		}
 	}
