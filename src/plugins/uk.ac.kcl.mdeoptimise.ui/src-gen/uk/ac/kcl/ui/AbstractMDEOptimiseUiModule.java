@@ -67,6 +67,7 @@ import org.eclipse.xtext.ui.refactoring.ui.IRenameSupport;
 import org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferences;
 import org.eclipse.xtext.ui.resource.ResourceServiceDescriptionLabelProvider;
 import org.eclipse.xtext.ui.shared.Access;
+import org.eclipse.xtext.ui.wizard.IProjectCreator;
 import uk.ac.kcl.ide.contentassist.antlr.MDEOptimiseParser;
 import uk.ac.kcl.ide.contentassist.antlr.PartialMDEOptimiseContentAssistParser;
 import uk.ac.kcl.ide.contentassist.antlr.internal.InternalMDEOptimiseLexer;
@@ -75,6 +76,7 @@ import uk.ac.kcl.ui.labeling.MDEOptimiseDescriptionLabelProvider;
 import uk.ac.kcl.ui.labeling.MDEOptimiseLabelProvider;
 import uk.ac.kcl.ui.outline.MDEOptimiseOutlineTreeProvider;
 import uk.ac.kcl.ui.quickfix.MDEOptimiseQuickfixProvider;
+import uk.ac.kcl.ui.wizard.MDEOptimiseProjectCreator;
 
 /**
  * Manual modifications go to {@link MDEOptimiseUiModule}.
@@ -275,6 +277,11 @@ public abstract class AbstractMDEOptimiseUiModule extends DefaultUiModule {
 	// contributed by org.eclipse.xtext.xtext.generator.ui.compare.CompareFragment2
 	public Class<? extends IViewerCreator> bindIViewerCreator() {
 		return DefaultViewerCreator.class;
+	}
+	
+	// contributed by org.eclipse.xtext.xtext.generator.ui.projectWizard.SimpleProjectWizardFragment2
+	public Class<? extends IProjectCreator> bindIProjectCreator() {
+		return MDEOptimiseProjectCreator.class;
 	}
 	
 }
