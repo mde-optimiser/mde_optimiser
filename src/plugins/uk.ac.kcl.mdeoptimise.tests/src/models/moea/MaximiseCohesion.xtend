@@ -11,7 +11,7 @@ class MaximiseCohesion extends AbstractModelQueryFitnessFunction {
 
 		//println("Calculated CRA : " + (cohesion - coupling))
 
-		cohesion
+		-1 * cohesion
 	}
 
 	def double calculateCohesionRatio(EObject classModel) {

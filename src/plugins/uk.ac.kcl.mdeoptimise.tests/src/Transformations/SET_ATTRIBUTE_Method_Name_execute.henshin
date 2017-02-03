@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ASCII"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_Fnci0NjcEeaHtINOdoXvow" name="SET_ATTRIBUTE_Method_Name" description="Sets Method Name">
+  <imports href="./config/architectureCRA.ecore#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_Fnci0djcEeaHtINOdoXvow" name="setMethodName" description="Sets the EAttribute name">
+    <parameters xmi:id="_Fnci0tjcEeaHtINOdoXvow" name="Selected">
+      <type xsi:type="ecore:EClass" href="./config/architectureCRA.ecore#//Method"/>
+    </parameters>
+    <parameters xmi:id="_Fnci09jcEeaHtINOdoXvow" name="Name">
+      <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </parameters>
+    <lhs xmi:id="_Fnci1NjcEeaHtINOdoXvow" name="Lhs">
+      <nodes xmi:id="_Fnci1djcEeaHtINOdoXvow" name="Selected">
+        <type href="./config/architectureCRA.ecore#//Method"/>
+      </nodes>
+    </lhs>
+    <rhs xmi:id="_Fnci1tjcEeaHtINOdoXvow" name="Rhs">
+      <nodes xmi:id="_Fnci19jcEeaHtINOdoXvow" name="Selected">
+        <type href="./config/architectureCRA.ecore#//Method"/>
+        <attributes xmi:id="_Fnci2NjcEeaHtINOdoXvow" value="Name">
+          <type href="./config/architectureCRA.ecore#//NamedElement/name"/>
+        </attributes>
+      </nodes>
+    </rhs>
+    <mappings xmi:id="_Fnci2djcEeaHtINOdoXvow" origin="_Fnci1djcEeaHtINOdoXvow" image="_Fnci19jcEeaHtINOdoXvow"/>
+  </units>
+  <units xsi:type="henshin:PriorityUnit" xmi:id="_Fnci2tjcEeaHtINOdoXvow" name="mainUnit" subUnits="_Fnci0djcEeaHtINOdoXvow">
+    <parameters xmi:id="_Fnci29jcEeaHtINOdoXvow" name="selectedEObject">
+      <type xsi:type="ecore:EClass" href="./config/architectureCRA.ecore#//Method"/>
+    </parameters>
+    <parameterMappings xmi:id="_Fnci3NjcEeaHtINOdoXvow" source="_Fnci29jcEeaHtINOdoXvow" target="_Fnci0tjcEeaHtINOdoXvow"/>
+  </units>
+</henshin:Module>

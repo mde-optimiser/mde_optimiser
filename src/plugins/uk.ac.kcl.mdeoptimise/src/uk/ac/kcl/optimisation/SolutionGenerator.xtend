@@ -19,6 +19,7 @@ import org.eclipse.emf.henshin.interpreter.Engine
 import org.eclipse.emf.henshin.model.Rule
 import org.eclipse.emf.henshin.interpreter.Match
 import org.eclipse.emf.henshin.interpreter.impl.RuleApplicationImpl
+import java.io.File
 
 class SolutionGenerator {
 	
@@ -55,6 +56,24 @@ class SolutionGenerator {
     def Iterator<EObject> getInitialSolutions() {
         initialModelProvider.initialModels(theMetamodel)
     }
+	
+	
+	def ArrayList<String> listFilesForFolder( File folder, ArrayList<String> files) {
+		
+		
+	    for ( File fileEntry : folder.listFiles()) {
+	        if (fileEntry.isDirectory()) {
+	            listFilesForFolder(fileEntry, files);
+	        } else {
+	        	if(fileEntry.getName().endsWith("henshin")){
+	        	files.add(fileEntry.getName());	
+	        	}
+	            
+	        }
+	    }
+	    
+	    return files
+	}
 
 
     /**
@@ -68,8 +87,14 @@ class SolutionGenerator {
 		if (henshinEvolvers == null) {
 			val hrs = henshinResourceSet
 			// Explicitly creating a list here to make sure the map is only invoked once not every time we try and evolve a model
-			henshinEvolvers = new ArrayList(optimisationModel.evolvers.map [ e |
-				hrs.getModule(URI.createURI(e.rule_location), false).getUnit(e.unit)
+		//	henshinEvolvers = new ArrayList(optimisationModel.evolvers.map [ e |
+		//		hrs.getModule(URI.createURI(e.rule_location), false).getUnit(e.unit)
+		//	])
+			
+			var files = new ArrayList<String>();
+			
+			henshinEvolvers = new ArrayList(listFilesForFolder(new File("src/models/cra/rules/"), files).map[
+				e | hrs.getModule(URI.createURI(e), false).units.get(0);
 			])
 		}
 
@@ -86,6 +111,8 @@ class SolutionGenerator {
 		if (!matches.empty) {
 			// Randomly pick one match
 			val matchToUse = matches.get(new Random().nextInt(matches.size))
+
+			//println("Using evolver : " + matchToUse.key)
 
 			// Apply the match
 			val runner = new RuleApplicationImpl(engine)

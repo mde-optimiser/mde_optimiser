@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_FoSQUNjcEeaHtINOdoXvow" name="CREATE_Method_IN_ClassModel_(features)" description="Creates one Method in ClassModel">
+  <imports href="config/architectureCRA.ecore#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_FoSQUdjcEeaHtINOdoXvow" name="createMethod_IN_ClassModel" description="creates one Method in the context: ClassModel">
+    <parameters xmi:id="_FoSQUtjcEeaHtINOdoXvow" name="Selected">
+      <type xsi:type="ecore:EClass" href="config/architectureCRA.ecore#//ClassModel"/>
+    </parameters>
+    <parameters xmi:id="_FoSQU9jcEeaHtINOdoXvow" name="New">
+      <type xsi:type="ecore:EClass" href="config/architectureCRA.ecore#//Method"/>
+    </parameters>
+    <parameters xmi:id="_FoSQVNjcEeaHtINOdoXvow" name="Name">
+      <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </parameters>
+    <lhs xmi:id="_FoSQVdjcEeaHtINOdoXvow" name="Lhs">
+      <nodes xmi:id="_FoSQVtjcEeaHtINOdoXvow" name="Selected">
+        <type href="config/architectureCRA.ecore#//ClassModel"/>
+      </nodes>
+    </lhs>
+    <rhs xmi:id="_FoSQV9jcEeaHtINOdoXvow" name="Rhs">
+      <nodes xmi:id="_FoSQWNjcEeaHtINOdoXvow" name="Selected" outgoing="_FoSQW9jcEeaHtINOdoXvow">
+        <type href="config/architectureCRA.ecore#//ClassModel"/>
+      </nodes>
+      <nodes xmi:id="_FoSQWdjcEeaHtINOdoXvow" name="New" incoming="_FoSQW9jcEeaHtINOdoXvow">
+        <type href="config/architectureCRA.ecore#//Method"/>
+        <attributes xmi:id="_FoSQWtjcEeaHtINOdoXvow" value="Name">
+          <type href="config/architectureCRA.ecore#//NamedElement/name"/>
+        </attributes>
+      </nodes>
+      <edges xmi:id="_FoSQW9jcEeaHtINOdoXvow" source="_FoSQWNjcEeaHtINOdoXvow" target="_FoSQWdjcEeaHtINOdoXvow">
+        <type href="config/architectureCRA.ecore#//ClassModel/features"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_FoSQXNjcEeaHtINOdoXvow" origin="_FoSQVtjcEeaHtINOdoXvow" image="_FoSQWNjcEeaHtINOdoXvow"/>
+  </units>
+  <units xsi:type="henshin:PriorityUnit" xmi:id="_FoSQXdjcEeaHtINOdoXvow" name="mainUnit" subUnits="_FoSQUdjcEeaHtINOdoXvow">
+    <parameters xmi:id="_FoSQXtjcEeaHtINOdoXvow" name="selectedEObject">
+      <type xsi:type="ecore:EClass" href="config/architectureCRA.ecore#//ClassModel"/>
+    </parameters>
+    <parameters xmi:id="_FoSQX9jcEeaHtINOdoXvow" name="New">
+      <type xsi:type="ecore:EClass" href="config/architectureCRA.ecore#//Method"/>
+    </parameters>
+    <parameters xmi:id="_FoSQYNjcEeaHtINOdoXvow" name="Name">
+      <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </parameters>
+    <parameterMappings xmi:id="_FoSQYdjcEeaHtINOdoXvow" source="_FoSQXtjcEeaHtINOdoXvow" target="_FoSQUtjcEeaHtINOdoXvow"/>
+    <parameterMappings xmi:id="_FoSQYtjcEeaHtINOdoXvow" source="_FoSQU9jcEeaHtINOdoXvow" target="_FoSQX9jcEeaHtINOdoXvow"/>
+    <parameterMappings xmi:id="_FoSQY9jcEeaHtINOdoXvow" source="_FoSQYNjcEeaHtINOdoXvow" target="_FoSQVNjcEeaHtINOdoXvow"/>
+  </units>
+</henshin:Module>
