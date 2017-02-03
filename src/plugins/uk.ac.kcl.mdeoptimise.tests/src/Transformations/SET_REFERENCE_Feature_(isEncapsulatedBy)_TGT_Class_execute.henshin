@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ASCII"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_Fn3ZkNjcEeaHtINOdoXvow" name="SET_REFERENCE_Feature_(isEncapsulatedBy)_TGT_Class" description="Sets Feature's reference isEncapsulatedBy the target Class">
+  <imports href="./config/architectureCRA.ecore#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_Fn3ZkdjcEeaHtINOdoXvow" name="setFeature_isEncapsulatedBy_TO_Class" description="SetFeatureRefisEncapsulatedByToClass">
+    <parameters xmi:id="_Fn3ZktjcEeaHtINOdoXvow" name="Selected">
+      <type xsi:type="ecore:EClass" href="./config/architectureCRA.ecore#//Feature"/>
+    </parameters>
+    <parameters xmi:id="_Fn3Zk9jcEeaHtINOdoXvow" name="NewTarget">
+      <type xsi:type="ecore:EClass" href="./config/architectureCRA.ecore#//Class"/>
+    </parameters>
+    <lhs xmi:id="_Fn3ZlNjcEeaHtINOdoXvow" name="Lhs">
+      <nodes xmi:id="_Fn3ZldjcEeaHtINOdoXvow" name="Selected">
+        <type href="./config/architectureCRA.ecore#//Feature"/>
+      </nodes>
+      <nodes xmi:id="_Fn3ZltjcEeaHtINOdoXvow" name="NewTarget">
+        <type href="./config/architectureCRA.ecore#//Class"/>
+      </nodes>
+      <formula xsi:type="henshin:Not" xmi:id="_Fn3Zl9jcEeaHtINOdoXvow">
+        <child xsi:type="henshin:NestedCondition" xmi:id="_Fn3ZmNjcEeaHtINOdoXvow">
+          <conclusion xmi:id="_Fn3ZmdjcEeaHtINOdoXvow" name="ub0">
+            <nodes xmi:id="_Fn3ZmtjcEeaHtINOdoXvow" outgoing="_Fn3ZnNjcEeaHtINOdoXvow">
+              <type href="./config/architectureCRA.ecore#//Feature"/>
+            </nodes>
+            <nodes xmi:id="_Fn3Zm9jcEeaHtINOdoXvow" incoming="_Fn3ZnNjcEeaHtINOdoXvow">
+              <type href="./config/architectureCRA.ecore#//Class"/>
+            </nodes>
+            <edges xmi:id="_Fn3ZnNjcEeaHtINOdoXvow" source="_Fn3ZmtjcEeaHtINOdoXvow" target="_Fn3Zm9jcEeaHtINOdoXvow">
+              <type href="./config/architectureCRA.ecore#//Feature/isEncapsulatedBy"/>
+            </edges>
+          </conclusion>
+          <mappings xmi:id="_Fn3ZndjcEeaHtINOdoXvow" origin="_Fn3ZldjcEeaHtINOdoXvow" image="_Fn3ZmtjcEeaHtINOdoXvow"/>
+        </child>
+      </formula>
+    </lhs>
+    <rhs xmi:id="_Fn3ZntjcEeaHtINOdoXvow" name="Rhs">
+      <nodes xmi:id="_Fn3Zn9jcEeaHtINOdoXvow" name="Selected" incoming="_Fn3ZotjcEeaHtINOdoXvow" outgoing="_Fn3ZodjcEeaHtINOdoXvow">
+        <type href="./config/architectureCRA.ecore#//Feature"/>
+      </nodes>
+      <nodes xmi:id="_Fn3ZoNjcEeaHtINOdoXvow" name="NewTarget" incoming="_Fn3ZodjcEeaHtINOdoXvow" outgoing="_Fn3ZotjcEeaHtINOdoXvow">
+        <type href="./config/architectureCRA.ecore#//Class"/>
+      </nodes>
+      <edges xmi:id="_Fn3ZodjcEeaHtINOdoXvow" source="_Fn3Zn9jcEeaHtINOdoXvow" target="_Fn3ZoNjcEeaHtINOdoXvow">
+        <type href="./config/architectureCRA.ecore#//Feature/isEncapsulatedBy"/>
+      </edges>
+      <edges xmi:id="_Fn3ZotjcEeaHtINOdoXvow" source="_Fn3ZoNjcEeaHtINOdoXvow" target="_Fn3Zn9jcEeaHtINOdoXvow">
+        <type href="./config/architectureCRA.ecore#//Class/encapsulates"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_Fn3Zo9jcEeaHtINOdoXvow" origin="_Fn3ZldjcEeaHtINOdoXvow" image="_Fn3Zn9jcEeaHtINOdoXvow"/>
+    <mappings xmi:id="_Fn3ZpNjcEeaHtINOdoXvow" origin="_Fn3ZltjcEeaHtINOdoXvow" image="_Fn3ZoNjcEeaHtINOdoXvow"/>
+  </units>
+  <units xsi:type="henshin:PriorityUnit" xmi:id="_Fn3ZpdjcEeaHtINOdoXvow" name="mainUnit" subUnits="_Fn3ZkdjcEeaHtINOdoXvow">
+    <parameters xmi:id="_Fn3ZptjcEeaHtINOdoXvow" name="selectedEObject">
+      <type xsi:type="ecore:EClass" href="./config/architectureCRA.ecore#//Feature"/>
+    </parameters>
+    <parameters xmi:id="_Fn3Zp9jcEeaHtINOdoXvow" name="NewTarget">
+      <type xsi:type="ecore:EClass" href="./config/architectureCRA.ecore#//Class"/>
+    </parameters>
+    <parameterMappings xmi:id="_Fn3ZqNjcEeaHtINOdoXvow" source="_Fn3ZptjcEeaHtINOdoXvow" target="_Fn3ZktjcEeaHtINOdoXvow"/>
+    <parameterMappings xmi:id="_Fn3ZqdjcEeaHtINOdoXvow" source="_Fn3Zp9jcEeaHtINOdoXvow" target="_Fn3Zk9jcEeaHtINOdoXvow"/>
+  </units>
+</henshin:Module>

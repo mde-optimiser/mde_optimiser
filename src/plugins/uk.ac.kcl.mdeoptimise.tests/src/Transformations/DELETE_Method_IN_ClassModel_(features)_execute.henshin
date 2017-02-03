@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ASCII"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_FoGqINjcEeaHtINOdoXvow" name="DELETE_Method_IN_ClassModel_(features)" description="Deletes one Method in ClassModel">
+  <imports href="./config/architectureCRA.ecore#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_FoGqIdjcEeaHtINOdoXvow" name="deleteMethod_IN_ClassModel" description="deletes one Method in the context: ClassModel">
+    <parameters xmi:id="_FoGqItjcEeaHtINOdoXvow" name="Selected">
+      <type xsi:type="ecore:EClass" href="./config/architectureCRA.ecore#//ClassModel"/>
+    </parameters>
+    <parameters xmi:id="_FoGqI9jcEeaHtINOdoXvow" name="ToBeDeleted">
+      <type xsi:type="ecore:EClass" href="./config/architectureCRA.ecore#//Method"/>
+    </parameters>
+    <lhs xmi:id="_FoGqJNjcEeaHtINOdoXvow" name="LHS">
+      <nodes xmi:id="_FoGqJdjcEeaHtINOdoXvow" name="Selected" outgoing="_FoGqJ9jcEeaHtINOdoXvow">
+        <type href="./config/architectureCRA.ecore#//ClassModel"/>
+      </nodes>
+      <nodes xmi:id="_FoGqJtjcEeaHtINOdoXvow" name="ToBeDeleted" incoming="_FoGqJ9jcEeaHtINOdoXvow">
+        <type href="./config/architectureCRA.ecore#//Method"/>
+      </nodes>
+      <edges xmi:id="_FoGqJ9jcEeaHtINOdoXvow" source="_FoGqJdjcEeaHtINOdoXvow" target="_FoGqJtjcEeaHtINOdoXvow">
+        <type href="./config/architectureCRA.ecore#//ClassModel/features"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_FoGqKNjcEeaHtINOdoXvow" name="RHS">
+      <nodes xmi:id="_FoGqKdjcEeaHtINOdoXvow" name="Selected">
+        <type href="./config/architectureCRA.ecore#//ClassModel"/>
+      </nodes>
+    </rhs>
+    <mappings xmi:id="_FoGqKtjcEeaHtINOdoXvow" origin="_FoGqJdjcEeaHtINOdoXvow" image="_FoGqKdjcEeaHtINOdoXvow"/>
+  </units>
+  <units xsi:type="henshin:PriorityUnit" xmi:id="_FoGqK9jcEeaHtINOdoXvow" name="mainUnit" subUnits="_FoGqIdjcEeaHtINOdoXvow">
+    <parameters xmi:id="_FoGqLNjcEeaHtINOdoXvow" name="selectedEObject">
+      <type xsi:type="ecore:EClass" href="./config/architectureCRA.ecore#//ClassModel"/>
+    </parameters>
+    <parameters xmi:id="_FoGqLdjcEeaHtINOdoXvow" name="ToBeDeleted">
+      <type xsi:type="ecore:EClass" href="./config/architectureCRA.ecore#//Method"/>
+    </parameters>
+    <parameterMappings xmi:id="_FoGqLtjcEeaHtINOdoXvow" source="_FoGqLNjcEeaHtINOdoXvow" target="_FoGqItjcEeaHtINOdoXvow"/>
+    <parameterMappings xmi:id="_FoGqL9jcEeaHtINOdoXvow" source="_FoGqLdjcEeaHtINOdoXvow" target="_FoGqI9jcEeaHtINOdoXvow"/>
+  </units>
+</henshin:Module>

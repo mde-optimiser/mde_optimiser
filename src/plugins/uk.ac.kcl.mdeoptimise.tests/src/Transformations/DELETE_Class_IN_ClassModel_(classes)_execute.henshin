@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ASCII"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_Fn85INjcEeaHtINOdoXvow" name="DELETE_Class_IN_ClassModel_(classes)" description="Deletes one Class in ClassModel">
+  <imports href="./config/architectureCRA.ecore#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_Fn85IdjcEeaHtINOdoXvow" name="deleteClass_IN_ClassModel" description="deletes one Class in the context: ClassModel">
+    <parameters xmi:id="_Fn85ItjcEeaHtINOdoXvow" name="Selected">
+      <type xsi:type="ecore:EClass" href="./config/architectureCRA.ecore#//ClassModel"/>
+    </parameters>
+    <parameters xmi:id="_Fn85I9jcEeaHtINOdoXvow" name="ToBeDeleted">
+      <type xsi:type="ecore:EClass" href="./config/architectureCRA.ecore#//Class"/>
+    </parameters>
+    <parameters xmi:id="_Fn85JNjcEeaHtINOdoXvow" name="Existing">
+      <type xsi:type="ecore:EClass" href="./config/architectureCRA.ecore#//Feature"/>
+    </parameters>
+    <lhs xmi:id="_Fn85JdjcEeaHtINOdoXvow" name="LHS">
+      <nodes xmi:id="_Fn85JtjcEeaHtINOdoXvow" name="Selected" outgoing="_Fn85KdjcEeaHtINOdoXvow">
+        <type href="./config/architectureCRA.ecore#//ClassModel"/>
+      </nodes>
+      <nodes xmi:id="_Fn85J9jcEeaHtINOdoXvow" name="ToBeDeleted" incoming="_Fn85KdjcEeaHtINOdoXvow _Fn85K9jcEeaHtINOdoXvow" outgoing="_Fn85KtjcEeaHtINOdoXvow">
+        <type href="./config/architectureCRA.ecore#//Class"/>
+      </nodes>
+      <nodes xmi:id="_Fn85KNjcEeaHtINOdoXvow" name="Existing" incoming="_Fn85KtjcEeaHtINOdoXvow" outgoing="_Fn85K9jcEeaHtINOdoXvow">
+        <type href="./config/architectureCRA.ecore#//Feature"/>
+      </nodes>
+      <edges xmi:id="_Fn85KdjcEeaHtINOdoXvow" source="_Fn85JtjcEeaHtINOdoXvow" target="_Fn85J9jcEeaHtINOdoXvow">
+        <type href="./config/architectureCRA.ecore#//ClassModel/classes"/>
+      </edges>
+      <edges xmi:id="_Fn85KtjcEeaHtINOdoXvow" source="_Fn85J9jcEeaHtINOdoXvow" target="_Fn85KNjcEeaHtINOdoXvow">
+        <type href="./config/architectureCRA.ecore#//Class/encapsulates"/>
+      </edges>
+      <edges xmi:id="_Fn85K9jcEeaHtINOdoXvow" source="_Fn85KNjcEeaHtINOdoXvow" target="_Fn85J9jcEeaHtINOdoXvow">
+        <type href="./config/architectureCRA.ecore#//Feature/isEncapsulatedBy"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_Fn85LNjcEeaHtINOdoXvow" name="RHS">
+      <nodes xmi:id="_Fn85LdjcEeaHtINOdoXvow" name="Selected">
+        <type href="./config/architectureCRA.ecore#//ClassModel"/>
+      </nodes>
+      <nodes xmi:id="_Fn85LtjcEeaHtINOdoXvow" name="Existing">
+        <type href="./config/architectureCRA.ecore#//Feature"/>
+      </nodes>
+    </rhs>
+    <mappings xmi:id="_Fn85L9jcEeaHtINOdoXvow" origin="_Fn85JtjcEeaHtINOdoXvow" image="_Fn85LdjcEeaHtINOdoXvow"/>
+    <mappings xmi:id="_Fn85MNjcEeaHtINOdoXvow" origin="_Fn85KNjcEeaHtINOdoXvow" image="_Fn85LtjcEeaHtINOdoXvow"/>
+  </units>
+  <units xsi:type="henshin:PriorityUnit" xmi:id="_Fn85MdjcEeaHtINOdoXvow" name="mainUnit" subUnits="_Fn85IdjcEeaHtINOdoXvow">
+    <parameters xmi:id="_Fn85MtjcEeaHtINOdoXvow" name="selectedEObject">
+      <type xsi:type="ecore:EClass" href="./config/architectureCRA.ecore#//ClassModel"/>
+    </parameters>
+    <parameters xmi:id="_Fn85M9jcEeaHtINOdoXvow" name="ToBeDeleted">
+      <type xsi:type="ecore:EClass" href="./config/architectureCRA.ecore#//Class"/>
+    </parameters>
+    <parameters xmi:id="_Fn85NNjcEeaHtINOdoXvow" name="Existing">
+      <type xsi:type="ecore:EClass" href="./config/architectureCRA.ecore#//Feature"/>
+    </parameters>
+    <parameterMappings xmi:id="_Fn85NdjcEeaHtINOdoXvow" source="_Fn85MtjcEeaHtINOdoXvow" target="_Fn85ItjcEeaHtINOdoXvow"/>
+    <parameterMappings xmi:id="_Fn85NtjcEeaHtINOdoXvow" source="_Fn85M9jcEeaHtINOdoXvow" target="_Fn85I9jcEeaHtINOdoXvow"/>
+    <parameterMappings xmi:id="_Fn85N9jcEeaHtINOdoXvow" source="_Fn85NNjcEeaHtINOdoXvow" target="_Fn85JNjcEeaHtINOdoXvow"/>
+  </units>
+</henshin:Module>

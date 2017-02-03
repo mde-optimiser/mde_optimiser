@@ -25,7 +25,7 @@ class MoeaOptimisationVariation implements Variation {
 	}
 	
 	override getArity() {
-		return 10;
+		return 1;
 	}
 	
 }

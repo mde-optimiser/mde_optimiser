@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ASCII"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_fGDX8OaBEeaTypmpKqhqYQ" name="DELETE_Class_IN_ClassModel_(classes)" description="Deletes one Class in ClassModel">
+  <imports href="./config/architectureCRA.ecore#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_fGD_AOaBEeaTypmpKqhqYQ" name="deleteClass_IN_ClassModel" description="deletes one Class in the context: ClassModel">
+    <parameters xmi:id="_fGD_AeaBEeaTypmpKqhqYQ" name="Selected">
+      <type xsi:type="ecore:EClass" href="./config/architectureCRA.ecore#//ClassModel"/>
+    </parameters>
+    <parameters xmi:id="_fGD_AuaBEeaTypmpKqhqYQ" name="ToBeDeleted">
+      <type xsi:type="ecore:EClass" href="./config/architectureCRA.ecore#//Class"/>
+    </parameters>
+    <parameters xmi:id="_fGD_A-aBEeaTypmpKqhqYQ" name="Existing">
+      <type xsi:type="ecore:EClass" href="./config/architectureCRA.ecore#//Feature"/>
+    </parameters>
+    <lhs xmi:id="_fGD_BOaBEeaTypmpKqhqYQ" name="LHS">
+      <nodes xmi:id="_fGD_BeaBEeaTypmpKqhqYQ" name="Selected" outgoing="_fGD_COaBEeaTypmpKqhqYQ">
+        <type href="./config/architectureCRA.ecore#//ClassModel"/>
+      </nodes>
+      <nodes xmi:id="_fGD_BuaBEeaTypmpKqhqYQ" name="ToBeDeleted" incoming="_fGD_COaBEeaTypmpKqhqYQ _fGD_CuaBEeaTypmpKqhqYQ" outgoing="_fGD_CeaBEeaTypmpKqhqYQ">
+        <type href="./config/architectureCRA.ecore#//Class"/>
+      </nodes>
+      <nodes xmi:id="_fGD_B-aBEeaTypmpKqhqYQ" name="Existing" incoming="_fGD_CeaBEeaTypmpKqhqYQ" outgoing="_fGD_CuaBEeaTypmpKqhqYQ">
+        <type href="./config/architectureCRA.ecore#//Feature"/>
+      </nodes>
+      <edges xmi:id="_fGD_COaBEeaTypmpKqhqYQ" source="_fGD_BeaBEeaTypmpKqhqYQ" target="_fGD_BuaBEeaTypmpKqhqYQ">
+        <type href="./config/architectureCRA.ecore#//ClassModel/classes"/>
+      </edges>
+      <edges xmi:id="_fGD_CeaBEeaTypmpKqhqYQ" source="_fGD_BuaBEeaTypmpKqhqYQ" target="_fGD_B-aBEeaTypmpKqhqYQ">
+        <type href="./config/architectureCRA.ecore#//Class/encapsulates"/>
+      </edges>
+      <edges xmi:id="_fGD_CuaBEeaTypmpKqhqYQ" source="_fGD_B-aBEeaTypmpKqhqYQ" target="_fGD_BuaBEeaTypmpKqhqYQ">
+        <type href="./config/architectureCRA.ecore#//Feature/isEncapsulatedBy"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_fGD_C-aBEeaTypmpKqhqYQ" name="RHS">
+      <nodes xmi:id="_fGD_DOaBEeaTypmpKqhqYQ" name="Selected">
+        <type href="./config/architectureCRA.ecore#//ClassModel"/>
+      </nodes>
+      <nodes xmi:id="_fGD_DeaBEeaTypmpKqhqYQ" name="Existing">
+        <type href="./config/architectureCRA.ecore#//Feature"/>
+      </nodes>
+    </rhs>
+    <mappings xmi:id="_fGD_DuaBEeaTypmpKqhqYQ" origin="_fGD_BeaBEeaTypmpKqhqYQ" image="_fGD_DOaBEeaTypmpKqhqYQ"/>
+    <mappings xmi:id="_fGD_D-aBEeaTypmpKqhqYQ" origin="_fGD_B-aBEeaTypmpKqhqYQ" image="_fGD_DeaBEeaTypmpKqhqYQ"/>
+  </units>
+  <units xsi:type="henshin:PriorityUnit" xmi:id="_fGD_EOaBEeaTypmpKqhqYQ" name="mainUnit" subUnits="_fGD_AOaBEeaTypmpKqhqYQ">
+    <parameters xmi:id="_fGD_EeaBEeaTypmpKqhqYQ" name="selectedEObject">
+      <type xsi:type="ecore:EClass" href="./config/architectureCRA.ecore#//ClassModel"/>
+    </parameters>
+    <parameters xmi:id="_fGD_EuaBEeaTypmpKqhqYQ" name="ToBeDeleted">
+      <type xsi:type="ecore:EClass" href="./config/architectureCRA.ecore#//Class"/>
+    </parameters>
+    <parameters xmi:id="_fGD_E-aBEeaTypmpKqhqYQ" name="Existing">
+      <type xsi:type="ecore:EClass" href="./config/architectureCRA.ecore#//Feature"/>
+    </parameters>
+    <parameterMappings xmi:id="_fGD_FOaBEeaTypmpKqhqYQ" source="_fGD_EeaBEeaTypmpKqhqYQ" target="_fGD_AeaBEeaTypmpKqhqYQ"/>
+    <parameterMappings xmi:id="_fGD_FeaBEeaTypmpKqhqYQ" source="_fGD_EuaBEeaTypmpKqhqYQ" target="_fGD_AuaBEeaTypmpKqhqYQ"/>
+    <parameterMappings xmi:id="_fGD_FuaBEeaTypmpKqhqYQ" source="_fGD_E-aBEeaTypmpKqhqYQ" target="_fGD_A-aBEeaTypmpKqhqYQ"/>
+  </units>
+</henshin:Module>

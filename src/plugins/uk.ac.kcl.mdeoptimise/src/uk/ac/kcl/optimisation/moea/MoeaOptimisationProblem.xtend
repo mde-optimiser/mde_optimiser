@@ -7,6 +7,7 @@ import uk.ac.kcl.optimisation.SolutionGenerator
 import uk.ac.kcl.interpreter.guidance.GuidanceFunctionsFactory
 import uk.ac.kcl.interpreter.guidance.GuidanceFunctionAdapter
 import uk.ac.kcl.interpreter.IGuidanceFunction
+import java.util.Random
 
 class MoeaOptimisationProblem extends AbstractProblem {
 	
