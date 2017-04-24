@@ -20,6 +20,8 @@ import org.eclipse.emf.henshin.model.Rule
 import org.eclipse.emf.henshin.interpreter.Match
 import org.eclipse.emf.henshin.interpreter.impl.RuleApplicationImpl
 import java.io.File
+import java.io.PrintStream
+import org.eclipse.emf.henshin.interpreter.impl.ChangeImpl
 
 class SolutionGenerator {
 	
@@ -87,17 +89,19 @@ class SolutionGenerator {
 		if (henshinEvolvers == null) {
 			val hrs = henshinResourceSet
 			// Explicitly creating a list here to make sure the map is only invoked once not every time we try and evolve a model
-		//	henshinEvolvers = new ArrayList(optimisationModel.evolvers.map [ e |
-		//		hrs.getModule(URI.createURI(e.rule_location), false).getUnit(e.unit)
-		//	])
-			
-			var files = new ArrayList<String>();
-			
-			henshinEvolvers = new ArrayList(listFilesForFolder(new File("src/models/cra/rules/"), files).map[
-				e | hrs.getModule(URI.createURI(e), false).units.get(0);
+			henshinEvolvers = new ArrayList(optimisationModel.evolvers.map [ e |
+				hrs.getModule(URI.createURI(e.rule_location), false).getUnit(e.unit)
 			])
+			
+		//	var files = new ArrayList<String>();
+			
+		//	henshinEvolvers = new ArrayList(listFilesForFolder(new File("src/models/cra/rules/"), files).map[
+		//		e | hrs.getModule(URI.createURI(e), false).units.get(0);
+		//	])
 		}
-
+		
+		ChangeImpl.PRINT_WARNINGS = false;
+		
 		val candidateSolution = EcoreUtil.copy(object)
 
 		// Get all matches
@@ -119,6 +123,8 @@ class SolutionGenerator {
 			runner.EGraph = graph
 			runner.unit = matchToUse.key
 			runner.partialMatch = matchToUse.value
+			
+			//println("Using rule: " + runner.unit.getName())
 			
 			if (runner.execute(null)) {
 				return graph.roots.head
