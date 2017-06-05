@@ -19,7 +19,7 @@ import org.eclipse.core.commands.IHandler
 import org.eclipse.xtext.generator.IGenerator2
 import uk.ac.kcl.mdeoptimise.Optimisation
 
-class GenerationHandler extends AbstractHandler implements IHandler {
+class OptimisationHandler extends AbstractHandler implements IHandler {
 	     
     @Inject
     private IGenerator2 generator;
@@ -60,8 +60,13 @@ class GenerationHandler extends AbstractHandler implements IHandler {
                 val uri = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
                 val rs = resourceSetProvider.get(project);
                 val r = rs.getResource(uri, true);
-                //generator.doGenerate(r, fsa);
-
+                
+                                
+                val root = r.allContents.head as Optimisation;
+                
+                if(root != null){
+                	
+                }
             }
         }
         return null;
