@@ -422,8 +422,8 @@
    
   <extension
         point="org.eclipse.ui.commands">
-        <command name="Generate Code"
-              id="uk.ac.kcl.mdeoptimise.ui.handler.GenerationCommand">
+        <command name="Run optimisation"
+              id="uk.ac.kcl.mdeoptimise.ui.handler.OptimisationHandler">
         </command>
   </extension>
    

@@ -23,6 +23,7 @@ class MDEOptimiseGenerator extends AbstractGenerator {
 	val root = resource.allContents.head as Optimisation;
 
 	if(root != null){
+		println("Running generator on save")
 		println(root.metamodel)
 		println(root.basepath)
 		
