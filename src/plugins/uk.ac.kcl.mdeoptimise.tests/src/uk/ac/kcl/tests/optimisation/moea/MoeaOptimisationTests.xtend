@@ -23,6 +23,7 @@ import uk.ac.kcl.tests.TestModelHelper
 
 import static org.junit.Assert.*
 import static org.mockito.Mockito.*
+import uk.ac.kcl.optimisation.UserModelProvider
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)
@@ -145,7 +146,6 @@ class MoeaOptimisationTests {
 	
 	
 	@Test
-	@Ignore
 	def void runMoeaOptimisationeMOEA() {
 		
 			val pathPrefix = "gen/models/ttc/" + new SimpleDateFormat("yyMMdd-HHmmss").format(new Date())
@@ -153,6 +153,7 @@ class MoeaOptimisationTests {
 			model = parser.parse('''
 				basepath <src/models/cra/>
 				metamodel <architectureCRA.ecore>
+				model <TTC_InputRDG_A.xmi>
 				objective MinimiseCoupling maximise java { "models.moea.MaximiseCRA" }
 				constraint MinimiseClasslessFeatures java { "models.moea.MinimiseClasslessFeatures" }
 				evolve using <craEvolvers.henshin> unit "createClass"
@@ -165,7 +166,7 @@ class MoeaOptimisationTests {
 			//Assert that there are no grammar issues
 			model.assertNoIssues
 
-			val oclModelProvider = new MoeaModelProvider()
+			val oclModelProvider = new UserModelProvider(model.basepath.location, model.model.location)
 			
 			var solutionGenerator = new SolutionGenerator(
 											model, 
@@ -176,8 +177,8 @@ class MoeaOptimisationTests {
 
 			var optimisation = new MoeaOptimisation()
 									.execute(model.optimisation, solutionGenerator)		
-			optimisation
-				.forEach[model | oclModelProvider.storeModelAndInfo(model, pathPrefix + "/final", oclModelProvider.modelPaths.head)]
+			//optimisation
+			//	.forEach[model | oclModelProvider.storeModelAndInfo(model, pathPrefix + "/final", oclModelProvider.modelPaths.head)]
 	}
 
 }

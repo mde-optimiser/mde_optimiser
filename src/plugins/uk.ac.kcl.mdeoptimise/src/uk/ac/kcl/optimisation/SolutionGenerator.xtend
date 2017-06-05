@@ -59,7 +59,6 @@ class SolutionGenerator {
         initialModelProvider.initialModels(theMetamodel)
     }
 	
-	
 	def ArrayList<String> listFilesForFolder( File folder, ArrayList<String> files) {
 		
 		
