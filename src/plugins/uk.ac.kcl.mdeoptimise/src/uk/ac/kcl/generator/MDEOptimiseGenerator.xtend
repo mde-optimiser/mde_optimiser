@@ -8,7 +8,6 @@ import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import uk.ac.kcl.mdeoptimise.Optimisation
-import com.google.gson.Gson
 import uk.ac.kcl.mdeoptimise.OptimisationSpec
 import uk.ac.kcl.mdeoptimise.impl.OptimisationImpl
 
@@ -27,16 +26,6 @@ class MDEOptimiseGenerator extends AbstractGenerator {
 		println(root.metamodel)
 		println(root.basepath)
 		
-		var gson = new Gson();
-		try {	
-			var serialized = gson.toJson(root)
-			println(serialized)		
-			var unserialized = gson.fromJson(serialized, OptimisationImpl)
-			
-			println(root.basepath)
-		} catch (Exception e){ 
-			e.printStackTrace()
-		}
 		
 	}
 //		fsa.generateFile('greetings.txt', 'People to greet: ' + 

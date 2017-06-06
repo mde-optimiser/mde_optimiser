@@ -1,22 +1,22 @@
 package uk.ac.kcl.ui.handler
 
+import com.google.inject.Inject
+import com.google.inject.Provider
 import org.eclipse.core.commands.AbstractHandler
 import org.eclipse.core.commands.ExecutionEvent
 import org.eclipse.core.commands.ExecutionException
-import org.eclipse.ui.handlers.HandlerUtil
-import org.eclipse.jface.viewers.IStructuredSelection
+import org.eclipse.core.commands.IHandler
 import org.eclipse.core.resources.IFile
-import org.eclipse.core.runtime.NullProgressMonitor
 import org.eclipse.core.runtime.CoreException
-import com.google.inject.Inject
-import org.eclipse.xtext.generator.IGenerator
-import com.google.inject.Provider
+import org.eclipse.core.runtime.NullProgressMonitor
+import org.eclipse.emf.common.util.URI
+import org.eclipse.jface.viewers.IStructuredSelection
+import org.eclipse.ui.handlers.HandlerUtil
 import org.eclipse.xtext.builder.EclipseResourceFileSystemAccess2
+import org.eclipse.xtext.generator.IGenerator2
 import org.eclipse.xtext.resource.IResourceDescriptions
 import org.eclipse.xtext.ui.resource.IResourceSetProvider
-import org.eclipse.emf.common.util.URI
-import org.eclipse.core.commands.IHandler
-import org.eclipse.xtext.generator.IGenerator2
+import uk.ac.kcl.interpreter.OptimisationInterpreter
 import uk.ac.kcl.mdeoptimise.Optimisation
 
 class OptimisationHandler extends AbstractHandler implements IHandler {
@@ -62,9 +62,11 @@ class OptimisationHandler extends AbstractHandler implements IHandler {
                 val r = rs.getResource(uri, true);
                 
                                 
-                val root = r.allContents.head as Optimisation;
+                val model = r.allContents.head as Optimisation;
                 
-                if(root != null){
+                if(model != null){
+                	
+					new OptimisationInterpreter(model)
                 	
                 }
             }
