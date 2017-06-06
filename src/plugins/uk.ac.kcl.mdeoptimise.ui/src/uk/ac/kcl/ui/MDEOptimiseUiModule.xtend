@@ -10,4 +10,6 @@ import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
  */
 @FinalFieldsConstructor
 class MDEOptimiseUiModule extends AbstractMDEOptimiseUiModule {
+	
+	
 }

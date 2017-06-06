@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import java.util.Collections
 import org.eclipse.emf.common.util.URI
 import java.nio.file.Paths
+import org.eclipse.emf.ecore.EObject
 
 class UserModelProvider implements IModelProvider {
 	
@@ -29,4 +30,18 @@ class UserModelProvider implements IModelProvider {
 
 		#[loadModel(modelPath)].iterator
 	}
+	
+	def writeModel(EObject model, String path) {
+		val resource = resourceSet.createResource(URI.createURI(path))
+		if (resource.loaded) {
+			resource.contents.clear
+		}
+		resource.contents.add(model)
+		resource.save(Collections.EMPTY_MAP)
+	}
+	
+	def storeModel(EObject model, String pathPrefix) {
+		model.writeModel(pathPrefix + "/" + String.format("%08X", model.hashCode) + ".xmi")
+	}
+	
 }

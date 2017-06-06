@@ -146,6 +146,7 @@ class MoeaOptimisationTests {
 	
 	
 	@Test
+	@Ignore
 	def void runMoeaOptimisationeMOEA() {
 		
 			val pathPrefix = "gen/models/ttc/" + new SimpleDateFormat("yyMMdd-HHmmss").format(new Date())

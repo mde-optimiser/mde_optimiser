@@ -36,35 +36,35 @@ class GenerationHandler extends AbstractHandler implements IHandler {
 	
 	override execute(ExecutionEvent arg0) throws ExecutionException {
 		
-		println("Generate on save has been ran")
-	    var selection = HandlerUtil.getCurrentSelection(arg0);
-        if (selection instanceof IStructuredSelection) {
-            var structuredSelection = selection as IStructuredSelection;
-            var firstElement = structuredSelection.getFirstElement();
-            if (firstElement instanceof IFile) {
-                var file = firstElement as IFile;
-                var project = file.getProject();
-                var srcGenFolder = project.getFolder("src-gen");
-                if (!srcGenFolder.exists()) {
-                    try {
-                        srcGenFolder.create(true, true,
-                                new NullProgressMonitor());
-                    } catch (CoreException e) {
-                        return null;
-                    }
-                }
- 
-                val fsa = fileAccessProvider.get();
-                fsa.setOutputPath(srcGenFolder.getFullPath().toString());
-                 
-                val uri = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
-                val rs = resourceSetProvider.get(project);
-                val r = rs.getResource(uri, true);
-                //generator.doGenerate(r, fsa);
-
-            }
-        }
-        return null;
+//		println("Generate on save has been ran")
+//	    var selection = HandlerUtil.getCurrentSelection(arg0);
+//        if (selection instanceof IStructuredSelection) {
+//            var structuredSelection = selection as IStructuredSelection;
+//            var firstElement = structuredSelection.getFirstElement();
+//            if (firstElement instanceof IFile) {
+//                var file = firstElement as IFile;
+//                var project = file.getProject();
+//                var srcGenFolder = project.getFolder("src-gen");
+//                if (!srcGenFolder.exists()) {
+//                    try {
+//                        srcGenFolder.create(true, true,
+//                                new NullProgressMonitor());
+//                    } catch (CoreException e) {
+//                        return null;
+//                    }
+//                }
+// 
+//                val fsa = fileAccessProvider.get();
+//                fsa.setOutputPath(srcGenFolder.getFullPath().toString());
+//                 
+//                val uri = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
+//                val rs = resourceSetProvider.get(project);
+//                val r = rs.getResource(uri, true);
+//                //generator.doGenerate(r, fsa);
+//
+//            }
+//        }
+//        return null;
 	
 	}
 		
