@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getBasepath <em>Basepath</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getMetamodel <em>Metamodel</em>}</li>
+ *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getModel <em>Model</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getObjectives <em>Objectives</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getConstraints <em>Constraints</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getEvolvers <em>Evolvers</em>}</li>
@@ -81,6 +82,32 @@ public interface Optimisation extends EObject
    * @generated
    */
   void setMetamodel(MetaModelSpec value);
+
+  /**
+   * Returns the value of the '<em><b>Model</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Model</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Model</em>' containment reference.
+   * @see #setModel(ModelPathSpec)
+   * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getOptimisation_Model()
+   * @model containment="true"
+   * @generated
+   */
+  ModelPathSpec getModel();
+
+  /**
+   * Sets the value of the '{@link uk.ac.kcl.mdeoptimise.Optimisation#getModel <em>Model</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Model</em>' containment reference.
+   * @see #getModel()
+   * @generated
+   */
+  void setModel(ModelPathSpec value);
 
   /**
    * Returns the value of the '<em><b>Objectives</b></em>' containment reference list.

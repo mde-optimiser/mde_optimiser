@@ -23,6 +23,7 @@ import uk.ac.kcl.tests.TestModelHelper
 
 import static org.junit.Assert.*
 import static org.mockito.Mockito.*
+import uk.ac.kcl.optimisation.UserModelProvider
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)
@@ -77,14 +78,13 @@ class MoeaOptimisationTests {
 			model = parser.parse('''
 				basepath <src/models/cra/>
 				metamodel <architectureCRA.ecore>			
-				objective MinimiseClasslessFeatures minimise java { "models.moea.MinimiseClasslessFeatures" }
 				objective MinimiseCoupling maximise java { "models.moea.MaximiseCRA" }
 				constraint MinimiseClasslessFeatures java { "models.moea.MinimiseClasslessFeatures" }
 				evolve using <craEvolvers.henshin> unit "createClass"
 				evolve using <craEvolvers.henshin> unit "assignFeature"
 				evolve using <craEvolvers.henshin> unit "moveFeature"
 				evolve using <craEvolvers.henshin> unit "deleteEmptyClass"
-				optimisation provider moea algorithm NSGAII evolutions 10000 population 100
+				optimisation provider moea algorithm NSGAII evolutions 10000 population 10
 			''')
 
 			//Assert that there are no grammar issues
@@ -146,22 +146,22 @@ class MoeaOptimisationTests {
 	
 	
 	@Test
-	@Ignore
+	
 	def void runMoeaOptimisationeMOEA() {
 		
 			val pathPrefix = "gen/models/ttc/" + new SimpleDateFormat("yyMMdd-HHmmss").format(new Date())
 			
 			model = parser.parse('''
 				basepath <src/models/cra/>
-				metamodel <architectureCRA.ecore>			
-				objective MinimiseClasslessFeatures minimise java { "models.moea.MinimiseClasslessFeatures" }
+				metamodel <architectureCRA.ecore>
+				model <TTC_InputRDG_A.xmi>
 				objective MinimiseCoupling maximise java { "models.moea.MaximiseCRA" }
 				constraint MinimiseClasslessFeatures java { "models.moea.MinimiseClasslessFeatures" }
 				evolve using <craEvolvers.henshin> unit "createClass"
 				evolve using <craEvolvers.henshin> unit "assignFeature"
 				evolve using <craEvolvers.henshin> unit "moveFeature"
 				evolve using <craEvolvers.henshin> unit "deleteEmptyClass"
-				optimisation provider moea algorithm eMOEA evolutions 10000 population 100
+				optimisation provider moea algorithm NSGAII evolutions 1000000 population 1000
 			''')
 
 			//Assert that there are no grammar issues
@@ -177,8 +177,10 @@ class MoeaOptimisationTests {
 											getMetamodel);
 
 			var optimisation = new MoeaOptimisation()
-									.execute(model.optimisation, solutionGenerator)		
+									.execute(model.optimisation, solutionGenerator)
+			
 			optimisation
 				.forEach[model | oclModelProvider.storeModelAndInfo(model, pathPrefix + "/final", oclModelProvider.modelPaths.head)]
 	}
+
 }

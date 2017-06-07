@@ -19,6 +19,7 @@ import uk.ac.kcl.mdeoptimise.ConstraintInterpreterSpec;
 import uk.ac.kcl.mdeoptimise.EvolverSpec;
 import uk.ac.kcl.mdeoptimise.MdeoptimisePackage;
 import uk.ac.kcl.mdeoptimise.MetaModelSpec;
+import uk.ac.kcl.mdeoptimise.ModelPathSpec;
 import uk.ac.kcl.mdeoptimise.ObjectiveInterpreterSpec;
 import uk.ac.kcl.mdeoptimise.Optimisation;
 import uk.ac.kcl.mdeoptimise.OptimisationSpec;
@@ -49,6 +50,9 @@ public class MDEOptimiseSemanticSequencer extends AbstractDelegatingSemanticSequ
 				return; 
 			case MdeoptimisePackage.META_MODEL_SPEC:
 				sequence_MetaModelSpec(context, (MetaModelSpec) semanticObject); 
+				return; 
+			case MdeoptimisePackage.MODEL_PATH_SPEC:
+				sequence_ModelPathSpec(context, (ModelPathSpec) semanticObject); 
 				return; 
 			case MdeoptimisePackage.OBJECTIVE_INTERPRETER_SPEC:
 				sequence_ObjectiveInterpreterSpec(context, (ObjectiveInterpreterSpec) semanticObject); 
@@ -147,6 +151,24 @@ public class MDEOptimiseSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
+	 *     ModelPathSpec returns ModelPathSpec
+	 *
+	 * Constraint:
+	 *     location=URL
+	 */
+	protected void sequence_ModelPathSpec(ISerializationContext context, ModelPathSpec semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.MODEL_PATH_SPEC__LOCATION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.MODEL_PATH_SPEC__LOCATION));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getModelPathSpecAccess().getLocationURLTerminalRuleCall_1_0(), semanticObject.getLocation());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     ObjectiveInterpreterSpec returns ObjectiveInterpreterSpec
 	 *
 	 * Constraint:
@@ -207,6 +229,7 @@ public class MDEOptimiseSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 *     (
 	 *         basepath=BasepathSpec 
 	 *         metamodel=MetaModelSpec 
+	 *         model=ModelPathSpec 
 	 *         objectives+=ObjectiveInterpreterSpec+ 
 	 *         constraints+=ConstraintInterpreterSpec* 
 	 *         evolvers+=EvolverSpec+ 

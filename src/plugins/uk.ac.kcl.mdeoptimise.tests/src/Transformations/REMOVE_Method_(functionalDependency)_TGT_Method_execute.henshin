@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ASCII"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_FoN-4NjcEeaHtINOdoXvow" name="REMOVE_Method_(functionalDependency)_TGT_Method" description="Removes Method's reference functionalDependency the target Method">
+  <imports href="./config/architectureCRA.ecore#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_FoN-4djcEeaHtINOdoXvow" name="removeFromMethod_functionalDependency_Method" description="Removes from Method's reference functionalDependency the target Method">
+    <parameters xmi:id="_FoN-4tjcEeaHtINOdoXvow" name="Selected">
+      <type xsi:type="ecore:EClass" href="./config/architectureCRA.ecore#//Method"/>
+    </parameters>
+    <parameters xmi:id="_FoN-49jcEeaHtINOdoXvow" name="OldTarget">
+      <type xsi:type="ecore:EClass" href="./config/architectureCRA.ecore#//Method"/>
+    </parameters>
+    <lhs xmi:id="_FoN-5NjcEeaHtINOdoXvow" name="LHS">
+      <nodes xmi:id="_FoN-5djcEeaHtINOdoXvow" name="Selected" outgoing="_FoN-59jcEeaHtINOdoXvow">
+        <type href="./config/architectureCRA.ecore#//Method"/>
+      </nodes>
+      <nodes xmi:id="_FoN-5tjcEeaHtINOdoXvow" name="OldTarget" incoming="_FoN-59jcEeaHtINOdoXvow">
+        <type href="./config/architectureCRA.ecore#//Method"/>
+      </nodes>
+      <edges xmi:id="_FoN-59jcEeaHtINOdoXvow" source="_FoN-5djcEeaHtINOdoXvow" target="_FoN-5tjcEeaHtINOdoXvow">
+        <type href="./config/architectureCRA.ecore#//Method/functionalDependency"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_FoN-6NjcEeaHtINOdoXvow" name="RHS">
+      <nodes xmi:id="_FoN-6djcEeaHtINOdoXvow" name="Selected">
+        <type href="./config/architectureCRA.ecore#//Method"/>
+      </nodes>
+      <nodes xmi:id="_FoN-6tjcEeaHtINOdoXvow" name="OldTarget">
+        <type href="./config/architectureCRA.ecore#//Method"/>
+      </nodes>
+    </rhs>
+    <mappings xmi:id="_FoN-69jcEeaHtINOdoXvow" origin="_FoN-5djcEeaHtINOdoXvow" image="_FoN-6djcEeaHtINOdoXvow"/>
+    <mappings xmi:id="_FoN-7NjcEeaHtINOdoXvow" origin="_FoN-5tjcEeaHtINOdoXvow" image="_FoN-6tjcEeaHtINOdoXvow"/>
+  </units>
+  <units xsi:type="henshin:PriorityUnit" xmi:id="_FoN-7djcEeaHtINOdoXvow" name="mainUnit" subUnits="_FoN-4djcEeaHtINOdoXvow">
+    <parameters xmi:id="_FoN-7tjcEeaHtINOdoXvow" name="selectedEObject">
+      <type xsi:type="ecore:EClass" href="./config/architectureCRA.ecore#//Method"/>
+    </parameters>
+    <parameters xmi:id="_FoN-79jcEeaHtINOdoXvow" name="OldTarget">
+      <type xsi:type="ecore:EClass" href="./config/architectureCRA.ecore#//Method"/>
+    </parameters>
+    <parameterMappings xmi:id="_FoN-8NjcEeaHtINOdoXvow" source="_FoN-7tjcEeaHtINOdoXvow" target="_FoN-4tjcEeaHtINOdoXvow"/>
+    <parameterMappings xmi:id="_FoN-8djcEeaHtINOdoXvow" source="_FoN-79jcEeaHtINOdoXvow" target="_FoN-49jcEeaHtINOdoXvow"/>
+  </units>
+</henshin:Module>
