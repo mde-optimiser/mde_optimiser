@@ -9,6 +9,7 @@ import org.eclipse.emf.common.util.URI
 import uk.ac.kcl.optimisation.moea.MoeaOptimisation
 import uk.ac.kcl.optimisation.SolutionGenerator
 import uk.ac.kcl.optimisation.UserModelProvider
+import java.nio.file.Paths
 
 class OptimisationInterpreter {
 	
@@ -20,13 +21,16 @@ class OptimisationInterpreter {
 	
 	private List<Unit> henshinEvolvers = null
 
-	new (Optimisation model){
+	private String basePath;
+
+	new (String basePath, Optimisation model){
 		this.model = model;
+		this.basePath = basePath;
 		start();
 	}
 	
 	def void start(){
-		val userModelProvider = new UserModelProvider(model.basepath.location, model.model.location)
+		val userModelProvider = new UserModelProvider(URI.createURI(basePath), model.model.location)
 			
 		var solutionGenerator = new SolutionGenerator(
 											model, 
@@ -44,7 +48,7 @@ class OptimisationInterpreter {
 
 	def getResourceSet() {
         if (henshinResourceSet == null) {
-            henshinResourceSet = new HenshinResourceSet(model.basepath.location)
+            henshinResourceSet = new HenshinResourceSet(this.basePath);
         }
 
         henshinResourceSet

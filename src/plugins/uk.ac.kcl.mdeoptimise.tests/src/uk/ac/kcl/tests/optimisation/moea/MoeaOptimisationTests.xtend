@@ -146,7 +146,7 @@ class MoeaOptimisationTests {
 	
 	
 	@Test
-	@Ignore
+	
 	def void runMoeaOptimisationeMOEA() {
 		
 			val pathPrefix = "gen/models/ttc/" + new SimpleDateFormat("yyMMdd-HHmmss").format(new Date())
@@ -167,7 +167,7 @@ class MoeaOptimisationTests {
 			//Assert that there are no grammar issues
 			model.assertNoIssues
 
-			val oclModelProvider = new UserModelProvider(model.basepath.location, model.model.location)
+			val oclModelProvider = new MoeaModelProvider()
 			
 			var solutionGenerator = new SolutionGenerator(
 											model, 
@@ -177,9 +177,10 @@ class MoeaOptimisationTests {
 											getMetamodel);
 
 			var optimisation = new MoeaOptimisation()
-									.execute(model.optimisation, solutionGenerator)		
-			//optimisation
-			//	.forEach[model | oclModelProvider.storeModelAndInfo(model, pathPrefix + "/final", oclModelProvider.modelPaths.head)]
+									.execute(model.optimisation, solutionGenerator)
+			
+			optimisation
+				.forEach[model | oclModelProvider.storeModelAndInfo(model, pathPrefix + "/final", oclModelProvider.modelPaths.head)]
 	}
 
 }

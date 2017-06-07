@@ -18,6 +18,10 @@ import org.eclipse.xtext.resource.IResourceDescriptions
 import org.eclipse.xtext.ui.resource.IResourceSetProvider
 import uk.ac.kcl.interpreter.OptimisationInterpreter
 import uk.ac.kcl.mdeoptimise.Optimisation
+import org.eclipse.core.runtime.FileLocator
+import org.eclipse.core.runtime.Platform
+import org.eclipse.core.runtime.Path
+import org.eclipse.core.resources.ResourcesPlugin
 
 class OptimisationHandler extends AbstractHandler implements IHandler {
 	     
@@ -66,7 +70,13 @@ class OptimisationHandler extends AbstractHandler implements IHandler {
                 
                 if(model != null){
                 	
-					new OptimisationInterpreter(model)
+                	var root = project.getFolder(model.basepath.location);
+                	
+                	
+					var osfile = root.getRawLocation().toOSString();
+                	
+
+					new OptimisationInterpreter(osfile, model)
                 	
                 }
             }
