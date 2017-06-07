@@ -11,16 +11,16 @@ import org.eclipse.emf.ecore.EObject
 
 class UserModelProvider implements IModelProvider {
 	
-	private String modelPath
+	private URI modelPath
 	
-	new (String basepath, String userModelPath){
-		this.modelPath = Paths.get(basepath, userModelPath).toString
+	new (URI basepath, String userModelPath){
+		this.modelPath = basepath.appendFragment(userModelPath);
 	}
 	
 	val ResourceSet resourceSet = new ResourceSetImpl
 
-	def loadModel(String path) {
-		val resource = resourceSet.createResource(URI.createURI(path))
+	def loadModel(URI path) {
+		val resource = resourceSet.createResource(path)
 		resource.load(Collections.EMPTY_MAP)
 		resource.allContents.head
 	}
