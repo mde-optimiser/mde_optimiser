@@ -39,7 +39,7 @@ class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
 		new NSGAII(
 				problem,
 				new NondominatedSortingPopulation(),
-				null, // no archive
+				null, // no archiv
 				selection,
 				variation,
 				initialization

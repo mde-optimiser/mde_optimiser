@@ -91,6 +91,11 @@ public class MdeoptimiseAdapterFactory extends AdapterFactoryImpl
         return createMetaModelSpecAdapter();
       }
       @Override
+      public Adapter caseModelPathSpec(ModelPathSpec object)
+      {
+        return createModelPathSpecAdapter();
+      }
+      @Override
       public Adapter caseObjectiveInterpreterSpec(ObjectiveInterpreterSpec object)
       {
         return createObjectiveInterpreterSpecAdapter();
@@ -173,6 +178,21 @@ public class MdeoptimiseAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createMetaModelSpecAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.mdeoptimise.ModelPathSpec <em>Model Path Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.mdeoptimise.ModelPathSpec
+   * @generated
+   */
+  public Adapter createModelPathSpecAdapter()
   {
     return null;
   }

@@ -7,6 +7,9 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import uk.ac.kcl.mdeoptimise.Optimisation
+import uk.ac.kcl.mdeoptimise.OptimisationSpec
+import uk.ac.kcl.mdeoptimise.impl.OptimisationImpl
 
 /**
  * Generates code from your model files on save.
@@ -16,6 +19,15 @@ import org.eclipse.xtext.generator.IGeneratorContext
 class MDEOptimiseGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
+	val root = resource.allContents.head as Optimisation;
+
+	if(root != null){
+		println("Running generator on save")
+		println(root.metamodel)
+		println(root.basepath)
+		
+		
+	}
 //		fsa.generateFile('greetings.txt', 'People to greet: ' + 
 //			resource.allContents
 //				.filter(typeof(Greeting))

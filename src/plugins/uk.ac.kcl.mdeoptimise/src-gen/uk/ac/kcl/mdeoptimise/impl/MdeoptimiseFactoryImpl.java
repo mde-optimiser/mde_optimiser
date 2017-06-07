@@ -68,6 +68,7 @@ public class MdeoptimiseFactoryImpl extends EFactoryImpl implements MdeoptimiseF
       case MdeoptimisePackage.OPTIMISATION: return createOptimisation();
       case MdeoptimisePackage.BASEPATH_SPEC: return createBasepathSpec();
       case MdeoptimisePackage.META_MODEL_SPEC: return createMetaModelSpec();
+      case MdeoptimisePackage.MODEL_PATH_SPEC: return createModelPathSpec();
       case MdeoptimisePackage.OBJECTIVE_INTERPRETER_SPEC: return createObjectiveInterpreterSpec();
       case MdeoptimisePackage.CONSTRAINT_INTERPRETER_SPEC: return createConstraintInterpreterSpec();
       case MdeoptimisePackage.EVOLVER_SPEC: return createEvolverSpec();
@@ -108,6 +109,17 @@ public class MdeoptimiseFactoryImpl extends EFactoryImpl implements MdeoptimiseF
   {
     MetaModelSpecImpl metaModelSpec = new MetaModelSpecImpl();
     return metaModelSpec;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ModelPathSpec createModelPathSpec()
+  {
+    ModelPathSpecImpl modelPathSpec = new ModelPathSpecImpl();
+    return modelPathSpec;
   }
 
   /**

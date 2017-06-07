@@ -9,4 +9,8 @@ package uk.ac.kcl.ui.contentassist
  * on how to customize the content assistant.
  */
 class MDEOptimiseProposalProvider extends AbstractMDEOptimiseProposalProvider {
+	
+	
+	
+	
 }

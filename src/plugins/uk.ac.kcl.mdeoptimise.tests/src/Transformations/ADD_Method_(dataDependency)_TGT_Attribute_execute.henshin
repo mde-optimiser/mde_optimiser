@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ASCII"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_Fnp-MNjcEeaHtINOdoXvow" name="ADD_Method_(dataDependency)_TGT_Attribute" description="Adds to Method's reference dataDependency the target Attribute">
+  <imports href="./config/architectureCRA.ecore#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_Fnp-MdjcEeaHtINOdoXvow" name="addToMethod_dataDependency_Attribute" description="Adds to Method's reference dataDependency the target Attribute">
+    <parameters xmi:id="_Fnp-MtjcEeaHtINOdoXvow" name="Selected">
+      <type xsi:type="ecore:EClass" href="./config/architectureCRA.ecore#//Method"/>
+    </parameters>
+    <parameters xmi:id="_Fnp-M9jcEeaHtINOdoXvow" name="NewTarget">
+      <type xsi:type="ecore:EClass" href="./config/architectureCRA.ecore#//Attribute"/>
+    </parameters>
+    <lhs xmi:id="_Fnp-NNjcEeaHtINOdoXvow" name="Lhs">
+      <nodes xmi:id="_Fnp-NdjcEeaHtINOdoXvow" name="Selected">
+        <type href="./config/architectureCRA.ecore#//Method"/>
+      </nodes>
+      <nodes xmi:id="_Fnp-NtjcEeaHtINOdoXvow" name="NewTarget">
+        <type href="./config/architectureCRA.ecore#//Attribute"/>
+      </nodes>
+    </lhs>
+    <rhs xmi:id="_Fnp-N9jcEeaHtINOdoXvow" name="Rhs">
+      <nodes xmi:id="_Fnp-ONjcEeaHtINOdoXvow" name="Selected" outgoing="_Fnp-OtjcEeaHtINOdoXvow">
+        <type href="./config/architectureCRA.ecore#//Method"/>
+      </nodes>
+      <nodes xmi:id="_Fnp-OdjcEeaHtINOdoXvow" name="NewTarget" incoming="_Fnp-OtjcEeaHtINOdoXvow">
+        <type href="./config/architectureCRA.ecore#//Attribute"/>
+      </nodes>
+      <edges xmi:id="_Fnp-OtjcEeaHtINOdoXvow" source="_Fnp-ONjcEeaHtINOdoXvow" target="_Fnp-OdjcEeaHtINOdoXvow">
+        <type href="./config/architectureCRA.ecore#//Method/dataDependency"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_Fnp-O9jcEeaHtINOdoXvow" origin="_Fnp-NdjcEeaHtINOdoXvow" image="_Fnp-ONjcEeaHtINOdoXvow"/>
+    <mappings xmi:id="_Fnp-PNjcEeaHtINOdoXvow" origin="_Fnp-NtjcEeaHtINOdoXvow" image="_Fnp-OdjcEeaHtINOdoXvow"/>
+  </units>
+  <units xsi:type="henshin:PriorityUnit" xmi:id="_Fnp-PdjcEeaHtINOdoXvow" name="mainUnit" subUnits="_Fnp-MdjcEeaHtINOdoXvow">
+    <parameters xmi:id="_Fnp-PtjcEeaHtINOdoXvow" name="selectedEObject">
+      <type xsi:type="ecore:EClass" href="./config/architectureCRA.ecore#//Method"/>
+    </parameters>
+    <parameters xmi:id="_Fnp-P9jcEeaHtINOdoXvow" name="NewTarget">
+      <type xsi:type="ecore:EClass" href="./config/architectureCRA.ecore#//Attribute"/>
+    </parameters>
+    <parameterMappings xmi:id="_Fnp-QNjcEeaHtINOdoXvow" source="_Fnp-PtjcEeaHtINOdoXvow" target="_Fnp-MtjcEeaHtINOdoXvow"/>
+    <parameterMappings xmi:id="_Fnp-QdjcEeaHtINOdoXvow" source="_Fnp-P9jcEeaHtINOdoXvow" target="_Fnp-M9jcEeaHtINOdoXvow"/>
+  </units>
+</henshin:Module>

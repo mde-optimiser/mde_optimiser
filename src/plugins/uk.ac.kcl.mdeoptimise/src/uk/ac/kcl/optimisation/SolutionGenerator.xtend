@@ -19,6 +19,9 @@ import org.eclipse.emf.henshin.interpreter.Engine
 import org.eclipse.emf.henshin.model.Rule
 import org.eclipse.emf.henshin.interpreter.Match
 import org.eclipse.emf.henshin.interpreter.impl.RuleApplicationImpl
+import java.io.File
+import java.io.PrintStream
+import org.eclipse.emf.henshin.interpreter.impl.ChangeImpl
 
 class SolutionGenerator {
 	
@@ -55,6 +58,23 @@ class SolutionGenerator {
     def Iterator<EObject> getInitialSolutions() {
         initialModelProvider.initialModels(theMetamodel)
     }
+	
+	def ArrayList<String> listFilesForFolder( File folder, ArrayList<String> files) {
+		
+		
+	    for ( File fileEntry : folder.listFiles()) {
+	        if (fileEntry.isDirectory()) {
+	            listFilesForFolder(fileEntry, files);
+	        } else {
+	        	if(fileEntry.getName().endsWith("henshin")){
+	        	files.add(fileEntry.getName());	
+	        	}
+	            
+	        }
+	    }
+	    
+	    return files
+	}
 
 
     /**
@@ -71,8 +91,16 @@ class SolutionGenerator {
 			henshinEvolvers = new ArrayList(optimisationModel.evolvers.map [ e |
 				hrs.getModule(URI.createURI(e.rule_location), false).getUnit(e.unit)
 			])
+			
+		//	var files = new ArrayList<String>();
+			
+		//	henshinEvolvers = new ArrayList(listFilesForFolder(new File("src/models/cra/rules/"), files).map[
+		//		e | hrs.getModule(URI.createURI(e), false).units.get(0);
+		//	])
 		}
-
+		
+		ChangeImpl.PRINT_WARNINGS = false;
+		
 		val candidateSolution = EcoreUtil.copy(object)
 
 		// Get all matches
@@ -82,21 +110,34 @@ class SolutionGenerator {
 		].flatten
 
 		val matches = new ArrayList<Pair<Rule, Match>>(matchesView.toList)
-
-		if (!matches.empty) {
+		
+		var i = 0;
+		val runner = new RuleApplicationImpl(engine)
+		var temp = graph
+		
+		while (!matches.empty && i < matches.size*0.01) {
 			// Randomly pick one match
 			val matchToUse = matches.get(new Random().nextInt(matches.size))
+			i+=1
+			//println("Using evolver : " + matchToUse.key)
 
 			// Apply the match
-			val runner = new RuleApplicationImpl(engine)
-			runner.EGraph = graph
+			runner.EGraph = temp
 			runner.unit = matchToUse.key
 			runner.partialMatch = matchToUse.value
 			
+			//println("Using rule: " + runner.unit.getName())
+			
 			if (runner.execute(null)) {
-				return graph.roots.head
+				temp = new EGraphImpl(graph.roots.head)
 			}
 		} 
+		
+			if(graph.roots.head != null)
+					
+				return graph.roots.head	
+				
+		
         // We didn't find any applicable evolvers...
         //null
         //Start from scratch if cannot apply evolvers to this model?

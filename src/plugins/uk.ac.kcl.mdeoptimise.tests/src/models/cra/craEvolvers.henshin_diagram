@@ -306,9 +306,9 @@
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_QJwHgRXaEeapG6DfWhSTtQ" fontName="Segoe UI"/>
     <element xmi:type="henshin:Edge" href="craEvolvers.henshin#_QJu5YBXaEeapG6DfWhSTtQ"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_QJwHghXaEeapG6DfWhSTtQ" points="[16, 0, -164, -86]$[189, 0, 9, -86]$[189, 49, 9, -37]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_QJwHghXaEeapG6DfWhSTtQ" points="[19, 0, -156, -86]$[187, 0, 12, -86]$[187, 9, 12, -77]$[180, 51, 5, -35]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_QJx8sBXaEeapG6DfWhSTtQ" id="(0.7647058823529411,0.7619047619047619)"/>
-    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_QJx8sRXaEeapG6DfWhSTtQ" id="(0.2459016393442623,0.8809523809523809)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_QJx8sRXaEeapG6DfWhSTtQ" id="(0.4520547945205479,0.225)"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_Qw0ukBXaEeapG6DfWhSTtQ" type="4001" source="_MeD44BXaEeapG6DfWhSTtQ" target="_M0Mg8BXaEeapG6DfWhSTtQ">
     <children xmi:type="notation:DecorationNode" xmi:id="_Qw0ukxXaEeapG6DfWhSTtQ" type="6001">
