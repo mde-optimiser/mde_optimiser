@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <?metadataRepository version='1.1.0'?>
 <repository name='TychoTargetPlatform' type='org.eclipse.equinox.internal.p2.metadata.repository.LocalMetadataRepository' version='0.0.1'>
-  <units size='162'>
+  <units size='163'>
     <unit id='org.eclipse.ui.ide' version='3.12.1.v20160823-0925'>
       <update id='org.eclipse.ui.ide' range='[0.0.0,3.12.1.v20160823-0925)' severity='0'/>
       <properties size='8'>
@@ -538,44 +538,6 @@
         </instructions>
       </touchpointData>
     </unit>
-    <unit id='org.eclipse.emf.henshin.interpreter' version='1.4.0.201606151103'>
-      <update id='org.eclipse.emf.henshin.interpreter' range='[0.0.0,1.4.0.201606151103)' severity='0'/>
-      <properties size='5'>
-        <property name='df_LT.pluginName' value='Henshin Interpreter'/>
-        <property name='df_LT.providerName' value='Eclipse Modeling Project'/>
-        <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
-        <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
-        <property name='org.eclipse.equinox.p2.bundle.localization' value='plugin'/>
-      </properties>
-      <provides size='10'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.henshin.interpreter' version='1.4.0.201606151103'/>
-        <provided namespace='osgi.bundle' name='org.eclipse.emf.henshin.interpreter' version='1.4.0.201606151103'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin.interpreter' version='0.0.0'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin.interpreter.impl' version='0.0.0'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin.interpreter.info' version='0.0.0'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin.interpreter.matching.conditions' version='0.0.0'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin.interpreter.matching.constraints' version='0.0.0'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin.interpreter.util' version='0.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
-      </provides>
-      <requires size='3'>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore.xmi' range='2.5.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore.change' range='2.5.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.henshin.model' range='0.9.0'/>
-      </requires>
-      <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='org.eclipse.emf.henshin.interpreter' version='1.4.0.201606151103'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='1'>
-          <instruction key='manifest'>
-            Bundle-SymbolicName: org.eclipse.emf.henshin.interpreter;singleton:=true&#xA;Bundle-Version: 1.4.0.201606151103
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
     <unit id='org.apache.ant' version='1.9.6.v201510161327' singleton='false'>
       <update id='org.apache.ant' range='[0.0.0,1.9.6.v201510161327)' severity='0'/>
       <properties size='5'>
@@ -925,6 +887,37 @@
         </instructions>
       </touchpointData>
     </unit>
+    <unit id='uk.ac.kcl.mdeoptimise.source' version='1.0.0.201706072015' singleton='false'>
+      <update id='uk.ac.kcl.mdeoptimise.source' range='[0.0.0,1.0.0.201706072015)' severity='0'/>
+      <properties size='9'>
+        <property name='df_LT.bundleVendor' value='My Company'/>
+        <property name='df_LT.bundleName' value='uk.ac.kcl.mdeoptimise Source'/>
+        <property name='org.eclipse.equinox.p2.name' value='%bundleName'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%bundleVendor'/>
+        <property name='org.eclipse.equinox.p2.bundle.localization' value='OSGI-INF/l10n/bundle-src'/>
+        <property name='maven-groupId' value='uk.ac.kcl.mdeoptimise'/>
+        <property name='maven-artifactId' value='uk.ac.kcl.mdeoptimise'/>
+        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+        <property name='maven-classifier' value='sources'/>
+      </properties>
+      <provides size='4'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.source' version='1.0.0.201706072015'/>
+        <provided namespace='osgi.bundle' name='uk.ac.kcl.mdeoptimise.source' version='1.0.0.201706072015'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='source' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='uk.ac.kcl.mdeoptimise.source' version='1.0.0.201706072015'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: uk.ac.kcl.mdeoptimise.source&#xA;Bundle-Version: 1.0.0.201706072015
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
     <unit id='org.eclipse.emf.mwe2.lib' version='2.9.0.v201605261103' singleton='false'>
       <update id='org.eclipse.emf.mwe2.lib' range='[0.0.0,2.9.0.v201605261103)' severity='0'/>
       <properties size='5'>
@@ -1069,6 +1062,37 @@
         <instructions size='1'>
           <instruction key='manifest'>
             Bundle-SymbolicName: org.eclipse.xtext.ide;singleton:=true&#xA;Bundle-Version: 2.10.0.v201605250459
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='uk.ac.kcl.mdeoptimise.ui.source' version='1.0.0.201706072015' singleton='false'>
+      <update id='uk.ac.kcl.mdeoptimise.ui.source' range='[0.0.0,1.0.0.201706072015)' severity='0'/>
+      <properties size='9'>
+        <property name='df_LT.bundleVendor' value='My Company'/>
+        <property name='df_LT.bundleName' value='uk.ac.kcl.mdeoptimise.ui Source'/>
+        <property name='org.eclipse.equinox.p2.name' value='%bundleName'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%bundleVendor'/>
+        <property name='org.eclipse.equinox.p2.bundle.localization' value='OSGI-INF/l10n/bundle-src'/>
+        <property name='maven-groupId' value='uk.ac.kcl.mdeoptimise'/>
+        <property name='maven-artifactId' value='uk.ac.kcl.mdeoptimise.ui'/>
+        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+        <property name='maven-classifier' value='sources'/>
+      </properties>
+      <provides size='4'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.ui.source' version='1.0.0.201706072015'/>
+        <provided namespace='osgi.bundle' name='uk.ac.kcl.mdeoptimise.ui.source' version='1.0.0.201706072015'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='source' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='uk.ac.kcl.mdeoptimise.ui.source' version='1.0.0.201706072015'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: uk.ac.kcl.mdeoptimise.ui.source&#xA;Bundle-Version: 1.0.0.201706072015
           </instruction>
         </instructions>
       </touchpointData>
@@ -1321,6 +1345,37 @@
         </instructions>
       </touchpointData>
     </unit>
+    <unit id='uk.ac.kcl.mdeoptimise.ide.source' version='1.0.0.201706072015' singleton='false'>
+      <update id='uk.ac.kcl.mdeoptimise.ide.source' range='[0.0.0,1.0.0.201706072015)' severity='0'/>
+      <properties size='9'>
+        <property name='df_LT.bundleVendor' value='My Company'/>
+        <property name='df_LT.bundleName' value='uk.ac.kcl.mdeoptimise.ide Source'/>
+        <property name='org.eclipse.equinox.p2.name' value='%bundleName'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%bundleVendor'/>
+        <property name='org.eclipse.equinox.p2.bundle.localization' value='OSGI-INF/l10n/bundle-src'/>
+        <property name='maven-groupId' value='uk.ac.kcl.mdeoptimise'/>
+        <property name='maven-artifactId' value='uk.ac.kcl.mdeoptimise.ide'/>
+        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+        <property name='maven-classifier' value='sources'/>
+      </properties>
+      <provides size='4'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.ide.source' version='1.0.0.201706072015'/>
+        <provided namespace='osgi.bundle' name='uk.ac.kcl.mdeoptimise.ide.source' version='1.0.0.201706072015'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='source' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='uk.ac.kcl.mdeoptimise.ide.source' version='1.0.0.201706072015'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: uk.ac.kcl.mdeoptimise.ide.source&#xA;Bundle-Version: 1.0.0.201706072015
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
     <unit id='org.eclipse.core.runtime' version='3.12.0.v20160606-1342'>
       <update id='org.eclipse.core.runtime' range='[0.0.0,3.12.0.v20160606-1342)' severity='0'/>
       <properties size='8'>
@@ -1424,32 +1479,6 @@
           </instruction>
         </instructions>
       </touchpointData>
-    </unit>
-    <unit id='uk.ac.kcl.mdeoptimise.feature.source.feature.group' version='1.0.0.201611242323' singleton='false'>
-      <update id='uk.ac.kcl.mdeoptimise.feature.source.feature.group' range='[0.0.0,1.0.0.201611242323)' severity='0'/>
-      <properties size='6'>
-        <property name='org.eclipse.equinox.p2.name' value='MDEOptimise Feature  Developer Resources'/>
-        <property name='org.eclipse.equinox.p2.type.group' value='true'/>
-        <property name='maven-groupId' value='uk.ac.kcl.mdeoptimise'/>
-        <property name='maven-artifactId' value='uk.ac.kcl.mdeoptimise.feature'/>
-        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
-        <property name='maven-classifier' value='sources-feature'/>
-      </properties>
-      <provides size='1'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.feature.source.feature.group' version='1.0.0.201611242323'/>
-      </provides>
-      <requires size='5'>
-        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.feature.feature.group' range='[1.0.0.201611242323,1.0.0.201611242323]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.source' range='[1.0.0.201611242323,1.0.0.201611242323]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.ide.source' range='[1.0.0.201611242323,1.0.0.201611242323]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.ui.source' range='[1.0.0.201611242323,1.0.0.201611242323]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.feature.source.feature.jar' range='[1.0.0.201611242323,1.0.0.201611242323]'>
-          <filter>
-            (org.eclipse.update.install.features=true)
-          </filter>
-        </required>
-      </requires>
-      <touchpoint id='null' version='0.0.0'/>
     </unit>
     <unit id='org.w3c.dom.svg' version='1.1.0.v201011041433' singleton='false'>
       <update id='org.w3c.dom.svg' range='[0.0.0,1.1.0.v201011041433)' severity='0'/>
@@ -1772,60 +1801,71 @@
         </instructions>
       </touchpointData>
     </unit>
-    <unit id='uk.ac.kcl.mdeoptimise.ide.source' version='1.0.0.201611242323' singleton='false'>
-      <update id='uk.ac.kcl.mdeoptimise.ide.source' range='[0.0.0,1.0.0.201611242323)' severity='0'/>
-      <properties size='9'>
-        <property name='df_LT.bundleVendor' value='My Company'/>
-        <property name='df_LT.bundleName' value='uk.ac.kcl.mdeoptimise.ide Source'/>
-        <property name='org.eclipse.equinox.p2.name' value='%bundleName'/>
-        <property name='org.eclipse.equinox.p2.provider' value='%bundleVendor'/>
-        <property name='org.eclipse.equinox.p2.bundle.localization' value='OSGI-INF/l10n/bundle-src'/>
+    <unit id='uk.ac.kcl.mdeoptimise' version='1.0.0.201706072015'>
+      <update id='uk.ac.kcl.mdeoptimise' range='[0.0.0,1.0.0.201706072015)' severity='0'/>
+      <properties size='5'>
+        <property name='org.eclipse.equinox.p2.name' value='uk.ac.kcl.mdeoptimise'/>
+        <property name='org.eclipse.equinox.p2.provider' value='My Company'/>
         <property name='maven-groupId' value='uk.ac.kcl.mdeoptimise'/>
-        <property name='maven-artifactId' value='uk.ac.kcl.mdeoptimise.ide'/>
+        <property name='maven-artifactId' value='uk.ac.kcl.mdeoptimise'/>
         <property name='maven-version' value='1.0.0-SNAPSHOT'/>
-        <property name='maven-classifier' value='sources'/>
       </properties>
-      <provides size='4'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.ide.source' version='1.0.0.201611242323'/>
-        <provided namespace='osgi.bundle' name='uk.ac.kcl.mdeoptimise.ide.source' version='1.0.0.201611242323'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='source' version='1.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      <provides size='20'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise' version='1.0.0.201706072015'/>
+        <provided namespace='osgi.bundle' name='uk.ac.kcl.mdeoptimise' version='1.0.0.201706072015'/>
+        <provided namespace='java.package' name='uk.ac.kcl.validation' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.generator' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.scoping' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.serializer' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.parser.antlr' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.services' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.parser.antlr.internal' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.mdeoptimise.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.mdeoptimise' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.mdeoptimise.util' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.interpreter' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.interpreter.guidance' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.interpreter.guidance.java' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.interpreter.guidance.ocl' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.optimisation' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.optimisation.moea' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
       </provides>
+      <requires size='24'>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.xbase' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.equinox.common' range='3.5.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.xbase.lib' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.antlr.runtime' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.util' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtend.lib' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.common' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.objectweb.asm' range='[5.0.1,6.0.0)' optional='true' greedy='false'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.henshin.interpreter' range='1.4.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.henshin.model' range='1.4.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ocl' range='3.6.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ocl.ecore' range='3.6.0'/>
+        <required namespace='osgi.bundle' name='org.moeaframework' range='2.11.0'/>
+        <required namespace='osgi.bundle' name='org.apache.commons.math3' range='3.4.1'/>
+        <required namespace='osgi.bundle' name='org.apache.commons.lang3' range='3.1.0'/>
+        <required namespace='osgi.bundle' name='org.apache.commons.codec' range='1.8.0'/>
+        <required namespace='osgi.bundle' name='com.google.code.gson' range='0.0.0'/>
+        <required namespace='java.package' name='org.apache.log4j' range='0.0.0'/>
+        <required namespace='java.package' name='org.eclipse.emf.henshin.interpreter' range='0.0.0'/>
+        <required namespace='java.package' name='org.eclipse.emf.ecore' range='0.0.0'/>
+        <required namespace='java.package' name='org.eclipse.emf.common' range='0.0.0'/>
+        <required namespace='java.package' name='org.eclipse.emf.henshin' range='0.0.0'/>
+      </requires>
       <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='uk.ac.kcl.mdeoptimise.ide.source' version='1.0.0.201611242323'/>
+        <artifact classifier='osgi.bundle' id='uk.ac.kcl.mdeoptimise' version='1.0.0.201706072015'/>
       </artifacts>
       <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
       <touchpointData size='1'>
         <instructions size='1'>
           <instruction key='manifest'>
-            Bundle-SymbolicName: uk.ac.kcl.mdeoptimise.ide.source&#xA;Bundle-Version: 1.0.0.201611242323
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id='uk.ac.kcl.mdeoptimise.feature.feature.jar' version='1.0.0.201611242323'>
-      <properties size='4'>
-        <property name='org.eclipse.equinox.p2.name' value='MDEOptimise Feature'/>
-        <property name='maven-groupId' value='uk.ac.kcl.mdeoptimise'/>
-        <property name='maven-artifactId' value='uk.ac.kcl.mdeoptimise.feature'/>
-        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
-      </properties>
-      <provides size='3'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.feature.feature.jar' version='1.0.0.201611242323'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='feature' version='1.0.0'/>
-        <provided namespace='org.eclipse.update.feature' name='uk.ac.kcl.mdeoptimise.feature' version='1.0.0.201611242323'/>
-      </provides>
-      <filter>
-        (org.eclipse.update.install.features=true)
-      </filter>
-      <artifacts size='1'>
-        <artifact classifier='org.eclipse.update.feature' id='uk.ac.kcl.mdeoptimise.feature' version='1.0.0.201611242323'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='1'>
-          <instruction key='zipped'>
-            true
+            Bundle-SymbolicName: uk.ac.kcl.mdeoptimise; singleton:=true&#xA;Bundle-Version: 1.0.0.201706072015
           </instruction>
         </instructions>
       </touchpointData>
@@ -2046,47 +2086,6 @@
         </instructions>
       </touchpointData>
     </unit>
-    <unit id='org.eclipse.emf.henshin.model' version='1.4.0.201606151103'>
-      <update id='org.eclipse.emf.henshin.model' range='[0.0.0,1.4.0.201606151103)' severity='0'/>
-      <properties size='5'>
-        <property name='df_LT.pluginName' value='Henshin Model'/>
-        <property name='df_LT.providerName' value='Eclipse Modeling Project'/>
-        <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
-        <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
-        <property name='org.eclipse.equinox.p2.bundle.localization' value='plugin'/>
-      </properties>
-      <provides size='13'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.henshin.model' version='1.4.0.201606151103'/>
-        <provided namespace='osgi.bundle' name='org.eclipse.emf.henshin.model' version='1.4.0.201606151103'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin' version='0.0.0'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin.model' version='0.0.0'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin.model.actions' version='0.0.0'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin.model.exporters' version='0.0.0'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin.model.impl' version='0.0.0'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin.model.importers' version='0.0.0'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin.model.resource' version='0.0.0'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin.model.staticanalysis' version='0.0.0'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin.model.util' version='0.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
-      </provides>
-      <requires size='3'>
-        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='3.6.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore' range='2.6.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore.xmi' range='2.6.0'/>
-      </requires>
-      <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='org.eclipse.emf.henshin.model' version='1.4.0.201606151103'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='1'>
-          <instruction key='manifest'>
-            Bundle-SymbolicName: org.eclipse.emf.henshin.model;singleton:=true&#xA;Bundle-Version: 1.4.0.201606151103
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
     <unit id='lpg.runtime.java' version='2.0.17.v201004271640' singleton='false'>
       <update id='lpg.runtime.java' range='[0.0.0,2.0.17.v201004271640)' severity='0'/>
       <properties size='5'>
@@ -2255,50 +2254,6 @@
         <instructions size='1'>
           <instruction key='manifest'>
             Bundle-SymbolicName: org.eclipse.xtend&#xA;Bundle-Version: 2.2.0.v201605260315
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id='uk.ac.kcl.mdeoptimise.ui' version='1.0.0.201611242323'>
-      <update id='uk.ac.kcl.mdeoptimise.ui' range='[0.0.0,1.0.0.201611242323)' severity='0'/>
-      <properties size='5'>
-        <property name='org.eclipse.equinox.p2.name' value='uk.ac.kcl.mdeoptimise.ui'/>
-        <property name='org.eclipse.equinox.p2.provider' value='My Company'/>
-        <property name='maven-groupId' value='uk.ac.kcl.mdeoptimise'/>
-        <property name='maven-artifactId' value='uk.ac.kcl.mdeoptimise.ui'/>
-        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
-      </properties>
-      <provides size='6'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.ui' version='1.0.0.201611242323'/>
-        <provided namespace='osgi.bundle' name='uk.ac.kcl.mdeoptimise.ui' version='1.0.0.201611242323'/>
-        <provided namespace='java.package' name='uk.ac.kcl.mdeoptimise.ui.internal' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.ui.quickfix' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.ui.contentassist' version='0.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
-      </provides>
-      <requires size='13'>
-        <required namespace='osgi.bundle' name='uk.ac.kcl.mdeoptimise' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='uk.ac.kcl.mdeoptimise.ide' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.ui' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.ui.shared' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.ui.codetemplates.ui' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.ui.editors' range='3.5.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.ui.ide' range='3.5.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.ui' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.compare' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.builder' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtend.lib' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.xbase.lib' range='0.0.0'/>
-        <required namespace='java.package' name='org.apache.log4j' range='0.0.0'/>
-      </requires>
-      <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='uk.ac.kcl.mdeoptimise.ui' version='1.0.0.201611242323'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='1'>
-          <instruction key='manifest'>
-            Bundle-SymbolicName: uk.ac.kcl.mdeoptimise.ui; singleton:=true&#xA;Bundle-Version: 1.0.0.201611242323
           </instruction>
         </instructions>
       </touchpointData>
@@ -2504,37 +2459,6 @@
         <instructions size='1'>
           <instruction key='manifest'>
             Bundle-SymbolicName: org.apache.commons.logging&#xA;Bundle-Version: 1.1.1.v201101211721
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id='uk.ac.kcl.mdeoptimise.ui.source' version='1.0.0.201611242323' singleton='false'>
-      <update id='uk.ac.kcl.mdeoptimise.ui.source' range='[0.0.0,1.0.0.201611242323)' severity='0'/>
-      <properties size='9'>
-        <property name='df_LT.bundleVendor' value='My Company'/>
-        <property name='df_LT.bundleName' value='uk.ac.kcl.mdeoptimise.ui Source'/>
-        <property name='org.eclipse.equinox.p2.name' value='%bundleName'/>
-        <property name='org.eclipse.equinox.p2.provider' value='%bundleVendor'/>
-        <property name='org.eclipse.equinox.p2.bundle.localization' value='OSGI-INF/l10n/bundle-src'/>
-        <property name='maven-groupId' value='uk.ac.kcl.mdeoptimise'/>
-        <property name='maven-artifactId' value='uk.ac.kcl.mdeoptimise.ui'/>
-        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
-        <property name='maven-classifier' value='sources'/>
-      </properties>
-      <provides size='4'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.ui.source' version='1.0.0.201611242323'/>
-        <provided namespace='osgi.bundle' name='uk.ac.kcl.mdeoptimise.ui.source' version='1.0.0.201611242323'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='source' version='1.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
-      </provides>
-      <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='uk.ac.kcl.mdeoptimise.ui.source' version='1.0.0.201611242323'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='1'>
-          <instruction key='manifest'>
-            Bundle-SymbolicName: uk.ac.kcl.mdeoptimise.ui.source&#xA;Bundle-Version: 1.0.0.201611242323
           </instruction>
         </instructions>
       </touchpointData>
@@ -2783,6 +2707,39 @@
         </instructions>
       </touchpointData>
     </unit>
+    <unit id='uk.ac.kcl.mdeoptimise.ide' version='1.0.0.201706072015'>
+      <update id='uk.ac.kcl.mdeoptimise.ide' range='[0.0.0,1.0.0.201706072015)' severity='0'/>
+      <properties size='5'>
+        <property name='org.eclipse.equinox.p2.name' value='uk.ac.kcl.mdeoptimise.ide'/>
+        <property name='org.eclipse.equinox.p2.provider' value='My Company'/>
+        <property name='maven-groupId' value='uk.ac.kcl.mdeoptimise'/>
+        <property name='maven-artifactId' value='uk.ac.kcl.mdeoptimise.ide'/>
+        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+      </properties>
+      <provides size='5'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.ide' version='1.0.0.201706072015'/>
+        <provided namespace='osgi.bundle' name='uk.ac.kcl.mdeoptimise.ide' version='1.0.0.201706072015'/>
+        <provided namespace='java.package' name='uk.ac.kcl.ide.contentassist.antlr.internal' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.ide.contentassist.antlr' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='3'>
+        <required namespace='osgi.bundle' name='uk.ac.kcl.mdeoptimise' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.ide' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.xbase.ide' range='0.0.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='uk.ac.kcl.mdeoptimise.ide' version='1.0.0.201706072015'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: uk.ac.kcl.mdeoptimise.ide; singleton:=true&#xA;Bundle-Version: 1.0.0.201706072015
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
     <unit id='org.eclipse.xtext.xtext.generator' version='2.10.0.v201605250459'>
       <update id='org.eclipse.xtext.xtext.generator' range='[0.0.0,2.10.0.v201605250459)' severity='0'/>
       <properties size='5'>
@@ -2904,35 +2861,30 @@
         </instructions>
       </touchpointData>
     </unit>
-    <unit id='uk.ac.kcl.mdeoptimise.ide' version='1.0.0.201611242323'>
-      <update id='uk.ac.kcl.mdeoptimise.ide' range='[0.0.0,1.0.0.201611242323)' severity='0'/>
+    <unit id='uk.ac.kcl.mdeoptimise.feature.source.feature.jar' version='1.0.0.201706072015'>
       <properties size='5'>
-        <property name='org.eclipse.equinox.p2.name' value='uk.ac.kcl.mdeoptimise.ide'/>
-        <property name='org.eclipse.equinox.p2.provider' value='My Company'/>
+        <property name='org.eclipse.equinox.p2.name' value='MDEOptimise Feature  Developer Resources'/>
         <property name='maven-groupId' value='uk.ac.kcl.mdeoptimise'/>
-        <property name='maven-artifactId' value='uk.ac.kcl.mdeoptimise.ide'/>
+        <property name='maven-artifactId' value='uk.ac.kcl.mdeoptimise.feature'/>
         <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+        <property name='maven-classifier' value='sources-feature'/>
       </properties>
-      <provides size='5'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.ide' version='1.0.0.201611242323'/>
-        <provided namespace='osgi.bundle' name='uk.ac.kcl.mdeoptimise.ide' version='1.0.0.201611242323'/>
-        <provided namespace='java.package' name='uk.ac.kcl.ide.contentassist.antlr.internal' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.ide.contentassist.antlr' version='0.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      <provides size='3'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.feature.source.feature.jar' version='1.0.0.201706072015'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='feature' version='1.0.0'/>
+        <provided namespace='org.eclipse.update.feature' name='uk.ac.kcl.mdeoptimise.feature.source' version='1.0.0.201706072015'/>
       </provides>
-      <requires size='3'>
-        <required namespace='osgi.bundle' name='uk.ac.kcl.mdeoptimise' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.ide' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.xbase.ide' range='0.0.0'/>
-      </requires>
+      <filter>
+        (org.eclipse.update.install.features=true)
+      </filter>
       <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='uk.ac.kcl.mdeoptimise.ide' version='1.0.0.201611242323'/>
+        <artifact classifier='org.eclipse.update.feature' id='uk.ac.kcl.mdeoptimise.feature.source' version='1.0.0.201706072015'/>
       </artifacts>
       <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
       <touchpointData size='1'>
         <instructions size='1'>
-          <instruction key='manifest'>
-            Bundle-SymbolicName: uk.ac.kcl.mdeoptimise.ide; singleton:=true&#xA;Bundle-Version: 1.0.0.201611242323
+          <instruction key='zipped'>
+            true
           </instruction>
         </instructions>
       </touchpointData>
@@ -3329,6 +3281,44 @@
         </instructions>
       </touchpointData>
     </unit>
+    <unit id='org.eclipse.emf.henshin.interpreter' version='1.4.0.201611301251'>
+      <update id='org.eclipse.emf.henshin.interpreter' range='[0.0.0,1.4.0.201611301251)' severity='0'/>
+      <properties size='5'>
+        <property name='df_LT.pluginName' value='Henshin Interpreter'/>
+        <property name='df_LT.providerName' value='Eclipse Modeling Project'/>
+        <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
+        <property name='org.eclipse.equinox.p2.bundle.localization' value='plugin'/>
+      </properties>
+      <provides size='10'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.henshin.interpreter' version='1.4.0.201611301251'/>
+        <provided namespace='osgi.bundle' name='org.eclipse.emf.henshin.interpreter' version='1.4.0.201611301251'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin.interpreter' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin.interpreter.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin.interpreter.info' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin.interpreter.matching.conditions' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin.interpreter.matching.constraints' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin.interpreter.util' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <requires size='3'>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore.xmi' range='2.5.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore.change' range='2.5.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.henshin.model' range='0.9.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.eclipse.emf.henshin.interpreter' version='1.4.0.201611301251'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: org.eclipse.emf.henshin.interpreter;singleton:=true&#xA;Bundle-Version: 1.4.0.201611301251
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
     <unit id='org.eclipse.equinox.bidi' version='1.0.0.v20160307-1318'>
       <update id='org.eclipse.equinox.bidi' range='[0.0.0,1.0.0.v20160307-1318)' severity='0'/>
       <properties size='8'>
@@ -3484,6 +3474,53 @@
         <instructions size='1'>
           <instruction key='manifest'>
             Bundle-SymbolicName: org.apache.batik.util&#xA;Bundle-Version: 1.7.0.v201011041433
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='uk.ac.kcl.mdeoptimise.ui' version='1.0.0.201706072015'>
+      <update id='uk.ac.kcl.mdeoptimise.ui' range='[0.0.0,1.0.0.201706072015)' severity='0'/>
+      <properties size='5'>
+        <property name='org.eclipse.equinox.p2.name' value='uk.ac.kcl.mdeoptimise.ui'/>
+        <property name='org.eclipse.equinox.p2.provider' value='My Company'/>
+        <property name='maven-groupId' value='uk.ac.kcl.mdeoptimise'/>
+        <property name='maven-artifactId' value='uk.ac.kcl.mdeoptimise.ui'/>
+        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+      </properties>
+      <provides size='7'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.ui' version='1.0.0.201706072015'/>
+        <provided namespace='osgi.bundle' name='uk.ac.kcl.mdeoptimise.ui' version='1.0.0.201706072015'/>
+        <provided namespace='java.package' name='uk.ac.kcl.mdeoptimise.ui.internal' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.ui.quickfix' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.ui.contentassist' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.ui.handler' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='15'>
+        <required namespace='osgi.bundle' name='uk.ac.kcl.mdeoptimise' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='uk.ac.kcl.mdeoptimise.ide' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.ui.shared' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.ui.codetemplates.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.editors' range='3.5.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.ide' range='3.5.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.compare' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.builder' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtend.lib' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.xbase.lib' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='0.0.0'/>
+        <required namespace='java.package' name='org.apache.log4j' range='0.0.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='uk.ac.kcl.mdeoptimise.ui' version='1.0.0.201706072015'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: uk.ac.kcl.mdeoptimise.ui; singleton:=true&#xA;Bundle-Version: 1.0.0.201706072015
           </instruction>
         </instructions>
       </touchpointData>
@@ -3871,6 +3908,35 @@
         </instructions>
       </touchpointData>
     </unit>
+    <unit id='com.google.code.gson' version='2.8.0' singleton='false'>
+      <update id='com.google.code.gson' range='[0.0.0,2.8.0)' severity='0'/>
+      <properties size='1'>
+        <property name='org.eclipse.equinox.p2.name' value='com.google.code.gson'/>
+      </properties>
+      <provides size='10'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='com.google.code.gson' version='2.8.0'/>
+        <provided namespace='osgi.bundle' name='com.google.code.gson' version='2.8.0'/>
+        <provided namespace='java.package' name='com.google.gson' version='0.0.0'/>
+        <provided namespace='java.package' name='com.google.gson.annotations' version='0.0.0'/>
+        <provided namespace='java.package' name='com.google.gson.internal' version='0.0.0'/>
+        <provided namespace='java.package' name='com.google.gson.internal.bind' version='0.0.0'/>
+        <provided namespace='java.package' name='com.google.gson.internal.bind.util' version='0.0.0'/>
+        <provided namespace='java.package' name='com.google.gson.reflect' version='0.0.0'/>
+        <provided namespace='java.package' name='com.google.gson.stream' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='com.google.code.gson' version='2.8.0'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: com.google.code.gson&#xA;Bundle-Version: 2.8.0
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
     <unit id='org.eclipse.equinox.p2.core' version='2.4.100.v20160419-0834'>
       <update id='org.eclipse.equinox.p2.core' range='[0.0.0,2.4.100.v20160419-0834)' severity='0'/>
       <properties size='8'>
@@ -3979,73 +4045,31 @@
         </instructions>
       </touchpointData>
     </unit>
-    <unit id='uk.ac.kcl.mdeoptimise' version='1.0.0.201611242323'>
-      <update id='uk.ac.kcl.mdeoptimise' range='[0.0.0,1.0.0.201611242323)' severity='0'/>
-      <properties size='5'>
-        <property name='org.eclipse.equinox.p2.name' value='uk.ac.kcl.mdeoptimise'/>
-        <property name='org.eclipse.equinox.p2.provider' value='My Company'/>
+    <unit id='uk.ac.kcl.mdeoptimise.feature.source.feature.group' version='1.0.0.201706072015' singleton='false'>
+      <update id='uk.ac.kcl.mdeoptimise.feature.source.feature.group' range='[0.0.0,1.0.0.201706072015)' severity='0'/>
+      <properties size='6'>
+        <property name='org.eclipse.equinox.p2.name' value='MDEOptimise Feature  Developer Resources'/>
+        <property name='org.eclipse.equinox.p2.type.group' value='true'/>
         <property name='maven-groupId' value='uk.ac.kcl.mdeoptimise'/>
-        <property name='maven-artifactId' value='uk.ac.kcl.mdeoptimise'/>
+        <property name='maven-artifactId' value='uk.ac.kcl.mdeoptimise.feature'/>
         <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+        <property name='maven-classifier' value='sources-feature'/>
       </properties>
-      <provides size='20'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise' version='1.0.0.201611242323'/>
-        <provided namespace='osgi.bundle' name='uk.ac.kcl.mdeoptimise' version='1.0.0.201611242323'/>
-        <provided namespace='java.package' name='uk.ac.kcl.validation' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.generator' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.scoping' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.serializer' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.parser.antlr' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.services' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.parser.antlr.internal' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.mdeoptimise.impl' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.mdeoptimise' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.mdeoptimise.util' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.interpreter' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.interpreter.guidance' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.interpreter.guidance.java' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.interpreter.guidance.ocl' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.optimisation' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.optimisation.moea' version='0.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      <provides size='1'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.feature.source.feature.group' version='1.0.0.201706072015'/>
       </provides>
-      <requires size='23'>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.xbase' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.equinox.common' range='3.5.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.xbase.lib' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.antlr.runtime' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.util' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtend.lib' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.common' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.objectweb.asm' range='[5.0.1,6.0.0)' optional='true' greedy='false'/>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.henshin.interpreter' range='1.4.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.henshin.model' range='1.4.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.ocl' range='3.6.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.ocl.ecore' range='3.6.0'/>
-        <required namespace='osgi.bundle' name='org.moeaframework' range='2.11.0'/>
-        <required namespace='osgi.bundle' name='org.apache.commons.math3' range='3.4.1'/>
-        <required namespace='osgi.bundle' name='org.apache.commons.lang3' range='3.1.0'/>
-        <required namespace='osgi.bundle' name='org.apache.commons.codec' range='1.8.0'/>
-        <required namespace='java.package' name='org.apache.log4j' range='0.0.0'/>
-        <required namespace='java.package' name='org.eclipse.emf.henshin.interpreter' range='0.0.0'/>
-        <required namespace='java.package' name='org.eclipse.emf.ecore' range='0.0.0'/>
-        <required namespace='java.package' name='org.eclipse.emf.common' range='0.0.0'/>
-        <required namespace='java.package' name='org.eclipse.emf.henshin' range='0.0.0'/>
+      <requires size='5'>
+        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.feature.feature.group' range='[1.0.0.201706072015,1.0.0.201706072015]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.source' range='[1.0.0.201706072015,1.0.0.201706072015]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.ide.source' range='[1.0.0.201706072015,1.0.0.201706072015]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.ui.source' range='[1.0.0.201706072015,1.0.0.201706072015]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.feature.source.feature.jar' range='[1.0.0.201706072015,1.0.0.201706072015]'>
+          <filter>
+            (org.eclipse.update.install.features=true)
+          </filter>
+        </required>
       </requires>
-      <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='uk.ac.kcl.mdeoptimise' version='1.0.0.201611242323'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='1'>
-          <instruction key='manifest'>
-            Bundle-SymbolicName: uk.ac.kcl.mdeoptimise; singleton:=true&#xA;Bundle-Version: 1.0.0.201611242323
-          </instruction>
-        </instructions>
-      </touchpointData>
+      <touchpoint id='null' version='0.0.0'/>
     </unit>
     <unit id='org.eclipse.xtext' version='2.10.0.v201605250459'>
       <update id='org.eclipse.xtext' range='[0.0.0,2.10.0.v201605250459)' severity='0'/>
@@ -4165,34 +4189,6 @@
         <instructions size='1'>
           <instruction key='manifest'>
             Bundle-SymbolicName: org.eclipse.xtext;singleton:=true&#xA;Bundle-Version: 2.10.0.v201605250459
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id='uk.ac.kcl.mdeoptimise.feature.source.feature.jar' version='1.0.0.201611242323'>
-      <properties size='5'>
-        <property name='org.eclipse.equinox.p2.name' value='MDEOptimise Feature  Developer Resources'/>
-        <property name='maven-groupId' value='uk.ac.kcl.mdeoptimise'/>
-        <property name='maven-artifactId' value='uk.ac.kcl.mdeoptimise.feature'/>
-        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
-        <property name='maven-classifier' value='sources-feature'/>
-      </properties>
-      <provides size='3'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.feature.source.feature.jar' version='1.0.0.201611242323'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='feature' version='1.0.0'/>
-        <provided namespace='org.eclipse.update.feature' name='uk.ac.kcl.mdeoptimise.feature.source' version='1.0.0.201611242323'/>
-      </provides>
-      <filter>
-        (org.eclipse.update.install.features=true)
-      </filter>
-      <artifacts size='1'>
-        <artifact classifier='org.eclipse.update.feature' id='uk.ac.kcl.mdeoptimise.feature.source' version='1.0.0.201611242323'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='1'>
-          <instruction key='zipped'>
-            true
           </instruction>
         </instructions>
       </touchpointData>
@@ -6095,6 +6091,33 @@
         </instructions>
       </touchpointData>
     </unit>
+    <unit id='uk.ac.kcl.mdeoptimise.feature.feature.jar' version='1.0.0.201706072015'>
+      <properties size='4'>
+        <property name='org.eclipse.equinox.p2.name' value='MDEOptimise Feature'/>
+        <property name='maven-groupId' value='uk.ac.kcl.mdeoptimise'/>
+        <property name='maven-artifactId' value='uk.ac.kcl.mdeoptimise.feature'/>
+        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+      </properties>
+      <provides size='3'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.feature.feature.jar' version='1.0.0.201706072015'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='feature' version='1.0.0'/>
+        <provided namespace='org.eclipse.update.feature' name='uk.ac.kcl.mdeoptimise.feature' version='1.0.0.201706072015'/>
+      </provides>
+      <filter>
+        (org.eclipse.update.install.features=true)
+      </filter>
+      <artifacts size='1'>
+        <artifact classifier='org.eclipse.update.feature' id='uk.ac.kcl.mdeoptimise.feature' version='1.0.0.201706072015'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='zipped'>
+            true
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
     <unit id='org.w3c.dom.smil' version='1.0.1.v200903091627' singleton='false'>
       <update id='org.w3c.dom.smil' range='[0.0.0,1.0.1.v200903091627)' severity='0'/>
       <properties size='5'>
@@ -6123,37 +6146,6 @@
         <instructions size='1'>
           <instruction key='manifest'>
             Bundle-SymbolicName: org.w3c.dom.smil&#xA;Bundle-Version: 1.0.1.v200903091627
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id='uk.ac.kcl.mdeoptimise.source' version='1.0.0.201611242323' singleton='false'>
-      <update id='uk.ac.kcl.mdeoptimise.source' range='[0.0.0,1.0.0.201611242323)' severity='0'/>
-      <properties size='9'>
-        <property name='df_LT.bundleVendor' value='My Company'/>
-        <property name='df_LT.bundleName' value='uk.ac.kcl.mdeoptimise Source'/>
-        <property name='org.eclipse.equinox.p2.name' value='%bundleName'/>
-        <property name='org.eclipse.equinox.p2.provider' value='%bundleVendor'/>
-        <property name='org.eclipse.equinox.p2.bundle.localization' value='OSGI-INF/l10n/bundle-src'/>
-        <property name='maven-groupId' value='uk.ac.kcl.mdeoptimise'/>
-        <property name='maven-artifactId' value='uk.ac.kcl.mdeoptimise'/>
-        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
-        <property name='maven-classifier' value='sources'/>
-      </properties>
-      <provides size='4'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.source' version='1.0.0.201611242323'/>
-        <provided namespace='osgi.bundle' name='uk.ac.kcl.mdeoptimise.source' version='1.0.0.201611242323'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='source' version='1.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
-      </provides>
-      <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='uk.ac.kcl.mdeoptimise.source' version='1.0.0.201611242323'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='1'>
-          <instruction key='manifest'>
-            Bundle-SymbolicName: uk.ac.kcl.mdeoptimise.source&#xA;Bundle-Version: 1.0.0.201611242323
           </instruction>
         </instructions>
       </touchpointData>
@@ -6288,6 +6280,47 @@
         <instructions size='1'>
           <instruction key='manifest'>
             Bundle-SymbolicName: org.eclipse.swt.win32.win32.x86_64; singleton:=true&#xA;Bundle-Version: 3.105.1.v20160907-0248&#xA;Fragment-Host: org.eclipse.swt; bundle-version=&quot;[3.0.0,4.0.0)&quot;
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.eclipse.emf.henshin.model' version='1.4.0.201611301251'>
+      <update id='org.eclipse.emf.henshin.model' range='[0.0.0,1.4.0.201611301251)' severity='0'/>
+      <properties size='5'>
+        <property name='df_LT.pluginName' value='Henshin Model'/>
+        <property name='df_LT.providerName' value='Eclipse Modeling Project'/>
+        <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
+        <property name='org.eclipse.equinox.p2.bundle.localization' value='plugin'/>
+      </properties>
+      <provides size='13'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.henshin.model' version='1.4.0.201611301251'/>
+        <provided namespace='osgi.bundle' name='org.eclipse.emf.henshin.model' version='1.4.0.201611301251'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin.model' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin.model.actions' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin.model.exporters' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin.model.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin.model.importers' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin.model.resource' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin.model.staticanalysis' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin.model.util' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <requires size='3'>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='3.6.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore' range='2.6.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore.xmi' range='2.6.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.eclipse.emf.henshin.model' version='1.4.0.201611301251'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: org.eclipse.emf.henshin.model;singleton:=true&#xA;Bundle-Version: 1.4.0.201611301251
           </instruction>
         </instructions>
       </touchpointData>
@@ -6545,30 +6578,6 @@
           </instruction>
         </instructions>
       </touchpointData>
-    </unit>
-    <unit id='uk.ac.kcl.mdeoptimise.feature.feature.group' version='1.0.0.201611242323' singleton='false'>
-      <update id='uk.ac.kcl.mdeoptimise.feature.feature.group' range='[0.0.0,1.0.0.201611242323)' severity='0'/>
-      <properties size='5'>
-        <property name='org.eclipse.equinox.p2.name' value='MDEOptimise Feature'/>
-        <property name='org.eclipse.equinox.p2.type.group' value='true'/>
-        <property name='maven-groupId' value='uk.ac.kcl.mdeoptimise'/>
-        <property name='maven-artifactId' value='uk.ac.kcl.mdeoptimise.feature'/>
-        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
-      </properties>
-      <provides size='1'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.feature.feature.group' version='1.0.0.201611242323'/>
-      </provides>
-      <requires size='4'>
-        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise' range='[1.0.0.201611242323,1.0.0.201611242323]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.ide' range='[1.0.0.201611242323,1.0.0.201611242323]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.ui' range='[1.0.0.201611242323,1.0.0.201611242323]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.feature.feature.jar' range='[1.0.0.201611242323,1.0.0.201611242323]'>
-          <filter>
-            (org.eclipse.update.install.features=true)
-          </filter>
-        </required>
-      </requires>
-      <touchpoint id='null' version='0.0.0'/>
     </unit>
     <unit id='org.eclipse.xtext.ui.codetemplates.ui' version='2.10.0.v201605250459'>
       <update id='org.eclipse.xtext.ui.codetemplates.ui' range='[0.0.0,2.10.0.v201605250459)' severity='0'/>
@@ -7304,6 +7313,30 @@
           </instruction>
         </instructions>
       </touchpointData>
+    </unit>
+    <unit id='uk.ac.kcl.mdeoptimise.feature.feature.group' version='1.0.0.201706072015' singleton='false'>
+      <update id='uk.ac.kcl.mdeoptimise.feature.feature.group' range='[0.0.0,1.0.0.201706072015)' severity='0'/>
+      <properties size='5'>
+        <property name='org.eclipse.equinox.p2.name' value='MDEOptimise Feature'/>
+        <property name='org.eclipse.equinox.p2.type.group' value='true'/>
+        <property name='maven-groupId' value='uk.ac.kcl.mdeoptimise'/>
+        <property name='maven-artifactId' value='uk.ac.kcl.mdeoptimise.feature'/>
+        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+      </properties>
+      <provides size='1'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.feature.feature.group' version='1.0.0.201706072015'/>
+      </provides>
+      <requires size='4'>
+        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise' range='[1.0.0.201706072015,1.0.0.201706072015]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.ide' range='[1.0.0.201706072015,1.0.0.201706072015]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.ui' range='[1.0.0.201706072015,1.0.0.201706072015]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.feature.feature.jar' range='[1.0.0.201706072015,1.0.0.201706072015]'>
+          <filter>
+            (org.eclipse.update.install.features=true)
+          </filter>
+        </required>
+      </requires>
+      <touchpoint id='null' version='0.0.0'/>
     </unit>
     <unit id='org.eclipse.e4.ui.model.workbench' version='1.2.0.v20160229-1459'>
       <update id='org.eclipse.e4.ui.model.workbench' range='[0.0.0,1.2.0.v20160229-1459)' severity='0'/>
