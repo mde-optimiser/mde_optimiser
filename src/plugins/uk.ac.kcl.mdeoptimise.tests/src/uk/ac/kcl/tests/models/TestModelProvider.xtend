@@ -43,6 +43,10 @@ abstract class TestModelProvider implements IModelProvider {
 		resource.save(Collections.EMPTY_MAP)
 	}
 
+	def storeModel(EObject model, int classes, double cra, int classlessFeatures, String pathPrefix) {
+		model.writeModel(pathPrefix + "/" + "cra-" + cra + "-classes-" + classes + "-classlessFeatures-" + classlessFeatures + "-" + String.format("%08X", model.hashCode) + ".xmi")
+	}
+
 	def storeModel(EObject model, String pathPrefix) {
 		model.writeModel(pathPrefix + "/" + String.format("%08X", model.hashCode) + ".xmi")
 	}
@@ -51,10 +55,10 @@ abstract class TestModelProvider implements IModelProvider {
 		
 		var fitnessObject = new MinimiseClasslessFeatures();
 		
-		if(fitnessObject.computeFitness(model) != 0){
-			println("Ignoring model with unassigned features.")
-			return;
-		}
+//		if(fitnessObject.computeFitness(model) != 0){
+//			println("Ignoring model with unassigned features.")
+//			return;
+//		}
 		
 		storeModel(model, pathPrefix)
 		val info = runEvaluationJarAgainstBestModel(pathPrefix + "/" + String.format("%08X", model.hashCode) + ".xmi")

@@ -23,6 +23,7 @@ import uk.ac.kcl.mdeoptimise.MdeoptimisePackage;
  * <ul>
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.EvolverSpecImpl#getRule_location <em>Rule location</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.EvolverSpecImpl#getUnit <em>Unit</em>}</li>
+ *   <li>{@link uk.ac.kcl.mdeoptimise.impl.EvolverSpecImpl#getType <em>Type</em>}</li>
  * </ul>
  *
  * @generated
@@ -68,6 +69,26 @@ public class EvolverSpecImpl extends MinimalEObjectImpl.Container implements Evo
    * @ordered
    */
   protected String unit = UNIT_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getType()
+   * @generated
+   * @ordered
+   */
+  protected static final String TYPE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getType()
+   * @generated
+   * @ordered
+   */
+  protected String type = TYPE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -141,6 +162,29 @@ public class EvolverSpecImpl extends MinimalEObjectImpl.Container implements Evo
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getType()
+  {
+    return type;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setType(String newType)
+  {
+    String oldType = type;
+    type = newType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MdeoptimisePackage.EVOLVER_SPEC__TYPE, oldType, type));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -150,6 +194,8 @@ public class EvolverSpecImpl extends MinimalEObjectImpl.Container implements Evo
         return getRule_location();
       case MdeoptimisePackage.EVOLVER_SPEC__UNIT:
         return getUnit();
+      case MdeoptimisePackage.EVOLVER_SPEC__TYPE:
+        return getType();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -169,6 +215,9 @@ public class EvolverSpecImpl extends MinimalEObjectImpl.Container implements Evo
         return;
       case MdeoptimisePackage.EVOLVER_SPEC__UNIT:
         setUnit((String)newValue);
+        return;
+      case MdeoptimisePackage.EVOLVER_SPEC__TYPE:
+        setType((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -190,6 +239,9 @@ public class EvolverSpecImpl extends MinimalEObjectImpl.Container implements Evo
       case MdeoptimisePackage.EVOLVER_SPEC__UNIT:
         setUnit(UNIT_EDEFAULT);
         return;
+      case MdeoptimisePackage.EVOLVER_SPEC__TYPE:
+        setType(TYPE_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -208,6 +260,8 @@ public class EvolverSpecImpl extends MinimalEObjectImpl.Container implements Evo
         return RULE_LOCATION_EDEFAULT == null ? rule_location != null : !RULE_LOCATION_EDEFAULT.equals(rule_location);
       case MdeoptimisePackage.EVOLVER_SPEC__UNIT:
         return UNIT_EDEFAULT == null ? unit != null : !UNIT_EDEFAULT.equals(unit);
+      case MdeoptimisePackage.EVOLVER_SPEC__TYPE:
+        return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
     }
     return super.eIsSet(featureID);
   }
@@ -227,6 +281,8 @@ public class EvolverSpecImpl extends MinimalEObjectImpl.Container implements Evo
     result.append(rule_location);
     result.append(", unit: ");
     result.append(unit);
+    result.append(", type: ");
+    result.append(type);
     result.append(')');
     return result.toString();
   }

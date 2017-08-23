@@ -70,21 +70,23 @@ class MoeaOptimisationTests {
     //Some tests to run optimisation manually for now
 
 	@Test
-	@Ignore
 	def void runMoeaOptimisationNSGA2() {
 		
 			val pathPrefix = "gen/models/ttc/" + new SimpleDateFormat("yyMMdd-HHmmss").format(new Date())
 			
 			model = parser.parse('''
 				basepath <src/models/cra/>
-				metamodel <architectureCRA.ecore>			
+				metamodel <architectureCRA.ecore>
+				model <TTC_InputRDG_A.xmi>
 				objective MinimiseCoupling maximise java { "models.moea.MaximiseCRA" }
-				constraint MinimiseClasslessFeatures java { "models.moea.MinimiseClasslessFeatures" }
-				evolve using <craEvolvers.henshin> unit "createClass"
-				evolve using <craEvolvers.henshin> unit "assignFeature"
-				evolve using <craEvolvers.henshin> unit "moveFeature"
-				evolve using <craEvolvers.henshin> unit "deleteEmptyClass"
-				optimisation provider moea algorithm NSGAII evolutions 10000 population 10
+				constraint MinimiseEmptyClasses java { "models.moea.MinimiseClasslessFeatures" }
+				constraint MinimiseEmptyClasses java { "models.moea.MinimiseEmptyClasses" }
+				evolve using <craEvolvers.henshin> unit "createClass" type "mutation"
+				evolve using <craEvolvers.henshin> unit "assignFeature" type "mutation"
+				evolve using <craEvolvers.henshin> unit "moveFeature" type "mutation"
+				evolve using <craEvolvers.henshin> unit "deleteEmptyClass" type "mutation"
+				evolve using <exchangeClass.henshin> unit "exchangeClassBidirectional" type "crossover"
+				optimisation provider moea algorithm NSGAII variation genetic evolutions 4000 population 40
 			''')
 
 			//Assert that there are no grammar issues

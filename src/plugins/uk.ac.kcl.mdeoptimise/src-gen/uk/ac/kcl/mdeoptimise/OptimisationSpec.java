@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmFactory <em>Algorithm Factory</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmName <em>Algorithm Name</em>}</li>
+ *   <li>{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmVariation <em>Algorithm Variation</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmEvolutions <em>Algorithm Evolutions</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmPopulation <em>Algorithm Population</em>}</li>
  * </ul>
@@ -77,6 +78,32 @@ public interface OptimisationSpec extends EObject
    * @generated
    */
   void setAlgorithmName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Algorithm Variation</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Algorithm Variation</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Algorithm Variation</em>' attribute.
+   * @see #setAlgorithmVariation(String)
+   * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getOptimisationSpec_AlgorithmVariation()
+   * @model
+   * @generated
+   */
+  String getAlgorithmVariation();
+
+  /**
+   * Sets the value of the '{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmVariation <em>Algorithm Variation</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Algorithm Variation</em>' attribute.
+   * @see #getAlgorithmVariation()
+   * @generated
+   */
+  void setAlgorithmVariation(String value);
 
   /**
    * Returns the value of the '<em><b>Algorithm Evolutions</b></em>' attribute.

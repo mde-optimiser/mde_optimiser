@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link uk.ac.kcl.mdeoptimise.EvolverSpec#getRule_location <em>Rule location</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.EvolverSpec#getUnit <em>Unit</em>}</li>
+ *   <li>{@link uk.ac.kcl.mdeoptimise.EvolverSpec#getType <em>Type</em>}</li>
  * </ul>
  *
  * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getEvolverSpec()
@@ -75,5 +76,31 @@ public interface EvolverSpec extends EObject
    * @generated
    */
   void setUnit(String value);
+
+  /**
+   * Returns the value of the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Type</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Type</em>' attribute.
+   * @see #setType(String)
+   * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getEvolverSpec_Type()
+   * @model
+   * @generated
+   */
+  String getType();
+
+  /**
+   * Sets the value of the '{@link uk.ac.kcl.mdeoptimise.EvolverSpec#getType <em>Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Type</em>' attribute.
+   * @see #getType()
+   * @generated
+   */
+  void setType(String value);
 
 } // EvolverSpec

@@ -9,17 +9,19 @@ class MoeaOptimisationSolution extends Solution {
 	SolutionGenerator solutionGenerator
 	
 	new(MoeaOptimisationSolution moeaOptimisationSolution){
-		super(1, moeaOptimisationSolution.numberOfObjectives, 1)
+		super(1, moeaOptimisationSolution.numberOfObjectives, moeaOptimisationSolution.numberOfConstraints)
 		this.model = moeaOptimisationSolution.getModel
 		this.solutionGenerator = moeaOptimisationSolution.getSolutionGenerator
 	}
 	
-	new(int numberOfObjectives) {
-		super(1, numberOfObjectives, 1)
+	new(int numberOfObjectives, int numberOfConstraints) {
+		super(1, numberOfObjectives, numberOfConstraints)
 	}
 	
 	new(SolutionGenerator solutionGenerator){
-		this(solutionGenerator.optimisationModel.objectives.size())
+		this(solutionGenerator.optimisationModel.objectives.size(), 
+			solutionGenerator.optimisationModel.constraints.size()
+		)
 		this.solutionGenerator = solutionGenerator;
 		setModel(solutionGenerator.evolveModel(solutionGenerator.initialSolutions.head))
 	}

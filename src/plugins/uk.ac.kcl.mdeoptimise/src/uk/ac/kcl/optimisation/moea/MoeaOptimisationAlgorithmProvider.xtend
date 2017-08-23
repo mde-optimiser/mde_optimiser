@@ -12,6 +12,8 @@ import org.moeaframework.core.spi.AlgorithmProvider
 import uk.ac.kcl.optimisation.SolutionGenerator
 import org.moeaframework.algorithm.EpsilonMOEA
 import org.moeaframework.core.EpsilonBoxDominanceArchive
+import org.moeaframework.core.operator.GAVariation
+import org.moeaframework.core.Variation
 
 class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
 	
@@ -28,20 +30,38 @@ class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
 		}
 	}
 	
+	def Variation getVariation(Properties properties){
+		
+		//Check variation type is crossover with mutation
+		if(properties.get("variationType").equals("genetic")){
+			val crossoverVariation = new MoeaOptimisationCrossoverVariation(properties.get("solutionGenerator") as SolutionGenerator)
+			val mutationVariation = new MoeaOptimisationMutationVariation(properties.get("solutionGenerator") as SolutionGenerator)
+			
+			return new GAVariation(crossoverVariation, mutationVariation)
+		
+		//Check variation type is mutation
+		} else if(properties.get("variationType").equals("mutation")){
+		
+			return new MoeaOptimisationMutationVariation(properties.get("solutionGenerator") as SolutionGenerator)		
+		}
+		
+		//Must be crossover only then
+		return new MoeaOptimisationCrossoverVariation(properties.get("solutionGenerator") as SolutionGenerator)		
+		
+	}
+	
 	def Algorithm createNSGAII(Problem problem, Properties properties) {
 		//Create an initial random population of population size
 		var initialization = new RandomInitialization(problem, properties.get("populationSize") as Integer)
 		
 		var selection = new TournamentSelection(2);
 		
-		var variation = new MoeaOptimisationVariation(properties.get("solutionGenerator") as SolutionGenerator)	
-	
 		new NSGAII(
 				problem,
 				new NondominatedSortingPopulation(),
 				null, // no archiv
 				selection,
-				variation,
+				getVariation(properties),
 				initialization
 			);
 	}
@@ -50,12 +70,10 @@ class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
 		
 		var initialization = new RandomInitialization(problem, properties.get("populationSize") as Integer)
 		
-		var variation = new MoeaOptimisationVariation(properties.get("solutionGenerator") as SolutionGenerator)	
-	
 		new SPEA2(
 				problem,
 				initialization,
-				variation,
+				getVariation(properties),
 				properties.get("populationSize") as Integer,
 				1
 			);
@@ -69,14 +87,12 @@ class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
 		
 		var selection = new TournamentSelection(2);
 		
-		var variation = new MoeaOptimisationVariation(properties.get("solutionGenerator") as SolutionGenerator)	
-	
 		new EpsilonMOEA(
 				problem,
 				new NondominatedSortingPopulation(),
 				new EpsilonBoxDominanceArchive(0.01),
 				selection, 
-				variation,
+				getVariation(properties),
 				initialization
 			);
 	}

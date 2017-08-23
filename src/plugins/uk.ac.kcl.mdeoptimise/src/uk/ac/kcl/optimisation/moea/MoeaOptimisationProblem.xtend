@@ -77,6 +77,7 @@ class MoeaOptimisationProblem extends AbstractProblem {
 		getConstraintFunctions.forEach [ constraintFunction, objectiveId |
 			moeaSolution.setConstraint(objectiveId, constraintFunction.computeFitness(moeaSolution.model))
 		]
+		
 	}
 
 	override newSolution() {

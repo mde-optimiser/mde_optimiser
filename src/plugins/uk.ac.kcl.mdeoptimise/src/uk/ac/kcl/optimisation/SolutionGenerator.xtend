@@ -34,13 +34,18 @@ class SolutionGenerator {
      */
     private List<Unit> henshinEvolvers = null
 	
+	/**
+	 * The list of Henshin crossover rules
+	 */
+	private List<Unit> henshinCrossoverEvolvers = null
+	
 	public Optimisation optimisationModel
 	
 	IModelProvider initialModelProvider
 
 	public Engine engine;
 	public UnitApplicationImpl runner;
-
+	
 	new(Optimisation optimisationModel, List<Unit> henshinEvolvers, HenshinResourceSet henshinResourceSet, IModelProvider modelProvider, EPackage metamodel){
 		this.optimisationModel = optimisationModel
 		this.henshinEvolvers = henshinEvolvers
@@ -76,6 +81,52 @@ class SolutionGenerator {
 	    return files
 	}
 
+	def List<EObject> crossover(List<EObject> parents) {
+		
+		// Extract Henshin crossover evolvers if necessary
+		if (henshinCrossoverEvolvers == null) {
+			val hrs = henshinResourceSet
+			// Explicitly creating a list here to make sure the map is only invoked once not every time we try and evolve a model
+			henshinCrossoverEvolvers = new ArrayList(optimisationModel.evolvers.filter[ e | e.type.equals("crossover")].toList.map [ e |
+				hrs.getModule(URI.createURI(e.rule_location), false).getUnit(e.unit)
+			])
+		}
+		
+		var crossoverParents = EcoreUtil.copyAll(parents)
+		
+		val graph = new EGraphImpl(crossoverParents)
+		
+		val matchesView = henshinCrossoverEvolvers.map [ evolver |
+			engine.findMatches(evolver as Rule, graph, null).map[m | new Pair<Rule, Match>(evolver as Rule, m)]
+		].flatten
+
+		val matches = new ArrayList<Pair<Rule, Match>>(matchesView.toList)
+		
+		val runner = new RuleApplicationImpl(engine)
+		var temp = graph
+		
+		if(!matches.empty) {
+			// Randomly pick one match
+			val matchToUse = matches.get(new Random().nextInt(matches.size))
+		
+			// Apply the match
+			runner.EGraph = temp
+			runner.unit = matchToUse.key
+			runner.partialMatch = matchToUse.value
+			
+			if (runner.execute(null)) {
+				temp = new EGraphImpl(graph.roots.head)
+			}
+	
+			if(graph.roots.head != null)
+				return graph.roots		
+		}
+		
+        // We didn't find any applicable evolvers...
+        System.out.println("Model with no crossover evolvers applicable.....")
+        
+		return parents
+	}
 
     /**
      * Produce a new solution from the given one using one of the evolvers defined in the optimisation model.
@@ -88,15 +139,9 @@ class SolutionGenerator {
 		if (henshinEvolvers == null) {
 			val hrs = henshinResourceSet
 			// Explicitly creating a list here to make sure the map is only invoked once not every time we try and evolve a model
-			henshinEvolvers = new ArrayList(optimisationModel.evolvers.map [ e |
+			henshinEvolvers = new ArrayList(optimisationModel.evolvers.filter[ e | e.type.equals("mutation")].toList.map [ e |
 				hrs.getModule(URI.createURI(e.rule_location), false).getUnit(e.unit)
 			])
-			
-		//	var files = new ArrayList<String>();
-			
-		//	henshinEvolvers = new ArrayList(listFilesForFolder(new File("src/models/cra/rules/"), files).map[
-		//		e | hrs.getModule(URI.createURI(e), false).units.get(0);
-		//	])
 		}
 		
 		ChangeImpl.PRINT_WARNINGS = false;
@@ -111,40 +156,29 @@ class SolutionGenerator {
 
 		val matches = new ArrayList<Pair<Rule, Match>>(matchesView.toList)
 		
-		var i = 0;
 		val runner = new RuleApplicationImpl(engine)
 		var temp = graph
 		
-		while (!matches.empty && i < matches.size*0.01) {
+		if(!matches.empty) {
 			// Randomly pick one match
 			val matchToUse = matches.get(new Random().nextInt(matches.size))
-			i+=1
-			//println("Using evolver : " + matchToUse.key)
-
+		
 			// Apply the match
 			runner.EGraph = temp
 			runner.unit = matchToUse.key
 			runner.partialMatch = matchToUse.value
 			
-			//println("Using rule: " + runner.unit.getName())
-			
 			if (runner.execute(null)) {
 				temp = new EGraphImpl(graph.roots.head)
 			}
-		} 
-		
+	
 			if(graph.roots.head != null)
-					
 				return graph.roots.head	
-				
+		}
 		
         // We didn't find any applicable evolvers...
-        //null
-        //Start from scratch if cannot apply evolvers to this model?
-        System.out.println("Model with no evolvers applicable.....")
-        //initialModelProvider.initialModels(theMetamodel).head
-    	//object
-    	object
+        System.out.println("Model with no mutation evolvers applicable.....")
+        object
     }
 	
 }
