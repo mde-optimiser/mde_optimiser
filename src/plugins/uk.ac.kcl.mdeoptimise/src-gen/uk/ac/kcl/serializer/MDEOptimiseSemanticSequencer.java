@@ -115,7 +115,7 @@ public class MDEOptimiseSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 *     EvolverSpec returns EvolverSpec
 	 *
 	 * Constraint:
-	 *     (rule_location=URL unit=STRING)
+	 *     (rule_location=URL unit=STRING type=STRING)
 	 */
 	protected void sequence_EvolverSpec(ISerializationContext context, EvolverSpec semanticObject) {
 		if (errorAcceptor != null) {
@@ -123,10 +123,13 @@ public class MDEOptimiseSemanticSequencer extends AbstractDelegatingSemanticSequ
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.EVOLVER_SPEC__RULE_LOCATION));
 			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.EVOLVER_SPEC__UNIT) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.EVOLVER_SPEC__UNIT));
+			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.EVOLVER_SPEC__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.EVOLVER_SPEC__TYPE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getEvolverSpecAccess().getRule_locationURLTerminalRuleCall_2_0(), semanticObject.getRule_location());
 		feeder.accept(grammarAccess.getEvolverSpecAccess().getUnitSTRINGTerminalRuleCall_4_0(), semanticObject.getUnit());
+		feeder.accept(grammarAccess.getEvolverSpecAccess().getTypeSTRINGTerminalRuleCall_6_0(), semanticObject.getType());
 		feeder.finish();
 	}
 	
@@ -199,7 +202,13 @@ public class MDEOptimiseSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 *     OptimisationSpec returns OptimisationSpec
 	 *
 	 * Constraint:
-	 *     (algorithmFactory=ALGORITHM_FACTORY algorithmName=ALGORITHM_NAME algorithmEvolutions=INT algorithmPopulation=INT)
+	 *     (
+	 *         algorithmFactory=ALGORITHM_FACTORY 
+	 *         algorithmName=ALGORITHM_NAME 
+	 *         algorithmVariation=ALGORITHM_VARIATION 
+	 *         algorithmEvolutions=INT 
+	 *         algorithmPopulation=INT
+	 *     )
 	 */
 	protected void sequence_OptimisationSpec(ISerializationContext context, OptimisationSpec semanticObject) {
 		if (errorAcceptor != null) {
@@ -207,6 +216,8 @@ public class MDEOptimiseSemanticSequencer extends AbstractDelegatingSemanticSequ
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION_SPEC__ALGORITHM_FACTORY));
 			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION_SPEC__ALGORITHM_NAME) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION_SPEC__ALGORITHM_NAME));
+			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION_SPEC__ALGORITHM_VARIATION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION_SPEC__ALGORITHM_VARIATION));
 			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION_SPEC__ALGORITHM_EVOLUTIONS) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION_SPEC__ALGORITHM_EVOLUTIONS));
 			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION_SPEC__ALGORITHM_POPULATION) == ValueTransient.YES)
@@ -215,8 +226,9 @@ public class MDEOptimiseSemanticSequencer extends AbstractDelegatingSemanticSequ
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getOptimisationSpecAccess().getAlgorithmFactoryALGORITHM_FACTORYTerminalRuleCall_2_0(), semanticObject.getAlgorithmFactory());
 		feeder.accept(grammarAccess.getOptimisationSpecAccess().getAlgorithmNameALGORITHM_NAMETerminalRuleCall_4_0(), semanticObject.getAlgorithmName());
-		feeder.accept(grammarAccess.getOptimisationSpecAccess().getAlgorithmEvolutionsINTTerminalRuleCall_6_0(), semanticObject.getAlgorithmEvolutions());
-		feeder.accept(grammarAccess.getOptimisationSpecAccess().getAlgorithmPopulationINTTerminalRuleCall_8_0(), semanticObject.getAlgorithmPopulation());
+		feeder.accept(grammarAccess.getOptimisationSpecAccess().getAlgorithmVariationALGORITHM_VARIATIONTerminalRuleCall_6_0(), semanticObject.getAlgorithmVariation());
+		feeder.accept(grammarAccess.getOptimisationSpecAccess().getAlgorithmEvolutionsINTTerminalRuleCall_8_0(), semanticObject.getAlgorithmEvolutions());
+		feeder.accept(grammarAccess.getOptimisationSpecAccess().getAlgorithmPopulationINTTerminalRuleCall_10_0(), semanticObject.getAlgorithmPopulation());
 		feeder.finish();
 	}
 	

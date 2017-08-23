@@ -587,6 +587,28 @@ ruleEvolverSpec returns [EObject current=null]
 				}
 			)
 		)
+		otherlv_5='type'
+		{
+			newLeafNode(otherlv_5, grammarAccess.getEvolverSpecAccess().getTypeKeyword_5());
+		}
+		(
+			(
+				lv_type_6_0=RULE_STRING
+				{
+					newLeafNode(lv_type_6_0, grammarAccess.getEvolverSpecAccess().getTypeSTRINGTerminalRuleCall_6_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getEvolverSpecRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"type",
+						lv_type_6_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
+				}
+			)
+		)
 	)
 ;
 
@@ -654,15 +676,37 @@ ruleOptimisationSpec returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_5='evolutions'
+		otherlv_5='variation'
 		{
-			newLeafNode(otherlv_5, grammarAccess.getOptimisationSpecAccess().getEvolutionsKeyword_5());
+			newLeafNode(otherlv_5, grammarAccess.getOptimisationSpecAccess().getVariationKeyword_5());
 		}
 		(
 			(
-				lv_algorithmEvolutions_6_0=RULE_INT
+				lv_algorithmVariation_6_0=RULE_ALGORITHM_VARIATION
 				{
-					newLeafNode(lv_algorithmEvolutions_6_0, grammarAccess.getOptimisationSpecAccess().getAlgorithmEvolutionsINTTerminalRuleCall_6_0());
+					newLeafNode(lv_algorithmVariation_6_0, grammarAccess.getOptimisationSpecAccess().getAlgorithmVariationALGORITHM_VARIATIONTerminalRuleCall_6_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getOptimisationSpecRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"algorithmVariation",
+						lv_algorithmVariation_6_0,
+						"uk.ac.kcl.MDEOptimise.ALGORITHM_VARIATION");
+				}
+			)
+		)
+		otherlv_7='evolutions'
+		{
+			newLeafNode(otherlv_7, grammarAccess.getOptimisationSpecAccess().getEvolutionsKeyword_7());
+		}
+		(
+			(
+				lv_algorithmEvolutions_8_0=RULE_INT
+				{
+					newLeafNode(lv_algorithmEvolutions_8_0, grammarAccess.getOptimisationSpecAccess().getAlgorithmEvolutionsINTTerminalRuleCall_8_0());
 				}
 				{
 					if ($current==null) {
@@ -671,20 +715,20 @@ ruleOptimisationSpec returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"algorithmEvolutions",
-						lv_algorithmEvolutions_6_0,
+						lv_algorithmEvolutions_8_0,
 						"org.eclipse.xtext.common.Terminals.INT");
 				}
 			)
 		)
-		otherlv_7='population'
+		otherlv_9='population'
 		{
-			newLeafNode(otherlv_7, grammarAccess.getOptimisationSpecAccess().getPopulationKeyword_7());
+			newLeafNode(otherlv_9, grammarAccess.getOptimisationSpecAccess().getPopulationKeyword_9());
 		}
 		(
 			(
-				lv_algorithmPopulation_8_0=RULE_INT
+				lv_algorithmPopulation_10_0=RULE_INT
 				{
-					newLeafNode(lv_algorithmPopulation_8_0, grammarAccess.getOptimisationSpecAccess().getAlgorithmPopulationINTTerminalRuleCall_8_0());
+					newLeafNode(lv_algorithmPopulation_10_0, grammarAccess.getOptimisationSpecAccess().getAlgorithmPopulationINTTerminalRuleCall_10_0());
 				}
 				{
 					if ($current==null) {
@@ -693,13 +737,17 @@ ruleOptimisationSpec returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"algorithmPopulation",
-						lv_algorithmPopulation_8_0,
+						lv_algorithmPopulation_10_0,
 						"org.eclipse.xtext.common.Terminals.INT");
 				}
 			)
 		)
 	)
 ;
+
+RULE_EVOLVER_TYPE : ('m'|'c');
+
+RULE_ALGORITHM_VARIATION : ('genetic'|'crossover'|'mutation');
 
 RULE_ALGORITHM_FACTORY : ('moea'|'ecj');
 

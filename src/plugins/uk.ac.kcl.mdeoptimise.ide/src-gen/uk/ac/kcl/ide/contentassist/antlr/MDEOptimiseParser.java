@@ -62,10 +62,12 @@ public class MDEOptimiseParser extends AbstractContentAssistParser {
 					put(grammarAccess.getConstraintInterpreterSpecAccess().getConstraintSpecAssignment_4(), "rule__ConstraintInterpreterSpec__ConstraintSpecAssignment_4");
 					put(grammarAccess.getEvolverSpecAccess().getRule_locationAssignment_2(), "rule__EvolverSpec__Rule_locationAssignment_2");
 					put(grammarAccess.getEvolverSpecAccess().getUnitAssignment_4(), "rule__EvolverSpec__UnitAssignment_4");
+					put(grammarAccess.getEvolverSpecAccess().getTypeAssignment_6(), "rule__EvolverSpec__TypeAssignment_6");
 					put(grammarAccess.getOptimisationSpecAccess().getAlgorithmFactoryAssignment_2(), "rule__OptimisationSpec__AlgorithmFactoryAssignment_2");
 					put(grammarAccess.getOptimisationSpecAccess().getAlgorithmNameAssignment_4(), "rule__OptimisationSpec__AlgorithmNameAssignment_4");
-					put(grammarAccess.getOptimisationSpecAccess().getAlgorithmEvolutionsAssignment_6(), "rule__OptimisationSpec__AlgorithmEvolutionsAssignment_6");
-					put(grammarAccess.getOptimisationSpecAccess().getAlgorithmPopulationAssignment_8(), "rule__OptimisationSpec__AlgorithmPopulationAssignment_8");
+					put(grammarAccess.getOptimisationSpecAccess().getAlgorithmVariationAssignment_6(), "rule__OptimisationSpec__AlgorithmVariationAssignment_6");
+					put(grammarAccess.getOptimisationSpecAccess().getAlgorithmEvolutionsAssignment_8(), "rule__OptimisationSpec__AlgorithmEvolutionsAssignment_8");
+					put(grammarAccess.getOptimisationSpecAccess().getAlgorithmPopulationAssignment_10(), "rule__OptimisationSpec__AlgorithmPopulationAssignment_10");
 				}
 			};
 		}

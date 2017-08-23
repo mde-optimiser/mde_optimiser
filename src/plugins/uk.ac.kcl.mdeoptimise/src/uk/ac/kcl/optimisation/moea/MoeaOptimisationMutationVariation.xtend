@@ -4,7 +4,7 @@ import org.moeaframework.core.Solution
 import org.moeaframework.core.Variation
 import uk.ac.kcl.optimisation.SolutionGenerator
 
-class MoeaOptimisationVariation implements Variation {
+class MoeaOptimisationMutationVariation implements Variation {
 	
 	private SolutionGenerator solutionGenerator;
 	

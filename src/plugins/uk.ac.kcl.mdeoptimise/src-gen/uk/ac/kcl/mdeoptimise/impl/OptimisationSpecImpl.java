@@ -23,6 +23,7 @@ import uk.ac.kcl.mdeoptimise.OptimisationSpec;
  * <ul>
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationSpecImpl#getAlgorithmFactory <em>Algorithm Factory</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationSpecImpl#getAlgorithmName <em>Algorithm Name</em>}</li>
+ *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationSpecImpl#getAlgorithmVariation <em>Algorithm Variation</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationSpecImpl#getAlgorithmEvolutions <em>Algorithm Evolutions</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationSpecImpl#getAlgorithmPopulation <em>Algorithm Population</em>}</li>
  * </ul>
@@ -70,6 +71,26 @@ public class OptimisationSpecImpl extends MinimalEObjectImpl.Container implement
    * @ordered
    */
   protected String algorithmName = ALGORITHM_NAME_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getAlgorithmVariation() <em>Algorithm Variation</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAlgorithmVariation()
+   * @generated
+   * @ordered
+   */
+  protected static final String ALGORITHM_VARIATION_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getAlgorithmVariation() <em>Algorithm Variation</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAlgorithmVariation()
+   * @generated
+   * @ordered
+   */
+  protected String algorithmVariation = ALGORITHM_VARIATION_EDEFAULT;
 
   /**
    * The default value of the '{@link #getAlgorithmEvolutions() <em>Algorithm Evolutions</em>}' attribute.
@@ -183,6 +204,29 @@ public class OptimisationSpecImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getAlgorithmVariation()
+  {
+    return algorithmVariation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setAlgorithmVariation(String newAlgorithmVariation)
+  {
+    String oldAlgorithmVariation = algorithmVariation;
+    algorithmVariation = newAlgorithmVariation;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_VARIATION, oldAlgorithmVariation, algorithmVariation));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public int getAlgorithmEvolutions()
   {
     return algorithmEvolutions;
@@ -238,6 +282,8 @@ public class OptimisationSpecImpl extends MinimalEObjectImpl.Container implement
         return getAlgorithmFactory();
       case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_NAME:
         return getAlgorithmName();
+      case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_VARIATION:
+        return getAlgorithmVariation();
       case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_EVOLUTIONS:
         return getAlgorithmEvolutions();
       case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_POPULATION:
@@ -261,6 +307,9 @@ public class OptimisationSpecImpl extends MinimalEObjectImpl.Container implement
         return;
       case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_NAME:
         setAlgorithmName((String)newValue);
+        return;
+      case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_VARIATION:
+        setAlgorithmVariation((String)newValue);
         return;
       case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_EVOLUTIONS:
         setAlgorithmEvolutions((Integer)newValue);
@@ -288,6 +337,9 @@ public class OptimisationSpecImpl extends MinimalEObjectImpl.Container implement
       case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_NAME:
         setAlgorithmName(ALGORITHM_NAME_EDEFAULT);
         return;
+      case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_VARIATION:
+        setAlgorithmVariation(ALGORITHM_VARIATION_EDEFAULT);
+        return;
       case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_EVOLUTIONS:
         setAlgorithmEvolutions(ALGORITHM_EVOLUTIONS_EDEFAULT);
         return;
@@ -312,6 +364,8 @@ public class OptimisationSpecImpl extends MinimalEObjectImpl.Container implement
         return ALGORITHM_FACTORY_EDEFAULT == null ? algorithmFactory != null : !ALGORITHM_FACTORY_EDEFAULT.equals(algorithmFactory);
       case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_NAME:
         return ALGORITHM_NAME_EDEFAULT == null ? algorithmName != null : !ALGORITHM_NAME_EDEFAULT.equals(algorithmName);
+      case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_VARIATION:
+        return ALGORITHM_VARIATION_EDEFAULT == null ? algorithmVariation != null : !ALGORITHM_VARIATION_EDEFAULT.equals(algorithmVariation);
       case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_EVOLUTIONS:
         return algorithmEvolutions != ALGORITHM_EVOLUTIONS_EDEFAULT;
       case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_POPULATION:
@@ -335,6 +389,8 @@ public class OptimisationSpecImpl extends MinimalEObjectImpl.Container implement
     result.append(algorithmFactory);
     result.append(", algorithmName: ");
     result.append(algorithmName);
+    result.append(", algorithmVariation: ");
+    result.append(algorithmVariation);
     result.append(", algorithmEvolutions: ");
     result.append(algorithmEvolutions);
     result.append(", algorithmPopulation: ");

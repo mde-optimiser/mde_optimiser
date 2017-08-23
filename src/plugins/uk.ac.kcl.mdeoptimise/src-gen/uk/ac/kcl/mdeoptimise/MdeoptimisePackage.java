@@ -353,13 +353,22 @@ public interface MdeoptimisePackage extends EPackage
   int EVOLVER_SPEC__UNIT = 1;
 
   /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EVOLVER_SPEC__TYPE = 2;
+
+  /**
    * The number of structural features of the '<em>Evolver Spec</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EVOLVER_SPEC_FEATURE_COUNT = 2;
+  int EVOLVER_SPEC_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.OptimisationSpecImpl <em>Optimisation Spec</em>}' class.
@@ -390,13 +399,22 @@ public interface MdeoptimisePackage extends EPackage
   int OPTIMISATION_SPEC__ALGORITHM_NAME = 1;
 
   /**
+   * The feature id for the '<em><b>Algorithm Variation</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OPTIMISATION_SPEC__ALGORITHM_VARIATION = 2;
+
+  /**
    * The feature id for the '<em><b>Algorithm Evolutions</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OPTIMISATION_SPEC__ALGORITHM_EVOLUTIONS = 2;
+  int OPTIMISATION_SPEC__ALGORITHM_EVOLUTIONS = 3;
 
   /**
    * The feature id for the '<em><b>Algorithm Population</b></em>' attribute.
@@ -405,7 +423,7 @@ public interface MdeoptimisePackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPTIMISATION_SPEC__ALGORITHM_POPULATION = 3;
+  int OPTIMISATION_SPEC__ALGORITHM_POPULATION = 4;
 
   /**
    * The number of structural features of the '<em>Optimisation Spec</em>' class.
@@ -414,7 +432,7 @@ public interface MdeoptimisePackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPTIMISATION_SPEC_FEATURE_COUNT = 4;
+  int OPTIMISATION_SPEC_FEATURE_COUNT = 5;
 
 
   /**
@@ -697,6 +715,17 @@ public interface MdeoptimisePackage extends EPackage
   EAttribute getEvolverSpec_Unit();
 
   /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.EvolverSpec#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see uk.ac.kcl.mdeoptimise.EvolverSpec#getType()
+   * @see #getEvolverSpec()
+   * @generated
+   */
+  EAttribute getEvolverSpec_Type();
+
+  /**
    * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.OptimisationSpec <em>Optimisation Spec</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -727,6 +756,17 @@ public interface MdeoptimisePackage extends EPackage
    * @generated
    */
   EAttribute getOptimisationSpec_AlgorithmName();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmVariation <em>Algorithm Variation</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Algorithm Variation</em>'.
+   * @see uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmVariation()
+   * @see #getOptimisationSpec()
+   * @generated
+   */
+  EAttribute getOptimisationSpec_AlgorithmVariation();
 
   /**
    * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmEvolutions <em>Algorithm Evolutions</em>}'.
@@ -996,6 +1036,14 @@ public interface MdeoptimisePackage extends EPackage
     EAttribute EVOLVER_SPEC__UNIT = eINSTANCE.getEvolverSpec_Unit();
 
     /**
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EVOLVER_SPEC__TYPE = eINSTANCE.getEvolverSpec_Type();
+
+    /**
      * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.OptimisationSpecImpl <em>Optimisation Spec</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1020,6 +1068,14 @@ public interface MdeoptimisePackage extends EPackage
      * @generated
      */
     EAttribute OPTIMISATION_SPEC__ALGORITHM_NAME = eINSTANCE.getOptimisationSpec_AlgorithmName();
+
+    /**
+     * The meta object literal for the '<em><b>Algorithm Variation</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute OPTIMISATION_SPEC__ALGORITHM_VARIATION = eINSTANCE.getOptimisationSpec_AlgorithmVariation();
 
     /**
      * The meta object literal for the '<em><b>Algorithm Evolutions</b></em>' attribute feature.

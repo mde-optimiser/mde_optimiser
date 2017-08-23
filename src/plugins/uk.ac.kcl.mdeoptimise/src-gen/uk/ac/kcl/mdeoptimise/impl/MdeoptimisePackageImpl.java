@@ -413,6 +413,16 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getEvolverSpec_Type()
+  {
+    return (EAttribute)evolverSpecEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getOptimisationSpec()
   {
     return optimisationSpecEClass;
@@ -443,7 +453,7 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getOptimisationSpec_AlgorithmEvolutions()
+  public EAttribute getOptimisationSpec_AlgorithmVariation()
   {
     return (EAttribute)optimisationSpecEClass.getEStructuralFeatures().get(2);
   }
@@ -453,9 +463,19 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getOptimisationSpec_AlgorithmPopulation()
+  public EAttribute getOptimisationSpec_AlgorithmEvolutions()
   {
     return (EAttribute)optimisationSpecEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getOptimisationSpec_AlgorithmPopulation()
+  {
+    return (EAttribute)optimisationSpecEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -520,10 +540,12 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
     evolverSpecEClass = createEClass(EVOLVER_SPEC);
     createEAttribute(evolverSpecEClass, EVOLVER_SPEC__RULE_LOCATION);
     createEAttribute(evolverSpecEClass, EVOLVER_SPEC__UNIT);
+    createEAttribute(evolverSpecEClass, EVOLVER_SPEC__TYPE);
 
     optimisationSpecEClass = createEClass(OPTIMISATION_SPEC);
     createEAttribute(optimisationSpecEClass, OPTIMISATION_SPEC__ALGORITHM_FACTORY);
     createEAttribute(optimisationSpecEClass, OPTIMISATION_SPEC__ALGORITHM_NAME);
+    createEAttribute(optimisationSpecEClass, OPTIMISATION_SPEC__ALGORITHM_VARIATION);
     createEAttribute(optimisationSpecEClass, OPTIMISATION_SPEC__ALGORITHM_EVOLUTIONS);
     createEAttribute(optimisationSpecEClass, OPTIMISATION_SPEC__ALGORITHM_POPULATION);
   }
@@ -591,10 +613,12 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
     initEClass(evolverSpecEClass, EvolverSpec.class, "EvolverSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getEvolverSpec_Rule_location(), ecorePackage.getEString(), "rule_location", null, 0, 1, EvolverSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getEvolverSpec_Unit(), ecorePackage.getEString(), "unit", null, 0, 1, EvolverSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getEvolverSpec_Type(), ecorePackage.getEString(), "type", null, 0, 1, EvolverSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(optimisationSpecEClass, OptimisationSpec.class, "OptimisationSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getOptimisationSpec_AlgorithmFactory(), ecorePackage.getEString(), "algorithmFactory", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getOptimisationSpec_AlgorithmName(), ecorePackage.getEString(), "algorithmName", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getOptimisationSpec_AlgorithmVariation(), ecorePackage.getEString(), "algorithmVariation", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getOptimisationSpec_AlgorithmEvolutions(), ecorePackage.getEInt(), "algorithmEvolutions", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getOptimisationSpec_AlgorithmPopulation(), ecorePackage.getEInt(), "algorithmPopulation", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

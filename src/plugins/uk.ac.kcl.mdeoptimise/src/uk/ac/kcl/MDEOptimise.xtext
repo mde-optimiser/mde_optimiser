@@ -45,13 +45,23 @@ EvolverSpec:
 	// TODO We may also want to allow the specification of parameters, but not for now. 
 	"evolve" "using" rule_location=URL
 	         "unit" unit=STRING
+	         "type" type=STRING
 ;
 
 OptimisationSpec:
 	"optimisation" "provider" algorithmFactory=ALGORITHM_FACTORY
 				"algorithm" algorithmName=ALGORITHM_NAME
+				"variation" algorithmVariation=ALGORITHM_VARIATION
 				"evolutions" algorithmEvolutions=INT
 				"population" algorithmPopulation=INT
+;
+
+terminal EVOLVER_TYPE returns ecore::EString:
+	('m' | 'c')
+;
+
+terminal ALGORITHM_VARIATION returns ecore::EString:
+	('genetic' | 'crossover' | 'mutation')
 ;
 
 terminal ALGORITHM_FACTORY returns ecore::EString:
