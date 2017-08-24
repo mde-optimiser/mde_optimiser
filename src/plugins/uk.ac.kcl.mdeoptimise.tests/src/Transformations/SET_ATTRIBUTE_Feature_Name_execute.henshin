@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ASCII"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_Fn-uUNjcEeaHtINOdoXvow" name="SET_ATTRIBUTE_Feature_Name" description="Sets Feature Name">
+  <imports href="./config/architectureCRA.ecore#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_Fn-uUdjcEeaHtINOdoXvow" name="setFeatureName" description="Sets the EAttribute name">
+    <parameters xmi:id="_Fn-uUtjcEeaHtINOdoXvow" name="Selected">
+      <type xsi:type="ecore:EClass" href="./config/architectureCRA.ecore#//Feature"/>
+    </parameters>
+    <parameters xmi:id="_Fn-uU9jcEeaHtINOdoXvow" name="Name">
+      <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </parameters>
+    <lhs xmi:id="_Fn-uVNjcEeaHtINOdoXvow" name="Lhs">
+      <nodes xmi:id="_Fn-uVdjcEeaHtINOdoXvow" name="Selected">
+        <type href="./config/architectureCRA.ecore#//Feature"/>
+      </nodes>
+    </lhs>
+    <rhs xmi:id="_Fn-uVtjcEeaHtINOdoXvow" name="Rhs">
+      <nodes xmi:id="_Fn-uV9jcEeaHtINOdoXvow" name="Selected">
+        <type href="./config/architectureCRA.ecore#//Feature"/>
+        <attributes xmi:id="_Fn-uWNjcEeaHtINOdoXvow" value="Name">
+          <type href="./config/architectureCRA.ecore#//NamedElement/name"/>
+        </attributes>
+      </nodes>
+    </rhs>
+    <mappings xmi:id="_Fn-uWdjcEeaHtINOdoXvow" origin="_Fn-uVdjcEeaHtINOdoXvow" image="_Fn-uV9jcEeaHtINOdoXvow"/>
+  </units>
+  <units xsi:type="henshin:PriorityUnit" xmi:id="_Fn-uWtjcEeaHtINOdoXvow" name="mainUnit" subUnits="_Fn-uUdjcEeaHtINOdoXvow">
+    <parameters xmi:id="_Fn-uW9jcEeaHtINOdoXvow" name="selectedEObject">
+      <type xsi:type="ecore:EClass" href="./config/architectureCRA.ecore#//Feature"/>
+    </parameters>
+    <parameterMappings xmi:id="_Fn-uXNjcEeaHtINOdoXvow" source="_Fn-uW9jcEeaHtINOdoXvow" target="_Fn-uUtjcEeaHtINOdoXvow"/>
+  </units>
+</henshin:Module>

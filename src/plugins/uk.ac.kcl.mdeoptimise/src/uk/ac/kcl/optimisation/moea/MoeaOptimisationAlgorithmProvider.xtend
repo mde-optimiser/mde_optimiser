@@ -1,0 +1,100 @@
+package uk.ac.kcl.optimisation.moea
+
+import java.util.Properties
+import org.moeaframework.algorithm.NSGAII
+import org.moeaframework.algorithm.SPEA2
+import org.moeaframework.core.Algorithm
+import org.moeaframework.core.NondominatedSortingPopulation
+import org.moeaframework.core.Problem
+import org.moeaframework.core.operator.RandomInitialization
+import org.moeaframework.core.operator.TournamentSelection
+import org.moeaframework.core.spi.AlgorithmProvider
+import uk.ac.kcl.optimisation.SolutionGenerator
+import org.moeaframework.algorithm.EpsilonMOEA
+import org.moeaframework.core.EpsilonBoxDominanceArchive
+import org.moeaframework.core.operator.GAVariation
+import org.moeaframework.core.Variation
+
+class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
+	
+	override getAlgorithm(String algorithm, Properties properties, Problem problem) {
+		switch algorithm {
+			case "NSGAII":
+				return createNSGAII(problem, properties)
+			case "SPEA2":
+				return createSPEA2(problem, properties)
+			case "eMOEA":
+				return createeMOEA(problem, properties)
+			default:
+				throw new Exception("Invalid algorithm given: " + algorithm)
+		}
+	}
+	
+	def Variation getVariation(Properties properties){
+		
+		//Check variation type is crossover with mutation
+		if(properties.get("variationType").equals("genetic")){
+			val crossoverVariation = new MoeaOptimisationCrossoverVariation(properties.get("solutionGenerator") as SolutionGenerator)
+			val mutationVariation = new MoeaOptimisationMutationVariation(properties.get("solutionGenerator") as SolutionGenerator)
+			
+			return new GAVariation(crossoverVariation, mutationVariation)
+		
+		//Check variation type is mutation
+		} else if(properties.get("variationType").equals("mutation")){
+		
+			return new MoeaOptimisationMutationVariation(properties.get("solutionGenerator") as SolutionGenerator)		
+		}
+		
+		//Must be crossover only then
+		return new MoeaOptimisationCrossoverVariation(properties.get("solutionGenerator") as SolutionGenerator)		
+		
+	}
+	
+	def Algorithm createNSGAII(Problem problem, Properties properties) {
+		//Create an initial random population of population size
+		var initialization = new RandomInitialization(problem, properties.get("populationSize") as Integer)
+		
+		var selection = new TournamentSelection(2);
+		
+		new NSGAII(
+				problem,
+				new NondominatedSortingPopulation(),
+				null, // no archiv
+				selection,
+				getVariation(properties),
+				initialization
+			);
+	}
+	
+	def Algorithm createSPEA2(Problem problem, Properties properties) {
+		
+		var initialization = new RandomInitialization(problem, properties.get("populationSize") as Integer)
+		
+		new SPEA2(
+				problem,
+				initialization,
+				getVariation(properties),
+				properties.get("populationSize") as Integer,
+				1
+			);
+	}
+	
+	def Algorithm createeMOEA(Problem problem, Properties properties) {
+		
+		//Create an initial random population of population size
+		var initialization = new RandomInitialization(problem, properties.get("populationSize") as Integer)
+		
+		
+		var selection = new TournamentSelection(2);
+		
+		new EpsilonMOEA(
+				problem,
+				new NondominatedSortingPopulation(),
+				new EpsilonBoxDominanceArchive(0.01),
+				selection, 
+				getVariation(properties),
+				initialization
+			);
+	}
+	
+}

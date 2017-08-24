@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature id="uk.ac.kcl.mdeoptimise.feature"
+	label="MDEOptimise Feature "
+	version="1.0.0.qualifier">
+	<plugin
+			id="uk.ac.kcl.mdeoptimise"
+			download-size="0"
+			install-size="0"
+			version="0.0.0"
+			unpack="false"/>
+	<plugin
+			id="uk.ac.kcl.mdeoptimise.ide"
+			download-size="0"
+			install-size="0"
+			version="0.0.0"
+			unpack="false"/>
+	<plugin
+			id="uk.ac.kcl.mdeoptimise.ui"
+			download-size="0"
+			install-size="0"
+			version="0.0.0"
+			unpack="false"/>
+</feature>

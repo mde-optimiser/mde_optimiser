@@ -1,0 +1,35 @@
+Ignore Intellij project files
+*.iml
+.idea/
+
+# XTend Ignore Files
+bin
+.DS_Store
+target
+*.xtendbin
+*.java._trace
+*.java_trace
+xtend-gen/
+
+# Ignore specific eclipse project files
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+
+# Eclipse core
+.project
+
+# Eclipse launch configurations
+*.launch
+#.classpath
+
+gen/
+

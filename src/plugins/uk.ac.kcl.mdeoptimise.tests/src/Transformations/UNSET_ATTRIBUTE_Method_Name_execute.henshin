@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ASCII"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_FoEN4NjcEeaHtINOdoXvow" name="UNSET_ATTRIBUTE_Method_Name" description="Sets Method Name">
+  <imports href="./config/architectureCRA.ecore#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_FoEN4djcEeaHtINOdoXvow" name="setMethodName" description="Sets the EAttribute name">
+    <parameters xmi:id="_FoEN4tjcEeaHtINOdoXvow" name="Selected">
+      <type xsi:type="ecore:EClass" href="./config/architectureCRA.ecore#//Method"/>
+    </parameters>
+    <parameters xmi:id="_FoEN49jcEeaHtINOdoXvow" name="Name">
+      <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </parameters>
+    <lhs xmi:id="_FoEN5NjcEeaHtINOdoXvow" name="LHS">
+      <nodes xmi:id="_FoEN5djcEeaHtINOdoXvow" name="Selected">
+        <type href="./config/architectureCRA.ecore#//Method"/>
+        <attributes xmi:id="_FoEN5tjcEeaHtINOdoXvow" value="Name">
+          <type href="./config/architectureCRA.ecore#//NamedElement/name"/>
+        </attributes>
+      </nodes>
+    </lhs>
+    <rhs xmi:id="_FoEN59jcEeaHtINOdoXvow" name="RHS">
+      <nodes xmi:id="_FoEN6NjcEeaHtINOdoXvow" name="Selected">
+        <type href="./config/architectureCRA.ecore#//Method"/>
+      </nodes>
+    </rhs>
+    <mappings xmi:id="_FoEN6djcEeaHtINOdoXvow" origin="_FoEN5djcEeaHtINOdoXvow" image="_FoEN6NjcEeaHtINOdoXvow"/>
+  </units>
+  <units xsi:type="henshin:PriorityUnit" xmi:id="_FoEN6tjcEeaHtINOdoXvow" name="mainUnit" subUnits="_FoEN4djcEeaHtINOdoXvow">
+    <parameters xmi:id="_FoEN69jcEeaHtINOdoXvow" name="selectedEObject">
+      <type xsi:type="ecore:EClass" href="./config/architectureCRA.ecore#//Method"/>
+    </parameters>
+    <parameters xmi:id="_FoEN7NjcEeaHtINOdoXvow" name="Name">
+      <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </parameters>
+    <parameterMappings xmi:id="_FoEN7djcEeaHtINOdoXvow" source="_FoEN69jcEeaHtINOdoXvow" target="_FoEN4tjcEeaHtINOdoXvow"/>
+    <parameterMappings xmi:id="_FoEN7tjcEeaHtINOdoXvow" source="_FoEN7NjcEeaHtINOdoXvow" target="_FoEN49jcEeaHtINOdoXvow"/>
+  </units>
+</henshin:Module>
