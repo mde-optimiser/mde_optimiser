@@ -31,7 +31,9 @@ class OptimisationInterpreter {
 	
 	def void start(){
 		val userModelProvider = new UserModelProvider(URI.createURI(basePath), model.model.location)
-			
+		
+		println("Basepath: " + basePath)
+		println("Model location: " + model.model.location)
 		var solutionGenerator = new SolutionGenerator(
 											model, 
 											henshinEvolvers, 
@@ -70,7 +72,4 @@ class OptimisationInterpreter {
             ]
         }
     }
-	
-	
-	
 }

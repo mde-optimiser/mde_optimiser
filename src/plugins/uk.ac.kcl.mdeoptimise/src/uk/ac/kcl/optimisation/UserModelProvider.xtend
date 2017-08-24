@@ -14,7 +14,7 @@ class UserModelProvider implements IModelProvider {
 	private URI modelPath
 	
 	new (URI basepath, String userModelPath){
-		this.modelPath = basepath.appendFragment(userModelPath);
+		this.modelPath = basepath.appendSegment(userModelPath);
 	}
 	
 	val ResourceSet resourceSet = new ResourceSetImpl
