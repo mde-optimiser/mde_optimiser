@@ -76,7 +76,7 @@ class GrammarParsingTests {
 	@Test
 	def void assertOptimisationProvidersAreParsed() {
 		
-		val customOptimisation = "optimisation provider moea algorithm NSGAII evolutions 100000 population 100"
+		val customOptimisation = "optimisation provider moea algorithm NSGAII variation genetic evolutions 100000 population 100"
 		
 		val model = testModelHelper.getParsedFullValidModelWithCustomOptimisation(customOptimisation)
 		

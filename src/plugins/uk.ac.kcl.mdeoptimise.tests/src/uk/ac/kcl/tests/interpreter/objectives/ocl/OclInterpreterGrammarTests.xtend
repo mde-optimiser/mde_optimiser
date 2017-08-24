@@ -29,10 +29,11 @@ class OclInterpreterGrammarTests {
 		return '''
 			basepath <src/models/ocl/>
 			metamodel <architectureCRA.ecore>
+			model <model.xmi>
 			''' + objective + '''
-			evolve using <ABC> unit "XYZ"
-			evolve using <CDE> unit "LMN"
-			optimisation provider ecj algorithm NSGAII evolutions 100 population 100
+			evolve using <ABC> unit "XYZ" type "mutation"
+			evolve using <CDE> unit "LMN" type "mutation"
+			optimisation provider ecj algorithm NSGAII variation mutation evolutions 100 population 100
 		'''
 	}
 	
