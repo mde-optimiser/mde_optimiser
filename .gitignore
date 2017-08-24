@@ -29,7 +29,7 @@ local.properties
 
 # Eclipse launch configurations
 *.launch
-.classpath
+#.classpath
 
 gen/
 
