@@ -70,13 +70,8 @@ class OptimisationHandler extends AbstractHandler implements IHandler {
                 
                 if(model != null){
                 	
-                	var root = project.getFolder(model.basepath.location);
                 	
-                	
-					var osfile = root.getRawLocation().toOSString();
-                	
-
-					new OptimisationInterpreter(osfile, model)
+					new OptimisationInterpreter(model.basepath.location, model)
                 	
                 }
             }
