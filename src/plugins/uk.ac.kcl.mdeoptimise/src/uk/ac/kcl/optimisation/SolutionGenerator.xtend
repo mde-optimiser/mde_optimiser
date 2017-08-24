@@ -55,6 +55,9 @@ class SolutionGenerator {
 		this.engine = new EngineImpl
 		engine.getOptions().put(Engine.OPTION_DETERMINISTIC, false);
 		this.runner = new RuleApplicationImpl(engine)
+		
+		//Disable henshin warnings
+		ChangeImpl.PRINT_WARNINGS = false;
 	}
 
     /**
@@ -63,23 +66,6 @@ class SolutionGenerator {
     def Iterator<EObject> getInitialSolutions() {
         initialModelProvider.initialModels(theMetamodel)
     }
-	
-	def ArrayList<String> listFilesForFolder( File folder, ArrayList<String> files) {
-		
-		
-	    for ( File fileEntry : folder.listFiles()) {
-	        if (fileEntry.isDirectory()) {
-	            listFilesForFolder(fileEntry, files);
-	        } else {
-	        	if(fileEntry.getName().endsWith("henshin")){
-	        	files.add(fileEntry.getName());	
-	        	}
-	            
-	        }
-	    }
-	    
-	    return files
-	}
 
 	def List<EObject> crossover(List<EObject> parents) {
 		
@@ -95,30 +81,22 @@ class SolutionGenerator {
 		var crossoverParents = EcoreUtil.copyAll(parents)
 		
 		val graph = new EGraphImpl(crossoverParents)
-		
-//		val matchesView = henshinCrossoverEvolvers.map [ evolver |
-//			engine.findMatches(evolver as Rule, graph, null).map[m | new Pair<Rule, Match>(evolver as Rule, m)]
-//		].flatten
 
-//		val matches = new ArrayList<Pair<Rule, Match>>(matchesView.toList)
+		// Randomly pick one unit
+		val unitToUse = henshinCrossoverEvolvers.get(new Random().nextInt(henshinCrossoverEvolvers.size()))
 			
-//		if(!matches.empty) {
-			// Randomly pick one match
-//			val matchToUse = matches.get(new Random().nextInt(matches.size))
-			val unitToUse = henshinCrossoverEvolvers.get(new Random().nextInt(henshinCrossoverEvolvers.size()))
-				
-			
-			// Apply the match
-			runner.EGraph = graph
-			runner.unit = unitToUse
-			//runner.partialMatch = matchToUse.value
-			
-			if(runner.execute(null)) {
-	
-			if(graph.roots.head != null)
-				return graph.roots	
-			}
-//		}
+		
+		// Apply the match
+		runner.EGraph = graph
+		runner.unit = unitToUse
+		//runner.partialMatch = matchToUse.value
+		
+		if(runner.execute(null)) {
+
+		if(graph.roots.head != null)
+			return graph.roots	
+		}
+
 		
         // We didn't find any applicable evolvers...
         System.out.println("Model with no crossover evolvers applicable.....")
@@ -142,36 +120,34 @@ class SolutionGenerator {
 			])
 		}
 		
-		ChangeImpl.PRINT_WARNINGS = false;
-		
 		val candidateSolution = EcoreUtil.copy(object)
 
 		// Get all matches
 		val graph = new EGraphImpl(candidateSolution)
-		val matchesView = henshinEvolvers.map [ evolver |
-			engine.findMatches(evolver as Rule, graph, null).map[m | new Pair<Rule, Match>(evolver as Rule, m)]
-		].flatten
 
-		val matches = new ArrayList<Pair<Rule, Match>>(matchesView.toList)
-		
+		// Randomly pick one match
+		val triedRules = new ArrayList<Unit>()
+		var matchToUse = henshinEvolvers.get(new Random().nextInt(henshinEvolvers.size()))
+					
+		while(triedRules.length < henshinEvolvers.length){
 			
-		if(!matches.empty) {
-			// Randomly pick one match
-			val matchToUse = matches.get(new Random().nextInt(matches.size))
-		
-			// Apply the match
 			runner.EGraph = graph
-			runner.unit = matchToUse.key
-			runner.partialMatch = matchToUse.value
+			runner.unit = matchToUse
 			
-			runner.execute(null)
-	
-			if(graph.roots.head != null)
-				return graph.roots.head	
-		}
+			if(runner.execute(null)){
+				//println("Could run mutation" + matchToUse.name)
+				if(graph.roots.head != null)
+					return graph.roots.head	
+			} else {
+				triedRules.add(matchToUse);
+				var remainingRules = henshinEvolvers.filter[ x  | !triedRules.contains(x)];
+				matchToUse = remainingRules.get(new Random().nextInt(remainingRules.size()))
+				//println("Could not run mutation for rule " + matchToUse.name)
+			}	
+		}	
 		
         // We didn't find any applicable evolvers...
-        System.out.println("Model with no mutation evolvers applicable.....")
+        println("Model with no mutation evolvers applicable.....")
         object
     }
 	

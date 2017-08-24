@@ -146,16 +146,6 @@
         <element xmi:type="henshin:Node" href="craEvolvers.henshin#_M0LS0BXaEeapG6DfWhSTtQ"/>
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_M0Mg8RXaEeapG6DfWhSTtQ" x="299" y="258"/>
       </children>
-      <children xmi:type="notation:Shape" xmi:id="_t4SJkIjJEee7qaBoH-VMlg" type="3001" fontName="Cantarell">
-        <children xmi:type="notation:DecorationNode" xmi:id="_t4SJkojJEee7qaBoH-VMlg" type="5002"/>
-        <children xmi:type="notation:DecorationNode" xmi:id="_t4SJk4jJEee7qaBoH-VMlg" type="5003"/>
-        <children xmi:type="notation:DecorationNode" xmi:id="_t4SJlIjJEee7qaBoH-VMlg" type="7002">
-          <styles xmi:type="notation:SortingStyle" xmi:id="_t4SJlYjJEee7qaBoH-VMlg"/>
-          <styles xmi:type="notation:FilteringStyle" xmi:id="_t4SJlojJEee7qaBoH-VMlg"/>
-        </children>
-        <element xmi:type="henshin:Node" href="craEvolvers.henshin#_t4MqAIjJEee7qaBoH-VMlg"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_t4SJkYjJEee7qaBoH-VMlg" x="65" y="305"/>
-      </children>
     </children>
     <element xmi:type="henshin:Rule" href="craEvolvers.henshin#_KTKHkBXaEeapG6DfWhSTtQ"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KTmMcRXaEeapG6DfWhSTtQ" x="20" y="250" width="509" height="465"/>
@@ -776,28 +766,5 @@
     <styles xmi:type="notation:FontStyle" xmi:id="_NYWNkYhHEee7qaBoH-VMlg" fontName="Cantarell"/>
     <element xmi:type="henshin:Edge" href="craEvolvers.henshin#_NYVmgIhHEee7qaBoH-VMlg"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_NYWNkohHEee7qaBoH-VMlg" points="[30, -11, -129, 35]$[123, -50, -36, -4]"/>
-  </edges>
-  <edges xmi:type="notation:Connector" xmi:id="_uxBvcYjJEee7qaBoH-VMlg" type="4001" source="_MXzf4BXaEeapG6DfWhSTtQ" target="_t4SJkIjJEee7qaBoH-VMlg">
-    <children xmi:type="notation:DecorationNode" xmi:id="_uxBvdIjJEee7qaBoH-VMlg" type="6001">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_uxBvdYjJEee7qaBoH-VMlg" y="40"/>
-    </children>
-    <children xmi:type="notation:DecorationNode" xmi:id="_uxCWgIjJEee7qaBoH-VMlg" type="6002">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_uxCWgYjJEee7qaBoH-VMlg" y="60"/>
-    </children>
-    <styles xmi:type="notation:FontStyle" xmi:id="_uxBvcojJEee7qaBoH-VMlg" fontName="Cantarell"/>
-    <element xmi:type="henshin:Edge" href="craEvolvers.henshin#_uxBvcIjJEee7qaBoH-VMlg"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_uxBvc4jJEee7qaBoH-VMlg" points="[8, 31, -45, -193]$[56, 201, 3, -23]"/>
-    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_uxC9kIjJEee7qaBoH-VMlg" id="(0.136986301369863,0.225)"/>
-  </edges>
-  <edges xmi:type="notation:Connector" xmi:id="_vQ-a0IjJEee7qaBoH-VMlg" type="4001" source="_t4SJkIjJEee7qaBoH-VMlg" target="_MXzf4BXaEeapG6DfWhSTtQ">
-    <children xmi:type="notation:DecorationNode" xmi:id="_vQ-a04jJEee7qaBoH-VMlg" type="6001">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_vQ-a1IjJEee7qaBoH-VMlg" y="40"/>
-    </children>
-    <children xmi:type="notation:DecorationNode" xmi:id="_vQ-a1YjJEee7qaBoH-VMlg" type="6002">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_vQ_B4IjJEee7qaBoH-VMlg" y="60"/>
-    </children>
-    <styles xmi:type="notation:FontStyle" xmi:id="_vQ-a0YjJEee7qaBoH-VMlg" fontName="Cantarell"/>
-    <element xmi:type="henshin:Edge" href="craEvolvers.henshin#_vQ9zwIjJEee7qaBoH-VMlg"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_vQ-a0ojJEee7qaBoH-VMlg" points="[-3, -23, 24, 190]$[-23, -193, 4, 20]"/>
   </edges>
 </notation:Diagram>
