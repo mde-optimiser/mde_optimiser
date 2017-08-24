@@ -34,6 +34,7 @@ class TestModelHelper {
 	def String getFullValidModel(){		
 		return getValidBasePath +
 			   getValidMetamodel +
+			   getValidModelPathSet +
 			   getValidObjectivesSet +
 			   getValidConstraintsSet +
 			   getValidEvolverSet +
@@ -43,6 +44,7 @@ class TestModelHelper {
 	def String getFullValidModelWithCustomOptimisation(String optimisation) {
 		return getValidBasePath +
 			   getValidMetamodel +
+			   getValidModelPathSet +
 			   getValidObjectivesSet +
 			   getValidConstraintsSet +
 			   getValidEvolverSet +
@@ -52,6 +54,7 @@ class TestModelHelper {
 	def String getFullValidModelWithCustomObjectives(String objectives) {
 		return getValidBasePath +
 			   getValidMetamodel +
+			   getValidModelPathSet +
 			   objectives +
 			   getValidConstraintsSet +
 			   getValidEvolverSet +
@@ -61,6 +64,7 @@ class TestModelHelper {
 	def String getFullValidModelWithCustomConstraints(String constraints) {
 		return getValidBasePath +
 			   getValidMetamodel +
+			   getValidModelPathSet +
 			   getValidObjectivesSet +
 			   constraints +
 			   getValidEvolverSet +
@@ -104,18 +108,22 @@ class TestModelHelper {
 	}
 	
 	def String getValidEvolver() {
-		return "evolve using <craEvolvers.henshin> unit \"createClass\""
+		return "evolve using <craEvolvers.henshin> unit \"createClass\" type=\"mutation\""
 	}
 	
 	def String getValidEvolverSet() {
-		return '''evolve using <craEvolvers.henshin> unit "createClass"
-				  evolve using <craEvolvers.henshin> unit "assignFeature"
-				  evolve using <craEvolvers.henshin> unit "moveFeature"
-				  evolve using <craEvolvers.henshin> unit "deleteEmptyClass"'''
+		return '''evolve using <craEvolvers.henshin> unit "createClass" type "mutation"
+				  evolve using <craEvolvers.henshin> unit "assignFeature" type "mutation"
+				  evolve using <craEvolvers.henshin> unit "moveFeature" type "mutation\""
+				  evolve using <craEvolvers.henshin> unit "deleteEmptyClass" type "mutation"'''
+	}
+	
+	def String getValidModelPathSet() {
+		return '''model <model.xmi>'''
 	}
 	
 	def String getValidOptimisation() {
-		return "optimisation provider moea algorithm NSGAII evolutions 100000 population 100"
+		return "optimisation provider moea algorithm NSGAII variation genetic evolutions 100000 population 100"
 	}
 	
 }
