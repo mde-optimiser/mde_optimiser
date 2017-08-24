@@ -80,13 +80,12 @@ class MoeaOptimisationTests {
 				model <TTC_InputRDG_A.xmi>
 				objective MinimiseCoupling maximise java { "models.moea.MaximiseCRA" }
 				constraint MinimiseEmptyClasses java { "models.moea.MinimiseClasslessFeatures" }
-				constraint MinimiseEmptyClasses java { "models.moea.MinimiseEmptyClasses" }
 				evolve using <craEvolvers.henshin> unit "createClass" type "mutation"
 				evolve using <craEvolvers.henshin> unit "assignFeature" type "mutation"
 				evolve using <craEvolvers.henshin> unit "moveFeature" type "mutation"
 				evolve using <craEvolvers.henshin> unit "deleteEmptyClass" type "mutation"
 				evolve using <exchangeClass.henshin> unit "exchangeClassBidirectional" type "crossover"
-				optimisation provider moea algorithm NSGAII variation genetic evolutions 4000 population 40
+				optimisation provider moea algorithm NSGAII variation genetic evolutions 20000 population 40
 			''')
 
 			//Assert that there are no grammar issues

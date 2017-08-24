@@ -44,7 +44,7 @@ class SolutionGenerator {
 	IModelProvider initialModelProvider
 
 	public Engine engine;
-	public UnitApplicationImpl runner;
+	public RuleApplicationImpl runner;
 	
 	new(Optimisation optimisationModel, List<Unit> henshinEvolvers, HenshinResourceSet henshinResourceSet, IModelProvider modelProvider, EPackage metamodel){
 		this.optimisationModel = optimisationModel
@@ -53,8 +53,8 @@ class SolutionGenerator {
 		this.initialModelProvider = modelProvider
 		this.theMetamodel = metamodel;
 		this.engine = new EngineImpl
-		//engine.getOptions().put(Engine.OPTION_DETERMINISTIC, false);
-		this.runner = new UnitApplicationImpl(engine)
+		engine.getOptions().put(Engine.OPTION_DETERMINISTIC, false);
+		this.runner = new RuleApplicationImpl(engine)
 	}
 
     /**
@@ -96,31 +96,29 @@ class SolutionGenerator {
 		
 		val graph = new EGraphImpl(crossoverParents)
 		
-		val matchesView = henshinCrossoverEvolvers.map [ evolver |
-			engine.findMatches(evolver as Rule, graph, null).map[m | new Pair<Rule, Match>(evolver as Rule, m)]
-		].flatten
+//		val matchesView = henshinCrossoverEvolvers.map [ evolver |
+//			engine.findMatches(evolver as Rule, graph, null).map[m | new Pair<Rule, Match>(evolver as Rule, m)]
+//		].flatten
 
-		val matches = new ArrayList<Pair<Rule, Match>>(matchesView.toList)
-		
-		val runner = new RuleApplicationImpl(engine)
-		var temp = graph
-		
-		if(!matches.empty) {
-			// Randomly pick one match
-			val matchToUse = matches.get(new Random().nextInt(matches.size))
-		
-			// Apply the match
-			runner.EGraph = temp
-			runner.unit = matchToUse.key
-			runner.partialMatch = matchToUse.value
+//		val matches = new ArrayList<Pair<Rule, Match>>(matchesView.toList)
 			
-			if (runner.execute(null)) {
-				temp = new EGraphImpl(graph.roots.head)
-			}
+//		if(!matches.empty) {
+			// Randomly pick one match
+//			val matchToUse = matches.get(new Random().nextInt(matches.size))
+			val unitToUse = henshinCrossoverEvolvers.get(new Random().nextInt(henshinCrossoverEvolvers.size()))
+				
+			
+			// Apply the match
+			runner.EGraph = graph
+			runner.unit = unitToUse
+			//runner.partialMatch = matchToUse.value
+			
+			if(runner.execute(null)) {
 	
 			if(graph.roots.head != null)
-				return graph.roots		
-		}
+				return graph.roots	
+			}
+//		}
 		
         // We didn't find any applicable evolvers...
         System.out.println("Model with no crossover evolvers applicable.....")
@@ -156,21 +154,17 @@ class SolutionGenerator {
 
 		val matches = new ArrayList<Pair<Rule, Match>>(matchesView.toList)
 		
-		val runner = new RuleApplicationImpl(engine)
-		var temp = graph
-		
+			
 		if(!matches.empty) {
 			// Randomly pick one match
 			val matchToUse = matches.get(new Random().nextInt(matches.size))
 		
 			// Apply the match
-			runner.EGraph = temp
+			runner.EGraph = graph
 			runner.unit = matchToUse.key
 			runner.partialMatch = matchToUse.value
 			
-			if (runner.execute(null)) {
-				temp = new EGraphImpl(graph.roots.head)
-			}
+			runner.execute(null)
 	
 			if(graph.roots.head != null)
 				return graph.roots.head	
