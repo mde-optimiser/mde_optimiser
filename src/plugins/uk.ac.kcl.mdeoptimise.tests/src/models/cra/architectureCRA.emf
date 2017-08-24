@@ -1,0 +1,28 @@
+@namespace(uri="http://momot.big.tuwien.ac.at/architectureCRA/1.0", prefix="architectureCRA")
+package architectureCRA;
+
+class ClassModel extends NamedElement {
+  !ordered val Class[*] classes;
+  !ordered val Feature[*] features;
+}
+
+class Class extends NamedElement {
+  ref Feature[+]#isEncapsulatedBy encapsulates;
+}
+
+class Attribute extends Feature {
+}
+
+class Method extends Feature {
+  ref Attribute[*] dataDependency;
+  ref Method[*] functionalDependency;
+}
+
+abstract class Feature extends NamedElement {
+  ref Class#encapsulates isEncapsulatedBy;
+}
+
+abstract class NamedElement {
+  attr String[1] name;
+}
+
