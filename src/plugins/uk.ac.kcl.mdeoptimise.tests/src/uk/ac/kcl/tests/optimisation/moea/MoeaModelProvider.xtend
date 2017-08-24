@@ -6,7 +6,7 @@ class MoeaModelProvider extends TestModelProvider {
 	
 	override getModelPaths() {
 		#[
-			"src/models/cra/TTC_InputRDG_C.xmi"
+			"src/models/cra/472608BE.xmi"
 		]
 	}
 	

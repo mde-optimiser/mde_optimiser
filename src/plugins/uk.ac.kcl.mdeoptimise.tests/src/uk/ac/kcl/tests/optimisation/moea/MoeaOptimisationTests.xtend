@@ -85,7 +85,7 @@ class MoeaOptimisationTests {
 				evolve using <craEvolvers.henshin> unit "moveFeature" type "mutation"
 				evolve using <craEvolvers.henshin> unit "deleteEmptyClass" type "mutation"
 				evolve using <exchangeClass.henshin> unit "exchangeClassBidirectional" type "crossover"
-				optimisation provider moea algorithm NSGAII variation genetic evolutions 20000 population 40
+				optimisation provider moea algorithm NSGAII variation genetic evolutions 40000 population 10
 			''')
 
 			//Assert that there are no grammar issues
