@@ -24,32 +24,26 @@ import java.io.PrintStream
 import org.eclipse.emf.henshin.interpreter.impl.ChangeImpl
 
 class SolutionGenerator {
-	
-	private HenshinResourceSet henshinResourceSet = null
 
     private EPackage theMetamodel = null
 
     /**
-     * The list of Henshin rules used as evolvers
-     */
-    private List<Unit> henshinEvolvers = null
-	
-	/**
 	 * The list of Henshin crossover rules
 	 */
-	private List<Unit> henshinCrossoverEvolvers = null
+	private List<Unit> breedingOperators
+	private List<Unit> mutationOperators
 	
-	public Optimisation optimisationModel
+	private Optimisation optimisationModel
 	
 	IModelProvider initialModelProvider
 
 	public Engine engine;
 	public RuleApplicationImpl runner;
 	
-	new(Optimisation optimisationModel, List<Unit> henshinEvolvers, HenshinResourceSet henshinResourceSet, IModelProvider modelProvider, EPackage metamodel){
-		this.optimisationModel = optimisationModel
-		this.henshinEvolvers = henshinEvolvers
-		this.henshinResourceSet = henshinResourceSet
+	new(Optimisation model, List<Unit> breedingOperators, List<Unit> mutationOperators, IModelProvider modelProvider, EPackage metamodel){
+		this.optimisationModel = model
+		this.breedingOperators = breedingOperators
+		this.mutationOperators = mutationOperators
 		this.initialModelProvider = modelProvider
 		this.theMetamodel = metamodel;
 		this.engine = new EngineImpl
@@ -66,37 +60,47 @@ class SolutionGenerator {
     def Iterator<EObject> getInitialSolutions() {
         initialModelProvider.initialModels(theMetamodel)
     }
-
+    
+    /**
+     * Returns the optimisation model to use inside the moea problem/solution
+     */
+    def Optimisation getOptimisationModel() {
+    	return optimisationModel
+    }
+	
+	//Perhaps combine these two metods into one as they do the same thing
 	def List<EObject> crossover(List<EObject> parents) {
-		
-		// Extract Henshin crossover evolvers if necessary
-		if (henshinCrossoverEvolvers == null) {
-			val hrs = henshinResourceSet
-			// Explicitly creating a list here to make sure the map is only invoked once not every time we try and evolve a model
-			henshinCrossoverEvolvers = new ArrayList(optimisationModel.evolvers.filter[ e | e.type.equals("crossover")].toList.map [ e |
-				hrs.getModule(URI.createURI(e.rule_location), false).getUnit(e.unit)
-			])
-		}
-		
+				
 		var crossoverParents = EcoreUtil.copyAll(parents)
 		
 		val graph = new EGraphImpl(crossoverParents)
-
+		val triedOperators = new ArrayList<Unit>()
+		
 		// Randomly pick one unit
-		val unitToUse = henshinCrossoverEvolvers.get(new Random().nextInt(henshinCrossoverEvolvers.size()))
+		var operator = breedingOperators.get(new Random().nextInt(breedingOperators.size()))
 			
-		
-		// Apply the match
-		runner.EGraph = graph
-		runner.unit = unitToUse
-		//runner.partialMatch = matchToUse.value
-		
-		if(runner.execute(null)) {
+		while(triedOperators.length < breedingOperators.length) {
 
-		if(graph.roots.head != null)
-			return graph.roots	
+			// Apply the match
+			runner.EGraph = graph
+			runner.unit = operator
+			
+			if(runner.execute(null)) {
+				if(graph.roots.head != null)
+					return graph.roots	
+			} else {
+				triedOperators.add(operator)
+				var remainingRules = breedingOperators.filter[ o  | !triedOperators.contains(o)];
+				
+				if(remainingRules.size == 0) {
+					return parents
+				}
+				
+				
+				operator = remainingRules.get(new Random().nextInt(remainingRules.size()))
+				
+			}				
 		}
-
 		
         // We didn't find any applicable evolvers...
         System.out.println("Model with no crossover evolvers applicable.....")
@@ -110,38 +114,36 @@ class SolutionGenerator {
      * otherwise returns the result of the first randomly picked evolver that was applicable.
      */
     def EObject evolveModel(EObject object) {
-    	
-		// Extract Henshin evolvers if necessary
-		if (henshinEvolvers == null) {
-			val hrs = henshinResourceSet
-			// Explicitly creating a list here to make sure the map is only invoked once not every time we try and evolve a model
-			henshinEvolvers = new ArrayList(optimisationModel.evolvers.filter[ e | e.type.equals("mutation")].toList.map [ e |
-				hrs.getModule(URI.createURI(e.rule_location), false).getUnit(e.unit)
-			])
-		}
-		
+    			
 		val candidateSolution = EcoreUtil.copy(object)
 
 		// Get all matches
 		val graph = new EGraphImpl(candidateSolution)
 
 		// Randomly pick one match
-		val triedRules = new ArrayList<Unit>()
-		var matchToUse = henshinEvolvers.get(new Random().nextInt(henshinEvolvers.size()))
+		val triedOperators = new ArrayList<Unit>()
+		var operator = mutationOperators.get(new Random().nextInt(mutationOperators.size()))
 					
-		while(triedRules.length < henshinEvolvers.length){
+		while(triedOperators.length < mutationOperators.length){
 			
 			runner.EGraph = graph
-			runner.unit = matchToUse
+			runner.unit = operator
 			
 			if(runner.execute(null)){
 				//println("Could run mutation" + matchToUse.name)
 				if(graph.roots.head != null)
 					return graph.roots.head	
 			} else {
-				triedRules.add(matchToUse);
-				var remainingRules = henshinEvolvers.filter[ x  | !triedRules.contains(x)];
-				matchToUse = remainingRules.get(new Random().nextInt(remainingRules.size()))
+				
+				
+				triedOperators.add(operator);
+				var remainingRules = mutationOperators.filter[ o  | !triedOperators.contains(o)];
+				
+				if(remainingRules.size == 0) {
+					return object
+				}
+				
+				operator = remainingRules.get(new Random().nextInt(remainingRules.size()))
 				//println("Could not run mutation for rule " + matchToUse.name)
 			}	
 		}	
@@ -150,5 +152,4 @@ class SolutionGenerator {
         println("Model with no mutation evolvers applicable.....")
         object
     }
-	
 }

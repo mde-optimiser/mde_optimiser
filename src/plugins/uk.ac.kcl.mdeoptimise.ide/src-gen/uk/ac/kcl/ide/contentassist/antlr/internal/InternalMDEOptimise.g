@@ -249,6 +249,43 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+// Rule EvolverType
+ruleEvolverType
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getEvolverTypeAccess().getAlternatives()); }
+		(rule__EvolverType__Alternatives)
+		{ after(grammarAccess.getEvolverTypeAccess().getAlternatives()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__EvolverType__Alternatives
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getEvolverTypeAccess().getMUTATEEnumLiteralDeclaration_0()); }
+		('mutate')
+		{ after(grammarAccess.getEvolverTypeAccess().getMUTATEEnumLiteralDeclaration_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getEvolverTypeAccess().getBREEDEnumLiteralDeclaration_1()); }
+		('breed')
+		{ after(grammarAccess.getEvolverTypeAccess().getBREEDEnumLiteralDeclaration_1()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__Optimisation__Group__0
 	@init {
 		int stackSize = keepStackSize();
@@ -983,9 +1020,9 @@ rule__EvolverSpec__Group__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getEvolverSpecAccess().getEvolveKeyword_0()); }
-	'evolve'
-	{ after(grammarAccess.getEvolverSpecAccess().getEvolveKeyword_0()); }
+	{ before(grammarAccess.getEvolverSpecAccess().getEvolverTypeAssignment_0()); }
+	(rule__EvolverSpec__EvolverTypeAssignment_0)
+	{ after(grammarAccess.getEvolverSpecAccess().getEvolverTypeAssignment_0()); }
 )
 ;
 finally {
@@ -1079,7 +1116,6 @@ rule__EvolverSpec__Group__4
 	}
 :
 	rule__EvolverSpec__Group__4__Impl
-	rule__EvolverSpec__Group__5
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -1094,59 +1130,6 @@ rule__EvolverSpec__Group__4__Impl
 	{ before(grammarAccess.getEvolverSpecAccess().getUnitAssignment_4()); }
 	(rule__EvolverSpec__UnitAssignment_4)
 	{ after(grammarAccess.getEvolverSpecAccess().getUnitAssignment_4()); }
-)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__EvolverSpec__Group__5
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	rule__EvolverSpec__Group__5__Impl
-	rule__EvolverSpec__Group__6
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__EvolverSpec__Group__5__Impl
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-(
-	{ before(grammarAccess.getEvolverSpecAccess().getTypeKeyword_5()); }
-	'type'
-	{ after(grammarAccess.getEvolverSpecAccess().getTypeKeyword_5()); }
-)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__EvolverSpec__Group__6
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	rule__EvolverSpec__Group__6__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__EvolverSpec__Group__6__Impl
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-(
-	{ before(grammarAccess.getEvolverSpecAccess().getTypeAssignment_6()); }
-	(rule__EvolverSpec__TypeAssignment_6)
-	{ after(grammarAccess.getEvolverSpecAccess().getTypeAssignment_6()); }
 )
 ;
 finally {
@@ -1706,6 +1689,21 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+rule__EvolverSpec__EvolverTypeAssignment_0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getEvolverSpecAccess().getEvolverTypeEvolverTypeEnumRuleCall_0_0()); }
+		ruleEvolverType
+		{ after(grammarAccess.getEvolverSpecAccess().getEvolverTypeEvolverTypeEnumRuleCall_0_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__EvolverSpec__Rule_locationAssignment_2
 	@init {
 		int stackSize = keepStackSize();
@@ -1730,21 +1728,6 @@ rule__EvolverSpec__UnitAssignment_4
 		{ before(grammarAccess.getEvolverSpecAccess().getUnitSTRINGTerminalRuleCall_4_0()); }
 		RULE_STRING
 		{ after(grammarAccess.getEvolverSpecAccess().getUnitSTRINGTerminalRuleCall_4_0()); }
-	)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__EvolverSpec__TypeAssignment_6
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	(
-		{ before(grammarAccess.getEvolverSpecAccess().getTypeSTRINGTerminalRuleCall_6_0()); }
-		RULE_STRING
-		{ after(grammarAccess.getEvolverSpecAccess().getTypeSTRINGTerminalRuleCall_6_0()); }
 	)
 ;
 finally {
@@ -1825,8 +1808,6 @@ rule__OptimisationSpec__AlgorithmPopulationAssignment_10
 finally {
 	restoreStackSize(stackSize);
 }
-
-RULE_EVOLVER_TYPE : ('m'|'c');
 
 RULE_ALGORITHM_VARIATION : ('genetic'|'crossover'|'mutation');
 

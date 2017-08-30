@@ -31,8 +31,8 @@ class OclInterpreterGrammarTests {
 			metamodel <architectureCRA.ecore>
 			model <model.xmi>
 			''' + objective + '''
-			evolve using <ABC> unit "XYZ" type "mutation"
-			evolve using <CDE> unit "LMN" type "mutation"
+			mutate using <ABC> unit "XYZ"
+			mutate using <CDE> unit "LMN"
 			optimisation provider ecj algorithm NSGAII variation mutation evolutions 100 population 100
 		'''
 	}

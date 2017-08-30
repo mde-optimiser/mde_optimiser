@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import uk.ac.kcl.mdeoptimise.EvolverSpec;
+import uk.ac.kcl.mdeoptimise.EvolverType;
 import uk.ac.kcl.mdeoptimise.MdeoptimisePackage;
 
 /**
@@ -21,15 +22,35 @@ import uk.ac.kcl.mdeoptimise.MdeoptimisePackage;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link uk.ac.kcl.mdeoptimise.impl.EvolverSpecImpl#getEvolverType <em>Evolver Type</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.EvolverSpecImpl#getRule_location <em>Rule location</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.EvolverSpecImpl#getUnit <em>Unit</em>}</li>
- *   <li>{@link uk.ac.kcl.mdeoptimise.impl.EvolverSpecImpl#getType <em>Type</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class EvolverSpecImpl extends MinimalEObjectImpl.Container implements EvolverSpec
 {
+  /**
+   * The default value of the '{@link #getEvolverType() <em>Evolver Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEvolverType()
+   * @generated
+   * @ordered
+   */
+  protected static final EvolverType EVOLVER_TYPE_EDEFAULT = EvolverType.MUTATE;
+
+  /**
+   * The cached value of the '{@link #getEvolverType() <em>Evolver Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEvolverType()
+   * @generated
+   * @ordered
+   */
+  protected EvolverType evolverType = EVOLVER_TYPE_EDEFAULT;
+
   /**
    * The default value of the '{@link #getRule_location() <em>Rule location</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -71,26 +92,6 @@ public class EvolverSpecImpl extends MinimalEObjectImpl.Container implements Evo
   protected String unit = UNIT_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getType()
-   * @generated
-   * @ordered
-   */
-  protected static final String TYPE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getType()
-   * @generated
-   * @ordered
-   */
-  protected String type = TYPE_EDEFAULT;
-
-  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -109,6 +110,29 @@ public class EvolverSpecImpl extends MinimalEObjectImpl.Container implements Evo
   protected EClass eStaticClass()
   {
     return MdeoptimisePackage.Literals.EVOLVER_SPEC;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EvolverType getEvolverType()
+  {
+    return evolverType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setEvolverType(EvolverType newEvolverType)
+  {
+    EvolverType oldEvolverType = evolverType;
+    evolverType = newEvolverType == null ? EVOLVER_TYPE_EDEFAULT : newEvolverType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MdeoptimisePackage.EVOLVER_SPEC__EVOLVER_TYPE, oldEvolverType, evolverType));
   }
 
   /**
@@ -162,40 +186,17 @@ public class EvolverSpecImpl extends MinimalEObjectImpl.Container implements Evo
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getType()
-  {
-    return type;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setType(String newType)
-  {
-    String oldType = type;
-    type = newType;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MdeoptimisePackage.EVOLVER_SPEC__TYPE, oldType, type));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
     {
+      case MdeoptimisePackage.EVOLVER_SPEC__EVOLVER_TYPE:
+        return getEvolverType();
       case MdeoptimisePackage.EVOLVER_SPEC__RULE_LOCATION:
         return getRule_location();
       case MdeoptimisePackage.EVOLVER_SPEC__UNIT:
         return getUnit();
-      case MdeoptimisePackage.EVOLVER_SPEC__TYPE:
-        return getType();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -210,14 +211,14 @@ public class EvolverSpecImpl extends MinimalEObjectImpl.Container implements Evo
   {
     switch (featureID)
     {
+      case MdeoptimisePackage.EVOLVER_SPEC__EVOLVER_TYPE:
+        setEvolverType((EvolverType)newValue);
+        return;
       case MdeoptimisePackage.EVOLVER_SPEC__RULE_LOCATION:
         setRule_location((String)newValue);
         return;
       case MdeoptimisePackage.EVOLVER_SPEC__UNIT:
         setUnit((String)newValue);
-        return;
-      case MdeoptimisePackage.EVOLVER_SPEC__TYPE:
-        setType((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -233,14 +234,14 @@ public class EvolverSpecImpl extends MinimalEObjectImpl.Container implements Evo
   {
     switch (featureID)
     {
+      case MdeoptimisePackage.EVOLVER_SPEC__EVOLVER_TYPE:
+        setEvolverType(EVOLVER_TYPE_EDEFAULT);
+        return;
       case MdeoptimisePackage.EVOLVER_SPEC__RULE_LOCATION:
         setRule_location(RULE_LOCATION_EDEFAULT);
         return;
       case MdeoptimisePackage.EVOLVER_SPEC__UNIT:
         setUnit(UNIT_EDEFAULT);
-        return;
-      case MdeoptimisePackage.EVOLVER_SPEC__TYPE:
-        setType(TYPE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -256,12 +257,12 @@ public class EvolverSpecImpl extends MinimalEObjectImpl.Container implements Evo
   {
     switch (featureID)
     {
+      case MdeoptimisePackage.EVOLVER_SPEC__EVOLVER_TYPE:
+        return evolverType != EVOLVER_TYPE_EDEFAULT;
       case MdeoptimisePackage.EVOLVER_SPEC__RULE_LOCATION:
         return RULE_LOCATION_EDEFAULT == null ? rule_location != null : !RULE_LOCATION_EDEFAULT.equals(rule_location);
       case MdeoptimisePackage.EVOLVER_SPEC__UNIT:
         return UNIT_EDEFAULT == null ? unit != null : !UNIT_EDEFAULT.equals(unit);
-      case MdeoptimisePackage.EVOLVER_SPEC__TYPE:
-        return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
     }
     return super.eIsSet(featureID);
   }
@@ -277,12 +278,12 @@ public class EvolverSpecImpl extends MinimalEObjectImpl.Container implements Evo
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (rule_location: ");
+    result.append(" (evolverType: ");
+    result.append(evolverType);
+    result.append(", rule_location: ");
     result.append(rule_location);
     result.append(", unit: ");
     result.append(unit);
-    result.append(", type: ");
-    result.append(type);
     result.append(')');
     return result.toString();
   }
