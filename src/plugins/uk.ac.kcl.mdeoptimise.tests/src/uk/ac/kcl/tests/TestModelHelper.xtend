@@ -108,14 +108,14 @@ class TestModelHelper {
 	}
 	
 	def String getValidEvolver() {
-		return "evolve using <craEvolvers.henshin> unit \"createClass\" type=\"mutation\""
+		return "breed using <craEvolvers.henshin> unit \"createClass\""
 	}
 	
 	def String getValidEvolverSet() {
-		return '''evolve using <craEvolvers.henshin> unit "createClass" type "mutation"
-				  evolve using <craEvolvers.henshin> unit "assignFeature" type "mutation"
-				  evolve using <craEvolvers.henshin> unit "moveFeature" type "mutation\""
-				  evolve using <craEvolvers.henshin> unit "deleteEmptyClass" type "mutation"'''
+		return '''mutate using <craEvolvers.henshin> unit "createClass"
+				  mutate using <craEvolvers.henshin> unit "assignFeature"
+				  breed using <craEvolvers.henshin> unit "moveFeature"
+				  breed using <craEvolvers.henshin> unit "deleteEmptyClass"'''
 	}
 	
 	def String getValidModelPathSet() {

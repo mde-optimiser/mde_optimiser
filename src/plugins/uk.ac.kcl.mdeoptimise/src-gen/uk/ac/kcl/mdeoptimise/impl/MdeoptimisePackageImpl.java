@@ -5,6 +5,7 @@ package uk.ac.kcl.mdeoptimise.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -13,6 +14,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import uk.ac.kcl.mdeoptimise.BasepathSpec;
 import uk.ac.kcl.mdeoptimise.ConstraintInterpreterSpec;
 import uk.ac.kcl.mdeoptimise.EvolverSpec;
+import uk.ac.kcl.mdeoptimise.EvolverType;
 import uk.ac.kcl.mdeoptimise.MdeoptimiseFactory;
 import uk.ac.kcl.mdeoptimise.MdeoptimisePackage;
 import uk.ac.kcl.mdeoptimise.MetaModelSpec;
@@ -84,6 +86,13 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * @generated
    */
   private EClass optimisationSpecEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum evolverTypeEEnum = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -393,7 +402,7 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getEvolverSpec_Rule_location()
+  public EAttribute getEvolverSpec_EvolverType()
   {
     return (EAttribute)evolverSpecEClass.getEStructuralFeatures().get(0);
   }
@@ -403,7 +412,7 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getEvolverSpec_Unit()
+  public EAttribute getEvolverSpec_Rule_location()
   {
     return (EAttribute)evolverSpecEClass.getEStructuralFeatures().get(1);
   }
@@ -413,7 +422,7 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getEvolverSpec_Type()
+  public EAttribute getEvolverSpec_Unit()
   {
     return (EAttribute)evolverSpecEClass.getEStructuralFeatures().get(2);
   }
@@ -483,6 +492,16 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
+  public EEnum getEvolverType()
+  {
+    return evolverTypeEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public MdeoptimiseFactory getMdeoptimiseFactory()
   {
     return (MdeoptimiseFactory)getEFactoryInstance();
@@ -538,9 +557,9 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
     createEAttribute(constraintInterpreterSpecEClass, CONSTRAINT_INTERPRETER_SPEC__CONSTRAINT_SPEC);
 
     evolverSpecEClass = createEClass(EVOLVER_SPEC);
+    createEAttribute(evolverSpecEClass, EVOLVER_SPEC__EVOLVER_TYPE);
     createEAttribute(evolverSpecEClass, EVOLVER_SPEC__RULE_LOCATION);
     createEAttribute(evolverSpecEClass, EVOLVER_SPEC__UNIT);
-    createEAttribute(evolverSpecEClass, EVOLVER_SPEC__TYPE);
 
     optimisationSpecEClass = createEClass(OPTIMISATION_SPEC);
     createEAttribute(optimisationSpecEClass, OPTIMISATION_SPEC__ALGORITHM_FACTORY);
@@ -548,6 +567,9 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
     createEAttribute(optimisationSpecEClass, OPTIMISATION_SPEC__ALGORITHM_VARIATION);
     createEAttribute(optimisationSpecEClass, OPTIMISATION_SPEC__ALGORITHM_EVOLUTIONS);
     createEAttribute(optimisationSpecEClass, OPTIMISATION_SPEC__ALGORITHM_POPULATION);
+
+    // Create enums
+    evolverTypeEEnum = createEEnum(EVOLVER_TYPE);
   }
 
   /**
@@ -611,9 +633,9 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
     initEAttribute(getConstraintInterpreterSpec_ConstraintSpec(), ecorePackage.getEString(), "constraintSpec", null, 0, 1, ConstraintInterpreterSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(evolverSpecEClass, EvolverSpec.class, "EvolverSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getEvolverSpec_EvolverType(), this.getEvolverType(), "evolverType", null, 0, 1, EvolverSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getEvolverSpec_Rule_location(), ecorePackage.getEString(), "rule_location", null, 0, 1, EvolverSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getEvolverSpec_Unit(), ecorePackage.getEString(), "unit", null, 0, 1, EvolverSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getEvolverSpec_Type(), ecorePackage.getEString(), "type", null, 0, 1, EvolverSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(optimisationSpecEClass, OptimisationSpec.class, "OptimisationSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getOptimisationSpec_AlgorithmFactory(), ecorePackage.getEString(), "algorithmFactory", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -621,6 +643,11 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
     initEAttribute(getOptimisationSpec_AlgorithmVariation(), ecorePackage.getEString(), "algorithmVariation", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getOptimisationSpec_AlgorithmEvolutions(), ecorePackage.getEInt(), "algorithmEvolutions", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getOptimisationSpec_AlgorithmPopulation(), ecorePackage.getEInt(), "algorithmPopulation", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    // Initialize enums and add enum literals
+    initEEnum(evolverTypeEEnum, EvolverType.class, "EvolverType");
+    addEEnumLiteral(evolverTypeEEnum, EvolverType.MUTATE);
+    addEEnumLiteral(evolverTypeEEnum, EvolverType.BREED);
 
     // Create resource
     createResource(eNS_URI);
