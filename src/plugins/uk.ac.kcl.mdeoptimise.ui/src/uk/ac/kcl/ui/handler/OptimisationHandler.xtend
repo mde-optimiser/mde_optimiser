@@ -70,8 +70,8 @@ class OptimisationHandler extends AbstractHandler implements IHandler {
                 
                 if(model != null){
                 	
-					var optimisation = new OptimisationInterpreter(model)
-                	optimisation.start();
+//					var optimisation = new OptimisationInterpreter(model)
+//                	optimisation.start();
                 }
             }
         }
