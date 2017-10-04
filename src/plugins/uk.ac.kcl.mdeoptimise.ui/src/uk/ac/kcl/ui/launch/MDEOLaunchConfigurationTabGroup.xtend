@@ -15,7 +15,6 @@ class MDEOLaunchConfigurationTabGroup extends AbstractLaunchConfigurationTabGrou
 	override createTabs(ILaunchConfigurationDialog dialog, String mode) {
 		val tabs = newArrayList(
 			new MDEOptimiserSourceConfigurationTab,
-			new SourceLookupTab,
 			new JavaClasspathTab,
 			new JavaJRETab,
 			new EnvironmentTab,
