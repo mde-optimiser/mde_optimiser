@@ -8,18 +8,19 @@ import java.util.Collections
 import org.eclipse.emf.common.util.URI
 import java.nio.file.Paths
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.henshin.model.resource.HenshinResourceSet
 
 class UserModelProvider implements IModelProvider {
 	
-	private URI modelPath
+	private String modelPath
+	private HenshinResourceSet resourceSet;
 	
-	new (URI basepath, String userModelPath){
-		this.modelPath = basepath.appendSegment(userModelPath);
+	new (HenshinResourceSet resourceSet, String userModelPath){
+		this.modelPath = userModelPath;
+		this.resourceSet = resourceSet;
 	}
 	
-	val ResourceSet resourceSet = new ResourceSetImpl
-
-	def loadModel(URI path) {
+	def loadModel(String path) {
 		val resource = resourceSet.createResource(path)
 		resource.load(Collections.EMPTY_MAP)
 		resource.allContents.head
