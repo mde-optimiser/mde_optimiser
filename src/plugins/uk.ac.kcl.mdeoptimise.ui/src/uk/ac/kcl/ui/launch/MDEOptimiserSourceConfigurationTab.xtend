@@ -88,7 +88,7 @@ class MDEOptimiserSourceConfigurationTab extends AbstractLaunchConfigurationTab 
 
     @Override
     override String getName() {
-        return "Vogella sample launch tab";
+        return "MDEO Search Launch Tab";
     }
     
     def String getImagePath(){
