@@ -16,6 +16,4 @@ class EntitiesEditorTest extends AbstractEditorTest {
 	override protected getEditorId() {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
-
-
 }

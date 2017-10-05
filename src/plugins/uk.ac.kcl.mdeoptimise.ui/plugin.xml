@@ -417,7 +417,15 @@
 			id="uk.ac.kcl.ui.mdeo.launchConfiguration">
 		</launchConfigurationType>
 	</extension>
-		
+	
+	<extension point="org.eclipse.debug.ui.launchConfigurationTypeImages">
+ 		<launchConfigurationTypeImage
+			icon="icons/mdeo.png"
+			configTypeID="uk.ac.kcl.ui.mdeo.launchConfiguration"
+			id="uk.ac.kcl.ui.mdeo.launchConfigurationTypeImage">
+		</launchConfigurationTypeImage>
+	</extension>
+	
 	<extension point="org.eclipse.debug.ui.launchConfigurationTabGroups">
 		<launchConfigurationTabGroup
 			class="uk.ac.kcl.ui.launch.MDEOLaunchConfigurationTabGroup"
@@ -425,7 +433,8 @@
 			type="uk.ac.kcl.ui.mdeo.launchConfiguration">
 		</launchConfigurationTabGroup>
 	</extension>
-	<extension point="org.eclipse.debug.ui.launchShortcuts">
+	<!--Removed the shortcuts to launch the app for now. -->
+	<!--<extension point="org.eclipse.debug.ui.launchShortcuts">
 	    <shortcut
 	        class="uk.ac.kcl.ui.launch.MDEOLaunchConfigurationShortcut"
 	        icon="icons/vogella.png"
@@ -444,6 +453,6 @@
 	            </enablement>
 	        </contextualLaunch>
 	    </shortcut>
-	</extension>
+	</extension>-->
 	
 </plugin>
