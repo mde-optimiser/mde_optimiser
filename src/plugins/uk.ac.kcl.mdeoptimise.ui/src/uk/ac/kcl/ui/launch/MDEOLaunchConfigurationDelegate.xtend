@@ -15,6 +15,8 @@ import org.eclipse.core.runtime.Platform
 import org.eclipse.core.runtime.FileLocator
 import java.net.URL
 import java.util.ArrayList
+import org.eclipse.core.resources.ResourcesPlugin
+import org.eclipse.core.runtime.Path
 
 class MDEOLaunchConfigurationDelegate extends AbstractJavaLaunchConfigurationDelegate {
 	
@@ -25,9 +27,7 @@ class MDEOLaunchConfigurationDelegate extends AbstractJavaLaunchConfigurationDel
 		
 		try {
 			monitor.subTask(LaunchingMessages.JavaLocalApplicationLaunchConfigurationDelegate_Verifying_launch_attributes____1); 
-							
-			var mainTypeName = "uk.ac.kcl.ui.launch.RunOptimisation"
-			
+										
 			var runner = getVMRunner(configuration, mode);
 	
 			var workingDir = verifyWorkingDirectory(configuration);
@@ -39,47 +39,20 @@ class MDEOLaunchConfigurationDelegate extends AbstractJavaLaunchConfigurationDel
 			// Environment variables
 			var envp= getEnvironment(configuration);
 			
-			// Program & VM arguments
-			var pgmArgs = getProgramArguments(configuration);
-			var vmArgs = getVMArguments(configuration);
-			var execArgs = new ExecutionArguments(vmArgs, pgmArgs);
+			// Get the configured MOPT file path
+			var pgmArgs = getStandaloneLauncherArguments(getConfiguredMoptPath(configuration))
+			
+			//Prepare the execution arguments, with no VM arguments and the mopt file path
+			var execArgs = new ExecutionArguments("", pgmArgs);
 			
 			// VM-specific attributes
 			var vmAttributesMap = getVMSpecificAttributesMap(configuration);
 			
+			// Get the complete classpath
+			val classpath = buildStandaloneClasspath(configuration);
 			
-			var bundlesContext =  FrameworkUtil.getBundle(uk.ac.kcl.ui.launch.RunOptimisation).getBundleContext();
-		    
-		    var mdeoBundle = FrameworkUtil.getBundle(uk.ac.kcl.ui.launch.RunOptimisation)
-		        
-		    var bundlePath = FileLocator.getBundleFile(mdeoBundle)
-
-		    var bundles = bundlesContext.getBundles();
-			
-			// Classpath
-			val classpath = getClasspath(configuration);
-			
-			val bundlesClasspath =  new ArrayList<String>();
-			bundlesClasspath.addAll(classpath)
-			
-			/**
-			 * TODO This is a hack to allow running the bundles from within eclipse.
-			 * Find if there is a better way of working around this without having to hardcode the
-			 * path to the .class files. This path is specified in the project pom file.
-			 */
-			bundles.forEach[ bundle | 
-				var bundleFilePath = FileLocator.getBundleFile(bundle).absolutePath
-				if(!bundleFilePath.endsWith(".jar")){
-					bundleFilePath = bundleFilePath.concat("/target/classes")
-				}	
-				
-				bundlesClasspath.add(bundleFilePath)
-			]
-			
-			//bundles.forEach[ bundle | classpath.add(bundle.getEntry("/").toString)]
-
 			// Create VM config
-			var runConfig = new VMRunnerConfiguration(mainTypeName, bundlesClasspath);
+			var runConfig = new VMRunnerConfiguration(MDEOptimiserLaunchConfigurationAttributes.ATTR_MOPT_MAIN_CLASS_NAME, classpath);
 			runConfig.setProgramArguments(execArgs.getProgramArgumentsArray());
 			runConfig.setEnvironment(envp);
 			runConfig.setVMArguments(execArgs.getVMArgumentsArray());
@@ -116,6 +89,71 @@ class MDEOLaunchConfigurationDelegate extends AbstractJavaLaunchConfigurationDel
 		finally {
 			monitor.done();
 		}
+	}
+	
+	
+	/**
+	 * Returns the program arguments specified by the given launch
+	 * configuration, as a string. The returned string is empty if no program
+	 * arguments are specified.
+	 * 
+	 * @param configuration
+	 *            launch configuration
+	 * @return the specified mopt configuration file path
+	 * @exception CoreException
+	 *                if unable to retrieve the attribute
+	 */
+	def String getConfiguredMoptPath(ILaunchConfiguration configuration) throws CoreException {
+		return configuration.getAttribute(
+				MDEOptimiserLaunchConfigurationAttributes.ATTR_MOPT_SOURCE_PATH, "");
+	}
+	
+	/**
+	 * Returns the full mopt file path
+	 */
+	def String getStandaloneLauncherArguments(String configuredMoptFile){
 		
+		var arguments = ""
+		
+		var moptFile =  ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(configuredMoptFile));
+		
+		if(moptFile.exists){
+			
+			arguments += moptFile.getProject().getLocation().toOSString()
+			arguments += " "
+			arguments += moptFile.getRawLocation().toOSString(); 
+			
+			return arguments
+		}
+	}
+	
+	/**
+	 * Returns the complete classpath of the launch configuration, including the Eclipse bundles
+	 * as well as all the user configured dependencies
+	 * @param configuration launch configuration
+	 * @return the complete bundles classpath including eclipse jars and user configured classpath
+	 */
+	def String[] buildStandaloneClasspath(ILaunchConfiguration configuration) {
+		
+		val bundlesContext =  FrameworkUtil.getBundle(this.class).getBundleContext();
+		val bundles = bundlesContext.getBundles();
+		
+		val bundlesClasspath =  new ArrayList<String>(getClasspath(configuration));
+		
+		/**
+		 * TODO This is a hack to allow running the bundles from within eclipse.
+		 * Find if there is a better way of working around this without having to hardcode the
+		 * path to the .class files. This path is specified in the project pom file.
+		 */
+		bundles.forEach[ bundle | 
+			var bundleFilePath = FileLocator.getBundleFile(bundle).absolutePath
+			if(!bundleFilePath.endsWith(".jar")){
+				bundleFilePath = bundleFilePath.concat("/target/classes")
+			}	
+			
+			bundlesClasspath.add(bundleFilePath)
+		]
+		
+		return bundlesClasspath
 	}
 }

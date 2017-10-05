@@ -24,11 +24,7 @@ class MDEOLaunchConfigurationShortcut implements ILaunchShortcut {
 			val app = injector.getInstance(RunOptimisation)
 			
 			var treeSelection = selection as IStructuredSelection
-			
-			
-			
 			var treeSelectionList = treeSelection.firstElement
-			
 			
 			var file = Platform.getAdapterManager().getAdapter(treeSelectionList, IFile) as IFile
 	        if (file == null) {
@@ -40,8 +36,8 @@ class MDEOLaunchConfigurationShortcut implements ILaunchShortcut {
 	            // do something
 	        }
 			
-			app.run(file)
-			println()
+//			app.run(file)
+//			println()
 		}
 	
 	}
@@ -49,6 +45,4 @@ class MDEOLaunchConfigurationShortcut implements ILaunchShortcut {
 	override launch(IEditorPart editor, String mode) {
 		println("Editor" + mode)
 	}
-
-
 }
