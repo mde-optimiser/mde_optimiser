@@ -9,10 +9,9 @@ import org.eclipse.emf.common.util.URI
 import uk.ac.kcl.optimisation.moea.MoeaOptimisation
 import uk.ac.kcl.optimisation.SolutionGenerator
 import uk.ac.kcl.optimisation.UserModelProvider
-import java.util.Map
 import java.util.LinkedList
-import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.core.runtime.IPath
+import org.eclipse.core.runtime.Path
 
 class OptimisationInterpreter {
 	
@@ -26,9 +25,9 @@ class OptimisationInterpreter {
 
 	private IPath projectRootPath;
 
-	new (IPath projectPath, Optimisation model){
+	new (String projectPath, Optimisation model){
 		this.model = model;
-		this.projectRootPath = projectPath;
+		this.projectRootPath = new Path(projectPath);
 	}
 	
 	def void start() {

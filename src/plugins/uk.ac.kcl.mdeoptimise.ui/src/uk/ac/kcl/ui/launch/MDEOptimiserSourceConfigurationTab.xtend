@@ -28,7 +28,7 @@ import org.eclipse.swt.events.ModifyEvent
 
 class MDEOptimiserSourceConfigurationTab extends AbstractLaunchConfigurationTab implements ModifyListener {
 
-    Text filePath;
+    Text moptFilePath;
 
     override createControl(Composite parent) {
 
@@ -48,11 +48,11 @@ class MDEOptimiserSourceConfigurationTab extends AbstractLaunchConfigurationTab 
 		sourceGroup.setText("Source:");
 		
 		var filePathData = new GridData(GridData.FILL_HORIZONTAL);
-		filePath = new Text(sourceGroup, SWT.BORDER);
-		filePath.setLayoutData(filePathData);
-		filePath.addModifyListener(this);
+		moptFilePath = new Text(sourceGroup, SWT.BORDER);
+		moptFilePath.setLayoutData(filePathData);
+		moptFilePath.addModifyListener(this);
 		
-		createBrowseWorkspaceButton(sourceGroup, filePath)
+		createBrowseWorkspaceButton(sourceGroup, moptFilePath)
 		
 		var extras = new Composite(control, SWT.NONE);
 		var extrasData = new GridData(GridData.FILL_BOTH);
@@ -67,34 +67,35 @@ class MDEOptimiserSourceConfigurationTab extends AbstractLaunchConfigurationTab 
     }
 
     @Override
-    override setDefaults(ILaunchConfigurationWorkingCopy configuration) {
+    override setDefaults(ILaunchConfigurationWorkingCopy configuration) {	
     }
 
     @Override
     override initializeFrom(ILaunchConfiguration configuration) {
-			try {
-				filePath.setText(configuration.getAttribute(getSourceAttributeName(), ""));
-				canSave();
-				updateLaunchConfigurationDialog();
-			} catch (CoreException e) {
-				//Ignore
-			}
+		try {
+			moptFilePath.setText(configuration.getAttribute(getSourceAttributeName(), ""));
+			canSave();
+			updateLaunchConfigurationDialog();
+		} catch (CoreException e) {
+			//Ignore
+		}
     }
 
     @Override
     override performApply(ILaunchConfigurationWorkingCopy configuration) {
-			configuration.setAttribute(getSourceAttributeName(), filePath.getText());
-		}
+		configuration.setAttribute(getSourceAttributeName(), moptFilePath.getText());
+	}
 
     @Override
     override String getName() {
         return "MDEO Search Launch Tab";
     }
     
-    def String getImagePath(){
-    	return "icons/mopt.gif"
-    }
-    
+    override modifyText(ModifyEvent e) {
+		canSave();
+		updateLaunchConfigurationDialog();
+	}
+	
     def Button createBrowseWorkspaceButton(Composite parent, Text target) {
     	
     	val button = new Button(parent, SWT.NONE)
@@ -104,7 +105,8 @@ class MDEOptimiserSourceConfigurationTab extends AbstractLaunchConfigurationTab 
     	button.addListener(SWT.Selection, new Listener(){
 						
 			override handleEvent(Event event) {
-				var selectedMoptFilePath = browseFilePath(getShell(), "Select MOPT file", "MOPT files in workspace", "mopt")
+				//TODO The file extension must be coming from somewhere in the xtext configs surely
+				var selectedMoptFilePath = browseFilePath(getShell(), "Select MOPT file", "MOPT files in the workspace", "mopt")
 				
 				if(selectedMoptFilePath != null) target.setText(selectedMoptFilePath)
 				
@@ -129,7 +131,7 @@ class MDEOptimiserSourceConfigurationTab extends AbstractLaunchConfigurationTab 
     		return file.getFullPath.toString()
     	}
     	
-    	return null;
+    	return null
     }
     
     def IFile browseFile(Shell shell, String title, String message, String pattern) {
@@ -148,14 +150,11 @@ class MDEOptimiserSourceConfigurationTab extends AbstractLaunchConfigurationTab 
     	
     	null
     }
-				
-	override modifyText(ModifyEvent e) {
-			canSave();
-			updateLaunchConfigurationDialog();
-	}
 
+	/**
+	 * Sets the name of the 
+	 */
 	def String getSourceAttributeName() {
-		return "source";
+		return MDEOptimiserLaunchConfigurationAttributes.ATTR_MOPT_SOURCE_PATH;
 	}
-
 }

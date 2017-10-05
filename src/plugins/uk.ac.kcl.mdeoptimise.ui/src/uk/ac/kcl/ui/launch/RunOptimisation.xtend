@@ -8,30 +8,51 @@ import uk.ac.kcl.interpreter.OptimisationInterpreter
 import com.google.inject.Provider
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.common.util.URI
-import org.eclipse.core.resources.IFile
 
 class RunOptimisation {
 	
-	
 	static val Injector injector = new MDEOptimiseStandaloneSetup().createInjectorAndDoEMFRegistration();
 	
+	@Inject
+	private Provider<ResourceSet> resourceSetProvider
+	
+	/**
+	 * Static method invoked by the MDEOptimiser launch configuration
+	 * @param the configured mopt file path to run the optimisation from
+	 */
 	def public static void main(String[] args){
-		val app = new RunOptimisation()
+		val app = injector.getInstance(RunOptimisation)
 		
-		app.run(null)
+		if(args.length == 2) {
+			app.run(args.get(0), args.get(1))
+		} else {
+			println("Invalid number of arguments. Cannot launch optimisation.")
+			println("Expecting a valid mopt file path. Received " + args)
+		}
 	}
 	
-	def void run(IFile file){
+	def void run(String moptProjectPath, String configuredMoptFilePath){
 		
-		if (file == null ) {
-			println("Received a null file")
+		if (configuredMoptFilePath == null || configuredMoptFilePath.empty) {
+			println("Received a null or empty mopt file path.")
+			
 			return
-		} 
-		
-		println("Configuration mopt file: " + file.fullPath.toString)
-	
-		
-	
+		} else {
+			
+			if(resourceSetProvider == null){
+				println("Empty ResourceSetProvider")
+			}
+			
+			var resource = resourceSetProvider.get().getResource(URI.createURI(configuredMoptFilePath), true)
+			var optimisationModel = resource.contents.head as Optimisation
+			
+			if(optimisationModel != null){
+            	
+				var optimisation = new OptimisationInterpreter(moptProjectPath, optimisationModel)
+            	optimisation.start();
+            }
+			
+		}
 	}
 }
 			

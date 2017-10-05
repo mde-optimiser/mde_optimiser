@@ -22,5 +22,4 @@ class MDEOLaunchConfigurationTabGroup extends AbstractLaunchConfigurationTabGrou
 		)
 		setTabs(tabs)
 	}
-	
 }
