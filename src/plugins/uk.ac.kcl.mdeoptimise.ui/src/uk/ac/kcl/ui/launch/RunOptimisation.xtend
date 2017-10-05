@@ -23,7 +23,12 @@ class RunOptimisation {
 	def public static void main(String[] args){
 		val app = injector.getInstance(RunOptimisation)
 		
-		if(args.length == 2) {
+		if(args.length == 0){
+			
+			app.run("/home/alxbrd/runtime-New_configuration/test-compile", 
+				"/home/alxbrd/runtime-New_configuration/test-compile/src/file.mopt")
+			
+		} else if(args.length == 2) {
 			app.run(args.get(0), args.get(1))
 		} else {
 			println("Invalid number of arguments. Cannot launch optimisation.")
