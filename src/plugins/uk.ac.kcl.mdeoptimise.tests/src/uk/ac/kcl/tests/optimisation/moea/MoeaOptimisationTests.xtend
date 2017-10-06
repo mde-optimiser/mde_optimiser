@@ -24,6 +24,7 @@ import uk.ac.kcl.tests.TestModelHelper
 import static org.junit.Assert.*
 import static org.mockito.Mockito.*
 import uk.ac.kcl.optimisation.UserModelProvider
+import uk.ac.kcl.interpreter.OptimisationInterpreter
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)
@@ -68,7 +69,6 @@ class MoeaOptimisationTests {
     }
     
     //Some tests to run optimisation manually for now
-
 	@Test
 	@Ignore
 	def void runMoeaOptimisationNSGA2() {
@@ -80,109 +80,34 @@ class MoeaOptimisationTests {
 				metamodel <architectureCRA.ecore>
 				model <TTC_InputRDG_A.xmi>
 				objective MinimiseCoupling maximise java { "models.moea.MaximiseCRA" }
-				constraint MinimiseEmptyClasses java { "models.moea.MinimiseClasslessFeatures" }
-				evolve using <craEvolvers.henshin> unit "createClass" type "mutation"
-				evolve using <craEvolvers.henshin> unit "assignFeature" type "mutation"
-				evolve using <craEvolvers.henshin> unit "moveFeature" type "mutation"
-				evolve using <craEvolvers.henshin> unit "deleteEmptyClass" type "mutation"
-				evolve using <exchangeClass.henshin> unit "exchangeClassBidirectional" type "crossover"
-				optimisation provider moea algorithm NSGAII variation genetic evolutions 40000 population 10
-			''')
-
-			//Assert that there are no grammar issues
-			model.assertNoIssues
-
-			val oclModelProvider = new MoeaModelProvider()
-			
-			var solutionGenerator = new SolutionGenerator(
-											model, 
-											henshinEvolvers, 
-											henshinResourceSet, 
-											oclModelProvider, 
-											getMetamodel);
-
-			var optimisation = new MoeaOptimisation()
-									.execute(model.optimisation, solutionGenerator)
-			
-			optimisation
-				.forEach[model | oclModelProvider.storeModelAndInfo(model, pathPrefix + "/final", oclModelProvider.modelPaths.head)]
-	}	
-	
-	@Test
-	@Ignore
-	def void runMoeaOptimisationSPEA2() {
-		
-			val pathPrefix = "gen/models/ttc/" + new SimpleDateFormat("yyMMdd-HHmmss").format(new Date())
-			
-			model = parser.parse('''
-				basepath <src/models/cra/>
-				metamodel <architectureCRA.ecore>			
-				objective MinimiseClasslessFeatures minimise java { "models.moea.MinimiseClasslessFeatures" }
-				objective MinimiseCoupling maximise java { "models.moea.MaximiseCRA" }
+				objective MinimiseEmptyClasses minimise java { "models.moea.MinimiseEmptyClasses" }
 				constraint MinimiseClasslessFeatures java { "models.moea.MinimiseClasslessFeatures" }
-				evolve using <craEvolvers.henshin> unit "createClass"
-				evolve using <craEvolvers.henshin> unit "assignFeature"
-				evolve using <craEvolvers.henshin> unit "moveFeature"
-				evolve using <craEvolvers.henshin> unit "deleteEmptyClass"
-				optimisation provider moea algorithm SPEA2 evolutions 10000 population 100
+				mutate using <craEvolvers.henshin> unit "createClass"
+				mutate using <craEvolvers.henshin> unit "assignFeature"
+				mutate using <craEvolvers.henshin> unit "moveFeature"
+				mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
+				optimisation provider moea algorithm NSGAII variation mutation evolutions 40000 population 30
 			''')
 
 			//Assert that there are no grammar issues
 			model.assertNoIssues
 
-			val oclModelProvider = new MoeaModelProvider()
+			val oclModelProvider = new UserModelProvider(getResourceSet(), "TTC_InputRDG_A.xmi")
+			
+			val optimisationInterpreter = new OptimisationInterpreter("", model)
 			
 			var solutionGenerator = new SolutionGenerator(
 											model, 
-											henshinEvolvers, 
-											henshinResourceSet, 
+											optimisationInterpreter.breedingOperators, 
+											optimisationInterpreter.mutationOperators, 
 											oclModelProvider, 
-											getMetamodel);
+											optimisationInterpreter.metamodel);
 
 			var optimisation = new MoeaOptimisation()
 									.execute(model.optimisation, solutionGenerator)
 			
-			optimisation
-				.forEach[model | oclModelProvider.storeModelAndInfo(model, pathPrefix + "/final", oclModelProvider.modelPaths.head)]
-	}
-	
-	
-	@Test
-	@Ignore
-	def void runMoeaOptimisationeMOEA() {
-		
-			val pathPrefix = "gen/models/ttc/" + new SimpleDateFormat("yyMMdd-HHmmss").format(new Date())
-			
-			model = parser.parse('''
-				basepath <src/models/cra/>
-				metamodel <architectureCRA.ecore>
-				model <TTC_InputRDG_A.xmi>
-				objective MinimiseCoupling maximise java { "models.moea.MaximiseCRA" }
-				constraint MinimiseClasslessFeatures java { "models.moea.MinimiseClasslessFeatures" }
-				evolve using <craEvolvers.henshin> unit "createClass"
-				evolve using <craEvolvers.henshin> unit "assignFeature"
-				evolve using <craEvolvers.henshin> unit "moveFeature"
-				evolve using <craEvolvers.henshin> unit "deleteEmptyClass"
-				optimisation provider moea algorithm NSGAII evolutions 1000000 population 1000
-			''')
-
-			//Assert that there are no grammar issues
-			model.assertNoIssues
-
-			val oclModelProvider = new MoeaModelProvider()
-			
-			var solutionGenerator = new SolutionGenerator(
-											model, 
-											henshinEvolvers, 
-											henshinResourceSet, 
-											oclModelProvider, 
-											getMetamodel);
-
-			var optimisation = new MoeaOptimisation()
-									.execute(model.optimisation, solutionGenerator)
-			
-			optimisation
-				.forEach[model | oclModelProvider.storeModelAndInfo(model, pathPrefix + "/final", oclModelProvider.modelPaths.head)]
+//			optimisation
+//				.forEach[model | oclModelProvider.storeModelAndInfo(model, pathPrefix + "/final", oclModelProvider.modelPaths.head)]
 	}
 
 }

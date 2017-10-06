@@ -9,33 +9,34 @@ import org.eclipse.emf.common.util.URI
 import uk.ac.kcl.optimisation.moea.MoeaOptimisation
 import uk.ac.kcl.optimisation.SolutionGenerator
 import uk.ac.kcl.optimisation.UserModelProvider
-import java.nio.file.Paths
+import java.util.LinkedList
+import org.eclipse.core.runtime.IPath
+import org.eclipse.core.runtime.Path
 
 class OptimisationInterpreter {
 	
 	private Optimisation model
 	
 	private HenshinResourceSet henshinResourceSet
-	
 	private EPackage theMetamodel
 	
-	private List<Unit> henshinEvolvers = null
+	private List<Unit> breedingOperators
+	private List<Unit> mutationOperators
 
-	private String basePath;
+	private IPath projectRootPath;
 
-	new (String basePath, Optimisation model){
+	new (String projectPath, Optimisation model){
 		this.model = model;
-		this.basePath = basePath;
-		start();
+		this.projectRootPath = new Path(projectPath);
 	}
 	
-	def void start(){
-		val userModelProvider = new UserModelProvider(URI.createURI(basePath), model.model.location)
-			
-		var solutionGenerator = new SolutionGenerator(
-											model, 
-											henshinEvolvers, 
-											henshinResourceSet, 
+	def void start() {
+		
+		// This model provider loads the model given by the user in the DSL
+		val userModelProvider = new UserModelProvider(getResourceSet(projectRootPath.append(model.basepath.location).toPortableString), model.model.location)
+		var solutionGenerator = new SolutionGenerator(model, 
+											getBreedingOperators, 
+											getMutationOperators, 
 											userModelProvider, 
 											getMetamodel);
 
@@ -43,12 +44,12 @@ class OptimisationInterpreter {
 									.execute(model.optimisation, solutionGenerator)		
 		
 		optimisation
-				.forEach[result | userModelProvider.storeModel(result, model.basepath.location + "/final")]	
+				.forEach[result | userModelProvider.storeModelAndInfo(result, projectRootPath.toPortableString, model)]	
 	}
 
-	def getResourceSet() {
+	def getResourceSet(String basePath) {
         if (henshinResourceSet == null) {
-            henshinResourceSet = new HenshinResourceSet(this.basePath);
+            henshinResourceSet = new HenshinResourceSet(basePath);
         }
 
         henshinResourceSet
@@ -56,21 +57,37 @@ class OptimisationInterpreter {
 
     def getMetamodel() {
         if (theMetamodel == null) {
-            theMetamodel = getResourceSet.registerDynamicEPackages(model.metamodel.location).head
+            theMetamodel = getResourceSet(this.model.basepath.location).registerDynamicEPackages(model.metamodel.location).head
         }
 
         theMetamodel
     }
     
-    def getHenshinEvolvers() {
-    	if (henshinEvolvers == null) {
-            val hrs = resourceSet
-            henshinEvolvers = model.evolvers.map [ e |
-                hrs.getModule(URI.createURI(e.rule_location), false).getUnit(e.unit)
-            ]
-        }
+    def getBreedingOperators() {
+    	if(breedingOperators == null){
+			
+			breedingOperators = new LinkedList
+			
+			breedingOperators.addAll(model.evolvers.filter[ operator | operator.evolverType.getName.equals("BREED")]
+				.map[ operator | getResourceSet(model.basepath.location).getModule(URI.createURI(operator.rule_location), false).getUnit(operator.unit)]
+			)
+    		
+    	}
+    	
+    	breedingOperators
     }
-	
-	
-	
+    
+    def getMutationOperators() {
+    	if(mutationOperators == null){
+			
+			mutationOperators = new LinkedList
+			
+			mutationOperators.addAll(model.evolvers.filter[ operator | operator.evolverType.getName.equals("MUTATE")]
+				.map[ operator | getResourceSet(model.basepath.location).getModule(URI.createURI(operator.rule_location), false).getUnit(operator.unit)]
+			)
+    		
+    	}
+    	
+    	mutationOperators
+    }
 }

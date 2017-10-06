@@ -38,9 +38,13 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="constraintSpec" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EvolverSpec">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="evolverType" eType="#//EvolverType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="rule_location" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EvolverType">
+    <eLiterals name="MUTATE" literal="mutate"/>
+    <eLiterals name="BREED" value="1" literal="breed"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OptimisationSpec">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="algorithmFactory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

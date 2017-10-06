@@ -35,6 +35,7 @@ public class MDEOptimiseParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
+					put(grammarAccess.getEvolverTypeAccess().getAlternatives(), "rule__EvolverType__Alternatives");
 					put(grammarAccess.getOptimisationAccess().getGroup(), "rule__Optimisation__Group__0");
 					put(grammarAccess.getBasepathSpecAccess().getGroup(), "rule__BasepathSpec__Group__0");
 					put(grammarAccess.getMetaModelSpecAccess().getGroup(), "rule__MetaModelSpec__Group__0");
@@ -60,9 +61,9 @@ public class MDEOptimiseParser extends AbstractContentAssistParser {
 					put(grammarAccess.getConstraintInterpreterSpecAccess().getConstraintNameAssignment_1(), "rule__ConstraintInterpreterSpec__ConstraintNameAssignment_1");
 					put(grammarAccess.getConstraintInterpreterSpecAccess().getConstraintTypeAssignment_2(), "rule__ConstraintInterpreterSpec__ConstraintTypeAssignment_2");
 					put(grammarAccess.getConstraintInterpreterSpecAccess().getConstraintSpecAssignment_4(), "rule__ConstraintInterpreterSpec__ConstraintSpecAssignment_4");
+					put(grammarAccess.getEvolverSpecAccess().getEvolverTypeAssignment_0(), "rule__EvolverSpec__EvolverTypeAssignment_0");
 					put(grammarAccess.getEvolverSpecAccess().getRule_locationAssignment_2(), "rule__EvolverSpec__Rule_locationAssignment_2");
 					put(grammarAccess.getEvolverSpecAccess().getUnitAssignment_4(), "rule__EvolverSpec__UnitAssignment_4");
-					put(grammarAccess.getEvolverSpecAccess().getTypeAssignment_6(), "rule__EvolverSpec__TypeAssignment_6");
 					put(grammarAccess.getOptimisationSpecAccess().getAlgorithmFactoryAssignment_2(), "rule__OptimisationSpec__AlgorithmFactoryAssignment_2");
 					put(grammarAccess.getOptimisationSpecAccess().getAlgorithmNameAssignment_4(), "rule__OptimisationSpec__AlgorithmNameAssignment_4");
 					put(grammarAccess.getOptimisationSpecAccess().getAlgorithmVariationAssignment_6(), "rule__OptimisationSpec__AlgorithmVariationAssignment_6");
