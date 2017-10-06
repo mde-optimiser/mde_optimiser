@@ -3,6 +3,7 @@ package uk.ac.kcl.optimisation.moea
 import org.eclipse.emf.ecore.EObject
 import org.moeaframework.core.Solution
 import uk.ac.kcl.optimisation.SolutionGenerator
+import java.util.LinkedHashMap
 
 class MoeaOptimisationSolution extends Solution {
 
@@ -46,4 +47,23 @@ class MoeaOptimisationSolution extends Solution {
 		this.solutionGenerator = solutionGenerator;
 	}
 	
+	def LinkedHashMap<String, Double> getFormattedObjectives(){
+		val objectives = new LinkedHashMap<String, Double>()
+		
+		solutionGenerator.optimisationModel.objectives.forEach[objective , index | 
+			objectives.put(objective.objectiveName, this.objectives.get(index))
+		]
+		
+		return objectives
+	}
+	
+	def LinkedHashMap<String, Double> getFormattedConstraints(){
+		val constraints = new LinkedHashMap<String, Double>()
+		
+		solutionGenerator.optimisationModel.constraints.forEach[constraint , index | 
+			constraints.put(constraint.constraintName, this.constraints.get(index))
+		]
+		
+		return constraints
+	}
 }
