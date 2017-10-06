@@ -28,8 +28,8 @@ class MoeaOptimisation implements IOptimisation {
 		return getOptimisationOutcomeObjects(population);
 	}
 	
-	def Iterator<EObject> getOptimisationOutcomeObjects(NondominatedPopulation population){
-		return population.iterator.map[ p | (p as MoeaOptimisationSolution).model]
+	def Iterator<MoeaOptimisationSolution> getOptimisationOutcomeObjects(NondominatedPopulation population){
+		return population.iterator.map[ p | (p as MoeaOptimisationSolution)]
 	}
 	
 	/**
