@@ -1,35 +1,26 @@
 package uk.ac.kcl.optimisation
 
-import org.eclipse.emf.henshin.model.resource.HenshinResourceSet
-import org.eclipse.emf.ecore.EPackage
-import java.util.List
-import org.eclipse.emf.henshin.model.Unit
-import org.eclipse.emf.ecore.EObject
-import uk.ac.kcl.mdeoptimise.Optimisation
-import org.eclipse.emf.ecore.util.EcoreUtil
-import org.eclipse.emf.common.util.URI
-import java.util.Random
-import org.eclipse.emf.henshin.interpreter.impl.EGraphImpl
-import org.eclipse.emf.henshin.interpreter.impl.EngineImpl
-import org.eclipse.emf.henshin.interpreter.impl.UnitApplicationImpl
 import java.util.ArrayList
 import java.util.Iterator
-import uk.ac.kcl.interpreter.IModelProvider
+import java.util.List
+import java.util.Random
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.EPackage
+import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.emf.henshin.interpreter.Engine
-import org.eclipse.emf.henshin.model.Rule
-import org.eclipse.emf.henshin.interpreter.Match
-import org.eclipse.emf.henshin.interpreter.impl.RuleApplicationImpl
-import java.io.File
-import java.io.PrintStream
 import org.eclipse.emf.henshin.interpreter.impl.ChangeImpl
+import org.eclipse.emf.henshin.interpreter.impl.EGraphImpl
+import org.eclipse.emf.henshin.interpreter.impl.EngineImpl
+import org.eclipse.emf.henshin.interpreter.impl.RuleApplicationImpl
+import org.eclipse.emf.henshin.model.Unit
+import uk.ac.kcl.interpreter.IModelProvider
+import uk.ac.kcl.mdeoptimise.Optimisation
+
+import static org.eclipse.emf.henshin.interpreter.impl.ChangeImpl.*
 
 class SolutionGenerator {
 
     private EPackage theMetamodel = null
-
-    /**
-	 * The list of Henshin crossover rules
-	 */
 	private List<Unit> breedingOperators
 	private List<Unit> mutationOperators
 	
@@ -68,7 +59,11 @@ class SolutionGenerator {
     	return optimisationModel
     }
 	
-	//Perhaps combine these two metods into one as they do the same thing
+	/**
+	 * Produces two offsprint from the two parents provided in the parameter.
+	 * @param parents a list of two parent models
+	 * @returns a list of results offsprint
+	 */
 	def List<EObject> crossover(List<EObject> parents) {
 				
 		var crossoverParents = EcoreUtil.copyAll(parents)
@@ -95,7 +90,6 @@ class SolutionGenerator {
 				if(remainingRules.size == 0) {
 					return parents
 				}
-				
 				
 				operator = remainingRules.get(new Random().nextInt(remainingRules.size()))
 				

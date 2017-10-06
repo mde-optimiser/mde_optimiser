@@ -38,10 +38,10 @@ class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
 			val mutationVariation = new MoeaOptimisationMutationVariation(properties.get("solutionGenerator") as SolutionGenerator)
 			
 			return new GAVariation(crossoverVariation, mutationVariation)
+		}
 		
 		//Check variation type is mutation
-		} else if(properties.get("variationType").equals("mutation")){
-		
+		if(properties.get("variationType").equals("mutation")){
 			return new MoeaOptimisationMutationVariation(properties.get("solutionGenerator") as SolutionGenerator)		
 		}
 		
