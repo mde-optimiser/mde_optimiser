@@ -152,7 +152,8 @@ class MDEOptimiserSourceConfigurationTab extends AbstractLaunchConfigurationTab 
     }
 
 	/**
-	 * Sets the name of the 
+	 * Sets the name of the source attribute used to fetch its value from
+	 * the launch configuration properties collection.
 	 */
 	def String getSourceAttributeName() {
 		return MDEOptimiserLaunchConfigurationAttributes.ATTR_MOPT_SOURCE_PATH;

@@ -44,7 +44,7 @@ class OptimisationInterpreter {
 									.execute(model.optimisation, solutionGenerator)		
 		
 		optimisation
-				.forEach[result | userModelProvider.storeModel(result, model.basepath.location + "/final")]	
+				.forEach[result | userModelProvider.storeModel(result, projectRootPath.toPortableString)]	
 	}
 
 	def getResourceSet(String basePath) {

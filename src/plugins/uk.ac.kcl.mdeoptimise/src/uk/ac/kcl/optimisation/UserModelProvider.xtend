@@ -9,6 +9,8 @@ import org.eclipse.emf.common.util.URI
 import java.nio.file.Paths
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.henshin.model.resource.HenshinResourceSet
+import java.text.SimpleDateFormat
+import java.util.Date
 
 class UserModelProvider implements IModelProvider {
 	
@@ -41,8 +43,15 @@ class UserModelProvider implements IModelProvider {
 		resource.save(Collections.EMPTY_MAP)
 	}
 	
-	def storeModel(EObject model, String pathPrefix) {
-		model.writeModel(pathPrefix + "/" + String.format("%08X", model.hashCode) + ".xmi")
+	/**
+	 * Store model in the base path of the resource set.
+	 * @param model which will be serialized
+	 */
+	def storeModel(EObject model, String projectPath) {
+		val batchStartTime = new SimpleDateFormat("yyMMdd-HHmmss").format(new Date())
+		val modelPath = projectPath + "/mdeo-results/experiment-" + batchStartTime + "/" + String.format("%08X", model.hashCode) + ".xmi"
+		println("Saving results to: " + modelPath)
+		model.writeModel(modelPath)
 	}
 	
 }

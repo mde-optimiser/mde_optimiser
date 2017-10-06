@@ -1,30 +1,25 @@
 package uk.ac.kcl.ui.launch
 
-import org.eclipse.debug.core.ILaunchConfiguration
-import org.eclipse.debug.core.ILaunch
-import org.eclipse.core.runtime.IProgressMonitor
+import com.google.inject.Injector
+import java.util.ArrayList
+import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.core.runtime.CoreException
+import org.eclipse.core.runtime.FileLocator
+import org.eclipse.core.runtime.IProgressMonitor
+import org.eclipse.core.runtime.Path
+import org.eclipse.debug.core.ILaunch
+import org.eclipse.debug.core.ILaunchConfiguration
+import org.eclipse.jdt.internal.launching.LaunchingMessages
 import org.eclipse.jdt.launching.AbstractJavaLaunchConfigurationDelegate
 import org.eclipse.jdt.launching.ExecutionArguments
 import org.eclipse.jdt.launching.VMRunnerConfiguration
-import org.eclipse.jdt.internal.launching.LaunchingMessages
 import org.osgi.framework.FrameworkUtil
-import com.google.inject.Injector
 import uk.ac.kcl.MDEOptimiseStandaloneSetup
-import org.eclipse.core.runtime.Platform
-import org.eclipse.core.runtime.FileLocator
-import java.net.URL
-import java.util.ArrayList
-import org.eclipse.core.resources.ResourcesPlugin
-import org.eclipse.core.runtime.Path
 
 class MDEOLaunchConfigurationDelegate extends AbstractJavaLaunchConfigurationDelegate {
-	
-	static val Injector injector = new MDEOptimiseStandaloneSetup().createInjectorAndDoEMFRegistration()
-	
+		
 	override launch(ILaunchConfiguration configuration, String mode, ILaunch launch, IProgressMonitor monitor) throws CoreException {
-		
-		
+	
 		try {
 			monitor.subTask(LaunchingMessages.JavaLocalApplicationLaunchConfigurationDelegate_Verifying_launch_attributes____1); 
 										
@@ -37,7 +32,7 @@ class MDEOLaunchConfigurationDelegate extends AbstractJavaLaunchConfigurationDel
 			}
 			
 			// Environment variables
-			var envp= getEnvironment(configuration);
+			var envp = getEnvironment(configuration);
 			
 			// Get the configured MOPT file path
 			var pgmArgs = getStandaloneLauncherArguments(getConfiguredMoptPath(configuration))
@@ -58,7 +53,6 @@ class MDEOLaunchConfigurationDelegate extends AbstractJavaLaunchConfigurationDel
 			runConfig.setVMArguments(execArgs.getVMArgumentsArray());
 			runConfig.setWorkingDirectory(workingDirName);
 			runConfig.setVMSpecificAttributesMap(vmAttributesMap);
-			
 			
 			// Bootpath
 			runConfig.setBootClassPath(getBootpath(configuration));
@@ -84,7 +78,8 @@ class MDEOLaunchConfigurationDelegate extends AbstractJavaLaunchConfigurationDel
 			// check for cancellation
 			if (monitor.isCanceled()) {
 				return;
-			}	
+			}
+		
 		}
 		finally {
 			monitor.done();
