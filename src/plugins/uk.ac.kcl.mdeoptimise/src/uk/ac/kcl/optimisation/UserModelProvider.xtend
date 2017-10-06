@@ -11,6 +11,12 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.henshin.model.resource.HenshinResourceSet
 import java.text.SimpleDateFormat
 import java.util.Date
+import uk.ac.kcl.optimisation.moea.MoeaOptimisationSolution
+import uk.ac.kcl.mdeoptimise.Optimisation
+import java.util.HashMap
+import java.util.LinkedHashMap
+import java.io.File
+import java.io.PrintWriter
 
 class UserModelProvider implements IModelProvider {
 	
@@ -47,11 +53,48 @@ class UserModelProvider implements IModelProvider {
 	 * Store model in the base path of the resource set.
 	 * @param model which will be serialized
 	 */
-	def storeModel(EObject model, String projectPath) {
+	def storeModel(EObject solutionModel, String projectPath, Optimisation moptConfiguration) {
 		val batchStartTime = new SimpleDateFormat("yyMMdd-HHmmss").format(new Date())
-		val modelPath = projectPath + "/mdeo-results/experiment-" + batchStartTime + "/" + String.format("%08X", model.hashCode) + ".xmi"
+		val modelPath = projectPath + "/mdeo-results/experiment-" + batchStartTime + "/" + String.format("%08X", solutionModel.hashCode) + ".xmi"
 		println("Saving results to: " + modelPath)
-		model.writeModel(modelPath)
+		solutionModel.writeModel(modelPath)
 	}
+	
+	private def storeSolutionData(String infoPath, MoeaOptimisationSolution solution){
+		
+		val infoWriter = new PrintWriter(new File(infoPath + ".txt"))
+		
+		infoWriter.println("Evaluation data for solution: " + infoPath)
+		infoWriter.println()
+		infoWriter.println("Objective values:")
+		
+		//Pretty print the objectives
+		var objectives = solution.formattedObjectives
+		objectives.forEach[key, value | 
+			infoWriter.println(String.format("%s: %s", key, value))
+		]
+		infoWriter.println("")
+		infoWriter.println("Constraint values:")
+		
+		//Pretty print the constraints
+		var constraints = solution.formattedConstraints
+		constraints.forEach[key, value | 
+			infoWriter.println(String.format("%s: %s", key, value))
+		]
+		
+		infoWriter.close
+	}
+	
+	def storeModelAndInfo(MoeaOptimisationSolution solution, String projectPath, Optimisation moptConfiguration) {
+		
+		val batchStartTime = new SimpleDateFormat("yyMMdd-HHmmss").format(new Date())
+		val outputPath = projectPath + "/mdeo-results/experiment-" + batchStartTime + "/"
+		val modelPath = outputPath + String.format("%08X", solution.model.hashCode) + ".xmi"
+		
+		println("Saving results to: " + outputPath)
+		solution.model.writeModel(modelPath)
+		storeSolutionData(modelPath, solution)
+	}
+	
 	
 }
