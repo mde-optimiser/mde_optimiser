@@ -6,7 +6,10 @@ package uk.ac.kcl.services;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.List;
+import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
+import org.eclipse.xtext.EnumLiteralDeclaration;
+import org.eclipse.xtext.EnumRule;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.Group;
@@ -15,6 +18,7 @@ import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.TerminalRule;
 import org.eclipse.xtext.common.services.TerminalsGrammarAccess;
+import org.eclipse.xtext.service.AbstractElementFinder.AbstractEnumRuleElementFinder;
 import org.eclipse.xtext.service.AbstractElementFinder.AbstractGrammarElementFinder;
 import org.eclipse.xtext.service.GrammarProvider;
 
@@ -277,31 +281,28 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	public class EvolverSpecElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.EvolverSpec");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cEvolveKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cEvolverTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cEvolverTypeEvolverTypeEnumRuleCall_0_0 = (RuleCall)cEvolverTypeAssignment_0.eContents().get(0);
 		private final Keyword cUsingKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cRule_locationAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cRule_locationURLTerminalRuleCall_2_0 = (RuleCall)cRule_locationAssignment_2.eContents().get(0);
 		private final Keyword cUnitKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cUnitAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cUnitSTRINGTerminalRuleCall_4_0 = (RuleCall)cUnitAssignment_4.eContents().get(0);
-		private final Keyword cTypeKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Assignment cTypeAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cTypeSTRINGTerminalRuleCall_6_0 = (RuleCall)cTypeAssignment_6.eContents().get(0);
 		
-		//EvolverSpec: // This expects to be passed in a Henshin model
-		//// TODO We may also want to allow the specification of parameters, but not for now. 
-		//	"evolve" "using" rule_location=URL "unit" unit=STRING "type" type=STRING;
+		//EvolverSpec:
+		//	evolverType=EvolverType "using" rule_location=URL
+		//	"unit" unit=STRING;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//// This expects to be passed in a Henshin model
-		//// TODO We may also want to allow the specification of parameters, but not for now. 
-		//"evolve" "using" rule_location=URL "unit" unit=STRING "type" type=STRING
+		//evolverType=EvolverType "using" rule_location=URL "unit" unit=STRING
 		public Group getGroup() { return cGroup; }
 		
-		//// This expects to be passed in a Henshin model
-		//// TODO We may also want to allow the specification of parameters, but not for now. 
-		//"evolve"
-		public Keyword getEvolveKeyword_0() { return cEvolveKeyword_0; }
+		//evolverType=EvolverType
+		public Assignment getEvolverTypeAssignment_0() { return cEvolverTypeAssignment_0; }
+		
+		//EvolverType
+		public RuleCall getEvolverTypeEvolverTypeEnumRuleCall_0_0() { return cEvolverTypeEvolverTypeEnumRuleCall_0_0; }
 		
 		//"using"
 		public Keyword getUsingKeyword_1() { return cUsingKeyword_1; }
@@ -320,15 +321,6 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//STRING
 		public RuleCall getUnitSTRINGTerminalRuleCall_4_0() { return cUnitSTRINGTerminalRuleCall_4_0; }
-		
-		//"type"
-		public Keyword getTypeKeyword_5() { return cTypeKeyword_5; }
-		
-		//type=STRING
-		public Assignment getTypeAssignment_6() { return cTypeAssignment_6; }
-		
-		//STRING
-		public RuleCall getTypeSTRINGTerminalRuleCall_6_0() { return cTypeSTRINGTerminalRuleCall_6_0; }
 	}
 	public class OptimisationSpecElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.OptimisationSpec");
@@ -411,6 +403,33 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getAlgorithmPopulationINTTerminalRuleCall_10_0() { return cAlgorithmPopulationINTTerminalRuleCall_10_0; }
 	}
 	
+	public class EvolverTypeElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.EvolverType");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cMUTATEEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cMUTATEMutateKeyword_0_0 = (Keyword)cMUTATEEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cBREEDEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cBREEDBreedKeyword_1_0 = (Keyword)cBREEDEnumLiteralDeclaration_1.eContents().get(0);
+		
+		//enum EvolverType:
+		//	MUTATE='mutate' | BREED='breed';
+		public EnumRule getRule() { return rule; }
+		
+		//MUTATE='mutate' | BREED='breed'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//MUTATE='mutate'
+		public EnumLiteralDeclaration getMUTATEEnumLiteralDeclaration_0() { return cMUTATEEnumLiteralDeclaration_0; }
+		
+		//'mutate'
+		public Keyword getMUTATEMutateKeyword_0_0() { return cMUTATEMutateKeyword_0_0; }
+		
+		//BREED='breed'
+		public EnumLiteralDeclaration getBREEDEnumLiteralDeclaration_1() { return cBREEDEnumLiteralDeclaration_1; }
+		
+		//'breed'
+		public Keyword getBREEDBreedKeyword_1_0() { return cBREEDBreedKeyword_1_0; }
+	}
 	
 	private final OptimisationElements pOptimisation;
 	private final BasepathSpecElements pBasepathSpec;
@@ -419,8 +438,8 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	private final ObjectiveInterpreterSpecElements pObjectiveInterpreterSpec;
 	private final ConstraintInterpreterSpecElements pConstraintInterpreterSpec;
 	private final EvolverSpecElements pEvolverSpec;
+	private final EvolverTypeElements eEvolverType;
 	private final OptimisationSpecElements pOptimisationSpec;
-	private final TerminalRule tEVOLVER_TYPE;
 	private final TerminalRule tALGORITHM_VARIATION;
 	private final TerminalRule tALGORITHM_FACTORY;
 	private final TerminalRule tALGORITHM_NAME;
@@ -445,8 +464,8 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		this.pObjectiveInterpreterSpec = new ObjectiveInterpreterSpecElements();
 		this.pConstraintInterpreterSpec = new ConstraintInterpreterSpecElements();
 		this.pEvolverSpec = new EvolverSpecElements();
+		this.eEvolverType = new EvolverTypeElements();
 		this.pOptimisationSpec = new OptimisationSpecElements();
-		this.tEVOLVER_TYPE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.EVOLVER_TYPE");
 		this.tALGORITHM_VARIATION = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.ALGORITHM_VARIATION");
 		this.tALGORITHM_FACTORY = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.ALGORITHM_FACTORY");
 		this.tALGORITHM_NAME = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.ALGORITHM_NAME");
@@ -556,15 +575,25 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		return getConstraintInterpreterSpecAccess().getRule();
 	}
 	
-	//EvolverSpec: // This expects to be passed in a Henshin model
-	//// TODO We may also want to allow the specification of parameters, but not for now. 
-	//	"evolve" "using" rule_location=URL "unit" unit=STRING "type" type=STRING;
+	//EvolverSpec:
+	//	evolverType=EvolverType "using" rule_location=URL
+	//	"unit" unit=STRING;
 	public EvolverSpecElements getEvolverSpecAccess() {
 		return pEvolverSpec;
 	}
 	
 	public ParserRule getEvolverSpecRule() {
 		return getEvolverSpecAccess().getRule();
+	}
+	
+	//enum EvolverType:
+	//	MUTATE='mutate' | BREED='breed';
+	public EvolverTypeElements getEvolverTypeAccess() {
+		return eEvolverType;
+	}
+	
+	public EnumRule getEvolverTypeRule() {
+		return getEvolverTypeAccess().getRule();
 	}
 	
 	//OptimisationSpec:
@@ -579,12 +608,6 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getOptimisationSpecRule() {
 		return getOptimisationSpecAccess().getRule();
-	}
-	
-	//terminal EVOLVER_TYPE:
-	//	'm' | 'c';
-	public TerminalRule getEVOLVER_TYPERule() {
-		return tEVOLVER_TYPE;
 	}
 	
 	//terminal ALGORITHM_VARIATION:

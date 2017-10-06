@@ -41,12 +41,12 @@ ConstraintInterpreterSpec:
 ;
 
 EvolverSpec:
-	// This expects to be passed in a Henshin model
-	// TODO We may also want to allow the specification of parameters, but not for now. 
-	"evolve" "using" rule_location=URL
+	evolverType=EvolverType "using" rule_location=URL
 	         "unit" unit=STRING
-	         "type" type=STRING
 ;
+
+enum EvolverType:
+    MUTATE='mutate' | BREED='breed';
 
 OptimisationSpec:
 	"optimisation" "provider" algorithmFactory=ALGORITHM_FACTORY
@@ -56,9 +56,6 @@ OptimisationSpec:
 				"population" algorithmPopulation=INT
 ;
 
-terminal EVOLVER_TYPE returns ecore::EString:
-	('m' | 'c')
-;
 
 terminal ALGORITHM_VARIATION returns ecore::EString:
 	('genetic' | 'crossover' | 'mutation')

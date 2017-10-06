@@ -115,21 +115,21 @@ public class MDEOptimiseSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 *     EvolverSpec returns EvolverSpec
 	 *
 	 * Constraint:
-	 *     (rule_location=URL unit=STRING type=STRING)
+	 *     (evolverType=EvolverType rule_location=URL unit=STRING)
 	 */
 	protected void sequence_EvolverSpec(ISerializationContext context, EvolverSpec semanticObject) {
 		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.EVOLVER_SPEC__EVOLVER_TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.EVOLVER_SPEC__EVOLVER_TYPE));
 			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.EVOLVER_SPEC__RULE_LOCATION) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.EVOLVER_SPEC__RULE_LOCATION));
 			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.EVOLVER_SPEC__UNIT) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.EVOLVER_SPEC__UNIT));
-			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.EVOLVER_SPEC__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.EVOLVER_SPEC__TYPE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getEvolverSpecAccess().getEvolverTypeEvolverTypeEnumRuleCall_0_0(), semanticObject.getEvolverType());
 		feeder.accept(grammarAccess.getEvolverSpecAccess().getRule_locationURLTerminalRuleCall_2_0(), semanticObject.getRule_location());
 		feeder.accept(grammarAccess.getEvolverSpecAccess().getUnitSTRINGTerminalRuleCall_4_0(), semanticObject.getUnit());
-		feeder.accept(grammarAccess.getEvolverSpecAccess().getTypeSTRINGTerminalRuleCall_6_0(), semanticObject.getType());
 		feeder.finish();
 	}
 	

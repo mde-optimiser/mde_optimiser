@@ -1,55 +1,40 @@
 package uk.ac.kcl.optimisation
 
-import org.eclipse.emf.henshin.model.resource.HenshinResourceSet
-import org.eclipse.emf.ecore.EPackage
-import java.util.List
-import org.eclipse.emf.henshin.model.Unit
-import org.eclipse.emf.ecore.EObject
-import uk.ac.kcl.mdeoptimise.Optimisation
-import org.eclipse.emf.ecore.util.EcoreUtil
-import org.eclipse.emf.common.util.URI
-import java.util.Random
-import org.eclipse.emf.henshin.interpreter.impl.EGraphImpl
-import org.eclipse.emf.henshin.interpreter.impl.EngineImpl
-import org.eclipse.emf.henshin.interpreter.impl.UnitApplicationImpl
 import java.util.ArrayList
 import java.util.Iterator
-import uk.ac.kcl.interpreter.IModelProvider
+import java.util.List
+import java.util.Random
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.EPackage
+import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.emf.henshin.interpreter.Engine
-import org.eclipse.emf.henshin.model.Rule
-import org.eclipse.emf.henshin.interpreter.Match
-import org.eclipse.emf.henshin.interpreter.impl.RuleApplicationImpl
-import java.io.File
-import java.io.PrintStream
 import org.eclipse.emf.henshin.interpreter.impl.ChangeImpl
+import org.eclipse.emf.henshin.interpreter.impl.EGraphImpl
+import org.eclipse.emf.henshin.interpreter.impl.EngineImpl
+import org.eclipse.emf.henshin.interpreter.impl.RuleApplicationImpl
+import org.eclipse.emf.henshin.model.Unit
+import uk.ac.kcl.interpreter.IModelProvider
+import uk.ac.kcl.mdeoptimise.Optimisation
+
+import static org.eclipse.emf.henshin.interpreter.impl.ChangeImpl.*
 
 class SolutionGenerator {
-	
-	private HenshinResourceSet henshinResourceSet = null
 
     private EPackage theMetamodel = null
-
-    /**
-     * The list of Henshin rules used as evolvers
-     */
-    private List<Unit> henshinEvolvers = null
+	private List<Unit> breedingOperators
+	private List<Unit> mutationOperators
 	
-	/**
-	 * The list of Henshin crossover rules
-	 */
-	private List<Unit> henshinCrossoverEvolvers = null
-	
-	public Optimisation optimisationModel
+	private Optimisation optimisationModel
 	
 	IModelProvider initialModelProvider
 
 	public Engine engine;
 	public RuleApplicationImpl runner;
 	
-	new(Optimisation optimisationModel, List<Unit> henshinEvolvers, HenshinResourceSet henshinResourceSet, IModelProvider modelProvider, EPackage metamodel){
-		this.optimisationModel = optimisationModel
-		this.henshinEvolvers = henshinEvolvers
-		this.henshinResourceSet = henshinResourceSet
+	new(Optimisation model, List<Unit> breedingOperators, List<Unit> mutationOperators, IModelProvider modelProvider, EPackage metamodel){
+		this.optimisationModel = model
+		this.breedingOperators = breedingOperators
+		this.mutationOperators = mutationOperators
 		this.initialModelProvider = modelProvider
 		this.theMetamodel = metamodel;
 		this.engine = new EngineImpl
@@ -66,37 +51,50 @@ class SolutionGenerator {
     def Iterator<EObject> getInitialSolutions() {
         initialModelProvider.initialModels(theMetamodel)
     }
-
+    
+    /**
+     * Returns the optimisation model to use inside the moea problem/solution
+     */
+    def Optimisation getOptimisationModel() {
+    	return optimisationModel
+    }
+	
+	/**
+	 * Produces two offsprint from the two parents provided in the parameter.
+	 * @param parents a list of two parent models
+	 * @returns a list of results offsprint
+	 */
 	def List<EObject> crossover(List<EObject> parents) {
-		
-		// Extract Henshin crossover evolvers if necessary
-		if (henshinCrossoverEvolvers == null) {
-			val hrs = henshinResourceSet
-			// Explicitly creating a list here to make sure the map is only invoked once not every time we try and evolve a model
-			henshinCrossoverEvolvers = new ArrayList(optimisationModel.evolvers.filter[ e | e.type.equals("crossover")].toList.map [ e |
-				hrs.getModule(URI.createURI(e.rule_location), false).getUnit(e.unit)
-			])
-		}
-		
+				
 		var crossoverParents = EcoreUtil.copyAll(parents)
 		
 		val graph = new EGraphImpl(crossoverParents)
-
+		val triedOperators = new ArrayList<Unit>()
+		
 		// Randomly pick one unit
-		val unitToUse = henshinCrossoverEvolvers.get(new Random().nextInt(henshinCrossoverEvolvers.size()))
+		var operator = breedingOperators.get(new Random().nextInt(breedingOperators.size()))
 			
-		
-		// Apply the match
-		runner.EGraph = graph
-		runner.unit = unitToUse
-		//runner.partialMatch = matchToUse.value
-		
-		if(runner.execute(null)) {
+		while(triedOperators.length < breedingOperators.length) {
 
-		if(graph.roots.head != null)
-			return graph.roots	
+			// Apply the match
+			runner.EGraph = graph
+			runner.unit = operator
+			
+			if(runner.execute(null)) {
+				if(graph.roots.head != null)
+					return graph.roots	
+			} else {
+				triedOperators.add(operator)
+				var remainingRules = breedingOperators.filter[ o  | !triedOperators.contains(o)];
+				
+				if(remainingRules.size == 0) {
+					return parents
+				}
+				
+				operator = remainingRules.get(new Random().nextInt(remainingRules.size()))
+				
+			}				
 		}
-
 		
         // We didn't find any applicable evolvers...
         System.out.println("Model with no crossover evolvers applicable.....")
@@ -110,38 +108,36 @@ class SolutionGenerator {
      * otherwise returns the result of the first randomly picked evolver that was applicable.
      */
     def EObject evolveModel(EObject object) {
-    	
-		// Extract Henshin evolvers if necessary
-		if (henshinEvolvers == null) {
-			val hrs = henshinResourceSet
-			// Explicitly creating a list here to make sure the map is only invoked once not every time we try and evolve a model
-			henshinEvolvers = new ArrayList(optimisationModel.evolvers.filter[ e | e.type.equals("mutation")].toList.map [ e |
-				hrs.getModule(URI.createURI(e.rule_location), false).getUnit(e.unit)
-			])
-		}
-		
+    			
 		val candidateSolution = EcoreUtil.copy(object)
 
 		// Get all matches
 		val graph = new EGraphImpl(candidateSolution)
 
 		// Randomly pick one match
-		val triedRules = new ArrayList<Unit>()
-		var matchToUse = henshinEvolvers.get(new Random().nextInt(henshinEvolvers.size()))
+		val triedOperators = new ArrayList<Unit>()
+		var operator = mutationOperators.get(new Random().nextInt(mutationOperators.size()))
 					
-		while(triedRules.length < henshinEvolvers.length){
+		while(triedOperators.length < mutationOperators.length){
 			
 			runner.EGraph = graph
-			runner.unit = matchToUse
+			runner.unit = operator
 			
 			if(runner.execute(null)){
 				//println("Could run mutation" + matchToUse.name)
 				if(graph.roots.head != null)
 					return graph.roots.head	
 			} else {
-				triedRules.add(matchToUse);
-				var remainingRules = henshinEvolvers.filter[ x  | !triedRules.contains(x)];
-				matchToUse = remainingRules.get(new Random().nextInt(remainingRules.size()))
+				
+				
+				triedOperators.add(operator);
+				var remainingRules = mutationOperators.filter[ o  | !triedOperators.contains(o)];
+				
+				if(remainingRules.size == 0) {
+					return object
+				}
+				
+				operator = remainingRules.get(new Random().nextInt(remainingRules.size()))
 				//println("Could not run mutation for rule " + matchToUse.name)
 			}	
 		}	
@@ -150,5 +146,4 @@ class SolutionGenerator {
         println("Model with no mutation evolvers applicable.....")
         object
     }
-	
 }

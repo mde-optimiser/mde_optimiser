@@ -23,6 +23,7 @@ import org.eclipse.xtext.parser.*;
 import org.eclipse.xtext.parser.impl.*;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.xtext.parser.antlr.AbstractInternalAntlrParser;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
@@ -539,10 +540,25 @@ ruleEvolverSpec returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='evolve'
-		{
-			newLeafNode(otherlv_0, grammarAccess.getEvolverSpecAccess().getEvolveKeyword_0());
-		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getEvolverSpecAccess().getEvolverTypeEvolverTypeEnumRuleCall_0_0());
+				}
+				lv_evolverType_0_0=ruleEvolverType
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getEvolverSpecRule());
+					}
+					set(
+						$current,
+						"evolverType",
+						lv_evolverType_0_0,
+						"uk.ac.kcl.MDEOptimise.EvolverType");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
 		otherlv_1='using'
 		{
 			newLeafNode(otherlv_1, grammarAccess.getEvolverSpecAccess().getUsingKeyword_1());
@@ -583,28 +599,6 @@ ruleEvolverSpec returns [EObject current=null]
 						$current,
 						"unit",
 						lv_unit_4_0,
-						"org.eclipse.xtext.common.Terminals.STRING");
-				}
-			)
-		)
-		otherlv_5='type'
-		{
-			newLeafNode(otherlv_5, grammarAccess.getEvolverSpecAccess().getTypeKeyword_5());
-		}
-		(
-			(
-				lv_type_6_0=RULE_STRING
-				{
-					newLeafNode(lv_type_6_0, grammarAccess.getEvolverSpecAccess().getTypeSTRINGTerminalRuleCall_6_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getEvolverSpecRule());
-					}
-					setWithLastConsumed(
-						$current,
-						"type",
-						lv_type_6_0,
 						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
@@ -745,7 +739,32 @@ ruleOptimisationSpec returns [EObject current=null]
 	)
 ;
 
-RULE_EVOLVER_TYPE : ('m'|'c');
+// Rule EvolverType
+ruleEvolverType returns [Enumerator current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			enumLiteral_0='mutate'
+			{
+				$current = grammarAccess.getEvolverTypeAccess().getMUTATEEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getEvolverTypeAccess().getMUTATEEnumLiteralDeclaration_0());
+			}
+		)
+		    |
+		(
+			enumLiteral_1='breed'
+			{
+				$current = grammarAccess.getEvolverTypeAccess().getBREEDEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getEvolverTypeAccess().getBREEDEnumLiteralDeclaration_1());
+			}
+		)
+	)
+;
 
 RULE_ALGORITHM_VARIATION : ('genetic'|'crossover'|'mutation');
 

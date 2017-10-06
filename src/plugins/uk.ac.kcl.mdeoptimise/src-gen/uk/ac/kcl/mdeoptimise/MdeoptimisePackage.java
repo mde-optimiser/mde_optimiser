@@ -5,6 +5,7 @@ package uk.ac.kcl.mdeoptimise;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -335,13 +336,22 @@ public interface MdeoptimisePackage extends EPackage
   int EVOLVER_SPEC = 6;
 
   /**
+   * The feature id for the '<em><b>Evolver Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EVOLVER_SPEC__EVOLVER_TYPE = 0;
+
+  /**
    * The feature id for the '<em><b>Rule location</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EVOLVER_SPEC__RULE_LOCATION = 0;
+  int EVOLVER_SPEC__RULE_LOCATION = 1;
 
   /**
    * The feature id for the '<em><b>Unit</b></em>' attribute.
@@ -350,16 +360,7 @@ public interface MdeoptimisePackage extends EPackage
    * @generated
    * @ordered
    */
-  int EVOLVER_SPEC__UNIT = 1;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EVOLVER_SPEC__TYPE = 2;
+  int EVOLVER_SPEC__UNIT = 2;
 
   /**
    * The number of structural features of the '<em>Evolver Spec</em>' class.
@@ -433,6 +434,16 @@ public interface MdeoptimisePackage extends EPackage
    * @ordered
    */
   int OPTIMISATION_SPEC_FEATURE_COUNT = 5;
+
+  /**
+   * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.EvolverType <em>Evolver Type</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.mdeoptimise.EvolverType
+   * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getEvolverType()
+   * @generated
+   */
+  int EVOLVER_TYPE = 8;
 
 
   /**
@@ -693,6 +704,17 @@ public interface MdeoptimisePackage extends EPackage
   EClass getEvolverSpec();
 
   /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.EvolverSpec#getEvolverType <em>Evolver Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Evolver Type</em>'.
+   * @see uk.ac.kcl.mdeoptimise.EvolverSpec#getEvolverType()
+   * @see #getEvolverSpec()
+   * @generated
+   */
+  EAttribute getEvolverSpec_EvolverType();
+
+  /**
    * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.EvolverSpec#getRule_location <em>Rule location</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -713,17 +735,6 @@ public interface MdeoptimisePackage extends EPackage
    * @generated
    */
   EAttribute getEvolverSpec_Unit();
-
-  /**
-   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.EvolverSpec#getType <em>Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Type</em>'.
-   * @see uk.ac.kcl.mdeoptimise.EvolverSpec#getType()
-   * @see #getEvolverSpec()
-   * @generated
-   */
-  EAttribute getEvolverSpec_Type();
 
   /**
    * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.OptimisationSpec <em>Optimisation Spec</em>}'.
@@ -789,6 +800,16 @@ public interface MdeoptimisePackage extends EPackage
    * @generated
    */
   EAttribute getOptimisationSpec_AlgorithmPopulation();
+
+  /**
+   * Returns the meta object for enum '{@link uk.ac.kcl.mdeoptimise.EvolverType <em>Evolver Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Evolver Type</em>'.
+   * @see uk.ac.kcl.mdeoptimise.EvolverType
+   * @generated
+   */
+  EEnum getEvolverType();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -1020,6 +1041,14 @@ public interface MdeoptimisePackage extends EPackage
     EClass EVOLVER_SPEC = eINSTANCE.getEvolverSpec();
 
     /**
+     * The meta object literal for the '<em><b>Evolver Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EVOLVER_SPEC__EVOLVER_TYPE = eINSTANCE.getEvolverSpec_EvolverType();
+
+    /**
      * The meta object literal for the '<em><b>Rule location</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1034,14 +1063,6 @@ public interface MdeoptimisePackage extends EPackage
      * @generated
      */
     EAttribute EVOLVER_SPEC__UNIT = eINSTANCE.getEvolverSpec_Unit();
-
-    /**
-     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute EVOLVER_SPEC__TYPE = eINSTANCE.getEvolverSpec_Type();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.OptimisationSpecImpl <em>Optimisation Spec</em>}' class.
@@ -1092,6 +1113,16 @@ public interface MdeoptimisePackage extends EPackage
      * @generated
      */
     EAttribute OPTIMISATION_SPEC__ALGORITHM_POPULATION = eINSTANCE.getOptimisationSpec_AlgorithmPopulation();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.EvolverType <em>Evolver Type</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.mdeoptimise.EvolverType
+     * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getEvolverType()
+     * @generated
+     */
+    EEnum EVOLVER_TYPE = eINSTANCE.getEvolverType();
 
   }
 

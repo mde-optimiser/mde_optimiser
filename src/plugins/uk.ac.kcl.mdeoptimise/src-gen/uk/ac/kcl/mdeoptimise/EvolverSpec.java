@@ -14,9 +14,9 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link uk.ac.kcl.mdeoptimise.EvolverSpec#getEvolverType <em>Evolver Type</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.EvolverSpec#getRule_location <em>Rule location</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.EvolverSpec#getUnit <em>Unit</em>}</li>
- *   <li>{@link uk.ac.kcl.mdeoptimise.EvolverSpec#getType <em>Type</em>}</li>
  * </ul>
  *
  * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getEvolverSpec()
@@ -25,6 +25,35 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface EvolverSpec extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Evolver Type</b></em>' attribute.
+   * The literals are from the enumeration {@link uk.ac.kcl.mdeoptimise.EvolverType}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Evolver Type</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Evolver Type</em>' attribute.
+   * @see uk.ac.kcl.mdeoptimise.EvolverType
+   * @see #setEvolverType(EvolverType)
+   * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getEvolverSpec_EvolverType()
+   * @model
+   * @generated
+   */
+  EvolverType getEvolverType();
+
+  /**
+   * Sets the value of the '{@link uk.ac.kcl.mdeoptimise.EvolverSpec#getEvolverType <em>Evolver Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Evolver Type</em>' attribute.
+   * @see uk.ac.kcl.mdeoptimise.EvolverType
+   * @see #getEvolverType()
+   * @generated
+   */
+  void setEvolverType(EvolverType value);
+
   /**
    * Returns the value of the '<em><b>Rule location</b></em>' attribute.
    * <!-- begin-user-doc -->
@@ -76,31 +105,5 @@ public interface EvolverSpec extends EObject
    * @generated
    */
   void setUnit(String value);
-
-  /**
-   * Returns the value of the '<em><b>Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Type</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Type</em>' attribute.
-   * @see #setType(String)
-   * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getEvolverSpec_Type()
-   * @model
-   * @generated
-   */
-  String getType();
-
-  /**
-   * Sets the value of the '{@link uk.ac.kcl.mdeoptimise.EvolverSpec#getType <em>Type</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Type</em>' attribute.
-   * @see #getType()
-   * @generated
-   */
-  void setType(String value);
 
 } // EvolverSpec
