@@ -86,16 +86,15 @@ class MoeaOptimisationTests {
 				mutate using <craEvolvers.henshin> unit "assignFeature"
 				mutate using <craEvolvers.henshin> unit "moveFeature"
 				mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
-				breed using <exchangeClass.henshin> unit "exchangeClassBidirectional"
-				optimisation provider moea algorithm NSGAII variation genetic evolutions 40000 population 30
+				optimisation provider moea algorithm NSGAII variation mutation evolutions 40000 population 30
 			''')
 
 			//Assert that there are no grammar issues
 			model.assertNoIssues
 
-			val oclModelProvider = new MoeaModelProvider()
+			val oclModelProvider = new UserModelProvider(getResourceSet(), "TTC_InputRDG_A.xmi")
 			
-			val optimisationInterpreter = new OptimisationInterpreter(model)
+			val optimisationInterpreter = new OptimisationInterpreter("", model)
 			
 			var solutionGenerator = new SolutionGenerator(
 											model, 
@@ -107,8 +106,8 @@ class MoeaOptimisationTests {
 			var optimisation = new MoeaOptimisation()
 									.execute(model.optimisation, solutionGenerator)
 			
-			optimisation
-				.forEach[model | oclModelProvider.storeModelAndInfo(model, pathPrefix + "/final", oclModelProvider.modelPaths.head)]
+//			optimisation
+//				.forEach[model | oclModelProvider.storeModelAndInfo(model, pathPrefix + "/final", oclModelProvider.modelPaths.head)]
 	}
 
 }

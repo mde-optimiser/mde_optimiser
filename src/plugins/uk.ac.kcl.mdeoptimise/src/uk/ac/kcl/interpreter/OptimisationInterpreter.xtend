@@ -9,30 +9,31 @@ import org.eclipse.emf.common.util.URI
 import uk.ac.kcl.optimisation.moea.MoeaOptimisation
 import uk.ac.kcl.optimisation.SolutionGenerator
 import uk.ac.kcl.optimisation.UserModelProvider
-import java.util.Map
 import java.util.LinkedList
+import org.eclipse.core.runtime.IPath
+import org.eclipse.core.runtime.Path
 
 class OptimisationInterpreter {
 	
 	private Optimisation model
 	
 	private HenshinResourceSet henshinResourceSet
-	
 	private EPackage theMetamodel
 	
 	private List<Unit> breedingOperators
 	private List<Unit> mutationOperators
 
-	private String basePath;
+	private IPath projectRootPath;
 
-	new (Optimisation model){
+	new (String projectPath, Optimisation model){
 		this.model = model;
+		this.projectRootPath = new Path(projectPath);
 	}
 	
 	def void start() {
 		
 		// This model provider loads the model given by the user in the DSL
-		val userModelProvider = new UserModelProvider(URI.createURI(basePath), model.model.location)
+		val userModelProvider = new UserModelProvider(getResourceSet(projectRootPath.append(model.basepath.location).toPortableString), model.model.location)
 		var solutionGenerator = new SolutionGenerator(model, 
 											getBreedingOperators, 
 											getMutationOperators, 
@@ -43,7 +44,7 @@ class OptimisationInterpreter {
 									.execute(model.optimisation, solutionGenerator)		
 		
 		optimisation
-				.forEach[result | userModelProvider.storeModel(result, model.basepath.location + "/final")]	
+				.forEach[result | userModelProvider.storeModel(result, projectRootPath.toPortableString)]	
 	}
 
 	def getResourceSet(String basePath) {
