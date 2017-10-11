@@ -2,7 +2,6 @@ package uk.ac.kcl.tests.interpreter.objectives
 
 import java.io.InvalidObjectException
 import javax.inject.Inject
-import models.java.JavaObjectiveFunction
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
@@ -10,7 +9,6 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import uk.ac.kcl.interpreter.guidance.GuidanceFunctionAdapter
 import uk.ac.kcl.interpreter.guidance.GuidanceFunctionsFactory
-import uk.ac.kcl.interpreter.guidance.ocl.OclGuidanceFunction
 import uk.ac.kcl.tests.FullTestInjector
 import uk.ac.kcl.tests.TestModelHelper
 
