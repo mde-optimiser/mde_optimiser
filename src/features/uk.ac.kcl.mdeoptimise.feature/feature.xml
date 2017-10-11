@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="uk.ac.kcl.mdeoptimise.feature"
-      label="MDEOptimise Feature "
+      label="MDEOptimiser"
       version="1.0.0.qualifier">
+
+   <url>
+      <discovery label="MOPT Dependencies" url="http://blog.onboot.org/mopt-p2-repo/target/repository/"/>
+   </url>
 
    <requires>
       <import plugin="org.eclipse.xtext"/>
