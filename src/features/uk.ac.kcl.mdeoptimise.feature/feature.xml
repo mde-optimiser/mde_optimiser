@@ -4,11 +4,6 @@
       label="MDEOptimise Feature "
       version="1.0.0.qualifier">
 
-   <url>
-      <discovery label="MDEO Dependencies" url="http://blog.onboot.org/mopt-p2-repo/target/repository/"/>
-      <discovery label="Henshin Nightly" url="http://download.eclipse.org/modeling/emft/henshin/updates/nightly"/>
-   </url>
-
    <requires>
       <import plugin="org.eclipse.xtext"/>
       <import plugin="org.eclipse.xtext.xbase"/>
