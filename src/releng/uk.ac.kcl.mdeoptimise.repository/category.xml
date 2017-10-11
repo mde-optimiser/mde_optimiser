@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-	<feature id="uk.ac.kcl.mdeoptimise.feature" version="0.0.0">
-		<category name="main"/>
-	</feature>
-	<feature id="uk.ac.kcl.mdeoptimise.feature.source" version="0.0.0">
-		<category name="main.source"/>
-	</feature>
-	<category-def name="main" label="MDEOptimise"/>
-	<category-def name="main.source" label="MDEOptimise (Sources)"/>
+   <feature id="uk.ac.kcl.mdeoptimise.feature" version="0.0.0">
+      <category name="main"/>
+   </feature>
+   <feature id="uk.ac.kcl.mdeoptimise.feature.source" version="0.0.0">
+      <category name="main.source"/>
+   </feature>
+   <category-def name="main" label="MDEOptimise"/>
+   <category-def name="main.source" label="MDEOptimise (Sources)"/>
+   <repository-reference location="http://blog.onboot.org/mopt-p2-repo/target/repository/" enabled="true" />
+   <repository-reference location="http://download.eclipse.org/modeling/emft/henshin/updates/nightly" enabled="true" />
 </site>
