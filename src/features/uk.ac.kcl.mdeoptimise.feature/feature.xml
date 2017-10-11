@@ -34,6 +34,7 @@
       <import plugin="org.eclipse.core.resources"/>
       <import plugin="org.eclipse.jdt.launching" version="3.8.100" match="greaterOrEqual"/>
       <import plugin="org.eclipse.jdt.debug.ui" version="3.7.201" match="greaterOrEqual"/>
+      <import plugin="org.moeaframework" version="2.12.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
