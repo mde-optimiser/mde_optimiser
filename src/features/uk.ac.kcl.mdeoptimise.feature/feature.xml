@@ -1,23 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<feature id="uk.ac.kcl.mdeoptimise.feature"
-	label="MDEOptimise Feature "
-	version="1.0.0.qualifier">
-	<plugin
-			id="uk.ac.kcl.mdeoptimise"
-			download-size="0"
-			install-size="0"
-			version="0.0.0"
-			unpack="false"/>
-	<plugin
-			id="uk.ac.kcl.mdeoptimise.ide"
-			download-size="0"
-			install-size="0"
-			version="0.0.0"
-			unpack="false"/>
-	<plugin
-			id="uk.ac.kcl.mdeoptimise.ui"
-			download-size="0"
-			install-size="0"
-			version="0.0.0"
-			unpack="false"/>
+<feature
+      id="uk.ac.kcl.mdeoptimise.feature"
+      label="MDEOptimise Feature "
+      version="1.0.0.qualifier">
+
+   <url>
+      <discovery label="MDEO Dependencies" url="http://blog.onboot.org/mopt-p2-repo/target/repository/"/>
+      <discovery label="Henshin Nightly" url="http://download.eclipse.org/modeling/emft/henshin/updates/nightly"/>
+   </url>
+
+   <requires>
+      <import plugin="org.eclipse.xtext"/>
+      <import plugin="org.eclipse.xtext.xbase"/>
+      <import plugin="org.eclipse.equinox.common" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="org.eclipse.xtext.xbase.lib"/>
+      <import plugin="org.antlr.runtime"/>
+      <import plugin="org.eclipse.xtext.util"/>
+      <import plugin="org.eclipse.xtend.lib"/>
+      <import plugin="org.eclipse.emf.common"/>
+      <import plugin="org.eclipse.emf.henshin.interpreter" version="1.4.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.henshin.model" version="1.4.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ocl" version="3.6.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ocl.ecore" version="3.6.0" match="greaterOrEqual"/>
+      <import plugin="com.google.code.gson"/>
+      <import plugin="org.apache.log4j"/>
+      <import plugin="org.eclipse.xtext.ide"/>
+      <import plugin="org.eclipse.xtext.xbase.ide"/>
+      <import plugin="org.eclipse.xtext.ui"/>
+      <import plugin="org.eclipse.xtext.ui.shared"/>
+      <import plugin="org.eclipse.xtext.ui.codetemplates.ui"/>
+      <import plugin="org.eclipse.ui.editors" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.ide" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.compare"/>
+      <import plugin="org.eclipse.xtext.builder"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.jdt.launching" version="3.8.100" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jdt.debug.ui" version="3.7.201" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="uk.ac.kcl.mdeoptimise"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="uk.ac.kcl.mdeoptimise.ide"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="uk.ac.kcl.mdeoptimise.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
 </feature>
