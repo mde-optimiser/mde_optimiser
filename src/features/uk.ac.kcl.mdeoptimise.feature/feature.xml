@@ -14,9 +14,10 @@
       <import plugin="org.eclipse.xtext.util"/>
       <import plugin="org.eclipse.xtend.lib"/>
       <import plugin="org.eclipse.emf.common"/>
+      <import plugin="org.eclipse.emf.henshin.interpreter"/>
+      <import plugin="org.eclipse.emf.henshin.model"/>
       <import plugin="org.eclipse.ocl" version="3.6.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ocl.ecore" version="3.6.0" match="greaterOrEqual"/>
-      <import plugin="com.google.code.gson"/>
       <import plugin="org.moeaframework" version="2.12.0" match="greaterOrEqual"/>
       <import plugin="org.apache.log4j"/>
       <import plugin="org.eclipse.xtext.ide"/>
@@ -33,8 +34,6 @@
       <import plugin="org.eclipse.core.resources"/>
       <import plugin="org.eclipse.jdt.launching" version="3.8.100" match="greaterOrEqual"/>
       <import plugin="org.eclipse.jdt.debug.ui" version="3.7.201" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.emf.henshin.interpreter" />
-      <import plugin="org.eclipse.emf.henshin.model" />
    </requires>
 
    <plugin
