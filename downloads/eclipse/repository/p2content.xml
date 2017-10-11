@@ -1,28 +1,28 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <units size='2'>
-  <unit id='201710111633.main.source' version='1.0.0.2--cCr6P57735G53555E99'>
+  <unit id='201710111649.main.source' version='1.0.0.2--cCr6P57735G53555EAK'>
     <properties size='2'>
       <property name='org.eclipse.equinox.p2.name' value='MDEOptimise (Sources)'/>
       <property name='org.eclipse.equinox.p2.type.category' value='true'/>
     </properties>
     <provides size='1'>
-      <provided namespace='org.eclipse.equinox.p2.iu' name='201710111633.main.source' version='1.0.0.2--cCr6P57735G53555E99'/>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='201710111649.main.source' version='1.0.0.2--cCr6P57735G53555EAK'/>
     </provides>
     <requires size='1'>
-      <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.feature.source.feature.group' range='[1.0.0.201710111633,1.0.0.201710111633]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.feature.source.feature.group' range='[1.0.0.201710111649,1.0.0.201710111649]'/>
     </requires>
     <touchpoint id='null' version='0.0.0'/>
   </unit>
-  <unit id='201710111633.main' version='1.0.0.2--cCr6E67735G53555E99'>
+  <unit id='201710111649.main' version='1.0.0.2--cCr6E67735G53555EAK'>
     <properties size='2'>
       <property name='org.eclipse.equinox.p2.name' value='MDEOptimise'/>
       <property name='org.eclipse.equinox.p2.type.category' value='true'/>
     </properties>
     <provides size='1'>
-      <provided namespace='org.eclipse.equinox.p2.iu' name='201710111633.main' version='1.0.0.2--cCr6E67735G53555E99'/>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='201710111649.main' version='1.0.0.2--cCr6E67735G53555EAK'/>
     </provides>
     <requires size='1'>
-      <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.feature.feature.group' range='[1.0.0.201710111633,1.0.0.201710111633]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.feature.feature.group' range='[1.0.0.201710111649,1.0.0.201710111649]'/>
     </requires>
     <touchpoint id='null' version='0.0.0'/>
   </unit>
