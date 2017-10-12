@@ -17,6 +17,8 @@ import uk.ac.kcl.interpreter.IModelProvider
 import uk.ac.kcl.mdeoptimise.Optimisation
 
 import static org.eclipse.emf.henshin.interpreter.impl.ChangeImpl.*
+import org.eclipse.emf.henshin.model.Rule
+import org.eclipse.emf.henshin.interpreter.impl.UnitApplicationImpl
 
 class SolutionGenerator {
 
@@ -30,6 +32,7 @@ class SolutionGenerator {
 
 	public Engine engine;
 	public RuleApplicationImpl runner;
+	public UnitApplicationImpl unitRunner
 	
 	new(Optimisation model, List<Unit> breedingOperators, List<Unit> mutationOperators, IModelProvider modelProvider, EPackage metamodel){
 		this.optimisationModel = model
@@ -40,6 +43,7 @@ class SolutionGenerator {
 		this.engine = new EngineImpl
 		engine.getOptions().put(Engine.OPTION_DETERMINISTIC, false);
 		this.runner = new RuleApplicationImpl(engine)
+		this.unitRunner = new UnitApplicationImpl(engine)
 		
 		//Disable henshin warnings
 		ChangeImpl.PRINT_WARNINGS = false;
@@ -73,14 +77,15 @@ class SolutionGenerator {
 		
 		// Randomly pick one unit
 		var operator = breedingOperators.get(new Random().nextInt(breedingOperators.size()))
-			
+
 		while(triedOperators.length < breedingOperators.length) {
 
 			// Apply the match
-			runner.EGraph = graph
-			runner.unit = operator
+			unitRunner.EGraph = graph
+			unitRunner.unit = operator
+			unitRunner.setParameterValue("number", new Random().nextInt(5))
 			
-			if(runner.execute(null)) {
+			if(unitRunner.execute(null)) {
 				if(graph.roots.head != null)
 					return graph.roots	
 			} else {
