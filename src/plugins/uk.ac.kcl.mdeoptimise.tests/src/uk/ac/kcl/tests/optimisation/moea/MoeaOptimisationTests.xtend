@@ -70,7 +70,6 @@ class MoeaOptimisationTests {
     
     //Some tests to run optimisation manually for now
 	@Test
-	@Ignore
 	def void runMoeaOptimisationNSGA2() {
 		
 			val pathPrefix = "gen/models/ttc/" + new SimpleDateFormat("yyMMdd-HHmmss").format(new Date())
@@ -78,21 +77,21 @@ class MoeaOptimisationTests {
 			model = parser.parse('''
 				basepath <src/models/cra/>
 				metamodel <architectureCRA.ecore>
-				model <TTC_InputRDG_A.xmi>
+				model <TTC_InputRDG_C.xmi>
 				objective MinimiseCoupling maximise java { "models.moea.MaximiseCRA" }
-				objective MinimiseEmptyClasses minimise java { "models.moea.MinimiseEmptyClasses" }
 				constraint MinimiseClasslessFeatures java { "models.moea.MinimiseClasslessFeatures" }
 				mutate using <craEvolvers.henshin> unit "createClass"
 				mutate using <craEvolvers.henshin> unit "assignFeature"
 				mutate using <craEvolvers.henshin> unit "moveFeature"
 				mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
-				optimisation provider moea algorithm NSGAII variation mutation evolutions 40000 population 30
+				breed using <exDependencies.henshin> unit "exchangeMultipleDependencies"
+				optimisation provider moea algorithm NSGAII variation genetic evolutions 15000 population 30
 			''')
 
 			//Assert that there are no grammar issues
 			model.assertNoIssues
 
-			val oclModelProvider = new UserModelProvider(getResourceSet(), "TTC_InputRDG_A.xmi")
+			val oclModelProvider = new UserModelProvider(getResourceSet(), "TTC_InputRDG_E.xmi")
 			
 			val optimisationInterpreter = new OptimisationInterpreter("", model)
 			
@@ -106,8 +105,8 @@ class MoeaOptimisationTests {
 			var optimisation = new MoeaOptimisation()
 									.execute(model.optimisation, solutionGenerator)
 			
-//			optimisation
-//				.forEach[model | oclModelProvider.storeModelAndInfo(model, pathPrefix + "/final", oclModelProvider.modelPaths.head)]
+			optimisation
+				.forEach[m | oclModelProvider.storeModelAndInfo(m, "/home/alxbrd/projects/alxbrd/github/mde_optimiser/src/plugins/uk.ac.kcl.mdeoptimise.tests/" + pathPrefix + "/final", model)]
 	}
 
 }
