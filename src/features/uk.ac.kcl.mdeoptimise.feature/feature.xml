@@ -5,7 +5,7 @@
       version="1.0.0.qualifier">
 
    <url>
-      <discovery label="MOPT Dependencies" url="http://blog.onboot.org/mopt-p2-repo/target/repository/"/>
+      <discovery label="MOPT Dependencies" url="http://blog.onboot.org/mdeo_repo/develop/"/>
    </url>
 
    <requires>
@@ -37,6 +37,7 @@
       <import plugin="org.eclipse.core.resources"/>
       <import plugin="org.eclipse.jdt.launching" version="3.8.100" match="greaterOrEqual"/>
       <import plugin="org.eclipse.jdt.debug.ui" version="3.7.201" match="greaterOrEqual"/>
+      <import plugin="org.moeaframework"/>
    </requires>
 
    <plugin
@@ -55,13 +56,6 @@
 
    <plugin
          id="uk.ac.kcl.mdeoptimise.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.moeaframework"
          download-size="0"
          install-size="0"
          version="0.0.0"
