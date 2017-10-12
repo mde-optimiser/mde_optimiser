@@ -27,4 +27,4 @@ git commit -m "Published build id: $TRAVIS_BUILD_NUMBER"
 
 git push origin gh-pages
 
-
+echo "Done"
