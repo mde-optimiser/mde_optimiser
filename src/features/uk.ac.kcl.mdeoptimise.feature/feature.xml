@@ -8,10 +8,6 @@
       <discovery label="MOPT Dependencies" url="http://blog.onboot.org/mopt-p2-repo/target/repository/"/>
    </url>
 
-   <includes
-         id="org.eclipse.emf.henshin.sdk"
-         version="0.0.0"/>
-
    <requires>
       <import plugin="org.eclipse.xtext"/>
       <import plugin="org.eclipse.xtext.xbase"/>
