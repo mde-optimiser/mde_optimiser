@@ -25,7 +25,7 @@ mkdir -p downloads/eclipse/
 
 rm -rf downloads/eclipse/*
 
-mv ../mde_optimiser/src/releng/uk.ac.kcl.mdeoptimise.repository/target/* downloads/eclipse/repository/
+mv ../mde_optimiser/src/releng/uk.ac.kcl.mdeoptimise.repository/target/* downloads/eclipse/
 
 git add --all
 
