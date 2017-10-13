@@ -2,7 +2,7 @@
 
 cd $TRAVIS_BUILD_DIR/..
 
-ssh-add ../deploy/travis_deploy
+ssh-add ../deploy/deploy_key
 
 rm -rf gh-pages
 
