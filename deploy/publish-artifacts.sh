@@ -1,39 +1,47 @@
 #!/usr/bin/env bash
 
-cd ../deploy/
+if [ $TRAVIS_BRANCH == "master" ] || [ $TRAVIS_BRANCH == "develop" ]; then
 
-ENCRYPTED_KEY_VAR="encrypted_${ENCRYPTION_LABEL}_key"
-ENCRYPTED_IV_VAR="encrypted_${ENCRYPTION_LABEL}_iv"
-ENCRYPTED_KEY=${!ENCRYPTED_KEY_VAR}
-ENCRYPTED_IV=${!ENCRYPTED_IV_VAR}
+	cd ../deploy/
 
-openssl aes-256-cbc -K $ENCRYPTED_KEY -iv $ENCRYPTED_IV -in $DEPLOY_KEY -out deploy_key -d
+	ENCRYPTED_KEY_VAR="encrypted_${ENCRYPTION_LABEL}_key"
+	ENCRYPTED_IV_VAR="encrypted_${ENCRYPTION_LABEL}_iv"
+	ENCRYPTED_KEY=${!ENCRYPTED_KEY_VAR}
+	ENCRYPTED_IV=${!ENCRYPTED_IV_VAR}
 
-chmod 600 deploy_key
-eval `ssh-agent -s`
-ssh-add deploy_key
+	openssl aes-256-cbc -K $ENCRYPTED_KEY -iv $ENCRYPTED_IV -in $DEPLOY_KEY -out deploy_key -d
 
-cd $TRAVIS_BUILD_DIR/..
+	chmod 600 deploy_key
+	eval `ssh-agent -s`
+	ssh-add deploy_key
 
-rm -rf gh-pages
+	cd $TRAVIS_BUILD_DIR/..
 
-git clone -b gh-pages git@github.com:$TRAVIS_REPO_SLUG gh-pages
+	rm -rf gh-pages
 
-cd gh-pages
+	git clone -b gh-pages git@github.com:$TRAVIS_REPO_SLUG gh-pages
 
-mkdir -p downloads/eclipse/
+	cd gh-pages
 
-rm -rf downloads/eclipse/*
+	mkdir -p downloads/eclipse/
 
-mv ../mde_optimiser/src/releng/uk.ac.kcl.mdeoptimise.repository/target/* downloads/eclipse/
+	rm -rf downloads/eclipse/*
 
-git add --all
+	mv ../mde_optimiser/src/releng/uk.ac.kcl.mdeoptimise.repository/target/* downloads/eclipse/
 
-git config user.name "Travis CI"
-git config user.email "alex+git-CIBUILD@onboot.org"
+	git add --all
 
-git commit -m "Published build id: $TRAVIS_BUILD_NUMBER"
+	git config user.name "Travis CI"
+	git config user.email "alex+git-CIBUILD@onboot.org"
 
-git push origin gh-pages
+	git commit -m "Published build id: $TRAVIS_BUILD_NUMBER"
 
-echo "Done"
+	git push origin gh-pages
+
+	echo "Code deployed to $TRAVIS_REPO_SLUG repository in github.com."
+
+else
+
+    echo "$TRAVIS_BRANCH is not a deployment branch so no deployment necessary."
+
+fi
