@@ -4,7 +4,7 @@ cd ../deploy/
 
 export
 
-openssl aes-256-cbc -K encrypted_${ENCRYPTION_LABEL}_key -iv encrypted_${ENCRYPTION_LABEL}_iv -in encrypted_${ENCRYPTION_LABEL}_key -out deploy_key -d
+openssl aes-256-cbc -K encrypted_${ENCRYPTION_LABEL}_key -iv encrypted_${ENCRYPTION_LABEL}_iv -in $DEPLOY_KEY -out deploy_key -d
 
 chmod 600 deploy_key
 eval `ssh-agent -s`
