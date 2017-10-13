@@ -28,11 +28,11 @@ git clone -b gh-pages git@github.com:$TRAVIS_REPO_SLUG gh-pages
 
 cd gh-pages
 
-mkdir -p downloads/eclipse/
+mkdir -p downloads/eclipse/$TRAVIS_BRANCH
 
-rm -rf downloads/eclipse/*
+rm -rf downloads/eclipse/$TRAVIS_BRANCH/*
 
-mv ../mde_optimiser/src/releng/uk.ac.kcl.mdeoptimise.repository/target/* downloads/eclipse/
+mv ../mde_optimiser/src/releng/uk.ac.kcl.mdeoptimise.repository/target/* downloads/eclipse/$TRAVIS_BRANCH/
 
 git add --all
 
