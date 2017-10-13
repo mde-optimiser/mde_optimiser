@@ -9,8 +9,6 @@ openssl aes-256-cbc -K encrypted_${ENCRYPTION_LABEL}_key -iv encrypted_${ENCRYPT
 chmod 600 deploy_key
 eval `ssh-agent -s`
 
-cat deploy_key
-
 ssh-add deploy_key
 
 cd $TRAVIS_BUILD_DIR/..
