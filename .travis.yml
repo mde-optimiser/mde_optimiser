@@ -22,11 +22,11 @@ before_script:
     - "sh -e /etc/init.d/xvfb start"
     - sleep 3 # give xvfb some time to start
 
-script:
+#script:
     # This bypasses an issue on the travis CI platform where a connection is made through a proxy and
     # the mirror redirection is not handled correctly by one of the parties.
-    - mvn --version
-    - mvn clean install -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.ignore.validity.dates=true
+    #    - mvn --version
+    #- mvn clean install -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.ignore.validity.dates=true
 
 after_success:
     - bash ../deploy/publish-artifacts.sh
