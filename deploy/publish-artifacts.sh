@@ -2,6 +2,8 @@
 
 cd $TRAVIS_BUILD_DIR/..
 
+ssh-add ../deploy/travis_deploy
+
 rm -rf gh-pages
 
 git clone -b gh-pages git@github.com:$TRAVIS_REPO_SLUG gh-pages
