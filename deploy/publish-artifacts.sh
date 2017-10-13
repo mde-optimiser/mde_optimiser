@@ -2,6 +2,8 @@
 
 cd $TRAVIS_BUILD_DIR/..
 
+openssl aes-256-cbc -K $EKEY -iv $EIV -in ../deploy/$DEPLOY_KEY -out ../deploy/deploy_key -d
+
 ssh-add ../deploy/deploy_key
 
 rm -rf gh-pages
