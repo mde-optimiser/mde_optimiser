@@ -25,7 +25,7 @@ local.properties
 .recommenders
 
 # Eclipse core
-.project
+#.project
 
 # Eclipse launch configurations
 *.launch
