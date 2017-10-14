@@ -28,8 +28,9 @@ git clone -b gh-pages git@github.com:$TRAVIS_REPO_SLUG gh-pages
 
 cd gh-pages
 
-mkdir -p downloads/eclipse/$TRAVIS_BRANCH
+find ./downloads/eclipse -maxdepth 1 ! -name "develop" ! -name "master" -type d -exec rm -rf {} \;
 
+mkdir -p downloads/eclipse/$TRAVIS_BRANCH
 rm -rf downloads/eclipse/$TRAVIS_BRANCH/*
 
 mv ../mde_optimiser/src/releng/uk.ac.kcl.mdeoptimise.repository/target/* downloads/eclipse/$TRAVIS_BRANCH/
