@@ -6,10 +6,6 @@ cache:
      directories:
         - $HOME/.m2
 
-env:
-    global:
-        - ENCRYPTION_LABEL: "7b637816f1d8"
-
 jdk:
   - oraclejdk8
 
