@@ -8,7 +8,7 @@ cache:
 
 env:
     global:
-        - ENCRYPTION_LABEL: "9dadef2c57c9"
+        - ENCRYPTION_LABEL: "7b637816f1d8"
 
 jdk:
   - oraclejdk8
