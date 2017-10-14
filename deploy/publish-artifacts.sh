@@ -8,15 +8,12 @@ git clone -b gh-pages git@github.com:alxbrd/mde_optimiser.git gh-pages
 
 cd gh-pages
 
-pwd
 
-ls -la
+mkdir -p downloads/eclipse/$TRAVIS_BRANCH
 
-mkdir -p downloads/eclipse/repository/
+rm -rf downloads/eclipse/$TRAVIS_BRANCH/*
 
-rm -rf downloads/eclipse/repository/*
-
-mv ../mde_optimiser/src/releng/uk.ac.kcl.mdeoptimise.repository/target/* downloads/eclipse/repository/
+mv ../mde_optimiser/src/releng/uk.ac.kcl.mdeoptimise.repository/target/* downloads/eclipse/$TRAVIS_BRANCH/
 
 git add --all
 
