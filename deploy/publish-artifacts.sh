@@ -18,14 +18,12 @@ pwd
 
 ls -la
 
-openssl aes-256-cbc -K $ENCRYPTED_KEY -iv $ENCRYPTED_IV -in deploy_keys.tar.enc -out deploy_keys.tar -d
-
-tar xvf deploy_keys.tar
+openssl aes-256-cbc -K $ENCRYPTED_KEY -iv $ENCRYPTED_IV -in $DEPLOY_KEY -out deploy_key -d
 
 eval `ssh-agent -s`
 
-chmod 600 deploy_keys/$DEPLOY_KEY
-ssh-add deploy_keys/$DEPLOY_KEY
+chmod 600 deploy_key
+ssh-add deploy_key
 
 cd $TRAVIS_BUILD_DIR/..
 
