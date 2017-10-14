@@ -10,7 +10,6 @@ cd gh-pages
 
 
 mkdir -p downloads/eclipse/$TRAVIS_BRANCH
-
 rm -rf downloads/eclipse/$TRAVIS_BRANCH/*
 
 mv ../mde_optimiser/src/releng/uk.ac.kcl.mdeoptimise.repository/target/* downloads/eclipse/$TRAVIS_BRANCH/
