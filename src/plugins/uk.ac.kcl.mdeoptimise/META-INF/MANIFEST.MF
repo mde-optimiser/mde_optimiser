@@ -15,23 +15,12 @@ Require-Bundle: org.eclipse.xtext,
  org.eclipse.xtend.lib,
  org.eclipse.emf.common,
  org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional,
- org.eclipse.emf.henshin.interpreter;bundle-version="1.4.0", 
- org.eclipse.emf.henshin.model;bundle-version="1.4.0",
+ org.eclipse.emf.henshin.interpreter;bundle-version="[1.4.0,2.0.0)", 
+ org.eclipse.emf.henshin.model;bundle-version="[1.4.0,2.0.0)",
  org.eclipse.ocl;bundle-version="3.6.0",
  org.eclipse.ocl.ecore;bundle-version="3.6.0",
- com.google.code.gson
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8 
-Dynamic-ImportPackage: *
-Bundle-ClassPath: .,
- lib/commons-cli-1.2.jar,
- lib/commons-codec-1.8.jar,
- lib/commons-lang3-3.1.jar,
- lib/commons-math3-3.4.1.jar,
- lib/jcommon-1.0.20.jar,
- lib/jfreechart-1.0.15.jar,
- lib/JMetal-4.3.jar,
- lib/MOEAFramework-2.12.jar,
- lib/rsyntaxtextarea.jar
+ org.moeaframework
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: uk.ac.kcl.validation,
  uk.ac.kcl,
  uk.ac.kcl.generator,
