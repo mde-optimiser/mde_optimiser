@@ -16,8 +16,9 @@ ENCRYPTED_IV=${!ENCRYPTED_IV_VAR}
 
 openssl aes-256-cbc -K $ENCRYPTED_KEY -iv $ENCRYPTED_IV -in $DEPLOY_KEY -out deploy_key -d
 
-chmod 600 deploy_key
 eval `ssh-agent -s`
+
+chmod 600 deploy_key
 ssh-add deploy_key
 
 cd $TRAVIS_BUILD_DIR/..
@@ -36,7 +37,7 @@ mv ../mde_optimiser/src/releng/uk.ac.kcl.mdeoptimise.repository/target/* downloa
 git add --all
 
 git config user.name "Travis CI"
-git config user.email "alex+git-CIBUILD@onboot.org"
+git config user.email "travis-ci@mde-optimiser.github.io"
 
 git commit -m "Published build id: $TRAVIS_BUILD_NUMBER"
 
