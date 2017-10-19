@@ -2,7 +2,6 @@ package models.moea
 
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.EObject
-import uk.ac.kcl.tests.optimisation.moea.MoeaModelProvider
 
 class MinimiseClasslessFeatures extends AbstractModelQueryFitnessFunction {
 	
