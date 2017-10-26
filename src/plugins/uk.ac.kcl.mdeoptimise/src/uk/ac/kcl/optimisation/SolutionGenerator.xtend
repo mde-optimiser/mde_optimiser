@@ -19,6 +19,7 @@ import uk.ac.kcl.mdeoptimise.Optimisation
 import static org.eclipse.emf.henshin.interpreter.impl.ChangeImpl.*
 import org.eclipse.emf.henshin.model.Rule
 import org.eclipse.emf.henshin.interpreter.impl.UnitApplicationImpl
+import uk.ac.kcl.interpreter.evolvers.parameters.IEvolverParametersFactory
 
 class SolutionGenerator {
 
@@ -27,11 +28,16 @@ class SolutionGenerator {
 	private List<Unit> mutationOperators
 	
 	private Optimisation optimisationModel
+	private IEvolverParametersFactory evolverParametersFactory
 	
 	IModelProvider initialModelProvider
 
 	public Engine engine;
-	public RuleApplicationImpl runner;
+	
+	/**
+	 * Using only the UnitApplicationImpl class to run both Units
+	 * and Rules as this class implements functionality to run a single Rule.
+	 */
 	public UnitApplicationImpl unitRunner
 	
 	new(Optimisation model, List<Unit> breedingOperators, List<Unit> mutationOperators, IModelProvider modelProvider, EPackage metamodel){
@@ -41,8 +47,9 @@ class SolutionGenerator {
 		this.initialModelProvider = modelProvider
 		this.theMetamodel = metamodel;
 		this.engine = new EngineImpl
+		
 		engine.getOptions().put(Engine.OPTION_DETERMINISTIC, false);
-		this.runner = new RuleApplicationImpl(engine)
+		
 		this.unitRunner = new UnitApplicationImpl(engine)
 		
 		//Disable henshin warnings
@@ -85,6 +92,7 @@ class SolutionGenerator {
 			unitRunner.unit = operator
 			unitRunner.setParameterValue("number", new Random().nextInt(5))
 			
+			//Run the selected Henshin Unit
 			if(unitRunner.execute(null)) {
 				if(graph.roots.head != null)
 					return graph.roots	
@@ -125,10 +133,15 @@ class SolutionGenerator {
 					
 		while(triedOperators.length < mutationOperators.length){
 			
-			runner.EGraph = graph
-			runner.unit = operator
+			unitRunner.EGraph = graph
+			unitRunner.unit = operator
 			
-			if(runner.execute(null)){
+			if(!operator.parameters.empty){
+				operator.parameters.forEach[ parameter | unitRunner.setParameterValue(parameter.name, evolverParametersFactory.getParameterValue(unit, parameter.name))]	
+			}
+			
+			//Run the selected Henshin Rule
+			if(unitRunner.execute(null)){
 				//println("Could run mutation" + matchToUse.name)
 				if(graph.roots.head != null)
 					return graph.roots.head	

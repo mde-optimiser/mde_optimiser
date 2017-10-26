@@ -84,7 +84,7 @@ class MoeaOptimisationTests {
 				mutate using <craEvolvers.henshin> unit "assignFeature"
 				mutate using <craEvolvers.henshin> unit "moveFeature"
 				mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
-				breed using <exDependencies.henshin> unit "exchangeMultipleDependencies" parameters { Name:"uk.ac.kcl.MoeaFramework", NameNew:"Uk.ac.kcl.MoeaFramework2" }
+				breed using <exDependencies.henshin> unit "exchangeMultipleDependencies" parameters { Name:"uk.ac.kcl.MoeaFramework" }
 				optimisation provider moea algorithm NSGAII variation genetic evolutions 15000 population 30
 			''')
 
