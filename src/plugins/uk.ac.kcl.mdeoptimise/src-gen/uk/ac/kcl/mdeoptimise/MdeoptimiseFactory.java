@@ -87,6 +87,15 @@ public interface MdeoptimiseFactory extends EFactory
   EvolverSpec createEvolverSpec();
 
   /**
+   * Returns a new object of class '<em>Evolver Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Evolver Parameter</em>'.
+   * @generated
+   */
+  EvolverParameter createEvolverParameter();
+
+  /**
    * Returns a new object of class '<em>Optimisation Spec</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
