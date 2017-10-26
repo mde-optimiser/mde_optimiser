@@ -3,6 +3,8 @@
  */
 package uk.ac.kcl.mdeoptimise;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -17,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link uk.ac.kcl.mdeoptimise.EvolverSpec#getEvolverType <em>Evolver Type</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.EvolverSpec#getRule_location <em>Rule location</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.EvolverSpec#getUnit <em>Unit</em>}</li>
+ *   <li>{@link uk.ac.kcl.mdeoptimise.EvolverSpec#getParameters <em>Parameters</em>}</li>
  * </ul>
  *
  * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getEvolverSpec()
@@ -105,5 +108,21 @@ public interface EvolverSpec extends EObject
    * @generated
    */
   void setUnit(String value);
+
+  /**
+   * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
+   * The list contents are of type {@link uk.ac.kcl.mdeoptimise.EvolverParameter}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Parameters</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Parameters</em>' containment reference list.
+   * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getEvolverSpec_Parameters()
+   * @model containment="true"
+   * @generated
+   */
+  EList<EvolverParameter> getParameters();
 
 } // EvolverSpec
