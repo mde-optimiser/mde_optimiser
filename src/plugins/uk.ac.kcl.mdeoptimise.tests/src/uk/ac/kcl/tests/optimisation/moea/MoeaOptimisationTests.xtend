@@ -84,12 +84,14 @@ class MoeaOptimisationTests {
 				mutate using <craEvolvers.henshin> unit "assignFeature"
 				mutate using <craEvolvers.henshin> unit "moveFeature"
 				mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
-				breed using <exDependencies.henshin> unit "exchangeMultipleDependencies" parameters { Name:"uk.ac.kcl.MoeaFramework" }
+				breed using <exDependencies.henshin> unit "exchangeMultipleDependencies" parameters { Name:"uk.ac.kcl.MoeaFramework", Name:"uk.ac.kcl.MoeaFramework" }
 				optimisation provider moea algorithm NSGAII variation genetic evolutions 15000 population 30
 			''')
 
 			//Assert that there are no grammar issues
 			model.assertNoIssues
+
+			model.evolvers.get(0).parameters
 
 			val oclModelProvider = new UserModelProvider(getResourceSet(), "TTC_InputRDG_E.xmi")
 			
