@@ -136,8 +136,12 @@ class SolutionGenerator {
 			unitRunner.EGraph = graph
 			unitRunner.unit = operator
 			
+			val unit = operator;
+			
 			if(!operator.parameters.empty){
-				operator.parameters.forEach[ parameter | unitRunner.setParameterValue(parameter.name, evolverParametersFactory.getParameterValue(unit, parameter.name))]	
+				operator.parameters.forEach[ 
+					parameter | unitRunner.setParameterValue(parameter.name, evolverParametersFactory.getParameterValue(unit, parameter, object))
+				]	
 			}
 			
 			//Run the selected Henshin Rule
