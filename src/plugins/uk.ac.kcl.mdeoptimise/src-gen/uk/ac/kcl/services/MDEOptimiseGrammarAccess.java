@@ -371,19 +371,22 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cNameValidIDParserRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
-		private final Group cGroup_1_0 = (Group)cAlternatives_1.eContents().get(0);
-		private final Keyword cEqualsSignGreaterThanSignKeyword_1_0_0 = (Keyword)cGroup_1_0.eContents().get(0);
-		private final Assignment cFunctionAssignment_1_0_1 = (Assignment)cGroup_1_0.eContents().get(1);
-		private final RuleCall cFunctionParameterFunctionParserRuleCall_1_0_1_0 = (RuleCall)cFunctionAssignment_1_0_1.eContents().get(0);
-		private final Assignment cCustomFunctionAssignment_1_1 = (Assignment)cAlternatives_1.eContents().get(1);
-		private final RuleCall cCustomFunctionSTRINGTerminalRuleCall_1_1_0 = (RuleCall)cCustomFunctionAssignment_1_1.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cEqualsSignGreaterThanSignKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Alternatives cAlternatives_1_1 = (Alternatives)cGroup_1.eContents().get(1);
+		private final Assignment cFunctionAssignment_1_1_0 = (Assignment)cAlternatives_1_1.eContents().get(0);
+		private final RuleCall cFunctionParameterFunctionParserRuleCall_1_1_0_0 = (RuleCall)cFunctionAssignment_1_1_0.eContents().get(0);
+		private final Assignment cCustomFunctionAssignment_1_1_1 = (Assignment)cAlternatives_1_1.eContents().get(1);
+		private final RuleCall cCustomFunctionSTRINGTerminalRuleCall_1_1_1_0 = (RuleCall)cCustomFunctionAssignment_1_1_1.eContents().get(0);
 		
-		//EvolverParameter:
-		//	name=ValidID ('=>' function=ParameterFunction | customFunction=STRING);
+		/// **
+		// * TODO The custom function should ideally use a Jvm class parser, but it doesn't seem
+		// * to work with QualifiedName
+		// * / EvolverParameter:
+		//	name=ValidID ('=>' (function=ParameterFunction | customFunction=STRING));
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name=ValidID ('=>' function=ParameterFunction | customFunction=STRING)
+		//name=ValidID ('=>' (function=ParameterFunction | customFunction=STRING))
 		public Group getGroup() { return cGroup; }
 		
 		//name=ValidID
@@ -392,26 +395,26 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		//ValidID
 		public RuleCall getNameValidIDParserRuleCall_0_0() { return cNameValidIDParserRuleCall_0_0; }
 		
-		//('=>' function=ParameterFunction | customFunction=STRING)
-		public Alternatives getAlternatives_1() { return cAlternatives_1; }
-		
-		//'=>' function=ParameterFunction
-		public Group getGroup_1_0() { return cGroup_1_0; }
+		//('=>' (function=ParameterFunction | customFunction=STRING))
+		public Group getGroup_1() { return cGroup_1; }
 		
 		//'=>'
-		public Keyword getEqualsSignGreaterThanSignKeyword_1_0_0() { return cEqualsSignGreaterThanSignKeyword_1_0_0; }
+		public Keyword getEqualsSignGreaterThanSignKeyword_1_0() { return cEqualsSignGreaterThanSignKeyword_1_0; }
+		
+		//(function=ParameterFunction | customFunction=STRING)
+		public Alternatives getAlternatives_1_1() { return cAlternatives_1_1; }
 		
 		//function=ParameterFunction
-		public Assignment getFunctionAssignment_1_0_1() { return cFunctionAssignment_1_0_1; }
+		public Assignment getFunctionAssignment_1_1_0() { return cFunctionAssignment_1_1_0; }
 		
 		//ParameterFunction
-		public RuleCall getFunctionParameterFunctionParserRuleCall_1_0_1_0() { return cFunctionParameterFunctionParserRuleCall_1_0_1_0; }
+		public RuleCall getFunctionParameterFunctionParserRuleCall_1_1_0_0() { return cFunctionParameterFunctionParserRuleCall_1_1_0_0; }
 		
 		//customFunction=STRING
-		public Assignment getCustomFunctionAssignment_1_1() { return cCustomFunctionAssignment_1_1; }
+		public Assignment getCustomFunctionAssignment_1_1_1() { return cCustomFunctionAssignment_1_1_1; }
 		
 		//STRING
-		public RuleCall getCustomFunctionSTRINGTerminalRuleCall_1_1_0() { return cCustomFunctionSTRINGTerminalRuleCall_1_1_0; }
+		public RuleCall getCustomFunctionSTRINGTerminalRuleCall_1_1_1_0() { return cCustomFunctionSTRINGTerminalRuleCall_1_1_1_0; }
 	}
 	public class ParameterFunctionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.ParameterFunction");
@@ -729,8 +732,11 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		return getEvolverSpecAccess().getRule();
 	}
 	
-	//EvolverParameter:
-	//	name=ValidID ('=>' function=ParameterFunction | customFunction=STRING);
+	/// **
+	// * TODO The custom function should ideally use a Jvm class parser, but it doesn't seem
+	// * to work with QualifiedName
+	// * / EvolverParameter:
+	//	name=ValidID ('=>' (function=ParameterFunction | customFunction=STRING));
 	public EvolverParameterElements getEvolverParameterAccess() {
 		return pEvolverParameter;
 	}

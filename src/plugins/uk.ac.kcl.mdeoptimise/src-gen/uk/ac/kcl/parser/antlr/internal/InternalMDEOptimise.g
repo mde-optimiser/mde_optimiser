@@ -702,15 +702,15 @@ ruleEvolverParameter returns [EObject current=null]
 			)
 		)
 		(
+			otherlv_1='=>'
+			{
+				newLeafNode(otherlv_1, grammarAccess.getEvolverParameterAccess().getEqualsSignGreaterThanSignKeyword_1_0());
+			}
 			(
-				otherlv_1='=>'
-				{
-					newLeafNode(otherlv_1, grammarAccess.getEvolverParameterAccess().getEqualsSignGreaterThanSignKeyword_1_0_0());
-				}
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getEvolverParameterAccess().getFunctionParameterFunctionParserRuleCall_1_0_1_0());
+							newCompositeNode(grammarAccess.getEvolverParameterAccess().getFunctionParameterFunctionParserRuleCall_1_1_0_0());
 						}
 						lv_function_2_0=ruleParameterFunction
 						{
@@ -726,24 +726,24 @@ ruleEvolverParameter returns [EObject current=null]
 						}
 					)
 				)
-			)
-			    |
-			(
+				    |
 				(
-					lv_customFunction_3_0=RULE_STRING
-					{
-						newLeafNode(lv_customFunction_3_0, grammarAccess.getEvolverParameterAccess().getCustomFunctionSTRINGTerminalRuleCall_1_1_0());
-					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getEvolverParameterRule());
+					(
+						lv_customFunction_3_0=RULE_STRING
+						{
+							newLeafNode(lv_customFunction_3_0, grammarAccess.getEvolverParameterAccess().getCustomFunctionSTRINGTerminalRuleCall_1_1_1_0());
 						}
-						setWithLastConsumed(
-							$current,
-							"customFunction",
-							lv_customFunction_3_0,
-							"org.eclipse.xtext.xbase.Xtype.STRING");
-					}
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getEvolverParameterRule());
+							}
+							setWithLastConsumed(
+								$current,
+								"customFunction",
+								lv_customFunction_3_0,
+								"org.eclipse.xtext.xbase.Xtype.STRING");
+						}
+					)
 				)
 			)
 		)
