@@ -702,15 +702,37 @@ ruleEvolverParameter returns [EObject current=null]
 			)
 		)
 		(
-			otherlv_1=':'
-			{
-				newLeafNode(otherlv_1, grammarAccess.getEvolverParameterAccess().getColonKeyword_1_0());
-			}
+			(
+				otherlv_1='=>'
+				{
+					newLeafNode(otherlv_1, grammarAccess.getEvolverParameterAccess().getEqualsSignGreaterThanSignKeyword_1_0_0());
+				}
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getEvolverParameterAccess().getFunctionParameterFunctionParserRuleCall_1_0_1_0());
+						}
+						lv_function_2_0=ruleParameterFunction
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getEvolverParameterRule());
+							}
+							set(
+								$current,
+								"function",
+								lv_function_2_0,
+								"uk.ac.kcl.MDEOptimise.ParameterFunction");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+			)
+			    |
 			(
 				(
-					lv_value_2_0=RULE_STRING
+					lv_customFunction_3_0=RULE_STRING
 					{
-						newLeafNode(lv_value_2_0, grammarAccess.getEvolverParameterAccess().getValueSTRINGTerminalRuleCall_1_1_0());
+						newLeafNode(lv_customFunction_3_0, grammarAccess.getEvolverParameterAccess().getCustomFunctionSTRINGTerminalRuleCall_1_1_0());
 					}
 					{
 						if ($current==null) {
@@ -718,13 +740,79 @@ ruleEvolverParameter returns [EObject current=null]
 						}
 						setWithLastConsumed(
 							$current,
-							"value",
-							lv_value_2_0,
+							"customFunction",
+							lv_customFunction_3_0,
 							"org.eclipse.xtext.xbase.Xtype.STRING");
 					}
 				)
 			)
 		)
+	)
+;
+
+// Entry rule entryRuleParameterFunction
+entryRuleParameterFunction returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getParameterFunctionRule()); }
+	iv_ruleParameterFunction=ruleParameterFunction
+	{ $current=$iv_ruleParameterFunction.current; }
+	EOF;
+
+// Rule ParameterFunction
+ruleParameterFunction returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getParameterFunctionAccess().getNameValidIDParserRuleCall_0_0());
+				}
+				lv_name_0_0=ruleValidID
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getParameterFunctionRule());
+					}
+					set(
+						$current,
+						"name",
+						lv_name_0_0,
+						"org.eclipse.xtext.xbase.Xtype.ValidID");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			otherlv_1='('
+			{
+				newLeafNode(otherlv_1, grammarAccess.getParameterFunctionAccess().getLeftParenthesisKeyword_1_0());
+			}
+			(
+				(
+					lv_parameter_2_0=RULE_STRING
+					{
+						newLeafNode(lv_parameter_2_0, grammarAccess.getParameterFunctionAccess().getParameterSTRINGTerminalRuleCall_1_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getParameterFunctionRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"parameter",
+							lv_parameter_2_0,
+							"org.eclipse.xtext.xbase.Xtype.STRING");
+					}
+				)
+			)
+			otherlv_3=')'
+			{
+				newLeafNode(otherlv_3, grammarAccess.getParameterFunctionAccess().getRightParenthesisKeyword_1_2());
+			}
+		)?
 	)
 ;
 

@@ -400,13 +400,22 @@ public interface MdeoptimisePackage extends EPackage
   int EVOLVER_PARAMETER__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * The feature id for the '<em><b>Function</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EVOLVER_PARAMETER__VALUE = 1;
+  int EVOLVER_PARAMETER__FUNCTION = 1;
+
+  /**
+   * The feature id for the '<em><b>Custom Function</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EVOLVER_PARAMETER__CUSTOM_FUNCTION = 2;
 
   /**
    * The number of structural features of the '<em>Evolver Parameter</em>' class.
@@ -415,7 +424,44 @@ public interface MdeoptimisePackage extends EPackage
    * @generated
    * @ordered
    */
-  int EVOLVER_PARAMETER_FEATURE_COUNT = 2;
+  int EVOLVER_PARAMETER_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.ParameterFunctionImpl <em>Parameter Function</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.mdeoptimise.impl.ParameterFunctionImpl
+   * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getParameterFunction()
+   * @generated
+   */
+  int PARAMETER_FUNCTION = 8;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER_FUNCTION__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Parameter</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER_FUNCTION__PARAMETER = 1;
+
+  /**
+   * The number of structural features of the '<em>Parameter Function</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER_FUNCTION_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.OptimisationSpecImpl <em>Optimisation Spec</em>}' class.
@@ -425,7 +471,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getOptimisationSpec()
    * @generated
    */
-  int OPTIMISATION_SPEC = 8;
+  int OPTIMISATION_SPEC = 9;
 
   /**
    * The feature id for the '<em><b>Algorithm Factory</b></em>' attribute.
@@ -489,7 +535,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getEvolverType()
    * @generated
    */
-  int EVOLVER_TYPE = 9;
+  int EVOLVER_TYPE = 10;
 
 
   /**
@@ -815,15 +861,58 @@ public interface MdeoptimisePackage extends EPackage
   EAttribute getEvolverParameter_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.EvolverParameter#getValue <em>Value</em>}'.
+   * Returns the meta object for the containment reference '{@link uk.ac.kcl.mdeoptimise.EvolverParameter#getFunction <em>Function</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
-   * @see uk.ac.kcl.mdeoptimise.EvolverParameter#getValue()
+   * @return the meta object for the containment reference '<em>Function</em>'.
+   * @see uk.ac.kcl.mdeoptimise.EvolverParameter#getFunction()
    * @see #getEvolverParameter()
    * @generated
    */
-  EAttribute getEvolverParameter_Value();
+  EReference getEvolverParameter_Function();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.EvolverParameter#getCustomFunction <em>Custom Function</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Custom Function</em>'.
+   * @see uk.ac.kcl.mdeoptimise.EvolverParameter#getCustomFunction()
+   * @see #getEvolverParameter()
+   * @generated
+   */
+  EAttribute getEvolverParameter_CustomFunction();
+
+  /**
+   * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.ParameterFunction <em>Parameter Function</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Parameter Function</em>'.
+   * @see uk.ac.kcl.mdeoptimise.ParameterFunction
+   * @generated
+   */
+  EClass getParameterFunction();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.ParameterFunction#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see uk.ac.kcl.mdeoptimise.ParameterFunction#getName()
+   * @see #getParameterFunction()
+   * @generated
+   */
+  EAttribute getParameterFunction_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.ParameterFunction#getParameter <em>Parameter</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Parameter</em>'.
+   * @see uk.ac.kcl.mdeoptimise.ParameterFunction#getParameter()
+   * @see #getParameterFunction()
+   * @generated
+   */
+  EAttribute getParameterFunction_Parameter();
 
   /**
    * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.OptimisationSpec <em>Optimisation Spec</em>}'.
@@ -1180,12 +1269,46 @@ public interface MdeoptimisePackage extends EPackage
     EAttribute EVOLVER_PARAMETER__NAME = eINSTANCE.getEvolverParameter_Name();
 
     /**
-     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Function</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute EVOLVER_PARAMETER__VALUE = eINSTANCE.getEvolverParameter_Value();
+    EReference EVOLVER_PARAMETER__FUNCTION = eINSTANCE.getEvolverParameter_Function();
+
+    /**
+     * The meta object literal for the '<em><b>Custom Function</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EVOLVER_PARAMETER__CUSTOM_FUNCTION = eINSTANCE.getEvolverParameter_CustomFunction();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.ParameterFunctionImpl <em>Parameter Function</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.mdeoptimise.impl.ParameterFunctionImpl
+     * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getParameterFunction()
+     * @generated
+     */
+    EClass PARAMETER_FUNCTION = eINSTANCE.getParameterFunction();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PARAMETER_FUNCTION__NAME = eINSTANCE.getParameterFunction_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Parameter</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PARAMETER_FUNCTION__PARAMETER = eINSTANCE.getParameterFunction_Parameter();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.OptimisationSpecImpl <em>Optimisation Spec</em>}' class.

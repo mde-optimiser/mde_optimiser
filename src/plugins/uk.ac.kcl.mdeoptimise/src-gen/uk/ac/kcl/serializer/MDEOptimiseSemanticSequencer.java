@@ -69,6 +69,7 @@ import uk.ac.kcl.mdeoptimise.ModelPathSpec;
 import uk.ac.kcl.mdeoptimise.ObjectiveInterpreterSpec;
 import uk.ac.kcl.mdeoptimise.Optimisation;
 import uk.ac.kcl.mdeoptimise.OptimisationSpec;
+import uk.ac.kcl.mdeoptimise.ParameterFunction;
 import uk.ac.kcl.services.MDEOptimiseGrammarAccess;
 
 @SuppressWarnings("all")
@@ -111,6 +112,9 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 				return; 
 			case MdeoptimisePackage.OPTIMISATION_SPEC:
 				sequence_OptimisationSpec(context, (OptimisationSpec) semanticObject); 
+				return; 
+			case MdeoptimisePackage.PARAMETER_FUNCTION:
+				sequence_ParameterFunction(context, (ParameterFunction) semanticObject); 
 				return; 
 			}
 		else if (epackage == TypesPackage.eINSTANCE)
@@ -403,19 +407,10 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 	 *     EvolverParameter returns EvolverParameter
 	 *
 	 * Constraint:
-	 *     (name=ValidID value=STRING)
+	 *     (name=ValidID (function=ParameterFunction | customFunction=STRING))
 	 */
 	protected void sequence_EvolverParameter(ISerializationContext context, EvolverParameter semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.EVOLVER_PARAMETER__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.EVOLVER_PARAMETER__NAME));
-			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.EVOLVER_PARAMETER__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.EVOLVER_PARAMETER__VALUE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getEvolverParameterAccess().getNameValidIDParserRuleCall_0_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getEvolverParameterAccess().getValueSTRINGTerminalRuleCall_1_1_0(), semanticObject.getValue());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -546,6 +541,18 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 	 *     )
 	 */
 	protected void sequence_Optimisation(ISerializationContext context, Optimisation semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ParameterFunction returns ParameterFunction
+	 *
+	 * Constraint:
+	 *     (name=ValidID parameter=STRING?)
+	 */
+	protected void sequence_ParameterFunction(ISerializationContext context, ParameterFunction semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

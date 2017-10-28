@@ -48,10 +48,19 @@ EvolverSpec:
 				'}')?
 ;
 
-
+/**
+ * TODO The custom function should ideally use a Jvm class parser, but it doesn't seem
+ * to work with QualifiedName
+ */
 EvolverParameter:
-	name=ValidID (':' value=STRING)
+	name=ValidID ('=>' function=ParameterFunction | customFunction=STRING )
 ;
+
+ParameterFunction:
+	name=ValidID ('(' 
+		(parameter=STRING)
+	')')?
+; 
 
 enum EvolverType:
     MUTATE='mutate' | BREED='breed';

@@ -78,9 +78,9 @@ class SolutionGenerator {
     }
 	
 	/**
-	 * Produces two offsprint from the two parents provided in the parameter.
+	 * Produces two offspring from the two parents provided in the parameter.
 	 * @param parents a list of two parent models
-	 * @returns a list of results offsprint
+	 * @returns a list of results offspring
 	 */
 	def List<EObject> crossover(List<EObject> parents) {
 				
