@@ -53,7 +53,7 @@ EvolverSpec:
  * to work with QualifiedName
  */
 EvolverParameter:
-	name=ValidID ('=>' function=ParameterFunction | customFunction=STRING )
+	name=ValidID ('=>' (function=ParameterFunction | customFunction=STRING) )
 ;
 
 ParameterFunction:
