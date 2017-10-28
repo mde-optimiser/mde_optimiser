@@ -23,7 +23,9 @@ Require-Bundle: org.eclipse.xtext,
  org.moeaframework,
  org.apache.commons.math3,
  org.apache.commons.lang3,
- org.eclipse.xtext.common.types
+ org.eclipse.xtext.common.types,
+ com.github.mifmif.generex,
+ dk.brics.automaton
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: uk.ac.kcl.validation,
  uk.ac.kcl,

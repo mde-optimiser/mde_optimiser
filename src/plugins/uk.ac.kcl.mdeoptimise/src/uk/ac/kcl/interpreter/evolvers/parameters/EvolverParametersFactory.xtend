@@ -46,7 +46,7 @@ class EvolverParametersFactory implements IEvolverParametersFactory {
 	def IEvolverParametersFunction getParameter(EvolverParameterAdapter parameter){
 		switch(parameter.function){
 			case "Random":
-				return new RandomEvolverParameter()
+				return new RandomEvolverParameter(parameter.parameter)
 			default:
 				//TODO This should perhaps check that there is a class based parameter and then try to initialize it
 				//or fail if that is not possible
