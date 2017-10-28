@@ -38,8 +38,8 @@
       <import plugin="org.eclipse.core.resources"/>
       <import plugin="org.eclipse.jdt.launching" version="3.8.100" match="greaterOrEqual"/>
       <import plugin="org.eclipse.jdt.debug.ui" version="3.7.201" match="greaterOrEqual"/>
-      <import plugin="org.moeaframework"/>
    	  <!-- MOEA Framework dependencies -->
+      <import plugin="org.moeaframework"/>
    	  <import plugin="org.apache.commons.cli" version="1.2.0" match="greaterOrEqual"/>
    	  <import plugin="org.apache.commons.codec" version="1.8.0" match="greaterOrEqual"/>
    	  <import plugin="org.apache.commons.lang3" version="3.1.0" match="greaterOrEqual"/>
@@ -47,6 +47,9 @@
    	  <import plugin="org.jfree.jcommon" version="1.0.21" match="greaterOrEqual"/>
    	  <import plugin="org.apache.commons.lang" version="2.6.0" match="greaterOrEqual"/>
    	  <import plugin="org.apache.commons.logging" version="1.1.1" match="greaterOrEqual"/>
+   	  <!-- Regex rule parameter generation dependencies -->
+   	  <import plugin="dk.brics.automaton" version="1.11.0.8" match="greaterOrEqual"/>
+   	  <import plugin="com.github.mifmif.generex" version="1.0.2" match="greaterOrEqual"/>
    </requires>
 
    <plugin
