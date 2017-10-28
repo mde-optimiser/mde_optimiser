@@ -33,20 +33,14 @@ class EvolverParametersFactory implements IEvolverParametersFactory {
 			
 			val evolver = evolvers.get(evolverId)
 
-			var parameters = new HashMap<String, IEvolverParametersFunction>();
+			val parameters = new HashMap<String, IEvolverParametersFunction>();
 			
-			for(var parameterId = 0; parameterId < evolver.parameters.length; parameterId++){
-				
-				var parameter = new EvolverParameterAdapter(evolver.parameters.get(parameterId))
-				
-				var parameterFunction = getParameter(parameter);
-				
-				parameters.put(parameter.name, parameterFunction)				
-			}
+			evolver.parameters.forEach[ 
+				parameter | parameters.put(parameter.name, getParameter(new EvolverParameterAdapter(parameter)
+			))]
 			
 			evolverParameterFunctions.put(evolver.unit, parameters)
 		}
-		
 	}
 	
 	def IEvolverParametersFunction getParameter(EvolverParameterAdapter parameter){
@@ -60,7 +54,7 @@ class EvolverParametersFactory implements IEvolverParametersFactory {
 		}
 	}
 	
-	override getParameterValue(Unit unit, Parameter parameter, EObject model) {
+	override getParameterValue(Unit unit, Parameter parameter, List<EObject> model) {
 		
 		val parameterFunction = evolverParameterFunctions.get(unit.name).get(parameter.name)
 		

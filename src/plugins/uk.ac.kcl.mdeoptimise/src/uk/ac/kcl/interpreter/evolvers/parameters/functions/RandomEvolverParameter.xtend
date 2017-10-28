@@ -3,10 +3,16 @@ package uk.ac.kcl.interpreter.evolvers.parameters.functions
 import uk.ac.kcl.interpreter.evolvers.parameters.IEvolverParametersFunction
 import org.eclipse.emf.ecore.EObject
 import java.util.Random
+import java.util.List
 
 class RandomEvolverParameter implements IEvolverParametersFunction {
 	
-	override sample(EObject model) {
-		return new Random().nextInt(1000);
+	override sample(List<EObject> model) {
+	
+		var parameter = new Random().nextInt(100);
+		
+		println("Returning random parameter value: " + parameter)
+		
+		return parameter
 	}
 }
