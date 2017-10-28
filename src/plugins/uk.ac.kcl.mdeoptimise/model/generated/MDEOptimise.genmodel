@@ -47,7 +47,12 @@
     </genClasses>
     <genClasses ecoreClass="MDEOptimise.ecore#//EvolverParameter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//EvolverParameter/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//EvolverParameter/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//EvolverParameter/function"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//EvolverParameter/customFunction"/>
+    </genClasses>
+    <genClasses ecoreClass="MDEOptimise.ecore#//ParameterFunction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//ParameterFunction/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//ParameterFunction/parameter"/>
     </genClasses>
     <genClasses ecoreClass="MDEOptimise.ecore#//OptimisationSpec">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//OptimisationSpec/algorithmFactory"/>

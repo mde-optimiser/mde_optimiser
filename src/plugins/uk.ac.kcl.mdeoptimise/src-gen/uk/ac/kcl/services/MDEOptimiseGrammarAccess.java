@@ -371,16 +371,19 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cNameValidIDParserRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Keyword cColonKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Assignment cValueAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cValueSTRINGTerminalRuleCall_1_1_0 = (RuleCall)cValueAssignment_1_1.eContents().get(0);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final Group cGroup_1_0 = (Group)cAlternatives_1.eContents().get(0);
+		private final Keyword cEqualsSignGreaterThanSignKeyword_1_0_0 = (Keyword)cGroup_1_0.eContents().get(0);
+		private final Assignment cFunctionAssignment_1_0_1 = (Assignment)cGroup_1_0.eContents().get(1);
+		private final RuleCall cFunctionParameterFunctionParserRuleCall_1_0_1_0 = (RuleCall)cFunctionAssignment_1_0_1.eContents().get(0);
+		private final Assignment cCustomFunctionAssignment_1_1 = (Assignment)cAlternatives_1.eContents().get(1);
+		private final RuleCall cCustomFunctionSTRINGTerminalRuleCall_1_1_0 = (RuleCall)cCustomFunctionAssignment_1_1.eContents().get(0);
 		
 		//EvolverParameter:
-		//	name=ValidID (':' value=STRING);
+		//	name=ValidID ('=>' function=ParameterFunction | customFunction=STRING);
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name=ValidID (':' value=STRING)
+		//name=ValidID ('=>' function=ParameterFunction | customFunction=STRING)
 		public Group getGroup() { return cGroup; }
 		
 		//name=ValidID
@@ -389,17 +392,66 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		//ValidID
 		public RuleCall getNameValidIDParserRuleCall_0_0() { return cNameValidIDParserRuleCall_0_0; }
 		
-		//(':' value=STRING)
-		public Group getGroup_1() { return cGroup_1; }
+		//('=>' function=ParameterFunction | customFunction=STRING)
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 		
-		//':'
-		public Keyword getColonKeyword_1_0() { return cColonKeyword_1_0; }
+		//'=>' function=ParameterFunction
+		public Group getGroup_1_0() { return cGroup_1_0; }
 		
-		//value=STRING
-		public Assignment getValueAssignment_1_1() { return cValueAssignment_1_1; }
+		//'=>'
+		public Keyword getEqualsSignGreaterThanSignKeyword_1_0_0() { return cEqualsSignGreaterThanSignKeyword_1_0_0; }
+		
+		//function=ParameterFunction
+		public Assignment getFunctionAssignment_1_0_1() { return cFunctionAssignment_1_0_1; }
+		
+		//ParameterFunction
+		public RuleCall getFunctionParameterFunctionParserRuleCall_1_0_1_0() { return cFunctionParameterFunctionParserRuleCall_1_0_1_0; }
+		
+		//customFunction=STRING
+		public Assignment getCustomFunctionAssignment_1_1() { return cCustomFunctionAssignment_1_1; }
 		
 		//STRING
-		public RuleCall getValueSTRINGTerminalRuleCall_1_1_0() { return cValueSTRINGTerminalRuleCall_1_1_0; }
+		public RuleCall getCustomFunctionSTRINGTerminalRuleCall_1_1_0() { return cCustomFunctionSTRINGTerminalRuleCall_1_1_0; }
+	}
+	public class ParameterFunctionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.ParameterFunction");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNameValidIDParserRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cParameterAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cParameterSTRINGTerminalRuleCall_1_1_0 = (RuleCall)cParameterAssignment_1_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
+		
+		//ParameterFunction:
+		//	name=ValidID ('('
+		//	parameter=STRING ')')?;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//name=ValidID ('(' parameter=STRING ')')?
+		public Group getGroup() { return cGroup; }
+		
+		//name=ValidID
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		
+		//ValidID
+		public RuleCall getNameValidIDParserRuleCall_0_0() { return cNameValidIDParserRuleCall_0_0; }
+		
+		//('(' parameter=STRING ')')?
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_1_0() { return cLeftParenthesisKeyword_1_0; }
+		
+		//parameter=STRING
+		public Assignment getParameterAssignment_1_1() { return cParameterAssignment_1_1; }
+		
+		//STRING
+		public RuleCall getParameterSTRINGTerminalRuleCall_1_1_0() { return cParameterSTRINGTerminalRuleCall_1_1_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_1_2() { return cRightParenthesisKeyword_1_2; }
 	}
 	public class OptimisationSpecElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.OptimisationSpec");
@@ -518,6 +570,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	private final ConstraintInterpreterSpecElements pConstraintInterpreterSpec;
 	private final EvolverSpecElements pEvolverSpec;
 	private final EvolverParameterElements pEvolverParameter;
+	private final ParameterFunctionElements pParameterFunction;
 	private final EvolverTypeElements eEvolverType;
 	private final OptimisationSpecElements pOptimisationSpec;
 	private final TerminalRule tALGORITHM_VARIATION;
@@ -548,6 +601,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		this.pConstraintInterpreterSpec = new ConstraintInterpreterSpecElements();
 		this.pEvolverSpec = new EvolverSpecElements();
 		this.pEvolverParameter = new EvolverParameterElements();
+		this.pParameterFunction = new ParameterFunctionElements();
 		this.eEvolverType = new EvolverTypeElements();
 		this.pOptimisationSpec = new OptimisationSpecElements();
 		this.tALGORITHM_VARIATION = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.ALGORITHM_VARIATION");
@@ -676,13 +730,24 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//EvolverParameter:
-	//	name=ValidID (':' value=STRING);
+	//	name=ValidID ('=>' function=ParameterFunction | customFunction=STRING);
 	public EvolverParameterElements getEvolverParameterAccess() {
 		return pEvolverParameter;
 	}
 	
 	public ParserRule getEvolverParameterRule() {
 		return getEvolverParameterAccess().getRule();
+	}
+	
+	//ParameterFunction:
+	//	name=ValidID ('('
+	//	parameter=STRING ')')?;
+	public ParameterFunctionElements getParameterFunctionAccess() {
+		return pParameterFunction;
+	}
+	
+	public ParserRule getParameterFunctionRule() {
+		return getParameterFunctionAccess().getRule();
 	}
 	
 	//enum EvolverType:

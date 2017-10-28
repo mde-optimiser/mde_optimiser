@@ -9,7 +9,7 @@ class RandomEvolverParameter implements IEvolverParametersFunction {
 	
 	override sample(List<EObject> model) {
 	
-		var parameter = new Random().nextInt(100);
+		var parameter = new Random().nextInt(20);
 		
 		println("Returning random parameter value: " + parameter)
 		

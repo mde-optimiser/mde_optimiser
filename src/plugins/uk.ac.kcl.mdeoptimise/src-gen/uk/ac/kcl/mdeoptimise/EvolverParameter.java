@@ -15,7 +15,8 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link uk.ac.kcl.mdeoptimise.EvolverParameter#getName <em>Name</em>}</li>
- *   <li>{@link uk.ac.kcl.mdeoptimise.EvolverParameter#getValue <em>Value</em>}</li>
+ *   <li>{@link uk.ac.kcl.mdeoptimise.EvolverParameter#getFunction <em>Function</em>}</li>
+ *   <li>{@link uk.ac.kcl.mdeoptimise.EvolverParameter#getCustomFunction <em>Custom Function</em>}</li>
  * </ul>
  *
  * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getEvolverParameter()
@@ -51,29 +52,55 @@ public interface EvolverParameter extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Value</b></em>' attribute.
+   * Returns the value of the '<em><b>Function</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Value</em>' attribute isn't clear,
+   * If the meaning of the '<em>Function</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Value</em>' attribute.
-   * @see #setValue(String)
-   * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getEvolverParameter_Value()
+   * @return the value of the '<em>Function</em>' containment reference.
+   * @see #setFunction(ParameterFunction)
+   * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getEvolverParameter_Function()
+   * @model containment="true"
+   * @generated
+   */
+  ParameterFunction getFunction();
+
+  /**
+   * Sets the value of the '{@link uk.ac.kcl.mdeoptimise.EvolverParameter#getFunction <em>Function</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Function</em>' containment reference.
+   * @see #getFunction()
+   * @generated
+   */
+  void setFunction(ParameterFunction value);
+
+  /**
+   * Returns the value of the '<em><b>Custom Function</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Custom Function</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Custom Function</em>' attribute.
+   * @see #setCustomFunction(String)
+   * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getEvolverParameter_CustomFunction()
    * @model
    * @generated
    */
-  String getValue();
+  String getCustomFunction();
 
   /**
-   * Sets the value of the '{@link uk.ac.kcl.mdeoptimise.EvolverParameter#getValue <em>Value</em>}' attribute.
+   * Sets the value of the '{@link uk.ac.kcl.mdeoptimise.EvolverParameter#getCustomFunction <em>Custom Function</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Value</em>' attribute.
-   * @see #getValue()
+   * @param value the new value of the '<em>Custom Function</em>' attribute.
+   * @see #getCustomFunction()
    * @generated
    */
-  void setValue(String value);
+  void setCustomFunction(String value);
 
 } // EvolverParameter

@@ -4,14 +4,17 @@
 package uk.ac.kcl.mdeoptimise.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import uk.ac.kcl.mdeoptimise.EvolverParameter;
 import uk.ac.kcl.mdeoptimise.MdeoptimisePackage;
+import uk.ac.kcl.mdeoptimise.ParameterFunction;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,7 +25,8 @@ import uk.ac.kcl.mdeoptimise.MdeoptimisePackage;
  * </p>
  * <ul>
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.EvolverParameterImpl#getName <em>Name</em>}</li>
- *   <li>{@link uk.ac.kcl.mdeoptimise.impl.EvolverParameterImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link uk.ac.kcl.mdeoptimise.impl.EvolverParameterImpl#getFunction <em>Function</em>}</li>
+ *   <li>{@link uk.ac.kcl.mdeoptimise.impl.EvolverParameterImpl#getCustomFunction <em>Custom Function</em>}</li>
  * </ul>
  *
  * @generated
@@ -50,24 +54,34 @@ public class EvolverParameterImpl extends MinimalEObjectImpl.Container implement
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * The cached value of the '{@link #getFunction() <em>Function</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValue()
+   * @see #getFunction()
    * @generated
    * @ordered
    */
-  protected static final String VALUE_EDEFAULT = null;
+  protected ParameterFunction function;
 
   /**
-   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * The default value of the '{@link #getCustomFunction() <em>Custom Function</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValue()
+   * @see #getCustomFunction()
    * @generated
    * @ordered
    */
-  protected String value = VALUE_EDEFAULT;
+  protected static final String CUSTOM_FUNCTION_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getCustomFunction() <em>Custom Function</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCustomFunction()
+   * @generated
+   * @ordered
+   */
+  protected String customFunction = CUSTOM_FUNCTION_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -118,9 +132,9 @@ public class EvolverParameterImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getValue()
+  public ParameterFunction getFunction()
   {
-    return value;
+    return function;
   }
 
   /**
@@ -128,12 +142,76 @@ public class EvolverParameterImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setValue(String newValue)
+  public NotificationChain basicSetFunction(ParameterFunction newFunction, NotificationChain msgs)
   {
-    String oldValue = value;
-    value = newValue;
+    ParameterFunction oldFunction = function;
+    function = newFunction;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MdeoptimisePackage.EVOLVER_PARAMETER__VALUE, oldValue, value));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MdeoptimisePackage.EVOLVER_PARAMETER__FUNCTION, oldFunction, newFunction);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setFunction(ParameterFunction newFunction)
+  {
+    if (newFunction != function)
+    {
+      NotificationChain msgs = null;
+      if (function != null)
+        msgs = ((InternalEObject)function).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MdeoptimisePackage.EVOLVER_PARAMETER__FUNCTION, null, msgs);
+      if (newFunction != null)
+        msgs = ((InternalEObject)newFunction).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MdeoptimisePackage.EVOLVER_PARAMETER__FUNCTION, null, msgs);
+      msgs = basicSetFunction(newFunction, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MdeoptimisePackage.EVOLVER_PARAMETER__FUNCTION, newFunction, newFunction));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getCustomFunction()
+  {
+    return customFunction;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setCustomFunction(String newCustomFunction)
+  {
+    String oldCustomFunction = customFunction;
+    customFunction = newCustomFunction;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MdeoptimisePackage.EVOLVER_PARAMETER__CUSTOM_FUNCTION, oldCustomFunction, customFunction));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case MdeoptimisePackage.EVOLVER_PARAMETER__FUNCTION:
+        return basicSetFunction(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -148,8 +226,10 @@ public class EvolverParameterImpl extends MinimalEObjectImpl.Container implement
     {
       case MdeoptimisePackage.EVOLVER_PARAMETER__NAME:
         return getName();
-      case MdeoptimisePackage.EVOLVER_PARAMETER__VALUE:
-        return getValue();
+      case MdeoptimisePackage.EVOLVER_PARAMETER__FUNCTION:
+        return getFunction();
+      case MdeoptimisePackage.EVOLVER_PARAMETER__CUSTOM_FUNCTION:
+        return getCustomFunction();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -167,8 +247,11 @@ public class EvolverParameterImpl extends MinimalEObjectImpl.Container implement
       case MdeoptimisePackage.EVOLVER_PARAMETER__NAME:
         setName((String)newValue);
         return;
-      case MdeoptimisePackage.EVOLVER_PARAMETER__VALUE:
-        setValue((String)newValue);
+      case MdeoptimisePackage.EVOLVER_PARAMETER__FUNCTION:
+        setFunction((ParameterFunction)newValue);
+        return;
+      case MdeoptimisePackage.EVOLVER_PARAMETER__CUSTOM_FUNCTION:
+        setCustomFunction((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -187,8 +270,11 @@ public class EvolverParameterImpl extends MinimalEObjectImpl.Container implement
       case MdeoptimisePackage.EVOLVER_PARAMETER__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case MdeoptimisePackage.EVOLVER_PARAMETER__VALUE:
-        setValue(VALUE_EDEFAULT);
+      case MdeoptimisePackage.EVOLVER_PARAMETER__FUNCTION:
+        setFunction((ParameterFunction)null);
+        return;
+      case MdeoptimisePackage.EVOLVER_PARAMETER__CUSTOM_FUNCTION:
+        setCustomFunction(CUSTOM_FUNCTION_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -206,8 +292,10 @@ public class EvolverParameterImpl extends MinimalEObjectImpl.Container implement
     {
       case MdeoptimisePackage.EVOLVER_PARAMETER__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case MdeoptimisePackage.EVOLVER_PARAMETER__VALUE:
-        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+      case MdeoptimisePackage.EVOLVER_PARAMETER__FUNCTION:
+        return function != null;
+      case MdeoptimisePackage.EVOLVER_PARAMETER__CUSTOM_FUNCTION:
+        return CUSTOM_FUNCTION_EDEFAULT == null ? customFunction != null : !CUSTOM_FUNCTION_EDEFAULT.equals(customFunction);
     }
     return super.eIsSet(featureID);
   }
@@ -225,8 +313,8 @@ public class EvolverParameterImpl extends MinimalEObjectImpl.Container implement
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
-    result.append(", value: ");
-    result.append(value);
+    result.append(", customFunction: ");
+    result.append(customFunction);
     result.append(')');
     return result.toString();
   }
