@@ -16,6 +16,10 @@ class EvolverParametersFactory implements IEvolverParametersFactory {
 	//Triple <UnitName, <ParameterName, Function>>
 	private Map<String, Map<String, IEvolverParametersFunction>> evolverParameterFunctions;
 	
+	/**
+	 * Cache parameter functions
+	 */
+	HashMap<String, IEvolverParametersFunction> cachedFunctions = new HashMap<String, IEvolverParametersFunction>()
 	
 	//TODO Add an evolver spec adapter
 	new(List<EvolverSpec> evolvers){
@@ -48,9 +52,28 @@ class EvolverParametersFactory implements IEvolverParametersFactory {
 			case "Random":
 				return new RandomEvolverParameter(parameter.parameter)
 			default:
-				//TODO This should perhaps check that there is a class based parameter and then try to initialize it
-				//or fail if that is not possible
-				throw new InvalidObjectException("Invalid objective type: " + parameter.function)
+				loadCustomFunction(parameter)
+		}
+	}
+	
+	def loadCustomFunction(EvolverParameterAdapter parameter){
+		
+		//Is there is a key for the given function path cached, return it
+		if(cachedFunctions.containsKey(parameter.function)){
+			return cachedFunctions.get(parameter.function)
+		}
+
+		try {
+			
+			var function = Class.forName(parameter.function).newInstance() as IEvolverParametersFunction
+			cachedFunctions.put(parameter.function, function)
+			
+			return function
+			
+		} catch( ClassNotFoundException exception) {
+			exception.printStackTrace
+			//TODO logger
+			throw new ClassNotFoundException("Invalid objective class path: " + parameter.function);
 		}
 	}
 	
