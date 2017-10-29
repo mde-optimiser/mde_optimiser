@@ -70,7 +70,6 @@ class MoeaOptimisationTests {
     
     //Some tests to run optimisation manually for now
 	@Test
-	@Ignore
 	def void runMoeaOptimisationNSGA2() {
 		
 			val pathPrefix = "gen/models/ttc/" + new SimpleDateFormat("yyMMdd-HHmmss").format(new Date())
@@ -85,7 +84,8 @@ class MoeaOptimisationTests {
 				mutate using <craEvolvers.henshin> unit "assignFeature"
 				mutate using <craEvolvers.henshin> unit "moveFeature"
 				mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
-				breed using <exDependencies.henshin> unit "exchangeMultipleDependencies" parameters { number => Random("[0-9]{0,2}") }
+				breed using <exDependencies.henshin> unit "exchangeMultipleDependencies" 
+					parameters { number3 => Random("[0-9]{0,2}"), number => "models.moea.RandomEvolverParameter" }
 				optimisation provider moea algorithm NSGAII variation genetic evolutions 15000 population 30
 			''')
 

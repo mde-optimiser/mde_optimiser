@@ -42,6 +42,7 @@ Export-Package: uk.ac.kcl.validation,
  uk.ac.kcl.interpreter.guidance,
  uk.ac.kcl.interpreter.guidance.java,
  uk.ac.kcl.interpreter.guidance.ocl,
+ uk.ac.kcl.interpreter.evolvers.parameters,
  uk.ac.kcl.optimisation,
  uk.ac.kcl.optimisation.moea,
  uk.ac.kcl.jvmmodel
