@@ -28,13 +28,12 @@ class JavaGuidanceFunctionsFactory implements IGuidanceFunctionsFactory {
 		
 		//Is there is a key for the given function path cached, return it
 		if(functions.containsKey(guidanceFunctionAdapter.functionSpec)){
-			functions.get(guidanceFunctionAdapter.functionSpec)
+			return functions.get(guidanceFunctionAdapter.functionSpec)
 		}
 
 		try {
 			
 			var function = Class.forName(guidanceFunctionAdapter.functionSpec).newInstance() as IGuidanceFunction
-		
 			functions.put(guidanceFunctionAdapter.functionSpec, function)
 			
 			return function
@@ -43,7 +42,7 @@ class JavaGuidanceFunctionsFactory implements IGuidanceFunctionsFactory {
 			exception.printStackTrace
 			//TODO logger
 			throw new ClassNotFoundException("Invalid objective class path: " + guidanceFunctionAdapter.functionSpec);
-		}	
+		}
 	}
 	
 }

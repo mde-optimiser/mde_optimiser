@@ -20,7 +20,9 @@ Require-Bundle: uk.ac.kcl.mdeoptimise,
  org.eclipse.core.runtime,
  org.eclipse.core.resources,
  org.eclipse.jdt.launching;bundle-version="3.8.100",
- org.eclipse.jdt.debug.ui;bundle-version="3.7.201"
+ org.eclipse.jdt.debug.ui;bundle-version="3.7.201",
+ org.eclipse.xtext.common.types.ui,
+ org.eclipse.xtext.xbase.ui
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: uk.ac.kcl.mdeoptimise.ui.internal,
