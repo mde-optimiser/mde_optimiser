@@ -73,6 +73,8 @@ public class MdeoptimiseFactoryImpl extends EFactoryImpl implements MdeoptimiseF
       case MdeoptimisePackage.OBJECTIVE_INTERPRETER_SPEC: return createObjectiveInterpreterSpec();
       case MdeoptimisePackage.CONSTRAINT_INTERPRETER_SPEC: return createConstraintInterpreterSpec();
       case MdeoptimisePackage.EVOLVER_SPEC: return createEvolverSpec();
+      case MdeoptimisePackage.EVOLVER_PARAMETER: return createEvolverParameter();
+      case MdeoptimisePackage.PARAMETER_FUNCTION: return createParameterFunction();
       case MdeoptimisePackage.OPTIMISATION_SPEC: return createOptimisationSpec();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -188,6 +190,28 @@ public class MdeoptimiseFactoryImpl extends EFactoryImpl implements MdeoptimiseF
   {
     EvolverSpecImpl evolverSpec = new EvolverSpecImpl();
     return evolverSpec;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EvolverParameter createEvolverParameter()
+  {
+    EvolverParameterImpl evolverParameter = new EvolverParameterImpl();
+    return evolverParameter;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ParameterFunction createParameterFunction()
+  {
+    ParameterFunctionImpl parameterFunction = new ParameterFunctionImpl();
+    return parameterFunction;
   }
 
   /**

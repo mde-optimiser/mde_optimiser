@@ -122,6 +122,20 @@ public class MdeoptimiseSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case MdeoptimisePackage.EVOLVER_PARAMETER:
+      {
+        EvolverParameter evolverParameter = (EvolverParameter)theEObject;
+        T result = caseEvolverParameter(evolverParameter);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MdeoptimisePackage.PARAMETER_FUNCTION:
+      {
+        ParameterFunction parameterFunction = (ParameterFunction)theEObject;
+        T result = caseParameterFunction(parameterFunction);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case MdeoptimisePackage.OPTIMISATION_SPEC:
       {
         OptimisationSpec optimisationSpec = (OptimisationSpec)theEObject;
@@ -241,6 +255,38 @@ public class MdeoptimiseSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseEvolverSpec(EvolverSpec object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Evolver Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Evolver Parameter</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEvolverParameter(EvolverParameter object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Parameter Function</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Parameter Function</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseParameterFunction(ParameterFunction object)
   {
     return null;
   }

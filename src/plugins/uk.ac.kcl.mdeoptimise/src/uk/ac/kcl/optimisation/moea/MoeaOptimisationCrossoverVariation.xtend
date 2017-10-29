@@ -34,7 +34,7 @@ class MoeaOptimisationCrossoverVariation implements Variation {
 		
 		//println("Children:" + children.size)
 		//println("Parents:" + parents.size)
-		for(var i = 0; i < children.size; i++){
+		for(var i = 0; i < 2; i++){
 			solutions.get(i).model = children.get(i);
 		}
 		
