@@ -111,6 +111,16 @@ public class MdeoptimiseAdapterFactory extends AdapterFactoryImpl
         return createEvolverSpecAdapter();
       }
       @Override
+      public Adapter caseEvolverParameter(EvolverParameter object)
+      {
+        return createEvolverParameterAdapter();
+      }
+      @Override
+      public Adapter caseParameterFunction(ParameterFunction object)
+      {
+        return createParameterFunctionAdapter();
+      }
+      @Override
       public Adapter caseOptimisationSpec(OptimisationSpec object)
       {
         return createOptimisationSpecAdapter();
@@ -238,6 +248,36 @@ public class MdeoptimiseAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createEvolverSpecAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.mdeoptimise.EvolverParameter <em>Evolver Parameter</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.mdeoptimise.EvolverParameter
+   * @generated
+   */
+  public Adapter createEvolverParameterAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.mdeoptimise.ParameterFunction <em>Parameter Function</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.mdeoptimise.ParameterFunction
+   * @generated
+   */
+  public Adapter createParameterFunctionAdapter()
   {
     return null;
   }

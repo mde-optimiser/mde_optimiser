@@ -26,7 +26,7 @@ class RunOptimisation {
 		if(args.length == 0){
 			
 			app.run("/home/alxbrd/runtime-New_configuration/test-compile", 
-				"/home/alxbrd/runtime-New_configuration/test-compile/src/file.mopt")
+					"/home/alxbrd/runtime-New_configuration/test-compile/src/file.mopt")
 			
 		} else if(args.length == 2) {
 			app.run(args.get(0), args.get(1))
