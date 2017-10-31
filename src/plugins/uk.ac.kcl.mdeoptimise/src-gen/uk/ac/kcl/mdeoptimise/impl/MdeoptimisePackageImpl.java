@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import uk.ac.kcl.mdeoptimise.BasepathSpec;
 import uk.ac.kcl.mdeoptimise.ConstraintInterpreterSpec;
+import uk.ac.kcl.mdeoptimise.EvolverParameter;
 import uk.ac.kcl.mdeoptimise.EvolverSpec;
 import uk.ac.kcl.mdeoptimise.EvolverType;
 import uk.ac.kcl.mdeoptimise.MdeoptimiseFactory;
@@ -22,6 +23,7 @@ import uk.ac.kcl.mdeoptimise.ModelPathSpec;
 import uk.ac.kcl.mdeoptimise.ObjectiveInterpreterSpec;
 import uk.ac.kcl.mdeoptimise.Optimisation;
 import uk.ac.kcl.mdeoptimise.OptimisationSpec;
+import uk.ac.kcl.mdeoptimise.ParameterFunction;
 
 /**
  * <!-- begin-user-doc -->
@@ -79,6 +81,20 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * @generated
    */
   private EClass evolverSpecEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass evolverParameterEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass parameterFunctionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -432,6 +448,86 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getEvolverSpec_Parameters()
+  {
+    return (EReference)evolverSpecEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getEvolverParameter()
+  {
+    return evolverParameterEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getEvolverParameter_Name()
+  {
+    return (EAttribute)evolverParameterEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getEvolverParameter_Function()
+  {
+    return (EReference)evolverParameterEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getEvolverParameter_CustomFunction()
+  {
+    return (EAttribute)evolverParameterEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getParameterFunction()
+  {
+    return parameterFunctionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getParameterFunction_Name()
+  {
+    return (EAttribute)parameterFunctionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getParameterFunction_Parameter()
+  {
+    return (EAttribute)parameterFunctionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getOptimisationSpec()
   {
     return optimisationSpecEClass;
@@ -560,6 +656,16 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
     createEAttribute(evolverSpecEClass, EVOLVER_SPEC__EVOLVER_TYPE);
     createEAttribute(evolverSpecEClass, EVOLVER_SPEC__RULE_LOCATION);
     createEAttribute(evolverSpecEClass, EVOLVER_SPEC__UNIT);
+    createEReference(evolverSpecEClass, EVOLVER_SPEC__PARAMETERS);
+
+    evolverParameterEClass = createEClass(EVOLVER_PARAMETER);
+    createEAttribute(evolverParameterEClass, EVOLVER_PARAMETER__NAME);
+    createEReference(evolverParameterEClass, EVOLVER_PARAMETER__FUNCTION);
+    createEAttribute(evolverParameterEClass, EVOLVER_PARAMETER__CUSTOM_FUNCTION);
+
+    parameterFunctionEClass = createEClass(PARAMETER_FUNCTION);
+    createEAttribute(parameterFunctionEClass, PARAMETER_FUNCTION__NAME);
+    createEAttribute(parameterFunctionEClass, PARAMETER_FUNCTION__PARAMETER);
 
     optimisationSpecEClass = createEClass(OPTIMISATION_SPEC);
     createEAttribute(optimisationSpecEClass, OPTIMISATION_SPEC__ALGORITHM_FACTORY);
@@ -636,6 +742,16 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
     initEAttribute(getEvolverSpec_EvolverType(), this.getEvolverType(), "evolverType", null, 0, 1, EvolverSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getEvolverSpec_Rule_location(), ecorePackage.getEString(), "rule_location", null, 0, 1, EvolverSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getEvolverSpec_Unit(), ecorePackage.getEString(), "unit", null, 0, 1, EvolverSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEvolverSpec_Parameters(), this.getEvolverParameter(), null, "parameters", null, 0, -1, EvolverSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(evolverParameterEClass, EvolverParameter.class, "EvolverParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getEvolverParameter_Name(), ecorePackage.getEString(), "name", null, 0, 1, EvolverParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEvolverParameter_Function(), this.getParameterFunction(), null, "function", null, 0, 1, EvolverParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getEvolverParameter_CustomFunction(), ecorePackage.getEString(), "customFunction", null, 0, 1, EvolverParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(parameterFunctionEClass, ParameterFunction.class, "ParameterFunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getParameterFunction_Name(), ecorePackage.getEString(), "name", null, 0, 1, ParameterFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getParameterFunction_Parameter(), ecorePackage.getEString(), "parameter", null, 0, 1, ParameterFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(optimisationSpecEClass, OptimisationSpec.class, "OptimisationSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getOptimisationSpec_AlgorithmFactory(), ecorePackage.getEString(), "algorithmFactory", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

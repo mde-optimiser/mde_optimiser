@@ -17,6 +17,13 @@ import uk.ac.kcl.interpreter.IModelProvider
 import uk.ac.kcl.mdeoptimise.Optimisation
 
 import static org.eclipse.emf.henshin.interpreter.impl.ChangeImpl.*
+import org.eclipse.emf.henshin.model.Rule
+import org.eclipse.emf.henshin.interpreter.impl.UnitApplicationImpl
+import uk.ac.kcl.interpreter.evolvers.parameters.IEvolverParametersFactory
+import org.eclipse.emf.henshin.model.HenshinPackage
+import org.eclipse.emf.henshin.interpreter.EGraph
+import java.util.Arrays
+import uk.ac.kcl.interpreter.evolvers.parameters.EvolverParametersFactory
 
 class SolutionGenerator {
 
@@ -25,11 +32,18 @@ class SolutionGenerator {
 	private List<Unit> mutationOperators
 	
 	private Optimisation optimisationModel
+	private IEvolverParametersFactory evolverParametersFactory
 	
 	IModelProvider initialModelProvider
 
 	public Engine engine;
-	public RuleApplicationImpl runner;
+	
+	/**
+	 * Using only the UnitApplicationImpl class to run both Units
+	 * and Rules as this class implements functionality to run a single Rule.
+	 */
+	public UnitApplicationImpl unitRunner
+	public RuleApplicationImpl ruleRunner
 	
 	new(Optimisation model, List<Unit> breedingOperators, List<Unit> mutationOperators, IModelProvider modelProvider, EPackage metamodel){
 		this.optimisationModel = model
@@ -38,8 +52,12 @@ class SolutionGenerator {
 		this.initialModelProvider = modelProvider
 		this.theMetamodel = metamodel;
 		this.engine = new EngineImpl
+		
 		engine.getOptions().put(Engine.OPTION_DETERMINISTIC, false);
-		this.runner = new RuleApplicationImpl(engine)
+		
+		this.unitRunner = new UnitApplicationImpl(engine)
+		this.ruleRunner = new RuleApplicationImpl(engine)
+		this.evolverParametersFactory = new EvolverParametersFactory(model.evolvers)
 		
 		//Disable henshin warnings
 		ChangeImpl.PRINT_WARNINGS = false;
@@ -60,9 +78,9 @@ class SolutionGenerator {
     }
 	
 	/**
-	 * Produces two offsprint from the two parents provided in the parameter.
+	 * Produces two offspring from the two parents provided in the parameter.
 	 * @param parents a list of two parent models
-	 * @returns a list of results offsprint
+	 * @returns a list of results offspring
 	 */
 	def List<EObject> crossover(List<EObject> parents) {
 				
@@ -73,27 +91,31 @@ class SolutionGenerator {
 		
 		// Randomly pick one unit
 		var operator = breedingOperators.get(new Random().nextInt(breedingOperators.size()))
-			
+
 		while(triedOperators.length < breedingOperators.length) {
 
-			// Apply the match
-			runner.EGraph = graph
-			runner.unit = operator
-			
-			if(runner.execute(null)) {
-				if(graph.roots.head != null)
+			if(operator.eClass().getClassifierID() == HenshinPackage.RULE){
+				//Run the selected Henshin Rule
+				if(runRuleOperator(operator, graph, parents)){
+					//println("Could run mutation" + matchToUse.name)
 					return graph.roots	
-			} else {
-				triedOperators.add(operator)
-				var remainingRules = breedingOperators.filter[ o  | !triedOperators.contains(o)];
-				
-				if(remainingRules.size == 0) {
-					return parents
 				}
+			} else {
+				if(runUnitOperator(operator, graph, parents)){
+					//println("Could run mutation" + matchToUse.name)
+					return graph.roots
+				}
+			}
+			
+			triedOperators.add(operator)
+			var remainingRules = breedingOperators.filter[ o  | !triedOperators.contains(o)];
+			
+			if(remainingRules.size == 0) {
+				return parents
+			}
+			
+			operator = remainingRules.get(new Random().nextInt(remainingRules.size()))
 				
-				operator = remainingRules.get(new Random().nextInt(remainingRules.size()))
-				
-			}				
 		}
 		
         // We didn't find any applicable evolvers...
@@ -101,6 +123,44 @@ class SolutionGenerator {
         
 		return parents
 	}
+
+
+	def boolean runRuleOperator(Unit operator, EGraph graph, List<EObject> object){
+	
+		ruleRunner.EGraph = graph
+		ruleRunner.unit = operator
+		
+		if(!operator.parameters.empty){
+			operator.parameters.forEach[ 
+				parameter | ruleRunner.setParameterValue(
+					parameter.name, 
+					evolverParametersFactory.getParameterValue(operator, parameter, object)
+				)
+			]
+		}
+		
+		//Run the selected Henshin Rule
+		return ruleRunner.execute(null)
+	}
+	
+	def boolean runUnitOperator(Unit operator, EGraph graph, List<EObject> object){
+	
+		unitRunner.EGraph = graph
+		unitRunner.unit = operator
+		
+		if(!operator.parameters.empty){
+			operator.parameters.forEach[ 
+				parameter | unitRunner.setParameterValue(
+					parameter.name, 
+					evolverParametersFactory.getParameterValue(operator, parameter, object)
+				)
+			]	
+		}
+		
+		//Run the selected Henshin Unit
+		return unitRunner.execute(null)
+	}
+	
 
     /**
      * Produce a new solution from the given one using one of the evolvers defined in the optimisation model.
@@ -120,26 +180,29 @@ class SolutionGenerator {
 					
 		while(triedOperators.length < mutationOperators.length){
 			
-			runner.EGraph = graph
-			runner.unit = operator
-			
-			if(runner.execute(null)){
-				//println("Could run mutation" + matchToUse.name)
-				if(graph.roots.head != null)
+			if(operator.eClass().getClassifierID() == HenshinPackage.RULE){
+				//Run the selected Henshin Rule
+				if(runRuleOperator(operator, graph, Arrays.asList(object))){
+					//println("Could run mutation" + matchToUse.name)
 					return graph.roots.head	
-			} else {
-				
-				
-				triedOperators.add(operator);
-				var remainingRules = mutationOperators.filter[ o  | !triedOperators.contains(o)];
-				
-				if(remainingRules.size == 0) {
-					return object
 				}
-				
-				operator = remainingRules.get(new Random().nextInt(remainingRules.size()))
-				//println("Could not run mutation for rule " + matchToUse.name)
-			}	
+			} else {
+				if(runUnitOperator(operator, graph, Arrays.asList(object))){
+					//println("Could run mutation" + matchToUse.name)
+					return graph.roots.head	
+				}
+			}
+			
+			triedOperators.add(operator);
+			var remainingRules = mutationOperators.filter[ o  | !triedOperators.contains(o)];
+			
+			if(remainingRules.size == 0) {
+				return object
+			}
+			
+			operator = remainingRules.get(new Random().nextInt(remainingRules.size()))
+			//println("Could not run mutation for rule " + matchToUse.name)
+		
 		}	
 		
         // We didn't find any applicable evolvers...

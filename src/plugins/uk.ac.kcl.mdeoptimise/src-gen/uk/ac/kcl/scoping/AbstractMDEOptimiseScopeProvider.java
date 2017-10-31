@@ -3,7 +3,7 @@
  */
 package uk.ac.kcl.scoping;
 
-import org.eclipse.xtext.scoping.impl.DelegatingScopeProvider;
+import org.eclipse.xtext.xbase.scoping.batch.XbaseBatchScopeProvider;
 
-public abstract class AbstractMDEOptimiseScopeProvider extends DelegatingScopeProvider {
+public abstract class AbstractMDEOptimiseScopeProvider extends XbaseBatchScopeProvider {
 }

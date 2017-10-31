@@ -3,13 +3,23 @@
  */
 package uk.ac.kcl.mdeoptimise.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
+import uk.ac.kcl.mdeoptimise.EvolverParameter;
 import uk.ac.kcl.mdeoptimise.EvolverSpec;
 import uk.ac.kcl.mdeoptimise.EvolverType;
 import uk.ac.kcl.mdeoptimise.MdeoptimisePackage;
@@ -25,6 +35,7 @@ import uk.ac.kcl.mdeoptimise.MdeoptimisePackage;
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.EvolverSpecImpl#getEvolverType <em>Evolver Type</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.EvolverSpecImpl#getRule_location <em>Rule location</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.EvolverSpecImpl#getUnit <em>Unit</em>}</li>
+ *   <li>{@link uk.ac.kcl.mdeoptimise.impl.EvolverSpecImpl#getParameters <em>Parameters</em>}</li>
  * </ul>
  *
  * @generated
@@ -90,6 +101,16 @@ public class EvolverSpecImpl extends MinimalEObjectImpl.Container implements Evo
    * @ordered
    */
   protected String unit = UNIT_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getParameters()
+   * @generated
+   * @ordered
+   */
+  protected EList<EvolverParameter> parameters;
 
   /**
    * <!-- begin-user-doc -->
@@ -186,6 +207,36 @@ public class EvolverSpecImpl extends MinimalEObjectImpl.Container implements Evo
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<EvolverParameter> getParameters()
+  {
+    if (parameters == null)
+    {
+      parameters = new EObjectContainmentEList<EvolverParameter>(EvolverParameter.class, this, MdeoptimisePackage.EVOLVER_SPEC__PARAMETERS);
+    }
+    return parameters;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case MdeoptimisePackage.EVOLVER_SPEC__PARAMETERS:
+        return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -197,6 +248,8 @@ public class EvolverSpecImpl extends MinimalEObjectImpl.Container implements Evo
         return getRule_location();
       case MdeoptimisePackage.EVOLVER_SPEC__UNIT:
         return getUnit();
+      case MdeoptimisePackage.EVOLVER_SPEC__PARAMETERS:
+        return getParameters();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -206,6 +259,7 @@ public class EvolverSpecImpl extends MinimalEObjectImpl.Container implements Evo
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -219,6 +273,10 @@ public class EvolverSpecImpl extends MinimalEObjectImpl.Container implements Evo
         return;
       case MdeoptimisePackage.EVOLVER_SPEC__UNIT:
         setUnit((String)newValue);
+        return;
+      case MdeoptimisePackage.EVOLVER_SPEC__PARAMETERS:
+        getParameters().clear();
+        getParameters().addAll((Collection<? extends EvolverParameter>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -243,6 +301,9 @@ public class EvolverSpecImpl extends MinimalEObjectImpl.Container implements Evo
       case MdeoptimisePackage.EVOLVER_SPEC__UNIT:
         setUnit(UNIT_EDEFAULT);
         return;
+      case MdeoptimisePackage.EVOLVER_SPEC__PARAMETERS:
+        getParameters().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -263,6 +324,8 @@ public class EvolverSpecImpl extends MinimalEObjectImpl.Container implements Evo
         return RULE_LOCATION_EDEFAULT == null ? rule_location != null : !RULE_LOCATION_EDEFAULT.equals(rule_location);
       case MdeoptimisePackage.EVOLVER_SPEC__UNIT:
         return UNIT_EDEFAULT == null ? unit != null : !UNIT_EDEFAULT.equals(unit);
+      case MdeoptimisePackage.EVOLVER_SPEC__PARAMETERS:
+        return parameters != null && !parameters.isEmpty();
     }
     return super.eIsSet(featureID);
   }
