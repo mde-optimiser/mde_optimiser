@@ -4,7 +4,8 @@
 package uk.ac.kcl.validation
 
 import org.eclipse.xtext.validation.Check
-import uk.ac.kcl.mdeoptimise.OptimisationSpec
+import uk.ac.kcl.mdeoptimise.MdeoptimisePackage
+import uk.ac.kcl.mdeoptimise.Optimisation
 
 /**
  * This class contains custom validation rules. 
@@ -26,15 +27,15 @@ class MDEOptimiseValidator extends AbstractMDEOptimiseValidator {
 	
 	
 	@Check
-	def checkMutationTypeConfigurationIsValid(OptimisationSpec optimisationModel){
+	def checkMutationTypeConfigurationIsValid(Optimisation optimisationModel){
 		
 //		val optimisationType = optimisationModel.optimisation.algorithmVariation
-		
+//		
 //		if(optimisationType.equals("mutation") 
 //			&& optimisationModel.evolvers.filter[ e | e.evolverType.equals("mutate")].empty
 //		){
 //			warning('Variation type mutation requires at least one evolver of type mutate', 
-//				MdeoptimisePackage$Literals::OPTIMISATION_SPEC__ALGORITHM_VARIATION)
+//				MdeoptimisePackage.Literals::OPTIMISATION_SPEC__ALGORITHM_VARIATION)
 //		}
 //
 //		if(optimisationType.equals("genetic") 
@@ -43,7 +44,7 @@ class MDEOptimiseValidator extends AbstractMDEOptimiseValidator {
 //			)
 //		){
 //			warning('Variation type genetic requires at least one evolver of type mutate and one of type breed', 
-//				MdeoptimisePackage$Literals::OPTIMISATION_SPEC__ALGORITHM_VARIATION)
+//				MdeoptimisePackage.Literals::OPTIMISATION_SPEC__ALGORITHM_VARIATION)
 //		}
 		
 	}
