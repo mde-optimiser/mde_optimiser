@@ -41,7 +41,7 @@ class MoeaOptimisation implements IOptimisation {
 		var properties = new Properties()
 		
 		properties.put("populationSize", optimisationSpec.algorithmPopulation)
-		properties.put("maxEvolutions", optimisationSpec.algorithmEvolutions)
+		properties.put("maxEvolutions", optimisationSpec.algorithmPopulation * optimisationSpec.algorithmEvolutions)
 		properties.put("solutionGenerator", solutionGenerator)
 		//Crossover and mutation or mutation only
 		properties.put("variationType", optimisationSpec.algorithmVariation)
