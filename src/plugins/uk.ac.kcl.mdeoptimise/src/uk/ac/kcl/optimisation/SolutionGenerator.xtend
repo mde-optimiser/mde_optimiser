@@ -24,6 +24,7 @@ import org.eclipse.emf.henshin.model.HenshinPackage
 import org.eclipse.emf.henshin.interpreter.EGraph
 import java.util.Arrays
 import uk.ac.kcl.interpreter.evolvers.parameters.EvolverParametersFactory
+import org.eclipse.emf.henshin.model.ParameterKind
 
 class SolutionGenerator {
 
@@ -130,8 +131,10 @@ class SolutionGenerator {
 		ruleRunner.EGraph = graph
 		ruleRunner.unit = operator
 		
-		if(!operator.parameters.empty){
-			operator.parameters.forEach[ 
+		var inParameters = operator.parameters.filter[parameter | parameter.kind.equals(ParameterKind.IN)]
+		
+		if(!inParameters.empty){
+			inParameters.forEach[  
 				parameter | ruleRunner.setParameterValue(
 					parameter.name, 
 					evolverParametersFactory.getParameterValue(operator, parameter, object)
@@ -148,8 +151,10 @@ class SolutionGenerator {
 		unitRunner.EGraph = graph
 		unitRunner.unit = operator
 		
-		if(!operator.parameters.empty){
-			operator.parameters.forEach[ 
+		var inParameters = operator.parameters.filter[parameter | parameter.kind.equals(ParameterKind.IN)]
+		
+		if(!inParameters.empty){
+			inParameters.forEach[ 
 				parameter | unitRunner.setParameterValue(
 					parameter.name, 
 					evolverParametersFactory.getParameterValue(operator, parameter, object)
