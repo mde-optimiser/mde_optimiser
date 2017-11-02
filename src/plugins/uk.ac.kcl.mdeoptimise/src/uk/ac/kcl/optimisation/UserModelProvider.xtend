@@ -41,7 +41,7 @@ class UserModelProvider implements IModelProvider {
 	}
 	
 	def writeModel(EObject model, String path) {
-		val resource = resourceSet.createResource(URI.createURI(path))
+		val resource = resourceSet.createResource(URI.createFileURI(path))
 		if (resource.loaded) {
 			resource.contents.clear
 		}
