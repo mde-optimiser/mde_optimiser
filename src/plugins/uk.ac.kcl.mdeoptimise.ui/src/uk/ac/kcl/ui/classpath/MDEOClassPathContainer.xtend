@@ -21,9 +21,8 @@ class MDEOClassPathContainer implements IClasspathContainer {
 		 }
 	}
 	
-	override getDescription() '''
-		Core MDEOptimiser libraries
-	'''
+	override getDescription() '''Core MDEOptimiser Libraries'''
+		
 	
 	override getKind() {
 		IClasspathContainer.K_SYSTEM

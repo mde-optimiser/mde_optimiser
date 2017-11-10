@@ -4,8 +4,9 @@
 package uk.ac.kcl.validation
 
 import org.eclipse.xtext.validation.Check
-import uk.ac.kcl.mdeoptimise.MdeoptimisePackage
 import uk.ac.kcl.mdeoptimise.Optimisation
+import org.eclipse.xtext.validation.CheckType
+import org.eclipse.xtext.resource.XtextResource
 
 /**
  * This class contains custom validation rules. 
@@ -14,7 +15,7 @@ import uk.ac.kcl.mdeoptimise.Optimisation
  */
 class MDEOptimiseValidator extends AbstractMDEOptimiseValidator {
 	
-	public static val INVALID_VARIATION = 'invalidVariation'
+	public static val MDEO_LIB_NOT_ON_CLASSPATH = 'invalidVariation'
 //
 //	@Check
 //	def checkGreetingStartsWithCapital(Greeting greeting) {
@@ -24,6 +25,22 @@ class MDEOptimiseValidator extends AbstractMDEOptimiseValidator {
 //					INVALID_NAME)
 //		}
 //	}
+	
+	
+	  @Check(CheckType.NORMAL)
+	  def void checkClasspath(XtextResource moptFile)
+	  {
+	  	val typeReferences = getServices().getTypeReferences();
+	  
+	  	val res = moptFile.resourceSet.resources.head
+	  	if( res instanceof Optimisation) {
+	  	
+		  	if(typeReferences.findDeclaredType(Optimisation, moptFile) != null){
+				error("Mandatory library bundle 'uk.ac.kcl.mdeoptimise' not found on the classpath.", 
+					res, null, MDEOptimiseValidatorIssues.MDEO_LIB_NOT_ON_CLASSPATH);
+		  	}
+		}
+	  }
 	
 	
 	@Check
