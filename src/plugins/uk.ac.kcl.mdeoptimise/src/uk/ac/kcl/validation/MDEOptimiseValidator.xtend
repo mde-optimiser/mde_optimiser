@@ -34,8 +34,7 @@ class MDEOptimiseValidator extends AbstractMDEOptimiseValidator {
 	  
 	  	val res = moptFile.resourceSet.resources.head
 	  	if( res instanceof Optimisation) {
-	  	
-		  	if(typeReferences.findDeclaredType(Optimisation, moptFile) != null){
+		  	if(typeReferences.findDeclaredType(Optimisation, moptFile) == null){
 				error("Mandatory library bundle 'uk.ac.kcl.mdeoptimise' not found on the classpath.", 
 					res, null, MDEOptimiseValidatorIssues.MDEO_LIB_NOT_ON_CLASSPATH);
 		  	}
