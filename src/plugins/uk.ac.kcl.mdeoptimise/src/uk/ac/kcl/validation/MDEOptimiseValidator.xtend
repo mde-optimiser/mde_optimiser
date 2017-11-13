@@ -26,13 +26,12 @@ class MDEOptimiseValidator extends AbstractMDEOptimiseValidator {
 //		}
 //	}
 	
-	
 	  @Check(CheckType.NORMAL)
 	  def void checkClasspath(XtextResource moptFile)
 	  {
 	  	val typeReferences = getServices().getTypeReferences();
-	  
-	  	val res = moptFile.resourceSet.resources.head
+	  	
+	  	val res = moptFile.resourceSet.resources.head.URI
 	  	if( res instanceof Optimisation) {
 		  	if(typeReferences.findDeclaredType(Optimisation, moptFile) == null){
 				error("Mandatory library bundle 'uk.ac.kcl.mdeoptimise' not found on the classpath.", 
