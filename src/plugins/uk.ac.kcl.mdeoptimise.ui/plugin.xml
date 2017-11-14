@@ -434,7 +434,7 @@
 		</launchConfigurationTabGroup>
 	</extension>
 	<extension point="org.eclipse.jdt.core.classpathContainerInitializer">
-		<classpathContainerInitializer id="uk.ac.kcl.mde_optimise.MDEO_CONTAINER" class="uk.ac.kcl.ui.classpath.MDEOClassPathContainerInitializer" />
+		<classpathContainerInitializer id="uk.ac.kcl.mdeoptimise.MDEO_CONTAINER" class="uk.ac.kcl.ui.classpath.MDEOClasspathContainerInitializer" />
 	</extension>
 	<extension point="org.eclipse.jdt.ui.classpathContainerPage">
 		<classpathContainerPage

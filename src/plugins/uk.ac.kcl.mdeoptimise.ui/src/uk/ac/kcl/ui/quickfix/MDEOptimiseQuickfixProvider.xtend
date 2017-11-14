@@ -14,10 +14,10 @@ import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor
 import org.eclipse.xtext.validation.Issue
 import uk.ac.kcl.validation.MDEOptimiseValidatorIssues
 import org.eclipse.jdt.core.JavaCore
-import uk.ac.kcl.ui.classpath.MDEOClassPathContainerInitializer
 import org.eclipse.core.runtime.NullProgressMonitor
 import org.eclipse.jdt.core.IClasspathEntry
 import java.util.LinkedList
+import uk.ac.kcl.ui.classpath.MDEOClasspathContainerInitializer
 
 /**
  * Custom quickfixes.
@@ -32,18 +32,18 @@ class MDEOptimiseQuickfixProvider extends DefaultQuickfixProvider {
 	@Fix(MDEOptimiseValidatorIssues.MDEO_LIB_NOT_ON_CLASSPATH)
 	def putMDEOOnClasspath(Issue issue, IssueResolutionAcceptor acceptor) {
 		
-		acceptor.accept(issue, "Add MDEOptimiser libs to classpath", 
-				"Click to automatically add the MDEOptimiser libs container to classpath.", "", new ISemanticModification() {
+		acceptor.accept(issue, "MDEOptimiser DSL Library to classpath", 
+				"Click to automatically add the MDEOptimiser DSL Library container to the classpath.", "", new ISemanticModification() {
 			
 			override apply(EObject element, IModificationContext context) throws Exception {
 				
-				var mdeoContainerEntry = JavaCore.newContainerEntry(MDEOClassPathContainerInitializer.MDEO_LIBRARY_PATH);
+				var mdeoContainerEntry = JavaCore.newContainerEntry(MDEOClasspathContainerInitializer.MDEO_LIBRARY_PATH);
 				val resourceSet = element.eResource().getResourceSet();
 				val javaProject = projectProvider.getJavaProject(resourceSet);
 				val projectClasspath = javaProject.getRawClasspath();
 				val newProjectClasspath = new LinkedList<IClasspathEntry>(projectClasspath);
 				
-				if(newProjectClasspath.filter[classpath | classpath.path.equals(MDEOClassPathContainerInitializer.MDEO_LIBRARY_PATH)].empty) {
+				if(newProjectClasspath.filter[classpath | classpath.path.equals(MDEOClasspathContainerInitializer.MDEO_LIBRARY_PATH)].empty) {
 					newProjectClasspath.add(mdeoContainerEntry);
 					javaProject.setRawClasspath(newProjectClasspath, new NullProgressMonitor())
 				}
