@@ -33,7 +33,7 @@ class MDEOptimiseQuickfixProvider extends DefaultQuickfixProvider {
 	@Fix(MDEOptimiseValidatorIssues.MDEO_LIB_NOT_ON_CLASSPATH)
 	def putMDEOOnClasspath(Issue issue, IssueResolutionAcceptor acceptor) {
 		
-		acceptor.accept(issue, "MDEOptimiser DSL Libraries to classpath", 
+		acceptor.accept(issue, "Add MDEOptimiser DSL Libraries to classpath", 
 				"Click to automatically add the MDEOptimiser DSL Libraries container to the classpath.", "", new ISemanticModification() {
 			
 			override apply(EObject element, IModificationContext context) throws Exception {
