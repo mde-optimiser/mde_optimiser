@@ -15,7 +15,8 @@ import org.eclipse.xtext.resource.XtextResource
  */
 class MDEOptimiseValidator extends AbstractMDEOptimiseValidator {
 	
-	public static val MDEO_LIB_NOT_ON_CLASSPATH = 'invalidVariation'
+	public static val MDEO_PREFIX = "uk.ac.kcl.mdeoptimiser.";
+	public static val MDEO_LIB_NOT_ON_CLASSPATH = MDEO_PREFIX + 'mdeo_lib_not_on_classpath'
 //
 //	@Check
 //	def checkGreetingStartsWithCapital(Greeting greeting) {
@@ -26,18 +27,15 @@ class MDEOptimiseValidator extends AbstractMDEOptimiseValidator {
 //		}
 //	}
 	
-	  @Check(CheckType.NORMAL)
-	  def void checkClasspath(XtextResource moptFile)
+	  @Check
+	  def void checkClasspath(Optimisation moptFile)
 	  {
 	  	val typeReferences = getServices().getTypeReferences();
 	  	
-	  	val res = moptFile.resourceSet.resources.head.URI
-	  	if( res instanceof Optimisation) {
 		  	if(typeReferences.findDeclaredType(Optimisation, moptFile) == null){
-				error("Mandatory library bundle 'uk.ac.kcl.mdeoptimise' not found on the classpath.", 
-					res, null, MDEOptimiseValidatorIssues.MDEO_LIB_NOT_ON_CLASSPATH);
+				error("Couldn't find the mandatory library 'uk.ac.kcl.mdeoptimise' on the classpath.", 
+					moptFile, null, MDEOptimiseValidatorIssues.MDEO_LIB_NOT_ON_CLASSPATH);
 		  	}
-		}
 	  }
 	
 	

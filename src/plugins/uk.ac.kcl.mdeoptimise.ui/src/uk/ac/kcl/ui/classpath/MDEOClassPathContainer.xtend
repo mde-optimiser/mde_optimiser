@@ -29,6 +29,6 @@ class MDEOClassPathContainer implements IClasspathContainer {
 	}
 	
 	override getPath() { 
-		new Path("MDEOptimiser/basic")
+		MDEOClassPathContainerInitializer.MDEO_LIBRARY_PATH
 	}
 }

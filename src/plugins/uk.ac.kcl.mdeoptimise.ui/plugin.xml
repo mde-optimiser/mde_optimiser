@@ -434,12 +434,12 @@
 		</launchConfigurationTabGroup>
 	</extension>
 	<extension point="org.eclipse.jdt.core.classpathContainerInitializer">
-		<classpathContainerInitializer id="MDEOptimiser" class="uk.ac.kcl.ui.classpath.MDEOClassPathContainerInitializer" />
+		<classpathContainerInitializer id="uk.ac.kcl.mde_optimise.MDEO_CONTAINER" class="uk.ac.kcl.ui.classpath.MDEOClassPathContainerInitializer" />
 	</extension>
 	<extension point="org.eclipse.jdt.ui.classpathContainerPage">
 		<classpathContainerPage
 			id="uk.ac.kcl.mdeoptimise.ui"
-			name="MDEOptimiser System Library"
+			name="MDEOptimiser Core Library"
 			class="uk.ac.kcl.ui.classpath.MDEOptimiserClassPathContainerPage"/>
 	</extension>
 	<!--Removed the shortcuts to launch the app for now. -->
