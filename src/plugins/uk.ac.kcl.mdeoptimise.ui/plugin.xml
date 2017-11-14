@@ -439,8 +439,8 @@
 	<extension point="org.eclipse.jdt.ui.classpathContainerPage">
 		<classpathContainerPage
 			id="uk.ac.kcl.mdeoptimise.ui"
-			name="MDEOptimiser Core Library"
-			class="uk.ac.kcl.ui.classpath.MDEOptimiserClassPathContainerPage"/>
+			name="MDEOptimiser DSL Library"
+			class="uk.ac.kcl.ui.classpath.MDEOptimiserClasspathContainerPage"/>
 	</extension>
 	<!--Removed the shortcuts to launch the app for now. -->
 	<!--<extension point="org.eclipse.debug.ui.launchShortcuts">
