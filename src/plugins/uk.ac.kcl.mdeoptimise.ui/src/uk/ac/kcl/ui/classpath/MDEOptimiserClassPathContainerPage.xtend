@@ -1,6 +1,7 @@
 package uk.ac.kcl.ui.classpath
 
 import org.eclipse.jdt.core.IClasspathEntry
+import org.eclipse.jdt.core.JavaCore
 import org.eclipse.jdt.ui.wizards.IClasspathContainerPage
 import org.eclipse.jface.resource.ImageDescriptor
 import org.eclipse.jface.wizard.IWizard
@@ -8,22 +9,20 @@ import org.eclipse.jface.wizard.IWizardPage
 import org.eclipse.swt.SWT
 import org.eclipse.swt.widgets.Composite
 import org.eclipse.swt.widgets.Label
-import org.eclipse.jdt.core.JavaCore
-import org.eclipse.core.runtime.Path
 
 class MDEOptimiserClassPathContainerPage implements IClasspathContainerPage {
 	
 	override finish() { true }
 	
 	override getSelection() {
-		JavaCore.newContainerEntry(new Path("MDEOptimiser/default"));
+		JavaCore.newContainerEntry(MDEOClassPathContainerInitializer.MDEO_LIBRARY_PATH);
 	}
 	
 	override setSelection(IClasspathEntry selection) { }
 	
 	override canFlipToNextPage() { false }
 	
-	override getName() '''MDEOptimiser System Library'''
+	override getName() '''MDEOptimiser Core Library'''
 	
 	override getNextPage() { null }
 
@@ -58,7 +57,7 @@ class MDEOptimiserClassPathContainerPage implements IClasspathContainerPage {
 		control.dispose
 	}
 	
-	override getDescription() '''Information about the MDEOptimiser System Library'''
+	override getDescription() '''Information about the MDEOptimiser Core Library'''
 	
 	override getErrorMessage() { null }
 	
@@ -66,7 +65,7 @@ class MDEOptimiserClassPathContainerPage implements IClasspathContainerPage {
 	
 	override getMessage() { null }
 	
-	override getTitle() '''MDEOptimiser System Library'''
+	override getTitle() '''MDEOptimiser Core Library'''
 	
 	override performHelp() {}
 	
