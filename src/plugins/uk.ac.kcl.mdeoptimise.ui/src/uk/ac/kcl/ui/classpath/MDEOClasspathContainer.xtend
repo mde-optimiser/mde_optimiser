@@ -21,7 +21,7 @@ class MDEOClasspathContainer implements IClasspathContainer {
 		 }
 	}
 	
-	override getDescription() '''Core MDEOptimiser Libraries'''
+	override getDescription() '''MDEO DSL Libraries'''
 		
 	
 	override getKind() {

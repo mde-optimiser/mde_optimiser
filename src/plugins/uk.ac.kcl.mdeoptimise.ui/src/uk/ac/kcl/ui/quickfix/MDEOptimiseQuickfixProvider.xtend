@@ -18,6 +18,7 @@ import org.eclipse.core.runtime.NullProgressMonitor
 import org.eclipse.jdt.core.IClasspathEntry
 import java.util.LinkedList
 import uk.ac.kcl.ui.classpath.MDEOClasspathContainerInitializer
+import uk.ac.kcl.ui.classpath.MDEOClasspathContainer
 
 /**
  * Custom quickfixes.
@@ -32,18 +33,18 @@ class MDEOptimiseQuickfixProvider extends DefaultQuickfixProvider {
 	@Fix(MDEOptimiseValidatorIssues.MDEO_LIB_NOT_ON_CLASSPATH)
 	def putMDEOOnClasspath(Issue issue, IssueResolutionAcceptor acceptor) {
 		
-		acceptor.accept(issue, "MDEOptimiser DSL Library to classpath", 
-				"Click to automatically add the MDEOptimiser DSL Library container to the classpath.", "", new ISemanticModification() {
+		acceptor.accept(issue, "MDEOptimiser DSL Libraries to classpath", 
+				"Click to automatically add the MDEOptimiser DSL Libraries container to the classpath.", "", new ISemanticModification() {
 			
 			override apply(EObject element, IModificationContext context) throws Exception {
-				
-				var mdeoContainerEntry = JavaCore.newContainerEntry(MDEOClasspathContainerInitializer.MDEO_LIBRARY_PATH);
+				val mdeoContainer = new MDEOClasspathContainer();
+				var mdeoContainerEntry = JavaCore.newContainerEntry(mdeoContainer.path);
 				val resourceSet = element.eResource().getResourceSet();
 				val javaProject = projectProvider.getJavaProject(resourceSet);
 				val projectClasspath = javaProject.getRawClasspath();
 				val newProjectClasspath = new LinkedList<IClasspathEntry>(projectClasspath);
 				
-				if(newProjectClasspath.filter[classpath | classpath.path.equals(MDEOClasspathContainerInitializer.MDEO_LIBRARY_PATH)].empty) {
+				if(newProjectClasspath.filter[classpath | classpath.path.equals(mdeoContainer.path)].empty) {
 					newProjectClasspath.add(mdeoContainerEntry);
 					javaProject.setRawClasspath(newProjectClasspath, new NullProgressMonitor())
 				}
