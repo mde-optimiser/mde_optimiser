@@ -11,7 +11,7 @@ import static org.eclipse.core.runtime.Platform.*
  * MDEOptimiser classpath container.
  * 
  */
-class MDEOClassPathContainer implements IClasspathContainer {
+class MDEOClasspathContainer implements IClasspathContainer {
 	
 	override getClasspathEntries() {
 		#{
@@ -29,6 +29,6 @@ class MDEOClassPathContainer implements IClasspathContainer {
 	}
 	
 	override getPath() { 
-		MDEOClassPathContainerInitializer.MDEO_LIBRARY_PATH
+		MDEOClasspathContainerInitializer.MDEO_LIBRARY_PATH.append("/dsl")
 	}
 }

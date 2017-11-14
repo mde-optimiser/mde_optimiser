@@ -10,19 +10,19 @@ import org.eclipse.swt.SWT
 import org.eclipse.swt.widgets.Composite
 import org.eclipse.swt.widgets.Label
 
-class MDEOptimiserClassPathContainerPage implements IClasspathContainerPage {
+class MDEOClasspathContainerPage implements IClasspathContainerPage {
 	
 	override finish() { true }
 	
 	override getSelection() {
-		JavaCore.newContainerEntry(MDEOClassPathContainerInitializer.MDEO_LIBRARY_PATH);
+		JavaCore.newContainerEntry(MDEOClasspathContainerInitializer.MDEO_LIBRARY_PATH);
 	}
 	
 	override setSelection(IClasspathEntry selection) { }
 	
 	override canFlipToNextPage() { false }
 	
-	override getName() '''MDEOptimiser Core Library'''
+	override getName() '''MDEOptimiser DSL Library'''
 	
 	override getNextPage() { null }
 
@@ -48,7 +48,7 @@ class MDEOptimiserClassPathContainerPage implements IClasspathContainerPage {
 	
 	override createControl(Composite comp) {
 		control = new Label(comp, SWT.WRAP)
-		control.setText("The Standard MDEOptimiser System Library adds jars required for running searches with custom fitness functions.")
+		control.setText("The standard MDEOptimiser DSL Library adds jars required for running searches with custom fitness functions in the DSL.")
 	}
 	
 	override getControl() { control }
@@ -57,7 +57,7 @@ class MDEOptimiserClassPathContainerPage implements IClasspathContainerPage {
 		control.dispose
 	}
 	
-	override getDescription() '''Information about the MDEOptimiser Core Library'''
+	override getDescription() '''Information about the MDEOptimiser DSL Library'''
 	
 	override getErrorMessage() { null }
 	
@@ -65,7 +65,7 @@ class MDEOptimiserClassPathContainerPage implements IClasspathContainerPage {
 	
 	override getMessage() { null }
 	
-	override getTitle() '''MDEOptimiser Core Library'''
+	override getTitle() '''MDEOptimiser DSL Library'''
 	
 	override performHelp() {}
 	
