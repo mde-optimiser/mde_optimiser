@@ -68,13 +68,30 @@ enum EvolverType:
 OptimisationSpec:
 	"optimisation" "provider" algorithmFactory=ALGORITHM_FACTORY
 				"algorithm" algorithmName=ALGORITHM_NAME
-				"variation" algorithmVariation=ALGORITHM_VARIATION
+				"variation" algorithmVariation=AlgorithmVariation
 				"evolutions" algorithmEvolutions=INT
 				"population" algorithmPopulation=INT
+				"experiments" algorithmExperiments=INT
 ;
 
-terminal ALGORITHM_VARIATION returns ecore::EString:
-	('genetic' | 'crossover' | 'mutation')
+AlgorithmVariation:
+	(probabilityVariation=ProbabilityVariation | simpleVariation=(MUTATION_VARIATION | CROSSOVER_VARIATION))
+;
+
+ProbabilityVariation:
+	 type=GENETIC_VARIATION ('(' crossover_rate=Number ',' mutation_rate=Number ')')?
+;
+
+terminal GENETIC_VARIATION returns ecore::EString:
+	'genetic'
+;
+
+terminal CROSSOVER_VARIATION returns ecore::EString:
+	'crossover'
+;
+
+terminal MUTATION_VARIATION returns ecore::EString:
+	'mutation'
 ;
 
 terminal ALGORITHM_FACTORY returns ecore::EString:

@@ -114,6 +114,24 @@ public interface MdeoptimiseFactory extends EFactory
   OptimisationSpec createOptimisationSpec();
 
   /**
+   * Returns a new object of class '<em>Algorithm Variation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Algorithm Variation</em>'.
+   * @generated
+   */
+  AlgorithmVariation createAlgorithmVariation();
+
+  /**
+   * Returns a new object of class '<em>Probability Variation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Probability Variation</em>'.
+   * @generated
+   */
+  ProbabilityVariation createProbabilityVariation();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

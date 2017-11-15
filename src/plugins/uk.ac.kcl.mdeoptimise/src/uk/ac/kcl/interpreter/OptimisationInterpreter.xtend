@@ -12,6 +12,8 @@ import uk.ac.kcl.optimisation.UserModelProvider
 import java.util.LinkedList
 import org.eclipse.core.runtime.IPath
 import org.eclipse.core.runtime.Path
+import java.util.Iterator
+import uk.ac.kcl.optimisation.moea.MoeaOptimisationSolution
 
 class OptimisationInterpreter {
 	
@@ -30,9 +32,9 @@ class OptimisationInterpreter {
 		this.projectRootPath = new Path(projectPath);
 	}
 	
-	def void start() {
+	def Iterator<MoeaOptimisationSolution> start() {
 		
-		// This model provider loads the model given by the user in the DSL
+		//This model provider loads the model given by the user in the DSL
 		val userModelProvider = new UserModelProvider(getResourceSet(projectRootPath.append(model.basepath.location).toPortableString), model.model.location)
 		var solutionGenerator = new SolutionGenerator(model, 
 											getBreedingOperators, 
@@ -40,11 +42,8 @@ class OptimisationInterpreter {
 											userModelProvider, 
 											getMetamodel);
 
-		var optimisation = new MoeaOptimisation()
-									.execute(model.optimisation, solutionGenerator)		
-		
-		optimisation
-				.forEach[result | userModelProvider.storeModelAndInfo(result, projectRootPath.toPortableString, model)]	
+		return new MoeaOptimisation()
+									.execute(model.optimisation, solutionGenerator)
 	}
 
 	def getResourceSet(String basePath) {

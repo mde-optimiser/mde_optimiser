@@ -70,7 +70,6 @@ class MoeaOptimisationTests {
     
     //Some tests to run optimisation manually for now
 	@Test
-	@Ignore
 	def void runMoeaOptimisationNSGA2() {
 		
 			val pathPrefix = "gen/models/ttc/" + new SimpleDateFormat("yyMMdd-HHmmss").format(new Date())
@@ -87,7 +86,7 @@ class MoeaOptimisationTests {
 				mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
 				breed using <exDependencies.henshin> unit "exchangeMultipleDependencies" 
 					parameters { number3 => Random("[0-9]{0,2}"), number => "models.moea.RandomEvolverParameter" }
-				optimisation provider moea algorithm NSGAII variation genetic evolutions 15000 population 30
+				optimisation provider moea algorithm NSGAII variation genetic(0.2,1) evolutions 500 population 30
 			''')
 
 			//Assert that there are no grammar issues
@@ -95,7 +94,7 @@ class MoeaOptimisationTests {
 
 			model.evolvers.get(0).parameters
 
-			val oclModelProvider = new UserModelProvider(getResourceSet(), "TTC_InputRDG_C.xmi")
+			val oclModelProvider = new UserModelProvider(getResourceSet(), "TTC_InputRDG_D.xmi")
 			
 			val optimisationInterpreter = new OptimisationInterpreter("", model)
 			
