@@ -5030,7 +5030,6 @@ rule__OptimisationSpec__Group__11
 	}
 :
 	rule__OptimisationSpec__Group__11__Impl
-	rule__OptimisationSpec__Group__12
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -5042,35 +5041,63 @@ rule__OptimisationSpec__Group__11__Impl
 	}
 :
 (
-	{ before(grammarAccess.getOptimisationSpecAccess().getExperimentsKeyword_11()); }
-	'experiments'
-	{ after(grammarAccess.getOptimisationSpecAccess().getExperimentsKeyword_11()); }
+	{ before(grammarAccess.getOptimisationSpecAccess().getGroup_11()); }
+	(rule__OptimisationSpec__Group_11__0)?
+	{ after(grammarAccess.getOptimisationSpecAccess().getGroup_11()); }
 )
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__OptimisationSpec__Group__12
+
+rule__OptimisationSpec__Group_11__0
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__OptimisationSpec__Group__12__Impl
+	rule__OptimisationSpec__Group_11__0__Impl
+	rule__OptimisationSpec__Group_11__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__OptimisationSpec__Group__12__Impl
+rule__OptimisationSpec__Group_11__0__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getOptimisationSpecAccess().getAlgorithmExperimentsAssignment_12()); }
-	(rule__OptimisationSpec__AlgorithmExperimentsAssignment_12)
-	{ after(grammarAccess.getOptimisationSpecAccess().getAlgorithmExperimentsAssignment_12()); }
+	{ before(grammarAccess.getOptimisationSpecAccess().getExperimentsKeyword_11_0()); }
+	'experiments'
+	{ after(grammarAccess.getOptimisationSpecAccess().getExperimentsKeyword_11_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__OptimisationSpec__Group_11__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__OptimisationSpec__Group_11__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__OptimisationSpec__Group_11__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getOptimisationSpecAccess().getAlgorithmExperimentsAssignment_11_1()); }
+	(rule__OptimisationSpec__AlgorithmExperimentsAssignment_11_1)
+	{ after(grammarAccess.getOptimisationSpecAccess().getAlgorithmExperimentsAssignment_11_1()); }
 )
 ;
 finally {
@@ -17391,15 +17418,15 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__OptimisationSpec__AlgorithmExperimentsAssignment_12
+rule__OptimisationSpec__AlgorithmExperimentsAssignment_11_1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getOptimisationSpecAccess().getAlgorithmExperimentsINTTerminalRuleCall_12_0()); }
+		{ before(grammarAccess.getOptimisationSpecAccess().getAlgorithmExperimentsINTTerminalRuleCall_11_1_0()); }
 		RULE_INT
-		{ after(grammarAccess.getOptimisationSpecAccess().getAlgorithmExperimentsINTTerminalRuleCall_12_0()); }
+		{ after(grammarAccess.getOptimisationSpecAccess().getAlgorithmExperimentsINTTerminalRuleCall_11_1_0()); }
 	)
 ;
 finally {

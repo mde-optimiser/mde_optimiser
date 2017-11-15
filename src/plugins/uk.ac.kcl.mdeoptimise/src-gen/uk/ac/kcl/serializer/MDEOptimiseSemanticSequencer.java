@@ -520,32 +520,11 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 	 *         algorithmVariation=AlgorithmVariation 
 	 *         algorithmEvolutions=INT 
 	 *         algorithmPopulation=INT 
-	 *         algorithmExperiments=INT
+	 *         algorithmExperiments=INT?
 	 *     )
 	 */
 	protected void sequence_OptimisationSpec(ISerializationContext context, OptimisationSpec semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION_SPEC__ALGORITHM_FACTORY) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION_SPEC__ALGORITHM_FACTORY));
-			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION_SPEC__ALGORITHM_NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION_SPEC__ALGORITHM_NAME));
-			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION_SPEC__ALGORITHM_VARIATION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION_SPEC__ALGORITHM_VARIATION));
-			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION_SPEC__ALGORITHM_EVOLUTIONS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION_SPEC__ALGORITHM_EVOLUTIONS));
-			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION_SPEC__ALGORITHM_POPULATION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION_SPEC__ALGORITHM_POPULATION));
-			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION_SPEC__ALGORITHM_EXPERIMENTS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION_SPEC__ALGORITHM_EXPERIMENTS));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getOptimisationSpecAccess().getAlgorithmFactoryALGORITHM_FACTORYTerminalRuleCall_2_0(), semanticObject.getAlgorithmFactory());
-		feeder.accept(grammarAccess.getOptimisationSpecAccess().getAlgorithmNameALGORITHM_NAMETerminalRuleCall_4_0(), semanticObject.getAlgorithmName());
-		feeder.accept(grammarAccess.getOptimisationSpecAccess().getAlgorithmVariationAlgorithmVariationParserRuleCall_6_0(), semanticObject.getAlgorithmVariation());
-		feeder.accept(grammarAccess.getOptimisationSpecAccess().getAlgorithmEvolutionsINTTerminalRuleCall_8_0(), semanticObject.getAlgorithmEvolutions());
-		feeder.accept(grammarAccess.getOptimisationSpecAccess().getAlgorithmPopulationINTTerminalRuleCall_10_0(), semanticObject.getAlgorithmPopulation());
-		feeder.accept(grammarAccess.getOptimisationSpecAccess().getAlgorithmExperimentsINTTerminalRuleCall_12_0(), semanticObject.getAlgorithmExperiments());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
