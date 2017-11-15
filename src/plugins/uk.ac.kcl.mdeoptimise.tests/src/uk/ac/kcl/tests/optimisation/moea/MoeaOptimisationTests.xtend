@@ -70,6 +70,7 @@ class MoeaOptimisationTests {
     
     //Some tests to run optimisation manually for now
 	@Test
+	@Ignore
 	def void runMoeaOptimisationNSGA2() {
 		
 			val pathPrefix = "gen/models/ttc/" + new SimpleDateFormat("yyMMdd-HHmmss").format(new Date())
@@ -107,9 +108,6 @@ class MoeaOptimisationTests {
 
 			var optimisation = new MoeaOptimisation()
 									.execute(model.optimisation, solutionGenerator)
-			
-			optimisation
-				.forEach[m | oclModelProvider.storeModelAndInfo(m, "/home/alxbrd/projects/alxbrd/github/mde_optimiser/src/plugins/uk.ac.kcl.mdeoptimise.tests/" + pathPrefix + "/final", model)]
 	}
 
 }
