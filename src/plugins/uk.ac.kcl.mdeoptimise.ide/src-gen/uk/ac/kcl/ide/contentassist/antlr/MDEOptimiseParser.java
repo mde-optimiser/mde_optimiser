@@ -36,6 +36,8 @@ public class MDEOptimiseParser extends AbstractContentAssistParser {
 				private static final long serialVersionUID = 1L;
 				{
 					put(grammarAccess.getEvolverParameterAccess().getAlternatives_1_1(), "rule__EvolverParameter__Alternatives_1_1");
+					put(grammarAccess.getAlgorithmVariationAccess().getAlternatives(), "rule__AlgorithmVariation__Alternatives");
+					put(grammarAccess.getAlgorithmVariationAccess().getSimpleVariationAlternatives_1_0(), "rule__AlgorithmVariation__SimpleVariationAlternatives_1_0");
 					put(grammarAccess.getXAssignmentAccess().getAlternatives(), "rule__XAssignment__Alternatives");
 					put(grammarAccess.getOpMultiAssignAccess().getAlternatives(), "rule__OpMultiAssign__Alternatives");
 					put(grammarAccess.getOpEqualityAccess().getAlternatives(), "rule__OpEquality__Alternatives");
@@ -90,6 +92,8 @@ public class MDEOptimiseParser extends AbstractContentAssistParser {
 					put(grammarAccess.getParameterFunctionAccess().getGroup(), "rule__ParameterFunction__Group__0");
 					put(grammarAccess.getParameterFunctionAccess().getGroup_1(), "rule__ParameterFunction__Group_1__0");
 					put(grammarAccess.getOptimisationSpecAccess().getGroup(), "rule__OptimisationSpec__Group__0");
+					put(grammarAccess.getProbabilityVariationAccess().getGroup(), "rule__ProbabilityVariation__Group__0");
+					put(grammarAccess.getProbabilityVariationAccess().getGroup_1(), "rule__ProbabilityVariation__Group_1__0");
 					put(grammarAccess.getXAssignmentAccess().getGroup_0(), "rule__XAssignment__Group_0__0");
 					put(grammarAccess.getXAssignmentAccess().getGroup_1(), "rule__XAssignment__Group_1__0");
 					put(grammarAccess.getXAssignmentAccess().getGroup_1_1(), "rule__XAssignment__Group_1_1__0");
@@ -301,6 +305,12 @@ public class MDEOptimiseParser extends AbstractContentAssistParser {
 					put(grammarAccess.getOptimisationSpecAccess().getAlgorithmVariationAssignment_6(), "rule__OptimisationSpec__AlgorithmVariationAssignment_6");
 					put(grammarAccess.getOptimisationSpecAccess().getAlgorithmEvolutionsAssignment_8(), "rule__OptimisationSpec__AlgorithmEvolutionsAssignment_8");
 					put(grammarAccess.getOptimisationSpecAccess().getAlgorithmPopulationAssignment_10(), "rule__OptimisationSpec__AlgorithmPopulationAssignment_10");
+					put(grammarAccess.getOptimisationSpecAccess().getAlgorithmExperimentsAssignment_12(), "rule__OptimisationSpec__AlgorithmExperimentsAssignment_12");
+					put(grammarAccess.getAlgorithmVariationAccess().getProbabilityVariationAssignment_0(), "rule__AlgorithmVariation__ProbabilityVariationAssignment_0");
+					put(grammarAccess.getAlgorithmVariationAccess().getSimpleVariationAssignment_1(), "rule__AlgorithmVariation__SimpleVariationAssignment_1");
+					put(grammarAccess.getProbabilityVariationAccess().getTypeAssignment_0(), "rule__ProbabilityVariation__TypeAssignment_0");
+					put(grammarAccess.getProbabilityVariationAccess().getCrossover_rateAssignment_1_1(), "rule__ProbabilityVariation__Crossover_rateAssignment_1_1");
+					put(grammarAccess.getProbabilityVariationAccess().getMutation_rateAssignment_1_3(), "rule__ProbabilityVariation__Mutation_rateAssignment_1_3");
 					put(grammarAccess.getXAssignmentAccess().getFeatureAssignment_0_1(), "rule__XAssignment__FeatureAssignment_0_1");
 					put(grammarAccess.getXAssignmentAccess().getValueAssignment_0_3(), "rule__XAssignment__ValueAssignment_0_3");
 					put(grammarAccess.getXAssignmentAccess().getFeatureAssignment_1_1_0_0_1(), "rule__XAssignment__FeatureAssignment_1_1_0_0_1");

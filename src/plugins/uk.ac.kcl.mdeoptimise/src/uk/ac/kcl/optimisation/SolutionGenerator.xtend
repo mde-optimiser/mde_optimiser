@@ -90,7 +90,8 @@ class SolutionGenerator {
 		val graph = new EGraphImpl(crossoverParents)
 		val triedOperators = new ArrayList<Unit>()
 		
-		// Randomly pick one unit
+		// Randomly pick one unit 
+		//TODO Cache random
 		var operator = breedingOperators.get(new Random().nextInt(breedingOperators.size()))
 
 		while(triedOperators.length < breedingOperators.length) {

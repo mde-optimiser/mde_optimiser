@@ -76,6 +76,8 @@ public class MdeoptimiseFactoryImpl extends EFactoryImpl implements MdeoptimiseF
       case MdeoptimisePackage.EVOLVER_PARAMETER: return createEvolverParameter();
       case MdeoptimisePackage.PARAMETER_FUNCTION: return createParameterFunction();
       case MdeoptimisePackage.OPTIMISATION_SPEC: return createOptimisationSpec();
+      case MdeoptimisePackage.ALGORITHM_VARIATION: return createAlgorithmVariation();
+      case MdeoptimisePackage.PROBABILITY_VARIATION: return createProbabilityVariation();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -223,6 +225,28 @@ public class MdeoptimiseFactoryImpl extends EFactoryImpl implements MdeoptimiseF
   {
     OptimisationSpecImpl optimisationSpec = new OptimisationSpecImpl();
     return optimisationSpec;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AlgorithmVariation createAlgorithmVariation()
+  {
+    AlgorithmVariationImpl algorithmVariation = new AlgorithmVariationImpl();
+    return algorithmVariation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ProbabilityVariation createProbabilityVariation()
+  {
+    ProbabilityVariationImpl probabilityVariation = new ProbabilityVariationImpl();
+    return probabilityVariation;
   }
 
   /**
