@@ -58,6 +58,7 @@ class RunOptimisation {
 				val mdeoResultsOutput = new MDEOResultsOutput(new Date(), moptProjectPath, optimisationModel);	
 				
 				if(optimisationModel !== null){
+					
 	            	for(var i = 0; i < optimisationModel.optimisation.algorithmExperiments; i++){
 	            		
 	            		val startTime = System.nanoTime;

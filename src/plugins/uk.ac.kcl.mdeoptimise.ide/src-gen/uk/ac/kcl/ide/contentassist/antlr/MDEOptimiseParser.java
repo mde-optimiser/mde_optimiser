@@ -92,6 +92,7 @@ public class MDEOptimiseParser extends AbstractContentAssistParser {
 					put(grammarAccess.getParameterFunctionAccess().getGroup(), "rule__ParameterFunction__Group__0");
 					put(grammarAccess.getParameterFunctionAccess().getGroup_1(), "rule__ParameterFunction__Group_1__0");
 					put(grammarAccess.getOptimisationSpecAccess().getGroup(), "rule__OptimisationSpec__Group__0");
+					put(grammarAccess.getOptimisationSpecAccess().getGroup_11(), "rule__OptimisationSpec__Group_11__0");
 					put(grammarAccess.getProbabilityVariationAccess().getGroup(), "rule__ProbabilityVariation__Group__0");
 					put(grammarAccess.getProbabilityVariationAccess().getGroup_1(), "rule__ProbabilityVariation__Group_1__0");
 					put(grammarAccess.getXAssignmentAccess().getGroup_0(), "rule__XAssignment__Group_0__0");
@@ -305,7 +306,7 @@ public class MDEOptimiseParser extends AbstractContentAssistParser {
 					put(grammarAccess.getOptimisationSpecAccess().getAlgorithmVariationAssignment_6(), "rule__OptimisationSpec__AlgorithmVariationAssignment_6");
 					put(grammarAccess.getOptimisationSpecAccess().getAlgorithmEvolutionsAssignment_8(), "rule__OptimisationSpec__AlgorithmEvolutionsAssignment_8");
 					put(grammarAccess.getOptimisationSpecAccess().getAlgorithmPopulationAssignment_10(), "rule__OptimisationSpec__AlgorithmPopulationAssignment_10");
-					put(grammarAccess.getOptimisationSpecAccess().getAlgorithmExperimentsAssignment_12(), "rule__OptimisationSpec__AlgorithmExperimentsAssignment_12");
+					put(grammarAccess.getOptimisationSpecAccess().getAlgorithmExperimentsAssignment_11_1(), "rule__OptimisationSpec__AlgorithmExperimentsAssignment_11_1");
 					put(grammarAccess.getAlgorithmVariationAccess().getProbabilityVariationAssignment_0(), "rule__AlgorithmVariation__ProbabilityVariationAssignment_0");
 					put(grammarAccess.getAlgorithmVariationAccess().getSimpleVariationAssignment_1(), "rule__AlgorithmVariation__SimpleVariationAssignment_1");
 					put(grammarAccess.getProbabilityVariationAccess().getTypeAssignment_0(), "rule__ProbabilityVariation__TypeAssignment_0");

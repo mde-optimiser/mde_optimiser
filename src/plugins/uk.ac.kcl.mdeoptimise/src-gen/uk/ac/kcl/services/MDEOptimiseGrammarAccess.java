@@ -475,22 +475,22 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cPopulationKeyword_9 = (Keyword)cGroup.eContents().get(9);
 		private final Assignment cAlgorithmPopulationAssignment_10 = (Assignment)cGroup.eContents().get(10);
 		private final RuleCall cAlgorithmPopulationINTTerminalRuleCall_10_0 = (RuleCall)cAlgorithmPopulationAssignment_10.eContents().get(0);
-		private final Keyword cExperimentsKeyword_11 = (Keyword)cGroup.eContents().get(11);
-		private final Assignment cAlgorithmExperimentsAssignment_12 = (Assignment)cGroup.eContents().get(12);
-		private final RuleCall cAlgorithmExperimentsINTTerminalRuleCall_12_0 = (RuleCall)cAlgorithmExperimentsAssignment_12.eContents().get(0);
+		private final Group cGroup_11 = (Group)cGroup.eContents().get(11);
+		private final Keyword cExperimentsKeyword_11_0 = (Keyword)cGroup_11.eContents().get(0);
+		private final Assignment cAlgorithmExperimentsAssignment_11_1 = (Assignment)cGroup_11.eContents().get(1);
+		private final RuleCall cAlgorithmExperimentsINTTerminalRuleCall_11_1_0 = (RuleCall)cAlgorithmExperimentsAssignment_11_1.eContents().get(0);
 		
 		//OptimisationSpec:
 		//	"optimisation" "provider" algorithmFactory=ALGORITHM_FACTORY
 		//	"algorithm" algorithmName=ALGORITHM_NAME
 		//	"variation" algorithmVariation=AlgorithmVariation
 		//	"evolutions" algorithmEvolutions=INT
-		//	"population" algorithmPopulation=INT
-		//	"experiments" algorithmExperiments=INT;
+		//	"population" algorithmPopulation=INT ("experiments" algorithmExperiments=INT)?;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//"optimisation" "provider" algorithmFactory=ALGORITHM_FACTORY "algorithm" algorithmName=ALGORITHM_NAME "variation"
 		//algorithmVariation=AlgorithmVariation "evolutions" algorithmEvolutions=INT "population" algorithmPopulation=INT
-		//"experiments" algorithmExperiments=INT
+		//("experiments" algorithmExperiments=INT)?
 		public Group getGroup() { return cGroup; }
 		
 		//"optimisation"
@@ -541,14 +541,17 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		//INT
 		public RuleCall getAlgorithmPopulationINTTerminalRuleCall_10_0() { return cAlgorithmPopulationINTTerminalRuleCall_10_0; }
 		
+		//("experiments" algorithmExperiments=INT)?
+		public Group getGroup_11() { return cGroup_11; }
+		
 		//"experiments"
-		public Keyword getExperimentsKeyword_11() { return cExperimentsKeyword_11; }
+		public Keyword getExperimentsKeyword_11_0() { return cExperimentsKeyword_11_0; }
 		
 		//algorithmExperiments=INT
-		public Assignment getAlgorithmExperimentsAssignment_12() { return cAlgorithmExperimentsAssignment_12; }
+		public Assignment getAlgorithmExperimentsAssignment_11_1() { return cAlgorithmExperimentsAssignment_11_1; }
 		
 		//INT
-		public RuleCall getAlgorithmExperimentsINTTerminalRuleCall_12_0() { return cAlgorithmExperimentsINTTerminalRuleCall_12_0; }
+		public RuleCall getAlgorithmExperimentsINTTerminalRuleCall_11_1_0() { return cAlgorithmExperimentsINTTerminalRuleCall_11_1_0; }
 	}
 	public class AlgorithmVariationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.AlgorithmVariation");
@@ -879,8 +882,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	//	"algorithm" algorithmName=ALGORITHM_NAME
 	//	"variation" algorithmVariation=AlgorithmVariation
 	//	"evolutions" algorithmEvolutions=INT
-	//	"population" algorithmPopulation=INT
-	//	"experiments" algorithmExperiments=INT;
+	//	"population" algorithmPopulation=INT ("experiments" algorithmExperiments=INT)?;
 	public OptimisationSpecElements getOptimisationSpecAccess() {
 		return pOptimisationSpec;
 	}

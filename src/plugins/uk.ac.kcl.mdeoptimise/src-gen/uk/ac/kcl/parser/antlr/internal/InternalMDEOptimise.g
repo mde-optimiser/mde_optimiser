@@ -947,28 +947,30 @@ ruleOptimisationSpec returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_11='experiments'
-		{
-			newLeafNode(otherlv_11, grammarAccess.getOptimisationSpecAccess().getExperimentsKeyword_11());
-		}
 		(
+			otherlv_11='experiments'
+			{
+				newLeafNode(otherlv_11, grammarAccess.getOptimisationSpecAccess().getExperimentsKeyword_11_0());
+			}
 			(
-				lv_algorithmExperiments_12_0=RULE_INT
-				{
-					newLeafNode(lv_algorithmExperiments_12_0, grammarAccess.getOptimisationSpecAccess().getAlgorithmExperimentsINTTerminalRuleCall_12_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getOptimisationSpecRule());
+				(
+					lv_algorithmExperiments_12_0=RULE_INT
+					{
+						newLeafNode(lv_algorithmExperiments_12_0, grammarAccess.getOptimisationSpecAccess().getAlgorithmExperimentsINTTerminalRuleCall_11_1_0());
 					}
-					setWithLastConsumed(
-						$current,
-						"algorithmExperiments",
-						lv_algorithmExperiments_12_0,
-						"org.eclipse.xtext.xbase.Xbase.INT");
-				}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getOptimisationSpecRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"algorithmExperiments",
+							lv_algorithmExperiments_12_0,
+							"org.eclipse.xtext.xbase.Xbase.INT");
+					}
+				)
 			)
-		)
+		)?
 	)
 ;
 
