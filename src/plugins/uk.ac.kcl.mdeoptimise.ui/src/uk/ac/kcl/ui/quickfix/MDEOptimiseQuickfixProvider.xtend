@@ -3,7 +3,22 @@
  */
 package uk.ac.kcl.ui.quickfix
 
+import javax.inject.Inject
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.common.types.access.jdt.IJavaProjectProvider
+import org.eclipse.xtext.ui.editor.model.edit.IModificationContext
+import org.eclipse.xtext.ui.editor.model.edit.ISemanticModification
 import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider
+import org.eclipse.xtext.ui.editor.quickfix.Fix
+import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor
+import org.eclipse.xtext.validation.Issue
+import uk.ac.kcl.validation.MDEOptimiseValidatorIssues
+import org.eclipse.jdt.core.JavaCore
+import org.eclipse.core.runtime.NullProgressMonitor
+import org.eclipse.jdt.core.IClasspathEntry
+import java.util.LinkedList
+import uk.ac.kcl.ui.classpath.MDEOClasspathContainerInitializer
+import uk.ac.kcl.ui.classpath.MDEOClasspathContainer
 
 /**
  * Custom quickfixes.
@@ -12,13 +27,29 @@ import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider
  */
 class MDEOptimiseQuickfixProvider extends DefaultQuickfixProvider {
 
-//	@Fix(MDEOptimiseValidator.INVALID_NAME)
-//	def capitalizeName(Issue issue, IssueResolutionAcceptor acceptor) {
-//		acceptor.accept(issue, 'Capitalize name', 'Capitalize the name.', 'upcase.png') [
-//			context |
-//			val xtextDocument = context.xtextDocument
-//			val firstLetter = xtextDocument.get(issue.offset, 1)
-//			xtextDocument.replace(issue.offset, 1, firstLetter.toUpperCase)
-//		]
-//	}
+	@Inject
+	private IJavaProjectProvider projectProvider;
+	
+	@Fix(MDEOptimiseValidatorIssues.MDEO_LIB_NOT_ON_CLASSPATH)
+	def putMDEOOnClasspath(Issue issue, IssueResolutionAcceptor acceptor) {
+		
+		acceptor.accept(issue, "Add MDEOptimiser DSL Libraries to classpath", 
+				"Click to automatically add the MDEOptimiser DSL Libraries container to the classpath.", "", new ISemanticModification() {
+			
+			override apply(EObject element, IModificationContext context) throws Exception {
+				val mdeoContainer = new MDEOClasspathContainer();
+				var mdeoContainerEntry = JavaCore.newContainerEntry(mdeoContainer.path);
+				val resourceSet = element.eResource().getResourceSet();
+				val javaProject = projectProvider.getJavaProject(resourceSet);
+				val projectClasspath = javaProject.getRawClasspath();
+				val newProjectClasspath = new LinkedList<IClasspathEntry>(projectClasspath);
+				
+				if(newProjectClasspath.filter[classpath | classpath.path.equals(mdeoContainer.path)].empty) {
+					newProjectClasspath.add(mdeoContainerEntry);
+					javaProject.setRawClasspath(newProjectClasspath, new NullProgressMonitor())
+				}
+				
+			}
+		});
+	}
 }
