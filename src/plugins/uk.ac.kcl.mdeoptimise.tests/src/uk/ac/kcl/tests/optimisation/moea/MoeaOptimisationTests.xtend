@@ -73,6 +73,7 @@ class MoeaOptimisationTests {
     
     //Some tests to run optimisation manually for now
 	@Test
+	@Ignore
 	def void runMoeaOptimisationNSGA2() {
 		
 			val pathPrefix = "gen/"
@@ -113,7 +114,6 @@ class MoeaOptimisationTests {
 						experimentId++
 					} while(experimentId < model.optimisation.algorithmExperiments);
 
-	            	
 	            	mdeoResultsOutput.saveOutcome();
 	        }
 	}
