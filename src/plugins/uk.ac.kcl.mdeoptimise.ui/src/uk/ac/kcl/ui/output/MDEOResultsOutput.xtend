@@ -39,7 +39,6 @@ class MDEOResultsOutput {
 		batches.add(batch);
 	}
 	
-	
 	def void outputBatchSummary(MDEOBatch batch, IPath outcomePath){
 		var batchOutputPath = outcomePath.append(String.format("batch-%s/", batch.id))
 		var batchInfoPath = batchOutputPath.append("outcome.txt")
@@ -69,9 +68,6 @@ class MDEOResultsOutput {
 	
 	def void outputExperimentSummary(List<MDEOBatch> batches, IPath outcomePath){
 		
-		
-		//val averageTimeMiliseconds = lResults.fold(0.0, [acc, r|acc + r.timeTaken]) / lResults.size
-		
 		val averageTime = batches.fold(0.0, [acc, batch | acc + batch.duration])/batches.length
 		val averageObjectiveValues = new HashMap<String, Double>();
 		var formatter = new SimpleDateFormat("HH:mm:ss.SSS");
@@ -100,13 +96,18 @@ class MDEOResultsOutput {
 				}
 			]
 		}
-		
+				
 		val infoWriter = new PrintWriter(new File(outcomePath + "overall-results.txt"))
 		
 		infoWriter.println(String.format("Average experiment time: %s", formatter.format(averageTime)))
 		infoWriter.println()
 		averageObjectiveValues.forEach[p1, p2|
 			infoWriter.println(String.format("Average value for %s objective: %s", p1, averageObjectiveValues.get(p1)/batches.size))
+		]
+		
+		infoWriter.println()
+		averageObjectiveValues.forEach[p1, p2| 
+			infoWriter.println(String.format("Best objective value for %s found in solution: %s", p1, "solution_path"))	
 		]
 		
 		infoWriter.close

@@ -73,7 +73,6 @@ class MoeaOptimisationTests {
     
     //Some tests to run optimisation manually for now
 	@Test
-	@Ignore
 	def void runMoeaOptimisationNSGA2() {
 		
 			val pathPrefix = "gen/"
