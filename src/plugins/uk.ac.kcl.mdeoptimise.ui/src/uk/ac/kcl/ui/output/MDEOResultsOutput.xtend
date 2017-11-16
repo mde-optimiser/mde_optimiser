@@ -66,6 +66,7 @@ class MDEOResultsOutput {
 		batchWriter.close
 	}
 	
+	//TODO fix objective tendencies
 	def void outputExperimentSummary(List<MDEOBatch> batches, IPath outcomePath){
 		
 		val averageTime = batches.fold(0.0, [acc, batch | acc + batch.duration])/batches.length
@@ -102,7 +103,7 @@ class MDEOResultsOutput {
 		infoWriter.println(String.format("Average experiment time: %s", formatter.format(averageTime)))
 		infoWriter.println()
 		averageObjectiveValues.forEach[p1, p2|
-			infoWriter.println(String.format("Average value for %s objective: %s", p1, averageObjectiveValues.get(p1)/batches.size))
+			infoWriter.println(String.format("Average value for %s objective: %s", p1, -1 * averageObjectiveValues.get(p1)/batches.size))
 		]
 		
 		infoWriter.println()
@@ -142,7 +143,7 @@ class MDEOResultsOutput {
 		//Pretty print the objectives
 		var objectives = solution.formattedObjectives
 		objectives.forEach[key, value | 
-			infoWriter.println(String.format("%s: %s", key, value))
+			infoWriter.println(String.format("%s: %s", key, -1 * value))
 		]
 		infoWriter.println("")
 
