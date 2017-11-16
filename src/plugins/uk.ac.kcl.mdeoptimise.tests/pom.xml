@@ -29,6 +29,9 @@
             			<include>**/*Tests.java</include>
             			<include>**/*Test.java</include>
           			</includes>
+          			<excludes>
+			            <exclude>**/MoeaOptimisationTests.java</exclude>
+			        </excludes>
 				</configuration>
 			</plugin>
 		</plugins>
