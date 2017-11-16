@@ -59,16 +59,19 @@ class RunOptimisation {
 				
 				if(optimisationModel !== null){
 					
-	            	for(var i = 0; i < optimisationModel.optimisation.algorithmExperiments; i++){
-	            		
+					var experimentId = 0;
+	            	do {	
 	            		val startTime = System.nanoTime;
 	            		val optimisationOutcome = new OptimisationInterpreter(moptProjectPath, optimisationModel).start();
 	            		val endTime = System.nanoTime;
 	            		
 	            		val experimentDuration = (endTime - startTime) / 1000000
 	            		
-	            		mdeoResultsOutput.logBatch(new MDEOBatch(i, experimentDuration, optimisationOutcome))		
-	            	}
+	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome))		
+	            		
+	            		experimentId++
+					} while(experimentId < optimisationModel.optimisation.algorithmExperiments);
+
 	            	
 	            	mdeoResultsOutput.saveOutcome();
 	            }

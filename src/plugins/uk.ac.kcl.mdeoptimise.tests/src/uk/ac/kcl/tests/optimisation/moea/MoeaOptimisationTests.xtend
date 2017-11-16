@@ -98,17 +98,21 @@ class MoeaOptimisationTests {
 			if(model !== null){
 					
 					val mdeoResultsOutput = new MDEOResultsOutput(new Date(), pathPrefix, model);	
-				
-	            	for(var i = 1; i <= model.optimisation.algorithmExperiments; i++){
-	            		
+					
+					var experimentId = 0;
+					do {
+							            		
 	            		val startTime = System.nanoTime;
 	            		val optimisationOutcome = new OptimisationInterpreter("", model).start();
 	            		val endTime = System.nanoTime;
 	            		
 	            		val experimentDuration = (endTime - startTime) / 1000000
 	            		
-	            		mdeoResultsOutput.logBatch(new MDEOBatch(i, experimentDuration, optimisationOutcome))		
-	            	}
+	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome))		
+						
+						experimentId++
+					} while(experimentId < model.optimisation.algorithmExperiments);
+
 	            	
 	            	mdeoResultsOutput.saveOutcome();
 	        }
