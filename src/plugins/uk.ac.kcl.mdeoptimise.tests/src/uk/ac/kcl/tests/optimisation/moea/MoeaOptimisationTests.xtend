@@ -25,6 +25,8 @@ import static org.junit.Assert.*
 import static org.mockito.Mockito.*
 import uk.ac.kcl.optimisation.UserModelProvider
 import uk.ac.kcl.interpreter.OptimisationInterpreter
+import uk.ac.kcl.ui.output.MDEOResultsOutput
+import uk.ac.kcl.ui.output.MDEOBatch
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)
@@ -32,6 +34,7 @@ class MoeaOptimisationTests {
 
 	@Inject
 	ParseHelper<Optimisation> parser
+	
 	@Inject extension ValidationTestHelper
 	
 	Optimisation model
@@ -70,16 +73,15 @@ class MoeaOptimisationTests {
     
     //Some tests to run optimisation manually for now
 	@Test
-	@Ignore
 	def void runMoeaOptimisationNSGA2() {
 		
-			val pathPrefix = "gen/models/ttc/" + new SimpleDateFormat("yyMMdd-HHmmss").format(new Date())
+			val pathPrefix = "gen/"
 			
 			model = parser.parse('''
 				basepath <src/models/cra/>
 				metamodel <architectureCRA.ecore>
 				model <TTC_InputRDG_C.xmi>
-				objective MinimiseCoupling maximise java { "models.moea.MaximiseCRA" }
+				objective MaximiseCRA maximise java { "models.moea.MaximiseCRA" }
 				constraint MinimiseClasslessFeatures java { "models.moea.MinimiseClasslessFeatures" }
 				mutate using <craEvolvers.henshin> unit "createClass"
 				mutate using <craEvolvers.henshin> unit "assignFeature"
@@ -87,27 +89,29 @@ class MoeaOptimisationTests {
 				mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
 				breed using <exDependencies.henshin> unit "exchangeMultipleDependencies" 
 					parameters { number3 => Random("[0-9]{0,2}"), number => "models.moea.RandomEvolverParameter" }
-				optimisation provider moea algorithm NSGAII variation genetic(0.2,1) evolutions 500 population 30
+				optimisation provider moea algorithm NSGAII variation genetic(0.2,1) evolutions 50 population 30 experiments 5
 			''')
 
 			//Assert that there are no grammar issues
 			model.assertNoIssues
 
-			model.evolvers.get(0).parameters
-
-			val oclModelProvider = new UserModelProvider(getResourceSet(), "TTC_InputRDG_D.xmi")
-			
-			val optimisationInterpreter = new OptimisationInterpreter("", model)
-			
-			var solutionGenerator = new SolutionGenerator(
-											model, 
-											optimisationInterpreter.breedingOperators, 
-											optimisationInterpreter.mutationOperators, 
-											oclModelProvider, 
-											optimisationInterpreter.metamodel);
-
-			var optimisation = new MoeaOptimisation()
-									.execute(model.optimisation, solutionGenerator)
+			if(model !== null){
+					
+					val mdeoResultsOutput = new MDEOResultsOutput(new Date(), pathPrefix, model);	
+				
+	            	for(var i = 1; i <= model.optimisation.algorithmExperiments; i++){
+	            		
+	            		val startTime = System.nanoTime;
+	            		val optimisationOutcome = new OptimisationInterpreter("", model).start();
+	            		val endTime = System.nanoTime;
+	            		
+	            		val experimentDuration = (endTime - startTime) / 1000000
+	            		
+	            		mdeoResultsOutput.logBatch(new MDEOBatch(i, experimentDuration, optimisationOutcome))		
+	            	}
+	            	
+	            	mdeoResultsOutput.saveOutcome();
+	        }
 	}
 
 }
