@@ -73,7 +73,6 @@ class MoeaOptimisationTests {
     
     //Some tests to run optimisation manually for now
 	@Test
-	@Ignore
 	def void runMoeaOptimisationNSGA2() {
 		
 			val pathPrefix = "gen/"
@@ -88,9 +87,7 @@ class MoeaOptimisationTests {
 				mutate using <craEvolvers.henshin> unit "assignFeature"
 				mutate using <craEvolvers.henshin> unit "moveFeature"
 				mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
-				breed using <exDependencies.henshin> unit "exchangeMultipleDependencies" 
-					parameters { number3 => Random("[0-9]{0,2}"), number => "models.moea.RandomEvolverParameter" }
-				optimisation provider moea algorithm NSGAII variation genetic(0.2,1) evolutions 50 population 30 experiments 5
+				optimisation provider moea algorithm NSGAII variation mutation evolutions 50 population 30 experiments 5
 			''')
 
 			//Assert that there are no grammar issues

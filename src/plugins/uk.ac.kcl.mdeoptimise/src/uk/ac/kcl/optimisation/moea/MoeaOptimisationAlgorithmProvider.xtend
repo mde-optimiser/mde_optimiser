@@ -35,7 +35,7 @@ class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
 		
 		var algorithmVariation = properties.get("variationType") as AlgorithmVariation
 		
-		
+		//Check if we have weighted genetic variation
 		if(algorithmVariation.simpleVariation == null){
 			val crossoverVariation = new MoeaOptimisationCrossoverVariation(properties.get("solutionGenerator") as SolutionGenerator)
 			val mutationVariation = new MoeaOptimisationMutationVariation(properties.get("solutionGenerator") as SolutionGenerator)
@@ -47,7 +47,7 @@ class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
 		}
 		
 		//Check variation type is crossover with mutation
-		if(properties.get("variationType").equals("genetic")){
+		if(algorithmVariation.simpleVariation.equals("genetic")){
 			val crossoverVariation = new MoeaOptimisationCrossoverVariation(properties.get("solutionGenerator") as SolutionGenerator)
 			val mutationVariation = new MoeaOptimisationMutationVariation(properties.get("solutionGenerator") as SolutionGenerator)
 			
@@ -55,7 +55,7 @@ class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
 		}
 		
 		//Check variation type is mutation
-		if(properties.get("variationType").equals("mutation")){
+		if(algorithmVariation.simpleVariation.equals("mutation")){
 			return new MoeaOptimisationMutationVariation(properties.get("solutionGenerator") as SolutionGenerator)		
 		}
 		
