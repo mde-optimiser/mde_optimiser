@@ -13,26 +13,28 @@ import uk.ac.kcl.optimisation.moea.MoeaOptimisationSolution
 import java.io.PrintWriter
 import java.io.File
 import org.eclipse.emf.common.util.URI
-import org.eclipse.core.runtime.Path
 import org.eclipse.core.runtime.IPath
 import java.util.TimeZone
 import java.util.HashMap
+import com.google.common.io.Files
 
 class MDEOResultsOutput {
 	
 	private Date experimentStartTime;
 	private List<MDEOBatch> batches;
 	private ResourceSet resourceSet;
-	private String projectRootPath;
+	private IPath projectRoot;
+	private IPath moptFile;
 	private Optimisation moptConfiguration;
 	
-	new(Date startTime, String projectRootPath, Optimisation moptConfiguration){
+	new(Date startTime, IPath projectRoot, IPath moptFile, Optimisation moptConfiguration){
 		experimentStartTime = startTime
 		//Store output of a batch experiment id, solutions set
 		batches = new LinkedList<MDEOBatch>();
 		this.resourceSet = new ResourceSetImpl();
-		this.projectRootPath = projectRootPath;
+		this.projectRoot = projectRoot;
 		this.moptConfiguration = moptConfiguration;
+		this.moptFile = moptFile;
 	}
 	
 	def void logBatch(MDEOBatch batch){
@@ -67,7 +69,7 @@ class MDEOResultsOutput {
 	}
 	
 	//TODO fix objective tendencies
-	def void outputExperimentSummary(List<MDEOBatch> batches, IPath outcomePath){
+	def void outputExperimentSummary(List<MDEOBatch> batches, IPath outcomePath, IPath moptFile){
 		
 		val averageTime = batches.fold(0.0, [acc, batch | acc + batch.duration])/batches.length
 		val averageObjectiveValues = new HashMap<String, Double>();
@@ -106,21 +108,21 @@ class MDEOResultsOutput {
 			infoWriter.println(String.format("Average value for %s objective: %s", p1, -1 * averageObjectiveValues.get(p1)/batches.size))
 		]
 		
-		infoWriter.println()
-		averageObjectiveValues.forEach[p1, p2| 
-			infoWriter.println(String.format("Best objective value for %s found in solution: %s", p1, "solution_path"))	
-		]
-		
 		infoWriter.close
+		
+		if(!moptFile.empty){
+			Files.copy(new File(moptFile.toPortableString), 
+				new File(outcomePath.append(moptFile.lastSegment).toPortableString))
+		}
 	}
 	
 	def void saveOutcome(){
 		
 		val experimentDate = new SimpleDateFormat("yyMMdd-HHmmss").format(experimentStartTime);
-		val outcomePath = new Path(projectRootPath).append(String.format("mdeo-results/experiment-%s/", experimentDate));
+		val outcomePath = projectRoot.append(String.format("mdeo-results/experiment-%s/", experimentDate));
 			
 		batches.forEach[ batch | outputBatchSummary(batch, outcomePath)]
-		outputExperimentSummary(batches, outcomePath)
+		outputExperimentSummary(batches, outcomePath, moptFile)
 	}
 	
 	def writeModel(EObject model, String path) {
@@ -147,7 +149,7 @@ class MDEOResultsOutput {
 		]
 		infoWriter.println("")
 
-				//Pretty print the constraints
+		//Pretty print the constraints
 		var constraints = solution.formattedConstraints
 		if(constraints.size > 0) {
 			

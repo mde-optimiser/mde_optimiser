@@ -27,6 +27,7 @@ import uk.ac.kcl.optimisation.UserModelProvider
 import uk.ac.kcl.interpreter.OptimisationInterpreter
 import uk.ac.kcl.ui.output.MDEOResultsOutput
 import uk.ac.kcl.ui.output.MDEOBatch
+import org.eclipse.core.runtime.Path
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)
@@ -73,7 +74,7 @@ class MoeaOptimisationTests {
     
     //Some tests to run optimisation manually for now
 	@Test
-	def void runMoeaOptimisationNSGA2() {
+	def void runMoeaOptimisationNSGA2CRA() {
 		
 			val pathPrefix = "gen/"
 			
@@ -87,7 +88,7 @@ class MoeaOptimisationTests {
 				mutate using <craEvolvers.henshin> unit "assignFeature"
 				mutate using <craEvolvers.henshin> unit "moveFeature"
 				mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
-				optimisation provider moea algorithm NSGAII variation mutation evolutions 50 population 30 experiments 5
+				optimisation provider moea algorithm NSGAII variation mutation evolutions 10 population 5 experiments 2
 			''')
 
 			//Assert that there are no grammar issues
@@ -95,7 +96,7 @@ class MoeaOptimisationTests {
 
 			if(model !== null){
 					
-					val mdeoResultsOutput = new MDEOResultsOutput(new Date(), pathPrefix, model);	
+					val mdeoResultsOutput = new MDEOResultsOutput(new Date(), new Path(pathPrefix), new Path("test.mopt"), model);	
 					
 					var experimentId = 0;
 					do {
@@ -109,6 +110,49 @@ class MoeaOptimisationTests {
 	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome))		
 						
 						experimentId++
+					} while(experimentId < model.optimisation.algorithmExperiments);
+
+	            	mdeoResultsOutput.saveOutcome();
+	        }
+	}
+
+
+
+	@Test
+	def void runMoeaOptimisationNSGA2Stack() {
+		
+			val pathPrefix = "gen/"
+			
+			model = parser.parse('''
+				basepath <src/models/stack/>
+				metamodel <stack.ecore>
+				model <model_five_stacks.xmi>
+				objective CRA minimise java { "models.stack.MinimiseStandardDeviation" }
+				mutate using <stack.henshin> unit "shiftLeft" parameters { amount => Random("[1-5]{1}") }
+				mutate using <stack.henshin> unit "shiftRight" parameters { amount => Random("[1-5]{1}") }
+				optimisation provider moea algorithm NSGAII variation mutation evolutions 100 population 30 experiments 5
+			''')
+
+			//Assert that there are no grammar issues
+			model.assertNoIssues
+
+			if(model !== null){
+					
+					val mdeoResultsOutput = new MDEOResultsOutput(new Date(), new Path(pathPrefix), new Path(""), model);	
+					
+					var experimentId = 0;
+					
+					do {            		
+	            		val startTime = System.nanoTime;
+	            		val optimisationOutcome = new OptimisationInterpreter("", model).start();
+	            		val endTime = System.nanoTime;
+	            		
+	            		val experimentDuration = (endTime - startTime) / 1000000
+	            		
+	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome))		
+						
+						experimentId++
+					
 					} while(experimentId < model.optimisation.algorithmExperiments);
 
 	            	mdeoResultsOutput.saveOutcome();

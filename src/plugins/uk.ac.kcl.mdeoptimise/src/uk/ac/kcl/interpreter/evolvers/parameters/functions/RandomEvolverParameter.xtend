@@ -7,6 +7,7 @@ import java.util.regex.Pattern
 import java.util.regex.PatternSyntaxException
 import java.io.InvalidObjectException
 import com.mifmif.common.regex.Generex
+import org.apache.commons.lang3.math.NumberUtils
 
 class RandomEvolverParameter implements IEvolverParametersFunction {
 	
@@ -22,7 +23,11 @@ class RandomEvolverParameter implements IEvolverParametersFunction {
 	override sample(List<EObject> model) {
 	
 		var randomParameter = randomParameterGenerator.random();	
-		println("Returning random parameter value: " + randomParameter)
+			
+		//Check if the regex produced a string or a number.
+		if(NumberUtils.isNumber(randomParameter)){
+			return NumberUtils.createNumber(randomParameter)	
+		}
 		
 		return randomParameter
 	}
@@ -30,6 +35,7 @@ class RandomEvolverParameter implements IEvolverParametersFunction {
 	def boolean checkRegexParameter(String parameter) {
 		
 		try {
+			
 			Pattern.compile(parameter)
 			return true
 			
