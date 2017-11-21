@@ -12,6 +12,7 @@ import java.io.File
 import uk.ac.kcl.ui.output.MDEOBatch
 import uk.ac.kcl.ui.output.MDEOResultsOutput
 import java.util.Date
+import org.eclipse.core.runtime.Path
 
 class RunOptimisation {
 	
@@ -55,7 +56,9 @@ class RunOptimisation {
 				val resource = resourceSetProvider.get().getResource(URI.createFileURI(moptFile.getAbsolutePath()), true)
 				val optimisationModel = resource.contents.head as Optimisation
 				
-				val mdeoResultsOutput = new MDEOResultsOutput(new Date(), moptProjectPath, optimisationModel);	
+				val mdeoResultsOutput = new MDEOResultsOutput(new Date(), new Path(moptProjectPath), 
+					new Path(configuredMoptFilePath), optimisationModel
+				);	
 				
 				if(optimisationModel !== null){
 					
