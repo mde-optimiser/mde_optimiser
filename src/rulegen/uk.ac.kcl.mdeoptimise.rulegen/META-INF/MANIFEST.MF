@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: uk.ac.kcl.mdeoptimise.rulegen
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: uk.ac.kcl.mdeoptimise.rulegen; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: uk.ac.kcl.mdeoptimise,
+ org.eclipse.xtext.ide,
+ org.eclipse.xtext.xbase.ide
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+

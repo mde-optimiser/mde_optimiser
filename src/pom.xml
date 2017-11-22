@@ -22,6 +22,7 @@
         <module>releng/uk.ac.kcl.mdeoptimise.repository</module>
 		<module>plugins/uk.ac.kcl.mdeoptimise.tests</module>
 		<module>plugins/uk.ac.kcl.mdeoptimise.ui.tests</module>
+        <module>rulegen/uk.ac.kcl.mdeoptimise.rulegen</module>
 	</modules>
 	<build>
 		<plugins>
