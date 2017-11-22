@@ -1,11 +1,8 @@
 package uk.ac.kcl.mdeoptimise.rulegen.metamodel
 
 import org.eclipse.emf.ecore.EPackage
-import org.eclipse.emf.ecore.EcoreFactory
 import java.util.Set
-import java.util.Map
 import org.eclipse.emf.ecore.util.EcoreUtil
-import org.eclipse.emf.ecore.impl.EcoreFactoryImpl
 import org.eclipse.emf.henshin.model.resource.HenshinResourceSet
 import java.util.HashMap
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl
@@ -19,34 +16,30 @@ import java.io.IOException
 import org.eclipse.emf.ecore.EReference
 import uk.ac.kcl.mdeoptimise.rulegen.exceptions.MultiplicityException
 import org.eclipse.emf.ecore.EClass
+import java.util.List
 
-class RefinedMetamodel { 
+class RefinedMetamodelWrapper { 
    
-  EPackage metamodel; 
-  EPackage originalMetamodel; 
-  EcoreFactory ecoreFactory; 
-  public HenshinResourceSet resourceSet; 
-  Map<Integer, Multiplicity> originalMultiplicities; 
-  Set<Multiplicity> refinedMultiplicities; 
+  EPackage refinedMetamodel; 
+  EPackage originalMetamodel;
+  public HenshinResourceSet resourceSet;
+  List<Multiplicity> refinedMultiplicities; 
    
    
-  new(String basePath, String metamodelPath, Set<Multiplicity> refinedMultiplicities){ 
-    this.metamodel = this.loadMetamodel(basePath, metamodelPath); 
-    this.originalMetamodel = EcoreUtil.copy(this.metamodel); 
-    this.ecoreFactory =  new EcoreFactoryImpl(); 
-    originalMultiplicities = new HashMap<Integer, Multiplicity>(); 
+  new(EPackage metamodel, List<Multiplicity> refinedMultiplicities){ 
+    this.originalMetamodel = metamodel; 
+    this.refinedMetamodel = EcoreUtil.copy(metamodel);
     this.refinedMultiplicities = refinedMultiplicities;
   } 
    
   def getMetamodelWithUpperBoundRefinements(){ 
      
     refinedMultiplicities.forEach[multiplicity | this.updateEdgeUpperBound(multiplicity)] 
-     
-    return this.metamodel 
+    return this.refinedMetamodel 
   } 
    
-  def getMetamodel(){ 
-    return this.metamodel; 
+  def getRefinedMetamodel(){ 
+    return this.refinedMetamodel; 
   } 
    
   def reloadOriginalMetamodel(){
@@ -73,7 +66,7 @@ class RefinedMetamodel {
   def saveMetamodel(String destinationPath){ 
     var resource = resourceSet.createResource(URI.createURI(destinationPath)) 
    
-    resource.getContents().add(this.metamodel) 
+    resource.getContents().add(this.refinedMetamodel) 
    
     var options = new HashMap<String, Boolean>(); 
     options.put(XMIResource.OPTION_SCHEMA_LOCATION, true);   
@@ -81,7 +74,7 @@ class RefinedMetamodel {
     try { 
       var ostream = new FileOutputStream(new File(destinationPath)); 
       resource.save(ostream, options); 
-      EPackage.Registry.INSTANCE.remove(this.metamodel.nsURI); 
+      EPackage.Registry.INSTANCE.remove(this.refinedMetamodel.nsURI); 
     } catch (IOException e) { 
       e.printStackTrace(); 
     } 
@@ -90,9 +83,7 @@ class RefinedMetamodel {
   def updateEdgeMultiplicities(Multiplicity multiplicity){ 
     this.updateEdgeLowerBound(multiplicity); 
     this.updateEdgeUpperBound(multiplicity); 
-    val edge = getEdge(multiplicity); 
-     
-    originalMultiplicities.put(edge.featureID, new Multiplicity(edge)); 
+    val edge = getEdge(multiplicity);
      
     if(!Multiplicity.checkMultiplicityRangeValidity(edge)) { 
       throw new MultiplicityException(multiplicity) 
@@ -137,13 +128,13 @@ class RefinedMetamodel {
   } 
    
   def EReference getEdge(String edgeSource, String edgeName){ 
-    var container = metamodel.EClassifiers.filter[classifier | classifier.name.equals(edgeSource)].get(0) as EClass; 
+    var container = refinedMetamodel.EClassifiers.filter[classifier | classifier.name.equals(edgeSource)].get(0) as EClass; 
     var references = container.EAllStructuralFeatures.filter[ reference | reference.name.equals(edgeName)].toList 
      
     references.get(0) as EReference; 
   } 
    
-  def Set<Multiplicity> getRefinedMultiplicities(){ 
+  def List<Multiplicity> getRefinedMultiplicities(){ 
     return this.refinedMultiplicities 
   }
   
