@@ -10,8 +10,8 @@ class Multiplicity {
 	public String source;
 	public String edge;
 	
-	new(String source, String edge, Integer lower, Integer upper){
-		this.source = source;
+	new(String sourceNode, String edge, Integer lower, Integer upper){
+		this.source = sourceNode;
 		this.edge = edge;
 		
 		if(!checkMultiplicityRangeValidity(lower, upper)){
@@ -24,6 +24,7 @@ class Multiplicity {
 	
 	new(EReference edge){
 		this(edge.EType.name, edge.name, edge.lowerBound, edge.upperBound);
+		
 	}
 	
 	private def void setUpper(Integer upper){
