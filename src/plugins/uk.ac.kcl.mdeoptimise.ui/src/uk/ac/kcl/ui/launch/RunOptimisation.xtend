@@ -9,6 +9,10 @@ import com.google.inject.Provider
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.common.util.URI
 import java.io.File
+import uk.ac.kcl.ui.output.MDEOBatch
+import uk.ac.kcl.ui.output.MDEOResultsOutput
+import java.util.Date
+import org.eclipse.core.runtime.Path
 
 class RunOptimisation {
 	
@@ -52,16 +56,34 @@ class RunOptimisation {
 				val resource = resourceSetProvider.get().getResource(URI.createFileURI(moptFile.getAbsolutePath()), true)
 				val optimisationModel = resource.contents.head as Optimisation
 				
+				val mdeoResultsOutput = new MDEOResultsOutput(new Date(), new Path(moptProjectPath), 
+					new Path(configuredMoptFilePath), optimisationModel
+				);	
+				
 				if(optimisationModel !== null){
+					
+					var experimentId = 0;
+	            	do {	
+	            		val startTime = System.nanoTime;
+	            		val optimisationOutcome = new OptimisationInterpreter(moptProjectPath, optimisationModel).start();
+	            		val endTime = System.nanoTime;
+	            		
+	            		val experimentDuration = (endTime - startTime) / 1000000
+	            		
+	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome))		
+	            		
+	            		experimentId++
+					} while(experimentId < optimisationModel.optimisation.algorithmExperiments);
+
 	            	
-					val optimisation = new OptimisationInterpreter(moptProjectPath, optimisationModel)
-	            	optimisation.start();
-	            }	
+	            	mdeoResultsOutput.saveOutcome();
+	            }
 			
 			} else {
-				
 				println("Could not find selected mopt file: " + configuredMoptFilePath)
 			}
 		}
 	}
+	
+
 }

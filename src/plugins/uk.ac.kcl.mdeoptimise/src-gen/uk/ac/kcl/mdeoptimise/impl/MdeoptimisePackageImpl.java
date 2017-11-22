@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import uk.ac.kcl.mdeoptimise.AlgorithmVariation;
 import uk.ac.kcl.mdeoptimise.BasepathSpec;
 import uk.ac.kcl.mdeoptimise.ConstraintInterpreterSpec;
 import uk.ac.kcl.mdeoptimise.EvolverParameter;
@@ -24,6 +25,7 @@ import uk.ac.kcl.mdeoptimise.ObjectiveInterpreterSpec;
 import uk.ac.kcl.mdeoptimise.Optimisation;
 import uk.ac.kcl.mdeoptimise.OptimisationSpec;
 import uk.ac.kcl.mdeoptimise.ParameterFunction;
+import uk.ac.kcl.mdeoptimise.ProbabilityVariation;
 
 /**
  * <!-- begin-user-doc -->
@@ -102,6 +104,20 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * @generated
    */
   private EClass optimisationSpecEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass algorithmVariationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass probabilityVariationEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -558,9 +574,9 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getOptimisationSpec_AlgorithmVariation()
+  public EReference getOptimisationSpec_AlgorithmVariation()
   {
-    return (EAttribute)optimisationSpecEClass.getEStructuralFeatures().get(2);
+    return (EReference)optimisationSpecEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -581,6 +597,86 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
   public EAttribute getOptimisationSpec_AlgorithmPopulation()
   {
     return (EAttribute)optimisationSpecEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getOptimisationSpec_AlgorithmExperiments()
+  {
+    return (EAttribute)optimisationSpecEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAlgorithmVariation()
+  {
+    return algorithmVariationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAlgorithmVariation_ProbabilityVariation()
+  {
+    return (EReference)algorithmVariationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAlgorithmVariation_SimpleVariation()
+  {
+    return (EAttribute)algorithmVariationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getProbabilityVariation()
+  {
+    return probabilityVariationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getProbabilityVariation_Type()
+  {
+    return (EAttribute)probabilityVariationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getProbabilityVariation_Crossover_rate()
+  {
+    return (EAttribute)probabilityVariationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getProbabilityVariation_Mutation_rate()
+  {
+    return (EAttribute)probabilityVariationEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -670,9 +766,19 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
     optimisationSpecEClass = createEClass(OPTIMISATION_SPEC);
     createEAttribute(optimisationSpecEClass, OPTIMISATION_SPEC__ALGORITHM_FACTORY);
     createEAttribute(optimisationSpecEClass, OPTIMISATION_SPEC__ALGORITHM_NAME);
-    createEAttribute(optimisationSpecEClass, OPTIMISATION_SPEC__ALGORITHM_VARIATION);
+    createEReference(optimisationSpecEClass, OPTIMISATION_SPEC__ALGORITHM_VARIATION);
     createEAttribute(optimisationSpecEClass, OPTIMISATION_SPEC__ALGORITHM_EVOLUTIONS);
     createEAttribute(optimisationSpecEClass, OPTIMISATION_SPEC__ALGORITHM_POPULATION);
+    createEAttribute(optimisationSpecEClass, OPTIMISATION_SPEC__ALGORITHM_EXPERIMENTS);
+
+    algorithmVariationEClass = createEClass(ALGORITHM_VARIATION);
+    createEReference(algorithmVariationEClass, ALGORITHM_VARIATION__PROBABILITY_VARIATION);
+    createEAttribute(algorithmVariationEClass, ALGORITHM_VARIATION__SIMPLE_VARIATION);
+
+    probabilityVariationEClass = createEClass(PROBABILITY_VARIATION);
+    createEAttribute(probabilityVariationEClass, PROBABILITY_VARIATION__TYPE);
+    createEAttribute(probabilityVariationEClass, PROBABILITY_VARIATION__CROSSOVER_RATE);
+    createEAttribute(probabilityVariationEClass, PROBABILITY_VARIATION__MUTATION_RATE);
 
     // Create enums
     evolverTypeEEnum = createEEnum(EVOLVER_TYPE);
@@ -756,9 +862,19 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
     initEClass(optimisationSpecEClass, OptimisationSpec.class, "OptimisationSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getOptimisationSpec_AlgorithmFactory(), ecorePackage.getEString(), "algorithmFactory", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getOptimisationSpec_AlgorithmName(), ecorePackage.getEString(), "algorithmName", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getOptimisationSpec_AlgorithmVariation(), ecorePackage.getEString(), "algorithmVariation", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getOptimisationSpec_AlgorithmVariation(), this.getAlgorithmVariation(), null, "algorithmVariation", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getOptimisationSpec_AlgorithmEvolutions(), ecorePackage.getEInt(), "algorithmEvolutions", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getOptimisationSpec_AlgorithmPopulation(), ecorePackage.getEInt(), "algorithmPopulation", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getOptimisationSpec_AlgorithmExperiments(), ecorePackage.getEInt(), "algorithmExperiments", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(algorithmVariationEClass, AlgorithmVariation.class, "AlgorithmVariation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAlgorithmVariation_ProbabilityVariation(), this.getProbabilityVariation(), null, "probabilityVariation", null, 0, 1, AlgorithmVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAlgorithmVariation_SimpleVariation(), ecorePackage.getEString(), "simpleVariation", null, 0, 1, AlgorithmVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(probabilityVariationEClass, ProbabilityVariation.class, "ProbabilityVariation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getProbabilityVariation_Type(), ecorePackage.getEString(), "type", null, 0, 1, ProbabilityVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getProbabilityVariation_Crossover_rate(), ecorePackage.getEString(), "crossover_rate", null, 0, 1, ProbabilityVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getProbabilityVariation_Mutation_rate(), ecorePackage.getEString(), "mutation_rate", null, 0, 1, ProbabilityVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
     initEEnum(evolverTypeEEnum, EvolverType.class, "EvolverType");
