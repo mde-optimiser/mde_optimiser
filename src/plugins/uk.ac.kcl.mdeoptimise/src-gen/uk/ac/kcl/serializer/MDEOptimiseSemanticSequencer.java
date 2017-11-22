@@ -59,6 +59,7 @@ import org.eclipse.xtext.xtype.XFunctionTypeRef;
 import org.eclipse.xtext.xtype.XImportDeclaration;
 import org.eclipse.xtext.xtype.XImportSection;
 import org.eclipse.xtext.xtype.XtypePackage;
+import uk.ac.kcl.mdeoptimise.AlgorithmVariation;
 import uk.ac.kcl.mdeoptimise.BasepathSpec;
 import uk.ac.kcl.mdeoptimise.ConstraintInterpreterSpec;
 import uk.ac.kcl.mdeoptimise.EvolverParameter;
@@ -70,6 +71,7 @@ import uk.ac.kcl.mdeoptimise.ObjectiveInterpreterSpec;
 import uk.ac.kcl.mdeoptimise.Optimisation;
 import uk.ac.kcl.mdeoptimise.OptimisationSpec;
 import uk.ac.kcl.mdeoptimise.ParameterFunction;
+import uk.ac.kcl.mdeoptimise.ProbabilityVariation;
 import uk.ac.kcl.services.MDEOptimiseGrammarAccess;
 
 @SuppressWarnings("all")
@@ -86,6 +88,9 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == MdeoptimisePackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case MdeoptimisePackage.ALGORITHM_VARIATION:
+				sequence_AlgorithmVariation(context, (AlgorithmVariation) semanticObject); 
+				return; 
 			case MdeoptimisePackage.BASEPATH_SPEC:
 				sequence_BasepathSpec(context, (BasepathSpec) semanticObject); 
 				return; 
@@ -115,6 +120,9 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 				return; 
 			case MdeoptimisePackage.PARAMETER_FUNCTION:
 				sequence_ParameterFunction(context, (ParameterFunction) semanticObject); 
+				return; 
+			case MdeoptimisePackage.PROBABILITY_VARIATION:
+				sequence_ProbabilityVariation(context, (ProbabilityVariation) semanticObject); 
 				return; 
 			}
 		else if (epackage == TypesPackage.eINSTANCE)
@@ -362,6 +370,18 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     AlgorithmVariation returns AlgorithmVariation
+	 *
+	 * Constraint:
+	 *     (probabilityVariation=ProbabilityVariation | simpleVariation=MUTATION_VARIATION | simpleVariation=CROSSOVER_VARIATION)
+	 */
+	protected void sequence_AlgorithmVariation(ISerializationContext context, AlgorithmVariation semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     BasepathSpec returns BasepathSpec
 	 *
 	 * Constraint:
@@ -497,31 +517,14 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 	 *     (
 	 *         algorithmFactory=ALGORITHM_FACTORY 
 	 *         algorithmName=ALGORITHM_NAME 
-	 *         algorithmVariation=ALGORITHM_VARIATION 
+	 *         algorithmVariation=AlgorithmVariation 
 	 *         algorithmEvolutions=INT 
-	 *         algorithmPopulation=INT
+	 *         algorithmPopulation=INT 
+	 *         algorithmExperiments=INT?
 	 *     )
 	 */
 	protected void sequence_OptimisationSpec(ISerializationContext context, OptimisationSpec semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION_SPEC__ALGORITHM_FACTORY) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION_SPEC__ALGORITHM_FACTORY));
-			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION_SPEC__ALGORITHM_NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION_SPEC__ALGORITHM_NAME));
-			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION_SPEC__ALGORITHM_VARIATION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION_SPEC__ALGORITHM_VARIATION));
-			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION_SPEC__ALGORITHM_EVOLUTIONS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION_SPEC__ALGORITHM_EVOLUTIONS));
-			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION_SPEC__ALGORITHM_POPULATION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION_SPEC__ALGORITHM_POPULATION));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getOptimisationSpecAccess().getAlgorithmFactoryALGORITHM_FACTORYTerminalRuleCall_2_0(), semanticObject.getAlgorithmFactory());
-		feeder.accept(grammarAccess.getOptimisationSpecAccess().getAlgorithmNameALGORITHM_NAMETerminalRuleCall_4_0(), semanticObject.getAlgorithmName());
-		feeder.accept(grammarAccess.getOptimisationSpecAccess().getAlgorithmVariationALGORITHM_VARIATIONTerminalRuleCall_6_0(), semanticObject.getAlgorithmVariation());
-		feeder.accept(grammarAccess.getOptimisationSpecAccess().getAlgorithmEvolutionsINTTerminalRuleCall_8_0(), semanticObject.getAlgorithmEvolutions());
-		feeder.accept(grammarAccess.getOptimisationSpecAccess().getAlgorithmPopulationINTTerminalRuleCall_10_0(), semanticObject.getAlgorithmPopulation());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -553,6 +556,18 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 	 *     (name=ValidID parameter=STRING?)
 	 */
 	protected void sequence_ParameterFunction(ISerializationContext context, ParameterFunction semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ProbabilityVariation returns ProbabilityVariation
+	 *
+	 * Constraint:
+	 *     (type=GENETIC_VARIATION (crossover_rate=Number mutation_rate=Number)?)
+	 */
+	protected void sequence_ProbabilityVariation(ISerializationContext context, ProbabilityVariation semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

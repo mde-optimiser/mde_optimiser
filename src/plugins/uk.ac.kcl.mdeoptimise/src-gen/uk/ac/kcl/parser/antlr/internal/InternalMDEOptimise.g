@@ -886,19 +886,20 @@ ruleOptimisationSpec returns [EObject current=null]
 		}
 		(
 			(
-				lv_algorithmVariation_6_0=RULE_ALGORITHM_VARIATION
 				{
-					newLeafNode(lv_algorithmVariation_6_0, grammarAccess.getOptimisationSpecAccess().getAlgorithmVariationALGORITHM_VARIATIONTerminalRuleCall_6_0());
+					newCompositeNode(grammarAccess.getOptimisationSpecAccess().getAlgorithmVariationAlgorithmVariationParserRuleCall_6_0());
 				}
+				lv_algorithmVariation_6_0=ruleAlgorithmVariation
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getOptimisationSpecRule());
+						$current = createModelElementForParent(grammarAccess.getOptimisationSpecRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"algorithmVariation",
 						lv_algorithmVariation_6_0,
-						"uk.ac.kcl.MDEOptimise.ALGORITHM_VARIATION");
+						"uk.ac.kcl.MDEOptimise.AlgorithmVariation");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -946,6 +947,193 @@ ruleOptimisationSpec returns [EObject current=null]
 				}
 			)
 		)
+		(
+			otherlv_11='experiments'
+			{
+				newLeafNode(otherlv_11, grammarAccess.getOptimisationSpecAccess().getExperimentsKeyword_11_0());
+			}
+			(
+				(
+					lv_algorithmExperiments_12_0=RULE_INT
+					{
+						newLeafNode(lv_algorithmExperiments_12_0, grammarAccess.getOptimisationSpecAccess().getAlgorithmExperimentsINTTerminalRuleCall_11_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getOptimisationSpecRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"algorithmExperiments",
+							lv_algorithmExperiments_12_0,
+							"org.eclipse.xtext.xbase.Xbase.INT");
+					}
+				)
+			)
+		)?
+	)
+;
+
+// Entry rule entryRuleAlgorithmVariation
+entryRuleAlgorithmVariation returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getAlgorithmVariationRule()); }
+	iv_ruleAlgorithmVariation=ruleAlgorithmVariation
+	{ $current=$iv_ruleAlgorithmVariation.current; }
+	EOF;
+
+// Rule AlgorithmVariation
+ruleAlgorithmVariation returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getAlgorithmVariationAccess().getProbabilityVariationProbabilityVariationParserRuleCall_0_0());
+				}
+				lv_probabilityVariation_0_0=ruleProbabilityVariation
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getAlgorithmVariationRule());
+					}
+					set(
+						$current,
+						"probabilityVariation",
+						lv_probabilityVariation_0_0,
+						"uk.ac.kcl.MDEOptimise.ProbabilityVariation");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		    |
+		(
+			(
+				(
+					lv_simpleVariation_1_1=RULE_MUTATION_VARIATION
+					{
+						newLeafNode(lv_simpleVariation_1_1, grammarAccess.getAlgorithmVariationAccess().getSimpleVariationMUTATION_VARIATIONTerminalRuleCall_1_0_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getAlgorithmVariationRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"simpleVariation",
+							lv_simpleVariation_1_1,
+							"uk.ac.kcl.MDEOptimise.MUTATION_VARIATION");
+					}
+					    |
+					lv_simpleVariation_1_2=RULE_CROSSOVER_VARIATION
+					{
+						newLeafNode(lv_simpleVariation_1_2, grammarAccess.getAlgorithmVariationAccess().getSimpleVariationCROSSOVER_VARIATIONTerminalRuleCall_1_0_1());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getAlgorithmVariationRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"simpleVariation",
+							lv_simpleVariation_1_2,
+							"uk.ac.kcl.MDEOptimise.CROSSOVER_VARIATION");
+					}
+				)
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleProbabilityVariation
+entryRuleProbabilityVariation returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getProbabilityVariationRule()); }
+	iv_ruleProbabilityVariation=ruleProbabilityVariation
+	{ $current=$iv_ruleProbabilityVariation.current; }
+	EOF;
+
+// Rule ProbabilityVariation
+ruleProbabilityVariation returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				lv_type_0_0=RULE_GENETIC_VARIATION
+				{
+					newLeafNode(lv_type_0_0, grammarAccess.getProbabilityVariationAccess().getTypeGENETIC_VARIATIONTerminalRuleCall_0_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getProbabilityVariationRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"type",
+						lv_type_0_0,
+						"uk.ac.kcl.MDEOptimise.GENETIC_VARIATION");
+				}
+			)
+		)
+		(
+			otherlv_1='('
+			{
+				newLeafNode(otherlv_1, grammarAccess.getProbabilityVariationAccess().getLeftParenthesisKeyword_1_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getProbabilityVariationAccess().getCrossover_rateNumberParserRuleCall_1_1_0());
+					}
+					lv_crossover_rate_2_0=ruleNumber
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getProbabilityVariationRule());
+						}
+						set(
+							$current,
+							"crossover_rate",
+							lv_crossover_rate_2_0,
+							"org.eclipse.xtext.xbase.Xbase.Number");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			otherlv_3=','
+			{
+				newLeafNode(otherlv_3, grammarAccess.getProbabilityVariationAccess().getCommaKeyword_1_2());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getProbabilityVariationAccess().getMutation_rateNumberParserRuleCall_1_3_0());
+					}
+					lv_mutation_rate_4_0=ruleNumber
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getProbabilityVariationRule());
+						}
+						set(
+							$current,
+							"mutation_rate",
+							lv_mutation_rate_4_0,
+							"org.eclipse.xtext.xbase.Xbase.Number");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			otherlv_5=')'
+			{
+				newLeafNode(otherlv_5, grammarAccess.getProbabilityVariationAccess().getRightParenthesisKeyword_1_4());
+			}
+		)?
 	)
 ;
 
@@ -7258,7 +7446,11 @@ ruleEvolverType returns [Enumerator current=null]
 	)
 ;
 
-RULE_ALGORITHM_VARIATION : ('genetic'|'crossover'|'mutation');
+RULE_GENETIC_VARIATION : 'genetic';
+
+RULE_CROSSOVER_VARIATION : 'crossover';
+
+RULE_MUTATION_VARIATION : 'mutation';
 
 RULE_ALGORITHM_FACTORY : ('moea'|'ecj');
 

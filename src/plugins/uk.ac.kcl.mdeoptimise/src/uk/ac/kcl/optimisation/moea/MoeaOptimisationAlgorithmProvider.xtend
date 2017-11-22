@@ -14,6 +14,7 @@ import org.moeaframework.algorithm.EpsilonMOEA
 import org.moeaframework.core.EpsilonBoxDominanceArchive
 import org.moeaframework.core.operator.GAVariation
 import org.moeaframework.core.Variation
+import uk.ac.kcl.mdeoptimise.AlgorithmVariation
 
 class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
 	
@@ -32,8 +33,21 @@ class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
 	
 	def Variation getVariation(Properties properties){
 		
+		var algorithmVariation = properties.get("variationType") as AlgorithmVariation
+		
+		//Check if we have weighted genetic variation
+		if(algorithmVariation.simpleVariation == null){
+			val crossoverVariation = new MoeaOptimisationCrossoverVariation(properties.get("solutionGenerator") as SolutionGenerator)
+			val mutationVariation = new MoeaOptimisationMutationVariation(properties.get("solutionGenerator") as SolutionGenerator)
+				
+			return new MoeaProbabilisticVariation(crossoverVariation, mutationVariation, 
+				Double.parseDouble(algorithmVariation.probabilityVariation.crossover_rate), 
+				Double.parseDouble(algorithmVariation.probabilityVariation.mutation_rate)
+			)	
+		}
+		
 		//Check variation type is crossover with mutation
-		if(properties.get("variationType").equals("genetic")){
+		if(algorithmVariation.simpleVariation.equals("genetic")){
 			val crossoverVariation = new MoeaOptimisationCrossoverVariation(properties.get("solutionGenerator") as SolutionGenerator)
 			val mutationVariation = new MoeaOptimisationMutationVariation(properties.get("solutionGenerator") as SolutionGenerator)
 			
@@ -41,12 +55,12 @@ class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
 		}
 		
 		//Check variation type is mutation
-		if(properties.get("variationType").equals("mutation")){
+		if(algorithmVariation.simpleVariation.equals("mutation")){
 			return new MoeaOptimisationMutationVariation(properties.get("solutionGenerator") as SolutionGenerator)		
 		}
 		
 		//Must be crossover only then
-		return new MoeaOptimisationCrossoverVariation(properties.get("solutionGenerator") as SolutionGenerator)		
+		return new MoeaOptimisationCrossoverVariation(properties.get("solutionGenerator") as SolutionGenerator)
 		
 	}
 	
