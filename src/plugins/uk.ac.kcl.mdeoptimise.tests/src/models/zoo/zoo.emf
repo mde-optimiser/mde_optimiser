@@ -1,0 +1,25 @@
+@namespace(
+	uri="http://inf.kcl.ac.uk/zoo/2016",
+	prefix="zoo")
+package zoo;
+
+// Based on James R. Williams' example from his thesis
+
+class Zoo {
+	val Animal[*] animals;
+	val Cage[*] cages;
+}
+
+class Cage {
+	attr int spaceAvailable;
+	attr int spaceRemaining;
+	ref Animal[*] animals;
+}
+
+class Animal{
+	attr String name;
+	attr int spaceRequired;
+	attr int quantity;
+	
+	ref Animal[*] eats;
+}

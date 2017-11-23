@@ -96,7 +96,7 @@ class MoeaOptimisationTests {
 
 			if(model !== null){
 					
-					val mdeoResultsOutput = new MDEOResultsOutput(new Date(), new Path(pathPrefix), new Path("test.mopt"), model);	
+					val mdeoResultsOutput = new MDEOResultsOutput(new Date(), new Path(pathPrefix), new Path(""), model);	
 					
 					var experimentId = 0;
 					do {
@@ -116,7 +116,49 @@ class MoeaOptimisationTests {
 	        }
 	}
 
+	@Test
+	def void runMoeaOptimisationNSGA2CRACrossover() {
+		
+			val pathPrefix = "gen/"
+			
+			model = parser.parse('''
+				basepath <src/models/cra/>
+				metamodel <architectureCRA.ecore>
+				model <TTC_InputRDG_C.xmi>
+				objective MaximiseCRA maximise java { "models.moea.MaximiseCRA" }
+				constraint MinimiseClasslessFeatures java { "models.moea.MinimiseClasslessFeatures" }
+				mutate using <craEvolvers.henshin> unit "createClass"
+				mutate using <craEvolvers.henshin> unit "assignFeature"
+				mutate using <craEvolvers.henshin> unit "moveFeature"
+				mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
+				breed using <exchangeClass.henshin> unit "exchangeClassBidirectional"
+				optimisation provider moea algorithm NSGAII variation mutation evolutions 10 population 5 experiments 2
+			''')
 
+			//Assert that there are no grammar issues
+			model.assertNoIssues
+
+			if(model !== null){
+					
+					val mdeoResultsOutput = new MDEOResultsOutput(new Date(), new Path(pathPrefix), new Path(""), model);	
+					
+					var experimentId = 0;
+					do {
+							            		
+	            		val startTime = System.nanoTime;
+	            		val optimisationOutcome = new OptimisationInterpreter("", model).start();
+	            		val endTime = System.nanoTime;
+	            		
+	            		val experimentDuration = (endTime - startTime) / 1000000
+	            		
+	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome))		
+						
+						experimentId++
+					} while(experimentId < model.optimisation.algorithmExperiments);
+
+	            	mdeoResultsOutput.saveOutcome();
+	        }
+	}
 
 	@Test
 	def void runMoeaOptimisationNSGA2Stack() {
@@ -130,6 +172,89 @@ class MoeaOptimisationTests {
 				objective CRA minimise java { "models.stack.MinimiseStandardDeviation" }
 				mutate using <stack.henshin> unit "shiftLeft" parameters { amount => Random("[1-5]{1}") }
 				mutate using <stack.henshin> unit "shiftRight" parameters { amount => Random("[1-5]{1}") }
+				optimisation provider moea algorithm NSGAII variation mutation evolutions 100 population 30 experiments 5
+			''')
+
+			//Assert that there are no grammar issues
+			model.assertNoIssues
+
+			if(model !== null){
+					
+					val mdeoResultsOutput = new MDEOResultsOutput(new Date(), new Path(pathPrefix), new Path(""), model);	
+					
+					var experimentId = 0;
+					
+					do {            		
+	            		val startTime = System.nanoTime;
+	            		val optimisationOutcome = new OptimisationInterpreter("", model).start();
+	            		val endTime = System.nanoTime;
+	            		
+	            		val experimentDuration = (endTime - startTime) / 1000000
+	            		
+	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome))		
+						
+						experimentId++
+					
+					} while(experimentId < model.optimisation.algorithmExperiments);
+
+	            	mdeoResultsOutput.saveOutcome();
+	        }
+	}
+	
+	@Test
+	def void runMoeaOptimisationNSGA2Zoo() {
+		
+			val pathPrefix = "gen/"
+			
+			model = parser.parse('''
+				basepath <src/models/zoo/>
+				metamodel <zoo.ecore>
+				model <SimpleZoo.xmi>
+				objective EmptyCages minimise java { "models.zoo.ZooFitnessFunction" }
+				mutate using <zoo_evolution.henshin> unit "MoveAnimal"
+				optimisation provider moea algorithm NSGAII variation mutation evolutions 100 population 30 experiments 5
+			''')
+
+			//Assert that there are no grammar issues
+			model.assertNoIssues
+
+			if(model !== null){
+					
+					val mdeoResultsOutput = new MDEOResultsOutput(new Date(), new Path(pathPrefix), new Path(""), model);	
+					
+					var experimentId = 0;
+					
+					do {            		
+	            		val startTime = System.nanoTime;
+	            		val optimisationOutcome = new OptimisationInterpreter("", model).start();
+	            		val endTime = System.nanoTime;
+	            		
+	            		val experimentDuration = (endTime - startTime) / 1000000
+	            		
+	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome))		
+						
+						experimentId++
+					
+					} while(experimentId < model.optimisation.algorithmExperiments);
+
+	            	mdeoResultsOutput.saveOutcome();
+	        }
+	}
+	
+	/**
+	 * TODO This test fails because of an undefined error. However I cannot tell why this is happening.
+	 */
+	@Test
+	def void runMoeaOptimisationNSGA2ZooComplex() {
+		
+			val pathPrefix = "gen/"
+			
+			model = parser.parse('''
+				basepath <src/models/zoo/>
+				metamodel <zoo.ecore>
+				model <MoreComplexZoo.xmi>
+				objective EmptyCages minimise java { "models.zoo.ZooFitnessFunction" }
+				mutate using <zoo_evolution.henshin> unit "MoveAnimal"
 				optimisation provider moea algorithm NSGAII variation mutation evolutions 100 population 30 experiments 5
 			''')
 
