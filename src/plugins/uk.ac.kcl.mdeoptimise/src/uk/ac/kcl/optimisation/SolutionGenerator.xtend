@@ -85,7 +85,9 @@ class SolutionGenerator {
 	 */
 	def List<EObject> crossover(List<EObject> parents) {
 				
-		var crossoverParents = EcoreUtil.copyAll(parents)
+		val crossoverParents = new ArrayList<EObject>;
+		
+		parents.forEach[parent | crossoverParents.add(EcoreUtil.copy(parent))]
 		
 		val graph = new EGraphImpl(crossoverParents)
 		val triedOperators = new ArrayList<Unit>()
