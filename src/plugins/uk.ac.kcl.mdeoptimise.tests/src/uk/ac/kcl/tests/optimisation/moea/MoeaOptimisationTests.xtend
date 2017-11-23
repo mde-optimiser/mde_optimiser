@@ -200,7 +200,7 @@ class MoeaOptimisationTests {
 	}
 	
 	/**
-	 * This test fails because of an undefined error. However I cannot tell why this is happening.
+	 * TODO This test fails because of an undefined error. However I cannot tell why this is happening.
 	 */
 	@Test
 	def void runMoeaOptimisationNSGA2ZooComplex() {
