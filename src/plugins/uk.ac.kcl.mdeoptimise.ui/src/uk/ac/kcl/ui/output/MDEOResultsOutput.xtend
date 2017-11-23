@@ -17,6 +17,7 @@ import org.eclipse.core.runtime.IPath
 import java.util.TimeZone
 import java.util.HashMap
 import com.google.common.io.Files
+import java.nio.charset.Charset
 
 class MDEOResultsOutput {
 	
@@ -41,21 +42,28 @@ class MDEOResultsOutput {
 		batches.add(batch);
 	}
 	
-	def void outputBatchSummary(MDEOBatch batch, IPath outcomePath){
+	def String outputBatchSummary(MDEOBatch batch, IPath outcomePath) {
 		var batchOutputPath = outcomePath.append(String.format("batch-%s/", batch.id))
 		var batchInfoPath = batchOutputPath.append("outcome.txt")
 		
-		new File(batchOutputPath.toPortableString).mkdirs
-		val batchWriter = new PrintWriter(new File(batchInfoPath.toPortableString))
+		var outputFile = new File(batchInfoPath.toPortableString)
+		Files.createParentDirs(outputFile)
+		
+		val batchWriter = new PrintWriter(outputFile)
 		
 		var batchDuration = new Date(batch.duration.longValue);
 		
 		var formatter = new SimpleDateFormat("HH:mm:ss.SSS");
 		formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
 		
-		batchWriter.println("Batch duration: " + formatter.format(batchDuration.getTime()))
 		batchWriter.println()
 		batchWriter.println("============================================")
+		batchWriter.println()
+		batchWriter.println(String.format("Batch %s duration: %s", batch.id, formatter.format(batchDuration.getTime())))
+		batchWriter.println()
+
+		batchWriter.println("--------------------------------------------")
+		
 		for(var i = 0; i < batch.solutions.length; i++){
 			
 			val solution = batch.solutions.get(i);
@@ -65,11 +73,15 @@ class MDEOResultsOutput {
 			storeSolutionData(batchWriter, modelPath, solution)
 		}
 		
+		batchWriter.println()
+		batchWriter.println("============================================")
+		batchWriter.println()
 		batchWriter.close
+		
+		return Files.toString(outputFile, Charset.defaultCharset())
 	}
 	
-	//TODO fix objective tendencies
-	def void outputExperimentSummary(List<MDEOBatch> batches, IPath outcomePath, IPath moptFile){
+	def void outputExperimentSummary(List<MDEOBatch> batches, IPath outcomePath, IPath moptFile, StringBuilder batchesOutput){
 		
 		val averageTime = batches.fold(0.0, [acc, batch | acc + batch.duration])/batches.length
 		val averageObjectiveValues = new HashMap<String, Double>();
@@ -108,6 +120,8 @@ class MDEOResultsOutput {
 			infoWriter.println(String.format("Average value for %s objective: %s", p1, -1 * averageObjectiveValues.get(p1)/batches.size))
 		]
 		
+		infoWriter.println(batchesOutput.toString)
+		
 		infoWriter.close
 		
 		if(!moptFile.empty){
@@ -120,9 +134,12 @@ class MDEOResultsOutput {
 		
 		val experimentDate = new SimpleDateFormat("yyMMdd-HHmmss").format(experimentStartTime);
 		val outcomePath = projectRoot.append(String.format("mdeo-results/experiment-%s/", experimentDate));
-			
-		batches.forEach[ batch | outputBatchSummary(batch, outcomePath)]
-		outputExperimentSummary(batches, outcomePath, moptFile)
+		
+		val batchesOutput = new StringBuilder();
+		
+		batches.forEach[ batch | batchesOutput.append(outputBatchSummary(batch, outcomePath))]
+		
+		outputExperimentSummary(batches, outcomePath, moptFile, batchesOutput)
 	}
 	
 	def writeModel(EObject model, String path) {
@@ -135,8 +152,6 @@ class MDEOResultsOutput {
 	}
 
 	private def storeSolutionData(PrintWriter infoWriter, String modelPath, MoeaOptimisationSolution solution){
-		
-		//val infoWriter = new PrintWriter(new File(infoPath + ".txt"))
 		
 		infoWriter.println("Evaluation data for solution: " + modelPath)
 		infoWriter.println()
@@ -158,8 +173,5 @@ class MDEOResultsOutput {
 				infoWriter.println(String.format("%s: %s", key, value))
 			]
 		}
-		infoWriter.println()
-		infoWriter.println("============================================")
-		infoWriter.println()
 	}
 }
