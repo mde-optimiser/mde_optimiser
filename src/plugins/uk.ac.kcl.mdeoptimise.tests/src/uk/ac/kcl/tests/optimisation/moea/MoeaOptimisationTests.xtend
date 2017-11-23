@@ -158,5 +158,88 @@ class MoeaOptimisationTests {
 	            	mdeoResultsOutput.saveOutcome();
 	        }
 	}
+	
+	@Test
+	def void runMoeaOptimisationNSGA2Zoo() {
+		
+			val pathPrefix = "gen/"
+			
+			model = parser.parse('''
+				basepath <src/models/zoo/>
+				metamodel <zoo.ecore>
+				model <SimpleZoo.xmi>
+				objective EmptyCages minimise java { "models.zoo.ZooFitnessFunction" }
+				mutate using <zoo_evolution.henshin> unit "MoveAnimal"
+				optimisation provider moea algorithm NSGAII variation mutation evolutions 100 population 30 experiments 5
+			''')
+
+			//Assert that there are no grammar issues
+			model.assertNoIssues
+
+			if(model !== null){
+					
+					val mdeoResultsOutput = new MDEOResultsOutput(new Date(), new Path(pathPrefix), new Path(""), model);	
+					
+					var experimentId = 0;
+					
+					do {            		
+	            		val startTime = System.nanoTime;
+	            		val optimisationOutcome = new OptimisationInterpreter("", model).start();
+	            		val endTime = System.nanoTime;
+	            		
+	            		val experimentDuration = (endTime - startTime) / 1000000
+	            		
+	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome))		
+						
+						experimentId++
+					
+					} while(experimentId < model.optimisation.algorithmExperiments);
+
+	            	mdeoResultsOutput.saveOutcome();
+	        }
+	}
+	
+	/**
+	 * This test fails because of an undefined error. However I cannot tell why this is happening.
+	 */
+	@Test
+	def void runMoeaOptimisationNSGA2ZooComplex() {
+		
+			val pathPrefix = "gen/"
+			
+			model = parser.parse('''
+				basepath <src/models/zoo/>
+				metamodel <zoo.ecore>
+				model <MoreComplexZoo.xmi>
+				objective EmptyCages minimise java { "models.zoo.ZooFitnessFunction" }
+				mutate using <zoo_evolution.henshin> unit "MoveAnimal"
+				optimisation provider moea algorithm NSGAII variation mutation evolutions 100 population 30 experiments 5
+			''')
+
+			//Assert that there are no grammar issues
+			model.assertNoIssues
+
+			if(model !== null){
+					
+					val mdeoResultsOutput = new MDEOResultsOutput(new Date(), new Path(pathPrefix), new Path(""), model);	
+					
+					var experimentId = 0;
+					
+					do {            		
+	            		val startTime = System.nanoTime;
+	            		val optimisationOutcome = new OptimisationInterpreter("", model).start();
+	            		val endTime = System.nanoTime;
+	            		
+	            		val experimentDuration = (endTime - startTime) / 1000000
+	            		
+	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome))		
+						
+						experimentId++
+					
+					} while(experimentId < model.optimisation.algorithmExperiments);
+
+	            	mdeoResultsOutput.saveOutcome();
+	        }
+	}
 
 }
