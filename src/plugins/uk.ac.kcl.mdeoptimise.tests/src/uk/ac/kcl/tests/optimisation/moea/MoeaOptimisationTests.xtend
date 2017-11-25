@@ -132,7 +132,7 @@ class MoeaOptimisationTests {
 				mutate using <craEvolvers.henshin> unit "moveFeature"
 				mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
 				breed using <exchangeClass.henshin> unit "exchangeClassBidirectional"
-				optimisation provider moea algorithm NSGAII variation mutation evolutions 10 population 5 experiments 2
+				optimisation provider moea algorithm NSGAII variation mutation evolutions 1000 population 5 experiments 2
 			''')
 
 			//Assert that there are no grammar issues

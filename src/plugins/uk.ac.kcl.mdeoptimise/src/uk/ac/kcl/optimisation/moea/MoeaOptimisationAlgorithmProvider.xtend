@@ -15,20 +15,25 @@ import org.moeaframework.core.EpsilonBoxDominanceArchive
 import org.moeaframework.core.operator.GAVariation
 import org.moeaframework.core.Variation
 import uk.ac.kcl.mdeoptimise.AlgorithmVariation
+import org.moeaframework.core.EvolutionaryAlgorithm
 
 class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
+	
+	public Algorithm algo; 
 	
 	override getAlgorithm(String algorithm, Properties properties, Problem problem) {
 		switch algorithm {
 			case "NSGAII":
-				return createNSGAII(problem, properties)
+				this.algo = createNSGAII(problem, properties)
 			case "SPEA2":
-				return createSPEA2(problem, properties)
+				this.algo = createSPEA2(problem, properties)
 			case "eMOEA":
-				return createeMOEA(problem, properties)
+				this.algo = createeMOEA(problem, properties)
 			default:
 				throw new Exception("Invalid algorithm given: " + algorithm)
 		}
+		
+		return this.algo;
 	}
 	
 	def Variation getVariation(Properties properties){
