@@ -18,6 +18,11 @@ import java.util.TimeZone
 import java.util.HashMap
 import com.google.common.io.Files
 import java.nio.charset.Charset
+import java.util.ArrayList
+import uk.ac.kcl.mdeoptimise.EvolverType
+import org.supercsv.io.CsvListWriter
+import java.io.FileWriter
+import org.supercsv.prefs.CsvPreference
 
 class MDEOResultsOutput {
 	
@@ -81,6 +86,103 @@ class MDEOResultsOutput {
 		return Files.toString(outputFile, Charset.defaultCharset())
 	}
 	
+	def void outputExperimentAsCsv(List<MDEOBatch> batches, IPath outcomePath, IPath moptFile, 
+		Optimisation moptConfiguration, String experimentDate
+	){
+		
+		val csvHeader = getCSVHeaders(moptConfiguration)		
+		val csvRows = new ArrayList<LinkedList<Object>>();
+		
+		batches.forEach[batch | 
+			
+			batch.solutions.forEach[solution |
+			
+				val csvRow = new LinkedList<Object>();
+				csvRow.add(batch.id)
+				csvRow.add(moptFile)
+				csvRow.add(moptConfiguration.model.location)
+				csvRow.add(outcomePath.append(String.format("batch-%s/", batch.id)))
+				csvRow.add(batch.duration)
+				
+				solution.formattedObjectives.forEach[p1, p2|
+					csvRow.add(p2)
+				]
+				
+				solution.formattedConstraints.forEach[p1, p2|
+					csvRow.add(p2)
+				]	
+				
+				moptConfiguration.evolvers.filter[evolver | evolver.evolverType == EvolverType.MUTATE]
+					.forEach[evolver, index| csvRow.add(evolver.unit)]
+		
+				moptConfiguration.evolvers.filter[evolver | evolver.evolverType == EvolverType.BREED]
+					.forEach[evolver, index| csvRow.add(evolver.unit)]
+				
+				csvRow.add(moptConfiguration.optimisation.algorithmName)
+				
+				
+				if(moptConfiguration.optimisation.algorithmVariation.simpleVariation != null){ 
+					csvRow.add(moptConfiguration.optimisation.algorithmVariation.simpleVariation)
+					csvRow.add(100)
+					csvRow.add(100)
+				} else {
+					csvRow.add(moptConfiguration.optimisation.algorithmVariation.probabilityVariation.type)
+					csvRow.add(moptConfiguration.optimisation.algorithmVariation.probabilityVariation.mutation_rate)
+					csvRow.add(moptConfiguration.optimisation.algorithmVariation.probabilityVariation.crossover_rate)	
+				}
+				
+				csvRow.add(moptConfiguration.optimisation.algorithmPopulation)
+				csvRow.add(moptConfiguration.optimisation.algorithmEvolutions)
+				
+				csvRows.add(csvRow)
+			]
+		]
+	
+        val listWriter = new CsvListWriter(new FileWriter(outcomePath.append(experimentDate + "-outcome.csv").toPortableString),
+                CsvPreference.STANDARD_PREFERENCE);
+        
+        // write the header
+        listWriter.writeHeader(csvHeader);
+        
+        // write the customer lists  
+        csvRows.forEach[row | listWriter.write(row)]
+        listWriter.close();
+               
+	}
+	
+	def List<String> getCSVHeaders(Optimisation moptConfiguration){
+		val header = new ArrayList<String>();
+		
+		header.add("batch-id")
+		header.add("mopt-file")
+		header.add("input-model")
+		header.add("outcome-path")
+		header.add("duration")
+		
+		for(var i = 0; i < batches.get(0).solutions.get(0).formattedObjectives.size; i++){
+			header.add("objective-" + i)
+		}
+		
+		for(var i = 0; i < batches.get(0).solutions.get(0).formattedConstraints.size; i++){
+			header.add("constraint-" + i)
+		}
+		
+		moptConfiguration.evolvers.filter[evolver | evolver.evolverType == EvolverType.MUTATE]
+			.forEach[evolver, index| header.add("mutation-operator-" + index)]
+		
+		moptConfiguration.evolvers.filter[evolver | evolver.evolverType == EvolverType.BREED]
+			.forEach[evolver, index| header.add("crossover-operator-" + index)]
+		
+		header.add("algorithm")
+		header.add("variation")
+		header.add("mutation-probability")
+		header.add("crossover-probability")
+		header.add("population")
+		header.add("evolutions")
+		
+		return header
+	}
+	
 	def void outputExperimentSummary(List<MDEOBatch> batches, IPath outcomePath, IPath moptFile, StringBuilder batchesOutput){
 		
 		val averageTime = batches.fold(0.0, [acc, batch | acc + batch.duration])/batches.length
@@ -140,6 +242,7 @@ class MDEOResultsOutput {
 		batches.forEach[ batch | batchesOutput.append(outputBatchSummary(batch, outcomePath))]
 		
 		outputExperimentSummary(batches, outcomePath, moptFile, batchesOutput)
+		outputExperimentAsCsv(batches, outcomePath, moptFile, moptConfiguration, experimentDate)
 	}
 	
 	def writeModel(EObject model, String path) {
