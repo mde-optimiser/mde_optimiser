@@ -26,7 +26,8 @@ class OptimisationInterpreter {
 	private List<Unit> mutationOperators
 
 	private IPath projectRootPath;
-
+	public UserModelProvider modelProvider;
+	
 	new (String projectPath, Optimisation model){
 		this.model = model;
 		this.projectRootPath = new Path(projectPath);
@@ -35,11 +36,11 @@ class OptimisationInterpreter {
 	def Iterator<MoeaOptimisationSolution> start() {
 		
 		//This model provider loads the model given by the user in the DSL
-		val userModelProvider = new UserModelProvider(getResourceSet(projectRootPath.append(model.basepath.location).toPortableString), model.model.location)
+		this.modelProvider = new UserModelProvider(getResourceSet(projectRootPath.append(model.basepath.location).toPortableString), model.model.location)
 		var solutionGenerator = new SolutionGenerator(model, 
 											getBreedingOperators, 
 											getMutationOperators, 
-											userModelProvider, 
+											this.modelProvider, 
 											getMetamodel);
 
 		return new MoeaOptimisation()

@@ -28,5 +28,4 @@ class MoeaOptimisationVariable implements Variable {
 	def getModel(){
 		model;
 	}
-	
 }

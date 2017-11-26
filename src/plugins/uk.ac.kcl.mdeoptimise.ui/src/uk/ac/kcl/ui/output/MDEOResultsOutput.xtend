@@ -56,6 +56,8 @@ class MDEOResultsOutput {
 		
 		val batchWriter = new PrintWriter(outputFile)
 		
+		writeModel(batch.initialModel, batchOutputPath + String.format("initial-model-%08X", batch.initialModel.hashCode) + ".xmi")
+		
 		var batchDuration = new Date(batch.duration.longValue);
 		
 		var formatter = new SimpleDateFormat("HH:mm:ss.SSS");

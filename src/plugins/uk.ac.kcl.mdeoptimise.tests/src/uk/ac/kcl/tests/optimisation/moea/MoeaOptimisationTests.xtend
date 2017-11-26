@@ -102,12 +102,15 @@ class MoeaOptimisationTests {
 					do {
 							            		
 	            		val startTime = System.nanoTime;
-	            		val optimisationOutcome = new OptimisationInterpreter("", model).start();
+	            		val otimisationInterpreter = new OptimisationInterpreter("", model) 
+	            		val optimisationOutcome = otimisationInterpreter.start();
 	            		val endTime = System.nanoTime;
 	            		
 	            		val experimentDuration = (endTime - startTime) / 1000000
 	            		
-	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome))		
+	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, 
+	            			optimisationOutcome, otimisationInterpreter
+	            		))		
 						
 						experimentId++
 					} while(experimentId < model.optimisation.algorithmExperiments);
@@ -146,12 +149,15 @@ class MoeaOptimisationTests {
 					do {
 							            		
 	            		val startTime = System.nanoTime;
-	            		val optimisationOutcome = new OptimisationInterpreter("", model).start();
+	            		val otimisationInterpreter = new OptimisationInterpreter("", model) 
+	            		val optimisationOutcome = otimisationInterpreter.start();
 	            		val endTime = System.nanoTime;
 	            		
 	            		val experimentDuration = (endTime - startTime) / 1000000
 	            		
-	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome))		
+	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, 
+	            			optimisationOutcome, otimisationInterpreter
+	            		))			
 						
 						experimentId++
 					} while(experimentId < model.optimisation.algorithmExperiments);
@@ -186,12 +192,15 @@ class MoeaOptimisationTests {
 					
 					do {            		
 	            		val startTime = System.nanoTime;
-	            		val optimisationOutcome = new OptimisationInterpreter("", model).start();
+	            		val otimisationInterpreter = new OptimisationInterpreter("", model) 
+	            		val optimisationOutcome = otimisationInterpreter.start();
 	            		val endTime = System.nanoTime;
 	            		
 	            		val experimentDuration = (endTime - startTime) / 1000000
 	            		
-	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome))		
+	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, 
+	            			optimisationOutcome, otimisationInterpreter
+	            		))		
 						
 						experimentId++
 					
@@ -226,12 +235,15 @@ class MoeaOptimisationTests {
 					
 					do {            		
 	            		val startTime = System.nanoTime;
-	            		val optimisationOutcome = new OptimisationInterpreter("", model).start();
+	            		val otimisationInterpreter = new OptimisationInterpreter("", model) 
+	            		val optimisationOutcome = otimisationInterpreter.start();
 	            		val endTime = System.nanoTime;
 	            		
 	            		val experimentDuration = (endTime - startTime) / 1000000
 	            		
-	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome))		
+	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, 
+	            			optimisationOutcome, otimisationInterpreter
+	            		))			
 						
 						experimentId++
 					
@@ -269,12 +281,15 @@ class MoeaOptimisationTests {
 					
 					do {            		
 	            		val startTime = System.nanoTime;
-	            		val optimisationOutcome = new OptimisationInterpreter("", model).start();
+	            		val otimisationInterpreter = new OptimisationInterpreter("", model) 
+	            		val optimisationOutcome = otimisationInterpreter.start();
 	            		val endTime = System.nanoTime;
 	            		
 	            		val experimentDuration = (endTime - startTime) / 1000000
 	            		
-	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome))		
+	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, 
+	            			optimisationOutcome, otimisationInterpreter
+	            		))		
 						
 						experimentId++
 					

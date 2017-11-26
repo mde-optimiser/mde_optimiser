@@ -65,12 +65,15 @@ class RunOptimisation {
 					var experimentId = 0;
 	            	do {	
 	            		val startTime = System.nanoTime;
-	            		val optimisationOutcome = new OptimisationInterpreter(moptProjectPath, optimisationModel).start();
+	            		val optimisationInterpreter = new OptimisationInterpreter(moptProjectPath, optimisationModel); 
+	            		val optimisationOutcome = optimisationInterpreter.start();
 	            		val endTime = System.nanoTime;
 	            		
 	            		val experimentDuration = (endTime - startTime) / 1000000
 	            		
-	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome))		
+	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, 
+	            			optimisationOutcome, optimisationInterpreter
+	            		))		
 	            		
 	            		experimentId++
 					} while(experimentId < optimisationModel.optimisation.algorithmExperiments);
@@ -84,6 +87,4 @@ class RunOptimisation {
 			}
 		}
 	}
-	
-
 }

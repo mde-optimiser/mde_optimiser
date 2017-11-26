@@ -172,7 +172,6 @@ class SolutionGenerator {
 		return unitRunner.execute(null)
 	}
 	
-
     /**
      * Produce a new solution from the given one using one of the evolvers defined in the optimisation model.
      * This will try evolvers until one of them can be applied or all evolvers have been tried. If no evolver was applicable, returns <code>null</code>,
