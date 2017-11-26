@@ -9,12 +9,14 @@ import org.moeaframework.core.spi.AlgorithmFactory
 import uk.ac.kcl.interpreter.IOptimisation
 import uk.ac.kcl.mdeoptimise.OptimisationSpec
 import uk.ac.kcl.optimisation.SolutionGenerator
+import org.moeaframework.Instrumenter
+import java.io.File
+import org.moeaframework.core.Settings
 
 class MoeaOptimisation implements IOptimisation {
 	
 	SolutionGenerator solutionGenerator
 	
-	//This will have to 
 	override execute(OptimisationSpec optimisationSpec, SolutionGenerator solutionGenerator) {
 		
 		this.solutionGenerator = solutionGenerator;
@@ -49,12 +51,18 @@ class MoeaOptimisation implements IOptimisation {
 		return properties
 	}
 	
+	
+	/*
+	 * TODO This should actually return an object containing all the information about 
+	 * the run, not just the solution
+	 */
 	def NondominatedPopulation runOptimisation(String algorithmName, Properties optimisationProperties) {
 		
 		//OperatorFactory.getInstance().addProvider(new MoeaOptimisationVariationsProvider());
 		
 		val algorithmFactory = new AlgorithmFactory();
 		algorithmFactory.addProvider(new MoeaOptimisationAlgorithmProvider)
+			
 		
 		new Executor()
 		   .usingAlgorithmFactory(algorithmFactory)

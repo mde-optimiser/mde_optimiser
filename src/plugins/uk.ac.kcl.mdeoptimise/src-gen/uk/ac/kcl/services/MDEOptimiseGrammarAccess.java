@@ -468,24 +468,29 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cAlgorithmNameALGORITHM_NAMETerminalRuleCall_4_0 = (RuleCall)cAlgorithmNameAssignment_4.eContents().get(0);
 		private final Keyword cVariationKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Assignment cAlgorithmVariationAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cAlgorithmVariationALGORITHM_VARIATIONTerminalRuleCall_6_0 = (RuleCall)cAlgorithmVariationAssignment_6.eContents().get(0);
+		private final RuleCall cAlgorithmVariationAlgorithmVariationParserRuleCall_6_0 = (RuleCall)cAlgorithmVariationAssignment_6.eContents().get(0);
 		private final Keyword cEvolutionsKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		private final Assignment cAlgorithmEvolutionsAssignment_8 = (Assignment)cGroup.eContents().get(8);
 		private final RuleCall cAlgorithmEvolutionsINTTerminalRuleCall_8_0 = (RuleCall)cAlgorithmEvolutionsAssignment_8.eContents().get(0);
 		private final Keyword cPopulationKeyword_9 = (Keyword)cGroup.eContents().get(9);
 		private final Assignment cAlgorithmPopulationAssignment_10 = (Assignment)cGroup.eContents().get(10);
 		private final RuleCall cAlgorithmPopulationINTTerminalRuleCall_10_0 = (RuleCall)cAlgorithmPopulationAssignment_10.eContents().get(0);
+		private final Group cGroup_11 = (Group)cGroup.eContents().get(11);
+		private final Keyword cExperimentsKeyword_11_0 = (Keyword)cGroup_11.eContents().get(0);
+		private final Assignment cAlgorithmExperimentsAssignment_11_1 = (Assignment)cGroup_11.eContents().get(1);
+		private final RuleCall cAlgorithmExperimentsINTTerminalRuleCall_11_1_0 = (RuleCall)cAlgorithmExperimentsAssignment_11_1.eContents().get(0);
 		
 		//OptimisationSpec:
 		//	"optimisation" "provider" algorithmFactory=ALGORITHM_FACTORY
 		//	"algorithm" algorithmName=ALGORITHM_NAME
-		//	"variation" algorithmVariation=ALGORITHM_VARIATION
+		//	"variation" algorithmVariation=AlgorithmVariation
 		//	"evolutions" algorithmEvolutions=INT
-		//	"population" algorithmPopulation=INT;
+		//	"population" algorithmPopulation=INT ("experiments" algorithmExperiments=INT)?;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//"optimisation" "provider" algorithmFactory=ALGORITHM_FACTORY "algorithm" algorithmName=ALGORITHM_NAME "variation"
-		//algorithmVariation=ALGORITHM_VARIATION "evolutions" algorithmEvolutions=INT "population" algorithmPopulation=INT
+		//algorithmVariation=AlgorithmVariation "evolutions" algorithmEvolutions=INT "population" algorithmPopulation=INT
+		//("experiments" algorithmExperiments=INT)?
 		public Group getGroup() { return cGroup; }
 		
 		//"optimisation"
@@ -512,11 +517,11 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		//"variation"
 		public Keyword getVariationKeyword_5() { return cVariationKeyword_5; }
 		
-		//algorithmVariation=ALGORITHM_VARIATION
+		//algorithmVariation=AlgorithmVariation
 		public Assignment getAlgorithmVariationAssignment_6() { return cAlgorithmVariationAssignment_6; }
 		
-		//ALGORITHM_VARIATION
-		public RuleCall getAlgorithmVariationALGORITHM_VARIATIONTerminalRuleCall_6_0() { return cAlgorithmVariationALGORITHM_VARIATIONTerminalRuleCall_6_0; }
+		//AlgorithmVariation
+		public RuleCall getAlgorithmVariationAlgorithmVariationParserRuleCall_6_0() { return cAlgorithmVariationAlgorithmVariationParserRuleCall_6_0; }
 		
 		//"evolutions"
 		public Keyword getEvolutionsKeyword_7() { return cEvolutionsKeyword_7; }
@@ -535,6 +540,104 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//INT
 		public RuleCall getAlgorithmPopulationINTTerminalRuleCall_10_0() { return cAlgorithmPopulationINTTerminalRuleCall_10_0; }
+		
+		//("experiments" algorithmExperiments=INT)?
+		public Group getGroup_11() { return cGroup_11; }
+		
+		//"experiments"
+		public Keyword getExperimentsKeyword_11_0() { return cExperimentsKeyword_11_0; }
+		
+		//algorithmExperiments=INT
+		public Assignment getAlgorithmExperimentsAssignment_11_1() { return cAlgorithmExperimentsAssignment_11_1; }
+		
+		//INT
+		public RuleCall getAlgorithmExperimentsINTTerminalRuleCall_11_1_0() { return cAlgorithmExperimentsINTTerminalRuleCall_11_1_0; }
+	}
+	public class AlgorithmVariationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.AlgorithmVariation");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Assignment cProbabilityVariationAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final RuleCall cProbabilityVariationProbabilityVariationParserRuleCall_0_0 = (RuleCall)cProbabilityVariationAssignment_0.eContents().get(0);
+		private final Assignment cSimpleVariationAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
+		private final Alternatives cSimpleVariationAlternatives_1_0 = (Alternatives)cSimpleVariationAssignment_1.eContents().get(0);
+		private final RuleCall cSimpleVariationMUTATION_VARIATIONTerminalRuleCall_1_0_0 = (RuleCall)cSimpleVariationAlternatives_1_0.eContents().get(0);
+		private final RuleCall cSimpleVariationCROSSOVER_VARIATIONTerminalRuleCall_1_0_1 = (RuleCall)cSimpleVariationAlternatives_1_0.eContents().get(1);
+		
+		//AlgorithmVariation:
+		//	probabilityVariation=ProbabilityVariation | simpleVariation=(MUTATION_VARIATION | CROSSOVER_VARIATION);
+		@Override public ParserRule getRule() { return rule; }
+		
+		//probabilityVariation=ProbabilityVariation | simpleVariation=(MUTATION_VARIATION | CROSSOVER_VARIATION)
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//probabilityVariation=ProbabilityVariation
+		public Assignment getProbabilityVariationAssignment_0() { return cProbabilityVariationAssignment_0; }
+		
+		//ProbabilityVariation
+		public RuleCall getProbabilityVariationProbabilityVariationParserRuleCall_0_0() { return cProbabilityVariationProbabilityVariationParserRuleCall_0_0; }
+		
+		//simpleVariation=(MUTATION_VARIATION | CROSSOVER_VARIATION)
+		public Assignment getSimpleVariationAssignment_1() { return cSimpleVariationAssignment_1; }
+		
+		//(MUTATION_VARIATION | CROSSOVER_VARIATION)
+		public Alternatives getSimpleVariationAlternatives_1_0() { return cSimpleVariationAlternatives_1_0; }
+		
+		//MUTATION_VARIATION
+		public RuleCall getSimpleVariationMUTATION_VARIATIONTerminalRuleCall_1_0_0() { return cSimpleVariationMUTATION_VARIATIONTerminalRuleCall_1_0_0; }
+		
+		//CROSSOVER_VARIATION
+		public RuleCall getSimpleVariationCROSSOVER_VARIATIONTerminalRuleCall_1_0_1() { return cSimpleVariationCROSSOVER_VARIATIONTerminalRuleCall_1_0_1; }
+	}
+	public class ProbabilityVariationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.ProbabilityVariation");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cTypeGENETIC_VARIATIONTerminalRuleCall_0_0 = (RuleCall)cTypeAssignment_0.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cCrossover_rateAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cCrossover_rateNumberParserRuleCall_1_1_0 = (RuleCall)cCrossover_rateAssignment_1_1.eContents().get(0);
+		private final Keyword cCommaKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
+		private final Assignment cMutation_rateAssignment_1_3 = (Assignment)cGroup_1.eContents().get(3);
+		private final RuleCall cMutation_rateNumberParserRuleCall_1_3_0 = (RuleCall)cMutation_rateAssignment_1_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_1_4 = (Keyword)cGroup_1.eContents().get(4);
+		
+		//ProbabilityVariation:
+		//	type=GENETIC_VARIATION ('(' crossover_rate=Number ',' mutation_rate=Number ')')?;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//type=GENETIC_VARIATION ('(' crossover_rate=Number ',' mutation_rate=Number ')')?
+		public Group getGroup() { return cGroup; }
+		
+		//type=GENETIC_VARIATION
+		public Assignment getTypeAssignment_0() { return cTypeAssignment_0; }
+		
+		//GENETIC_VARIATION
+		public RuleCall getTypeGENETIC_VARIATIONTerminalRuleCall_0_0() { return cTypeGENETIC_VARIATIONTerminalRuleCall_0_0; }
+		
+		//('(' crossover_rate=Number ',' mutation_rate=Number ')')?
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_1_0() { return cLeftParenthesisKeyword_1_0; }
+		
+		//crossover_rate=Number
+		public Assignment getCrossover_rateAssignment_1_1() { return cCrossover_rateAssignment_1_1; }
+		
+		//Number
+		public RuleCall getCrossover_rateNumberParserRuleCall_1_1_0() { return cCrossover_rateNumberParserRuleCall_1_1_0; }
+		
+		//','
+		public Keyword getCommaKeyword_1_2() { return cCommaKeyword_1_2; }
+		
+		//mutation_rate=Number
+		public Assignment getMutation_rateAssignment_1_3() { return cMutation_rateAssignment_1_3; }
+		
+		//Number
+		public RuleCall getMutation_rateNumberParserRuleCall_1_3_0() { return cMutation_rateNumberParserRuleCall_1_3_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_1_4() { return cRightParenthesisKeyword_1_4; }
 	}
 	
 	public class EvolverTypeElements extends AbstractEnumRuleElementFinder {
@@ -576,7 +679,11 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	private final ParameterFunctionElements pParameterFunction;
 	private final EvolverTypeElements eEvolverType;
 	private final OptimisationSpecElements pOptimisationSpec;
-	private final TerminalRule tALGORITHM_VARIATION;
+	private final AlgorithmVariationElements pAlgorithmVariation;
+	private final ProbabilityVariationElements pProbabilityVariation;
+	private final TerminalRule tGENETIC_VARIATION;
+	private final TerminalRule tCROSSOVER_VARIATION;
+	private final TerminalRule tMUTATION_VARIATION;
 	private final TerminalRule tALGORITHM_FACTORY;
 	private final TerminalRule tALGORITHM_NAME;
 	private final TerminalRule tURL;
@@ -607,7 +714,11 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		this.pParameterFunction = new ParameterFunctionElements();
 		this.eEvolverType = new EvolverTypeElements();
 		this.pOptimisationSpec = new OptimisationSpecElements();
-		this.tALGORITHM_VARIATION = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.ALGORITHM_VARIATION");
+		this.pAlgorithmVariation = new AlgorithmVariationElements();
+		this.pProbabilityVariation = new ProbabilityVariationElements();
+		this.tGENETIC_VARIATION = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.GENETIC_VARIATION");
+		this.tCROSSOVER_VARIATION = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.CROSSOVER_VARIATION");
+		this.tMUTATION_VARIATION = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.MUTATION_VARIATION");
 		this.tALGORITHM_FACTORY = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.ALGORITHM_FACTORY");
 		this.tALGORITHM_NAME = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.ALGORITHM_NAME");
 		this.tURL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.URL");
@@ -769,9 +880,9 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	//OptimisationSpec:
 	//	"optimisation" "provider" algorithmFactory=ALGORITHM_FACTORY
 	//	"algorithm" algorithmName=ALGORITHM_NAME
-	//	"variation" algorithmVariation=ALGORITHM_VARIATION
+	//	"variation" algorithmVariation=AlgorithmVariation
 	//	"evolutions" algorithmEvolutions=INT
-	//	"population" algorithmPopulation=INT;
+	//	"population" algorithmPopulation=INT ("experiments" algorithmExperiments=INT)?;
 	public OptimisationSpecElements getOptimisationSpecAccess() {
 		return pOptimisationSpec;
 	}
@@ -780,10 +891,42 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		return getOptimisationSpecAccess().getRule();
 	}
 	
-	//terminal ALGORITHM_VARIATION:
-	//	'genetic' | 'crossover' | 'mutation';
-	public TerminalRule getALGORITHM_VARIATIONRule() {
-		return tALGORITHM_VARIATION;
+	//AlgorithmVariation:
+	//	probabilityVariation=ProbabilityVariation | simpleVariation=(MUTATION_VARIATION | CROSSOVER_VARIATION);
+	public AlgorithmVariationElements getAlgorithmVariationAccess() {
+		return pAlgorithmVariation;
+	}
+	
+	public ParserRule getAlgorithmVariationRule() {
+		return getAlgorithmVariationAccess().getRule();
+	}
+	
+	//ProbabilityVariation:
+	//	type=GENETIC_VARIATION ('(' crossover_rate=Number ',' mutation_rate=Number ')')?;
+	public ProbabilityVariationElements getProbabilityVariationAccess() {
+		return pProbabilityVariation;
+	}
+	
+	public ParserRule getProbabilityVariationRule() {
+		return getProbabilityVariationAccess().getRule();
+	}
+	
+	//terminal GENETIC_VARIATION:
+	//	'genetic';
+	public TerminalRule getGENETIC_VARIATIONRule() {
+		return tGENETIC_VARIATION;
+	}
+	
+	//terminal CROSSOVER_VARIATION:
+	//	'crossover';
+	public TerminalRule getCROSSOVER_VARIATIONRule() {
+		return tCROSSOVER_VARIATION;
+	}
+	
+	//terminal MUTATION_VARIATION:
+	//	'mutation';
+	public TerminalRule getMUTATION_VARIATIONRule() {
+		return tMUTATION_VARIATION;
 	}
 	
 	//terminal ALGORITHM_FACTORY:
