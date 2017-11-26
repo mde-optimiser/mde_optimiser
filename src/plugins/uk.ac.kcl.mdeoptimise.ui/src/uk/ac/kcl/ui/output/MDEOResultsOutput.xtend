@@ -106,6 +106,8 @@ class MDEOResultsOutput {
 				csvRow.add(moptFile)
 				csvRow.add(moptConfiguration.model.location)
 				csvRow.add(outcomePath.append(String.format("batch-%s/", batch.id))
+					.append(String.format("input-model-%08X", batch.initialModel.hashCode) + ".xmi")
+				)				csvRow.add(outcomePath.append(String.format("batch-%s/", batch.id))
 					.append(String.format("%08X", solution.model.hashCode) + ".xmi")
 				)
 				csvRow.add(formatter.format(new Date(batch.duration.longValue).getTime()))
@@ -161,6 +163,7 @@ class MDEOResultsOutput {
 		header.add("batch-id")
 		header.add("mopt-file")
 		header.add("input-model")
+		header.add("initialized-input-model")
 		header.add("outcome-path")
 		header.add("duration")
 		

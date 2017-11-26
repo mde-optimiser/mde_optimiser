@@ -27,7 +27,7 @@ class UserModelProvider implements IModelProvider {
 		resource.load(Collections.EMPTY_MAP)
 		val model = resource.allContents.head
 		// Run the initialization henshin rule
-		this.initialModel = initializeModel(model)
+		this.initialModel = model //initializeModel(model)
 		
 		return this.initialModel
 	}

@@ -28,6 +28,11 @@ import uk.ac.kcl.interpreter.OptimisationInterpreter
 import uk.ac.kcl.ui.output.MDEOResultsOutput
 import uk.ac.kcl.ui.output.MDEOBatch
 import org.eclipse.core.runtime.Path
+import org.eclipse.emf.ecore.resource.ResourceSet
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
+import java.util.Collections
+import java.util.ArrayList
+import uk.ac.kcl.mdeoptimise.EvolverType
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)
@@ -88,7 +93,7 @@ class MoeaOptimisationTests {
 				mutate using <craEvolvers.henshin> unit "assignFeature"
 				mutate using <craEvolvers.henshin> unit "moveFeature"
 				mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
-				optimisation provider moea algorithm NSGAII variation mutation evolutions 10 population 5 experiments 2
+				optimisation provider moea algorithm NSGAII variation mutation evolutions 200 population 40 experiments 2
 			''')
 
 			//Assert that there are no grammar issues
@@ -127,7 +132,7 @@ class MoeaOptimisationTests {
 			model = parser.parse('''
 				basepath <src/models/cra/>
 				metamodel <architectureCRA.ecore>
-				model <TTC_InputRDG_C.xmi>
+				model <TTC_InputRDG_E.xmi>
 				objective MaximiseCRA maximise java { "models.moea.MaximiseCRA" }
 				constraint MinimiseClasslessFeatures java { "models.moea.MinimiseClasslessFeatures" }
 				mutate using <craEvolvers.henshin> unit "createClass"
@@ -135,7 +140,7 @@ class MoeaOptimisationTests {
 				mutate using <craEvolvers.henshin> unit "moveFeature"
 				mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
 				breed using <exchangeClass.henshin> unit "exchangeClassBidirectional"
-				optimisation provider moea algorithm NSGAII variation mutation evolutions 10 population 5 experiments 2
+				optimisation provider moea algorithm NSGAII variation mutation evolutions 200 population 40 experiments 2
 			''')
 
 			//Assert that there are no grammar issues
@@ -297,6 +302,103 @@ class MoeaOptimisationTests {
 
 	            	mdeoResultsOutput.saveOutcome();
 	        }
+	}
+	
+		/**
+	 * TODO This test fails because of an undefined error. However I cannot tell why this is happening.
+	 */
+	@Test
+	def void moptGenerator() {
+		
+			val pathPrefix = "gen/configurations/"
+			
+			model = parser.parse('''
+				basepath <src/models/cra/>
+				metamodel <architectureCRA.ecore>
+				model <TTC_InputRDG_E.xmi>
+				objective MaximiseCRA maximise java { "models.moea.MaximiseCRA" }
+				constraint MinimiseClasslessFeatures java { "models.moea.MinimiseClasslessFeatures" }
+				mutate using <craEvolvers.henshin> unit "createClass"
+				mutate using <craEvolvers.henshin> unit "assignFeature"
+				mutate using <craEvolvers.henshin> unit "moveFeature"
+				mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
+				breed using <crossover.henshin> unit "exchangeClassBidirectional"
+				optimisation provider moea algorithm NSGAII variation genetic(10, 10) evolutions 200 population 40 experiments 20
+			''')
+
+			//Assert that there are no grammar issues
+			model.assertNoIssues
+			
+			val inputModels = new ArrayList<String>();
+			inputModels.add("TTC_InputRDG_A.xmi")
+			inputModels.add("TTC_InputRDG_B.xmi")
+			inputModels.add("TTC_InputRDG_C.xmi")
+			inputModels.add("TTC_InputRDG_D.xmi")
+			inputModels.add("TTC_InputRDG_E.xmi")
+			
+			val crossoverOperators = new ArrayList<String>();
+			crossoverOperators.add("selectClass_addAsNewClass")
+			crossoverOperators.add("selectRandomDependencies_addAsNewClass")
+			crossoverOperators.add("selectRandomFeatures_addAsNewClass")
+			crossoverOperators.add("selectRandomDependencies_preserveDistribution")
+			crossoverOperators.add("selectRandomFeaturesSame_addAsNewClass")
+			crossoverOperators.add("selectRandomFeatures_preserveDistribution")
+			crossoverOperators.add("selectRandomFeaturesSame_preserveDistribution")
+			
+			val resourceSet = new ResourceSetImpl()
+			
+			for(var mutation_rate = 10; mutation_rate < 100; mutation_rate+=10){
+				for(var crossover_rate = 10; crossover_rate < 100; crossover_rate+=10){
+					
+					val crossover_rate_value = crossover_rate.toString
+					val mutation_rate_value = mutation_rate.toString
+					
+					inputModels.forEach[inputModel |
+						
+						model.model.location = inputModel
+						
+						crossoverOperators.forEach[operator | 
+							
+							model.evolvers.filter[x | x.evolverType == EvolverType.BREED].get(0).unit = operator
+							model.optimisation.algorithmVariation.probabilityVariation.crossover_rate = crossover_rate_value
+							model.optimisation.algorithmVariation.probabilityVariation.mutation_rate = mutation_rate_value
+							
+							val resource = resourceSet.createResource(
+								URI.createFileURI(pathPrefix + 
+									String.format("conf-%s-pop-%s-ev-%s-input-model-%s-crossover-%s-mutation-rate-%s-crossover-rate.mopt",
+										model.optimisation.algorithmPopulation,
+										model.optimisation.algorithmEvolutions,
+										model.model.location,
+										model.evolvers.filter[x | x.evolverType == EvolverType.BREED].get(0).unit,
+										model.optimisation.algorithmVariation.probabilityVariation.mutation_rate,
+										model.optimisation.algorithmVariation.probabilityVariation.crossover_rate
+									)
+								)
+							)
+			
+							if (resource.loaded) {
+								resource.contents.clear
+							}
+							resource.contents.add(model)
+							resource.save(Collections.EMPTY_MAP)
+							
+						]
+						
+					]
+					
+				}	
+			}
+			
+			
+
+			val resource = resourceSet.createResource(URI.createFileURI(pathPrefix + "configuration.mopt"))
+			
+			if (resource.loaded) {
+				resource.contents.clear
+			}
+			resource.contents.add(model)
+			resource.save(Collections.EMPTY_MAP)
+			
 	}
 
 }
