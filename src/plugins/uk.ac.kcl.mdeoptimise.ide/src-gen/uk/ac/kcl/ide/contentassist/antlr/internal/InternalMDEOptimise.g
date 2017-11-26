@@ -300,6 +300,56 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+// Entry rule entryRuleAlgorithmVariation
+entryRuleAlgorithmVariation
+:
+{ before(grammarAccess.getAlgorithmVariationRule()); }
+	 ruleAlgorithmVariation
+{ after(grammarAccess.getAlgorithmVariationRule()); } 
+	 EOF 
+;
+
+// Rule AlgorithmVariation
+ruleAlgorithmVariation 
+	@init {
+		int stackSize = keepStackSize();
+	}
+	:
+	(
+		{ before(grammarAccess.getAlgorithmVariationAccess().getAlternatives()); }
+		(rule__AlgorithmVariation__Alternatives)
+		{ after(grammarAccess.getAlgorithmVariationAccess().getAlternatives()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+// Entry rule entryRuleProbabilityVariation
+entryRuleProbabilityVariation
+:
+{ before(grammarAccess.getProbabilityVariationRule()); }
+	 ruleProbabilityVariation
+{ after(grammarAccess.getProbabilityVariationRule()); } 
+	 EOF 
+;
+
+// Rule ProbabilityVariation
+ruleProbabilityVariation 
+	@init {
+		int stackSize = keepStackSize();
+	}
+	:
+	(
+		{ before(grammarAccess.getProbabilityVariationAccess().getGroup()); }
+		(rule__ProbabilityVariation__Group__0)
+		{ after(grammarAccess.getProbabilityVariationAccess().getGroup()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 // Entry rule entryRuleXExpression
 entryRuleXExpression
 :
@@ -2221,6 +2271,48 @@ rule__EvolverParameter__Alternatives_1_1
 		{ before(grammarAccess.getEvolverParameterAccess().getCustomFunctionAssignment_1_1_1()); }
 		(rule__EvolverParameter__CustomFunctionAssignment_1_1_1)
 		{ after(grammarAccess.getEvolverParameterAccess().getCustomFunctionAssignment_1_1_1()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AlgorithmVariation__Alternatives
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getAlgorithmVariationAccess().getProbabilityVariationAssignment_0()); }
+		(rule__AlgorithmVariation__ProbabilityVariationAssignment_0)
+		{ after(grammarAccess.getAlgorithmVariationAccess().getProbabilityVariationAssignment_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getAlgorithmVariationAccess().getSimpleVariationAssignment_1()); }
+		(rule__AlgorithmVariation__SimpleVariationAssignment_1)
+		{ after(grammarAccess.getAlgorithmVariationAccess().getSimpleVariationAssignment_1()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AlgorithmVariation__SimpleVariationAlternatives_1_0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getAlgorithmVariationAccess().getSimpleVariationMUTATION_VARIATIONTerminalRuleCall_1_0_0()); }
+		RULE_MUTATION_VARIATION
+		{ after(grammarAccess.getAlgorithmVariationAccess().getSimpleVariationMUTATION_VARIATIONTerminalRuleCall_1_0_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getAlgorithmVariationAccess().getSimpleVariationCROSSOVER_VARIATIONTerminalRuleCall_1_0_1()); }
+		RULE_CROSSOVER_VARIATION
+		{ after(grammarAccess.getAlgorithmVariationAccess().getSimpleVariationCROSSOVER_VARIATIONTerminalRuleCall_1_0_1()); }
 	)
 ;
 finally {
@@ -4911,6 +5003,7 @@ rule__OptimisationSpec__Group__10
 	}
 :
 	rule__OptimisationSpec__Group__10__Impl
+	rule__OptimisationSpec__Group__11
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -4925,6 +5018,275 @@ rule__OptimisationSpec__Group__10__Impl
 	{ before(grammarAccess.getOptimisationSpecAccess().getAlgorithmPopulationAssignment_10()); }
 	(rule__OptimisationSpec__AlgorithmPopulationAssignment_10)
 	{ after(grammarAccess.getOptimisationSpecAccess().getAlgorithmPopulationAssignment_10()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__OptimisationSpec__Group__11
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__OptimisationSpec__Group__11__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__OptimisationSpec__Group__11__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getOptimisationSpecAccess().getGroup_11()); }
+	(rule__OptimisationSpec__Group_11__0)?
+	{ after(grammarAccess.getOptimisationSpecAccess().getGroup_11()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__OptimisationSpec__Group_11__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__OptimisationSpec__Group_11__0__Impl
+	rule__OptimisationSpec__Group_11__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__OptimisationSpec__Group_11__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getOptimisationSpecAccess().getExperimentsKeyword_11_0()); }
+	'experiments'
+	{ after(grammarAccess.getOptimisationSpecAccess().getExperimentsKeyword_11_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__OptimisationSpec__Group_11__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__OptimisationSpec__Group_11__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__OptimisationSpec__Group_11__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getOptimisationSpecAccess().getAlgorithmExperimentsAssignment_11_1()); }
+	(rule__OptimisationSpec__AlgorithmExperimentsAssignment_11_1)
+	{ after(grammarAccess.getOptimisationSpecAccess().getAlgorithmExperimentsAssignment_11_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__ProbabilityVariation__Group__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__ProbabilityVariation__Group__0__Impl
+	rule__ProbabilityVariation__Group__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ProbabilityVariation__Group__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getProbabilityVariationAccess().getTypeAssignment_0()); }
+	(rule__ProbabilityVariation__TypeAssignment_0)
+	{ after(grammarAccess.getProbabilityVariationAccess().getTypeAssignment_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ProbabilityVariation__Group__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__ProbabilityVariation__Group__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ProbabilityVariation__Group__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getProbabilityVariationAccess().getGroup_1()); }
+	(rule__ProbabilityVariation__Group_1__0)?
+	{ after(grammarAccess.getProbabilityVariationAccess().getGroup_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__ProbabilityVariation__Group_1__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__ProbabilityVariation__Group_1__0__Impl
+	rule__ProbabilityVariation__Group_1__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ProbabilityVariation__Group_1__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getProbabilityVariationAccess().getLeftParenthesisKeyword_1_0()); }
+	'('
+	{ after(grammarAccess.getProbabilityVariationAccess().getLeftParenthesisKeyword_1_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ProbabilityVariation__Group_1__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__ProbabilityVariation__Group_1__1__Impl
+	rule__ProbabilityVariation__Group_1__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ProbabilityVariation__Group_1__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getProbabilityVariationAccess().getCrossover_rateAssignment_1_1()); }
+	(rule__ProbabilityVariation__Crossover_rateAssignment_1_1)
+	{ after(grammarAccess.getProbabilityVariationAccess().getCrossover_rateAssignment_1_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ProbabilityVariation__Group_1__2
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__ProbabilityVariation__Group_1__2__Impl
+	rule__ProbabilityVariation__Group_1__3
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ProbabilityVariation__Group_1__2__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getProbabilityVariationAccess().getCommaKeyword_1_2()); }
+	','
+	{ after(grammarAccess.getProbabilityVariationAccess().getCommaKeyword_1_2()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ProbabilityVariation__Group_1__3
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__ProbabilityVariation__Group_1__3__Impl
+	rule__ProbabilityVariation__Group_1__4
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ProbabilityVariation__Group_1__3__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getProbabilityVariationAccess().getMutation_rateAssignment_1_3()); }
+	(rule__ProbabilityVariation__Mutation_rateAssignment_1_3)
+	{ after(grammarAccess.getProbabilityVariationAccess().getMutation_rateAssignment_1_3()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ProbabilityVariation__Group_1__4
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__ProbabilityVariation__Group_1__4__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ProbabilityVariation__Group_1__4__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getProbabilityVariationAccess().getRightParenthesisKeyword_1_4()); }
+	')'
+	{ after(grammarAccess.getProbabilityVariationAccess().getRightParenthesisKeyword_1_4()); }
 )
 ;
 finally {
@@ -17017,9 +17379,9 @@ rule__OptimisationSpec__AlgorithmVariationAssignment_6
 	}
 :
 	(
-		{ before(grammarAccess.getOptimisationSpecAccess().getAlgorithmVariationALGORITHM_VARIATIONTerminalRuleCall_6_0()); }
-		RULE_ALGORITHM_VARIATION
-		{ after(grammarAccess.getOptimisationSpecAccess().getAlgorithmVariationALGORITHM_VARIATIONTerminalRuleCall_6_0()); }
+		{ before(grammarAccess.getOptimisationSpecAccess().getAlgorithmVariationAlgorithmVariationParserRuleCall_6_0()); }
+		ruleAlgorithmVariation
+		{ after(grammarAccess.getOptimisationSpecAccess().getAlgorithmVariationAlgorithmVariationParserRuleCall_6_0()); }
 	)
 ;
 finally {
@@ -17050,6 +17412,96 @@ rule__OptimisationSpec__AlgorithmPopulationAssignment_10
 		{ before(grammarAccess.getOptimisationSpecAccess().getAlgorithmPopulationINTTerminalRuleCall_10_0()); }
 		RULE_INT
 		{ after(grammarAccess.getOptimisationSpecAccess().getAlgorithmPopulationINTTerminalRuleCall_10_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__OptimisationSpec__AlgorithmExperimentsAssignment_11_1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getOptimisationSpecAccess().getAlgorithmExperimentsINTTerminalRuleCall_11_1_0()); }
+		RULE_INT
+		{ after(grammarAccess.getOptimisationSpecAccess().getAlgorithmExperimentsINTTerminalRuleCall_11_1_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AlgorithmVariation__ProbabilityVariationAssignment_0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getAlgorithmVariationAccess().getProbabilityVariationProbabilityVariationParserRuleCall_0_0()); }
+		ruleProbabilityVariation
+		{ after(grammarAccess.getAlgorithmVariationAccess().getProbabilityVariationProbabilityVariationParserRuleCall_0_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AlgorithmVariation__SimpleVariationAssignment_1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getAlgorithmVariationAccess().getSimpleVariationAlternatives_1_0()); }
+		(rule__AlgorithmVariation__SimpleVariationAlternatives_1_0)
+		{ after(grammarAccess.getAlgorithmVariationAccess().getSimpleVariationAlternatives_1_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ProbabilityVariation__TypeAssignment_0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getProbabilityVariationAccess().getTypeGENETIC_VARIATIONTerminalRuleCall_0_0()); }
+		RULE_GENETIC_VARIATION
+		{ after(grammarAccess.getProbabilityVariationAccess().getTypeGENETIC_VARIATIONTerminalRuleCall_0_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ProbabilityVariation__Crossover_rateAssignment_1_1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getProbabilityVariationAccess().getCrossover_rateNumberParserRuleCall_1_1_0()); }
+		ruleNumber
+		{ after(grammarAccess.getProbabilityVariationAccess().getCrossover_rateNumberParserRuleCall_1_1_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ProbabilityVariation__Mutation_rateAssignment_1_3
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getProbabilityVariationAccess().getMutation_rateNumberParserRuleCall_1_3_0()); }
+		ruleNumber
+		{ after(grammarAccess.getProbabilityVariationAccess().getMutation_rateNumberParserRuleCall_1_3_0()); }
 	)
 ;
 finally {
@@ -19292,7 +19744,11 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-RULE_ALGORITHM_VARIATION : ('genetic'|'crossover'|'mutation');
+RULE_GENETIC_VARIATION : 'genetic';
+
+RULE_CROSSOVER_VARIATION : 'crossover';
+
+RULE_MUTATION_VARIATION : 'mutation';
 
 RULE_ALGORITHM_FACTORY : ('moea'|'ecj');
 
