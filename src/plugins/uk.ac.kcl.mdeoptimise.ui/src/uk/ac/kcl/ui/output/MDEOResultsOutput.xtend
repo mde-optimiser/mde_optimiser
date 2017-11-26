@@ -92,6 +92,8 @@ class MDEOResultsOutput {
 		
 		val csvHeader = getCSVHeaders(moptConfiguration)		
 		val csvRows = new ArrayList<LinkedList<Object>>();
+		val formatter = new SimpleDateFormat("HH:mm:ss.SSS");
+		formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
 		
 		batches.forEach[batch | 
 			
@@ -101,11 +103,13 @@ class MDEOResultsOutput {
 				csvRow.add(batch.id)
 				csvRow.add(moptFile)
 				csvRow.add(moptConfiguration.model.location)
-				csvRow.add(outcomePath.append(String.format("batch-%s/", batch.id)))
-				csvRow.add(batch.duration)
+				csvRow.add(outcomePath.append(String.format("batch-%s/", batch.id))
+					.append(String.format("%08X", solution.model.hashCode) + ".xmi")
+				)
+				csvRow.add(formatter.format(new Date(batch.duration.longValue).getTime()))
 				
 				solution.formattedObjectives.forEach[p1, p2|
-					csvRow.add(p2)
+					csvRow.add(-1 * p2)
 				]
 				
 				solution.formattedConstraints.forEach[p1, p2|
@@ -119,7 +123,6 @@ class MDEOResultsOutput {
 					.forEach[evolver, index| csvRow.add(evolver.unit)]
 				
 				csvRow.add(moptConfiguration.optimisation.algorithmName)
-				
 				
 				if(moptConfiguration.optimisation.algorithmVariation.simpleVariation != null){ 
 					csvRow.add(moptConfiguration.optimisation.algorithmVariation.simpleVariation)
