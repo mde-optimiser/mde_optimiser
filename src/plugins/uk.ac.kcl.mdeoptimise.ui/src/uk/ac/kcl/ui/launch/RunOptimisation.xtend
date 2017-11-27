@@ -32,7 +32,7 @@ class RunOptimisation {
 			app.run(args.get(0), args.get(1))
 		} else {
 			println("Invalid number of arguments. Cannot launch optimisation.")
-			println("Expecting a valid mopt file path. Received " + args)
+			println("Expecting a valid mopt file path. Received " + args.get(1))
 		}
 	}
 	

@@ -132,15 +132,15 @@ class MoeaOptimisationTests {
 			model = parser.parse('''
 				basepath <src/models/cra/>
 				metamodel <architectureCRA.ecore>
-				model <TTC_InputRDG_E.xmi>
+				model <TTC_InputRDG_C.xmi>
 				objective MaximiseCRA maximise java { "models.moea.MaximiseCRA" }
 				constraint MinimiseClasslessFeatures java { "models.moea.MinimiseClasslessFeatures" }
 				mutate using <craEvolvers.henshin> unit "createClass"
 				mutate using <craEvolvers.henshin> unit "assignFeature"
 				mutate using <craEvolvers.henshin> unit "moveFeature"
 				mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
-				breed using <exchangeClass.henshin> unit "exchangeClassBidirectional"
-				optimisation provider moea algorithm NSGAII variation mutation evolutions 200 population 40 experiments 2
+				breed using <crossover.henshin> unit "selectClass_addAsNewClass"
+				optimisation provider moea algorithm NSGAII variation genetic(10, 90) evolutions 200 population 40 experiments 2
 			''')
 
 			//Assert that there are no grammar issues
@@ -347,8 +347,9 @@ class MoeaOptimisationTests {
 			
 			val resourceSet = new ResourceSetImpl()
 			
-			for(var mutation_rate = 10; mutation_rate < 100; mutation_rate+=10){
-				for(var crossover_rate = 10; crossover_rate < 100; crossover_rate+=10){
+
+			for(var mutation_rate = 20; mutation_rate <= 100; mutation_rate+=20){
+				for(var crossover_rate = 20; crossover_rate <= 100; crossover_rate+=20){
 					
 					val crossover_rate_value = crossover_rate.toString
 					val mutation_rate_value = mutation_rate.toString
@@ -388,17 +389,6 @@ class MoeaOptimisationTests {
 					
 				}	
 			}
-			
-			
-
-			val resource = resourceSet.createResource(URI.createFileURI(pathPrefix + "configuration.mopt"))
-			
-			if (resource.loaded) {
-				resource.contents.clear
-			}
-			resource.contents.add(model)
-			resource.save(Collections.EMPTY_MAP)
-			
 	}
 
 }

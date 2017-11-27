@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_MynzgNFHEeeyaM0NgTkVZw">
+  <imports href="architectureCRA.ecore#/"/>
+  <imports href="http://www.eclipse.org/emf/2011/Henshin/Trace#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_PJK0INFHEeeyaM0NgTkVZw" name="markFeatures">
+    <lhs xmi:id="_PMTnsNFHEeeyaM0NgTkVZw" name="Lhs"/>
+    <rhs xmi:id="_PMTnsdFHEeeyaM0NgTkVZw" name="Rhs"/>
+    <multiRules xmi:id="_noHPQNFHEeeyaM0NgTkVZw">
+      <lhs xmi:id="_noJEcNFHEeeyaM0NgTkVZw" name="Lhs">
+        <nodes xmi:id="_ZrwpINFHEeeyaM0NgTkVZw" name="feat">
+          <type href="architectureCRA.ecore#//Feature"/>
+        </nodes>
+      </lhs>
+      <rhs xmi:id="_noJrgNFHEeeyaM0NgTkVZw" name="Rhs">
+        <nodes xmi:id="_ZrwpIdFHEeeyaM0NgTkVZw" name="feat" incoming="_be4zoNFHEeeyaM0NgTkVZw">
+          <type href="architectureCRA.ecore#//Feature"/>
+        </nodes>
+        <nodes xmi:id="_Uax3sNFHEeeyaM0NgTkVZw" name="counter" outgoing="_be4zoNFHEeeyaM0NgTkVZw">
+          <type href="http://www.eclipse.org/emf/2011/Henshin/Trace#//Trace"/>
+        </nodes>
+        <edges xmi:id="_be4zoNFHEeeyaM0NgTkVZw" source="_Uax3sNFHEeeyaM0NgTkVZw" target="_ZrwpIdFHEeeyaM0NgTkVZw">
+          <type href="http://www.eclipse.org/emf/2011/Henshin/Trace#//Trace/target"/>
+        </edges>
+      </rhs>
+      <mappings xmi:id="_ZrwpItFHEeeyaM0NgTkVZw" origin="_ZrwpINFHEeeyaM0NgTkVZw" image="_ZrwpIdFHEeeyaM0NgTkVZw"/>
+    </multiRules>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_eqJOsNFHEeeyaM0NgTkVZw" name="createClass">
+    <lhs xmi:id="_eqQjcNFHEeeyaM0NgTkVZw" name="Lhs">
+      <nodes xmi:id="_wrvy8NFHEeeyaM0NgTkVZw" name="sol">
+        <type href="architectureCRA.ecore#//ClassModel"/>
+      </nodes>
+    </lhs>
+    <rhs xmi:id="_eqQjcdFHEeeyaM0NgTkVZw" name="Rhs">
+      <nodes xmi:id="_wrvy8dFHEeeyaM0NgTkVZw" name="sol" outgoing="_0Sw88NFHEeeyaM0NgTkVZw">
+        <type href="architectureCRA.ecore#//ClassModel"/>
+      </nodes>
+      <nodes xmi:id="_yXaDgNFHEeeyaM0NgTkVZw" name="cls" incoming="_0Sw88NFHEeeyaM0NgTkVZw">
+        <type href="architectureCRA.ecore#//Class"/>
+      </nodes>
+      <edges xmi:id="_0Sw88NFHEeeyaM0NgTkVZw" source="_wrvy8dFHEeeyaM0NgTkVZw" target="_yXaDgNFHEeeyaM0NgTkVZw">
+        <type href="architectureCRA.ecore#//ClassModel/classes"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_wrvy8tFHEeeyaM0NgTkVZw" origin="_wrvy8NFHEeeyaM0NgTkVZw" image="_wrvy8dFHEeeyaM0NgTkVZw"/>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_2zVcQNFHEeeyaM0NgTkVZw" name="noop">
+    <lhs xmi:id="_2zX4gNFHEeeyaM0NgTkVZw" name="Lhs"/>
+    <rhs xmi:id="_2zX4gdFHEeeyaM0NgTkVZw" name="Rhs"/>
+  </units>
+  <units xsi:type="henshin:IndependentUnit" xmi:id="_5LcjINFHEeeyaM0NgTkVZw" name="maybeCreateClass" subUnits="_eqJOsNFHEeeyaM0NgTkVZw _2zVcQNFHEeeyaM0NgTkVZw"/>
+  <units xsi:type="henshin:SequentialUnit" xmi:id="_bQIJcNFIEeeyaM0NgTkVZw" name="countAndCreateClasses" subUnits="_ipzFsNFIEeeyaM0NgTkVZw _5LcjINFHEeeyaM0NgTkVZw"/>
+  <units xsi:type="henshin:Rule" xmi:id="_ipzFsNFIEeeyaM0NgTkVZw" name="decreaseCounter">
+    <lhs xmi:id="_ip2JANFIEeeyaM0NgTkVZw" name="Lhs">
+      <nodes xmi:id="_lBHiYNFIEeeyaM0NgTkVZw" name="feat" incoming="_oIlpoNFIEeeyaM0NgTkVZw">
+        <type href="architectureCRA.ecore#//Feature"/>
+      </nodes>
+      <nodes xmi:id="_mx6xoNFIEeeyaM0NgTkVZw" name="counter" outgoing="_oIlpoNFIEeeyaM0NgTkVZw">
+        <type href="http://www.eclipse.org/emf/2011/Henshin/Trace#//Trace"/>
+      </nodes>
+      <edges xmi:id="_oIlpoNFIEeeyaM0NgTkVZw" source="_mx6xoNFIEeeyaM0NgTkVZw" target="_lBHiYNFIEeeyaM0NgTkVZw">
+        <type href="http://www.eclipse.org/emf/2011/Henshin/Trace#//Trace/target"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_ip2JAdFIEeeyaM0NgTkVZw" name="Rhs">
+      <nodes xmi:id="_lBHiYdFIEeeyaM0NgTkVZw" name="feat">
+        <type href="architectureCRA.ecore#//Feature"/>
+      </nodes>
+    </rhs>
+    <mappings xmi:id="_lBHiYtFIEeeyaM0NgTkVZw" origin="_lBHiYNFIEeeyaM0NgTkVZw" image="_lBHiYdFIEeeyaM0NgTkVZw"/>
+  </units>
+  <units xsi:type="henshin:LoopUnit" xmi:id="__nT94NFIEeeyaM0NgTkVZw" name="createRandomClasses" subUnit="_bQIJcNFIEeeyaM0NgTkVZw"/>
+  <units xsi:type="henshin:SequentialUnit" xmi:id="_RVl9gNFJEeeyaM0NgTkVZw" name="distributeFeatures" subUnits="_PJK0INFHEeeyaM0NgTkVZw _YSpc8NFOEeeIBbbF0NViKg __nT94NFIEeeyaM0NgTkVZw _6YUCENFLEeeyaM0NgTkVZw _fPhoINFREeeIBbbF0NViKg"/>
+  <units xsi:type="henshin:Rule" xmi:id="_nRTm4NFJEeeyaM0NgTkVZw" name="assignFeature">
+    <lhs xmi:id="_nRWDINFJEeeyaM0NgTkVZw" name="Lhs">
+      <nodes xmi:id="_on9zoNFQEeeIBbbF0NViKg" name="cls">
+        <type href="architectureCRA.ecore#//Class"/>
+      </nodes>
+      <nodes xmi:id="_SgPSENFREeeIBbbF0NViKg" name="feat">
+        <type href="architectureCRA.ecore#//Feature"/>
+      </nodes>
+      <formula xsi:type="henshin:And" xmi:id="_sfO4wNFTEeeIBbbF0NViKg">
+        <left xsi:type="henshin:Not" xmi:id="_rzDIMdFTEeeIBbbF0NViKg">
+          <child xsi:type="henshin:NestedCondition" xmi:id="_rzDIMtFTEeeIBbbF0NViKg">
+            <conclusion xmi:id="_rzDIM9FTEeeIBbbF0NViKg" name="noAss">
+              <nodes xmi:id="_rzDINNFTEeeIBbbF0NViKg" name="cls" outgoing="_TnHakNFREeeIBbbF0NViKg">
+                <type href="architectureCRA.ecore#//Class"/>
+              </nodes>
+              <nodes xmi:id="_rzDvQNFTEeeIBbbF0NViKg" name="feat" incoming="_TnHakNFREeeIBbbF0NViKg">
+                <type href="architectureCRA.ecore#//Feature"/>
+              </nodes>
+              <edges xmi:id="_TnHakNFREeeIBbbF0NViKg" source="_rzDINNFTEeeIBbbF0NViKg" target="_rzDvQNFTEeeIBbbF0NViKg">
+                <type href="architectureCRA.ecore#//Class/encapsulates"/>
+              </edges>
+            </conclusion>
+            <mappings xmi:id="_rzDINdFTEeeIBbbF0NViKg" origin="_on9zoNFQEeeIBbbF0NViKg" image="_rzDINNFTEeeIBbbF0NViKg"/>
+            <mappings xmi:id="_rzDvQdFTEeeIBbbF0NViKg" origin="_SgPSENFREeeIBbbF0NViKg" image="_rzDvQNFTEeeIBbbF0NViKg"/>
+          </child>
+        </left>
+        <right xsi:type="henshin:Not" xmi:id="_sfO4wdFTEeeIBbbF0NViKg">
+          <child xsi:type="henshin:NestedCondition" xmi:id="_sfO4wtFTEeeIBbbF0NViKg">
+            <conclusion xmi:id="_sfO4w9FTEeeIBbbF0NViKg" name="noAss2">
+              <nodes xmi:id="_sfO4xNFTEeeIBbbF0NViKg" name="cls">
+                <type href="architectureCRA.ecore#//Class"/>
+              </nodes>
+              <nodes xmi:id="_sfPf0dFTEeeIBbbF0NViKg" name="feat" incoming="_VZ5m0NFREeeIBbbF0NViKg">
+                <type href="architectureCRA.ecore#//Feature"/>
+              </nodes>
+              <nodes xmi:id="_PoBkQNFQEeeIBbbF0NViKg" name="noCls" outgoing="_VZ5m0NFREeeIBbbF0NViKg">
+                <type href="architectureCRA.ecore#//Class"/>
+              </nodes>
+              <edges xmi:id="_VZ5m0NFREeeIBbbF0NViKg" source="_PoBkQNFQEeeIBbbF0NViKg" target="_sfPf0dFTEeeIBbbF0NViKg">
+                <type href="architectureCRA.ecore#//Class/encapsulates"/>
+              </edges>
+            </conclusion>
+            <mappings xmi:id="_sfPf0NFTEeeIBbbF0NViKg" origin="_on9zoNFQEeeIBbbF0NViKg" image="_sfO4xNFTEeeIBbbF0NViKg"/>
+            <mappings xmi:id="_sfPf0tFTEeeIBbbF0NViKg" origin="_SgPSENFREeeIBbbF0NViKg" image="_sfPf0dFTEeeIBbbF0NViKg"/>
+          </child>
+        </right>
+      </formula>
+    </lhs>
+    <rhs xmi:id="_nRWDIdFJEeeyaM0NgTkVZw" name="Rhs">
+      <nodes xmi:id="_on9zodFQEeeIBbbF0NViKg" name="cls" outgoing="_U80CMNFREeeIBbbF0NViKg">
+        <type href="architectureCRA.ecore#//Class"/>
+      </nodes>
+      <nodes xmi:id="_SgP5INFREeeIBbbF0NViKg" name="feat" incoming="_U80CMNFREeeIBbbF0NViKg">
+        <type href="architectureCRA.ecore#//Feature"/>
+      </nodes>
+      <edges xmi:id="_U80CMNFREeeIBbbF0NViKg" source="_on9zodFQEeeIBbbF0NViKg" target="_SgP5INFREeeIBbbF0NViKg">
+        <type href="architectureCRA.ecore#//Class/encapsulates"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_on9zotFQEeeIBbbF0NViKg" origin="_on9zoNFQEeeIBbbF0NViKg" image="_on9zodFQEeeIBbbF0NViKg"/>
+    <mappings xmi:id="_SgP5IdFREeeIBbbF0NViKg" origin="_SgPSENFREeeIBbbF0NViKg" image="_SgP5INFREeeIBbbF0NViKg"/>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_6b0egNFKEeeyaM0NgTkVZw" name="assignFirstFeature">
+    <lhs xmi:id="_6b5XANFKEeeyaM0NgTkVZw" name="Lhs">
+      <nodes xmi:id="_e6UfENFPEeeIBbbF0NViKg" name="cls">
+        <type href="architectureCRA.ecore#//Class"/>
+      </nodes>
+      <nodes xmi:id="_f_iasNFPEeeIBbbF0NViKg" name="feat">
+        <type href="architectureCRA.ecore#//Feature"/>
+      </nodes>
+      <formula xsi:type="henshin:And" xmi:id="_VflGINFTEeeIBbbF0NViKg">
+        <left xsi:type="henshin:And" xmi:id="_Uvg7INFTEeeIBbbF0NViKg">
+          <left xsi:type="henshin:Not" xmi:id="_isaJQdFSEeeIBbbF0NViKg">
+            <child xsi:type="henshin:NestedCondition" xmi:id="_isaJQtFSEeeIBbbF0NViKg">
+              <conclusion xmi:id="_isaJQ9FSEeeIBbbF0NViKg" name="noAss2">
+                <nodes xmi:id="_isaJRNFSEeeIBbbF0NViKg" name="cls">
+                  <type href="architectureCRA.ecore#//Class"/>
+                </nodes>
+                <nodes xmi:id="_isawUdFSEeeIBbbF0NViKg" name="feat" incoming="_Fwb0ENFQEeeIBbbF0NViKg">
+                  <type href="architectureCRA.ecore#//Feature"/>
+                </nodes>
+                <nodes xmi:id="_EcxMwNFQEeeIBbbF0NViKg" name="noCls" outgoing="_Fwb0ENFQEeeIBbbF0NViKg">
+                  <type href="architectureCRA.ecore#//Class"/>
+                </nodes>
+                <edges xmi:id="_Fwb0ENFQEeeIBbbF0NViKg" source="_EcxMwNFQEeeIBbbF0NViKg" target="_isawUdFSEeeIBbbF0NViKg">
+                  <type href="architectureCRA.ecore#//Class/encapsulates"/>
+                </edges>
+              </conclusion>
+              <mappings xmi:id="_isawUNFSEeeIBbbF0NViKg" origin="_e6UfENFPEeeIBbbF0NViKg" image="_isaJRNFSEeeIBbbF0NViKg"/>
+              <mappings xmi:id="_isawUtFSEeeIBbbF0NViKg" origin="_f_iasNFPEeeIBbbF0NViKg" image="_isawUdFSEeeIBbbF0NViKg"/>
+            </child>
+          </left>
+          <right xsi:type="henshin:Not" xmi:id="_q15_8NFSEeeIBbbF0NViKg">
+            <child xsi:type="henshin:NestedCondition" xmi:id="_q15_8dFSEeeIBbbF0NViKg">
+              <conclusion xmi:id="_q15_8tFSEeeIBbbF0NViKg" name="noAss">
+                <nodes xmi:id="_q15_89FSEeeIBbbF0NViKg" name="cls" outgoing="_xeCR4NFPEeeIBbbF0NViKg">
+                  <type href="architectureCRA.ecore#//Class"/>
+                </nodes>
+                <nodes xmi:id="_q16nAdFSEeeIBbbF0NViKg" name="feat" incoming="_xeCR4NFPEeeIBbbF0NViKg">
+                  <type href="architectureCRA.ecore#//Feature"/>
+                </nodes>
+                <edges xmi:id="_xeCR4NFPEeeIBbbF0NViKg" source="_q15_89FSEeeIBbbF0NViKg" target="_q16nAdFSEeeIBbbF0NViKg">
+                  <type href="architectureCRA.ecore#//Class/encapsulates"/>
+                </edges>
+              </conclusion>
+              <mappings xmi:id="_q16nANFSEeeIBbbF0NViKg" origin="_e6UfENFPEeeIBbbF0NViKg" image="_q15_89FSEeeIBbbF0NViKg"/>
+              <mappings xmi:id="_q16nAtFSEeeIBbbF0NViKg" origin="_f_iasNFPEeeIBbbF0NViKg" image="_q16nAdFSEeeIBbbF0NViKg"/>
+            </child>
+          </right>
+        </left>
+        <right xsi:type="henshin:Not" xmi:id="_sT8EMdFSEeeIBbbF0NViKg">
+          <child xsi:type="henshin:NestedCondition" xmi:id="_sT8EMtFSEeeIBbbF0NViKg">
+            <conclusion xmi:id="_sT8EM9FSEeeIBbbF0NViKg" name="noFeat">
+              <nodes xmi:id="_sT8rQNFSEeeIBbbF0NViKg" name="cls" outgoing="_mimfENFPEeeIBbbF0NViKg">
+                <type href="architectureCRA.ecore#//Class"/>
+              </nodes>
+              <nodes xmi:id="_lJmr0NFPEeeIBbbF0NViKg" name="noFeat" incoming="_mimfENFPEeeIBbbF0NViKg">
+                <type href="architectureCRA.ecore#//Feature"/>
+              </nodes>
+              <nodes xmi:id="_sT9SUtFSEeeIBbbF0NViKg" name="feat">
+                <type href="architectureCRA.ecore#//Feature"/>
+              </nodes>
+              <edges xmi:id="_mimfENFPEeeIBbbF0NViKg" source="_sT8rQNFSEeeIBbbF0NViKg" target="_lJmr0NFPEeeIBbbF0NViKg">
+                <type href="architectureCRA.ecore#//Class/encapsulates"/>
+              </edges>
+            </conclusion>
+            <mappings xmi:id="_sT8rQdFSEeeIBbbF0NViKg" origin="_e6UfENFPEeeIBbbF0NViKg" image="_sT8rQNFSEeeIBbbF0NViKg"/>
+            <mappings xmi:id="_sT95YNFSEeeIBbbF0NViKg" origin="_f_iasNFPEeeIBbbF0NViKg" image="_sT9SUtFSEeeIBbbF0NViKg"/>
+          </child>
+        </right>
+      </formula>
+    </lhs>
+    <rhs xmi:id="_6b5XAdFKEeeyaM0NgTkVZw" name="Rhs">
+      <nodes xmi:id="_e6W7UNFPEeeIBbbF0NViKg" name="cls" outgoing="_z3VrkNFPEeeIBbbF0NViKg">
+        <type href="architectureCRA.ecore#//Class"/>
+      </nodes>
+      <nodes xmi:id="_f_iasdFPEeeIBbbF0NViKg" name="feat" incoming="_z3VrkNFPEeeIBbbF0NViKg">
+        <type href="architectureCRA.ecore#//Feature"/>
+      </nodes>
+      <edges xmi:id="_z3VrkNFPEeeIBbbF0NViKg" source="_e6W7UNFPEeeIBbbF0NViKg" target="_f_iasdFPEeeIBbbF0NViKg">
+        <type href="architectureCRA.ecore#//Class/encapsulates"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_e6W7UdFPEeeIBbbF0NViKg" origin="_e6UfENFPEeeIBbbF0NViKg" image="_e6W7UNFPEeeIBbbF0NViKg"/>
+    <mappings xmi:id="_f_jBwNFPEeeIBbbF0NViKg" origin="_f_iasNFPEeeIBbbF0NViKg" image="_f_iasdFPEeeIBbbF0NViKg"/>
+  </units>
+  <units xsi:type="henshin:LoopUnit" xmi:id="_6YUCENFLEeeyaM0NgTkVZw" name="assignAtLeastOneFeature" subUnit="_6b0egNFKEeeyaM0NgTkVZw"/>
+  <units xsi:type="henshin:SequentialUnit" xmi:id="_YSpc8NFOEeeIBbbF0NViKg" name="createAtLeastOneClass" subUnits="_ipzFsNFIEeeyaM0NgTkVZw _eqJOsNFHEeeyaM0NgTkVZw"/>
+  <units xsi:type="henshin:LoopUnit" xmi:id="_fPhoINFREeeIBbbF0NViKg" name="assignFeatures" subUnit="_nRTm4NFJEeeyaM0NgTkVZw"/>
+</henshin:Module>

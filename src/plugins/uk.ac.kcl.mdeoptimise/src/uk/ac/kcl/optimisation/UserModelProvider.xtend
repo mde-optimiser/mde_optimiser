@@ -10,16 +10,23 @@ import org.eclipse.emf.henshin.interpreter.impl.EGraphImpl
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.henshin.interpreter.impl.EngineImpl
 import org.eclipse.emf.henshin.interpreter.impl.UnitApplicationImpl
+import org.eclipse.emf.henshin.interpreter.UnitApplication
+import org.eclipse.emf.henshin.interpreter.Engine
 
 class UserModelProvider implements IModelProvider {
 	
 	private String modelPath
 	private HenshinResourceSet resourceSet;
 	public EObject initialModel;
+			
+	public Engine engine
+	public UnitApplication unitRunner
 	
 	new (HenshinResourceSet resourceSet, String userModelPath){
 		this.modelPath = userModelPath;
 		this.resourceSet = resourceSet;
+		this.engine = new EngineImpl
+		this.unitRunner = new UnitApplicationImpl(engine)
 	}
 	
 	def loadModel(String path) {
@@ -27,7 +34,7 @@ class UserModelProvider implements IModelProvider {
 		resource.load(Collections.EMPTY_MAP)
 		val model = resource.allContents.head
 		// Run the initialization henshin rule
-		this.initialModel = model //initializeModel(model)
+		this.initialModel = initializeModel(model)
 		
 		return this.initialModel
 	}
@@ -51,9 +58,6 @@ class UserModelProvider implements IModelProvider {
 		val graph = new EGraphImpl(candidateSolution)
 
 		val initializationUnit = resourceSet.getModule(URI.createURI("initialization.henshin"), false).getUnit("distributeFeatures")
-		
-		var engine = new EngineImpl
-		var unitRunner = new UnitApplicationImpl(engine)
 		
 		unitRunner.EGraph = graph
 		unitRunner.unit = initializationUnit

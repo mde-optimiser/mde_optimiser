@@ -23,6 +23,7 @@ import uk.ac.kcl.mdeoptimise.EvolverType
 import org.supercsv.io.CsvListWriter
 import java.io.FileWriter
 import org.supercsv.prefs.CsvPreference
+import java.util.UUID
 
 class MDEOResultsOutput {
 	
@@ -243,7 +244,7 @@ class MDEOResultsOutput {
 	def void saveOutcome(){
 		
 		val experimentDate = new SimpleDateFormat("yyMMdd-HHmmss").format(experimentStartTime);
-		val outcomePath = projectRoot.append(String.format("mdeo-results/experiment-%s/", experimentDate));
+		val outcomePath = projectRoot.append(String.format("mdeo-results/experiment-%s-%s/", UUID.randomUUID(), experimentDate));
 		
 		val batchesOutput = new StringBuilder();
 		

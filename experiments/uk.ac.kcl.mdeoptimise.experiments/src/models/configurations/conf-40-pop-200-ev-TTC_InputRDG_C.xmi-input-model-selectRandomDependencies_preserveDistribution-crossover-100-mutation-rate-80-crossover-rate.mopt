@@ -1,0 +1,11 @@
+basepath <src/models/cra/>
+metamodel <architectureCRA.ecore>
+model <TTC_InputRDG_C.xmi>
+objective MaximiseCRA maximise java { "models.moea.MaximiseCRA" }
+constraint MinimiseClasslessFeatures java { "models.moea.MinimiseClasslessFeatures" }
+mutate using <craEvolvers.henshin> unit "createClass"
+mutate using <craEvolvers.henshin> unit "assignFeature"
+mutate using <craEvolvers.henshin> unit "moveFeature"
+mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
+breed using <crossover.henshin> unit "selectRandomDependencies_preserveDistribution"
+optimisation provider moea algorithm NSGAII variation genetic(80, 100) evolutions 200 population 40 experiments 20
