@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: uk.ac.kcl.mdeoptimise
+Bundle-Name: uk.ac.kcl.mdeoptimise.dashboard
 Bundle-Vendor: My Company
 Bundle-Version: 1.0.0.qualifier
-Bundle-SymbolicName: uk.ac.kcl.mdeoptimise; singleton:=true
+Bundle-SymbolicName: uk.ac.kcl.mdeoptimise.dashboard; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext,
  org.eclipse.xtext.xbase,
@@ -28,7 +28,7 @@ Require-Bundle: org.eclipse.xtext,
  dk.brics.automaton,
  org.apache.qpid.jms.client,
  org.apache.geronimo.specs.geronimo-jms_2.0_spec;bundle-version="1.0.0",
- slf4j.api;bundle-version="1.7.10",
+ org.slf4j.api;bundle-version="1.7.10",
  org.apache.qpid.proton-j;bundle-version="0.23.0",
  io.netty.buffer;bundle-version="4.1.16",
  io.netty.codec;bundle-version="4.1.16",
@@ -42,24 +42,7 @@ Require-Bundle: org.eclipse.xtext,
  io.netty.transport-native-unix-common;bundle-version="4.1.16"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: uk.ac.kcl.validation,
- uk.ac.kcl,
- uk.ac.kcl.generator,
- uk.ac.kcl.scoping,
- uk.ac.kcl.serializer,
- uk.ac.kcl.parser.antlr,
- uk.ac.kcl.services,
- uk.ac.kcl.parser.antlr.internal,
- uk.ac.kcl.mdeoptimise.impl,
- uk.ac.kcl.mdeoptimise,
- uk.ac.kcl.mdeoptimise.util,
- uk.ac.kcl.interpreter,
- uk.ac.kcl.interpreter.guidance,
- uk.ac.kcl.interpreter.guidance.java,
- uk.ac.kcl.interpreter.guidance.ocl,
- uk.ac.kcl.interpreter.evolvers.parameters,
- uk.ac.kcl.optimisation,
- uk.ac.kcl.optimisation.moea,
- uk.ac.kcl.jvmmodel
+ uk.ac.kcl.dashboard
 Import-Package: org.apache.log4j,
  org.eclipse.emf.henshin.interpreter,
  org.eclipse.emf.ecore,

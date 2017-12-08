@@ -1,4 +1,4 @@
-package uk.ac.kcl.tests.optimisation.moea;
+package uk.ac.kcl.dashboard.sender;
 
 import java.util.Properties;
 

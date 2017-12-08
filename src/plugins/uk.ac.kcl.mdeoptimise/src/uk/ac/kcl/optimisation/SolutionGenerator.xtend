@@ -46,7 +46,9 @@ class SolutionGenerator {
 	public UnitApplicationImpl unitRunner
 	public RuleApplicationImpl ruleRunner
 	
-	new(Optimisation model, List<Unit> breedingOperators, List<Unit> mutationOperators, IModelProvider modelProvider, EPackage metamodel){
+	public Sender sender;
+	
+	new(Optimisation model, List<Unit> breedingOperators, List<Unit> mutationOperators, IModelProvider modelProvider, EPackage metamodel, Sender messageSender){
 		this.optimisationModel = model
 		this.breedingOperators = breedingOperators
 		this.mutationOperators = mutationOperators
@@ -62,6 +64,7 @@ class SolutionGenerator {
 		
 		//Disable henshin warnings
 		ChangeImpl.PRINT_WARNINGS = false;
+		this.sender = messageSender;
 	}
 
     /**

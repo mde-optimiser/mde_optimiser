@@ -15,6 +15,7 @@
 	</properties>
 	<modules>
 		<module>plugins/uk.ac.kcl.mdeoptimise</module>
+		<module>plugins/uk.ac.kcl.mdeoptimise.dashboard</module>
         <module>plugins/uk.ac.kcl.mdeoptimise.ide</module>
 		<module>plugins/uk.ac.kcl.mdeoptimise.ui</module>
 		<module>plugins/uk.ac.kcl.mdeoptimise.target</module>

@@ -67,7 +67,6 @@ class MoeaOptimisationTests {
 	@Test
 	def void runMoeaOptimisationNSGA2() {
 			val sender = new Sender();
-			sender.sendTestMessage();
 		
 			val pathPrefix = "gen/models/ttc/" + new SimpleDateFormat("yyMMdd-HHmmss").format(new Date())
 			
@@ -100,7 +99,8 @@ class MoeaOptimisationTests {
 											optimisationInterpreter.breedingOperators, 
 											optimisationInterpreter.mutationOperators, 
 											oclModelProvider, 
-											optimisationInterpreter.metamodel);
+											optimisationInterpreter.metamodel,
+											sender);
 
 			var optimisation = new MoeaOptimisation()
 									.execute(model.optimisation, solutionGenerator)
