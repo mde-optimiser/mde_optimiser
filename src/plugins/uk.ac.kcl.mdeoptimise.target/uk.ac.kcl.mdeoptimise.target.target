@@ -64,8 +64,5 @@
 <unit id="org.apache.qpid.jms.client" version="0.27.0" />
 <repository location="http://blog.onboot.org/mopt-p2-repo/target/repository/"/>
 </location>
-<location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.apache.geronimo.specs.geronimo-jms_2.0_spec" version="1.0.0.alpha-2"/>
-</location>
 </locations>
 </target>
