@@ -13,7 +13,20 @@ Require-Bundle: org.junit;bundle-version="4.7.0",
  org.mockito.mockito-all;bundle-version="1.9.5",
  uk.ac.kcl.mdeoptimise;bundle-version="1.0.0",
  org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional,
- org.apache.qpid.jms.client
+ org.apache.qpid.jms.client,
+ org.apache.geronimo.specs.geronimo-jms_2.0_spec;bundle-version="1.0.0",
+ org.slf4j.api;bundle-version="1.7.10",
+ org.apache.qpid.proton-j;bundle-version="0.23.0",
+ io.netty.buffer;bundle-version="4.1.16",
+ io.netty.codec;bundle-version="4.1.16",
+ io.netty.codec-http;bundle-version="4.1.16",
+ io.netty.common;bundle-version="4.1.16",
+ io.netty.handler;bundle-version="4.1.16",
+ io.netty.resolver;bundle-version="4.1.16",
+ io.netty.transport;bundle-version="4.1.16",
+ io.netty.transport-native-epoll;bundle-version="4.1.16",
+ io.netty.transport-native-kqueue;bundle-version="4.1.16",
+ io.netty.transport-native-unix-common;bundle-version="4.1.16"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: uk.ac.kcl.tests
 Dynamic-ImportPackage: *
