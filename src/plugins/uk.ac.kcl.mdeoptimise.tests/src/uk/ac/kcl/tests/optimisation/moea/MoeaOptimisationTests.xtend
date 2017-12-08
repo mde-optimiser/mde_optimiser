@@ -12,19 +12,14 @@ import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.util.ParseHelper
 import org.eclipse.xtext.junit4.validation.ValidationTestHelper
-import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
+import uk.ac.kcl.interpreter.OptimisationInterpreter
 import uk.ac.kcl.mdeoptimise.Optimisation
 import uk.ac.kcl.optimisation.SolutionGenerator
+import uk.ac.kcl.optimisation.UserModelProvider
 import uk.ac.kcl.optimisation.moea.MoeaOptimisation
 import uk.ac.kcl.tests.FullTestInjector
-import uk.ac.kcl.tests.TestModelHelper
-
-import static org.junit.Assert.*
-import static org.mockito.Mockito.*
-import uk.ac.kcl.optimisation.UserModelProvider
-import uk.ac.kcl.interpreter.OptimisationInterpreter
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)
@@ -70,8 +65,9 @@ class MoeaOptimisationTests {
     
     //Some tests to run optimisation manually for now
 	@Test
-	@Ignore
 	def void runMoeaOptimisationNSGA2() {
+			val sender = new Sender();
+			sender.sendTestMessage();
 		
 			val pathPrefix = "gen/models/ttc/" + new SimpleDateFormat("yyMMdd-HHmmss").format(new Date())
 			
@@ -87,7 +83,7 @@ class MoeaOptimisationTests {
 				mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
 				breed using <exDependencies.henshin> unit "exchangeMultipleDependencies" 
 					parameters { number3 => Random("[0-9]{0,2}"), number => "models.moea.RandomEvolverParameter" }
-				optimisation provider moea algorithm NSGAII variation genetic evolutions 15000 population 30
+				optimisation provider moea algorithm NSGAII variation genetic evolutions 2 population 30
 			''')
 
 			//Assert that there are no grammar issues
@@ -108,9 +104,9 @@ class MoeaOptimisationTests {
 
 			var optimisation = new MoeaOptimisation()
 									.execute(model.optimisation, solutionGenerator)
-			
+			// /home/alxbrd/projects/alxbrd/github/mde_optimiser/src/plugins
 			optimisation
-				.forEach[m | oclModelProvider.storeModelAndInfo(m, "/home/alxbrd/projects/alxbrd/github/mde_optimiser/src/plugins/uk.ac.kcl.mdeoptimise.tests/" + pathPrefix + "/final", model)]
+				.forEach[m | oclModelProvider.storeModelAndInfo(m, "/Users/tammaramanasieva/Documents/Workspace/MDEO/src/plugins/uk.ac.kcl.mdeoptimise.tests/" + pathPrefix + "/final", model)]
 	}
 
 }

@@ -33,5 +33,21 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	<dependencies>
+		<dependency>
+		    <groupId>org.glassfish.main</groupId>
+		    <artifactId>javax.jms</artifactId>
+		</dependency>
+	</dependencies>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.glassfish.main</groupId>
+				<artifactId>javax.jms</artifactId>
+				<version>4.0-b33</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 </project>
