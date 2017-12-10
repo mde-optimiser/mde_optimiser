@@ -20,6 +20,7 @@ import uk.ac.kcl.optimisation.SolutionGenerator
 import uk.ac.kcl.optimisation.UserModelProvider
 import uk.ac.kcl.optimisation.moea.MoeaOptimisation
 import uk.ac.kcl.tests.FullTestInjector
+import uk.ac.kcl.mdeoptimise.dashboard.api.sender.Sender
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)
@@ -66,8 +67,7 @@ class MoeaOptimisationTests {
     //Some tests to run optimisation manually for now
 	@Test
 	def void runMoeaOptimisationNSGA2() {
-			val sender = new Sender();
-		
+			
 			val pathPrefix = "gen/models/ttc/" + new SimpleDateFormat("yyMMdd-HHmmss").format(new Date())
 			
 			model = parser.parse('''
@@ -94,6 +94,8 @@ class MoeaOptimisationTests {
 			
 			val optimisationInterpreter = new OptimisationInterpreter("", model)
 			
+			val sender = new Sender();
+		
 			var solutionGenerator = new SolutionGenerator(
 											model, 
 											optimisationInterpreter.breedingOperators, 

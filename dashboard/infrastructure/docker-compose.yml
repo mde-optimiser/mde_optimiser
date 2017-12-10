@@ -1,0 +1,21 @@
+version: '2'
+services:
+  queue:
+    build:
+      context: ./queue
+      dockerfile: Dockerfile
+    ports:
+      - "5762:5762"
+      - "8080:8080"
+  worker:
+    build:
+      context: ./worker
+      dockerfile: Dockerfile
+    volumes:
+        - /home/alxbrd/tamara_mdeo/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins/:/var/app/plugins
+        - ../../src/plugins/uk.ac.kcl.mdeoptimise/target/classes:/var/app/mdeo/uk.ac.kcl.mdeoptimise/target/classes
+        - ../../src/plugins/uk.ac.kcl.mdeoptimise.ui/target/classes:/var/app/mdeo/uk.ac.kcl.mdeoptimise.ui/target/classes
+        - ../../src/plugins/uk.ac.kcl.mdeoptimise.tests/target/classes:/var/app/mdeo/uk.ac.kcl.mdeoptimise.tests/target/classes
+        - ../../src/dashboard/uk.ac.kcl.mdeoptimise.dashboard.api/target/classes:/var/app/mdeo/uk.ac.kcl.mdeoptimise.dashboard.api/target/classes
+    links: 
+        - "queue"

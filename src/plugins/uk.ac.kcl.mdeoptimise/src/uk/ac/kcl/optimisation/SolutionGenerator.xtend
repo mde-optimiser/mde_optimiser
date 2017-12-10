@@ -17,7 +17,6 @@ import uk.ac.kcl.interpreter.IModelProvider
 import uk.ac.kcl.mdeoptimise.Optimisation
 
 import static org.eclipse.emf.henshin.interpreter.impl.ChangeImpl.*
-import org.eclipse.emf.henshin.model.Rule
 import org.eclipse.emf.henshin.interpreter.impl.UnitApplicationImpl
 import uk.ac.kcl.interpreter.evolvers.parameters.IEvolverParametersFactory
 import org.eclipse.emf.henshin.model.HenshinPackage
@@ -25,6 +24,7 @@ import org.eclipse.emf.henshin.interpreter.EGraph
 import java.util.Arrays
 import uk.ac.kcl.interpreter.evolvers.parameters.EvolverParametersFactory
 import org.eclipse.emf.henshin.model.ParameterKind
+import uk.ac.kcl.mdeoptimise.dashboard.api.sender.Sender
 
 class SolutionGenerator {
 

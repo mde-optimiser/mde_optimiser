@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.8"?><target name="uk.ac.kcl.mdeoptimise.target" sequenceNumber="22">
 <locations>
-<location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
 <unit id="org.eclipse.emf.mwe2.launcher.feature.group" version="0.0.0"/>
 <repository location="http://download.eclipse.org/modeling/emft/mwe/updates/releases/2.8.1/"/>
 </location>
-<location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
 <unit id="org.eclipse.jdt.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.platform.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.pde.feature.group" version="0.0.0"/>
@@ -16,27 +16,27 @@
 <unit id="org.eclipse.xtend.typesystem.emf" version="0.0.0"/>
 <repository location="http://download.eclipse.org/releases/neon/"/>
 </location>
-<location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
 <unit id="org.eclipse.ocl.examples.unified.feature.group" version="4.1.1.v20160808-1615"/>
 <unit id="org.eclipse.ocl.examples.classic.feature.group" version="5.2.1.v20160808-1416"/>
 <unit id="org.eclipse.ocl.master.feature.group" version="6.1.1.v20160808-1615"/>
 <unit id="org.eclipse.ocl.examples.feature.group" version="6.1.1.v20160808-1615"/>
 <repository location="http://download.eclipse.org/modeling/mdt/ocl/updates/releases/6.1.1/"/>
 </location>
-<location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
 <unit id="org.eclipse.xtext.sdk.feature.group" version="0.0.0"/>
 <repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.10.0/"/>
 </location>
-<location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
 <unit id="org.eclipse.ocl.master.feature.group" version="6.1.1.v20160808-1615"/>
 <repository location="http://download.eclipse.org/modeling/mdt/ocl/updates/releases/6.1.1/"/>
 </location>
-<location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.emf.henshin.sdk.feature.group" version="1.5.0.201711282126"/>
-<unit id="org.eclipse.emf.henshin.sdk.source.feature.group" version="1.5.0.201711282126"/>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
+<unit id="org.eclipse.emf.henshin.sdk.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.henshin.sdk.source.feature.group" version="0.0.0"/>
 <repository location="http://download.eclipse.org/modeling/emft/henshin/updates/nightly"/>
 </location>
-<location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
 <unit id="com.github.mifmif.generex" version="1.0.2"/>
 <unit id="org.apache.commons.cli" version="1.2.0"/>
 <unit id="org.apache.commons.math3" version="3.4.1"/>
@@ -48,7 +48,6 @@
 <unit id="org.apache.commons.codec" version="1.8.0"/>
 <unit id="xml-apis" version="1.3.4"/>
 <unit id="io.netty.buffer" version="4.1.16.Final"/> 
-
 <unit id="org.apache.geronimo.specs.geronimo-jms_2.0_spec" version="1.0.0.alpha-2"/>
 <unit id="slf4j.api" version="1.7.25"/>
 <unit id="org.apache.qpid.proton-j" version="0.23.0"/>

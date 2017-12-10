@@ -12,6 +12,7 @@ import uk.ac.kcl.optimisation.UserModelProvider
 import java.util.LinkedList
 import org.eclipse.core.runtime.IPath
 import org.eclipse.core.runtime.Path
+import uk.ac.kcl.mdeoptimise.dashboard.api.sender.Sender
 
 class OptimisationInterpreter {
 	
@@ -32,17 +33,21 @@ class OptimisationInterpreter {
 	
 	def void start() {
 		
+		val sender = new Sender();
+		
 		// This model provider loads the model given by the user in the DSL
 		val userModelProvider = new UserModelProvider(getResourceSet(projectRootPath.append(model.basepath.location).toPortableString), model.model.location)
 		var solutionGenerator = new SolutionGenerator(model, 
 											getBreedingOperators, 
 											getMutationOperators, 
 											userModelProvider, 
-											getMetamodel);
+											getMetamodel,
+											sender);
 
 		var optimisation = new MoeaOptimisation()
 									.execute(model.optimisation, solutionGenerator)		
 		
+		sender.sendTestMessage("Sending test message to queue.");
 		optimisation
 				.forEach[result | userModelProvider.storeModelAndInfo(result, projectRootPath.toPortableString, model)]	
 	}

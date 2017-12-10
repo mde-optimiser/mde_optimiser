@@ -7,7 +7,7 @@
 		<version>1.0.0-SNAPSHOT</version>
         <relativePath>../../</relativePath>
 	</parent>
-	<artifactId>uk.ac.kcl.mdeoptimise.tests</artifactId>
+	<artifactId>uk.ac.kcl.mdeoptimise.dashboard.api.tests</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
 
 	<build>
@@ -21,7 +21,7 @@
 				<artifactId>tycho-surefire-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
-				    <reuseForks>false</reuseForks>	
+				    <reuseForks>false</reuseForks>
         			<forkCount>1</forkCount>
 					<failIfNoTests>true</failIfNoTests>
 					<useSystemClassLoader>false</useSystemClassLoader>
@@ -33,5 +33,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	
 </project>

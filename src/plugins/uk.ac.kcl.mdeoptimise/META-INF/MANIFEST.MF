@@ -64,4 +64,5 @@ Import-Package: org.apache.log4j,
  org.eclipse.emf.henshin.interpreter,
  org.eclipse.emf.ecore,
  org.eclipse.emf.common,
- org.eclipse.emf.henshin
+ org.eclipse.emf.henshin,
+ uk.ac.kcl.mdeoptimise.dashboard.api.sender
