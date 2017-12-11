@@ -60,8 +60,8 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
 	private String getExampleValue() throws Exception {
 		Class.forName("org.h2.Driver"); 
-		Connection conn = DriverManager.
-				getConnection("jdbc:h2:tcp://localhost/~/test", "mdeo", "mdeo"); // add application code here
+		Connection conn = DriverManager
+				.getConnection("jdbc:h2:tcp://localhost/~/test", "mdeo", "mdeo"); // add application code here
 		System.out.println(conn.getCatalog());
 		Statement statement = conn.createStatement(); 
 		ResultSet resultSet1 = conn.createStatement().executeQuery("SELECT * FROM MDEO");
