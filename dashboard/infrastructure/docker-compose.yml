@@ -12,7 +12,7 @@ services:
       context: ./worker
       dockerfile: Dockerfile
     volumes:
-        - /home/alxbrd/tamara_mdeo/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins/:/var/app/plugins
+        - /Users/tammaramanasieva/Documents/Workspace/mde_optimiser_github/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins/:/var/app/plugins
         - ../../src/plugins/uk.ac.kcl.mdeoptimise/target/classes:/var/app/mdeo/uk.ac.kcl.mdeoptimise/target/classes
         - ../../src/plugins/uk.ac.kcl.mdeoptimise.ui/target/classes:/var/app/mdeo/uk.ac.kcl.mdeoptimise.ui/target/classes
         - ../../src/plugins/uk.ac.kcl.mdeoptimise.tests/target/classes:/var/app/mdeo/uk.ac.kcl.mdeoptimise.tests/target/classes

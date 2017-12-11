@@ -47,7 +47,7 @@
 <unit id="org.mockito.mockito-all" version="1.9.5"/>
 <unit id="org.apache.commons.codec" version="1.8.0"/>
 <unit id="xml-apis" version="1.3.4"/>
-<unit id="io.netty.buffer" version="4.1.16.Final"/> 
+<unit id="io.netty.buffer" version="4.1.16.Final"/>
 <unit id="org.apache.geronimo.specs.geronimo-jms_2.0_spec" version="1.0.0.alpha-2"/>
 <unit id="slf4j.api" version="1.7.25"/>
 <unit id="org.apache.qpid.proton-j" version="0.23.0"/>
@@ -59,8 +59,8 @@
 <unit id="io.netty.transport" version="4.1.16.Final"/>
 <unit id="io.netty.transport-native-epoll" version="4.1.16.Final"/>
 <unit id="io.netty.transport-native-kqueue" version="4.1.16.Final"/>
-<unit id="io.netty.transport-native-unix-common" version="4.1.16.Final" />
-<unit id="org.apache.qpid.jms.client" version="0.27.0" />
+<unit id="io.netty.transport-native-unix-common" version="4.1.16.Final"/>
+<unit id="org.apache.qpid.jms.client" version="0.27.0"/>
 <repository location="http://blog.onboot.org/mopt-p2-repo/target/repository/"/>
 </location>
 </locations>
