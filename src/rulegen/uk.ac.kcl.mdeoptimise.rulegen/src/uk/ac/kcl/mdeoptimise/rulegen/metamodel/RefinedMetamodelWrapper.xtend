@@ -28,10 +28,15 @@ class RefinedMetamodelWrapper {
 		this.originalMetamodel = metamodel;
 		this.refinedMetamodel = EcoreUtil.copy(metamodel);
 		this.refinedMultiplicities = refinedMultiplicities;
-
+		this.resourceSet = new HenshinResourceSet()
+		
+		var resource = resourceSet.createResource(URI.createURI("metamodel.ecore"))
+		resource.contents.add(this.refinedMetamodel)
+		
 		refinedMultiplicities.forEach[multiplicity | 
+			multiplicity.metamodel = this.refinedMetamodel;
 			updateEdgeMultiplicities(multiplicity)
-		]	
+		]
 	}
 
 	def getRefinedMetamodel() {
@@ -42,34 +47,16 @@ class RefinedMetamodelWrapper {
 		return this.originalMetamodel;
 	}
 
-	def EPackage loadMetamodel(String basePath, String metamodelPath) {
-
-		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("ecore", new EcoreResourceFactoryImpl());
-
-		this.resourceSet = new HenshinResourceSet(basePath);
-
-		var resource = resourceSet.registerDynamicEPackages(metamodelPath).head;
-		EPackage.Registry.INSTANCE.put(resource.getNsURI(), resource);
-
-		if (resource instanceof EPackage) {
-			return resource;
-		}
-
-		throw new InvalidObjectException(
-			"Loaded metamodel does not have a root element of type EPackage. Loaded metamodel: " + metamodelPath);
-	}
-
 	def saveMetamodel(String destinationPath) {
+		
 		var resource = resourceSet.createResource(URI.createURI(destinationPath))
-
-		resource.getContents().add(this.refinedMetamodel)
+		resource.contents.add(this.refinedMetamodel)
 
 		var options = new HashMap<String, Boolean>();
 		options.put(XMIResource.OPTION_SCHEMA_LOCATION, true);
 
 		try {
-			var ostream = new FileOutputStream(new File(destinationPath));
-			resource.save(ostream, options);
+			resource.save(options);
 			EPackage.Registry.INSTANCE.remove(this.refinedMetamodel.nsURI);
 		} catch (IOException e) {
 			e.printStackTrace();

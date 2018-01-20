@@ -13,8 +13,10 @@ Require-Bundle: org.junit;bundle-version="4.7.0",
  org.mockito.mockito-all;bundle-version="1.9.5",
  uk.ac.kcl.mdeoptimise;bundle-version="1.0.0",
  org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional,
+ org.apache.commons.math3,
  uk.ac.kcl.mdeoptimise.rulegen;bundle-version="1.0.0",
- org.apache.commons.math3
+ org.sidiff.common.emf.extensions,
+ org.sidiff.serge;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: uk.ac.kcl.mdeoptimise.rulegen.tests
 Dynamic-ImportPackage: *

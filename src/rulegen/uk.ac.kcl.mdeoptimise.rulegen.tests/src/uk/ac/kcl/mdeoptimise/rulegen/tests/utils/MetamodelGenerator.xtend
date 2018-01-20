@@ -13,7 +13,7 @@ class MetamodelGenerator {
 	private EPackage metamodel;
 	
 	new(EPackage metamodel){
-		this.metamodel = EcoreUtil.copy(metamodel) 
+		this.metamodel = metamodel
 	}
 	
 	def EPackage generate(List<Multiplicity> multiplicities){	

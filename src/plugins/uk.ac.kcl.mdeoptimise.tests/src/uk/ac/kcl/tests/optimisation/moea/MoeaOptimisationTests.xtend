@@ -1,7 +1,6 @@
 package uk.ac.kcl.tests.optimisation.moea
 
 import com.google.inject.Inject
-import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.List
 import org.eclipse.emf.common.util.URI
@@ -12,18 +11,11 @@ import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.util.ParseHelper
 import org.eclipse.xtext.junit4.validation.ValidationTestHelper
-import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
 import uk.ac.kcl.mdeoptimise.Optimisation
-import uk.ac.kcl.optimisation.SolutionGenerator
-import uk.ac.kcl.optimisation.moea.MoeaOptimisation
 import uk.ac.kcl.tests.FullTestInjector
-import uk.ac.kcl.tests.TestModelHelper
 
-import static org.junit.Assert.*
-import static org.mockito.Mockito.*
-import uk.ac.kcl.optimisation.UserModelProvider
 import uk.ac.kcl.interpreter.OptimisationInterpreter
 import uk.ac.kcl.ui.output.MDEOResultsOutput
 import uk.ac.kcl.ui.output.MDEOBatch
