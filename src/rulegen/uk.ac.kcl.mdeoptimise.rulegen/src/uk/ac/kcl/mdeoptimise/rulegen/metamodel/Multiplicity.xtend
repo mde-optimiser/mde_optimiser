@@ -2,6 +2,10 @@ package uk.ac.kcl.mdeoptimise.rulegen.metamodel
 
 import uk.ac.kcl.mdeoptimise.rulegen.exceptions.MultiplicityException
 import org.eclipse.emf.ecore.EReference
+import org.eclipse.emf.ecore.EPackage
+import org.eclipse.emf.ecore.EClassifier
+import org.eclipse.emf.ecore.EClass
+import java.util.ArrayList
 
 class Multiplicity {
 	
@@ -9,8 +13,13 @@ class Multiplicity {
 	public Integer upper;
 	public String source;
 	public String edge;
+	private EReference eReference;
+	public EPackage metamodel;
 	
-	new(String sourceNode, String edge, Integer lower, Integer upper){
+	new(String sourceNode, String edge, Integer lower, Integer upper, EPackage metamodel){
+		
+		this.metamodel = metamodel;
+		
 		this.source = sourceNode;
 		this.edge = edge;
 		
@@ -22,19 +31,30 @@ class Multiplicity {
 		setUpper(upper);
 	}
 	
-	new(EReference edge){
-		this(edge.EType.name, edge.name, edge.lowerBound, edge.upperBound);
+	new(EReference edge, EPackage metamodel){
+		this(edge.EType.name, edge.name, edge.lowerBound, edge.upperBound, metamodel);
+		this.eReference = edge;
+	}
+	
+	def EReference getEReference() {
 		
+		if(this.eReference == null) {
+			//TODO This must be possible to do in a simpler way
+			val nodeClassifier = metamodel.EClassifiers.filter[classifier | (classifier as EClass).EAllReferences.filter[ref | ref.name.equals(edge)].head != null].head
+			this.eReference = (nodeClassifier as EClass).EAllReferences.filter[reference | reference.name.equals(edge)].head
+		}
+		
+		return this.eReference;
 	}
 	
-	private def void setUpper(Integer upper){
-		this.upper = upper;
+	def EClassifier sourceNode(){
+		return this.getEReference().EOpposite.EType
 	}
 	
-	private def void setLower(Integer lower){
-		this.lower = lower;
+	def EClassifier targetNode(){
+		return this.getEReference().EType
 	}
-	
+
 	static def boolean checkMultiplicityRangeValidity(EReference edge){
 		return checkMultiplicityRangeValidity(edge.lowerBound, edge.upperBound);
 	}
@@ -58,4 +78,13 @@ class Multiplicity {
 		
 		return false;
 	}
+
+	private def void setUpper(Integer upper){
+		this.upper = upper;
+	}
+	
+	private def void setLower(Integer lower){
+		this.lower = lower;
+	}
+	
 }
