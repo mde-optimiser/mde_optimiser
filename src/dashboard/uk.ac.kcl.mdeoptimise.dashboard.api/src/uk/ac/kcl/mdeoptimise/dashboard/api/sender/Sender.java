@@ -9,14 +9,21 @@ import javax.jms.Destination;
 import javax.jms.ExceptionListener;
 import javax.jms.JMSException;
 import javax.jms.Message;
+import javax.jms.MessageConsumer;
 import javax.jms.MessageProducer;
 import javax.jms.Session;
 import javax.jms.TextMessage;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 
+/**
+ * 
+ * Queue functionalities, such as establishing a connection and sending messages.
+ * 
+ * @author Tamara
+ *
+ */
 public class Sender {
-    private static final int DEFAULT_COUNT = 10;
     private static final int DELIVERY_MODE = DeliveryMode.NON_PERSISTENT;
     final String INITIAL_CONTEXT_FACTORY = "org.apache.qpid.jms.jndi.JmsInitialContextFactory";
 
@@ -27,22 +34,13 @@ public class Sender {
 	final String QUEUE_NAME = "queue";
 
     public void sendTestMessage(String messageContent) {
-        int count = DEFAULT_COUNT;
-        /*if (args.length == 0) {
-            System.out.println("Sending up to " + count + " messages.");
-            System.out.println("Specify a message count as the program argument if you wish to send a different amount.");
-        } else {
-            count = Integer.parseInt(args[0]);
-            System.out.println("Sending up to " + count + " messages.");
-        }*/
 
         try {
-            // The configuration for the Qpid InitialContextFactory has been supplied in
-            // a jndi.properties file in the classpath, which results in it being picked
-            // up automatically by the InitialContext constructor.
-            //Context context = new InitialContext();
+            /* The configuration for the Qpid InitialContextFactory has been supplied in
+             a jndi.properties file in the classpath, which results in it being picked
+             up automatically by the InitialContext constructor.
+            Context context = new InitialContext();*/
         	
-        
         	// Set the properties ...
         	Properties properties = new Properties();
         	properties.put(Context.INITIAL_CONTEXT_FACTORY, INITIAL_CONTEXT_FACTORY);
@@ -60,7 +58,6 @@ public class Sender {
             connection.start();
 
             Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-
             MessageProducer messageProducer = session.createProducer(queue);
 
             TextMessage message = session.createTextMessage(messageContent);
