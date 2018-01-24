@@ -1,35 +1,32 @@
 package uk.ac.kcl.mdeoptimise.generator.commands
 
-import org.junit.runner.RunWith
-import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.emf.henshin.model.resource.HenshinResourceSet
+import java.util.HashMap
+import java.util.LinkedList
+import java.util.Stack
+import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EPackage
-import uk.ac.kcl.mdeoptimise.Optimisation
-import static org.mockito.Mockito.*;
-import static org.junit.Assert.*;
+import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.emf.ecore.xmi.XMIResource
+import org.eclipse.emf.henshin.model.resource.HenshinResourceFactory
+import org.eclipse.emf.henshin.model.resource.HenshinResourceSet
+import org.eclipse.xtext.junit4.XtextRunner
+import org.junit.Test
+import org.junit.runner.RunWith
+import org.sidiff.common.emf.extensions.impl.EClassifierInfoManagement
 import uk.ac.kcl.mdeoptimise.BasepathSpec
 import uk.ac.kcl.mdeoptimise.MetaModelSpec
-import uk.ac.kcl.mdeoptimise.rulegen.tests.utils.MetamodelGenerator
-import java.util.LinkedList
-import org.junit.Test
-import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.CreateNodeRuleCommand
+import uk.ac.kcl.mdeoptimise.Optimisation
+import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.DeleteNodeLBRepairRuleCommand
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.Multiplicity
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.emf.common.util.URI
-import java.util.Collections
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
-import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.emf.henshin.model.resource.HenshinResourceFactory
-import java.util.HashMap
-import org.eclipse.emf.ecore.xmi.XMIResource
-import org.eclipse.emf.ecore.impl.EPackageRegistryImpl
-import org.sidiff.common.emf.extensions.impl.EClassifierInfoManagement
-import java.util.Stack
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RefinedMetamodelWrapper
-import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.DeleteNodeRuleCommand
+import uk.ac.kcl.mdeoptimise.rulegen.tests.utils.MetamodelGenerator
+
+import static org.junit.Assert.*
+import static org.mockito.Mockito.*
 
 @RunWith(XtextRunner)
-class DeleteNodeRuleCommandTests {
+class DeleteNodeLBRepairRuleCommandTests {
 	
 	private HenshinResourceSet henshinResourceSet;
 	private EPackage theMetamodel
@@ -91,49 +88,15 @@ class DeleteNodeRuleCommandTests {
 	}
     
     @Test
-	def void assertThatCase1DeleteRulesAreGenerated() {
-		
-		//Original metamodel with 0..* 0..* multiplicities
-		fakeOptimisationModel()
-		
-		var multiplicityA = new Multiplicity("Class", "encapsulates", 1, 1, getMetamodel);
-		var multiplicityB = new Multiplicity("Feature", "isEncapsulatedBy", 1, 1, getMetamodel);
-		
-		var multiplicities = new LinkedList<Multiplicity>();
-		multiplicities.add(multiplicityA);
-		multiplicities.add(multiplicityB);
-		
-		//Refined metamodel wrapper containing the metamodel with the refined multiplicities
-		val refinedMetamodelWrapper = new RefinedMetamodelWrapper(getMetamodel, multiplicities)
-		
-		val metamodels = new Stack();
-		metamodels.add(refinedMetamodelWrapper.refinedMetamodel);
-		
-		val metamodelAnalyser = new EClassifierInfoManagement();
-		metamodelAnalyser.gatherInformation(false, metamodels)
-		
-		var createNodeRuleCommand = new DeleteNodeRuleCommand(multiplicityA, refinedMetamodelWrapper.refinedMetamodel, metamodelAnalyser);
-		
-		val module = createNodeRuleCommand.generate();
-		
-		writeModel(module, "src/resources/case1/", "case_1_delete.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
-		
-		assertEquals("DELETE_Node_" + multiplicityA.sourceNode.name + "_Rules", module.name);
-		assertEquals(1, module.allRules.size);
-	}
-	
-	    @Test
-	def void assertThatCase3DeleteRulesAreGenerated() {
+	def void assertThatCase3Rule2bDeleteRulesAreGenerated() {
 		
 		//Original metamodel with 0..* 0..* multiplicities
 		fakeOptimisationModel()
 		
 		var multiplicityA = new Multiplicity("Class", "encapsulates", 0, 1, getMetamodel);
-		var multiplicityB = new Multiplicity("Feature", "isEncapsulatedBy", 1, 1, getMetamodel);
 		
 		var multiplicities = new LinkedList<Multiplicity>();
 		multiplicities.add(multiplicityA);
-		multiplicities.add(multiplicityB);
 		
 		//Refined metamodel wrapper containing the metamodel with the refined multiplicities
 		val refinedMetamodelWrapper = new RefinedMetamodelWrapper(getMetamodel, multiplicities)
@@ -144,13 +107,13 @@ class DeleteNodeRuleCommandTests {
 		val metamodelAnalyser = new EClassifierInfoManagement();
 		metamodelAnalyser.gatherInformation(false, metamodels)
 		
-		var createNodeRuleCommand = new DeleteNodeRuleCommand(multiplicityA, refinedMetamodelWrapper.refinedMetamodel, metamodelAnalyser);
+		var createNodeRuleCommand = new DeleteNodeLBRepairRuleCommand(multiplicityA, refinedMetamodelWrapper.refinedMetamodel, metamodelAnalyser);
 		
 		val module = createNodeRuleCommand.generate();
 		
-		writeModel(module, "src/resources/cases/", "case_3_rule_2a_delete_node_a.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
+		writeModel(module, "src/resources/cases/", "case_3_rule_2b_delete_node_a.henshin.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
 		
-		assertEquals("DELETE_Node_" + multiplicityA.sourceNode.name + "_Rules", module.name);
+		assertEquals("DELETE_Node_" + multiplicityA.sourceNode.name + "_Rules_lb_repair", module.name);
 		assertEquals(1, module.allRules.size);
 	}
 }

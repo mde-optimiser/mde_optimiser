@@ -12,9 +12,10 @@ import org.sidiff.serge.generators.conditions.LowerBoundCheckGenerator
 import org.sidiff.serge.generators.conditions.UpperBoundCheckGenerator
 import uk.ac.kcl.mdeoptimise.rulegen.generator.IRuleGenerationCommand
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.Multiplicity
-import org.sidiff.serge.generators.actions.RuleParameterGenerator
+import org.sidiff.serge.configuration.GlobalConstants
+import org.eclipse.emf.ecore.EClass
 
-class CreateNodeRuleCommand implements IRuleGenerationCommand {
+class CreateNodeLBRepairRuleCommand implements IRuleGenerationCommand {
 	
 	Multiplicity multiplicity;
 	EPackage refinedMetamodelWrapper;
@@ -71,15 +72,34 @@ class CreateNodeRuleCommand implements IRuleGenerationCommand {
 					Common.createMandatoryNeighbours(rule, childInfo, newNode, OperationType.CREATE, true, elementFilter);
 				}
 				
-				applyRuleNacConditions(rule);
-				applyRuleParameters(rule);
+				applyRepairOperations(rule)
 				
+				applyRuleNacConditions(rule);
 				//Add rule to module for this context classifier
 				module.getUnits().add(rule);
 			}
 		}
 		
 		return module;
+	}
+	
+		//Delete node A and move the B node connected through an edge of type f to 
+	//another node of type A with a NAC forbidding more than one nodes of type B connected to it through and edge of type f;
+	private def void applyRepairOperations(Rule rule){
+
+		//Get the deleted node from the rule graphs
+		var createdNode = HenshinRuleAnalysisUtilEx.getRHSMinusLHSNodes(rule).get(0);
+		
+		//Find existing target node
+		var existingTargetNode =  HenshinRuleAnalysisUtilEx.findCorrespondingNodeInLHS(createdNode.getOutgoing(multiplicity.EReference).get(0).getTarget())
+		
+		//Create existing node A from which to take the existing target node
+		val existingsourceNodeName = Common.getFreeNodeName(GlobalConstants.NEWTGT, rule);
+		val existingSourceNode = HenshinRuleAnalysisUtilEx.createPreservedNode(rule, existingsourceNodeName, multiplicity.sourceNode as EClass);
+		
+		//Create a delete edge between existing node A and an existing node B
+		HenshinRuleAnalysisUtilEx.createDeleteEdge(existingSourceNode.lhsNode, existingTargetNode, multiplicity.EReference, rule)
+				
 	}
 	
 	//Apply the NACs
@@ -89,8 +109,4 @@ class CreateNodeRuleCommand implements IRuleGenerationCommand {
 		new UpperBoundCheckGenerator(rule).generate();
 	}
 	
-	//Create the rule parameters
-	private def void applyRuleParameters(Rule rule) {
-		new RuleParameterGenerator(rule).generate();
-	}
 }
