@@ -32,13 +32,13 @@ class AddEdgeRuleCommand implements IRuleGenerationCommand {
 		
 		//Set module name
 		module.setName("ADD_EdgeRules")
-		module.setDescription("Adds to " + multiplicity.targetNode.name + " edge of type " + multiplicity.EReference.name)
+		module.setDescription("Adds to " + multiplicity.sourceNode.name + " edge of type " + multiplicity.EReference.name)
 		
 		//Set module metamodels
 		module.getImports().add(refinedMetamodelWrapper)
 		
 		//TODO Test this case with a metamodel variant that has more than one container for the same classifier
-		val classifierInfo = metamodelAnalyser.getAllParentContext(multiplicity.targetNode, true);
+		val classifierInfo = metamodelAnalyser.getAllParentContext(multiplicity.sourceNode, true);
 		
 		for(var contextReferenceId = 0; contextReferenceId < classifierInfo.keySet.size; contextReferenceId++) {
 			
@@ -47,7 +47,7 @@ class AddEdgeRuleCommand implements IRuleGenerationCommand {
 			//Create a new rule in the module for each context container of the refined multiplicity node	
 			for(var contextId = 0; contextId < context.size; contextId++){
 				
-				val rule = createRule(multiplicity.targetNode as EClass, multiplicity.EReference, multiplicity.sourceNode as EClass)
+				val rule = createRule(multiplicity.sourceNode as EClass, multiplicity.EReference, multiplicity.targetNode as EClass)
 				
 				applyRuleNacConditions(rule)
 				//Add rule to module for this context classifier

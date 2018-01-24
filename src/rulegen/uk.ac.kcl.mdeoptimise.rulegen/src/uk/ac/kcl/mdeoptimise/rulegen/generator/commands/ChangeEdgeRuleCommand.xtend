@@ -40,7 +40,7 @@ class ChangeEdgeRuleCommand implements IRuleGenerationCommand {
 		module.getImports().add(refinedMetamodelWrapper)
 		
 		//TODO Test this case with a metamodel variant that has more than one container for the same classifier
-		val classifierInfo = metamodelAnalyser.getAllParentContext(multiplicity.targetNode, true);
+		val classifierInfo = metamodelAnalyser.getAllParentContext(multiplicity.sourceNode, true);
 		
 		for(var contextReferenceId = 0; contextReferenceId < classifierInfo.keySet.size; contextReferenceId++) {
 			

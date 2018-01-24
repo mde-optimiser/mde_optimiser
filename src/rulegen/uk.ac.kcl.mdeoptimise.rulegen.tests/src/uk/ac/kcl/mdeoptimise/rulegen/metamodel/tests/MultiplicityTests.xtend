@@ -79,4 +79,25 @@ class MultiplicityTests {
 		assertTrue("Unexpected multiplicity range lb > 0 && ub >= lb", Multiplicity.checkMultiplicityRangeValidity(1, 1))
 		assertTrue("Unexpected multiplicity range lb = ub = -1", Multiplicity.checkMultiplicityRangeValidity(1, -1))
 	}
+	
+	@Test
+	def void assertThatUnidirectionalReferenceReturnsNullEOpposite(){
+		
+		fakeOptimisationModel()
+		
+		var multiplicityA = new Multiplicity("Method", "dataDependency", 1, 1, getMetamodel);
+		
+		assertEquals("EOpposite reference for unidirectional reference is null", null, multiplicityA.EReference.EOpposite)
+	}
+	
+	@Test
+	def void assertThatBidirectionalReferenceReturnsCorrectReference(){
+		fakeOptimisationModel()
+		
+		var multiplicityA = new Multiplicity("Class", "encapsulates", 1, 1, getMetamodel);
+		
+		assertNotNull("EOpposite reference for bidirectional reference is not null", multiplicityA.EReference.EOpposite)
+		assertEquals("EOpposite reference for bidirectional reference has correct name", 
+			"isEncapsulatedBy", multiplicityA.EReference.EOpposite.getName)
+	}
 }

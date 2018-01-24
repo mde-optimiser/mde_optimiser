@@ -91,6 +91,9 @@ class RulesGenerator {
 			
 		}
 		
+		
+		//TODO MultiplicityEOpposite is null in the case of a unidirectional reference, so this 
+		//is not going to work without some extra checks.
 		if(multiplicity.lower == 0 && multiplicity.upper == 1){
 			
 			if(reference.EOpposite.lowerBound == 0 && reference.EOpposite.upperBound == -1){	

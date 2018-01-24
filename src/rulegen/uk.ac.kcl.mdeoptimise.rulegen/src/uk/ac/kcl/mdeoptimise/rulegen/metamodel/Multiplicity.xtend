@@ -48,7 +48,7 @@ class Multiplicity {
 	}
 	
 	def EClassifier sourceNode(){
-		return this.getEReference().EOpposite.EType
+		return this.getEReference().EContainingClass
 	}
 	
 	def EClassifier targetNode(){
