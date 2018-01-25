@@ -134,17 +134,19 @@ class SolutionGenerator {
 		ruleRunner.EGraph = graph
 		ruleRunner.unit = operator
 		
-		//TODO Not sure about this filter. Check what kind of parameter we would expect people
-		//to pass in
-		var inParameters = operator.parameters.filter[parameter | parameter.kind.equals(ParameterKind.IN)]
-		
-		if(!inParameters.empty){
-			inParameters.forEach[  
-				parameter | ruleRunner.setParameterValue(
-					parameter.name, 
-					evolverParametersFactory.getParameterValue(operator, parameter, object)
-				)
-			]
+		if(operator.parameters != null){
+			//TODO Not sure about this filter. Check what kind of parameter we would expect people
+			//to pass in
+			var inParameters = operator.parameters.filter[parameter | parameter.kind.equals(ParameterKind.IN)]
+			
+			if(!inParameters.empty){
+				inParameters.forEach[  
+					parameter | ruleRunner.setParameterValue(
+						parameter.name, 
+						evolverParametersFactory.getParameterValue(operator, parameter, object)
+					)
+				]
+			}
 		}
 		
 		//Run the selected Henshin Rule
