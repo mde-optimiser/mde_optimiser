@@ -12,6 +12,7 @@ import uk.ac.kcl.mdeoptimise.MetaModelSpec
 import uk.ac.kcl.mdeoptimise.rulegen.tests.utils.MetamodelGenerator
 import java.util.LinkedList
 import org.junit.Test
+import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.CreateNodeRuleCommand
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.Multiplicity
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.common.util.URI
@@ -22,14 +23,10 @@ import org.eclipse.emf.ecore.xmi.XMIResource
 import org.sidiff.common.emf.extensions.impl.EClassifierInfoManagement
 import java.util.Stack
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RefinedMetamodelWrapper
-import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.ChangeEdgeRuleCommand
-import org.eclipse.emf.henshin.model.Rule
-import org.sidiff.serge.generators.conditions.LowerBoundCheckGenerator
-import org.sidiff.serge.generators.actions.RuleParameterGenerator
-import org.sidiff.serge.generators.conditions.UpperBoundCheckGenerator
+import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.CreateNodeLBRepairRuleCommand
 
 @RunWith(XtextRunner)
-class ChangeEdgeRuleCommandTests {
+class CreateNodeRuleCommandScrumMetamodelTests {
 	
 	private HenshinResourceSet henshinResourceSet;
 	private EPackage theMetamodel
@@ -57,13 +54,13 @@ class ChangeEdgeRuleCommandTests {
 		var basepath = mock(BasepathSpec);
 		var metamodel = mock(MetaModelSpec);
 		when(basepath.location).thenReturn("src/resources/");
-		when(metamodel.location).thenReturn("architectureCRA.ecore")
+		when(metamodel.location).thenReturn("planning.ecore")
 		
 		when(model.basepath).thenReturn(basepath)
 		when(model.metamodel).thenReturn(metamodel)
 		
-		var multiplicityA = new Multiplicity("Class", "encapsulates", 0, -1, getMetamodel);
-		var multiplicityB = new Multiplicity("Feature", "isEncapsulatedBy", 0, -1, getMetamodel);
+		var multiplicityA = new Multiplicity("Sprint", "committedItem", 1, -1, getMetamodel);
+		var multiplicityB = new Multiplicity("WorkItem", "isPlannedFor", 0, 1, getMetamodel);
 		var multiplicities = new LinkedList<Multiplicity>();
 		multiplicities.add(multiplicityA);
 		multiplicities.add(multiplicityB)
@@ -91,17 +88,15 @@ class ChangeEdgeRuleCommandTests {
 	}
     
     @Test
-	def void assertThatCase1ChangeEdgeRulesAreGenerated() {
+	def void assertThatCase1CreateNodeRulesAreGenerated() {
 		
 		//Original metamodel with 0..* 0..* multiplicities
 		fakeOptimisationModel()
 		
-		var multiplicityA = new Multiplicity("Class", "encapsulates", 1, -1, getMetamodel);
-		var multiplicityB = new Multiplicity("Feature", "isEncapsulatedBy", 1, 1, getMetamodel);
+		var multiplicityA = new Multiplicity("Sprint", "committedItem", 1, -1, getMetamodel);
 		
 		var multiplicities = new LinkedList<Multiplicity>();
 		multiplicities.add(multiplicityA);
-		multiplicities.add(multiplicityB);
 		
 		//Refined metamodel wrapper containing the metamodel with the refined multiplicities
 		val refinedMetamodelWrapper = new RefinedMetamodelWrapper(getMetamodel, multiplicities)
@@ -112,13 +107,43 @@ class ChangeEdgeRuleCommandTests {
 		val metamodelAnalyser = new EClassifierInfoManagement();
 		metamodelAnalyser.gatherInformation(false, metamodels)
 		
-		var createNodeRuleCommand = new ChangeEdgeRuleCommand(multiplicityB, refinedMetamodelWrapper.refinedMetamodel, metamodelAnalyser);
+		var createNodeRuleCommand = new CreateNodeRuleCommand(multiplicityA, refinedMetamodelWrapper.refinedMetamodel, metamodelAnalyser);
 		
 		val module = createNodeRuleCommand.generate();
-
-		writeModel(module, "src/resources/case1/", "case_1_changeEdge.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
 		
-		assertEquals("Change_isEncapsulatedBy_edge_rules_in_all_contexts", module.name);
+		writeModel(module, "src/resources/cases/", "case_1_rule_1_create_node_a_scrum.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
+		
+		assertEquals("CREATE_Node_Sprint_Rules", module.name);
+		assertEquals(1, module.allRules.size);
+	}
+	
+	    @Test
+	def void assertThatCase2CreateNodeRulesAreGenerated() {
+		
+		//Original metamodel with 0..* 0..* multiplicities
+		fakeOptimisationModel()
+		
+		var multiplicityA = new Multiplicity("Sprint", "committedItem", 1, -1, getMetamodel);
+		
+		var multiplicities = new LinkedList<Multiplicity>();
+		multiplicities.add(multiplicityA);
+		
+		//Refined metamodel wrapper containing the metamodel with the refined multiplicities
+		val refinedMetamodelWrapper = new RefinedMetamodelWrapper(getMetamodel, multiplicities)
+		
+		val metamodels = new Stack();
+		metamodels.add(refinedMetamodelWrapper.refinedMetamodel);
+		
+		val metamodelAnalyser = new EClassifierInfoManagement();
+		metamodelAnalyser.gatherInformation(false, metamodels)
+		
+		var createNodeRuleCommand = new CreateNodeLBRepairRuleCommand(multiplicityA, refinedMetamodelWrapper.refinedMetamodel, metamodelAnalyser);
+		
+		val module = createNodeRuleCommand.generate();
+		
+		writeModel(module, "src/resources/cases/", "case_1_rule_2_create_node_a_scrum.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
+		
+		assertEquals("CREATE_Node_Sprint_Rules", module.name);
 		assertEquals(1, module.allRules.size);
 	}
 }
