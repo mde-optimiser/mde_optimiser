@@ -61,6 +61,8 @@ class DeleteNodeLBRepairRuleCommand implements IRuleGenerationCommand {
 	//another node of type A with a NAC forbidding more than one nodes of type B connected to it through and edge of type f;
 	private def void applyRepairOperations(Rule rule){
 
+		rule.name = rule.name + "_lb_repair"
+
 		//Get the deleted node from the rule graphs
 		var deletedNode = HenshinRuleAnalysisUtilEx.getLHSMinusRHSNodes(rule).get(0);
 		

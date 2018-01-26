@@ -63,7 +63,7 @@ class AddEdgeUpperBoundRepairRuleCommand implements IRuleGenerationCommand {
 		
 		var rule = HenshinFactory.eINSTANCE.createRule();
 		rule.setActivated(true);
-		rule.setName("addTo" + source.getName() + "_" + outReference.getName() + "_" + target.getName());
+		rule.setName("addTo" + source.getName() + "_" + outReference.getName() + "_" + target.getName() + "_ub_repair");
 		rule.setDescription("Adds to " + source.getName() + "'s reference " + outReference.getName() + " the target " + target.getName());
 
 		// Create preserved node for eClass

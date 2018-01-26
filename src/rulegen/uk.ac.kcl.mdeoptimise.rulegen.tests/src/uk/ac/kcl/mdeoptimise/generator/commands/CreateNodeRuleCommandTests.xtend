@@ -87,7 +87,7 @@ class CreateNodeRuleCommandTests {
 	}
     
     @Test
-	def void assertThatCase1CreateNodeRulesAreGenerated() {
+	def void assertThatCorrectCreateNodeRulesAreGeneratedForCase1Multiplicity() {
 		
 		//Original metamodel with 0..* 0..* multiplicities
 		fakeOptimisationModel()
@@ -112,14 +112,14 @@ class CreateNodeRuleCommandTests {
 		
 		val module = createNodeRuleCommand.generate();
 		
-		writeModel(module, "src/resources/cases/", "case_1_rule_1_create_node_a.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
+		writeModel(module, "src/resources/cases/", "case_1_rule_1_create_node_a_multiplicity_A01_B01.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
 		
 		assertEquals("CREATE_Node_Class_Rules", module.name);
 		assertEquals(1, module.allRules.size);
 	}
 	
 	@Test
-	def void assertThatCase2CreateNodeRulesAreGenerated() {
+	def void assertThatCorrectCreateNodeRulesAreGeneratedForCase2Multiplicity() {
 		
 		//Original metamodel with 0..* 0..* multiplicities
 		fakeOptimisationModel()
@@ -143,7 +143,7 @@ class CreateNodeRuleCommandTests {
 		
 		val module = createNodeRuleCommand.generate();
 		
-		writeModel(module, "src/resources/cases/", "case_2_rule_1_create_node_a.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
+		writeModel(module, "src/resources/cases/", "case_2_rule_1_create_node_a_multiplicity_A01_B0-1.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
 		
 		assertEquals("CREATE_Node_Class_Rules", module.name);
 		assertEquals(1, module.allRules.size);
@@ -151,7 +151,7 @@ class CreateNodeRuleCommandTests {
 
 	
 	@Test
-	def void assertThatCase3CreateNodeRulesAreGenerated() {
+	def void assertThatCorrectCreateNodeRulesAreGeneratedForCase3Multiplicity() {
 		
 		//Original metamodel with 0..* 0..* multiplicities
 		fakeOptimisationModel()
@@ -176,7 +176,7 @@ class CreateNodeRuleCommandTests {
 		
 		val module = createNodeRuleCommand.generate();
 		
-		writeModel(module, "src/resources/cases/", "case_3_rule_1_create_node_a.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
+		writeModel(module, "src/resources/cases/", "case_3_rule_1_create_node_a_multiplicity_A01_B11.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
 		
 		assertEquals("CREATE_Node_Class_Rules", module.name);
 		assertEquals(1, module.allRules.size);
@@ -184,7 +184,7 @@ class CreateNodeRuleCommandTests {
 	
 	
 	@Test
-	def void assertThatCase4CreateNodeRulesAreGenerated() {
+	def void assertThatCorrectCreateNodeRulesAreGeneratedForCase4Multiplicity() {
 		
 		//Original metamodel with 0..* 0..* multiplicities
 		fakeOptimisationModel()
@@ -209,14 +209,14 @@ class CreateNodeRuleCommandTests {
 		
 		val module = createNodeRuleCommand.generate();
 		
-		writeModel(module, "src/resources/cases/", "case_4_rule_1_create_node_a.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
+		writeModel(module, "src/resources/cases/", "case_4_rule_1_create_node_a_multiplicity_A01_B1-1.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
 		
 		assertEquals("CREATE_Node_Class_Rules", module.name);
 		assertEquals(1, module.allRules.size);
 	}
 	
 		@Test
-	def void assertThatCase5CreateNodeRulesAreGenerated() {
+	def void assertThatCorrectCreateNodeRulesAreGeneratedForCase5Multiplicity() {
 		
 		//Original metamodel with 0..* 0..* multiplicities
 		fakeOptimisationModel()
@@ -241,14 +241,14 @@ class CreateNodeRuleCommandTests {
 		
 		val module = createNodeRuleCommand.generate();
 		
-		writeModel(module, "src/resources/cases/", "case_5_rule_1_create_node_a.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
+		writeModel(module, "src/resources/cases/", "case_5_rule_1_create_node_a_multiplicity_A0-1_B1.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
 		
 		assertEquals("CREATE_Node_Class_Rules", module.name);
 		assertEquals(1, module.allRules.size);
 	}
 	
 	@Test
-	def void assertThatCase6CreateNodeRulesAreGenerated() {
+	def void assertThatCorrectCreateNodeRulesAreGeneratedForCase6Multiplicity() {
 		
 		//Original metamodel with 0..* 0..* multiplicities
 		fakeOptimisationModel()
@@ -273,14 +273,14 @@ class CreateNodeRuleCommandTests {
 		
 		val module = createNodeRuleCommand.generate();
 		
-		writeModel(module, "src/resources/cases/", "case_6_rule_1_create_node_a.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
+		writeModel(module, "src/resources/cases/", "case_6_rule_1_create_node_a_multiplicity_A0-1_B0-1.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
 		
 		assertEquals("CREATE_Node_Class_Rules", module.name);
 		assertEquals(1, module.allRules.size);
 	}
 	
 	@Test
-	def void assertThatCase7CreateNodeRulesAreGenerated() {
+	def void assertThatCorrectCreateNodeRulesAreGeneratedForCase7Multiplicity() {
 		
 		//Original metamodel with 0..* 0..* multiplicities
 		fakeOptimisationModel()
@@ -305,7 +305,7 @@ class CreateNodeRuleCommandTests {
 		
 		val module = createNodeRuleCommand.generate();
 		
-		writeModel(module, "src/resources/cases/", "case_7_rule_1_create_node_a.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
+		writeModel(module, "src/resources/cases/", "case_7_rule_1_create_node_a_multiplicity_A0-1_B11.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
 		
 		assertEquals("CREATE_Node_Class_Rules", module.name);
 		assertEquals(1, module.allRules.size);
@@ -313,7 +313,7 @@ class CreateNodeRuleCommandTests {
 	
 		
 	@Test
-	def void assertThatCase8CreateNodeRulesAreGenerated() {
+	def void assertThatCorrectCreateNodeRulesAreGeneratedForCase8Multiplicity() {
 		
 		//Original metamodel with 0..* 0..* multiplicities
 		fakeOptimisationModel()
@@ -338,14 +338,14 @@ class CreateNodeRuleCommandTests {
 		
 		val module = createNodeRuleCommand.generate();
 		
-		writeModel(module, "src/resources/cases/", "case_8_rule_1_create_node_a.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
+		writeModel(module, "src/resources/cases/", "case_8_rule_1_create_node_a_multiplicity_A0-1_B1-1.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
 		
 		assertEquals("CREATE_Node_Class_Rules", module.name);
 		assertEquals(1, module.allRules.size);
 	}
 	
 	@Test
-	def void assertThatCase9CreateNodeRulesAreGenerated() {
+	def void assertThatCorrectCreateNodeRulesAreGeneratedForCase9Multiplicity() {
 		
 		//Original metamodel with 0..* 0..* multiplicities
 		fakeOptimisationModel()
@@ -370,14 +370,14 @@ class CreateNodeRuleCommandTests {
 		
 		val module = createNodeRuleCommand.generate();
 		
-		writeModel(module, "src/resources/cases/", "case_9_rule_1_create_node_a.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
+		writeModel(module, "src/resources/cases/", "case_9_rule_1_create_node_a_multiplicity_A11_B01.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
 		
 		assertEquals("CREATE_Node_Class_Rules", module.name);
 		assertEquals(1, module.allRules.size);
 	}
 	
 	@Test
-	def void assertThatCase10CreateNodeRulesAreGenerated() {
+	def void assertThatCorrectCreateNodeRulesAreGeneratedForCase10Multiplicity() {
 		
 		//Original metamodel with 0..* 0..* multiplicities
 		fakeOptimisationModel()
@@ -402,14 +402,14 @@ class CreateNodeRuleCommandTests {
 		
 		val module = createNodeRuleCommand.generate();
 		
-		writeModel(module, "src/resources/cases/", "case_10_rule_1_create_node_a.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
+		writeModel(module, "src/resources/cases/", "case_10_rule_1_create_node_a_multiplicity_A11_B01.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
 		
 		assertEquals("CREATE_Node_Class_Rules", module.name);
 		assertEquals(1, module.allRules.size);
 	}
 	
 	@Test
-	def void assertThatCase11CreateNodeRulesAreGenerated() {
+	def void assertThatCorrectCreateNodeRulesAreGeneratedForCase11Multiplicity() {
 		
 		//Original metamodel with 0..* 0..* multiplicities
 		fakeOptimisationModel()
@@ -434,14 +434,14 @@ class CreateNodeRuleCommandTests {
 		
 		val module = createNodeRuleCommand.generate();
 		
-		writeModel(module, "src/resources/cases/", "case_11_rule_1_create_node_a.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
+		writeModel(module, "src/resources/cases/", "case_11_rule_1_create_node_a_multiplicity_A11_B11.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
 		
 		assertEquals("CREATE_Node_Class_Rules", module.name);
 		assertEquals(1, module.allRules.size);
 	}
 	
 	@Test
-	def void assertThatCase12CreateNodeRulesAreGenerated() {
+	def void assertThatCorrectCreateNodeRulesAreGeneratedForCase12Multiplicity() {
 		
 		//Original metamodel with 0..* 0..* multiplicities
 		fakeOptimisationModel()
@@ -466,7 +466,7 @@ class CreateNodeRuleCommandTests {
 		
 		val module = createNodeRuleCommand.generate();
 		
-		writeModel(module, "src/resources/cases/", "case_12_rule_1_create_node_a.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
+		writeModel(module, "src/resources/cases/", "case_12_rule_1_create_node_a_multiplicity_A11_B1-1.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
 		
 		assertEquals("CREATE_Node_Class_Rules", module.name);
 		assertEquals(1, module.allRules.size);
@@ -474,7 +474,7 @@ class CreateNodeRuleCommandTests {
 	
 		
 	@Test
-	def void assertThatCase13CreateNodeRulesAreGenerated() {
+	def void assertThatCorrectCreateNodeRulesAreGeneratedForCase13Multiplicity() {
 		
 		//Original metamodel with 0..* 0..* multiplicities
 		fakeOptimisationModel()
@@ -499,7 +499,7 @@ class CreateNodeRuleCommandTests {
 		
 		val module = createNodeRuleCommand.generate();
 		
-		writeModel(module, "src/resources/cases/", "case_13_rule_1_create_node_a.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
+		writeModel(module, "src/resources/cases/", "case_13_rule_1_create_node_a_multiplicity_A1-1_B01.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
 		
 		assertEquals("CREATE_Node_Class_Rules", module.name);
 		assertEquals(1, module.allRules.size);
@@ -507,7 +507,7 @@ class CreateNodeRuleCommandTests {
 	
 		
 	@Test
-	def void assertThatCase14CreateNodeRulesAreGenerated() {
+	def void assertThatCorrectCreateNodeRulesAreGeneratedForCase14Multiplicity() {
 		
 		//Original metamodel with 0..* 0..* multiplicities
 		fakeOptimisationModel()
@@ -532,7 +532,7 @@ class CreateNodeRuleCommandTests {
 		
 		val module = createNodeRuleCommand.generate();
 		
-		writeModel(module, "src/resources/cases/", "case_14_rule_1_create_node_a.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
+		writeModel(module, "src/resources/cases/", "case_14_rule_1_create_node_a_multiplicity_A1-1_B0-1.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
 		
 		assertEquals("CREATE_Node_Class_Rules", module.name);
 		assertEquals(1, module.allRules.size);
@@ -540,7 +540,7 @@ class CreateNodeRuleCommandTests {
 	
 			
 	@Test
-	def void assertThatCase15CreateNodeRulesAreGenerated() {
+	def void assertThatCorrectCreateNodeRulesAreGeneratedForCase15Multiplicity() {
 		
 		//Original metamodel with 0..* 0..* multiplicities
 		fakeOptimisationModel()
@@ -565,14 +565,14 @@ class CreateNodeRuleCommandTests {
 		
 		val module = createNodeRuleCommand.generate();
 		
-		writeModel(module, "src/resources/cases/", "case_15_rule_1_create_node_a.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
+		writeModel(module, "src/resources/cases/", "case_15_rule_1_create_node_a_multiplicity_A1-1_B11.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
 		
 		assertEquals("CREATE_Node_Class_Rules", module.name);
 		assertEquals(1, module.allRules.size);
 	}
 	
 	@Test
-	def void assertThatCase16CreateNodeRulesAreGenerated() {
+	def void assertThatCorrectCreateNodeRulesAreGeneratedForCase16Multiplicity() {
 		
 		//Original metamodel with 0..* 0..* multiplicities
 		fakeOptimisationModel()
@@ -597,7 +597,7 @@ class CreateNodeRuleCommandTests {
 		
 		val module = createNodeRuleCommand.generate();
 		
-		writeModel(module, "src/resources/cases/", "case_16_rule_1_create_node_a.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
+		writeModel(module, "src/resources/cases/", "case_15_rule_1_create_node_a_multiplicity_A1-1_B1-1.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
 		
 		assertEquals("CREATE_Node_Class_Rules", module.name);
 		assertEquals(1, module.allRules.size);
