@@ -40,8 +40,11 @@ class Multiplicity {
 		
 		if(this.eReference == null) {
 			//TODO This must be possible to do in a simpler way
-			val nodeClassifier = metamodel.EClassifiers.filter[classifier | (classifier as EClass).EAllReferences.filter[ref | ref.name.equals(edge)].head != null].head
-			this.eReference = (nodeClassifier as EClass).EAllReferences.filter[reference | reference.name.equals(edge)].head
+			val nodeClassifier = metamodel.EClassifiers
+			.filter[classifier | (classifier as EClass).EAllReferences.filter[ref | ref.name.equals(edge) && ref.EContainingClass.name.equals(this.source)].head != null].head
+			
+			this.eReference = (nodeClassifier as EClass).EAllReferences
+			.filter[reference | reference.name.equals(edge) && reference.EContainingClass.name.equals(this.source)].head
 		}
 		
 		return this.eReference;
