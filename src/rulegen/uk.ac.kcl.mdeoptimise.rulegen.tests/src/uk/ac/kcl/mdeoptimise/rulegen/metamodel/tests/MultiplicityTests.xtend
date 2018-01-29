@@ -57,6 +57,23 @@ class MultiplicityTests {
 		
 		return new MetamodelGenerator(getMetamodel()).generate(multiplicities)
     }
+
+	/**
+	 * The orchestration metamodel does not have any refinements that we need to make
+	 */    
+    def EPackage fakeServiceCompositionOptimisationModel(){
+    	this.model = mock(Optimisation)
+		var basepath = mock(BasepathSpec);
+		var metamodel = mock(MetaModelSpec);
+		when(basepath.location).thenReturn("src/resources/");
+		when(metamodel.location).thenReturn("service-composition.ecore")
+		
+		when(model.basepath).thenReturn(basepath)
+		when(model.metamodel).thenReturn(metamodel)
+		
+		var multiplicities = new LinkedList<Multiplicity>();
+		return new MetamodelGenerator(getMetamodel()).generate(multiplicities)
+    }
     
     @Test
 	def void assertThatMultiplicityParserReturnsTheCorrectNodesAndEdges() {
@@ -99,5 +116,17 @@ class MultiplicityTests {
 		assertNotNull("EOpposite reference for bidirectional reference is not null", multiplicityA.EReference.EOpposite)
 		assertEquals("EOpposite reference for bidirectional reference has correct name", 
 			"isEncapsulatedBy", multiplicityA.EReference.EOpposite.getName)
+	}
+	
+	@Test
+	def void assertThatTheCorrectMultiplicityEdgeIsReturned(){
+		
+		fakeServiceCompositionOptimisationModel()
+		
+		var multiplicityA = new Multiplicity("Orchestrator", "concreteServices", 1, -1, getMetamodel);
+		
+		assertNotNull("EReference is not null", multiplicityA.EReference)
+		assertEquals("EReference has the correct container", 
+			"Orchestrator", multiplicityA.EReference.EContainingClass.name)
 	}
 }
