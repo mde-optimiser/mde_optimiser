@@ -6,4 +6,5 @@ COPY mdeo.sh /
 
 COPY ./case_studies/ /var/app/case_studies
 
-ENTRYPOINT ["/mdeo.sh"]
+#ENTRYPOINT ["/mdeo.sh"]
+ENTRYPOINT ["/entrypoint.sh"]

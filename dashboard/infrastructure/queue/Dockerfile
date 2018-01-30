@@ -6,4 +6,7 @@ RUN mkdir -p /var/app/current && cd /var/app/current \
 
 EXPOSE 5672 8080
 
-ENTRYPOINT ["/var/app/current/qpid-broker/6.1.0/bin/qpid-server"]
+COPY entrypoint.sh /
+
+#ENTRYPOINT ["/var/app/current/qpid-broker/6.1.0/bin/aqpid-server]
+ENTRYPOINT ["/entrypoint.sh"]

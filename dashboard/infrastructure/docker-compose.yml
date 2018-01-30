@@ -19,3 +19,10 @@ services:
         - ../../src/dashboard/uk.ac.kcl.mdeoptimise.dashboard.api/target/classes:/var/app/mdeo/uk.ac.kcl.mdeoptimise.dashboard.api/target/classes
     links: 
         - "queue"
+  dataloader:
+    build:
+      context: ./loader
+      dockerfile: Dockerfile
+    volumes:
+        - ../../dashboard/dataloader/bin:/var/app/mdeo/uk.ac.kcl.mdeoptimise.dataloader
+        - ../../dashboard/dataloader/lib:/var/app/mdeo/uk.ac.kcl.mdeoptimise.dataloader.lib
