@@ -12,16 +12,22 @@ import java.sql.SQLException;
  *
  */
 class Database {
+	private static final String URL = "jdbc:h2:tcp://localhost/test";
+	private static final String USERNAME = "sa";
+    private static final String PASSWORD = "";
+	//private static final String USERNAME = "mdeo";
+    //private static final String PASSWORD = "mdeo";
+	
 	static Connection conn = null;
 	
 	private static void connectToDatabase() throws ClassNotFoundException, SQLException  {
 		Class.forName("org.h2.Driver"); 
 		conn = DriverManager
-				.getConnection("jdbc:h2:tcp://localhost/~/test", "mdeo", "mdeo");
+				.getConnection(URL, USERNAME, PASSWORD);
 	}
 	
 	/**
-	 * Insert a given value to the database. 
+	 * Insert a given values to the database.
 	 * 
 	 * @param value the value to be inserted
 	 * @throws ClassNotFoundException

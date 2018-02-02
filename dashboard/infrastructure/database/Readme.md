@@ -1,0 +1,1 @@
+This docker file contains a very basic setup for a h2 database.

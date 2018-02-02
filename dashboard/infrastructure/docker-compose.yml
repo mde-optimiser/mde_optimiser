@@ -7,6 +7,13 @@ services:
     ports:
       - "5762:5762"
       - "8080:8080"
+  database:
+    build:
+      context: ./database
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8082"
+      - "9092:9092"
   worker:
     build:
       context: ./worker
