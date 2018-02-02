@@ -9,7 +9,6 @@ import javax.jms.Destination;
 import javax.jms.ExceptionListener;
 import javax.jms.JMSException;
 import javax.jms.Message;
-import javax.jms.MessageConsumer;
 import javax.jms.MessageProducer;
 import javax.jms.Session;
 import javax.jms.TextMessage;
@@ -29,6 +28,7 @@ public class Sender {
 
 	final String CONNECTION_JNDI_NAME = "myFactoryLookup";
 	final String CONNECTION_NAME = "amqp://queue:5672";
+	//final String CONNECTION_NAME = "amqp://localhost:5672";
 
 	final String QUEUE_JNDI_NAME = "myQueueLookup";
 	final String QUEUE_NAME = "queue";

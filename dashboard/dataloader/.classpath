@@ -4,14 +4,9 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/h2-1.4.196.jar"/>
 	<classpathentry kind="lib" path="lib/javax.jms-3.1.2.2.jar"/>
-	<classpathentry kind="lib" path="lib/qpid-jms-client-0.1.0-sources.jar"/>
 	<classpathentry kind="lib" path="lib/qpid-jms-client-0.1.0.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-api-1.7.12.jar"/>
-	<classpathentry kind="lib" path="lib/slf4j-api-1.7.12-sources.jar"/>
 	<classpathentry kind="lib" path="lib/proton-j-0.9.1.jar"/>
-	<classpathentry kind="lib" path="lib/netty-transport-4.0.30.Final.jar"/>
-	<classpathentry kind="lib" path="lib/netty-common-4.0.30.Final.jar"/>
-	<classpathentry kind="lib" path="lib/netty-buffer-4.0.30.Final.jar"/>
 	<classpathentry kind="lib" path="lib/qpid-jms-client-0.27.0.jar"/>
 	<classpathentry kind="lib" path="lib/netty-buffer-4.1.16.Final.jar"/>
 	<classpathentry kind="lib" path="lib/netty-codec-4.1.16.Final.jar"/>

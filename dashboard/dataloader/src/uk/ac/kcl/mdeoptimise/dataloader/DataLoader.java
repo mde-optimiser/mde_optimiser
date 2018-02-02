@@ -25,6 +25,7 @@ public class DataLoader {
 
     static final String CONNECTION_JNDI_NAME = "myFactoryLookup";
     static final String CONNECTION_NAME = "amqp://queue:5672";
+    //static final String CONNECTION_NAME = "amqp://localhost:5672";
 
 	static final String QUEUE_JNDI_NAME = "myQueueLookup";
 	static final String QUEUE_NAME = "queue";
@@ -53,7 +54,8 @@ public class DataLoader {
             Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
             MessageConsumer messageConsumer = session.createConsumer(queue);
             messageConsumer.setMessageListener(new QueueMessageListener());
-			
+
+			System.out.println("[DataLoader] Connected to queue");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
