@@ -19,8 +19,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/evolvers"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/optimisation"/>
     </genClasses>
-    <genClasses ecoreClass="MDEOptimise.ecore#//BasepathSpec">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//BasepathSpec/location"/>
+    <genClasses ecoreClass="MDEOptimise.ecore#//BasePathSpec">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//BasePathSpec/location"/>
     </genClasses>
     <genClasses ecoreClass="MDEOptimise.ecore#//MetaModelSpec">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//MetaModelSpec/location"/>
