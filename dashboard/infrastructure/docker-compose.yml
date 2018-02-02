@@ -33,3 +33,11 @@ services:
     volumes:
         - ../../dashboard/dataloader/bin:/var/app/mdeo/uk.ac.kcl.mdeoptimise.dataloader
         - ../../dashboard/dataloader/lib:/var/app/mdeo/uk.ac.kcl.mdeoptimise.dataloader.lib
+  # web:
+  #   build:
+  #     context: ./web
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "8080:8080"
+  #   volumes:
+  #     - ../../dashboard/web/uk.ac.kcl.mdeoptimise.dashboard:var/app/mdeo/uk.ac.kcl.mdeoptimise.web
