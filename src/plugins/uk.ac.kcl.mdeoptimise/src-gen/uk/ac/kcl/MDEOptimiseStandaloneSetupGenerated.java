@@ -5,15 +5,12 @@ package uk.ac.kcl;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-
-import java.util.Map.Entry;
-
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.ISetup;
+import org.eclipse.xtext.common.TerminalsStandaloneSetup;
 import org.eclipse.xtext.resource.IResourceFactory;
 import org.eclipse.xtext.resource.IResourceServiceProvider;
-import org.eclipse.xtext.xbase.XbaseStandaloneSetup;
 import uk.ac.kcl.mdeoptimise.MdeoptimisePackage;
 
 @SuppressWarnings("all")
@@ -21,7 +18,7 @@ public class MDEOptimiseStandaloneSetupGenerated implements ISetup {
 
 	@Override
 	public Injector createInjectorAndDoEMFRegistration() {
-		XbaseStandaloneSetup.doSetup();
+		TerminalsStandaloneSetup.doSetup();
 
 		Injector injector = createInjector();
 		register(injector);
@@ -35,15 +32,7 @@ public class MDEOptimiseStandaloneSetupGenerated implements ISetup {
 	public void register(Injector injector) {
 		if (!EPackage.Registry.INSTANCE.containsKey("http://www.ac.uk/kcl/MDEOptimise")) {
 			EPackage.Registry.INSTANCE.put("http://www.ac.uk/kcl/MDEOptimise", MdeoptimisePackage.eINSTANCE);
-			System.out.println("Registered");
-		} else {
-			System.out.println("Not registerd");
 		}
-		
-		for(Entry<String, Object> a : EPackage.Registry.INSTANCE.entrySet()){
-			System.out.println("Registered epackage: " + a.getKey());
-		}
-		
 		IResourceFactory resourceFactory = injector.getInstance(IResourceFactory.class);
 		IResourceServiceProvider serviceProvider = injector.getInstance(IResourceServiceProvider.class);
 		

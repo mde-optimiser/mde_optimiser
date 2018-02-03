@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import uk.ac.kcl.mdeoptimise.BasePathSpec;
+import uk.ac.kcl.mdeoptimise.BasepathSpec;
 import uk.ac.kcl.mdeoptimise.ConstraintInterpreterSpec;
 import uk.ac.kcl.mdeoptimise.EvolverSpec;
 import uk.ac.kcl.mdeoptimise.MdeoptimisePackage;
@@ -58,7 +58,7 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
    * @generated
    * @ordered
    */
-  protected BasePathSpec basepath;
+  protected BasepathSpec basepath;
 
   /**
    * The cached value of the '{@link #getMetamodel() <em>Metamodel</em>}' containment reference.
@@ -146,7 +146,7 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
    * <!-- end-user-doc -->
    * @generated
    */
-  public BasePathSpec getBasepath()
+  public BasepathSpec getBasepath()
   {
     return basepath;
   }
@@ -156,9 +156,9 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetBasepath(BasePathSpec newBasepath, NotificationChain msgs)
+  public NotificationChain basicSetBasepath(BasepathSpec newBasepath, NotificationChain msgs)
   {
-    BasePathSpec oldBasepath = basepath;
+    BasepathSpec oldBasepath = basepath;
     basepath = newBasepath;
     if (eNotificationRequired())
     {
@@ -173,7 +173,7 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setBasepath(BasePathSpec newBasepath)
+  public void setBasepath(BasepathSpec newBasepath)
   {
     if (newBasepath != basepath)
     {
@@ -443,7 +443,7 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
     switch (featureID)
     {
       case MdeoptimisePackage.OPTIMISATION__BASEPATH:
-        setBasepath((BasePathSpec)newValue);
+        setBasepath((BasepathSpec)newValue);
         return;
       case MdeoptimisePackage.OPTIMISATION__METAMODEL:
         setMetamodel((MetaModelSpec)newValue);
@@ -481,7 +481,7 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
     switch (featureID)
     {
       case MdeoptimisePackage.OPTIMISATION__BASEPATH:
-        setBasepath((BasePathSpec)null);
+        setBasepath((BasepathSpec)null);
         return;
       case MdeoptimisePackage.OPTIMISATION__METAMODEL:
         setMetamodel((MetaModelSpec)null);
