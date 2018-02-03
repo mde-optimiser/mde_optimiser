@@ -17,9 +17,11 @@ class RandomEvolverParameter implements IEvolverParametersFunction {
 		//Count the number of features in the model or one of the parents and use as range for random int generator
 		var features = (model.get(0).getFeature("features") as EList<EObject>).size;
 		
-		println("Generating random: " + features)
+		var random = new Random().nextInt(features/2);
 		
-		return new Random().nextInt(features/2)
+		println("Generating random: " + random)
+		
+		return random
 	}
 	
 
