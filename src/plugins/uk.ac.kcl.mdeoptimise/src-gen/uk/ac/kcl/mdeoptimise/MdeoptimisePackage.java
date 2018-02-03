@@ -141,14 +141,14 @@ public interface MdeoptimisePackage extends EPackage
   int OPTIMISATION_FEATURE_COUNT = 7;
 
   /**
-   * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.BasePathSpecImpl <em>Base Path Spec</em>}' class.
+   * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.BasepathSpecImpl <em>Basepath Spec</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see uk.ac.kcl.mdeoptimise.impl.BasePathSpecImpl
-   * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getBasePathSpec()
+   * @see uk.ac.kcl.mdeoptimise.impl.BasepathSpecImpl
+   * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getBasepathSpec()
    * @generated
    */
-  int BASE_PATH_SPEC = 1;
+  int BASEPATH_SPEC = 1;
 
   /**
    * The feature id for the '<em><b>Location</b></em>' attribute.
@@ -157,16 +157,16 @@ public interface MdeoptimisePackage extends EPackage
    * @generated
    * @ordered
    */
-  int BASE_PATH_SPEC__LOCATION = 0;
+  int BASEPATH_SPEC__LOCATION = 0;
 
   /**
-   * The number of structural features of the '<em>Base Path Spec</em>' class.
+   * The number of structural features of the '<em>Basepath Spec</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int BASE_PATH_SPEC_FEATURE_COUNT = 1;
+  int BASEPATH_SPEC_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.MetaModelSpecImpl <em>Meta Model Spec</em>}' class.
@@ -718,25 +718,25 @@ public interface MdeoptimisePackage extends EPackage
   EReference getOptimisation_Optimisation();
 
   /**
-   * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.BasePathSpec <em>Base Path Spec</em>}'.
+   * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.BasepathSpec <em>Basepath Spec</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Base Path Spec</em>'.
-   * @see uk.ac.kcl.mdeoptimise.BasePathSpec
+   * @return the meta object for class '<em>Basepath Spec</em>'.
+   * @see uk.ac.kcl.mdeoptimise.BasepathSpec
    * @generated
    */
-  EClass getBasePathSpec();
+  EClass getBasepathSpec();
 
   /**
-   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.BasePathSpec#getLocation <em>Location</em>}'.
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.BasepathSpec#getLocation <em>Location</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Location</em>'.
-   * @see uk.ac.kcl.mdeoptimise.BasePathSpec#getLocation()
-   * @see #getBasePathSpec()
+   * @see uk.ac.kcl.mdeoptimise.BasepathSpec#getLocation()
+   * @see #getBasepathSpec()
    * @generated
    */
-  EAttribute getBasePathSpec_Location();
+  EAttribute getBasepathSpec_Location();
 
   /**
    * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.MetaModelSpec <em>Meta Model Spec</em>}'.
@@ -1257,14 +1257,14 @@ public interface MdeoptimisePackage extends EPackage
     EReference OPTIMISATION__OPTIMISATION = eINSTANCE.getOptimisation_Optimisation();
 
     /**
-     * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.BasePathSpecImpl <em>Base Path Spec</em>}' class.
+     * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.BasepathSpecImpl <em>Basepath Spec</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see uk.ac.kcl.mdeoptimise.impl.BasePathSpecImpl
-     * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getBasePathSpec()
+     * @see uk.ac.kcl.mdeoptimise.impl.BasepathSpecImpl
+     * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getBasepathSpec()
      * @generated
      */
-    EClass BASE_PATH_SPEC = eINSTANCE.getBasePathSpec();
+    EClass BASEPATH_SPEC = eINSTANCE.getBasepathSpec();
 
     /**
      * The meta object literal for the '<em><b>Location</b></em>' attribute feature.
@@ -1272,7 +1272,7 @@ public interface MdeoptimisePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute BASE_PATH_SPEC__LOCATION = eINSTANCE.getBasePathSpec_Location();
+    EAttribute BASEPATH_SPEC__LOCATION = eINSTANCE.getBasepathSpec_Location();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.MetaModelSpecImpl <em>Meta Model Spec</em>}' class.

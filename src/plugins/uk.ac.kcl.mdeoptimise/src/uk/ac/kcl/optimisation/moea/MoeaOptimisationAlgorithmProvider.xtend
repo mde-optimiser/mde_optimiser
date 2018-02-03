@@ -41,8 +41,8 @@ class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
 			val mutationVariation = new MoeaOptimisationMutationVariation(properties.get("solutionGenerator") as SolutionGenerator)
 				
 			return new MoeaProbabilisticVariation(crossoverVariation, mutationVariation, 
-				Double.parseDouble(algorithmVariation.probabilityVariation.crossover_rate), 
-				Double.parseDouble(algorithmVariation.probabilityVariation.mutation_rate)
+				Double.parseDouble(algorithmVariation.probabilityVariation.crossover_rate.toString), 
+				Double.parseDouble(algorithmVariation.probabilityVariation.mutation_rate.toString)
 			)	
 		}
 		

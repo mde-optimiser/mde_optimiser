@@ -40,12 +40,12 @@ public interface Optimisation extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Basepath</em>' containment reference.
-   * @see #setBasepath(BasePathSpec)
+   * @see #setBasepath(BasepathSpec)
    * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getOptimisation_Basepath()
    * @model containment="true"
    * @generated
    */
-  BasePathSpec getBasepath();
+  BasepathSpec getBasepath();
 
   /**
    * Sets the value of the '{@link uk.ac.kcl.mdeoptimise.Optimisation#getBasepath <em>Basepath</em>}' containment reference.
@@ -55,7 +55,7 @@ public interface Optimisation extends EObject
    * @see #getBasepath()
    * @generated
    */
-  void setBasepath(BasePathSpec value);
+  void setBasepath(BasepathSpec value);
 
   /**
    * Returns the value of the '<em><b>Metamodel</b></em>' containment reference.

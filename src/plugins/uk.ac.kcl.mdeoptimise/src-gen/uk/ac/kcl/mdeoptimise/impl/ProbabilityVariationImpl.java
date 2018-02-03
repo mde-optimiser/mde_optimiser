@@ -58,7 +58,7 @@ public class ProbabilityVariationImpl extends MinimalEObjectImpl.Container imple
    * @generated
    * @ordered
    */
-  protected static final String CROSSOVER_RATE_EDEFAULT = null;
+  protected static final int CROSSOVER_RATE_EDEFAULT = 0;
 
   /**
    * The cached value of the '{@link #getCrossover_rate() <em>Crossover rate</em>}' attribute.
@@ -68,7 +68,7 @@ public class ProbabilityVariationImpl extends MinimalEObjectImpl.Container imple
    * @generated
    * @ordered
    */
-  protected String crossover_rate = CROSSOVER_RATE_EDEFAULT;
+  protected int crossover_rate = CROSSOVER_RATE_EDEFAULT;
 
   /**
    * The default value of the '{@link #getMutation_rate() <em>Mutation rate</em>}' attribute.
@@ -78,7 +78,7 @@ public class ProbabilityVariationImpl extends MinimalEObjectImpl.Container imple
    * @generated
    * @ordered
    */
-  protected static final String MUTATION_RATE_EDEFAULT = null;
+  protected static final int MUTATION_RATE_EDEFAULT = 0;
 
   /**
    * The cached value of the '{@link #getMutation_rate() <em>Mutation rate</em>}' attribute.
@@ -88,7 +88,7 @@ public class ProbabilityVariationImpl extends MinimalEObjectImpl.Container imple
    * @generated
    * @ordered
    */
-  protected String mutation_rate = MUTATION_RATE_EDEFAULT;
+  protected int mutation_rate = MUTATION_RATE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -139,7 +139,7 @@ public class ProbabilityVariationImpl extends MinimalEObjectImpl.Container imple
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getCrossover_rate()
+  public int getCrossover_rate()
   {
     return crossover_rate;
   }
@@ -149,9 +149,9 @@ public class ProbabilityVariationImpl extends MinimalEObjectImpl.Container imple
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setCrossover_rate(String newCrossover_rate)
+  public void setCrossover_rate(int newCrossover_rate)
   {
-    String oldCrossover_rate = crossover_rate;
+    int oldCrossover_rate = crossover_rate;
     crossover_rate = newCrossover_rate;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, MdeoptimisePackage.PROBABILITY_VARIATION__CROSSOVER_RATE, oldCrossover_rate, crossover_rate));
@@ -162,7 +162,7 @@ public class ProbabilityVariationImpl extends MinimalEObjectImpl.Container imple
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getMutation_rate()
+  public int getMutation_rate()
   {
     return mutation_rate;
   }
@@ -172,9 +172,9 @@ public class ProbabilityVariationImpl extends MinimalEObjectImpl.Container imple
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setMutation_rate(String newMutation_rate)
+  public void setMutation_rate(int newMutation_rate)
   {
-    String oldMutation_rate = mutation_rate;
+    int oldMutation_rate = mutation_rate;
     mutation_rate = newMutation_rate;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, MdeoptimisePackage.PROBABILITY_VARIATION__MUTATION_RATE, oldMutation_rate, mutation_rate));
@@ -214,10 +214,10 @@ public class ProbabilityVariationImpl extends MinimalEObjectImpl.Container imple
         setType((String)newValue);
         return;
       case MdeoptimisePackage.PROBABILITY_VARIATION__CROSSOVER_RATE:
-        setCrossover_rate((String)newValue);
+        setCrossover_rate((Integer)newValue);
         return;
       case MdeoptimisePackage.PROBABILITY_VARIATION__MUTATION_RATE:
-        setMutation_rate((String)newValue);
+        setMutation_rate((Integer)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -259,9 +259,9 @@ public class ProbabilityVariationImpl extends MinimalEObjectImpl.Container imple
       case MdeoptimisePackage.PROBABILITY_VARIATION__TYPE:
         return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
       case MdeoptimisePackage.PROBABILITY_VARIATION__CROSSOVER_RATE:
-        return CROSSOVER_RATE_EDEFAULT == null ? crossover_rate != null : !CROSSOVER_RATE_EDEFAULT.equals(crossover_rate);
+        return crossover_rate != CROSSOVER_RATE_EDEFAULT;
       case MdeoptimisePackage.PROBABILITY_VARIATION__MUTATION_RATE:
-        return MUTATION_RATE_EDEFAULT == null ? mutation_rate != null : !MUTATION_RATE_EDEFAULT.equals(mutation_rate);
+        return mutation_rate != MUTATION_RATE_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
