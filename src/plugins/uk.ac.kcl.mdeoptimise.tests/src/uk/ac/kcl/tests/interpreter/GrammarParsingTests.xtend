@@ -20,7 +20,6 @@ class GrammarParsingTests {
 	@Inject TestModelHelper testModelHelper
 	
 	@Test
-	@Ignore
 	def void assertThatThereAreNoParsingIssues() {	
 		val model = testModelHelper.parsedFullValidModel
 		model.assertNoIssues
