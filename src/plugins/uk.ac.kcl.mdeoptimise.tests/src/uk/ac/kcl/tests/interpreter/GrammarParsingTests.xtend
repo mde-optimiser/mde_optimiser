@@ -10,7 +10,6 @@ import uk.ac.kcl.tests.FullTestInjector
 import uk.ac.kcl.tests.TestModelHelper
 
 import static org.junit.Assert.*
-import org.junit.Ignore
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)
@@ -26,21 +25,18 @@ class GrammarParsingTests {
 	}
 	
 	@Test
-	@Ignore
 	def void assertParsedOptimisationModelIsNotNull() {
 		var model = testModelHelper.parsedFullValidModel
 		assertNotNull(model)
 	}
 	
 	@Test
-	@Ignore
 	def void assertBasePathIsParsed() {
 		val model = testModelHelper.parsedFullValidModel
 		assertEquals("src/models/cra/", model.getBasepath.location)
 	}
 	
 	@Test
-	@Ignore
 	def void assertMetamodelPathIsParsed() {
 		
 		val model = testModelHelper.parsedFullValidModel
@@ -49,7 +45,6 @@ class GrammarParsingTests {
 	}
 	
 	@Test
-	@Ignore
 	def void assertJavaObjectiveSignatureAndSpecIsParsed() {
 		
 		val javaObjective = "objective name minimise java { \"models.fitness.Fitness.java\""
@@ -65,7 +60,6 @@ class GrammarParsingTests {
 	}
 	
 	@Test
-	@Ignore
 	def void assertOclObjectiveSignatureAndSpecIsParsed() {
 		
 		val oclObjective = "objective name maximise ocl { \"Class.allInstances()->size()\""
@@ -80,7 +74,6 @@ class GrammarParsingTests {
 	}
 	
 	@Test
-	@Ignore
 	def void assertOptimisationProvidersAreParsed() {
 		
 		val customOptimisation = "optimisation provider moea algorithm NSGAII variation genetic evolutions 100000 population 100"
@@ -94,7 +87,6 @@ class GrammarParsingTests {
 	}
 	
 	@Test
-	@Ignore
 	def void assertOclConstraintProvidersAreParsed() {
 		
 		val oclConstraint = "constraint constraintName ocl { \"Class.allInstances->size()\" }"
@@ -107,7 +99,6 @@ class GrammarParsingTests {
 	}
 	
 	@Test
-	@Ignore
 	def void assertJavaConstraintProvidersAreParsed() {
 
 		val javaConstraint = "constraint constraintName java { \"models.constraints.Constraint.java\" }"
@@ -120,7 +111,6 @@ class GrammarParsingTests {
 	}
 	
 	@Test
-	@Ignore
 	def void assertThatConstraintsAreOptional() {
 		
 		val model = testModelHelper.getParsedFullValidModelWithCustomConstraints("")
