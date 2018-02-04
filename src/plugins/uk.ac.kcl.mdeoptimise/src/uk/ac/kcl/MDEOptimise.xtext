@@ -1,10 +1,10 @@
-grammar uk.ac.kcl.MDEOptimise with org.eclipse.xtext.common.Terminals
+grammar uk.ac.kcl.MDEOptimise with org.eclipse.xtext.xbase.Xbase
 
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 generate mdeoptimise "http://www.ac.uk/kcl/MDEOptimise"
 
 Optimisation:
-	basepath=BasepathSpec
+	basepath=BasePathSpec
 	metamodel=MetaModelSpec
 	model=ModelPathSpec
 	objectives+=ObjectiveInterpreterSpec+
@@ -20,7 +20,7 @@ Optimisation:
  * fully generated and registered metamodels. All further URLs should be either absolute 
  * or relative to this basepath.
  */
-BasepathSpec:
+BasePathSpec:
 	"basepath" location=URL
 ;
 
@@ -33,11 +33,11 @@ ModelPathSpec:
 ;
 
 ObjectiveInterpreterSpec:
-	"objective" objectiveName=ID objectiveTendency=OBJECTIVE_TENDENCY objectiveType=ENTITY_TYPE "{" (objectiveSpec=STRING) "}"
+	"objective" objectiveName=ValidID objectiveTendency=OBJECTIVE_TENDENCY objectiveType=ENTITY_TYPE "{" (objectiveSpec=STRING) "}"
 ;
 
 ConstraintInterpreterSpec:
-	"constraint" constraintName=ID constraintType=ENTITY_TYPE "{" (constraintSpec=STRING) "}"
+	"constraint" constraintName=ValidID constraintType=ENTITY_TYPE "{" (constraintSpec=STRING) "}"
 ;
 
 EvolverSpec:
@@ -53,11 +53,11 @@ EvolverSpec:
  * to work with QualifiedName
  */
 EvolverParameter:
-	name=ID ('=>' (function=ParameterFunction | customFunction=STRING) )
+	name=ValidID ('=>' (function=ParameterFunction | customFunction=STRING) )
 ;
 
 ParameterFunction:
-	name=ID ('(' 
+	name=ValidID ('(' 
 		(parameter=STRING)
 	')')?
 ; 
@@ -79,7 +79,7 @@ AlgorithmVariation:
 ;
 
 ProbabilityVariation:
-	 type=GENETIC_VARIATION ('(' crossover_rate=INT ',' mutation_rate=INT ')')?
+	 type=GENETIC_VARIATION ('(' crossover_rate=Number ',' mutation_rate=Number ')')?
 ;
 
 terminal GENETIC_VARIATION returns ecore::EString:

@@ -17,10 +17,11 @@ import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.TerminalRule;
-import org.eclipse.xtext.common.services.TerminalsGrammarAccess;
 import org.eclipse.xtext.service.AbstractElementFinder.AbstractEnumRuleElementFinder;
 import org.eclipse.xtext.service.AbstractElementFinder.AbstractGrammarElementFinder;
 import org.eclipse.xtext.service.GrammarProvider;
+import org.eclipse.xtext.xbase.services.XbaseGrammarAccess;
+import org.eclipse.xtext.xbase.services.XtypeGrammarAccess;
 
 @Singleton
 public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
@@ -29,7 +30,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.Optimisation");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cBasepathAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cBasepathBasepathSpecParserRuleCall_0_0 = (RuleCall)cBasepathAssignment_0.eContents().get(0);
+		private final RuleCall cBasepathBasePathSpecParserRuleCall_0_0 = (RuleCall)cBasepathAssignment_0.eContents().get(0);
 		private final Assignment cMetamodelAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cMetamodelMetaModelSpecParserRuleCall_1_0 = (RuleCall)cMetamodelAssignment_1.eContents().get(0);
 		private final Assignment cModelAssignment_2 = (Assignment)cGroup.eContents().get(2);
@@ -44,7 +45,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cOptimisationOptimisationSpecParserRuleCall_6_0 = (RuleCall)cOptimisationAssignment_6.eContents().get(0);
 		
 		//Optimisation:
-		//	basepath=BasepathSpec
+		//	basepath=BasePathSpec
 		//	metamodel=MetaModelSpec
 		//	model=ModelPathSpec
 		//	objectives+=ObjectiveInterpreterSpec+
@@ -53,15 +54,15 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		//	optimisation=OptimisationSpec;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//basepath=BasepathSpec metamodel=MetaModelSpec model=ModelPathSpec objectives+=ObjectiveInterpreterSpec+
+		//basepath=BasePathSpec metamodel=MetaModelSpec model=ModelPathSpec objectives+=ObjectiveInterpreterSpec+
 		//constraints+=ConstraintInterpreterSpec* evolvers+=EvolverSpec+ optimisation=OptimisationSpec
 		public Group getGroup() { return cGroup; }
 		
-		//basepath=BasepathSpec
+		//basepath=BasePathSpec
 		public Assignment getBasepathAssignment_0() { return cBasepathAssignment_0; }
 		
-		//BasepathSpec
-		public RuleCall getBasepathBasepathSpecParserRuleCall_0_0() { return cBasepathBasepathSpecParserRuleCall_0_0; }
+		//BasePathSpec
+		public RuleCall getBasepathBasePathSpecParserRuleCall_0_0() { return cBasepathBasePathSpecParserRuleCall_0_0; }
 		
 		//metamodel=MetaModelSpec
 		public Assignment getMetamodelAssignment_1() { return cMetamodelAssignment_1; }
@@ -99,8 +100,8 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		//OptimisationSpec
 		public RuleCall getOptimisationOptimisationSpecParserRuleCall_6_0() { return cOptimisationOptimisationSpecParserRuleCall_6_0; }
 	}
-	public class BasepathSpecElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.BasepathSpec");
+	public class BasePathSpecElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.BasePathSpec");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cBasepathKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cLocationAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -112,7 +113,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		// * correctly. This will happen mainly when working with dynamic instances rather than 
 		// * fully generated and registered metamodels. All further URLs should be either absolute 
 		// * or relative to this basepath.
-		// * / BasepathSpec:
+		// * / BasePathSpec:
 		//	"basepath" location=URL;
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -179,7 +180,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cObjectiveKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cObjectiveNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cObjectiveNameIDTerminalRuleCall_1_0 = (RuleCall)cObjectiveNameAssignment_1.eContents().get(0);
+		private final RuleCall cObjectiveNameValidIDParserRuleCall_1_0 = (RuleCall)cObjectiveNameAssignment_1.eContents().get(0);
 		private final Assignment cObjectiveTendencyAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cObjectiveTendencyOBJECTIVE_TENDENCYTerminalRuleCall_2_0 = (RuleCall)cObjectiveTendencyAssignment_2.eContents().get(0);
 		private final Assignment cObjectiveTypeAssignment_3 = (Assignment)cGroup.eContents().get(3);
@@ -190,21 +191,22 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//ObjectiveInterpreterSpec:
-		//	"objective" objectiveName=ID objectiveTendency=OBJECTIVE_TENDENCY objectiveType=ENTITY_TYPE "{" objectiveSpec=STRING
-		//	"}";
+		//	"objective" objectiveName=ValidID objectiveTendency=OBJECTIVE_TENDENCY objectiveType=ENTITY_TYPE "{"
+		//	objectiveSpec=STRING "}";
 		@Override public ParserRule getRule() { return rule; }
 		
-		//"objective" objectiveName=ID objectiveTendency=OBJECTIVE_TENDENCY objectiveType=ENTITY_TYPE "{" objectiveSpec=STRING "}"
+		//"objective" objectiveName=ValidID objectiveTendency=OBJECTIVE_TENDENCY objectiveType=ENTITY_TYPE "{"
+		//objectiveSpec=STRING "}"
 		public Group getGroup() { return cGroup; }
 		
 		//"objective"
 		public Keyword getObjectiveKeyword_0() { return cObjectiveKeyword_0; }
 		
-		//objectiveName=ID
+		//objectiveName=ValidID
 		public Assignment getObjectiveNameAssignment_1() { return cObjectiveNameAssignment_1; }
 		
-		//ID
-		public RuleCall getObjectiveNameIDTerminalRuleCall_1_0() { return cObjectiveNameIDTerminalRuleCall_1_0; }
+		//ValidID
+		public RuleCall getObjectiveNameValidIDParserRuleCall_1_0() { return cObjectiveNameValidIDParserRuleCall_1_0; }
 		
 		//objectiveTendency=OBJECTIVE_TENDENCY
 		public Assignment getObjectiveTendencyAssignment_2() { return cObjectiveTendencyAssignment_2; }
@@ -235,7 +237,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cConstraintKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cConstraintNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cConstraintNameIDTerminalRuleCall_1_0 = (RuleCall)cConstraintNameAssignment_1.eContents().get(0);
+		private final RuleCall cConstraintNameValidIDParserRuleCall_1_0 = (RuleCall)cConstraintNameAssignment_1.eContents().get(0);
 		private final Assignment cConstraintTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cConstraintTypeENTITY_TYPETerminalRuleCall_2_0 = (RuleCall)cConstraintTypeAssignment_2.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
@@ -244,20 +246,20 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//ConstraintInterpreterSpec:
-		//	"constraint" constraintName=ID constraintType=ENTITY_TYPE "{" constraintSpec=STRING "}";
+		//	"constraint" constraintName=ValidID constraintType=ENTITY_TYPE "{" constraintSpec=STRING "}";
 		@Override public ParserRule getRule() { return rule; }
 		
-		//"constraint" constraintName=ID constraintType=ENTITY_TYPE "{" constraintSpec=STRING "}"
+		//"constraint" constraintName=ValidID constraintType=ENTITY_TYPE "{" constraintSpec=STRING "}"
 		public Group getGroup() { return cGroup; }
 		
 		//"constraint"
 		public Keyword getConstraintKeyword_0() { return cConstraintKeyword_0; }
 		
-		//constraintName=ID
+		//constraintName=ValidID
 		public Assignment getConstraintNameAssignment_1() { return cConstraintNameAssignment_1; }
 		
-		//ID
-		public RuleCall getConstraintNameIDTerminalRuleCall_1_0() { return cConstraintNameIDTerminalRuleCall_1_0; }
+		//ValidID
+		public RuleCall getConstraintNameValidIDParserRuleCall_1_0() { return cConstraintNameValidIDParserRuleCall_1_0; }
 		
 		//constraintType=ENTITY_TYPE
 		public Assignment getConstraintTypeAssignment_2() { return cConstraintTypeAssignment_2; }
@@ -368,7 +370,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.EvolverParameter");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
+		private final RuleCall cNameValidIDParserRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Keyword cEqualsSignGreaterThanSignKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final Alternatives cAlternatives_1_1 = (Alternatives)cGroup_1.eContents().get(1);
@@ -381,17 +383,17 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		// * TODO The custom function should ideally use a Jvm class parser, but it doesn't seem
 		// * to work with QualifiedName
 		// * / EvolverParameter:
-		//	name=ID ('=>' (function=ParameterFunction | customFunction=STRING));
+		//	name=ValidID ('=>' (function=ParameterFunction | customFunction=STRING));
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name=ID ('=>' (function=ParameterFunction | customFunction=STRING))
+		//name=ValidID ('=>' (function=ParameterFunction | customFunction=STRING))
 		public Group getGroup() { return cGroup; }
 		
-		//name=ID
+		//name=ValidID
 		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
 		
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
+		//ValidID
+		public RuleCall getNameValidIDParserRuleCall_0_0() { return cNameValidIDParserRuleCall_0_0; }
 		
 		//('=>' (function=ParameterFunction | customFunction=STRING))
 		public Group getGroup_1() { return cGroup_1; }
@@ -418,7 +420,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.ParameterFunction");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
+		private final RuleCall cNameValidIDParserRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Keyword cLeftParenthesisKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final Assignment cParameterAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
@@ -426,18 +428,18 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightParenthesisKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
 		
 		//ParameterFunction:
-		//	name=ID ('('
+		//	name=ValidID ('('
 		//	parameter=STRING ')')?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name=ID ('(' parameter=STRING ')')?
+		//name=ValidID ('(' parameter=STRING ')')?
 		public Group getGroup() { return cGroup; }
 		
-		//name=ID
+		//name=ValidID
 		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
 		
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
+		//ValidID
+		public RuleCall getNameValidIDParserRuleCall_0_0() { return cNameValidIDParserRuleCall_0_0; }
 		
 		//('(' parameter=STRING ')')?
 		public Group getGroup_1() { return cGroup_1; }
@@ -594,17 +596,17 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Keyword cLeftParenthesisKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final Assignment cCrossover_rateAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cCrossover_rateINTTerminalRuleCall_1_1_0 = (RuleCall)cCrossover_rateAssignment_1_1.eContents().get(0);
+		private final RuleCall cCrossover_rateNumberParserRuleCall_1_1_0 = (RuleCall)cCrossover_rateAssignment_1_1.eContents().get(0);
 		private final Keyword cCommaKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
 		private final Assignment cMutation_rateAssignment_1_3 = (Assignment)cGroup_1.eContents().get(3);
-		private final RuleCall cMutation_rateINTTerminalRuleCall_1_3_0 = (RuleCall)cMutation_rateAssignment_1_3.eContents().get(0);
+		private final RuleCall cMutation_rateNumberParserRuleCall_1_3_0 = (RuleCall)cMutation_rateAssignment_1_3.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_1_4 = (Keyword)cGroup_1.eContents().get(4);
 		
 		//ProbabilityVariation:
-		//	type=GENETIC_VARIATION ('(' crossover_rate=INT ',' mutation_rate=INT ')')?;
+		//	type=GENETIC_VARIATION ('(' crossover_rate=Number ',' mutation_rate=Number ')')?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//type=GENETIC_VARIATION ('(' crossover_rate=INT ',' mutation_rate=INT ')')?
+		//type=GENETIC_VARIATION ('(' crossover_rate=Number ',' mutation_rate=Number ')')?
 		public Group getGroup() { return cGroup; }
 		
 		//type=GENETIC_VARIATION
@@ -613,26 +615,26 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		//GENETIC_VARIATION
 		public RuleCall getTypeGENETIC_VARIATIONTerminalRuleCall_0_0() { return cTypeGENETIC_VARIATIONTerminalRuleCall_0_0; }
 		
-		//('(' crossover_rate=INT ',' mutation_rate=INT ')')?
+		//('(' crossover_rate=Number ',' mutation_rate=Number ')')?
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//'('
 		public Keyword getLeftParenthesisKeyword_1_0() { return cLeftParenthesisKeyword_1_0; }
 		
-		//crossover_rate=INT
+		//crossover_rate=Number
 		public Assignment getCrossover_rateAssignment_1_1() { return cCrossover_rateAssignment_1_1; }
 		
-		//INT
-		public RuleCall getCrossover_rateINTTerminalRuleCall_1_1_0() { return cCrossover_rateINTTerminalRuleCall_1_1_0; }
+		//Number
+		public RuleCall getCrossover_rateNumberParserRuleCall_1_1_0() { return cCrossover_rateNumberParserRuleCall_1_1_0; }
 		
 		//','
 		public Keyword getCommaKeyword_1_2() { return cCommaKeyword_1_2; }
 		
-		//mutation_rate=INT
+		//mutation_rate=Number
 		public Assignment getMutation_rateAssignment_1_3() { return cMutation_rateAssignment_1_3; }
 		
-		//INT
-		public RuleCall getMutation_rateINTTerminalRuleCall_1_3_0() { return cMutation_rateINTTerminalRuleCall_1_3_0; }
+		//Number
+		public RuleCall getMutation_rateNumberParserRuleCall_1_3_0() { return cMutation_rateNumberParserRuleCall_1_3_0; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_1_4() { return cRightParenthesisKeyword_1_4; }
@@ -667,7 +669,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	private final OptimisationElements pOptimisation;
-	private final BasepathSpecElements pBasepathSpec;
+	private final BasePathSpecElements pBasePathSpec;
 	private final MetaModelSpecElements pMetaModelSpec;
 	private final ModelPathSpecElements pModelPathSpec;
 	private final ObjectiveInterpreterSpecElements pObjectiveInterpreterSpec;
@@ -690,15 +692,19 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	
 	private final Grammar grammar;
 	
-	private final TerminalsGrammarAccess gaTerminals;
+	private final XbaseGrammarAccess gaXbase;
+	
+	private final XtypeGrammarAccess gaXtype;
 
 	@Inject
 	public MDEOptimiseGrammarAccess(GrammarProvider grammarProvider,
-			TerminalsGrammarAccess gaTerminals) {
+			XbaseGrammarAccess gaXbase,
+			XtypeGrammarAccess gaXtype) {
 		this.grammar = internalFindGrammar(grammarProvider);
-		this.gaTerminals = gaTerminals;
+		this.gaXbase = gaXbase;
+		this.gaXtype = gaXtype;
 		this.pOptimisation = new OptimisationElements();
-		this.pBasepathSpec = new BasepathSpecElements();
+		this.pBasePathSpec = new BasePathSpecElements();
 		this.pMetaModelSpec = new MetaModelSpecElements();
 		this.pModelPathSpec = new ModelPathSpecElements();
 		this.pObjectiveInterpreterSpec = new ObjectiveInterpreterSpecElements();
@@ -742,13 +748,17 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	
-	public TerminalsGrammarAccess getTerminalsGrammarAccess() {
-		return gaTerminals;
+	public XbaseGrammarAccess getXbaseGrammarAccess() {
+		return gaXbase;
+	}
+	
+	public XtypeGrammarAccess getXtypeGrammarAccess() {
+		return gaXtype;
 	}
 
 	
 	//Optimisation:
-	//	basepath=BasepathSpec
+	//	basepath=BasePathSpec
 	//	metamodel=MetaModelSpec
 	//	model=ModelPathSpec
 	//	objectives+=ObjectiveInterpreterSpec+
@@ -769,14 +779,14 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	// * correctly. This will happen mainly when working with dynamic instances rather than 
 	// * fully generated and registered metamodels. All further URLs should be either absolute 
 	// * or relative to this basepath.
-	// * / BasepathSpec:
+	// * / BasePathSpec:
 	//	"basepath" location=URL;
-	public BasepathSpecElements getBasepathSpecAccess() {
-		return pBasepathSpec;
+	public BasePathSpecElements getBasePathSpecAccess() {
+		return pBasePathSpec;
 	}
 	
-	public ParserRule getBasepathSpecRule() {
-		return getBasepathSpecAccess().getRule();
+	public ParserRule getBasePathSpecRule() {
+		return getBasePathSpecAccess().getRule();
 	}
 	
 	//MetaModelSpec:
@@ -800,8 +810,8 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//ObjectiveInterpreterSpec:
-	//	"objective" objectiveName=ID objectiveTendency=OBJECTIVE_TENDENCY objectiveType=ENTITY_TYPE "{" objectiveSpec=STRING
-	//	"}";
+	//	"objective" objectiveName=ValidID objectiveTendency=OBJECTIVE_TENDENCY objectiveType=ENTITY_TYPE "{"
+	//	objectiveSpec=STRING "}";
 	public ObjectiveInterpreterSpecElements getObjectiveInterpreterSpecAccess() {
 		return pObjectiveInterpreterSpec;
 	}
@@ -811,7 +821,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//ConstraintInterpreterSpec:
-	//	"constraint" constraintName=ID constraintType=ENTITY_TYPE "{" constraintSpec=STRING "}";
+	//	"constraint" constraintName=ValidID constraintType=ENTITY_TYPE "{" constraintSpec=STRING "}";
 	public ConstraintInterpreterSpecElements getConstraintInterpreterSpecAccess() {
 		return pConstraintInterpreterSpec;
 	}
@@ -837,7 +847,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	// * TODO The custom function should ideally use a Jvm class parser, but it doesn't seem
 	// * to work with QualifiedName
 	// * / EvolverParameter:
-	//	name=ID ('=>' (function=ParameterFunction | customFunction=STRING));
+	//	name=ValidID ('=>' (function=ParameterFunction | customFunction=STRING));
 	public EvolverParameterElements getEvolverParameterAccess() {
 		return pEvolverParameter;
 	}
@@ -847,7 +857,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//ParameterFunction:
-	//	name=ID ('('
+	//	name=ValidID ('('
 	//	parameter=STRING ')')?;
 	public ParameterFunctionElements getParameterFunctionAccess() {
 		return pParameterFunction;
@@ -892,7 +902,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//ProbabilityVariation:
-	//	type=GENETIC_VARIATION ('(' crossover_rate=INT ',' mutation_rate=INT ')')?;
+	//	type=GENETIC_VARIATION ('(' crossover_rate=Number ',' mutation_rate=Number ')')?;
 	public ProbabilityVariationElements getProbabilityVariationAccess() {
 		return pProbabilityVariation;
 	}
@@ -949,46 +959,913 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		return tENTITY_TYPE;
 	}
 	
-	//terminal ID:
-	//	'^'? ('a'..'z' | 'A'..'Z' | '_') ('a'..'z' | 'A'..'Z' | '_' | '0'..'9')*;
-	public TerminalRule getIDRule() {
-		return gaTerminals.getIDRule();
+	//XExpression:
+	//	XAssignment;
+	public XbaseGrammarAccess.XExpressionElements getXExpressionAccess() {
+		return gaXbase.getXExpressionAccess();
+	}
+	
+	public ParserRule getXExpressionRule() {
+		return getXExpressionAccess().getRule();
+	}
+	
+	//XAssignment XExpression:
+	//	{XAssignment} feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign value=XAssignment | XOrExpression
+	//	(=> ({XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpMultiAssign])
+	//	rightOperand=XAssignment)?
+	public XbaseGrammarAccess.XAssignmentElements getXAssignmentAccess() {
+		return gaXbase.getXAssignmentAccess();
+	}
+	
+	public ParserRule getXAssignmentRule() {
+		return getXAssignmentAccess().getRule();
+	}
+	
+	//OpSingleAssign:
+	//	'=';
+	public XbaseGrammarAccess.OpSingleAssignElements getOpSingleAssignAccess() {
+		return gaXbase.getOpSingleAssignAccess();
+	}
+	
+	public ParserRule getOpSingleAssignRule() {
+		return getOpSingleAssignAccess().getRule();
+	}
+	
+	//OpMultiAssign:
+	//	'+=' | '-=' | '*=' | '/=' | '%=' |
+	//	'<' '<' '=' |
+	//	'>' '>'? '>=';
+	public XbaseGrammarAccess.OpMultiAssignElements getOpMultiAssignAccess() {
+		return gaXbase.getOpMultiAssignAccess();
+	}
+	
+	public ParserRule getOpMultiAssignRule() {
+		return getOpMultiAssignAccess().getRule();
+	}
+	
+	//XOrExpression XExpression:
+	//	XAndExpression (=> ({XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpOr])
+	//	rightOperand=XAndExpression)*
+	public XbaseGrammarAccess.XOrExpressionElements getXOrExpressionAccess() {
+		return gaXbase.getXOrExpressionAccess();
+	}
+	
+	public ParserRule getXOrExpressionRule() {
+		return getXOrExpressionAccess().getRule();
+	}
+	
+	//OpOr:
+	//	'||';
+	public XbaseGrammarAccess.OpOrElements getOpOrAccess() {
+		return gaXbase.getOpOrAccess();
+	}
+	
+	public ParserRule getOpOrRule() {
+		return getOpOrAccess().getRule();
+	}
+	
+	//XAndExpression XExpression:
+	//	XEqualityExpression (=> ({XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpAnd])
+	//	rightOperand=XEqualityExpression)*
+	public XbaseGrammarAccess.XAndExpressionElements getXAndExpressionAccess() {
+		return gaXbase.getXAndExpressionAccess();
+	}
+	
+	public ParserRule getXAndExpressionRule() {
+		return getXAndExpressionAccess().getRule();
+	}
+	
+	//OpAnd:
+	//	'&&';
+	public XbaseGrammarAccess.OpAndElements getOpAndAccess() {
+		return gaXbase.getOpAndAccess();
+	}
+	
+	public ParserRule getOpAndRule() {
+		return getOpAndAccess().getRule();
+	}
+	
+	//XEqualityExpression XExpression:
+	//	XRelationalExpression (=> ({XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpEquality])
+	//	rightOperand=XRelationalExpression)*
+	public XbaseGrammarAccess.XEqualityExpressionElements getXEqualityExpressionAccess() {
+		return gaXbase.getXEqualityExpressionAccess();
+	}
+	
+	public ParserRule getXEqualityExpressionRule() {
+		return getXEqualityExpressionAccess().getRule();
+	}
+	
+	//OpEquality:
+	//	'==' | '!=' | '===' | '!==';
+	public XbaseGrammarAccess.OpEqualityElements getOpEqualityAccess() {
+		return gaXbase.getOpEqualityAccess();
+	}
+	
+	public ParserRule getOpEqualityRule() {
+		return getOpEqualityAccess().getRule();
+	}
+	
+	//XRelationalExpression XExpression:
+	//	XOtherOperatorExpression (=> ({XInstanceOfExpression.expression=current} 'instanceof') type=JvmTypeReference |
+	//	=> ({XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpCompare])
+	//	rightOperand=XOtherOperatorExpression)*
+	public XbaseGrammarAccess.XRelationalExpressionElements getXRelationalExpressionAccess() {
+		return gaXbase.getXRelationalExpressionAccess();
+	}
+	
+	public ParserRule getXRelationalExpressionRule() {
+		return getXRelationalExpressionAccess().getRule();
+	}
+	
+	//OpCompare:
+	//	'>=' | '<' '=' | '>' | '<';
+	public XbaseGrammarAccess.OpCompareElements getOpCompareAccess() {
+		return gaXbase.getOpCompareAccess();
+	}
+	
+	public ParserRule getOpCompareRule() {
+		return getOpCompareAccess().getRule();
+	}
+	
+	//XOtherOperatorExpression XExpression:
+	//	XAdditiveExpression (=> ({XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpOther])
+	//	rightOperand=XAdditiveExpression)*
+	public XbaseGrammarAccess.XOtherOperatorExpressionElements getXOtherOperatorExpressionAccess() {
+		return gaXbase.getXOtherOperatorExpressionAccess();
+	}
+	
+	public ParserRule getXOtherOperatorExpressionRule() {
+		return getXOtherOperatorExpressionAccess().getRule();
+	}
+	
+	//OpOther:
+	//	'->'
+	//	| '..<'
+	//	| '>' '..'
+	//	| '..'
+	//	| '=>'
+	//	| '>' (=> ('>' '>') | '>') | '<' (=> ('<' '<') | '<' | '=>') | '<>'
+	//	| '?:';
+	public XbaseGrammarAccess.OpOtherElements getOpOtherAccess() {
+		return gaXbase.getOpOtherAccess();
+	}
+	
+	public ParserRule getOpOtherRule() {
+		return getOpOtherAccess().getRule();
+	}
+	
+	//XAdditiveExpression XExpression:
+	//	XMultiplicativeExpression (=> ({XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpAdd])
+	//	rightOperand=XMultiplicativeExpression)*
+	public XbaseGrammarAccess.XAdditiveExpressionElements getXAdditiveExpressionAccess() {
+		return gaXbase.getXAdditiveExpressionAccess();
+	}
+	
+	public ParserRule getXAdditiveExpressionRule() {
+		return getXAdditiveExpressionAccess().getRule();
+	}
+	
+	//OpAdd:
+	//	'+' | '-';
+	public XbaseGrammarAccess.OpAddElements getOpAddAccess() {
+		return gaXbase.getOpAddAccess();
+	}
+	
+	public ParserRule getOpAddRule() {
+		return getOpAddAccess().getRule();
+	}
+	
+	//XMultiplicativeExpression XExpression:
+	//	XUnaryOperation (=> ({XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpMulti])
+	//	rightOperand=XUnaryOperation)*
+	public XbaseGrammarAccess.XMultiplicativeExpressionElements getXMultiplicativeExpressionAccess() {
+		return gaXbase.getXMultiplicativeExpressionAccess();
+	}
+	
+	public ParserRule getXMultiplicativeExpressionRule() {
+		return getXMultiplicativeExpressionAccess().getRule();
+	}
+	
+	//OpMulti:
+	//	'*' | '**' | '/' | '%';
+	public XbaseGrammarAccess.OpMultiElements getOpMultiAccess() {
+		return gaXbase.getOpMultiAccess();
+	}
+	
+	public ParserRule getOpMultiRule() {
+		return getOpMultiAccess().getRule();
+	}
+	
+	//XUnaryOperation XExpression:
+	//	{XUnaryOperation} feature=[types::JvmIdentifiableElement|OpUnary] operand=XUnaryOperation
+	//	| XCastedExpression
+	public XbaseGrammarAccess.XUnaryOperationElements getXUnaryOperationAccess() {
+		return gaXbase.getXUnaryOperationAccess();
+	}
+	
+	public ParserRule getXUnaryOperationRule() {
+		return getXUnaryOperationAccess().getRule();
+	}
+	
+	//OpUnary:
+	//	"!" | "-" | "+";
+	public XbaseGrammarAccess.OpUnaryElements getOpUnaryAccess() {
+		return gaXbase.getOpUnaryAccess();
+	}
+	
+	public ParserRule getOpUnaryRule() {
+		return getOpUnaryAccess().getRule();
+	}
+	
+	//XCastedExpression XExpression:
+	//	XPostfixOperation (=> ({XCastedExpression.target=current} 'as') type=JvmTypeReference)*
+	public XbaseGrammarAccess.XCastedExpressionElements getXCastedExpressionAccess() {
+		return gaXbase.getXCastedExpressionAccess();
+	}
+	
+	public ParserRule getXCastedExpressionRule() {
+		return getXCastedExpressionAccess().getRule();
+	}
+	
+	//XPostfixOperation XExpression:
+	//	XMemberFeatureCall => ({XPostfixOperation.operand=current} feature=[types::JvmIdentifiableElement|OpPostfix])?
+	public XbaseGrammarAccess.XPostfixOperationElements getXPostfixOperationAccess() {
+		return gaXbase.getXPostfixOperationAccess();
+	}
+	
+	public ParserRule getXPostfixOperationRule() {
+		return getXPostfixOperationAccess().getRule();
+	}
+	
+	//OpPostfix:
+	//	"++" | "--";
+	public XbaseGrammarAccess.OpPostfixElements getOpPostfixAccess() {
+		return gaXbase.getOpPostfixAccess();
+	}
+	
+	public ParserRule getOpPostfixRule() {
+		return getOpPostfixAccess().getRule();
+	}
+	
+	//XMemberFeatureCall XExpression:
+	//	XPrimaryExpression (=> ({XAssignment.assignable=current} ('.' | explicitStatic?="::")
+	//	feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment
+	//	| => ({XMemberFeatureCall.memberCallTarget=current} ("." | nullSafe?="?." | explicitStatic?="::")) ('<'
+	//	typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?
+	//	feature=[types::JvmIdentifiableElement|IdOrSuper] (=> explicitOperationCall?='(' (memberCallArguments+=XShortClosure
+	//	| memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*)?
+	//	')')?
+	//	memberCallArguments+=XClosure?)*
+	public XbaseGrammarAccess.XMemberFeatureCallElements getXMemberFeatureCallAccess() {
+		return gaXbase.getXMemberFeatureCallAccess();
+	}
+	
+	public ParserRule getXMemberFeatureCallRule() {
+		return getXMemberFeatureCallAccess().getRule();
+	}
+	
+	//XPrimaryExpression XExpression:
+	//	XConstructorCall | XBlockExpression | XSwitchExpression | XSynchronizedExpression | XFeatureCall | XLiteral |
+	//	XIfExpression | XForLoopExpression | XBasicForLoopExpression | XWhileExpression | XDoWhileExpression |
+	//	XThrowExpression | XReturnExpression | XTryCatchFinallyExpression | XParenthesizedExpression
+	public XbaseGrammarAccess.XPrimaryExpressionElements getXPrimaryExpressionAccess() {
+		return gaXbase.getXPrimaryExpressionAccess();
+	}
+	
+	public ParserRule getXPrimaryExpressionRule() {
+		return getXPrimaryExpressionAccess().getRule();
+	}
+	
+	//XLiteral XExpression:
+	//	XCollectionLiteral | XClosure | XBooleanLiteral | XNumberLiteral | XNullLiteral | XStringLiteral | XTypeLiteral
+	public XbaseGrammarAccess.XLiteralElements getXLiteralAccess() {
+		return gaXbase.getXLiteralAccess();
+	}
+	
+	public ParserRule getXLiteralRule() {
+		return getXLiteralAccess().getRule();
+	}
+	
+	//XCollectionLiteral:
+	//	XSetLiteral | XListLiteral;
+	public XbaseGrammarAccess.XCollectionLiteralElements getXCollectionLiteralAccess() {
+		return gaXbase.getXCollectionLiteralAccess();
+	}
+	
+	public ParserRule getXCollectionLiteralRule() {
+		return getXCollectionLiteralAccess().getRule();
+	}
+	
+	//XSetLiteral:
+	//	{XSetLiteral} '#' '{' (elements+=XExpression (',' elements+=XExpression)*)? '}';
+	public XbaseGrammarAccess.XSetLiteralElements getXSetLiteralAccess() {
+		return gaXbase.getXSetLiteralAccess();
+	}
+	
+	public ParserRule getXSetLiteralRule() {
+		return getXSetLiteralAccess().getRule();
+	}
+	
+	//XListLiteral:
+	//	{XListLiteral} '#' '[' (elements+=XExpression (',' elements+=XExpression)*)? ']';
+	public XbaseGrammarAccess.XListLiteralElements getXListLiteralAccess() {
+		return gaXbase.getXListLiteralAccess();
+	}
+	
+	public ParserRule getXListLiteralRule() {
+		return getXListLiteralAccess().getRule();
+	}
+	
+	//XClosure XExpression:
+	//	=> ({XClosure}
+	//	'[')
+	//	=> ((declaredFormalParameters+=JvmFormalParameter (',' declaredFormalParameters+=JvmFormalParameter)*)?
+	//	explicitSyntax?='|')?
+	//	expression=XExpressionInClosure
+	//	']'
+	public XbaseGrammarAccess.XClosureElements getXClosureAccess() {
+		return gaXbase.getXClosureAccess();
+	}
+	
+	public ParserRule getXClosureRule() {
+		return getXClosureAccess().getRule();
+	}
+	
+	//XExpressionInClosure XExpression:
+	//	{XBlockExpression} (expressions+=XExpressionOrVarDeclaration ';'?)*
+	public XbaseGrammarAccess.XExpressionInClosureElements getXExpressionInClosureAccess() {
+		return gaXbase.getXExpressionInClosureAccess();
+	}
+	
+	public ParserRule getXExpressionInClosureRule() {
+		return getXExpressionInClosureAccess().getRule();
+	}
+	
+	//XShortClosure XExpression:
+	//	=> ({XClosure} (declaredFormalParameters+=JvmFormalParameter (',' declaredFormalParameters+=JvmFormalParameter)*)?
+	//	explicitSyntax?='|') expression=XExpression
+	public XbaseGrammarAccess.XShortClosureElements getXShortClosureAccess() {
+		return gaXbase.getXShortClosureAccess();
+	}
+	
+	public ParserRule getXShortClosureRule() {
+		return getXShortClosureAccess().getRule();
+	}
+	
+	//XParenthesizedExpression XExpression:
+	//	'(' XExpression ')'
+	public XbaseGrammarAccess.XParenthesizedExpressionElements getXParenthesizedExpressionAccess() {
+		return gaXbase.getXParenthesizedExpressionAccess();
+	}
+	
+	public ParserRule getXParenthesizedExpressionRule() {
+		return getXParenthesizedExpressionAccess().getRule();
+	}
+	
+	//XIfExpression XExpression:
+	//	{XIfExpression}
+	//	'if' '(' if=XExpression ')'
+	//	then=XExpression (=> 'else' else=XExpression)?
+	public XbaseGrammarAccess.XIfExpressionElements getXIfExpressionAccess() {
+		return gaXbase.getXIfExpressionAccess();
+	}
+	
+	public ParserRule getXIfExpressionRule() {
+		return getXIfExpressionAccess().getRule();
+	}
+	
+	//XSwitchExpression XExpression:
+	//	{XSwitchExpression}
+	//	'switch' (=> ('(' declaredParam=JvmFormalParameter ':') switch=XExpression ')'
+	//	| => (declaredParam=JvmFormalParameter ':')? switch=XExpression) '{'
+	//	cases+=XCasePart* ('default' ':' default=XExpression)?
+	//	'}'
+	public XbaseGrammarAccess.XSwitchExpressionElements getXSwitchExpressionAccess() {
+		return gaXbase.getXSwitchExpressionAccess();
+	}
+	
+	public ParserRule getXSwitchExpressionRule() {
+		return getXSwitchExpressionAccess().getRule();
+	}
+	
+	//XCasePart:
+	//	{XCasePart} typeGuard=JvmTypeReference? ('case' case=XExpression)? (':' then=XExpression | fallThrough?=',');
+	public XbaseGrammarAccess.XCasePartElements getXCasePartAccess() {
+		return gaXbase.getXCasePartAccess();
+	}
+	
+	public ParserRule getXCasePartRule() {
+		return getXCasePartAccess().getRule();
+	}
+	
+	//XForLoopExpression XExpression:
+	//	=> ({XForLoopExpression}
+	//	'for' '(' declaredParam=JvmFormalParameter ':') forExpression=XExpression ')'
+	//	eachExpression=XExpression
+	public XbaseGrammarAccess.XForLoopExpressionElements getXForLoopExpressionAccess() {
+		return gaXbase.getXForLoopExpressionAccess();
+	}
+	
+	public ParserRule getXForLoopExpressionRule() {
+		return getXForLoopExpressionAccess().getRule();
+	}
+	
+	//XBasicForLoopExpression XExpression:
+	//	{XBasicForLoopExpression}
+	//	'for' '(' (initExpressions+=XExpressionOrVarDeclaration (',' initExpressions+=XExpressionOrVarDeclaration)*)? ';'
+	//	expression=XExpression? ';' (updateExpressions+=XExpression (',' updateExpressions+=XExpression)*)? ')'
+	//	eachExpression=XExpression
+	public XbaseGrammarAccess.XBasicForLoopExpressionElements getXBasicForLoopExpressionAccess() {
+		return gaXbase.getXBasicForLoopExpressionAccess();
+	}
+	
+	public ParserRule getXBasicForLoopExpressionRule() {
+		return getXBasicForLoopExpressionAccess().getRule();
+	}
+	
+	//XWhileExpression XExpression:
+	//	{XWhileExpression}
+	//	'while' '(' predicate=XExpression ')'
+	//	body=XExpression
+	public XbaseGrammarAccess.XWhileExpressionElements getXWhileExpressionAccess() {
+		return gaXbase.getXWhileExpressionAccess();
+	}
+	
+	public ParserRule getXWhileExpressionRule() {
+		return getXWhileExpressionAccess().getRule();
+	}
+	
+	//XDoWhileExpression XExpression:
+	//	{XDoWhileExpression}
+	//	'do'
+	//	body=XExpression
+	//	'while' '(' predicate=XExpression ')'
+	public XbaseGrammarAccess.XDoWhileExpressionElements getXDoWhileExpressionAccess() {
+		return gaXbase.getXDoWhileExpressionAccess();
+	}
+	
+	public ParserRule getXDoWhileExpressionRule() {
+		return getXDoWhileExpressionAccess().getRule();
+	}
+	
+	//XBlockExpression XExpression:
+	//	{XBlockExpression}
+	//	'{' (expressions+=XExpressionOrVarDeclaration ';'?)*
+	//	'}'
+	public XbaseGrammarAccess.XBlockExpressionElements getXBlockExpressionAccess() {
+		return gaXbase.getXBlockExpressionAccess();
+	}
+	
+	public ParserRule getXBlockExpressionRule() {
+		return getXBlockExpressionAccess().getRule();
+	}
+	
+	//XExpressionOrVarDeclaration XExpression:
+	//	XVariableDeclaration | XExpression
+	public XbaseGrammarAccess.XExpressionOrVarDeclarationElements getXExpressionOrVarDeclarationAccess() {
+		return gaXbase.getXExpressionOrVarDeclarationAccess();
+	}
+	
+	public ParserRule getXExpressionOrVarDeclarationRule() {
+		return getXExpressionOrVarDeclarationAccess().getRule();
+	}
+	
+	//XVariableDeclaration XExpression:
+	//	{XVariableDeclaration} (writeable?='var' | 'val') (=> (type=JvmTypeReference name=ValidID) | name=ValidID) ('='
+	//	right=XExpression)?
+	public XbaseGrammarAccess.XVariableDeclarationElements getXVariableDeclarationAccess() {
+		return gaXbase.getXVariableDeclarationAccess();
+	}
+	
+	public ParserRule getXVariableDeclarationRule() {
+		return getXVariableDeclarationAccess().getRule();
+	}
+	
+	//JvmFormalParameter types::JvmFormalParameter:
+	//	parameterType=JvmTypeReference? name=ValidID
+	public XbaseGrammarAccess.JvmFormalParameterElements getJvmFormalParameterAccess() {
+		return gaXbase.getJvmFormalParameterAccess();
+	}
+	
+	public ParserRule getJvmFormalParameterRule() {
+		return getJvmFormalParameterAccess().getRule();
+	}
+	
+	//FullJvmFormalParameter types::JvmFormalParameter:
+	//	parameterType=JvmTypeReference name=ValidID
+	public XbaseGrammarAccess.FullJvmFormalParameterElements getFullJvmFormalParameterAccess() {
+		return gaXbase.getFullJvmFormalParameterAccess();
+	}
+	
+	public ParserRule getFullJvmFormalParameterRule() {
+		return getFullJvmFormalParameterAccess().getRule();
+	}
+	
+	//XFeatureCall XExpression:
+	//	{XFeatureCall} ('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?
+	//	feature=[types::JvmIdentifiableElement|IdOrSuper] (=> explicitOperationCall?='(' (featureCallArguments+=XShortClosure
+	//	| featureCallArguments+=XExpression (',' featureCallArguments+=XExpression)*)?
+	//	')')?
+	//	featureCallArguments+=XClosure?
+	public XbaseGrammarAccess.XFeatureCallElements getXFeatureCallAccess() {
+		return gaXbase.getXFeatureCallAccess();
+	}
+	
+	public ParserRule getXFeatureCallRule() {
+		return getXFeatureCallAccess().getRule();
+	}
+	
+	//FeatureCallID:
+	//	ValidID | 'extends' | 'static' | 'import' | 'extension';
+	public XbaseGrammarAccess.FeatureCallIDElements getFeatureCallIDAccess() {
+		return gaXbase.getFeatureCallIDAccess();
+	}
+	
+	public ParserRule getFeatureCallIDRule() {
+		return getFeatureCallIDAccess().getRule();
+	}
+	
+	//IdOrSuper:
+	//	FeatureCallID | 'super';
+	public XbaseGrammarAccess.IdOrSuperElements getIdOrSuperAccess() {
+		return gaXbase.getIdOrSuperAccess();
+	}
+	
+	public ParserRule getIdOrSuperRule() {
+		return getIdOrSuperAccess().getRule();
+	}
+	
+	//XConstructorCall XExpression:
+	//	{XConstructorCall}
+	//	'new' constructor=[types::JvmConstructor|QualifiedName] (=> '<' typeArguments+=JvmArgumentTypeReference (','
+	//	typeArguments+=JvmArgumentTypeReference)* '>')? (=> explicitConstructorCall?='(' (arguments+=XShortClosure
+	//	| arguments+=XExpression (',' arguments+=XExpression)*)?
+	//	')')?
+	//	arguments+=XClosure?
+	public XbaseGrammarAccess.XConstructorCallElements getXConstructorCallAccess() {
+		return gaXbase.getXConstructorCallAccess();
+	}
+	
+	public ParserRule getXConstructorCallRule() {
+		return getXConstructorCallAccess().getRule();
+	}
+	
+	//XBooleanLiteral XExpression:
+	//	{XBooleanLiteral} ('false' | isTrue?='true')
+	public XbaseGrammarAccess.XBooleanLiteralElements getXBooleanLiteralAccess() {
+		return gaXbase.getXBooleanLiteralAccess();
+	}
+	
+	public ParserRule getXBooleanLiteralRule() {
+		return getXBooleanLiteralAccess().getRule();
+	}
+	
+	//XNullLiteral XExpression:
+	//	{XNullLiteral} 'null'
+	public XbaseGrammarAccess.XNullLiteralElements getXNullLiteralAccess() {
+		return gaXbase.getXNullLiteralAccess();
+	}
+	
+	public ParserRule getXNullLiteralRule() {
+		return getXNullLiteralAccess().getRule();
+	}
+	
+	//XNumberLiteral XExpression:
+	//	{XNumberLiteral} value=Number
+	public XbaseGrammarAccess.XNumberLiteralElements getXNumberLiteralAccess() {
+		return gaXbase.getXNumberLiteralAccess();
+	}
+	
+	public ParserRule getXNumberLiteralRule() {
+		return getXNumberLiteralAccess().getRule();
+	}
+	
+	//XStringLiteral XExpression:
+	//	{XStringLiteral} value=STRING
+	public XbaseGrammarAccess.XStringLiteralElements getXStringLiteralAccess() {
+		return gaXbase.getXStringLiteralAccess();
+	}
+	
+	public ParserRule getXStringLiteralRule() {
+		return getXStringLiteralAccess().getRule();
+	}
+	
+	//XTypeLiteral XExpression:
+	//	{XTypeLiteral} 'typeof' '(' type=[types::JvmType|QualifiedName] arrayDimensions+=ArrayBrackets* ')'
+	public XbaseGrammarAccess.XTypeLiteralElements getXTypeLiteralAccess() {
+		return gaXbase.getXTypeLiteralAccess();
+	}
+	
+	public ParserRule getXTypeLiteralRule() {
+		return getXTypeLiteralAccess().getRule();
+	}
+	
+	//XThrowExpression XExpression:
+	//	{XThrowExpression} 'throw' expression=XExpression
+	public XbaseGrammarAccess.XThrowExpressionElements getXThrowExpressionAccess() {
+		return gaXbase.getXThrowExpressionAccess();
+	}
+	
+	public ParserRule getXThrowExpressionRule() {
+		return getXThrowExpressionAccess().getRule();
+	}
+	
+	//XReturnExpression XExpression:
+	//	{XReturnExpression} 'return' -> expression=XExpression?
+	public XbaseGrammarAccess.XReturnExpressionElements getXReturnExpressionAccess() {
+		return gaXbase.getXReturnExpressionAccess();
+	}
+	
+	public ParserRule getXReturnExpressionRule() {
+		return getXReturnExpressionAccess().getRule();
+	}
+	
+	//XTryCatchFinallyExpression XExpression:
+	//	{XTryCatchFinallyExpression}
+	//	'try'
+	//	expression=XExpression (catchClauses+=XCatchClause+ (=> 'finally' finallyExpression=XExpression)?
+	//	| 'finally' finallyExpression=XExpression)
+	public XbaseGrammarAccess.XTryCatchFinallyExpressionElements getXTryCatchFinallyExpressionAccess() {
+		return gaXbase.getXTryCatchFinallyExpressionAccess();
+	}
+	
+	public ParserRule getXTryCatchFinallyExpressionRule() {
+		return getXTryCatchFinallyExpressionAccess().getRule();
+	}
+	
+	//XSynchronizedExpression XExpression:
+	//	=> ({XSynchronizedExpression}
+	//	'synchronized' '(') param=XExpression ')' expression=XExpression
+	public XbaseGrammarAccess.XSynchronizedExpressionElements getXSynchronizedExpressionAccess() {
+		return gaXbase.getXSynchronizedExpressionAccess();
+	}
+	
+	public ParserRule getXSynchronizedExpressionRule() {
+		return getXSynchronizedExpressionAccess().getRule();
+	}
+	
+	//XCatchClause:
+	//	=> 'catch' '(' declaredParam=FullJvmFormalParameter ')' expression=XExpression;
+	public XbaseGrammarAccess.XCatchClauseElements getXCatchClauseAccess() {
+		return gaXbase.getXCatchClauseAccess();
+	}
+	
+	public ParserRule getXCatchClauseRule() {
+		return getXCatchClauseAccess().getRule();
+	}
+	
+	//QualifiedName:
+	//	ValidID (=> '.' ValidID)*;
+	public XbaseGrammarAccess.QualifiedNameElements getQualifiedNameAccess() {
+		return gaXbase.getQualifiedNameAccess();
+	}
+	
+	public ParserRule getQualifiedNameRule() {
+		return getQualifiedNameAccess().getRule();
+	}
+	
+	//Number hidden():
+	//	HEX | (INT | DECIMAL) ('.' (INT | DECIMAL))?;
+	public XbaseGrammarAccess.NumberElements getNumberAccess() {
+		return gaXbase.getNumberAccess();
+	}
+	
+	public ParserRule getNumberRule() {
+		return getNumberAccess().getRule();
+	}
+	
+	/// **
+	// * Dummy rule, for "better" downwards compatibility, since GrammarAccess generates non-static inner classes, 
+	// * which makes downstream grammars break on classloading, when a rule is removed.
+	// * / StaticQualifier:
+	//	(ValidID '::')+;
+	public XbaseGrammarAccess.StaticQualifierElements getStaticQualifierAccess() {
+		return gaXbase.getStaticQualifierAccess();
+	}
+	
+	public ParserRule getStaticQualifierRule() {
+		return getStaticQualifierAccess().getRule();
+	}
+	
+	//terminal HEX:
+	//	('0x' | '0X') ('0'..'9' | 'a'..'f' | 'A'..'F' | '_')+ ('#' (('b' | 'B') ('i' | 'I') | ('l' | 'L')))?;
+	public TerminalRule getHEXRule() {
+		return gaXbase.getHEXRule();
 	}
 	
 	//terminal INT returns ecore::EInt:
-	//	'0'..'9'+;
+	//	'0'..'9' ('0'..'9' | '_')*;
 	public TerminalRule getINTRule() {
-		return gaTerminals.getINTRule();
+		return gaXbase.getINTRule();
+	}
+	
+	//terminal DECIMAL:
+	//	INT (('e' | 'E') ('+' | '-')? INT)? (('b' | 'B') ('i' | 'I' | 'd' | 'D') | ('l' | 'L' | 'd' | 'D' | 'f' | 'F'))?;
+	public TerminalRule getDECIMALRule() {
+		return gaXbase.getDECIMALRule();
+	}
+	
+	//JvmTypeReference:
+	//	JvmParameterizedTypeReference => ({JvmGenericArrayTypeReference.componentType=current} ArrayBrackets)*
+	//	| XFunctionTypeRef;
+	public XtypeGrammarAccess.JvmTypeReferenceElements getJvmTypeReferenceAccess() {
+		return gaXtype.getJvmTypeReferenceAccess();
+	}
+	
+	public ParserRule getJvmTypeReferenceRule() {
+		return getJvmTypeReferenceAccess().getRule();
+	}
+	
+	//ArrayBrackets:
+	//	'[' ']';
+	public XtypeGrammarAccess.ArrayBracketsElements getArrayBracketsAccess() {
+		return gaXtype.getArrayBracketsAccess();
+	}
+	
+	public ParserRule getArrayBracketsRule() {
+		return getArrayBracketsAccess().getRule();
+	}
+	
+	//XFunctionTypeRef:
+	//	('(' (paramTypes+=JvmTypeReference (',' paramTypes+=JvmTypeReference)*)? ')')? '=>' returnType=JvmTypeReference;
+	public XtypeGrammarAccess.XFunctionTypeRefElements getXFunctionTypeRefAccess() {
+		return gaXtype.getXFunctionTypeRefAccess();
+	}
+	
+	public ParserRule getXFunctionTypeRefRule() {
+		return getXFunctionTypeRefAccess().getRule();
+	}
+	
+	//JvmParameterizedTypeReference:
+	//	type=[JvmType|super::QualifiedName] (=> '<' arguments+=JvmArgumentTypeReference (','
+	//	arguments+=JvmArgumentTypeReference)* '>' (=> ({JvmInnerTypeReference.outer=current} '.') type=[JvmType|ValidID] (=>
+	//	'<' arguments+=JvmArgumentTypeReference (',' arguments+=JvmArgumentTypeReference)* '>')?)*)?;
+	public XtypeGrammarAccess.JvmParameterizedTypeReferenceElements getJvmParameterizedTypeReferenceAccess() {
+		return gaXtype.getJvmParameterizedTypeReferenceAccess();
+	}
+	
+	public ParserRule getJvmParameterizedTypeReferenceRule() {
+		return getJvmParameterizedTypeReferenceAccess().getRule();
+	}
+	
+	//JvmArgumentTypeReference JvmTypeReference:
+	//	JvmTypeReference | JvmWildcardTypeReference
+	public XtypeGrammarAccess.JvmArgumentTypeReferenceElements getJvmArgumentTypeReferenceAccess() {
+		return gaXtype.getJvmArgumentTypeReferenceAccess();
+	}
+	
+	public ParserRule getJvmArgumentTypeReferenceRule() {
+		return getJvmArgumentTypeReferenceAccess().getRule();
+	}
+	
+	//JvmWildcardTypeReference:
+	//	{JvmWildcardTypeReference} '?' (constraints+=JvmUpperBound constraints+=JvmUpperBoundAnded*
+	//	| constraints+=JvmLowerBound constraints+=JvmLowerBoundAnded*)?;
+	public XtypeGrammarAccess.JvmWildcardTypeReferenceElements getJvmWildcardTypeReferenceAccess() {
+		return gaXtype.getJvmWildcardTypeReferenceAccess();
+	}
+	
+	public ParserRule getJvmWildcardTypeReferenceRule() {
+		return getJvmWildcardTypeReferenceAccess().getRule();
+	}
+	
+	//JvmUpperBound:
+	//	'extends' typeReference=JvmTypeReference;
+	public XtypeGrammarAccess.JvmUpperBoundElements getJvmUpperBoundAccess() {
+		return gaXtype.getJvmUpperBoundAccess();
+	}
+	
+	public ParserRule getJvmUpperBoundRule() {
+		return getJvmUpperBoundAccess().getRule();
+	}
+	
+	//JvmUpperBoundAnded JvmUpperBound:
+	//	'&' typeReference=JvmTypeReference
+	public XtypeGrammarAccess.JvmUpperBoundAndedElements getJvmUpperBoundAndedAccess() {
+		return gaXtype.getJvmUpperBoundAndedAccess();
+	}
+	
+	public ParserRule getJvmUpperBoundAndedRule() {
+		return getJvmUpperBoundAndedAccess().getRule();
+	}
+	
+	//JvmLowerBound:
+	//	'super' typeReference=JvmTypeReference;
+	public XtypeGrammarAccess.JvmLowerBoundElements getJvmLowerBoundAccess() {
+		return gaXtype.getJvmLowerBoundAccess();
+	}
+	
+	public ParserRule getJvmLowerBoundRule() {
+		return getJvmLowerBoundAccess().getRule();
+	}
+	
+	//JvmLowerBoundAnded JvmLowerBound:
+	//	'&' typeReference=JvmTypeReference
+	public XtypeGrammarAccess.JvmLowerBoundAndedElements getJvmLowerBoundAndedAccess() {
+		return gaXtype.getJvmLowerBoundAndedAccess();
+	}
+	
+	public ParserRule getJvmLowerBoundAndedRule() {
+		return getJvmLowerBoundAndedAccess().getRule();
+	}
+	
+	//JvmTypeParameter:
+	//	name=ValidID (constraints+=JvmUpperBound constraints+=JvmUpperBoundAnded*)?;
+	public XtypeGrammarAccess.JvmTypeParameterElements getJvmTypeParameterAccess() {
+		return gaXtype.getJvmTypeParameterAccess();
+	}
+	
+	public ParserRule getJvmTypeParameterRule() {
+		return getJvmTypeParameterAccess().getRule();
+	}
+	
+	//QualifiedNameWithWildcard:
+	//	super::QualifiedName '.' '*';
+	public XtypeGrammarAccess.QualifiedNameWithWildcardElements getQualifiedNameWithWildcardAccess() {
+		return gaXtype.getQualifiedNameWithWildcardAccess();
+	}
+	
+	public ParserRule getQualifiedNameWithWildcardRule() {
+		return getQualifiedNameWithWildcardAccess().getRule();
+	}
+	
+	//ValidID:
+	//	ID;
+	public XtypeGrammarAccess.ValidIDElements getValidIDAccess() {
+		return gaXtype.getValidIDAccess();
+	}
+	
+	public ParserRule getValidIDRule() {
+		return getValidIDAccess().getRule();
+	}
+	
+	//XImportSection:
+	//	importDeclarations+=XImportDeclaration+;
+	public XtypeGrammarAccess.XImportSectionElements getXImportSectionAccess() {
+		return gaXtype.getXImportSectionAccess();
+	}
+	
+	public ParserRule getXImportSectionRule() {
+		return getXImportSectionAccess().getRule();
+	}
+	
+	//XImportDeclaration:
+	//	'import' (static?='static' extension?='extension'? importedType=[JvmDeclaredType|QualifiedNameInStaticImport]
+	//	(wildcard?='*' | memberName=ValidID) | importedType=[JvmDeclaredType|super::QualifiedName] |
+	//	importedNamespace=QualifiedNameWithWildcard) ';'?;
+	public XtypeGrammarAccess.XImportDeclarationElements getXImportDeclarationAccess() {
+		return gaXtype.getXImportDeclarationAccess();
+	}
+	
+	public ParserRule getXImportDeclarationRule() {
+		return getXImportDeclarationAccess().getRule();
+	}
+	
+	//QualifiedNameInStaticImport:
+	//	(ValidID '.')+;
+	public XtypeGrammarAccess.QualifiedNameInStaticImportElements getQualifiedNameInStaticImportAccess() {
+		return gaXtype.getQualifiedNameInStaticImportAccess();
+	}
+	
+	public ParserRule getQualifiedNameInStaticImportRule() {
+		return getQualifiedNameInStaticImportAccess().getRule();
+	}
+	
+	//terminal ID:
+	//	'^'? ('a'..'z' | 'A'..'Z' | '$' | '_') ('a'..'z' | 'A'..'Z' | '$' | '_' | '0'..'9')*;
+	public TerminalRule getIDRule() {
+		return gaXtype.getIDRule();
 	}
 	
 	//terminal STRING:
-	//	'"' ('\\' . | !('\\' | '"'))* '"' |
-	//	"'" ('\\' . | !('\\' | "'"))* "'";
+	//	'"' ('\\' . | !('\\' | '"'))* '"'? |
+	//	"'" ('\\' . | !('\\' | "'"))* "'"?;
 	public TerminalRule getSTRINGRule() {
-		return gaTerminals.getSTRINGRule();
+		return gaXtype.getSTRINGRule();
 	}
 	
 	//terminal ML_COMMENT:
 	//	'/ *'->'* /';
 	public TerminalRule getML_COMMENTRule() {
-		return gaTerminals.getML_COMMENTRule();
+		return gaXtype.getML_COMMENTRule();
 	}
 	
 	//terminal SL_COMMENT:
 	//	'//' !('\n' | '\r')* ('\r'? '\n')?;
 	public TerminalRule getSL_COMMENTRule() {
-		return gaTerminals.getSL_COMMENTRule();
+		return gaXtype.getSL_COMMENTRule();
 	}
 	
 	//terminal WS:
 	//	' ' | '\t' | '\r' | '\n'+;
 	public TerminalRule getWSRule() {
-		return gaTerminals.getWSRule();
+		return gaXtype.getWSRule();
 	}
 	
 	//terminal ANY_OTHER:
 	//	.;
 	public TerminalRule getANY_OTHERRule() {
-		return gaTerminals.getANY_OTHERRule();
+		return gaXtype.getANY_OTHERRule();
 	}
 }

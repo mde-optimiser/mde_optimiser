@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import uk.ac.kcl.mdeoptimise.AlgorithmVariation;
-import uk.ac.kcl.mdeoptimise.BasepathSpec;
+import uk.ac.kcl.mdeoptimise.BasePathSpec;
 import uk.ac.kcl.mdeoptimise.ConstraintInterpreterSpec;
 import uk.ac.kcl.mdeoptimise.EvolverParameter;
 import uk.ac.kcl.mdeoptimise.EvolverSpec;
@@ -47,7 +47,7 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass basepathSpecEClass = null;
+  private EClass basePathSpecEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -274,9 +274,9 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getBasepathSpec()
+  public EClass getBasePathSpec()
   {
-    return basepathSpecEClass;
+    return basePathSpecEClass;
   }
 
   /**
@@ -284,9 +284,9 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getBasepathSpec_Location()
+  public EAttribute getBasePathSpec_Location()
   {
-    return (EAttribute)basepathSpecEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)basePathSpecEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -728,8 +728,8 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
     createEReference(optimisationEClass, OPTIMISATION__EVOLVERS);
     createEReference(optimisationEClass, OPTIMISATION__OPTIMISATION);
 
-    basepathSpecEClass = createEClass(BASEPATH_SPEC);
-    createEAttribute(basepathSpecEClass, BASEPATH_SPEC__LOCATION);
+    basePathSpecEClass = createEClass(BASE_PATH_SPEC);
+    createEAttribute(basePathSpecEClass, BASE_PATH_SPEC__LOCATION);
 
     metaModelSpecEClass = createEClass(META_MODEL_SPEC);
     createEAttribute(metaModelSpecEClass, META_MODEL_SPEC__LOCATION);
@@ -816,7 +816,7 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
 
     // Initialize classes and features; add operations and parameters
     initEClass(optimisationEClass, Optimisation.class, "Optimisation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getOptimisation_Basepath(), this.getBasepathSpec(), null, "basepath", null, 0, 1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getOptimisation_Basepath(), this.getBasePathSpec(), null, "basepath", null, 0, 1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOptimisation_Metamodel(), this.getMetaModelSpec(), null, "metamodel", null, 0, 1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOptimisation_Model(), this.getModelPathSpec(), null, "model", null, 0, 1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOptimisation_Objectives(), this.getObjectiveInterpreterSpec(), null, "objectives", null, 0, -1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -824,8 +824,8 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
     initEReference(getOptimisation_Evolvers(), this.getEvolverSpec(), null, "evolvers", null, 0, -1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOptimisation_Optimisation(), this.getOptimisationSpec(), null, "optimisation", null, 0, 1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(basepathSpecEClass, BasepathSpec.class, "BasepathSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getBasepathSpec_Location(), ecorePackage.getEString(), "location", null, 0, 1, BasepathSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(basePathSpecEClass, BasePathSpec.class, "BasePathSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getBasePathSpec_Location(), ecorePackage.getEString(), "location", null, 0, 1, BasePathSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(metaModelSpecEClass, MetaModelSpec.class, "MetaModelSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getMetaModelSpec_Location(), ecorePackage.getEString(), "location", null, 0, 1, MetaModelSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -873,8 +873,8 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
 
     initEClass(probabilityVariationEClass, ProbabilityVariation.class, "ProbabilityVariation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getProbabilityVariation_Type(), ecorePackage.getEString(), "type", null, 0, 1, ProbabilityVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getProbabilityVariation_Crossover_rate(), ecorePackage.getEInt(), "crossover_rate", null, 0, 1, ProbabilityVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getProbabilityVariation_Mutation_rate(), ecorePackage.getEInt(), "mutation_rate", null, 0, 1, ProbabilityVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getProbabilityVariation_Crossover_rate(), ecorePackage.getEString(), "crossover_rate", null, 0, 1, ProbabilityVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getProbabilityVariation_Mutation_rate(), ecorePackage.getEString(), "mutation_rate", null, 0, 1, ProbabilityVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
     initEEnum(evolverTypeEEnum, EvolverType.class, "EvolverType");

@@ -10,23 +10,23 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import uk.ac.kcl.mdeoptimise.BasepathSpec;
+import uk.ac.kcl.mdeoptimise.BasePathSpec;
 import uk.ac.kcl.mdeoptimise.MdeoptimisePackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Basepath Spec</b></em>'.
+ * An implementation of the model object '<em><b>Base Path Spec</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link uk.ac.kcl.mdeoptimise.impl.BasepathSpecImpl#getLocation <em>Location</em>}</li>
+ *   <li>{@link uk.ac.kcl.mdeoptimise.impl.BasePathSpecImpl#getLocation <em>Location</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class BasepathSpecImpl extends MinimalEObjectImpl.Container implements BasepathSpec
+public class BasePathSpecImpl extends MinimalEObjectImpl.Container implements BasePathSpec
 {
   /**
    * The default value of the '{@link #getLocation() <em>Location</em>}' attribute.
@@ -53,7 +53,7 @@ public class BasepathSpecImpl extends MinimalEObjectImpl.Container implements Ba
    * <!-- end-user-doc -->
    * @generated
    */
-  protected BasepathSpecImpl()
+  protected BasePathSpecImpl()
   {
     super();
   }
@@ -66,7 +66,7 @@ public class BasepathSpecImpl extends MinimalEObjectImpl.Container implements Ba
   @Override
   protected EClass eStaticClass()
   {
-    return MdeoptimisePackage.Literals.BASEPATH_SPEC;
+    return MdeoptimisePackage.Literals.BASE_PATH_SPEC;
   }
 
   /**
@@ -89,7 +89,7 @@ public class BasepathSpecImpl extends MinimalEObjectImpl.Container implements Ba
     String oldLocation = location;
     location = newLocation;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MdeoptimisePackage.BASEPATH_SPEC__LOCATION, oldLocation, location));
+      eNotify(new ENotificationImpl(this, Notification.SET, MdeoptimisePackage.BASE_PATH_SPEC__LOCATION, oldLocation, location));
   }
 
   /**
@@ -102,7 +102,7 @@ public class BasepathSpecImpl extends MinimalEObjectImpl.Container implements Ba
   {
     switch (featureID)
     {
-      case MdeoptimisePackage.BASEPATH_SPEC__LOCATION:
+      case MdeoptimisePackage.BASE_PATH_SPEC__LOCATION:
         return getLocation();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -118,7 +118,7 @@ public class BasepathSpecImpl extends MinimalEObjectImpl.Container implements Ba
   {
     switch (featureID)
     {
-      case MdeoptimisePackage.BASEPATH_SPEC__LOCATION:
+      case MdeoptimisePackage.BASE_PATH_SPEC__LOCATION:
         setLocation((String)newValue);
         return;
     }
@@ -135,7 +135,7 @@ public class BasepathSpecImpl extends MinimalEObjectImpl.Container implements Ba
   {
     switch (featureID)
     {
-      case MdeoptimisePackage.BASEPATH_SPEC__LOCATION:
+      case MdeoptimisePackage.BASE_PATH_SPEC__LOCATION:
         setLocation(LOCATION_EDEFAULT);
         return;
     }
@@ -152,7 +152,7 @@ public class BasepathSpecImpl extends MinimalEObjectImpl.Container implements Ba
   {
     switch (featureID)
     {
-      case MdeoptimisePackage.BASEPATH_SPEC__LOCATION:
+      case MdeoptimisePackage.BASE_PATH_SPEC__LOCATION:
         return LOCATION_EDEFAULT == null ? location != null : !LOCATION_EDEFAULT.equals(location);
     }
     return super.eIsSet(featureID);
@@ -175,4 +175,4 @@ public class BasepathSpecImpl extends MinimalEObjectImpl.Container implements Ba
     return result.toString();
   }
 
-} //BasepathSpecImpl
+} //BasePathSpecImpl
