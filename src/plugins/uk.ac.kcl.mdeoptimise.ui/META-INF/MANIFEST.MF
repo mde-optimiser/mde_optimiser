@@ -24,7 +24,10 @@ Require-Bundle: uk.ac.kcl.mdeoptimise,
  org.eclipse.xtext.common.types.ui,
  org.eclipse.xtext.xbase.ui,
  org.eclipse.jdt.core;bundle-version="3.12.3",
- org.eclipse.jdt.ui;bundle-version="3.12.2"
+ org.eclipse.jdt.ui;bundle-version="3.12.2",
+ org.moeaframework,
+ org.jfree.chart,
+ org.jfree.jcommon
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: uk.ac.kcl.mdeoptimise.ui.internal,
