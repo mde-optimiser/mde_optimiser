@@ -80,10 +80,10 @@ public class MdeoptimiseSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case MdeoptimisePackage.BASEPATH_SPEC:
+      case MdeoptimisePackage.BASE_PATH_SPEC:
       {
-        BasepathSpec basepathSpec = (BasepathSpec)theEObject;
-        T result = caseBasepathSpec(basepathSpec);
+        BasePathSpec basePathSpec = (BasePathSpec)theEObject;
+        T result = caseBasePathSpec(basePathSpec);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -178,17 +178,17 @@ public class MdeoptimiseSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Basepath Spec</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Base Path Spec</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Basepath Spec</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Base Path Spec</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseBasepathSpec(BasepathSpec object)
+  public T caseBasePathSpec(BasePathSpec object)
   {
     return null;
   }

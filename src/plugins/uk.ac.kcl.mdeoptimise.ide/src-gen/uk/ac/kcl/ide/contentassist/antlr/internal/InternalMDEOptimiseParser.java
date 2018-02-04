@@ -255,23 +255,23 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
     // $ANTLR end "ruleOptimisation"
 
 
-    // $ANTLR start "entryRuleBasepathSpec"
-    // InternalMDEOptimise.g:79:1: entryRuleBasepathSpec : ruleBasepathSpec EOF ;
-    public final void entryRuleBasepathSpec() throws RecognitionException {
+    // $ANTLR start "entryRuleBasePathSpec"
+    // InternalMDEOptimise.g:79:1: entryRuleBasePathSpec : ruleBasePathSpec EOF ;
+    public final void entryRuleBasePathSpec() throws RecognitionException {
         try {
-            // InternalMDEOptimise.g:80:1: ( ruleBasepathSpec EOF )
-            // InternalMDEOptimise.g:81:1: ruleBasepathSpec EOF
+            // InternalMDEOptimise.g:80:1: ( ruleBasePathSpec EOF )
+            // InternalMDEOptimise.g:81:1: ruleBasePathSpec EOF
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getBasepathSpecRule()); 
+               before(grammarAccess.getBasePathSpecRule()); 
             }
             pushFollow(FOLLOW_1);
-            ruleBasepathSpec();
+            ruleBasePathSpec();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getBasepathSpecRule()); 
+               after(grammarAccess.getBasePathSpecRule()); 
             }
             match(input,EOF,FOLLOW_2); if (state.failed) return ;
 
@@ -286,30 +286,30 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "entryRuleBasepathSpec"
+    // $ANTLR end "entryRuleBasePathSpec"
 
 
-    // $ANTLR start "ruleBasepathSpec"
-    // InternalMDEOptimise.g:88:1: ruleBasepathSpec : ( ( rule__BasepathSpec__Group__0 ) ) ;
-    public final void ruleBasepathSpec() throws RecognitionException {
+    // $ANTLR start "ruleBasePathSpec"
+    // InternalMDEOptimise.g:88:1: ruleBasePathSpec : ( ( rule__BasePathSpec__Group__0 ) ) ;
+    public final void ruleBasePathSpec() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMDEOptimise.g:92:2: ( ( ( rule__BasepathSpec__Group__0 ) ) )
-            // InternalMDEOptimise.g:93:2: ( ( rule__BasepathSpec__Group__0 ) )
+            // InternalMDEOptimise.g:92:2: ( ( ( rule__BasePathSpec__Group__0 ) ) )
+            // InternalMDEOptimise.g:93:2: ( ( rule__BasePathSpec__Group__0 ) )
             {
-            // InternalMDEOptimise.g:93:2: ( ( rule__BasepathSpec__Group__0 ) )
-            // InternalMDEOptimise.g:94:3: ( rule__BasepathSpec__Group__0 )
+            // InternalMDEOptimise.g:93:2: ( ( rule__BasePathSpec__Group__0 ) )
+            // InternalMDEOptimise.g:94:3: ( rule__BasePathSpec__Group__0 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getBasepathSpecAccess().getGroup()); 
+               before(grammarAccess.getBasePathSpecAccess().getGroup()); 
             }
-            // InternalMDEOptimise.g:95:3: ( rule__BasepathSpec__Group__0 )
-            // InternalMDEOptimise.g:95:4: rule__BasepathSpec__Group__0
+            // InternalMDEOptimise.g:95:3: ( rule__BasePathSpec__Group__0 )
+            // InternalMDEOptimise.g:95:4: rule__BasePathSpec__Group__0
             {
             pushFollow(FOLLOW_2);
-            rule__BasepathSpec__Group__0();
+            rule__BasePathSpec__Group__0();
 
             state._fsp--;
             if (state.failed) return ;
@@ -317,7 +317,7 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getBasepathSpecAccess().getGroup()); 
+               after(grammarAccess.getBasePathSpecAccess().getGroup()); 
             }
 
             }
@@ -337,7 +337,7 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "ruleBasepathSpec"
+    // $ANTLR end "ruleBasePathSpec"
 
 
     // $ANTLR start "entryRuleMetaModelSpec"
@@ -13453,23 +13453,23 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
     // $ANTLR end "rule__Optimisation__Group__6__Impl"
 
 
-    // $ANTLR start "rule__BasepathSpec__Group__0"
-    // InternalMDEOptimise.g:3623:1: rule__BasepathSpec__Group__0 : rule__BasepathSpec__Group__0__Impl rule__BasepathSpec__Group__1 ;
-    public final void rule__BasepathSpec__Group__0() throws RecognitionException {
+    // $ANTLR start "rule__BasePathSpec__Group__0"
+    // InternalMDEOptimise.g:3623:1: rule__BasePathSpec__Group__0 : rule__BasePathSpec__Group__0__Impl rule__BasePathSpec__Group__1 ;
+    public final void rule__BasePathSpec__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMDEOptimise.g:3627:1: ( rule__BasepathSpec__Group__0__Impl rule__BasepathSpec__Group__1 )
-            // InternalMDEOptimise.g:3628:2: rule__BasepathSpec__Group__0__Impl rule__BasepathSpec__Group__1
+            // InternalMDEOptimise.g:3627:1: ( rule__BasePathSpec__Group__0__Impl rule__BasePathSpec__Group__1 )
+            // InternalMDEOptimise.g:3628:2: rule__BasePathSpec__Group__0__Impl rule__BasePathSpec__Group__1
             {
             pushFollow(FOLLOW_12);
-            rule__BasepathSpec__Group__0__Impl();
+            rule__BasePathSpec__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
             pushFollow(FOLLOW_2);
-            rule__BasepathSpec__Group__1();
+            rule__BasePathSpec__Group__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -13488,12 +13488,12 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "rule__BasepathSpec__Group__0"
+    // $ANTLR end "rule__BasePathSpec__Group__0"
 
 
-    // $ANTLR start "rule__BasepathSpec__Group__0__Impl"
-    // InternalMDEOptimise.g:3635:1: rule__BasepathSpec__Group__0__Impl : ( 'basepath' ) ;
-    public final void rule__BasepathSpec__Group__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__BasePathSpec__Group__0__Impl"
+    // InternalMDEOptimise.g:3635:1: rule__BasePathSpec__Group__0__Impl : ( 'basepath' ) ;
+    public final void rule__BasePathSpec__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -13505,11 +13505,11 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
             // InternalMDEOptimise.g:3641:2: 'basepath'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getBasepathSpecAccess().getBasepathKeyword_0()); 
+               before(grammarAccess.getBasePathSpecAccess().getBasepathKeyword_0()); 
             }
             match(input,61,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getBasepathSpecAccess().getBasepathKeyword_0()); 
+               after(grammarAccess.getBasePathSpecAccess().getBasepathKeyword_0()); 
             }
 
             }
@@ -13529,21 +13529,21 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "rule__BasepathSpec__Group__0__Impl"
+    // $ANTLR end "rule__BasePathSpec__Group__0__Impl"
 
 
-    // $ANTLR start "rule__BasepathSpec__Group__1"
-    // InternalMDEOptimise.g:3650:1: rule__BasepathSpec__Group__1 : rule__BasepathSpec__Group__1__Impl ;
-    public final void rule__BasepathSpec__Group__1() throws RecognitionException {
+    // $ANTLR start "rule__BasePathSpec__Group__1"
+    // InternalMDEOptimise.g:3650:1: rule__BasePathSpec__Group__1 : rule__BasePathSpec__Group__1__Impl ;
+    public final void rule__BasePathSpec__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMDEOptimise.g:3654:1: ( rule__BasepathSpec__Group__1__Impl )
-            // InternalMDEOptimise.g:3655:2: rule__BasepathSpec__Group__1__Impl
+            // InternalMDEOptimise.g:3654:1: ( rule__BasePathSpec__Group__1__Impl )
+            // InternalMDEOptimise.g:3655:2: rule__BasePathSpec__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
-            rule__BasepathSpec__Group__1__Impl();
+            rule__BasePathSpec__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
@@ -13562,30 +13562,30 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "rule__BasepathSpec__Group__1"
+    // $ANTLR end "rule__BasePathSpec__Group__1"
 
 
-    // $ANTLR start "rule__BasepathSpec__Group__1__Impl"
-    // InternalMDEOptimise.g:3661:1: rule__BasepathSpec__Group__1__Impl : ( ( rule__BasepathSpec__LocationAssignment_1 ) ) ;
-    public final void rule__BasepathSpec__Group__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__BasePathSpec__Group__1__Impl"
+    // InternalMDEOptimise.g:3661:1: rule__BasePathSpec__Group__1__Impl : ( ( rule__BasePathSpec__LocationAssignment_1 ) ) ;
+    public final void rule__BasePathSpec__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMDEOptimise.g:3665:1: ( ( ( rule__BasepathSpec__LocationAssignment_1 ) ) )
-            // InternalMDEOptimise.g:3666:1: ( ( rule__BasepathSpec__LocationAssignment_1 ) )
+            // InternalMDEOptimise.g:3665:1: ( ( ( rule__BasePathSpec__LocationAssignment_1 ) ) )
+            // InternalMDEOptimise.g:3666:1: ( ( rule__BasePathSpec__LocationAssignment_1 ) )
             {
-            // InternalMDEOptimise.g:3666:1: ( ( rule__BasepathSpec__LocationAssignment_1 ) )
-            // InternalMDEOptimise.g:3667:2: ( rule__BasepathSpec__LocationAssignment_1 )
+            // InternalMDEOptimise.g:3666:1: ( ( rule__BasePathSpec__LocationAssignment_1 ) )
+            // InternalMDEOptimise.g:3667:2: ( rule__BasePathSpec__LocationAssignment_1 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getBasepathSpecAccess().getLocationAssignment_1()); 
+               before(grammarAccess.getBasePathSpecAccess().getLocationAssignment_1()); 
             }
-            // InternalMDEOptimise.g:3668:2: ( rule__BasepathSpec__LocationAssignment_1 )
-            // InternalMDEOptimise.g:3668:3: rule__BasepathSpec__LocationAssignment_1
+            // InternalMDEOptimise.g:3668:2: ( rule__BasePathSpec__LocationAssignment_1 )
+            // InternalMDEOptimise.g:3668:3: rule__BasePathSpec__LocationAssignment_1
             {
             pushFollow(FOLLOW_2);
-            rule__BasepathSpec__LocationAssignment_1();
+            rule__BasePathSpec__LocationAssignment_1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -13593,7 +13593,7 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getBasepathSpecAccess().getLocationAssignment_1()); 
+               after(grammarAccess.getBasePathSpecAccess().getLocationAssignment_1()); 
             }
 
             }
@@ -13613,7 +13613,7 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "rule__BasepathSpec__Group__1__Impl"
+    // $ANTLR end "rule__BasePathSpec__Group__1__Impl"
 
 
     // $ANTLR start "rule__MetaModelSpec__Group__0"
@@ -55712,28 +55712,28 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Optimisation__BasepathAssignment_0"
-    // InternalMDEOptimise.g:16941:1: rule__Optimisation__BasepathAssignment_0 : ( ruleBasepathSpec ) ;
+    // InternalMDEOptimise.g:16941:1: rule__Optimisation__BasepathAssignment_0 : ( ruleBasePathSpec ) ;
     public final void rule__Optimisation__BasepathAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMDEOptimise.g:16945:1: ( ( ruleBasepathSpec ) )
-            // InternalMDEOptimise.g:16946:2: ( ruleBasepathSpec )
+            // InternalMDEOptimise.g:16945:1: ( ( ruleBasePathSpec ) )
+            // InternalMDEOptimise.g:16946:2: ( ruleBasePathSpec )
             {
-            // InternalMDEOptimise.g:16946:2: ( ruleBasepathSpec )
-            // InternalMDEOptimise.g:16947:3: ruleBasepathSpec
+            // InternalMDEOptimise.g:16946:2: ( ruleBasePathSpec )
+            // InternalMDEOptimise.g:16947:3: ruleBasePathSpec
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getOptimisationAccess().getBasepathBasepathSpecParserRuleCall_0_0()); 
+               before(grammarAccess.getOptimisationAccess().getBasepathBasePathSpecParserRuleCall_0_0()); 
             }
             pushFollow(FOLLOW_2);
-            ruleBasepathSpec();
+            ruleBasePathSpec();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getOptimisationAccess().getBasepathBasepathSpecParserRuleCall_0_0()); 
+               after(grammarAccess.getOptimisationAccess().getBasepathBasePathSpecParserRuleCall_0_0()); 
             }
 
             }
@@ -56026,9 +56026,9 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
     // $ANTLR end "rule__Optimisation__OptimisationAssignment_6"
 
 
-    // $ANTLR start "rule__BasepathSpec__LocationAssignment_1"
-    // InternalMDEOptimise.g:17046:1: rule__BasepathSpec__LocationAssignment_1 : ( RULE_URL ) ;
-    public final void rule__BasepathSpec__LocationAssignment_1() throws RecognitionException {
+    // $ANTLR start "rule__BasePathSpec__LocationAssignment_1"
+    // InternalMDEOptimise.g:17046:1: rule__BasePathSpec__LocationAssignment_1 : ( RULE_URL ) ;
+    public final void rule__BasePathSpec__LocationAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -56040,11 +56040,11 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
             // InternalMDEOptimise.g:17052:3: RULE_URL
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getBasepathSpecAccess().getLocationURLTerminalRuleCall_1_0()); 
+               before(grammarAccess.getBasePathSpecAccess().getLocationURLTerminalRuleCall_1_0()); 
             }
             match(input,RULE_URL,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getBasepathSpecAccess().getLocationURLTerminalRuleCall_1_0()); 
+               after(grammarAccess.getBasePathSpecAccess().getLocationURLTerminalRuleCall_1_0()); 
             }
 
             }
@@ -56064,7 +56064,7 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "rule__BasepathSpec__LocationAssignment_1"
+    // $ANTLR end "rule__BasePathSpec__LocationAssignment_1"
 
 
     // $ANTLR start "rule__MetaModelSpec__LocationAssignment_1"
