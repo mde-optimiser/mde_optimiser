@@ -30,13 +30,13 @@ class MDEOptimiseValidator extends AbstractMDEOptimiseValidator {
 	  @Check
 	  def void checkClasspath(Optimisation moptFile)
 	  {
-	  	val typeReferences = getServices().getTypeReferences();
-
-	  	
-		  	if(typeReferences.findDeclaredType(Optimisation, moptFile) == null){
-				error("Couldn't find the mandatory library 'uk.ac.kcl.mdeoptimise' on the classpath.", 
-					moptFile, null, MDEOptimiseValidatorIssues.MDEO_LIB_NOT_ON_CLASSPATH);
-		  	}
+//	  	val typeReferences = getServices().getTypeReferences();
+//
+//	  	
+//		  	if(typeReferences.findDeclaredType(Optimisation, moptFile) == null){
+//				error("Couldn't find the mandatory library 'uk.ac.kcl.mdeoptimise' on the classpath.", 
+//					moptFile, null, MDEOptimiseValidatorIssues.MDEO_LIB_NOT_ON_CLASSPATH);
+//		  	}
 	  }
 	
 	

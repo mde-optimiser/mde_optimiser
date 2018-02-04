@@ -8,9 +8,9 @@ import com.google.inject.Injector;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.ISetup;
+import org.eclipse.xtext.common.TerminalsStandaloneSetup;
 import org.eclipse.xtext.resource.IResourceFactory;
 import org.eclipse.xtext.resource.IResourceServiceProvider;
-import org.eclipse.xtext.xbase.XbaseStandaloneSetup;
 import uk.ac.kcl.mdeoptimise.MdeoptimisePackage;
 
 @SuppressWarnings("all")
@@ -18,7 +18,7 @@ public class MDEOptimiseStandaloneSetupGenerated implements ISetup {
 
 	@Override
 	public Injector createInjectorAndDoEMFRegistration() {
-		XbaseStandaloneSetup.doSetup();
+		TerminalsStandaloneSetup.doSetup();
 
 		Injector injector = createInjector();
 		register(injector);

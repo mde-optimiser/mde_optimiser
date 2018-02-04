@@ -873,8 +873,8 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
 
     initEClass(probabilityVariationEClass, ProbabilityVariation.class, "ProbabilityVariation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getProbabilityVariation_Type(), ecorePackage.getEString(), "type", null, 0, 1, ProbabilityVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getProbabilityVariation_Crossover_rate(), ecorePackage.getEString(), "crossover_rate", null, 0, 1, ProbabilityVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getProbabilityVariation_Mutation_rate(), ecorePackage.getEString(), "mutation_rate", null, 0, 1, ProbabilityVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getProbabilityVariation_Crossover_rate(), ecorePackage.getEInt(), "crossover_rate", null, 0, 1, ProbabilityVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getProbabilityVariation_Mutation_rate(), ecorePackage.getEInt(), "mutation_rate", null, 0, 1, ProbabilityVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
     initEEnum(evolverTypeEEnum, EvolverType.class, "EvolverType");
