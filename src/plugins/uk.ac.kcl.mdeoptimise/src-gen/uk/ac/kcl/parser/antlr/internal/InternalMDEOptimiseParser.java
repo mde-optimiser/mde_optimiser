@@ -215,7 +215,7 @@ public class InternalMDEOptimiseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleOptimisation"
-    // InternalMDEOptimise.g:72:1: ruleOptimisation returns [EObject current=null] : ( ( (lv_basepath_0_0= ruleBasepathSpec ) ) ( (lv_metamodel_1_0= ruleMetaModelSpec ) ) ( (lv_model_2_0= ruleModelPathSpec ) ) ( (lv_objectives_3_0= ruleObjectiveInterpreterSpec ) )+ ( (lv_constraints_4_0= ruleConstraintInterpreterSpec ) )* ( (lv_evolvers_5_0= ruleEvolverSpec ) )+ ( (lv_optimisation_6_0= ruleOptimisationSpec ) ) ) ;
+    // InternalMDEOptimise.g:72:1: ruleOptimisation returns [EObject current=null] : ( ( (lv_basepath_0_0= ruleBasePathSpec ) ) ( (lv_metamodel_1_0= ruleMetaModelSpec ) ) ( (lv_model_2_0= ruleModelPathSpec ) ) ( (lv_objectives_3_0= ruleObjectiveInterpreterSpec ) )+ ( (lv_constraints_4_0= ruleConstraintInterpreterSpec ) )* ( (lv_evolvers_5_0= ruleEvolverSpec ) )+ ( (lv_optimisation_6_0= ruleOptimisationSpec ) ) ) ;
     public final EObject ruleOptimisation() throws RecognitionException {
         EObject current = null;
 
@@ -238,25 +238,25 @@ public class InternalMDEOptimiseParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalMDEOptimise.g:78:2: ( ( ( (lv_basepath_0_0= ruleBasepathSpec ) ) ( (lv_metamodel_1_0= ruleMetaModelSpec ) ) ( (lv_model_2_0= ruleModelPathSpec ) ) ( (lv_objectives_3_0= ruleObjectiveInterpreterSpec ) )+ ( (lv_constraints_4_0= ruleConstraintInterpreterSpec ) )* ( (lv_evolvers_5_0= ruleEvolverSpec ) )+ ( (lv_optimisation_6_0= ruleOptimisationSpec ) ) ) )
-            // InternalMDEOptimise.g:79:2: ( ( (lv_basepath_0_0= ruleBasepathSpec ) ) ( (lv_metamodel_1_0= ruleMetaModelSpec ) ) ( (lv_model_2_0= ruleModelPathSpec ) ) ( (lv_objectives_3_0= ruleObjectiveInterpreterSpec ) )+ ( (lv_constraints_4_0= ruleConstraintInterpreterSpec ) )* ( (lv_evolvers_5_0= ruleEvolverSpec ) )+ ( (lv_optimisation_6_0= ruleOptimisationSpec ) ) )
+            // InternalMDEOptimise.g:78:2: ( ( ( (lv_basepath_0_0= ruleBasePathSpec ) ) ( (lv_metamodel_1_0= ruleMetaModelSpec ) ) ( (lv_model_2_0= ruleModelPathSpec ) ) ( (lv_objectives_3_0= ruleObjectiveInterpreterSpec ) )+ ( (lv_constraints_4_0= ruleConstraintInterpreterSpec ) )* ( (lv_evolvers_5_0= ruleEvolverSpec ) )+ ( (lv_optimisation_6_0= ruleOptimisationSpec ) ) ) )
+            // InternalMDEOptimise.g:79:2: ( ( (lv_basepath_0_0= ruleBasePathSpec ) ) ( (lv_metamodel_1_0= ruleMetaModelSpec ) ) ( (lv_model_2_0= ruleModelPathSpec ) ) ( (lv_objectives_3_0= ruleObjectiveInterpreterSpec ) )+ ( (lv_constraints_4_0= ruleConstraintInterpreterSpec ) )* ( (lv_evolvers_5_0= ruleEvolverSpec ) )+ ( (lv_optimisation_6_0= ruleOptimisationSpec ) ) )
             {
-            // InternalMDEOptimise.g:79:2: ( ( (lv_basepath_0_0= ruleBasepathSpec ) ) ( (lv_metamodel_1_0= ruleMetaModelSpec ) ) ( (lv_model_2_0= ruleModelPathSpec ) ) ( (lv_objectives_3_0= ruleObjectiveInterpreterSpec ) )+ ( (lv_constraints_4_0= ruleConstraintInterpreterSpec ) )* ( (lv_evolvers_5_0= ruleEvolverSpec ) )+ ( (lv_optimisation_6_0= ruleOptimisationSpec ) ) )
-            // InternalMDEOptimise.g:80:3: ( (lv_basepath_0_0= ruleBasepathSpec ) ) ( (lv_metamodel_1_0= ruleMetaModelSpec ) ) ( (lv_model_2_0= ruleModelPathSpec ) ) ( (lv_objectives_3_0= ruleObjectiveInterpreterSpec ) )+ ( (lv_constraints_4_0= ruleConstraintInterpreterSpec ) )* ( (lv_evolvers_5_0= ruleEvolverSpec ) )+ ( (lv_optimisation_6_0= ruleOptimisationSpec ) )
+            // InternalMDEOptimise.g:79:2: ( ( (lv_basepath_0_0= ruleBasePathSpec ) ) ( (lv_metamodel_1_0= ruleMetaModelSpec ) ) ( (lv_model_2_0= ruleModelPathSpec ) ) ( (lv_objectives_3_0= ruleObjectiveInterpreterSpec ) )+ ( (lv_constraints_4_0= ruleConstraintInterpreterSpec ) )* ( (lv_evolvers_5_0= ruleEvolverSpec ) )+ ( (lv_optimisation_6_0= ruleOptimisationSpec ) ) )
+            // InternalMDEOptimise.g:80:3: ( (lv_basepath_0_0= ruleBasePathSpec ) ) ( (lv_metamodel_1_0= ruleMetaModelSpec ) ) ( (lv_model_2_0= ruleModelPathSpec ) ) ( (lv_objectives_3_0= ruleObjectiveInterpreterSpec ) )+ ( (lv_constraints_4_0= ruleConstraintInterpreterSpec ) )* ( (lv_evolvers_5_0= ruleEvolverSpec ) )+ ( (lv_optimisation_6_0= ruleOptimisationSpec ) )
             {
-            // InternalMDEOptimise.g:80:3: ( (lv_basepath_0_0= ruleBasepathSpec ) )
-            // InternalMDEOptimise.g:81:4: (lv_basepath_0_0= ruleBasepathSpec )
+            // InternalMDEOptimise.g:80:3: ( (lv_basepath_0_0= ruleBasePathSpec ) )
+            // InternalMDEOptimise.g:81:4: (lv_basepath_0_0= ruleBasePathSpec )
             {
-            // InternalMDEOptimise.g:81:4: (lv_basepath_0_0= ruleBasepathSpec )
-            // InternalMDEOptimise.g:82:5: lv_basepath_0_0= ruleBasepathSpec
+            // InternalMDEOptimise.g:81:4: (lv_basepath_0_0= ruleBasePathSpec )
+            // InternalMDEOptimise.g:82:5: lv_basepath_0_0= ruleBasePathSpec
             {
             if ( state.backtracking==0 ) {
 
-              					newCompositeNode(grammarAccess.getOptimisationAccess().getBasepathBasepathSpecParserRuleCall_0_0());
+              					newCompositeNode(grammarAccess.getOptimisationAccess().getBasepathBasePathSpecParserRuleCall_0_0());
               				
             }
             pushFollow(FOLLOW_3);
-            lv_basepath_0_0=ruleBasepathSpec();
+            lv_basepath_0_0=ruleBasePathSpec();
 
             state._fsp--;
             if (state.failed) return current;
@@ -269,7 +269,7 @@ public class InternalMDEOptimiseParser extends AbstractInternalAntlrParser {
               						current,
               						"basepath",
               						lv_basepath_0_0,
-              						"uk.ac.kcl.MDEOptimise.BasepathSpec");
+              						"uk.ac.kcl.MDEOptimise.BasePathSpec");
               					afterParserOrEnumRuleCall();
               				
             }
@@ -579,28 +579,28 @@ public class InternalMDEOptimiseParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleOptimisation"
 
 
-    // $ANTLR start "entryRuleBasepathSpec"
-    // InternalMDEOptimise.g:217:1: entryRuleBasepathSpec returns [EObject current=null] : iv_ruleBasepathSpec= ruleBasepathSpec EOF ;
-    public final EObject entryRuleBasepathSpec() throws RecognitionException {
+    // $ANTLR start "entryRuleBasePathSpec"
+    // InternalMDEOptimise.g:217:1: entryRuleBasePathSpec returns [EObject current=null] : iv_ruleBasePathSpec= ruleBasePathSpec EOF ;
+    public final EObject entryRuleBasePathSpec() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_ruleBasepathSpec = null;
+        EObject iv_ruleBasePathSpec = null;
 
 
         try {
-            // InternalMDEOptimise.g:217:53: (iv_ruleBasepathSpec= ruleBasepathSpec EOF )
-            // InternalMDEOptimise.g:218:2: iv_ruleBasepathSpec= ruleBasepathSpec EOF
+            // InternalMDEOptimise.g:217:53: (iv_ruleBasePathSpec= ruleBasePathSpec EOF )
+            // InternalMDEOptimise.g:218:2: iv_ruleBasePathSpec= ruleBasePathSpec EOF
             {
             if ( state.backtracking==0 ) {
-               newCompositeNode(grammarAccess.getBasepathSpecRule()); 
+               newCompositeNode(grammarAccess.getBasePathSpecRule()); 
             }
             pushFollow(FOLLOW_1);
-            iv_ruleBasepathSpec=ruleBasepathSpec();
+            iv_ruleBasePathSpec=ruleBasePathSpec();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
-               current =iv_ruleBasepathSpec; 
+               current =iv_ruleBasePathSpec; 
             }
             match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
@@ -616,12 +616,12 @@ public class InternalMDEOptimiseParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRuleBasepathSpec"
+    // $ANTLR end "entryRuleBasePathSpec"
 
 
-    // $ANTLR start "ruleBasepathSpec"
-    // InternalMDEOptimise.g:224:1: ruleBasepathSpec returns [EObject current=null] : (otherlv_0= 'basepath' ( (lv_location_1_0= RULE_URL ) ) ) ;
-    public final EObject ruleBasepathSpec() throws RecognitionException {
+    // $ANTLR start "ruleBasePathSpec"
+    // InternalMDEOptimise.g:224:1: ruleBasePathSpec returns [EObject current=null] : (otherlv_0= 'basepath' ( (lv_location_1_0= RULE_URL ) ) ) ;
+    public final EObject ruleBasePathSpec() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
@@ -640,7 +640,7 @@ public class InternalMDEOptimiseParser extends AbstractInternalAntlrParser {
             otherlv_0=(Token)match(input,21,FOLLOW_9); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              			newLeafNode(otherlv_0, grammarAccess.getBasepathSpecAccess().getBasepathKeyword_0());
+              			newLeafNode(otherlv_0, grammarAccess.getBasePathSpecAccess().getBasepathKeyword_0());
               		
             }
             // InternalMDEOptimise.g:236:3: ( (lv_location_1_0= RULE_URL ) )
@@ -652,13 +652,13 @@ public class InternalMDEOptimiseParser extends AbstractInternalAntlrParser {
             lv_location_1_0=(Token)match(input,RULE_URL,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              					newLeafNode(lv_location_1_0, grammarAccess.getBasepathSpecAccess().getLocationURLTerminalRuleCall_1_0());
+              					newLeafNode(lv_location_1_0, grammarAccess.getBasePathSpecAccess().getLocationURLTerminalRuleCall_1_0());
               				
             }
             if ( state.backtracking==0 ) {
 
               					if (current==null) {
-              						current = createModelElement(grammarAccess.getBasepathSpecRule());
+              						current = createModelElement(grammarAccess.getBasePathSpecRule());
               					}
               					setWithLastConsumed(
               						current,
@@ -694,7 +694,7 @@ public class InternalMDEOptimiseParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleBasepathSpec"
+    // $ANTLR end "ruleBasePathSpec"
 
 
     // $ANTLR start "entryRuleMetaModelSpec"

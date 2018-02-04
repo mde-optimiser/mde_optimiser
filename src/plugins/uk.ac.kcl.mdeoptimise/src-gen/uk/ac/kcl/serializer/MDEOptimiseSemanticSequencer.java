@@ -60,7 +60,7 @@ import org.eclipse.xtext.xtype.XImportDeclaration;
 import org.eclipse.xtext.xtype.XImportSection;
 import org.eclipse.xtext.xtype.XtypePackage;
 import uk.ac.kcl.mdeoptimise.AlgorithmVariation;
-import uk.ac.kcl.mdeoptimise.BasepathSpec;
+import uk.ac.kcl.mdeoptimise.BasePathSpec;
 import uk.ac.kcl.mdeoptimise.ConstraintInterpreterSpec;
 import uk.ac.kcl.mdeoptimise.EvolverParameter;
 import uk.ac.kcl.mdeoptimise.EvolverSpec;
@@ -91,8 +91,8 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 			case MdeoptimisePackage.ALGORITHM_VARIATION:
 				sequence_AlgorithmVariation(context, (AlgorithmVariation) semanticObject); 
 				return; 
-			case MdeoptimisePackage.BASEPATH_SPEC:
-				sequence_BasepathSpec(context, (BasepathSpec) semanticObject); 
+			case MdeoptimisePackage.BASE_PATH_SPEC:
+				sequence_BasePathSpec(context, (BasePathSpec) semanticObject); 
 				return; 
 			case MdeoptimisePackage.CONSTRAINT_INTERPRETER_SPEC:
 				sequence_ConstraintInterpreterSpec(context, (ConstraintInterpreterSpec) semanticObject); 
@@ -382,18 +382,18 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     BasepathSpec returns BasepathSpec
+	 *     BasePathSpec returns BasePathSpec
 	 *
 	 * Constraint:
 	 *     location=URL
 	 */
-	protected void sequence_BasepathSpec(ISerializationContext context, BasepathSpec semanticObject) {
+	protected void sequence_BasePathSpec(ISerializationContext context, BasePathSpec semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.BASEPATH_SPEC__LOCATION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.BASEPATH_SPEC__LOCATION));
+			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.BASE_PATH_SPEC__LOCATION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.BASE_PATH_SPEC__LOCATION));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getBasepathSpecAccess().getLocationURLTerminalRuleCall_1_0(), semanticObject.getLocation());
+		feeder.accept(grammarAccess.getBasePathSpecAccess().getLocationURLTerminalRuleCall_1_0(), semanticObject.getLocation());
 		feeder.finish();
 	}
 	
@@ -534,7 +534,7 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 	 *
 	 * Constraint:
 	 *     (
-	 *         basepath=BasepathSpec 
+	 *         basepath=BasePathSpec 
 	 *         metamodel=MetaModelSpec 
 	 *         model=ModelPathSpec 
 	 *         objectives+=ObjectiveInterpreterSpec+ 
