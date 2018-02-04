@@ -60,12 +60,12 @@ public interface ProbabilityVariation extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Crossover rate</em>' attribute.
-   * @see #setCrossover_rate(int)
+   * @see #setCrossover_rate(String)
    * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getProbabilityVariation_Crossover_rate()
    * @model
    * @generated
    */
-  int getCrossover_rate();
+  String getCrossover_rate();
 
   /**
    * Sets the value of the '{@link uk.ac.kcl.mdeoptimise.ProbabilityVariation#getCrossover_rate <em>Crossover rate</em>}' attribute.
@@ -75,7 +75,7 @@ public interface ProbabilityVariation extends EObject
    * @see #getCrossover_rate()
    * @generated
    */
-  void setCrossover_rate(int value);
+  void setCrossover_rate(String value);
 
   /**
    * Returns the value of the '<em><b>Mutation rate</b></em>' attribute.
@@ -86,12 +86,12 @@ public interface ProbabilityVariation extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Mutation rate</em>' attribute.
-   * @see #setMutation_rate(int)
+   * @see #setMutation_rate(String)
    * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getProbabilityVariation_Mutation_rate()
    * @model
    * @generated
    */
-  int getMutation_rate();
+  String getMutation_rate();
 
   /**
    * Sets the value of the '{@link uk.ac.kcl.mdeoptimise.ProbabilityVariation#getMutation_rate <em>Mutation rate</em>}' attribute.
@@ -101,6 +101,6 @@ public interface ProbabilityVariation extends EObject
    * @see #getMutation_rate()
    * @generated
    */
-  void setMutation_rate(int value);
+  void setMutation_rate(String value);
 
 } // ProbabilityVariation
