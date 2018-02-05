@@ -29,6 +29,8 @@ class ParetoChartOutputDescriptor implements ResultsDescriptor {
 		
 		new Plot()
 			.add(String.format("Pareto front for batch %s", batch.id), population)
+			.setXLabel(batch.solutions.head.formattedObjectives.keySet.get(0))
+			.setYLabel(batch.solutions.head.formattedObjectives.keySet.get(1))
 			.save(outputFile)
 	
 	}

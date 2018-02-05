@@ -88,7 +88,7 @@ class MoeaOptimisationTests {
 				mutate using <craEvolvers.henshin> unit "assignFeature"
 				mutate using <craEvolvers.henshin> unit "moveFeature"
 				mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
-				optimisation provider moea algorithm NSGAII variation mutation evolutions 10 population 5 experiments 2
+				optimisation provider moea algorithm NSGAII variation mutation evolutions 10 population 5 batches 2
 			''')
 
 			//Assert that there are no grammar issues
@@ -110,7 +110,7 @@ class MoeaOptimisationTests {
 	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome))		
 						
 						experimentId++
-					} while(experimentId < model.optimisation.algorithmExperiments);
+					} while(experimentId < model.optimisation.algorithmBatches);
 
 	            	mdeoResultsOutput.saveOutcome();
 	        }
@@ -132,7 +132,7 @@ class MoeaOptimisationTests {
 				mutate using <craEvolvers.henshin> unit "moveFeature"
 				mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
 				breed using <exchangeClass.henshin> unit "exchangeClassBidirectional"
-				optimisation provider moea algorithm NSGAII variation mutation evolutions 10 population 5 experiments 2
+				optimisation provider moea algorithm NSGAII variation mutation evolutions 10 population 5 batches 2
 			''')
 
 			//Assert that there are no grammar issues
@@ -154,7 +154,7 @@ class MoeaOptimisationTests {
 	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome))		
 						
 						experimentId++
-					} while(experimentId < model.optimisation.algorithmExperiments);
+					} while(experimentId < model.optimisation.algorithmBatches);
 
 	            	mdeoResultsOutput.saveOutcome();
 	        }
@@ -172,7 +172,7 @@ class MoeaOptimisationTests {
 				objective CRA minimise java { "models.stack.MinimiseStandardDeviation" }
 				mutate using <stack.henshin> unit "shiftLeft" parameters { amount => Random("[1-5]{1}") }
 				mutate using <stack.henshin> unit "shiftRight" parameters { amount => Random("[1-5]{1}") }
-				optimisation provider moea algorithm NSGAII variation mutation evolutions 100 population 30 experiments 5
+				optimisation provider moea algorithm NSGAII variation mutation evolutions 100 population 30 batches 5
 			''')
 
 			//Assert that there are no grammar issues
@@ -195,7 +195,7 @@ class MoeaOptimisationTests {
 						
 						experimentId++
 					
-					} while(experimentId < model.optimisation.algorithmExperiments);
+					} while(experimentId < model.optimisation.algorithmBatches);
 
 	            	mdeoResultsOutput.saveOutcome();
 	        }
@@ -212,7 +212,7 @@ class MoeaOptimisationTests {
 				model <SimpleZoo.xmi>
 				objective EmptyCages minimise java { "models.zoo.ZooFitnessFunction" }
 				mutate using <zoo_evolution.henshin> unit "MoveAnimal"
-				optimisation provider moea algorithm NSGAII variation mutation evolutions 100 population 30 experiments 5
+				optimisation provider moea algorithm NSGAII variation mutation evolutions 100 population 30 batches 5
 			''')
 
 			//Assert that there are no grammar issues
@@ -235,7 +235,7 @@ class MoeaOptimisationTests {
 						
 						experimentId++
 					
-					} while(experimentId < model.optimisation.algorithmExperiments);
+					} while(experimentId < model.optimisation.algorithmBatches);
 
 	            	mdeoResultsOutput.saveOutcome();
 	        }
@@ -255,7 +255,7 @@ class MoeaOptimisationTests {
 				model <MoreComplexZoo.xmi>
 				objective EmptyCages minimise java { "models.zoo.ZooFitnessFunction" }
 				mutate using <zoo_evolution.henshin> unit "MoveAnimal"
-				optimisation provider moea algorithm NSGAII variation mutation evolutions 100 population 30 experiments 5
+				optimisation provider moea algorithm NSGAII variation mutation evolutions 100 population 30 batches 5
 			''')
 
 			//Assert that there are no grammar issues
@@ -278,7 +278,7 @@ class MoeaOptimisationTests {
 						
 						experimentId++
 					
-					} while(experimentId < model.optimisation.algorithmExperiments);
+					} while(experimentId < model.optimisation.algorithmBatches);
 
 	            	mdeoResultsOutput.saveOutcome();
 	        }
@@ -304,7 +304,7 @@ class MoeaOptimisationTests {
 				mutate using <sprint.henshin> unit "deleteSprint"
 				mutate using <sprint.henshin> unit "addItemToSprint"
 				mutate using <sprint.henshin> unit "removeItemFromSprint"
-				optimisation provider moea algorithm NSGAII variation mutation evolutions 150 population 30 experiments 10
+				optimisation provider moea algorithm NSGAII variation mutation evolutions 150 population 30 batches10
 			''')
 
 			//Assert that there are no grammar issues
@@ -326,7 +326,7 @@ class MoeaOptimisationTests {
 	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome))		
 						
 						experimentId++
-					} while(experimentId < model.optimisation.algorithmExperiments);
+					} while(experimentId < model.optimisation.algorithmBatches);
 
 	            	mdeoResultsOutput.saveOutcome();
 	        }

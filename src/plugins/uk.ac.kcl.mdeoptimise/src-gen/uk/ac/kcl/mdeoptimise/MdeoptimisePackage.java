@@ -519,13 +519,13 @@ public interface MdeoptimisePackage extends EPackage
   int OPTIMISATION_SPEC__ALGORITHM_POPULATION = 4;
 
   /**
-   * The feature id for the '<em><b>Algorithm Experiments</b></em>' attribute.
+   * The feature id for the '<em><b>Algorithm Batches</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OPTIMISATION_SPEC__ALGORITHM_EXPERIMENTS = 5;
+  int OPTIMISATION_SPEC__ALGORITHM_BATCHES = 5;
 
   /**
    * The number of structural features of the '<em>Optimisation Spec</em>' class.
@@ -1072,15 +1072,15 @@ public interface MdeoptimisePackage extends EPackage
   EAttribute getOptimisationSpec_AlgorithmPopulation();
 
   /**
-   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmExperiments <em>Algorithm Experiments</em>}'.
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmBatches <em>Algorithm Batches</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Algorithm Experiments</em>'.
-   * @see uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmExperiments()
+   * @return the meta object for the attribute '<em>Algorithm Batches</em>'.
+   * @see uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmBatches()
    * @see #getOptimisationSpec()
    * @generated
    */
-  EAttribute getOptimisationSpec_AlgorithmExperiments();
+  EAttribute getOptimisationSpec_AlgorithmBatches();
 
   /**
    * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.AlgorithmVariation <em>Algorithm Variation</em>}'.
@@ -1539,12 +1539,12 @@ public interface MdeoptimisePackage extends EPackage
     EAttribute OPTIMISATION_SPEC__ALGORITHM_POPULATION = eINSTANCE.getOptimisationSpec_AlgorithmPopulation();
 
     /**
-     * The meta object literal for the '<em><b>Algorithm Experiments</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Algorithm Batches</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute OPTIMISATION_SPEC__ALGORITHM_EXPERIMENTS = eINSTANCE.getOptimisationSpec_AlgorithmExperiments();
+    EAttribute OPTIMISATION_SPEC__ALGORITHM_BATCHES = eINSTANCE.getOptimisationSpec_AlgorithmBatches();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.AlgorithmVariationImpl <em>Algorithm Variation</em>}' class.
