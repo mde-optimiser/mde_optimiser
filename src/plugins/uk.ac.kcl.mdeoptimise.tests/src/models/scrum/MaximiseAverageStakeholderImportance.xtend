@@ -34,7 +34,7 @@ class MaximiseAverageStakeholderImportance implements IGuidanceFunction {
 		println("Sprint stakeholder importance distribution: " + stakeholderImportanceSprintDeviation)
 		println("Sprint stakeholder importance standard deviation: " + importanceStandardDeviation)
 		
-		return importanceStandardDeviation * -1;
+		return importanceStandardDeviation;
 	}
 	
 	override getName() {

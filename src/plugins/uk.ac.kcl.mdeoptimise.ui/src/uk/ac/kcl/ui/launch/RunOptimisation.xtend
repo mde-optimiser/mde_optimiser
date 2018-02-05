@@ -74,7 +74,7 @@ class RunOptimisation {
 	            		
 	            		experimentId++
 					
-					} while(experimentId < optimisationModel.optimisation.algorithmExperiments);
+					} while(experimentId < optimisationModel.optimisation.algorithmBatches);
 
 	            	
 	            	mdeoResultsOutput.saveOutcome();

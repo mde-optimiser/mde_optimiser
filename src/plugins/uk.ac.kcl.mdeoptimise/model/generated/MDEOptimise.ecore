@@ -65,7 +65,7 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="algorithmEvolutions" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="algorithmPopulation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="algorithmExperiments" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="algorithmBatches" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AlgorithmVariation">
     <eStructuralFeatures xsi:type="ecore:EReference" name="probabilityVariation" eType="#//ProbabilityVariation"
