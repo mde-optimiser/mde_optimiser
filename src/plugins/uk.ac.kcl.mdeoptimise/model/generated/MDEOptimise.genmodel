@@ -19,8 +19,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/evolvers"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/optimisation"/>
     </genClasses>
-    <genClasses ecoreClass="MDEOptimise.ecore#//BasepathSpec">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//BasepathSpec/location"/>
+    <genClasses ecoreClass="MDEOptimise.ecore#//BasePathSpec">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//BasePathSpec/location"/>
     </genClasses>
     <genClasses ecoreClass="MDEOptimise.ecore#//MetaModelSpec">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//MetaModelSpec/location"/>
@@ -57,9 +57,19 @@
     <genClasses ecoreClass="MDEOptimise.ecore#//OptimisationSpec">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//OptimisationSpec/algorithmFactory"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//OptimisationSpec/algorithmName"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//OptimisationSpec/algorithmVariation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//OptimisationSpec/algorithmVariation"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//OptimisationSpec/algorithmEvolutions"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//OptimisationSpec/algorithmPopulation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//OptimisationSpec/algorithmExperiments"/>
+    </genClasses>
+    <genClasses ecoreClass="MDEOptimise.ecore#//AlgorithmVariation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//AlgorithmVariation/probabilityVariation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//AlgorithmVariation/simpleVariation"/>
+    </genClasses>
+    <genClasses ecoreClass="MDEOptimise.ecore#//ProbabilityVariation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//ProbabilityVariation/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//ProbabilityVariation/crossover_rate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//ProbabilityVariation/mutation_rate"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

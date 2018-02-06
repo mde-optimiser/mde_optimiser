@@ -4,12 +4,15 @@
 package uk.ac.kcl.mdeoptimise.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import uk.ac.kcl.mdeoptimise.AlgorithmVariation;
 import uk.ac.kcl.mdeoptimise.MdeoptimisePackage;
 import uk.ac.kcl.mdeoptimise.OptimisationSpec;
 
@@ -26,6 +29,7 @@ import uk.ac.kcl.mdeoptimise.OptimisationSpec;
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationSpecImpl#getAlgorithmVariation <em>Algorithm Variation</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationSpecImpl#getAlgorithmEvolutions <em>Algorithm Evolutions</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationSpecImpl#getAlgorithmPopulation <em>Algorithm Population</em>}</li>
+ *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationSpecImpl#getAlgorithmExperiments <em>Algorithm Experiments</em>}</li>
  * </ul>
  *
  * @generated
@@ -73,24 +77,14 @@ public class OptimisationSpecImpl extends MinimalEObjectImpl.Container implement
   protected String algorithmName = ALGORITHM_NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getAlgorithmVariation() <em>Algorithm Variation</em>}' attribute.
+   * The cached value of the '{@link #getAlgorithmVariation() <em>Algorithm Variation</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getAlgorithmVariation()
    * @generated
    * @ordered
    */
-  protected static final String ALGORITHM_VARIATION_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getAlgorithmVariation() <em>Algorithm Variation</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getAlgorithmVariation()
-   * @generated
-   * @ordered
-   */
-  protected String algorithmVariation = ALGORITHM_VARIATION_EDEFAULT;
+  protected AlgorithmVariation algorithmVariation;
 
   /**
    * The default value of the '{@link #getAlgorithmEvolutions() <em>Algorithm Evolutions</em>}' attribute.
@@ -131,6 +125,26 @@ public class OptimisationSpecImpl extends MinimalEObjectImpl.Container implement
    * @ordered
    */
   protected int algorithmPopulation = ALGORITHM_POPULATION_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getAlgorithmExperiments() <em>Algorithm Experiments</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAlgorithmExperiments()
+   * @generated
+   * @ordered
+   */
+  protected static final int ALGORITHM_EXPERIMENTS_EDEFAULT = 0;
+
+  /**
+   * The cached value of the '{@link #getAlgorithmExperiments() <em>Algorithm Experiments</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAlgorithmExperiments()
+   * @generated
+   * @ordered
+   */
+  protected int algorithmExperiments = ALGORITHM_EXPERIMENTS_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -204,7 +218,7 @@ public class OptimisationSpecImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getAlgorithmVariation()
+  public AlgorithmVariation getAlgorithmVariation()
   {
     return algorithmVariation;
   }
@@ -214,12 +228,37 @@ public class OptimisationSpecImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setAlgorithmVariation(String newAlgorithmVariation)
+  public NotificationChain basicSetAlgorithmVariation(AlgorithmVariation newAlgorithmVariation, NotificationChain msgs)
   {
-    String oldAlgorithmVariation = algorithmVariation;
+    AlgorithmVariation oldAlgorithmVariation = algorithmVariation;
     algorithmVariation = newAlgorithmVariation;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_VARIATION, oldAlgorithmVariation, algorithmVariation));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_VARIATION, oldAlgorithmVariation, newAlgorithmVariation);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setAlgorithmVariation(AlgorithmVariation newAlgorithmVariation)
+  {
+    if (newAlgorithmVariation != algorithmVariation)
+    {
+      NotificationChain msgs = null;
+      if (algorithmVariation != null)
+        msgs = ((InternalEObject)algorithmVariation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_VARIATION, null, msgs);
+      if (newAlgorithmVariation != null)
+        msgs = ((InternalEObject)newAlgorithmVariation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_VARIATION, null, msgs);
+      msgs = basicSetAlgorithmVariation(newAlgorithmVariation, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_VARIATION, newAlgorithmVariation, newAlgorithmVariation));
   }
 
   /**
@@ -273,6 +312,45 @@ public class OptimisationSpecImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
+  public int getAlgorithmExperiments()
+  {
+    return algorithmExperiments;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setAlgorithmExperiments(int newAlgorithmExperiments)
+  {
+    int oldAlgorithmExperiments = algorithmExperiments;
+    algorithmExperiments = newAlgorithmExperiments;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_EXPERIMENTS, oldAlgorithmExperiments, algorithmExperiments));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_VARIATION:
+        return basicSetAlgorithmVariation(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -288,6 +366,8 @@ public class OptimisationSpecImpl extends MinimalEObjectImpl.Container implement
         return getAlgorithmEvolutions();
       case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_POPULATION:
         return getAlgorithmPopulation();
+      case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_EXPERIMENTS:
+        return getAlgorithmExperiments();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -309,13 +389,16 @@ public class OptimisationSpecImpl extends MinimalEObjectImpl.Container implement
         setAlgorithmName((String)newValue);
         return;
       case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_VARIATION:
-        setAlgorithmVariation((String)newValue);
+        setAlgorithmVariation((AlgorithmVariation)newValue);
         return;
       case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_EVOLUTIONS:
         setAlgorithmEvolutions((Integer)newValue);
         return;
       case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_POPULATION:
         setAlgorithmPopulation((Integer)newValue);
+        return;
+      case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_EXPERIMENTS:
+        setAlgorithmExperiments((Integer)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -338,13 +421,16 @@ public class OptimisationSpecImpl extends MinimalEObjectImpl.Container implement
         setAlgorithmName(ALGORITHM_NAME_EDEFAULT);
         return;
       case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_VARIATION:
-        setAlgorithmVariation(ALGORITHM_VARIATION_EDEFAULT);
+        setAlgorithmVariation((AlgorithmVariation)null);
         return;
       case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_EVOLUTIONS:
         setAlgorithmEvolutions(ALGORITHM_EVOLUTIONS_EDEFAULT);
         return;
       case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_POPULATION:
         setAlgorithmPopulation(ALGORITHM_POPULATION_EDEFAULT);
+        return;
+      case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_EXPERIMENTS:
+        setAlgorithmExperiments(ALGORITHM_EXPERIMENTS_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -365,11 +451,13 @@ public class OptimisationSpecImpl extends MinimalEObjectImpl.Container implement
       case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_NAME:
         return ALGORITHM_NAME_EDEFAULT == null ? algorithmName != null : !ALGORITHM_NAME_EDEFAULT.equals(algorithmName);
       case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_VARIATION:
-        return ALGORITHM_VARIATION_EDEFAULT == null ? algorithmVariation != null : !ALGORITHM_VARIATION_EDEFAULT.equals(algorithmVariation);
+        return algorithmVariation != null;
       case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_EVOLUTIONS:
         return algorithmEvolutions != ALGORITHM_EVOLUTIONS_EDEFAULT;
       case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_POPULATION:
         return algorithmPopulation != ALGORITHM_POPULATION_EDEFAULT;
+      case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_EXPERIMENTS:
+        return algorithmExperiments != ALGORITHM_EXPERIMENTS_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -389,12 +477,12 @@ public class OptimisationSpecImpl extends MinimalEObjectImpl.Container implement
     result.append(algorithmFactory);
     result.append(", algorithmName: ");
     result.append(algorithmName);
-    result.append(", algorithmVariation: ");
-    result.append(algorithmVariation);
     result.append(", algorithmEvolutions: ");
     result.append(algorithmEvolutions);
     result.append(", algorithmPopulation: ");
     result.append(algorithmPopulation);
+    result.append(", algorithmExperiments: ");
+    result.append(algorithmExperiments);
     result.append(')');
     return result.toString();
   }
