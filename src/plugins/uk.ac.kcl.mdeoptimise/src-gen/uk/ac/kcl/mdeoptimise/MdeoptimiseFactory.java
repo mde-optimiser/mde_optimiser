@@ -33,13 +33,13 @@ public interface MdeoptimiseFactory extends EFactory
   Optimisation createOptimisation();
 
   /**
-   * Returns a new object of class '<em>Basepath Spec</em>'.
+   * Returns a new object of class '<em>Base Path Spec</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Basepath Spec</em>'.
+   * @return a new object of class '<em>Base Path Spec</em>'.
    * @generated
    */
-  BasepathSpec createBasepathSpec();
+  BasePathSpec createBasePathSpec();
 
   /**
    * Returns a new object of class '<em>Meta Model Spec</em>'.
@@ -112,6 +112,24 @@ public interface MdeoptimiseFactory extends EFactory
    * @generated
    */
   OptimisationSpec createOptimisationSpec();
+
+  /**
+   * Returns a new object of class '<em>Algorithm Variation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Algorithm Variation</em>'.
+   * @generated
+   */
+  AlgorithmVariation createAlgorithmVariation();
+
+  /**
+   * Returns a new object of class '<em>Probability Variation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Probability Variation</em>'.
+   * @generated
+   */
+  ProbabilityVariation createProbabilityVariation();
 
   /**
    * Returns the package supported by this factory.

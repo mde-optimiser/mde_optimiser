@@ -85,12 +85,15 @@ class SolutionGenerator {
 	 */
 	def List<EObject> crossover(List<EObject> parents) {
 				
-		var crossoverParents = EcoreUtil.copyAll(parents)
+		val crossoverParents = new ArrayList<EObject>;
+		
+		parents.forEach[parent | crossoverParents.add(EcoreUtil.copy(parent))]
 		
 		val graph = new EGraphImpl(crossoverParents)
 		val triedOperators = new ArrayList<Unit>()
 		
-		// Randomly pick one unit
+		// Randomly pick one unit 
+		//TODO Cache random
 		var operator = breedingOperators.get(new Random().nextInt(breedingOperators.size()))
 
 		while(triedOperators.length < breedingOperators.length) {
@@ -114,9 +117,9 @@ class SolutionGenerator {
 			if(remainingRules.size == 0) {
 				return parents
 			}
-			
+
 			operator = remainingRules.get(new Random().nextInt(remainingRules.size()))
-				
+
 		}
 		
         // We didn't find any applicable evolvers...
@@ -131,21 +134,24 @@ class SolutionGenerator {
 		ruleRunner.EGraph = graph
 		ruleRunner.unit = operator
 		
-		//TODO Not sure about this filter. Check what kind of parameter we would expect people
-		//to pass in
-		var inParameters = operator.parameters.filter[parameter | parameter.kind.equals(ParameterKind.IN)]
-		
-		if(!inParameters.empty){
-			inParameters.forEach[  
-				parameter | ruleRunner.setParameterValue(
-					parameter.name, 
-					evolverParametersFactory.getParameterValue(operator, parameter, object)
-				)
-			]
+		if(operator.parameters != null){
+			//TODO Not sure about this filter. Check what kind of parameter we would expect people
+			//to pass in
+			var inParameters = operator.parameters.filter[parameter | parameter.kind.equals(ParameterKind.IN)]
+			
+			if(!inParameters.empty){
+				inParameters.forEach[  
+					parameter | ruleRunner.setParameterValue(
+						parameter.name, 
+						evolverParametersFactory.getParameterValue(operator, parameter, object)
+					)
+				]
+			}
 		}
 		
 		//Run the selected Henshin Rule
-		return ruleRunner.execute(null)
+		return ruleRunner.execute(null)	
+		
 	}
 	
 	def boolean runUnitOperator(Unit operator, EGraph graph, List<EObject> object){

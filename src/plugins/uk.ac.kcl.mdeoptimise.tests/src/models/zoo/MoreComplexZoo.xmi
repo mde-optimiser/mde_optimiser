@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zoo:Zoo xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:zoo="http://inf.kcl.ac.uk/zoo/2016">
+  <animals name="Swan" spaceRequired="1" quantity="2"/>
+  <animals name="Duck" spaceRequired="1" quantity="3"/>
+  <animals name="Cat" spaceRequired="1" quantity="1" eats="//@animals.1"/>
+  <cages spaceAvailable="5" spaceRemaining="2" animals="//@animals.1"/>
+  <cages spaceAvailable="7" spaceRemaining="3" animals="//@animals.0 //@animals.2"/>
+</zoo:Zoo>

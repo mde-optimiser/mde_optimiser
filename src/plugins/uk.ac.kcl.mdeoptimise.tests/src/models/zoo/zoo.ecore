@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="zoo" nsURI="http://inf.kcl.ac.uk/zoo/2016" nsPrefix="zoo">
+  <eClassifiers xsi:type="ecore:EClass" name="Zoo">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="animals" upperBound="-1"
+        eType="#//Animal" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cages" upperBound="-1"
+        eType="#//Cage" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Cage">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="spaceAvailable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="spaceRemaining" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="animals" upperBound="-1"
+        eType="#//Animal"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Animal">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="spaceRequired" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="quantity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eats" upperBound="-1" eType="#//Animal"/>
+  </eClassifiers>
+</ecore:EPackage>
