@@ -50,7 +50,7 @@ repositories/file\:_home_travis_build_mde-optimiser_mde_optimiser_src_releng_uk.
 repositories/file\:_home_travis_build_mde-optimiser_mde_optimiser_src_releng_uk.ac.kcl.mdeoptimise.repository_target_repository/provider=
 repositories/file\:_home_travis_build_mde-optimiser_mde_optimiser_src_releng_uk.ac.kcl.mdeoptimise.repository_target_repository/type=org.eclipse.equinox.p2.artifact.repository.simpleRepository
 repositories/file\:_home_travis_build_mde-optimiser_mde_optimiser_src_releng_uk.ac.kcl.mdeoptimise.repository_target_repository/uri=file\:/home/travis/build/mde-optimiser/mde_optimiser/src/releng/uk.ac.kcl.mdeoptimise.repository/target/repository/
-repositories/file\:_home_travis_build_mde-optimiser_mde_optimiser_src_releng_uk.ac.kcl.mdeoptimise.repository_target_repository/version=1
+repositories/file\:_home_travis_build_mde-optimiser_mde_optimiser_src_releng_uk.ac.kcl.mdeoptimise.repository_target_repository/version=1.0.0
 repositories/file\:_resolution-context-artifacts@%252Fhome%252Ftravis%252Fbuild%252Fmde-optimiser%252Fmde_optimiser%252Fsrc%252Freleng%252Fuk.ac.kcl.mdeoptimise.repository/description=Read-only repository adapter for org.eclipse.tycho.p2.target.TargetPlatformBundlePublisher$PublishedBundlesArtifactRepository@d4eaa2fa
 repositories/file\:_resolution-context-artifacts@%252Fhome%252Ftravis%252Fbuild%252Fmde-optimiser%252Fmde_optimiser%252Fsrc%252Freleng%252Fuk.ac.kcl.mdeoptimise.repository/enabled=true
 repositories/file\:_resolution-context-artifacts@%252Fhome%252Ftravis%252Fbuild%252Fmde-optimiser%252Fmde_optimiser%252Fsrc%252Freleng%252Fuk.ac.kcl.mdeoptimise.repository/isSystem=false
