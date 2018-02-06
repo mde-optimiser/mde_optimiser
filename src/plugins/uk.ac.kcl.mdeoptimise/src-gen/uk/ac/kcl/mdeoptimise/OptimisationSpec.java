@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmVariation <em>Algorithm Variation</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmEvolutions <em>Algorithm Evolutions</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmPopulation <em>Algorithm Population</em>}</li>
+ *   <li>{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmExperiments <em>Algorithm Experiments</em>}</li>
  * </ul>
  *
  * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getOptimisationSpec()
@@ -80,30 +81,30 @@ public interface OptimisationSpec extends EObject
   void setAlgorithmName(String value);
 
   /**
-   * Returns the value of the '<em><b>Algorithm Variation</b></em>' attribute.
+   * Returns the value of the '<em><b>Algorithm Variation</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Algorithm Variation</em>' attribute isn't clear,
+   * If the meaning of the '<em>Algorithm Variation</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Algorithm Variation</em>' attribute.
-   * @see #setAlgorithmVariation(String)
+   * @return the value of the '<em>Algorithm Variation</em>' containment reference.
+   * @see #setAlgorithmVariation(AlgorithmVariation)
    * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getOptimisationSpec_AlgorithmVariation()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getAlgorithmVariation();
+  AlgorithmVariation getAlgorithmVariation();
 
   /**
-   * Sets the value of the '{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmVariation <em>Algorithm Variation</em>}' attribute.
+   * Sets the value of the '{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmVariation <em>Algorithm Variation</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Algorithm Variation</em>' attribute.
+   * @param value the new value of the '<em>Algorithm Variation</em>' containment reference.
    * @see #getAlgorithmVariation()
    * @generated
    */
-  void setAlgorithmVariation(String value);
+  void setAlgorithmVariation(AlgorithmVariation value);
 
   /**
    * Returns the value of the '<em><b>Algorithm Evolutions</b></em>' attribute.
@@ -156,5 +157,31 @@ public interface OptimisationSpec extends EObject
    * @generated
    */
   void setAlgorithmPopulation(int value);
+
+  /**
+   * Returns the value of the '<em><b>Algorithm Experiments</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Algorithm Experiments</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Algorithm Experiments</em>' attribute.
+   * @see #setAlgorithmExperiments(int)
+   * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getOptimisationSpec_AlgorithmExperiments()
+   * @model
+   * @generated
+   */
+  int getAlgorithmExperiments();
+
+  /**
+   * Sets the value of the '{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmExperiments <em>Algorithm Experiments</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Algorithm Experiments</em>' attribute.
+   * @see #getAlgorithmExperiments()
+   * @generated
+   */
+  void setAlgorithmExperiments(int value);
 
 } // OptimisationSpec

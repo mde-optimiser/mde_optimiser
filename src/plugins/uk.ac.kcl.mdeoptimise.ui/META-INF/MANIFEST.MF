@@ -31,5 +31,6 @@ Export-Package: uk.ac.kcl.mdeoptimise.ui.internal,
  uk.ac.kcl.ui.quickfix,
  uk.ac.kcl.ui.contentassist,
  uk.ac.kcl.ui.handler,
- uk.ac.kcl.ui.launch
+ uk.ac.kcl.ui.launch,
+ uk.ac.kcl.ui.output
 Bundle-Activator: uk.ac.kcl.mdeoptimise.ui.internal.MdeoptimiseActivator

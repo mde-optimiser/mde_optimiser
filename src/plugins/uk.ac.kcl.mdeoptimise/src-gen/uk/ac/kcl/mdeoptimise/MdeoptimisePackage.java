@@ -141,14 +141,14 @@ public interface MdeoptimisePackage extends EPackage
   int OPTIMISATION_FEATURE_COUNT = 7;
 
   /**
-   * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.BasepathSpecImpl <em>Basepath Spec</em>}' class.
+   * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.BasePathSpecImpl <em>Base Path Spec</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see uk.ac.kcl.mdeoptimise.impl.BasepathSpecImpl
-   * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getBasepathSpec()
+   * @see uk.ac.kcl.mdeoptimise.impl.BasePathSpecImpl
+   * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getBasePathSpec()
    * @generated
    */
-  int BASEPATH_SPEC = 1;
+  int BASE_PATH_SPEC = 1;
 
   /**
    * The feature id for the '<em><b>Location</b></em>' attribute.
@@ -157,16 +157,16 @@ public interface MdeoptimisePackage extends EPackage
    * @generated
    * @ordered
    */
-  int BASEPATH_SPEC__LOCATION = 0;
+  int BASE_PATH_SPEC__LOCATION = 0;
 
   /**
-   * The number of structural features of the '<em>Basepath Spec</em>' class.
+   * The number of structural features of the '<em>Base Path Spec</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int BASEPATH_SPEC_FEATURE_COUNT = 1;
+  int BASE_PATH_SPEC_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.MetaModelSpecImpl <em>Meta Model Spec</em>}' class.
@@ -492,7 +492,7 @@ public interface MdeoptimisePackage extends EPackage
   int OPTIMISATION_SPEC__ALGORITHM_NAME = 1;
 
   /**
-   * The feature id for the '<em><b>Algorithm Variation</b></em>' attribute.
+   * The feature id for the '<em><b>Algorithm Variation</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -519,13 +519,105 @@ public interface MdeoptimisePackage extends EPackage
   int OPTIMISATION_SPEC__ALGORITHM_POPULATION = 4;
 
   /**
+   * The feature id for the '<em><b>Algorithm Experiments</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OPTIMISATION_SPEC__ALGORITHM_EXPERIMENTS = 5;
+
+  /**
    * The number of structural features of the '<em>Optimisation Spec</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OPTIMISATION_SPEC_FEATURE_COUNT = 5;
+  int OPTIMISATION_SPEC_FEATURE_COUNT = 6;
+
+  /**
+   * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.AlgorithmVariationImpl <em>Algorithm Variation</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.mdeoptimise.impl.AlgorithmVariationImpl
+   * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getAlgorithmVariation()
+   * @generated
+   */
+  int ALGORITHM_VARIATION = 10;
+
+  /**
+   * The feature id for the '<em><b>Probability Variation</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ALGORITHM_VARIATION__PROBABILITY_VARIATION = 0;
+
+  /**
+   * The feature id for the '<em><b>Simple Variation</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ALGORITHM_VARIATION__SIMPLE_VARIATION = 1;
+
+  /**
+   * The number of structural features of the '<em>Algorithm Variation</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ALGORITHM_VARIATION_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.ProbabilityVariationImpl <em>Probability Variation</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.mdeoptimise.impl.ProbabilityVariationImpl
+   * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getProbabilityVariation()
+   * @generated
+   */
+  int PROBABILITY_VARIATION = 11;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROBABILITY_VARIATION__TYPE = 0;
+
+  /**
+   * The feature id for the '<em><b>Crossover rate</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROBABILITY_VARIATION__CROSSOVER_RATE = 1;
+
+  /**
+   * The feature id for the '<em><b>Mutation rate</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROBABILITY_VARIATION__MUTATION_RATE = 2;
+
+  /**
+   * The number of structural features of the '<em>Probability Variation</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROBABILITY_VARIATION_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.EvolverType <em>Evolver Type</em>}' enum.
@@ -535,7 +627,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getEvolverType()
    * @generated
    */
-  int EVOLVER_TYPE = 10;
+  int EVOLVER_TYPE = 12;
 
 
   /**
@@ -626,25 +718,25 @@ public interface MdeoptimisePackage extends EPackage
   EReference getOptimisation_Optimisation();
 
   /**
-   * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.BasepathSpec <em>Basepath Spec</em>}'.
+   * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.BasePathSpec <em>Base Path Spec</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Basepath Spec</em>'.
-   * @see uk.ac.kcl.mdeoptimise.BasepathSpec
+   * @return the meta object for class '<em>Base Path Spec</em>'.
+   * @see uk.ac.kcl.mdeoptimise.BasePathSpec
    * @generated
    */
-  EClass getBasepathSpec();
+  EClass getBasePathSpec();
 
   /**
-   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.BasepathSpec#getLocation <em>Location</em>}'.
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.BasePathSpec#getLocation <em>Location</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Location</em>'.
-   * @see uk.ac.kcl.mdeoptimise.BasepathSpec#getLocation()
-   * @see #getBasepathSpec()
+   * @see uk.ac.kcl.mdeoptimise.BasePathSpec#getLocation()
+   * @see #getBasePathSpec()
    * @generated
    */
-  EAttribute getBasepathSpec_Location();
+  EAttribute getBasePathSpec_Location();
 
   /**
    * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.MetaModelSpec <em>Meta Model Spec</em>}'.
@@ -947,15 +1039,15 @@ public interface MdeoptimisePackage extends EPackage
   EAttribute getOptimisationSpec_AlgorithmName();
 
   /**
-   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmVariation <em>Algorithm Variation</em>}'.
+   * Returns the meta object for the containment reference '{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmVariation <em>Algorithm Variation</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Algorithm Variation</em>'.
+   * @return the meta object for the containment reference '<em>Algorithm Variation</em>'.
    * @see uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmVariation()
    * @see #getOptimisationSpec()
    * @generated
    */
-  EAttribute getOptimisationSpec_AlgorithmVariation();
+  EReference getOptimisationSpec_AlgorithmVariation();
 
   /**
    * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmEvolutions <em>Algorithm Evolutions</em>}'.
@@ -978,6 +1070,92 @@ public interface MdeoptimisePackage extends EPackage
    * @generated
    */
   EAttribute getOptimisationSpec_AlgorithmPopulation();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmExperiments <em>Algorithm Experiments</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Algorithm Experiments</em>'.
+   * @see uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmExperiments()
+   * @see #getOptimisationSpec()
+   * @generated
+   */
+  EAttribute getOptimisationSpec_AlgorithmExperiments();
+
+  /**
+   * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.AlgorithmVariation <em>Algorithm Variation</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Algorithm Variation</em>'.
+   * @see uk.ac.kcl.mdeoptimise.AlgorithmVariation
+   * @generated
+   */
+  EClass getAlgorithmVariation();
+
+  /**
+   * Returns the meta object for the containment reference '{@link uk.ac.kcl.mdeoptimise.AlgorithmVariation#getProbabilityVariation <em>Probability Variation</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Probability Variation</em>'.
+   * @see uk.ac.kcl.mdeoptimise.AlgorithmVariation#getProbabilityVariation()
+   * @see #getAlgorithmVariation()
+   * @generated
+   */
+  EReference getAlgorithmVariation_ProbabilityVariation();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.AlgorithmVariation#getSimpleVariation <em>Simple Variation</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Simple Variation</em>'.
+   * @see uk.ac.kcl.mdeoptimise.AlgorithmVariation#getSimpleVariation()
+   * @see #getAlgorithmVariation()
+   * @generated
+   */
+  EAttribute getAlgorithmVariation_SimpleVariation();
+
+  /**
+   * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.ProbabilityVariation <em>Probability Variation</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Probability Variation</em>'.
+   * @see uk.ac.kcl.mdeoptimise.ProbabilityVariation
+   * @generated
+   */
+  EClass getProbabilityVariation();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.ProbabilityVariation#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see uk.ac.kcl.mdeoptimise.ProbabilityVariation#getType()
+   * @see #getProbabilityVariation()
+   * @generated
+   */
+  EAttribute getProbabilityVariation_Type();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.ProbabilityVariation#getCrossover_rate <em>Crossover rate</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Crossover rate</em>'.
+   * @see uk.ac.kcl.mdeoptimise.ProbabilityVariation#getCrossover_rate()
+   * @see #getProbabilityVariation()
+   * @generated
+   */
+  EAttribute getProbabilityVariation_Crossover_rate();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.ProbabilityVariation#getMutation_rate <em>Mutation rate</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Mutation rate</em>'.
+   * @see uk.ac.kcl.mdeoptimise.ProbabilityVariation#getMutation_rate()
+   * @see #getProbabilityVariation()
+   * @generated
+   */
+  EAttribute getProbabilityVariation_Mutation_rate();
 
   /**
    * Returns the meta object for enum '{@link uk.ac.kcl.mdeoptimise.EvolverType <em>Evolver Type</em>}'.
@@ -1079,14 +1257,14 @@ public interface MdeoptimisePackage extends EPackage
     EReference OPTIMISATION__OPTIMISATION = eINSTANCE.getOptimisation_Optimisation();
 
     /**
-     * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.BasepathSpecImpl <em>Basepath Spec</em>}' class.
+     * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.BasePathSpecImpl <em>Base Path Spec</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see uk.ac.kcl.mdeoptimise.impl.BasepathSpecImpl
-     * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getBasepathSpec()
+     * @see uk.ac.kcl.mdeoptimise.impl.BasePathSpecImpl
+     * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getBasePathSpec()
      * @generated
      */
-    EClass BASEPATH_SPEC = eINSTANCE.getBasepathSpec();
+    EClass BASE_PATH_SPEC = eINSTANCE.getBasePathSpec();
 
     /**
      * The meta object literal for the '<em><b>Location</b></em>' attribute feature.
@@ -1094,7 +1272,7 @@ public interface MdeoptimisePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute BASEPATH_SPEC__LOCATION = eINSTANCE.getBasepathSpec_Location();
+    EAttribute BASE_PATH_SPEC__LOCATION = eINSTANCE.getBasePathSpec_Location();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.MetaModelSpecImpl <em>Meta Model Spec</em>}' class.
@@ -1337,12 +1515,12 @@ public interface MdeoptimisePackage extends EPackage
     EAttribute OPTIMISATION_SPEC__ALGORITHM_NAME = eINSTANCE.getOptimisationSpec_AlgorithmName();
 
     /**
-     * The meta object literal for the '<em><b>Algorithm Variation</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Algorithm Variation</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute OPTIMISATION_SPEC__ALGORITHM_VARIATION = eINSTANCE.getOptimisationSpec_AlgorithmVariation();
+    EReference OPTIMISATION_SPEC__ALGORITHM_VARIATION = eINSTANCE.getOptimisationSpec_AlgorithmVariation();
 
     /**
      * The meta object literal for the '<em><b>Algorithm Evolutions</b></em>' attribute feature.
@@ -1359,6 +1537,74 @@ public interface MdeoptimisePackage extends EPackage
      * @generated
      */
     EAttribute OPTIMISATION_SPEC__ALGORITHM_POPULATION = eINSTANCE.getOptimisationSpec_AlgorithmPopulation();
+
+    /**
+     * The meta object literal for the '<em><b>Algorithm Experiments</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute OPTIMISATION_SPEC__ALGORITHM_EXPERIMENTS = eINSTANCE.getOptimisationSpec_AlgorithmExperiments();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.AlgorithmVariationImpl <em>Algorithm Variation</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.mdeoptimise.impl.AlgorithmVariationImpl
+     * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getAlgorithmVariation()
+     * @generated
+     */
+    EClass ALGORITHM_VARIATION = eINSTANCE.getAlgorithmVariation();
+
+    /**
+     * The meta object literal for the '<em><b>Probability Variation</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ALGORITHM_VARIATION__PROBABILITY_VARIATION = eINSTANCE.getAlgorithmVariation_ProbabilityVariation();
+
+    /**
+     * The meta object literal for the '<em><b>Simple Variation</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ALGORITHM_VARIATION__SIMPLE_VARIATION = eINSTANCE.getAlgorithmVariation_SimpleVariation();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.ProbabilityVariationImpl <em>Probability Variation</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.mdeoptimise.impl.ProbabilityVariationImpl
+     * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getProbabilityVariation()
+     * @generated
+     */
+    EClass PROBABILITY_VARIATION = eINSTANCE.getProbabilityVariation();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PROBABILITY_VARIATION__TYPE = eINSTANCE.getProbabilityVariation_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Crossover rate</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PROBABILITY_VARIATION__CROSSOVER_RATE = eINSTANCE.getProbabilityVariation_Crossover_rate();
+
+    /**
+     * The meta object literal for the '<em><b>Mutation rate</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PROBABILITY_VARIATION__MUTATION_RATE = eINSTANCE.getProbabilityVariation_Mutation_rate();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.EvolverType <em>Evolver Type</em>}' enum.
