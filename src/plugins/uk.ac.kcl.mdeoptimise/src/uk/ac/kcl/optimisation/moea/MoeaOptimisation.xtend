@@ -2,30 +2,38 @@ package uk.ac.kcl.optimisation.moea
 
 import java.util.Iterator
 import java.util.Properties
-import org.eclipse.emf.ecore.EObject
 import org.moeaframework.Executor
 import org.moeaframework.core.NondominatedPopulation
 import org.moeaframework.core.spi.AlgorithmFactory
 import uk.ac.kcl.interpreter.IOptimisation
 import uk.ac.kcl.mdeoptimise.OptimisationSpec
 import uk.ac.kcl.optimisation.SolutionGenerator
+import uk.ac.kcl.mdeoptimise.dashboard.api.sender.Sender
+import uk.ac.kcl.json.JsonEncoder
 
 class MoeaOptimisation implements IOptimisation {
 	
 	SolutionGenerator solutionGenerator
+	Sender sender
 	
 	//This will have to 
 	override execute(OptimisationSpec optimisationSpec, SolutionGenerator solutionGenerator) {
-		
-		this.solutionGenerator = solutionGenerator;
+		this.sender = new Sender()
+		this.solutionGenerator = solutionGenerator
 		
 		var optimisationProperties = getOptimisationProperties(optimisationSpec)
 		
 		//Run the optimisation executor
-		val population = runOptimisation(optimisationSpec.algorithmName, optimisationProperties);
+		val population = runOptimisation(optimisationSpec.algorithmName, optimisationProperties)
+		
+		var Iterator<MoeaOptimisationSolution> solutions = getOptimisationOutcomeObjects(population)
+		
+		var message = JsonEncoder.generateFinalSolutionText(solutionGenerator.getOptimisationModel(), solutions)
+		sender.sendMessage(message);
+		System.out.println("[MDEO] final solution message sent: " + message);
 		
 		//Extract optimisation models from the problem solutions
-		return getOptimisationOutcomeObjects(population);
+		return solutions;
 	}
 	
 	def Iterator<MoeaOptimisationSolution> getOptimisationOutcomeObjects(NondominatedPopulation population){

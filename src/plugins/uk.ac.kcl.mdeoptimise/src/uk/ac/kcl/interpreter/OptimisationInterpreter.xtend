@@ -33,21 +33,17 @@ class OptimisationInterpreter {
 	
 	def void start() {
 		
-		val sender = new Sender();
-		
 		// This model provider loads the model given by the user in the DSL
 		val userModelProvider = new UserModelProvider(getResourceSet(projectRootPath.append(model.basepath.location).toPortableString), model.model.location)
 		var solutionGenerator = new SolutionGenerator(model, 
 											getBreedingOperators, 
 											getMutationOperators, 
 											userModelProvider, 
-											getMetamodel,
-											sender);
+											getMetamodel);
 
 		var optimisation = new MoeaOptimisation()
 									.execute(model.optimisation, solutionGenerator)		
 		
-		sender.sendTestMessage("Sending test message to queue.");
 		optimisation
 				.forEach[result | userModelProvider.storeModelAndInfo(result, projectRootPath.toPortableString, model)]	
 	}

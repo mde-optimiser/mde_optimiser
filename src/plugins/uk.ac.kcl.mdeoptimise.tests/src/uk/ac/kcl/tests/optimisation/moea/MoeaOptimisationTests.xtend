@@ -20,7 +20,6 @@ import uk.ac.kcl.optimisation.SolutionGenerator
 import uk.ac.kcl.optimisation.UserModelProvider
 import uk.ac.kcl.optimisation.moea.MoeaOptimisation
 import uk.ac.kcl.tests.FullTestInjector
-import uk.ac.kcl.mdeoptimise.dashboard.api.sender.Sender
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)
@@ -94,15 +93,12 @@ class MoeaOptimisationTests {
 			
 			val optimisationInterpreter = new OptimisationInterpreter("", model)
 			
-			val sender = new Sender();
-		
 			var solutionGenerator = new SolutionGenerator(
 											model, 
 											optimisationInterpreter.breedingOperators, 
 											optimisationInterpreter.mutationOperators, 
 											oclModelProvider, 
-											optimisationInterpreter.metamodel,
-											sender);
+											optimisationInterpreter.metamodel);
 
 			var optimisation = new MoeaOptimisation()
 									.execute(model.optimisation, solutionGenerator)

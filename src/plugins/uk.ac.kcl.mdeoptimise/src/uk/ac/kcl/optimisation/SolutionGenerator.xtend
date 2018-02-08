@@ -25,6 +25,7 @@ import java.util.Arrays
 import uk.ac.kcl.interpreter.evolvers.parameters.EvolverParametersFactory
 import org.eclipse.emf.henshin.model.ParameterKind
 import uk.ac.kcl.mdeoptimise.dashboard.api.sender.Sender
+import uk.ac.kcl.json.JsonEncoder
 
 class SolutionGenerator {
 
@@ -46,14 +47,14 @@ class SolutionGenerator {
 	public UnitApplicationImpl unitRunner
 	public RuleApplicationImpl ruleRunner
 	
-	public Sender sender;
+	private Sender sender
 	
-	new(Optimisation model, List<Unit> breedingOperators, List<Unit> mutationOperators, IModelProvider modelProvider, EPackage metamodel, Sender messageSender){
+	new(Optimisation model, List<Unit> breedingOperators, List<Unit> mutationOperators, IModelProvider modelProvider, EPackage metamodel){
 		this.optimisationModel = model
 		this.breedingOperators = breedingOperators
 		this.mutationOperators = mutationOperators
 		this.initialModelProvider = modelProvider
-		this.theMetamodel = metamodel;
+		this.theMetamodel = metamodel
 		this.engine = new EngineImpl
 		
 		engine.getOptions().put(Engine.OPTION_DETERMINISTIC, false);
@@ -64,7 +65,10 @@ class SolutionGenerator {
 		
 		//Disable henshin warnings
 		ChangeImpl.PRINT_WARNINGS = false;
-		this.sender = messageSender;
+		this.sender = new Sender()
+		var message = JsonEncoder.generateWorkerRegistrationText(model)
+		sender.sendMessage(message)
+		System.out.println("[MDEO] worker registration message sent: " + message);
 	}
 
     /**
@@ -124,7 +128,6 @@ class SolutionGenerator {
 		
         // We didn't find any applicable evolvers...
         System.out.println("Model with no crossover evolvers applicable.....")
-        
 		return parents
 	}
 
