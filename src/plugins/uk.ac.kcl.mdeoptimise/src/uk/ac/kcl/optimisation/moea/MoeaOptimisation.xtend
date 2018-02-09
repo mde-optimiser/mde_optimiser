@@ -27,7 +27,6 @@ class MoeaOptimisation implements IOptimisation {
 		val population = runOptimisation(optimisationSpec.algorithmName, optimisationProperties)
 		
 		var Iterator<MoeaOptimisationSolution> solutions = getOptimisationOutcomeObjects(population)
-		
 		var message = JsonEncoder.generateFinalSolutionText(solutionGenerator.getOptimisationModel(), solutions)
 		sender.sendMessage(message);
 		System.out.println("[MDEO] final solution message sent: " + message);

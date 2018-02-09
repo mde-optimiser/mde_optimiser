@@ -1,14 +1,13 @@
 package uk.ac.kcl.json;
 
 import java.io.IOException;
-import java.io.StringWriter;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import uk.ac.kcl.mdeoptimise.ConstraintInterpreterSpec;
 import uk.ac.kcl.mdeoptimise.ObjectiveInterpreterSpec;
@@ -22,136 +21,141 @@ import uk.ac.kcl.optimisation.moea.MoeaOptimisationSolution;
  *
  */
 public class JsonEncoder {
+	
+	private enum MessageType {WORKER_REGISTER, FINAL_SOLUTION, INTERMEDIATE_SOLUTION}
 
 	/**
 	 * Generate JSON text used to send a worker registration message.
 	 *
 	 * The message looks like this:
-	 * {"workerId":"12345",
-	 * "workerName":"tamara",
-	 * "experimentId":"src\/models\/cra\/",
-	 * "metamodel":"architectureCRA.ecore",
-	 * "model":"TTC_InputRDG_C.xmi",
-	 * "objectives":[
-	 * 		{"name":"MinimiseCoupling","type":"java"}
-	 * ],
-	 * "constraints":[
-	 * 		{"name":"MinimiseClasslessFeatures","type":"java"}
-	 * ],
-	 * "evolutions":2,
-	 * "population":30}
-	 *
+	 * <pre>
+	 * {"WORKER_REGISTER":
+	 * 		{"worker_id":"12345",
+	 * 		"worker_name":"tamara",
+	 * 		"experiment_id":"src\/models\/cra\/",
+	 * 		"metamodel":"architectureCRA.ecore",
+	 * 		"model":"TTC_InputRDG_C.xmi",
+	 * 		"objectives":[
+	 * 			{"name":"MinimiseCoupling","type":"java"}
+	 * 		],
+	 * 		"constraints":[
+	 * 			{"name":"MinimiseClasslessFeatures","type":"java"}
+	 * 		],
+	 * 		"evolutions":2,
+	 * 		"population":30}
+	 * }
+	 * </pre>
 	 * @param optimisationModel used to extract relevant data, such as model, metamodel etc.
 	 * @return String representation of a JSONObject.
 	 * @throws IOException
 	 */
-	@SuppressWarnings("unchecked")
 	public static String generateWorkerRegistrationText(Optimisation optimisationModel) throws IOException {
 		// TODO(tamara): what are the worker name and ID?
-		JSONObject obj = new JSONObject();
-		obj.put("workerName", "tamara");
-		obj.put("workerId", "12345");
-		obj.put("experimentId", optimisationModel.getBasepath().getLocation());	// experiment ID is the base path?
-		obj.put("evolutions", new Integer(optimisationModel.getOptimisation().getAlgorithmEvolutions()));
-		obj.put("population", new Integer(optimisationModel.getOptimisation().getAlgorithmPopulation()));
-		obj.put("model", optimisationModel.getModel().getLocation());
-		obj.put("metamodel", optimisationModel.getMetamodel().getLocation());
+		JSONObject workerJSON = new JSONObject();
+		workerJSON.put("worker_name", "tamara");
+		workerJSON.put("worker_id", "12345");
+		workerJSON.put("experiment_id", optimisationModel.getBasepath().getLocation());	// experiment ID is the base path?
+		workerJSON.put("evolutions", new Integer(optimisationModel.getOptimisation().getAlgorithmEvolutions()));
+		workerJSON.put("population", new Integer(optimisationModel.getOptimisation().getAlgorithmPopulation()));
+		workerJSON.put("model", optimisationModel.getModel().getLocation());
+		workerJSON.put("metamodel", optimisationModel.getMetamodel().getLocation());
 
 		// insert an array of objectives
-		obj.put("objectives", generateObjectivesJsonArray(optimisationModel.getObjectives()));
+		workerJSON.put("objectives", generateObjectivesJsonArray(optimisationModel.getObjectives()));
 		// insert an array of constraints
-		obj.put("constraints", generateConstraintsJsonArray(optimisationModel.getConstraints()));
+		workerJSON.put("constraints", generateConstraintsJsonArray(optimisationModel.getConstraints()));
+		
+		// construct a final message with the message type
+		JSONObject messageJSON = new JSONObject();
+		messageJSON.put(MessageType.WORKER_REGISTER.toString(), workerJSON);
 
-		StringWriter out = new StringWriter();
-		obj.writeJSONString(out);
-
-		return out.toString();
+		return messageJSON.toString();
 	}
 
 	/**
 	 * Generate JSON text used to send a final solution message.
 	 *
 	 * The message looks like this:
-	 * {"worker-id":"12345",
-	 * "experimentId":"src\/models\/cra\/",
-	 * "run-id":"1",
-	 * "time-taken":1000,
-	 * "solutions":[
-	 * 		{"objectives":[
+	 * <pre>
+	 * {"FINAL_SOLUTION":
+	 * 		{"worker_id":"12345",
+	 * 		"experiment_id":"src\/models\/cra\/",
+	 * 		"run_id":"1",
+	 * 		"time_taken":1000,
+	 * 		"solutions":[
+	 * 			{"objectives":[
 	 * 				{"name":"MinimiseCoupling","value":-1.0}
-	 * 		],
-	 * 		"constraints":[
+	 * 			],
+	 * 			"constraints":[
 	 * 				{"name":"MinimiseClasslessFeatures","value":32.0}
-	 * 		]},
+	 * 			]},
 	 * ]}
-	 *
-	 * @param optimisationModel used to extract relevant data, such as basepath location.
+	 * }
+	 * </pre>
+	 * @param optimisationModel used to extract relevant data, such as base path location.
 	 * @param solutions to be represented as a JSON message.
 	 * @return String representation of a JSONObject.
 	 * @throws IOException
 	 */
-	@SuppressWarnings("unchecked")
-	public static String generateFinalSolutionText(Optimisation optimisationModel, Iterator<MoeaOptimisationSolution> solutions) throws IOException {
-		JSONObject obj = new JSONObject();
-		obj.put("worker-id", "12345");
-		obj.put("experiment-id", optimisationModel.getBasepath().getLocation());	// experiment ID is the base path?
-		obj.put("run-id", 1);	// TODO(tamara): What is the run ID?
-		obj.put("time-taken", 1000);	// TODO(tamara): Calculate time taken.
+	public static String generateFinalSolutionText(Optimisation optimisationModel,
+			Iterator<MoeaOptimisationSolution> solutions) throws IOException {
+		JSONObject solutionJSON = new JSONObject();
+		solutionJSON.put("worker_id", "12345");
+		solutionJSON.put("experiment_id", optimisationModel.getBasepath().getLocation());
+		solutionJSON.put("run_id", 1); // TODO(tamara): What is the run ID?
+		solutionJSON.put("time_taken", 1000); // TODO(tamara): Calculate time taken.
 
 		// insert an array of solutions
-		obj.put("solutions", generateSolutionsJsonArray(solutions));
+		solutionJSON.put("solutions", generateSolutionsJsonArray(solutions));
 
-		StringWriter out = new StringWriter();
-		obj.writeJSONString(out);
+		// construct a final message with the message type
+		JSONObject messageJSON = new JSONObject();
+		messageJSON.put(MessageType.FINAL_SOLUTION.toString(), solutionJSON);
 
-		return out.toString();
+		return messageJSON.toString();
 	}
 
-	@SuppressWarnings("unchecked")
 	private static JSONArray generateConstraintsJsonArray(EList<ConstraintInterpreterSpec> constraints) {
 		JSONArray constraintsArray = new JSONArray();
-		for(ConstraintInterpreterSpec constraint : constraints) {
+		for (ConstraintInterpreterSpec constraint : constraints) {
 			JSONObject constraintJSON = new JSONObject();
 			constraintJSON.put("name", constraint.getConstraintName());
 			constraintJSON.put("type", constraint.getConstraintType());
-			constraintsArray.add(constraintJSON);
+			constraintsArray.put(constraintJSON);
 		}
 		return constraintsArray;
 	}
 
-	@SuppressWarnings("unchecked")
 	private static JSONArray generateObjectivesJsonArray(EList<ObjectiveInterpreterSpec> objectives) {
 		JSONArray objectivesArray = new JSONArray();
-		for(ObjectiveInterpreterSpec objective : objectives) {
+		for (ObjectiveInterpreterSpec objective : objectives) {
 			JSONObject objectiveJSON = new JSONObject();
 			objectiveJSON.put("name", objective.getObjectiveName());
 			objectiveJSON.put("type", objective.getObjectiveType());
-			objectivesArray.add(objectiveJSON);
+			objectivesArray.put(objectiveJSON);
 		}
 		return objectivesArray;
 	}
 
-	@SuppressWarnings("unchecked")
 	private static JSONArray generateFitnessValuesJsonArray(LinkedHashMap<String, Double> nameValueMap) {
 		JSONArray fitnessValuesArray = new JSONArray();
-		for(Map.Entry<String, Double> nameValueEntry : nameValueMap.entrySet()) {
+		for (Map.Entry<String, Double> nameValueEntry : nameValueMap.entrySet()) {
 			JSONObject fitnessValueJSON = new JSONObject();
 			fitnessValueJSON.put("name", nameValueEntry.getKey());
 			fitnessValueJSON.put("value", nameValueEntry.getValue());
-			fitnessValuesArray.add(fitnessValueJSON);
+			fitnessValuesArray.put(fitnessValueJSON);
 		}
 		return fitnessValuesArray;
 	}
 
-	@SuppressWarnings("unchecked")
 	private static JSONArray generateSolutionsJsonArray(Iterator<MoeaOptimisationSolution> solutions) {
 		JSONArray solutionsArray = new JSONArray();
-		while(solutions.hasNext()) {
+		while (solutions.hasNext()) {
 			MoeaOptimisationSolution solution = solutions.next();
 			JSONObject solutionJSON = new JSONObject();
 			solutionJSON.put("objectives", generateFitnessValuesJsonArray(solution.getFormattedObjectives()));
 			solutionJSON.put("constraints", generateFitnessValuesJsonArray(solution.getFormattedConstraints()));
-			solutionsArray.add(solutionJSON);
+			solutionsArray.put(solutionJSON);
 		}
 		return solutionsArray;
 	}

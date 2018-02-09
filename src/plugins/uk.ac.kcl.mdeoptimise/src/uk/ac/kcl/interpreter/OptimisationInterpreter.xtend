@@ -1,18 +1,17 @@
 package uk.ac.kcl.interpreter
 
-import uk.ac.kcl.mdeoptimise.Optimisation
-import org.eclipse.emf.henshin.model.resource.HenshinResourceSet
-import org.eclipse.emf.ecore.EPackage
-import java.util.List
-import org.eclipse.emf.henshin.model.Unit
-import org.eclipse.emf.common.util.URI
-import uk.ac.kcl.optimisation.moea.MoeaOptimisation
-import uk.ac.kcl.optimisation.SolutionGenerator
-import uk.ac.kcl.optimisation.UserModelProvider
 import java.util.LinkedList
+import java.util.List
 import org.eclipse.core.runtime.IPath
 import org.eclipse.core.runtime.Path
-import uk.ac.kcl.mdeoptimise.dashboard.api.sender.Sender
+import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.ecore.EPackage
+import org.eclipse.emf.henshin.model.Unit
+import org.eclipse.emf.henshin.model.resource.HenshinResourceSet
+import uk.ac.kcl.mdeoptimise.Optimisation
+import uk.ac.kcl.optimisation.SolutionGenerator
+import uk.ac.kcl.optimisation.UserModelProvider
+import uk.ac.kcl.optimisation.moea.MoeaOptimisation
 
 class OptimisationInterpreter {
 	

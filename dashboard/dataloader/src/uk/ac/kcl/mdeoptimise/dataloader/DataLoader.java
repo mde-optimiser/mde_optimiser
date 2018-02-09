@@ -4,7 +4,6 @@ import java.util.Properties;
 
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
-import javax.jms.DeliveryMode;
 import javax.jms.Destination;
 import javax.jms.ExceptionListener;
 import javax.jms.JMSException;
@@ -20,7 +19,6 @@ import javax.naming.InitialContext;
  *
  */
 public class DataLoader {
-    private static final int DELIVERY_MODE = DeliveryMode.NON_PERSISTENT;
     static final String INITIAL_CONTEXT_FACTORY = "org.apache.qpid.jms.jndi.JmsInitialContextFactory";
 
     static final String CONNECTION_JNDI_NAME = "myFactoryLookup";
@@ -30,9 +28,6 @@ public class DataLoader {
 	static final String QUEUE_JNDI_NAME = "myQueueLookup";
 	static final String QUEUE_NAME = "queue";
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		try {
 			// Set the properties ...
@@ -60,6 +55,7 @@ public class DataLoader {
 			e.printStackTrace();
 		}
 	}
+
 	private static class MyExceptionListener implements ExceptionListener {
         @Override
         public void onException(JMSException exception) {
