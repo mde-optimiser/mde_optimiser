@@ -19,22 +19,14 @@ import javax.naming.InitialContext;
  *
  */
 public class DataLoader {
-    static final String INITIAL_CONTEXT_FACTORY = "org.apache.qpid.jms.jndi.JmsInitialContextFactory";
-
-    static final String CONNECTION_JNDI_NAME = "myFactoryLookup";
-    static final String CONNECTION_NAME = "amqp://queue:5672";
-    //static final String CONNECTION_NAME = "amqp://localhost:5672";
-
-	static final String QUEUE_JNDI_NAME = "myQueueLookup";
-	static final String QUEUE_NAME = "queue";
-
+    
 	public static void main(String[] args) {
 		try {
 			// Set the properties ...
         	Properties properties = new Properties();
-        	properties.put(Context.INITIAL_CONTEXT_FACTORY, INITIAL_CONTEXT_FACTORY);
-        	properties.put("connectionfactory."+CONNECTION_JNDI_NAME , CONNECTION_NAME);
-        	properties.put("queue."+QUEUE_JNDI_NAME , QUEUE_NAME);
+        	properties.put(Context.INITIAL_CONTEXT_FACTORY, Consts.INITIAL_CONTEXT_FACTORY);
+        	properties.put("connectionfactory."+ Consts.CONNECTION_JNDI_NAME , Consts.QUEUE_CONNECTION_NAME);
+        	properties.put("queue."+ Consts.QUEUE_JNDI_NAME , Consts.QUEUE_NAME);
         
         	// Create the initial context
         	Context context = new InitialContext(properties);

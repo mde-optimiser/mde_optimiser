@@ -22,13 +22,6 @@ class Database {
 	private enum MessageType {WORKER_REGISTER, FINAL_SOLUTION, INTERMEDIATE_SOLUTION}
 	private enum CriteriaType {OBJECTIVE, CONSTRAINT}
 	
-	private static final String URL = "jdbc:h2:tcp://database/test";
-	private static final String USERNAME = "sa";
-    private static final String PASSWORD = "";
-	/*private static final String URL = "jdbc:h2:tcp://localhost/~/test";
-	private static final String USERNAME = "mdeo";
-    private static final String PASSWORD = "mdeo";*/
-    
     // SQL statements for creating new tables.
     public static final String CREATE_EXPERIMENT = 
     		"CREATE TABLE IF NOT EXISTS experiment (worker_id INT NOT NULL, worker_name VARCHAR(255), "
@@ -77,7 +70,7 @@ class Database {
 	private static void connectToDatabase() throws ClassNotFoundException, SQLException  {
 		System.out.println("[DataLoader] Connecting to database...");
 		Class.forName("org.h2.Driver"); 
-		conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+		conn = DriverManager.getConnection(Consts.DATABASE_CONNECTION_URL, Consts.DATABASE_USERNAME, Consts.DATABASE_PASSWORD);
 		System.out.println("[DataLoader] Database connected");
 		initialiseSchema();
 	}
