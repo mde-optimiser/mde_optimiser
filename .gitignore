@@ -31,5 +31,10 @@ local.properties
 *.launch
 #.classpath
 
+# gwt caches and compiled units #
+gwt-unitCache/
+war/mdeo_status_dashboard_1_0/
+war/WEB-INF/deploy/
+
 gen/
 profiler/
