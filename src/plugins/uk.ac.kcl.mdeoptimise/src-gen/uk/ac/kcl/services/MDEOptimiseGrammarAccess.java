@@ -30,7 +30,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.Optimisation");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cBasepathAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cBasepathBasepathSpecParserRuleCall_0_0 = (RuleCall)cBasepathAssignment_0.eContents().get(0);
+		private final RuleCall cBasepathBasePathSpecParserRuleCall_0_0 = (RuleCall)cBasepathAssignment_0.eContents().get(0);
 		private final Assignment cMetamodelAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cMetamodelMetaModelSpecParserRuleCall_1_0 = (RuleCall)cMetamodelAssignment_1.eContents().get(0);
 		private final Assignment cModelAssignment_2 = (Assignment)cGroup.eContents().get(2);
@@ -45,7 +45,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cOptimisationOptimisationSpecParserRuleCall_6_0 = (RuleCall)cOptimisationAssignment_6.eContents().get(0);
 		
 		//Optimisation:
-		//	basepath=BasepathSpec
+		//	basepath=BasePathSpec
 		//	metamodel=MetaModelSpec
 		//	model=ModelPathSpec
 		//	objectives+=ObjectiveInterpreterSpec+
@@ -54,15 +54,15 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		//	optimisation=OptimisationSpec;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//basepath=BasepathSpec metamodel=MetaModelSpec model=ModelPathSpec objectives+=ObjectiveInterpreterSpec+
+		//basepath=BasePathSpec metamodel=MetaModelSpec model=ModelPathSpec objectives+=ObjectiveInterpreterSpec+
 		//constraints+=ConstraintInterpreterSpec* evolvers+=EvolverSpec+ optimisation=OptimisationSpec
 		public Group getGroup() { return cGroup; }
 		
-		//basepath=BasepathSpec
+		//basepath=BasePathSpec
 		public Assignment getBasepathAssignment_0() { return cBasepathAssignment_0; }
 		
-		//BasepathSpec
-		public RuleCall getBasepathBasepathSpecParserRuleCall_0_0() { return cBasepathBasepathSpecParserRuleCall_0_0; }
+		//BasePathSpec
+		public RuleCall getBasepathBasePathSpecParserRuleCall_0_0() { return cBasepathBasePathSpecParserRuleCall_0_0; }
 		
 		//metamodel=MetaModelSpec
 		public Assignment getMetamodelAssignment_1() { return cMetamodelAssignment_1; }
@@ -100,8 +100,8 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		//OptimisationSpec
 		public RuleCall getOptimisationOptimisationSpecParserRuleCall_6_0() { return cOptimisationOptimisationSpecParserRuleCall_6_0; }
 	}
-	public class BasepathSpecElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.BasepathSpec");
+	public class BasePathSpecElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.BasePathSpec");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cBasepathKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cLocationAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -113,7 +113,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		// * correctly. This will happen mainly when working with dynamic instances rather than 
 		// * fully generated and registered metamodels. All further URLs should be either absolute 
 		// * or relative to this basepath.
-		// * / BasepathSpec:
+		// * / BasePathSpec:
 		//	"basepath" location=URL;
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -669,7 +669,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	private final OptimisationElements pOptimisation;
-	private final BasepathSpecElements pBasepathSpec;
+	private final BasePathSpecElements pBasePathSpec;
 	private final MetaModelSpecElements pMetaModelSpec;
 	private final ModelPathSpecElements pModelPathSpec;
 	private final ObjectiveInterpreterSpecElements pObjectiveInterpreterSpec;
@@ -704,7 +704,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		this.gaXbase = gaXbase;
 		this.gaXtype = gaXtype;
 		this.pOptimisation = new OptimisationElements();
-		this.pBasepathSpec = new BasepathSpecElements();
+		this.pBasePathSpec = new BasePathSpecElements();
 		this.pMetaModelSpec = new MetaModelSpecElements();
 		this.pModelPathSpec = new ModelPathSpecElements();
 		this.pObjectiveInterpreterSpec = new ObjectiveInterpreterSpecElements();
@@ -758,7 +758,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//Optimisation:
-	//	basepath=BasepathSpec
+	//	basepath=BasePathSpec
 	//	metamodel=MetaModelSpec
 	//	model=ModelPathSpec
 	//	objectives+=ObjectiveInterpreterSpec+
@@ -779,14 +779,14 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	// * correctly. This will happen mainly when working with dynamic instances rather than 
 	// * fully generated and registered metamodels. All further URLs should be either absolute 
 	// * or relative to this basepath.
-	// * / BasepathSpec:
+	// * / BasePathSpec:
 	//	"basepath" location=URL;
-	public BasepathSpecElements getBasepathSpecAccess() {
-		return pBasepathSpec;
+	public BasePathSpecElements getBasePathSpecAccess() {
+		return pBasePathSpec;
 	}
 	
-	public ParserRule getBasepathSpecRule() {
-		return getBasepathSpecAccess().getRule();
+	public ParserRule getBasePathSpecRule() {
+		return getBasePathSpecAccess().getRule();
 	}
 	
 	//MetaModelSpec:

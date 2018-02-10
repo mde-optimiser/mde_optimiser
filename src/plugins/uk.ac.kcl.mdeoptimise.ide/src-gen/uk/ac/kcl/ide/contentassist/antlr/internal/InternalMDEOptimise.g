@@ -75,25 +75,25 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-// Entry rule entryRuleBasepathSpec
-entryRuleBasepathSpec
+// Entry rule entryRuleBasePathSpec
+entryRuleBasePathSpec
 :
-{ before(grammarAccess.getBasepathSpecRule()); }
-	 ruleBasepathSpec
-{ after(grammarAccess.getBasepathSpecRule()); } 
+{ before(grammarAccess.getBasePathSpecRule()); }
+	 ruleBasePathSpec
+{ after(grammarAccess.getBasePathSpecRule()); } 
 	 EOF 
 ;
 
-// Rule BasepathSpec
-ruleBasepathSpec 
+// Rule BasePathSpec
+ruleBasePathSpec 
 	@init {
 		int stackSize = keepStackSize();
 	}
 	:
 	(
-		{ before(grammarAccess.getBasepathSpecAccess().getGroup()); }
-		(rule__BasepathSpec__Group__0)
-		{ after(grammarAccess.getBasepathSpecAccess().getGroup()); }
+		{ before(grammarAccess.getBasePathSpecAccess().getGroup()); }
+		(rule__BasePathSpec__Group__0)
+		{ after(grammarAccess.getBasePathSpecAccess().getGroup()); }
 	)
 ;
 finally {
@@ -3620,53 +3620,53 @@ finally {
 }
 
 
-rule__BasepathSpec__Group__0
+rule__BasePathSpec__Group__0
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__BasepathSpec__Group__0__Impl
-	rule__BasepathSpec__Group__1
+	rule__BasePathSpec__Group__0__Impl
+	rule__BasePathSpec__Group__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__BasepathSpec__Group__0__Impl
+rule__BasePathSpec__Group__0__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getBasepathSpecAccess().getBasepathKeyword_0()); }
+	{ before(grammarAccess.getBasePathSpecAccess().getBasepathKeyword_0()); }
 	'basepath'
-	{ after(grammarAccess.getBasepathSpecAccess().getBasepathKeyword_0()); }
+	{ after(grammarAccess.getBasePathSpecAccess().getBasepathKeyword_0()); }
 )
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__BasepathSpec__Group__1
+rule__BasePathSpec__Group__1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__BasepathSpec__Group__1__Impl
+	rule__BasePathSpec__Group__1__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__BasepathSpec__Group__1__Impl
+rule__BasePathSpec__Group__1__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getBasepathSpecAccess().getLocationAssignment_1()); }
-	(rule__BasepathSpec__LocationAssignment_1)
-	{ after(grammarAccess.getBasepathSpecAccess().getLocationAssignment_1()); }
+	{ before(grammarAccess.getBasePathSpecAccess().getLocationAssignment_1()); }
+	(rule__BasePathSpec__LocationAssignment_1)
+	{ after(grammarAccess.getBasePathSpecAccess().getLocationAssignment_1()); }
 )
 ;
 finally {
@@ -16944,9 +16944,9 @@ rule__Optimisation__BasepathAssignment_0
 	}
 :
 	(
-		{ before(grammarAccess.getOptimisationAccess().getBasepathBasepathSpecParserRuleCall_0_0()); }
-		ruleBasepathSpec
-		{ after(grammarAccess.getOptimisationAccess().getBasepathBasepathSpecParserRuleCall_0_0()); }
+		{ before(grammarAccess.getOptimisationAccess().getBasepathBasePathSpecParserRuleCall_0_0()); }
+		ruleBasePathSpec
+		{ after(grammarAccess.getOptimisationAccess().getBasepathBasePathSpecParserRuleCall_0_0()); }
 	)
 ;
 finally {
@@ -17043,15 +17043,15 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__BasepathSpec__LocationAssignment_1
+rule__BasePathSpec__LocationAssignment_1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getBasepathSpecAccess().getLocationURLTerminalRuleCall_1_0()); }
+		{ before(grammarAccess.getBasePathSpecAccess().getLocationURLTerminalRuleCall_1_0()); }
 		RULE_URL
-		{ after(grammarAccess.getBasepathSpecAccess().getLocationURLTerminalRuleCall_1_0()); }
+		{ after(grammarAccess.getBasePathSpecAccess().getLocationURLTerminalRuleCall_1_0()); }
 	)
 ;
 finally {

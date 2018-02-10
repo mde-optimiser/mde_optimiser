@@ -275,5 +275,53 @@ class MoeaOptimisationTests {
 	            	mdeoResultsOutput.saveOutcome();
 	        }
 	}
+	
+	    //Some tests to run optimisation manually for now
+	@Test
+	def void runMoeaOptimisationNSGA2ScrumPlanning() {
+		
+			val pathPrefix = "gen/"
+			
+			model = parser.parse('''
+				basepath <src/models/scrum/>
+				metamodel <planning.ecore>
+				model <product_debt.xmi>
+				objective MinimiseSprints minimise java { "models.scrum.MinimiseSprints" }
+				objective MaximiseAverageSprintEffort maximise java { "models.scrum.MaximiseAverageSprintEffort" }
+				objective MaximiseAverageStakeholderImportance maximise java { "models.scrum.MaximiseAverageStakeholderImportance" }
+				constraint MinimiseUnassignedWorkItems java { "models.scrum.MinimiseUnassignedWorkItems" }
+				constraint MinimiseSprintsWithInvalidEffort java { "models.scrum.MinimiseSprintsWithInvalidEffort" }
+				constraint MinimiseEmptySprints java { "models.scrum.MinimiseEmptySprints" }
+				mutate using <sprint.henshin> unit "createSprint"
+				mutate using <sprint.henshin> unit "deleteSprint"
+				mutate using <sprint.henshin> unit "addItemToSprint"
+				mutate using <sprint.henshin> unit "removeItemFromSprint"
+				optimisation provider moea algorithm NSGAII variation mutation evolutions 150 population 30 experiments 10
+			''')
+
+			//Assert that there are no grammar issues
+			model.assertNoIssues
+
+			if(model !== null){
+					
+					val mdeoResultsOutput = new MDEOResultsOutput(new Date(), new Path(pathPrefix), new Path(""), model);	
+					
+					var experimentId = 0;
+					do {
+							            		
+	            		val startTime = System.nanoTime;
+	            		val optimisationOutcome = new OptimisationInterpreter("", model).start();
+	            		val endTime = System.nanoTime;
+	            		
+	            		val experimentDuration = (endTime - startTime) / 1000000
+	            		
+	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome))		
+						
+						experimentId++
+					} while(experimentId < model.optimisation.algorithmExperiments);
+
+	            	mdeoResultsOutput.saveOutcome();
+	        }
+	}
 
 }

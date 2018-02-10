@@ -80,9 +80,9 @@ ruleOptimisation returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getOptimisationAccess().getBasepathBasepathSpecParserRuleCall_0_0());
+					newCompositeNode(grammarAccess.getOptimisationAccess().getBasepathBasePathSpecParserRuleCall_0_0());
 				}
-				lv_basepath_0_0=ruleBasepathSpec
+				lv_basepath_0_0=ruleBasePathSpec
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getOptimisationRule());
@@ -91,7 +91,7 @@ ruleOptimisation returns [EObject current=null]
 						$current,
 						"basepath",
 						lv_basepath_0_0,
-						"uk.ac.kcl.MDEOptimise.BasepathSpec");
+						"uk.ac.kcl.MDEOptimise.BasePathSpec");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -213,15 +213,15 @@ ruleOptimisation returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRuleBasepathSpec
-entryRuleBasepathSpec returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getBasepathSpecRule()); }
-	iv_ruleBasepathSpec=ruleBasepathSpec
-	{ $current=$iv_ruleBasepathSpec.current; }
+// Entry rule entryRuleBasePathSpec
+entryRuleBasePathSpec returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getBasePathSpecRule()); }
+	iv_ruleBasePathSpec=ruleBasePathSpec
+	{ $current=$iv_ruleBasePathSpec.current; }
 	EOF;
 
-// Rule BasepathSpec
-ruleBasepathSpec returns [EObject current=null]
+// Rule BasePathSpec
+ruleBasePathSpec returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -231,17 +231,17 @@ ruleBasepathSpec returns [EObject current=null]
 	(
 		otherlv_0='basepath'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getBasepathSpecAccess().getBasepathKeyword_0());
+			newLeafNode(otherlv_0, grammarAccess.getBasePathSpecAccess().getBasepathKeyword_0());
 		}
 		(
 			(
 				lv_location_1_0=RULE_URL
 				{
-					newLeafNode(lv_location_1_0, grammarAccess.getBasepathSpecAccess().getLocationURLTerminalRuleCall_1_0());
+					newLeafNode(lv_location_1_0, grammarAccess.getBasePathSpecAccess().getLocationURLTerminalRuleCall_1_0());
 				}
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getBasepathSpecRule());
+						$current = createModelElement(grammarAccess.getBasePathSpecRule());
 					}
 					setWithLastConsumed(
 						$current,

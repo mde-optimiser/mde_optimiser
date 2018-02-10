@@ -7,21 +7,21 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Basepath Spec</b></em>'.
+ * A representation of the model object '<em><b>Base Path Spec</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link uk.ac.kcl.mdeoptimise.BasepathSpec#getLocation <em>Location</em>}</li>
+ *   <li>{@link uk.ac.kcl.mdeoptimise.BasePathSpec#getLocation <em>Location</em>}</li>
  * </ul>
  *
- * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getBasepathSpec()
+ * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getBasePathSpec()
  * @model
  * @generated
  */
-public interface BasepathSpec extends EObject
+public interface BasePathSpec extends EObject
 {
   /**
    * Returns the value of the '<em><b>Location</b></em>' attribute.
@@ -33,14 +33,14 @@ public interface BasepathSpec extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Location</em>' attribute.
    * @see #setLocation(String)
-   * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getBasepathSpec_Location()
+   * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getBasePathSpec_Location()
    * @model
    * @generated
    */
   String getLocation();
 
   /**
-   * Sets the value of the '{@link uk.ac.kcl.mdeoptimise.BasepathSpec#getLocation <em>Location</em>}' attribute.
+   * Sets the value of the '{@link uk.ac.kcl.mdeoptimise.BasePathSpec#getLocation <em>Location</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Location</em>' attribute.
@@ -49,4 +49,4 @@ public interface BasepathSpec extends EObject
    */
   void setLocation(String value);
 
-} // BasepathSpec
+} // BasePathSpec
