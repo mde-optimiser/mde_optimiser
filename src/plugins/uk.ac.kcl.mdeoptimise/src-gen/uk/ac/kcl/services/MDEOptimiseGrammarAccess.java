@@ -39,10 +39,12 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cObjectivesObjectiveInterpreterSpecParserRuleCall_3_0 = (RuleCall)cObjectivesAssignment_3.eContents().get(0);
 		private final Assignment cConstraintsAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cConstraintsConstraintInterpreterSpecParserRuleCall_4_0 = (RuleCall)cConstraintsAssignment_4.eContents().get(0);
-		private final Assignment cEvolversAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cEvolversEvolverSpecParserRuleCall_5_0 = (RuleCall)cEvolversAssignment_5.eContents().get(0);
-		private final Assignment cOptimisationAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cOptimisationOptimisationSpecParserRuleCall_6_0 = (RuleCall)cOptimisationAssignment_6.eContents().get(0);
+		private final Assignment cReportsAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cReportsReportInterpreterSpecParserRuleCall_5_0 = (RuleCall)cReportsAssignment_5.eContents().get(0);
+		private final Assignment cEvolversAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cEvolversEvolverSpecParserRuleCall_6_0 = (RuleCall)cEvolversAssignment_6.eContents().get(0);
+		private final Assignment cOptimisationAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cOptimisationOptimisationSpecParserRuleCall_7_0 = (RuleCall)cOptimisationAssignment_7.eContents().get(0);
 		
 		//Optimisation:
 		//	basepath=BasePathSpec
@@ -50,12 +52,14 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		//	model=ModelPathSpec
 		//	objectives+=ObjectiveInterpreterSpec+
 		//	constraints+=ConstraintInterpreterSpec*
+		//	reports+=ReportInterpreterSpec*
 		//	evolvers+=EvolverSpec+
 		//	optimisation=OptimisationSpec;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//basepath=BasePathSpec metamodel=MetaModelSpec model=ModelPathSpec objectives+=ObjectiveInterpreterSpec+
-		//constraints+=ConstraintInterpreterSpec* evolvers+=EvolverSpec+ optimisation=OptimisationSpec
+		//constraints+=ConstraintInterpreterSpec* reports+=ReportInterpreterSpec* evolvers+=EvolverSpec+
+		//optimisation=OptimisationSpec
 		public Group getGroup() { return cGroup; }
 		
 		//basepath=BasePathSpec
@@ -88,17 +92,23 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		//ConstraintInterpreterSpec
 		public RuleCall getConstraintsConstraintInterpreterSpecParserRuleCall_4_0() { return cConstraintsConstraintInterpreterSpecParserRuleCall_4_0; }
 		
+		//reports+=ReportInterpreterSpec*
+		public Assignment getReportsAssignment_5() { return cReportsAssignment_5; }
+		
+		//ReportInterpreterSpec
+		public RuleCall getReportsReportInterpreterSpecParserRuleCall_5_0() { return cReportsReportInterpreterSpecParserRuleCall_5_0; }
+		
 		//evolvers+=EvolverSpec+
-		public Assignment getEvolversAssignment_5() { return cEvolversAssignment_5; }
+		public Assignment getEvolversAssignment_6() { return cEvolversAssignment_6; }
 		
 		//EvolverSpec
-		public RuleCall getEvolversEvolverSpecParserRuleCall_5_0() { return cEvolversEvolverSpecParserRuleCall_5_0; }
+		public RuleCall getEvolversEvolverSpecParserRuleCall_6_0() { return cEvolversEvolverSpecParserRuleCall_6_0; }
 		
 		//optimisation=OptimisationSpec
-		public Assignment getOptimisationAssignment_6() { return cOptimisationAssignment_6; }
+		public Assignment getOptimisationAssignment_7() { return cOptimisationAssignment_7; }
 		
 		//OptimisationSpec
-		public RuleCall getOptimisationOptimisationSpecParserRuleCall_6_0() { return cOptimisationOptimisationSpecParserRuleCall_6_0; }
+		public RuleCall getOptimisationOptimisationSpecParserRuleCall_7_0() { return cOptimisationOptimisationSpecParserRuleCall_7_0; }
 	}
 	public class BasePathSpecElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.BasePathSpec");
@@ -278,6 +288,45 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+	}
+	public class ReportInterpreterSpecElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.ReportInterpreterSpec");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cReportKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cReportNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cReportNameValidIDParserRuleCall_1_0 = (RuleCall)cReportNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cReportSpecAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cReportSpecSTRINGTerminalRuleCall_3_0 = (RuleCall)cReportSpecAssignment_3.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		//ReportInterpreterSpec:
+		//	"report" reportName=ValidID "{" reportSpec=STRING "}";
+		@Override public ParserRule getRule() { return rule; }
+		
+		//"report" reportName=ValidID "{" reportSpec=STRING "}"
+		public Group getGroup() { return cGroup; }
+		
+		//"report"
+		public Keyword getReportKeyword_0() { return cReportKeyword_0; }
+		
+		//reportName=ValidID
+		public Assignment getReportNameAssignment_1() { return cReportNameAssignment_1; }
+		
+		//ValidID
+		public RuleCall getReportNameValidIDParserRuleCall_1_0() { return cReportNameValidIDParserRuleCall_1_0; }
+		
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+		
+		//reportSpec=STRING
+		public Assignment getReportSpecAssignment_3() { return cReportSpecAssignment_3; }
+		
+		//STRING
+		public RuleCall getReportSpecSTRINGTerminalRuleCall_3_0() { return cReportSpecSTRINGTerminalRuleCall_3_0; }
+		
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 	}
 	public class EvolverSpecElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.EvolverSpec");
@@ -674,6 +723,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	private final ModelPathSpecElements pModelPathSpec;
 	private final ObjectiveInterpreterSpecElements pObjectiveInterpreterSpec;
 	private final ConstraintInterpreterSpecElements pConstraintInterpreterSpec;
+	private final ReportInterpreterSpecElements pReportInterpreterSpec;
 	private final EvolverSpecElements pEvolverSpec;
 	private final EvolverParameterElements pEvolverParameter;
 	private final ParameterFunctionElements pParameterFunction;
@@ -709,6 +759,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		this.pModelPathSpec = new ModelPathSpecElements();
 		this.pObjectiveInterpreterSpec = new ObjectiveInterpreterSpecElements();
 		this.pConstraintInterpreterSpec = new ConstraintInterpreterSpecElements();
+		this.pReportInterpreterSpec = new ReportInterpreterSpecElements();
 		this.pEvolverSpec = new EvolverSpecElements();
 		this.pEvolverParameter = new EvolverParameterElements();
 		this.pParameterFunction = new ParameterFunctionElements();
@@ -763,6 +814,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	//	model=ModelPathSpec
 	//	objectives+=ObjectiveInterpreterSpec+
 	//	constraints+=ConstraintInterpreterSpec*
+	//	reports+=ReportInterpreterSpec*
 	//	evolvers+=EvolverSpec+
 	//	optimisation=OptimisationSpec;
 	public OptimisationElements getOptimisationAccess() {
@@ -828,6 +880,16 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getConstraintInterpreterSpecRule() {
 		return getConstraintInterpreterSpecAccess().getRule();
+	}
+	
+	//ReportInterpreterSpec:
+	//	"report" reportName=ValidID "{" reportSpec=STRING "}";
+	public ReportInterpreterSpecElements getReportInterpreterSpecAccess() {
+		return pReportInterpreterSpec;
+	}
+	
+	public ParserRule getReportInterpreterSpecRule() {
+		return getReportInterpreterSpecAccess().getRule();
 	}
 	
 	//EvolverSpec:
