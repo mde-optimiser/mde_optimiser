@@ -18,6 +18,7 @@ import uk.ac.kcl.ui.output.descriptors.ResultsDescriptor
 import uk.ac.kcl.ui.output.descriptors.TextDescriptor
 import uk.ac.kcl.ui.output.descriptors.MOEAObjectivesOutputDescriptor
 import uk.ac.kcl.ui.output.descriptors.ParetoChartOutputDescriptor
+import uk.ac.kcl.ui.output.descriptors.BatchReportsDescriptor
 
 class MDEOResultsOutput {
 	
@@ -127,6 +128,7 @@ class MDEOResultsOutput {
 		descriptors.add(new TextDescriptor());
 		descriptors.add(new MOEAObjectivesOutputDescriptor())
 		descriptors.add(new ParetoChartOutputDescriptor())
+		descriptors.add(new BatchReportsDescriptor(this.moptConfiguration))
 		
 		return descriptors;
 		

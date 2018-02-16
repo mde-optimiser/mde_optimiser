@@ -106,6 +106,11 @@ public class MdeoptimiseAdapterFactory extends AdapterFactoryImpl
         return createConstraintInterpreterSpecAdapter();
       }
       @Override
+      public Adapter caseReportInterpreterSpec(ReportInterpreterSpec object)
+      {
+        return createReportInterpreterSpecAdapter();
+      }
+      @Override
       public Adapter caseEvolverSpec(EvolverSpec object)
       {
         return createEvolverSpecAdapter();
@@ -243,6 +248,21 @@ public class MdeoptimiseAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createConstraintInterpreterSpecAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.mdeoptimise.ReportInterpreterSpec <em>Report Interpreter Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.mdeoptimise.ReportInterpreterSpec
+   * @generated
+   */
+  public Adapter createReportInterpreterSpecAdapter()
   {
     return null;
   }

@@ -28,6 +28,7 @@ import uk.ac.kcl.mdeoptimise.ModelPathSpec;
 import uk.ac.kcl.mdeoptimise.ObjectiveInterpreterSpec;
 import uk.ac.kcl.mdeoptimise.Optimisation;
 import uk.ac.kcl.mdeoptimise.OptimisationSpec;
+import uk.ac.kcl.mdeoptimise.ReportInterpreterSpec;
 
 /**
  * <!-- begin-user-doc -->
@@ -42,6 +43,7 @@ import uk.ac.kcl.mdeoptimise.OptimisationSpec;
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationImpl#getModel <em>Model</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationImpl#getObjectives <em>Objectives</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationImpl#getConstraints <em>Constraints</em>}</li>
+ *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationImpl#getReports <em>Reports</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationImpl#getEvolvers <em>Evolvers</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationImpl#getOptimisation <em>Optimisation</em>}</li>
  * </ul>
@@ -99,6 +101,16 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
    * @ordered
    */
   protected EList<ConstraintInterpreterSpec> constraints;
+
+  /**
+   * The cached value of the '{@link #getReports() <em>Reports</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getReports()
+   * @generated
+   * @ordered
+   */
+  protected EList<ReportInterpreterSpec> reports;
 
   /**
    * The cached value of the '{@link #getEvolvers() <em>Evolvers</em>}' containment reference list.
@@ -318,6 +330,20 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<ReportInterpreterSpec> getReports()
+  {
+    if (reports == null)
+    {
+      reports = new EObjectContainmentEList<ReportInterpreterSpec>(ReportInterpreterSpec.class, this, MdeoptimisePackage.OPTIMISATION__REPORTS);
+    }
+    return reports;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<EvolverSpec> getEvolvers()
   {
     if (evolvers == null)
@@ -395,6 +421,8 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
         return ((InternalEList<?>)getObjectives()).basicRemove(otherEnd, msgs);
       case MdeoptimisePackage.OPTIMISATION__CONSTRAINTS:
         return ((InternalEList<?>)getConstraints()).basicRemove(otherEnd, msgs);
+      case MdeoptimisePackage.OPTIMISATION__REPORTS:
+        return ((InternalEList<?>)getReports()).basicRemove(otherEnd, msgs);
       case MdeoptimisePackage.OPTIMISATION__EVOLVERS:
         return ((InternalEList<?>)getEvolvers()).basicRemove(otherEnd, msgs);
       case MdeoptimisePackage.OPTIMISATION__OPTIMISATION:
@@ -423,6 +451,8 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
         return getObjectives();
       case MdeoptimisePackage.OPTIMISATION__CONSTRAINTS:
         return getConstraints();
+      case MdeoptimisePackage.OPTIMISATION__REPORTS:
+        return getReports();
       case MdeoptimisePackage.OPTIMISATION__EVOLVERS:
         return getEvolvers();
       case MdeoptimisePackage.OPTIMISATION__OPTIMISATION:
@@ -458,6 +488,10 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
       case MdeoptimisePackage.OPTIMISATION__CONSTRAINTS:
         getConstraints().clear();
         getConstraints().addAll((Collection<? extends ConstraintInterpreterSpec>)newValue);
+        return;
+      case MdeoptimisePackage.OPTIMISATION__REPORTS:
+        getReports().clear();
+        getReports().addAll((Collection<? extends ReportInterpreterSpec>)newValue);
         return;
       case MdeoptimisePackage.OPTIMISATION__EVOLVERS:
         getEvolvers().clear();
@@ -495,6 +529,9 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
       case MdeoptimisePackage.OPTIMISATION__CONSTRAINTS:
         getConstraints().clear();
         return;
+      case MdeoptimisePackage.OPTIMISATION__REPORTS:
+        getReports().clear();
+        return;
       case MdeoptimisePackage.OPTIMISATION__EVOLVERS:
         getEvolvers().clear();
         return;
@@ -525,6 +562,8 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
         return objectives != null && !objectives.isEmpty();
       case MdeoptimisePackage.OPTIMISATION__CONSTRAINTS:
         return constraints != null && !constraints.isEmpty();
+      case MdeoptimisePackage.OPTIMISATION__REPORTS:
+        return reports != null && !reports.isEmpty();
       case MdeoptimisePackage.OPTIMISATION__EVOLVERS:
         return evolvers != null && !evolvers.isEmpty();
       case MdeoptimisePackage.OPTIMISATION__OPTIMISATION:

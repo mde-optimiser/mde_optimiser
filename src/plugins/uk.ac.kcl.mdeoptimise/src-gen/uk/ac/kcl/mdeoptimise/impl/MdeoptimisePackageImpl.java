@@ -26,6 +26,7 @@ import uk.ac.kcl.mdeoptimise.Optimisation;
 import uk.ac.kcl.mdeoptimise.OptimisationSpec;
 import uk.ac.kcl.mdeoptimise.ParameterFunction;
 import uk.ac.kcl.mdeoptimise.ProbabilityVariation;
+import uk.ac.kcl.mdeoptimise.ReportInterpreterSpec;
 
 /**
  * <!-- begin-user-doc -->
@@ -76,6 +77,13 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * @generated
    */
   private EClass constraintInterpreterSpecEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass reportInterpreterSpecEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -254,7 +262,7 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOptimisation_Evolvers()
+  public EReference getOptimisation_Reports()
   {
     return (EReference)optimisationEClass.getEStructuralFeatures().get(5);
   }
@@ -264,9 +272,19 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOptimisation_Optimisation()
+  public EReference getOptimisation_Evolvers()
   {
     return (EReference)optimisationEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getOptimisation_Optimisation()
+  {
+    return (EReference)optimisationEClass.getEStructuralFeatures().get(7);
   }
 
   /**
@@ -417,6 +435,36 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
   public EAttribute getConstraintInterpreterSpec_ConstraintSpec()
   {
     return (EAttribute)constraintInterpreterSpecEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getReportInterpreterSpec()
+  {
+    return reportInterpreterSpecEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getReportInterpreterSpec_ReportName()
+  {
+    return (EAttribute)reportInterpreterSpecEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getReportInterpreterSpec_ReportSpec()
+  {
+    return (EAttribute)reportInterpreterSpecEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -725,6 +773,7 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
     createEReference(optimisationEClass, OPTIMISATION__MODEL);
     createEReference(optimisationEClass, OPTIMISATION__OBJECTIVES);
     createEReference(optimisationEClass, OPTIMISATION__CONSTRAINTS);
+    createEReference(optimisationEClass, OPTIMISATION__REPORTS);
     createEReference(optimisationEClass, OPTIMISATION__EVOLVERS);
     createEReference(optimisationEClass, OPTIMISATION__OPTIMISATION);
 
@@ -747,6 +796,10 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
     createEAttribute(constraintInterpreterSpecEClass, CONSTRAINT_INTERPRETER_SPEC__CONSTRAINT_NAME);
     createEAttribute(constraintInterpreterSpecEClass, CONSTRAINT_INTERPRETER_SPEC__CONSTRAINT_TYPE);
     createEAttribute(constraintInterpreterSpecEClass, CONSTRAINT_INTERPRETER_SPEC__CONSTRAINT_SPEC);
+
+    reportInterpreterSpecEClass = createEClass(REPORT_INTERPRETER_SPEC);
+    createEAttribute(reportInterpreterSpecEClass, REPORT_INTERPRETER_SPEC__REPORT_NAME);
+    createEAttribute(reportInterpreterSpecEClass, REPORT_INTERPRETER_SPEC__REPORT_SPEC);
 
     evolverSpecEClass = createEClass(EVOLVER_SPEC);
     createEAttribute(evolverSpecEClass, EVOLVER_SPEC__EVOLVER_TYPE);
@@ -821,6 +874,7 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
     initEReference(getOptimisation_Model(), this.getModelPathSpec(), null, "model", null, 0, 1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOptimisation_Objectives(), this.getObjectiveInterpreterSpec(), null, "objectives", null, 0, -1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOptimisation_Constraints(), this.getConstraintInterpreterSpec(), null, "constraints", null, 0, -1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getOptimisation_Reports(), this.getReportInterpreterSpec(), null, "reports", null, 0, -1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOptimisation_Evolvers(), this.getEvolverSpec(), null, "evolvers", null, 0, -1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOptimisation_Optimisation(), this.getOptimisationSpec(), null, "optimisation", null, 0, 1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -843,6 +897,10 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
     initEAttribute(getConstraintInterpreterSpec_ConstraintName(), ecorePackage.getEString(), "constraintName", null, 0, 1, ConstraintInterpreterSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getConstraintInterpreterSpec_ConstraintType(), ecorePackage.getEString(), "constraintType", null, 0, 1, ConstraintInterpreterSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getConstraintInterpreterSpec_ConstraintSpec(), ecorePackage.getEString(), "constraintSpec", null, 0, 1, ConstraintInterpreterSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(reportInterpreterSpecEClass, ReportInterpreterSpec.class, "ReportInterpreterSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getReportInterpreterSpec_ReportName(), ecorePackage.getEString(), "reportName", null, 0, 1, ReportInterpreterSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getReportInterpreterSpec_ReportSpec(), ecorePackage.getEString(), "reportSpec", null, 0, 1, ReportInterpreterSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(evolverSpecEClass, EvolverSpec.class, "EvolverSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getEvolverSpec_EvolverType(), this.getEvolverType(), "evolverType", null, 0, 1, EvolverSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
