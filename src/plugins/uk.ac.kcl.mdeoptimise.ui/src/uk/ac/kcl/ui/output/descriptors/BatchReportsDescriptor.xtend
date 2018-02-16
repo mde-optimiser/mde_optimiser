@@ -56,7 +56,7 @@ class BatchReportsDescriptor implements ResultsDescriptor {
 					
 					writer.write(Double.toString(reportFunctions.get(j).computeFitness(solution.model)))
 					
-					if(j == reportFunctions.size)
+					if(j < reportFunctions.size)
 						writer.write(" ");
 				}
 

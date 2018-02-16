@@ -85,6 +85,7 @@ class MoeaOptimisationTests {
 				objective MaximiseCRA maximise java { "models.moea.MaximiseCRA" }
 				constraint MinimiseClasslessFeatures java { "models.moea.MinimiseClasslessFeatures" }
 				report ReportFunction { "models.moea.MaximiseCRA" }
+				report ReportFunction { "models.moea.MaximiseCRA" }
 				mutate using <craEvolvers.henshin> unit "createClass"
 				mutate using <craEvolvers.henshin> unit "assignFeature"
 				mutate using <craEvolvers.henshin> unit "moveFeature"
