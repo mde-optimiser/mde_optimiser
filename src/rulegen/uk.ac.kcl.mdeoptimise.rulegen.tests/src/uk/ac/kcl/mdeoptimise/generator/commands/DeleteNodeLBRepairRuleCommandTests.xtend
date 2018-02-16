@@ -14,7 +14,7 @@ import org.eclipse.xtext.junit4.XtextRunner
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.sidiff.common.emf.extensions.impl.EClassifierInfoManagement
-import uk.ac.kcl.mdeoptimise.BasepathSpec
+import uk.ac.kcl.mdeoptimise.BasePathSpec
 import uk.ac.kcl.mdeoptimise.MetaModelSpec
 import uk.ac.kcl.mdeoptimise.Optimisation
 import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.DeleteNodeLBRepairRuleCommand
@@ -51,7 +51,7 @@ class DeleteNodeLBRepairRuleCommandTests {
     //This should be moved to an utils class that can be shared across projects
     def EPackage fakeOptimisationModel(){
     	this.model = mock(Optimisation)
-		var basepath = mock(BasepathSpec);
+		var basepath = mock(BasePathSpec);
 		var metamodel = mock(MetaModelSpec);
 		when(basepath.location).thenReturn("src/resources/");
 		when(metamodel.location).thenReturn("architectureCRA.ecore")

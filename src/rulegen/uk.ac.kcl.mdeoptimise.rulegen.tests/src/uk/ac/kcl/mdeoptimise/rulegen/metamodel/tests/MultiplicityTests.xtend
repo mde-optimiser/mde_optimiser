@@ -6,7 +6,7 @@ import org.eclipse.emf.henshin.model.resource.HenshinResourceSet
 import org.eclipse.xtext.junit4.XtextRunner
 import org.junit.Test
 import org.junit.runner.RunWith
-import uk.ac.kcl.mdeoptimise.BasepathSpec
+import uk.ac.kcl.mdeoptimise.BasePathSpec
 import uk.ac.kcl.mdeoptimise.MetaModelSpec
 import uk.ac.kcl.mdeoptimise.Optimisation
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.Multiplicity
@@ -41,7 +41,7 @@ class MultiplicityTests {
     //TODO This should be moved to an utils class that can be shared across tests perhaps?
     def EPackage fakeOptimisationModel(){
     	this.model = mock(Optimisation)
-		var basepath = mock(BasepathSpec);
+		var basepath = mock(BasePathSpec);
 		var metamodel = mock(MetaModelSpec);
 		when(basepath.location).thenReturn("src/resources/");
 		when(metamodel.location).thenReturn("architectureCRA.ecore")
@@ -63,7 +63,7 @@ class MultiplicityTests {
 	 */    
     def EPackage fakeServiceCompositionOptimisationModel(){
     	this.model = mock(Optimisation)
-		var basepath = mock(BasepathSpec);
+		var basepath = mock(BasePathSpec);
 		var metamodel = mock(MetaModelSpec);
 		when(basepath.location).thenReturn("src/resources/");
 		when(metamodel.location).thenReturn("service-composition.ecore")
