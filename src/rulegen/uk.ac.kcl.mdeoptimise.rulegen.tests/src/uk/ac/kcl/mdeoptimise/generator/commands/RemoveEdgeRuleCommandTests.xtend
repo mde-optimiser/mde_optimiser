@@ -7,7 +7,7 @@ import org.eclipse.emf.ecore.EPackage
 import uk.ac.kcl.mdeoptimise.Optimisation
 import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
-import uk.ac.kcl.mdeoptimise.BasepathSpec
+import uk.ac.kcl.mdeoptimise.BasePathSpec
 import uk.ac.kcl.mdeoptimise.MetaModelSpec
 import uk.ac.kcl.mdeoptimise.rulegen.tests.utils.MetamodelGenerator
 import java.util.LinkedList
@@ -54,7 +54,7 @@ class RemoveEdgeRuleCommandTests {
     //This should be moved to an utils class that can be shared across projects
     def EPackage fakeOptimisationModel(){
     	this.model = mock(Optimisation)
-		var basepath = mock(BasepathSpec);
+		var basepath = mock(BasePathSpec);
 		var metamodel = mock(MetaModelSpec);
 		when(basepath.location).thenReturn("src/resources/");
 		when(metamodel.location).thenReturn("architectureCRA.ecore")

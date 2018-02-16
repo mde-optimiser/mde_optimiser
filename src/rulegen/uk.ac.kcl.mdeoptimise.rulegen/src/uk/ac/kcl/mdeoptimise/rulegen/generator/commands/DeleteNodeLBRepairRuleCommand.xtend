@@ -31,7 +31,7 @@ class DeleteNodeLBRepairRuleCommand implements IRuleGenerationCommand {
 		
 		//If this is a unidirectional multiplicity refinement
 		if(multiplicity.EReference.EOpposite == null){
-			throw new InvalidObjectException("Unexpected eopposite reference value in DeleteNodeLBRepairRuleCommand");
+		//	throw new InvalidObjectException("Unexpected eopposite reference value in DeleteNodeLBRepairRuleCommand");
 		}
 		
 		//Create the Delete rule as an invesrse of the Create rule

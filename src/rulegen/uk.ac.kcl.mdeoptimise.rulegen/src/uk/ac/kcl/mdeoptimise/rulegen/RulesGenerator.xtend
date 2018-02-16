@@ -64,120 +64,392 @@ class RulesGenerator {
 		
 		var reference = refinedMetamodelWrapper.getEdge(multiplicity);
 		
+		
 		if(multiplicity.lower == 0 && multiplicity.upper == -1){
 			
+			//Unidirectional references case
+			if(reference.EOpposite == null){
+				//Add cases where EOpposite is null and we have a unidirectional reference
+			}
+			
+			//0..* case
 			if(reference.EOpposite.lowerBound == 0 && reference.EOpposite.upperBound == -1){	
-				println("Case 6")
-				println("A 0..*")
-				println("B 0..*")
+				println("Case ")
 			}
 			
+			//0..1 case
 			if(reference.EOpposite.lowerBound == 0 && reference.EOpposite.upperBound == 1){
-				println("Case 5")
+				println("Case ")
 			}
 			
+			//0..m case
+			if(reference.EOpposite.lowerBound == 0 && reference.EOpposite.upperBound > 1) {
+				println("Case ")
+			}
+			
+			//1..* case
 			if(reference.EOpposite.lowerBound == 1 && reference.EOpposite.upperBound == -1){
-				println("Case 8")	
+				println("Case ")	
 			}
 			
+			//1..1
 			if(reference.EOpposite.lowerBound == 1 && reference.EOpposite.upperBound == 1){
-				println("Case 7")
+				println("Case ")
+			}
+			
+			//1..m
+			if(reference.EOpposite.lowerBound == 1 && reference.EOpposite.upperBound > 1){
+				println("Case ")
 			}
 			
 			//n..m case
 			if(reference.EOpposite.lowerBound > 1 && reference.EOpposite.upperBound > 1) {
-				println("0..* m..n case")
+				println("Case ")
 			}
 			
+			//n..* case
+			if(reference.EOpposite.lowerBound > 1 && reference.EOpposite.upperBound == -1) {
+				println("Case ")
+			}
 		}
-		
 		
 		//TODO MultiplicityEOpposite is null in the case of a unidirectional reference, so this 
 		//is not going to work without some extra checks.
 		if(multiplicity.lower == 0 && multiplicity.upper == 1){
 			
+			//Unidirectional references case
+			if(reference.EOpposite == null){
+				//Add cases where EOpposite is null and we have a unidirectional reference
+			}
+			
+			//0..* case
 			if(reference.EOpposite.lowerBound == 0 && reference.EOpposite.upperBound == -1){	
-				println("Case 2")
+				println("Case ")
 			}
 			
+			//0..1 case
 			if(reference.EOpposite.lowerBound == 0 && reference.EOpposite.upperBound == 1){
-				
-				//TODO: Add a logger
-				println("Case 1")
-				
-				//Create node A and connect it to its mandatory neighbours (containment edges)
-				this.generate(new CreateNodeRuleCommand(multiplicity, refinedMetamodelWrapper.refinedMetamodel, metamodelAnalyser))
-				
-				//Delete node A and delete its edges from all its neighbours
-				this.generate(new DeleteNodeRuleCommand(multiplicity, refinedMetamodelWrapper.refinedMetamodel, metamodelAnalyser))
-				
-				//Create edge of type e from node A to node B 
-				this.generate(new AddEdgeRuleCommand(multiplicity, refinedMetamodelWrapper.refinedMetamodel, metamodelAnalyser))
-				
-				//Create edge of type e from node A to node B by deleting existing edge
-				this.generate(new RemoveEdgeRuleCommand(multiplicity, refinedMetamodelWrapper.refinedMetamodel, metamodelAnalyser))
-				
-				//TODO
-				//this.generate(new ChangeEdgeRuleCommand(multiplicity, refinedMetamodelWrapper.refinedMetamodel, metamodelAnalyser)
-		
+				println("Case ")
 			}
 			
-			if(reference.EOpposite.lowerBound == 1 && reference.EOpposite.upperBound == -1) {
-				println("Case 4")
-				println("A 0..1 B 1..* case")
+			//0..m case
+			if(reference.EOpposite.lowerBound == 0 && reference.EOpposite.upperBound > 1) {
+				println("Case ")
 			}
 			
-			if(reference.EOpposite.lowerBound == 1 && reference.EOpposite.upperBound == 1) {
-				println("Case 3")
+			//1..* case
+			if(reference.EOpposite.lowerBound == 1 && reference.EOpposite.upperBound == -1){
+				println("Case ")	
 			}
 			
+			//1..1
+			if(reference.EOpposite.lowerBound == 1 && reference.EOpposite.upperBound == 1){
+				println("Case ")
+			}
+			
+			//1..m
+			if(reference.EOpposite.lowerBound == 1 && reference.EOpposite.upperBound > 1){
+				println("Case ")
+			}
+			
+			//n..m case
 			if(reference.EOpposite.lowerBound > 1 && reference.EOpposite.upperBound > 1) {
-				println("0..1 m..n case")
+				println("Case ")
+			}
+			
+			//n..* case
+			if(reference.EOpposite.lowerBound > 1 && reference.EOpposite.upperBound == -1) {
+				println("Case ")
 			}
 		}
 		
 		if(multiplicity.lower == 1 && multiplicity.upper == -1){
+			
+			//Unidirectional references case
+			if(reference.EOpposite == null){
+				//Add cases where EOpposite is null and we have a unidirectional reference
+			}
+			
+			//0..* case
 			if(reference.EOpposite.lowerBound == 0 && reference.EOpposite.upperBound == -1){	
-				println("Case 14")
+				println("Case ")
 			}
 			
+			//0..1 case
 			if(reference.EOpposite.lowerBound == 0 && reference.EOpposite.upperBound == 1){
-				println("Case 13")
+				println("Case ")
 			}
 			
+			//0..m case
+			if(reference.EOpposite.lowerBound == 0 && reference.EOpposite.upperBound > 1) {
+				println("Case ")
+			}
+			
+			//1..* case
 			if(reference.EOpposite.lowerBound == 1 && reference.EOpposite.upperBound == -1){
-				println("Case 16")
+				println("Case ")	
 			}
 			
+			//1..1
 			if(reference.EOpposite.lowerBound == 1 && reference.EOpposite.upperBound == 1){
-				println("Case 15")
+				println("Case ")
 			}
 			
-			if(reference.EOpposite.lowerBound > 1 && reference.EOpposite.upperBound > 1){
-				println("0..1 m..n case")
+			//1..m
+			if(reference.EOpposite.lowerBound == 1 && reference.EOpposite.upperBound > 1){
+				println("Case ")
+			}
+			
+			//n..m case
+			if(reference.EOpposite.lowerBound > 1 && reference.EOpposite.upperBound > 1) {
+				println("Case ")
+			}
+			
+			//n..* case
+			if(reference.EOpposite.lowerBound > 1 && reference.EOpposite.upperBound == -1) {
+				println("Case ")
 			}
 		}
 		
 		if(multiplicity.lower == 1 && multiplicity.upper == 1){
+			
+			//Unidirectional references case
+			if(reference.EOpposite == null){
+				//Add cases where EOpposite is null and we have a unidirectional reference
+			}
+			
+			//0..* case
 			if(reference.EOpposite.lowerBound == 0 && reference.EOpposite.upperBound == -1){	
-				println("Case 10")
+				println("Case ")
 			}
 			
+			//0..1 case
 			if(reference.EOpposite.lowerBound == 0 && reference.EOpposite.upperBound == 1){
-				println("Case 9")
+				println("Case ")
 			}
 			
+			//0..m case
+			if(reference.EOpposite.lowerBound == 0 && reference.EOpposite.upperBound > 1) {
+				println("Case ")
+			}
+			
+			//1..* case
 			if(reference.EOpposite.lowerBound == 1 && reference.EOpposite.upperBound == -1){
-				println("Case 12")
+				println("Case ")	
 			}
 			
+			//1..1
 			if(reference.EOpposite.lowerBound == 1 && reference.EOpposite.upperBound == 1){
-				println("Case 11")
+				println("Case ")
 			}
 			
-			if(reference.EOpposite.lowerBound > 1 && reference.EOpposite.upperBound > 1){
-				println("1..1 m..n case")
+			//1..m
+			if(reference.EOpposite.lowerBound == 1 && reference.EOpposite.upperBound > 1){
+				println("Case ")
+			}
+			
+			//n..m case
+			if(reference.EOpposite.lowerBound > 1 && reference.EOpposite.upperBound > 1) {
+				println("Case ")
+			}
+			
+			//n..* case
+			if(reference.EOpposite.lowerBound > 1 && reference.EOpposite.upperBound == -1) {
+				println("Case ")
 			}
 		}
+		
+		if(multiplicity.lower == 0 && multiplicity.upper > 1){
+			
+			//Unidirectional references case
+			if(reference.EOpposite == null){
+				//Add cases where EOpposite is null and we have a unidirectional reference
+			}
+			
+			//0..* case
+			if(reference.EOpposite.lowerBound == 0 && reference.EOpposite.upperBound == -1){	
+				println("Case ")
+			}
+			
+			//0..1 case
+			if(reference.EOpposite.lowerBound == 0 && reference.EOpposite.upperBound == 1){
+				println("Case ")
+			}
+			
+			//0..m case
+			if(reference.EOpposite.lowerBound == 0 && reference.EOpposite.upperBound > 1) {
+				println("Case ")
+			}
+			
+			//1..* case
+			if(reference.EOpposite.lowerBound == 1 && reference.EOpposite.upperBound == -1){
+				println("Case ")	
+			}
+			
+			//1..1
+			if(reference.EOpposite.lowerBound == 1 && reference.EOpposite.upperBound == 1){
+				println("Case ")
+			}
+			
+			//1..m
+			if(reference.EOpposite.lowerBound == 1 && reference.EOpposite.upperBound > 1){
+				println("Case ")
+			}
+			
+			//n..m case
+			if(reference.EOpposite.lowerBound > 1 && reference.EOpposite.upperBound > 1) {
+				println("Case ")
+			}
+			
+			//n..* case
+			if(reference.EOpposite.lowerBound > 1 && reference.EOpposite.upperBound == -1) {
+				println("Case ")
+			}
+		}
+		
+		if(multiplicity.lower == 1 && multiplicity.upper > 1){
+			
+			//Unidirectional references case
+			if(reference.EOpposite == null){
+				//Add cases where EOpposite is null and we have a unidirectional reference
+			}
+			
+			//0..* case
+			if(reference.EOpposite.lowerBound == 0 && reference.EOpposite.upperBound == -1){	
+				println("Case ")
+			}
+			
+			//0..1 case
+			if(reference.EOpposite.lowerBound == 0 && reference.EOpposite.upperBound == 1){
+				println("Case ")
+			}
+			
+			//0..m case
+			if(reference.EOpposite.lowerBound == 0 && reference.EOpposite.upperBound > 1) {
+				println("Case ")
+			}
+			
+			//1..* case
+			if(reference.EOpposite.lowerBound == 1 && reference.EOpposite.upperBound == -1){
+				println("Case ")	
+			}
+			
+			//1..1
+			if(reference.EOpposite.lowerBound == 1 && reference.EOpposite.upperBound == 1){
+				println("Case ")
+			}
+			
+			//1..m
+			if(reference.EOpposite.lowerBound == 1 && reference.EOpposite.upperBound > 1){
+				println("Case ")
+			}
+			
+			//n..m case
+			if(reference.EOpposite.lowerBound > 1 && reference.EOpposite.upperBound > 1) {
+				println("Case ")
+			}
+			
+			//n..* case
+			if(reference.EOpposite.lowerBound > 1 && reference.EOpposite.upperBound == -1) {
+				println("Case ")
+			}
+		}
+		
+		if(multiplicity.lower > 1 && multiplicity.upper > 1){
+			
+			//Unidirectional references case
+			if(reference.EOpposite == null){
+				//Add cases where EOpposite is null and we have a unidirectional reference
+			}
+			
+			//0..* case
+			if(reference.EOpposite.lowerBound == 0 && reference.EOpposite.upperBound == -1){	
+				println("Case ")
+			}
+			
+			//0..1 case
+			if(reference.EOpposite.lowerBound == 0 && reference.EOpposite.upperBound == 1){
+				println("Case ")
+			}
+			
+			//0..m case
+			if(reference.EOpposite.lowerBound == 0 && reference.EOpposite.upperBound > 1) {
+				println("Case ")
+			}
+			
+			//1..* case
+			if(reference.EOpposite.lowerBound == 1 && reference.EOpposite.upperBound == -1){
+				println("Case ")	
+			}
+			
+			//1..1
+			if(reference.EOpposite.lowerBound == 1 && reference.EOpposite.upperBound == 1){
+				println("Case ")
+			}
+			
+			//1..m
+			if(reference.EOpposite.lowerBound == 1 && reference.EOpposite.upperBound > 1){
+				println("Case ")
+			}
+			
+			//n..m case
+			if(reference.EOpposite.lowerBound > 1 && reference.EOpposite.upperBound > 1) {
+				println("Case ")
+			}
+			
+			//n..* case
+			if(reference.EOpposite.lowerBound > 1 && reference.EOpposite.upperBound == -1) {
+				println("Case ")
+			}
+		}
+		
+		if(multiplicity.lower > 1 && multiplicity.upper == -1){
+			
+			//Unidirectional references case
+			if(reference.EOpposite == null){
+				//Add cases where EOpposite is null and we have a unidirectional reference
+			}
+			
+			//0..* case
+			if(reference.EOpposite.lowerBound == 0 && reference.EOpposite.upperBound == -1){	
+				println("Case ")
+			}
+			
+			//0..1 case
+			if(reference.EOpposite.lowerBound == 0 && reference.EOpposite.upperBound == 1){
+				println("Case ")
+			}
+			
+			//0..m case
+			if(reference.EOpposite.lowerBound == 0 && reference.EOpposite.upperBound > 1) {
+				println("Case ")
+			}
+			
+			//1..* case
+			if(reference.EOpposite.lowerBound == 1 && reference.EOpposite.upperBound == -1){
+				println("Case ")	
+			}
+			
+			//1..1
+			if(reference.EOpposite.lowerBound == 1 && reference.EOpposite.upperBound == 1){
+				println("Case ")
+			}
+			
+			//1..m
+			if(reference.EOpposite.lowerBound == 1 && reference.EOpposite.upperBound > 1){
+				println("Case ")
+			}
+			
+			//n..m case
+			if(reference.EOpposite.lowerBound > 1 && reference.EOpposite.upperBound > 1) {
+				println("Case ")
+			}
+			
+			//n..* case
+			if(reference.EOpposite.lowerBound > 1 && reference.EOpposite.upperBound == -1) {
+				println("Case ")
+			}
+		}
+		
 	}
 }

@@ -61,13 +61,13 @@ class MoeaOptimisation implements IOptimisation {
 		
 		//OperatorFactory.getInstance().addProvider(new MoeaOptimisationVariationsProvider());
 		
-		val algorithmFactory = new AlgorithmFactory();
-		val algorithmProvider = new MoeaOptimisationAlgorithmProvider;
-		algorithmFactory.addProvider(algorithmProvider)
+		//OperatorFactory.getInstance().addProvider(new MoeaOptimisationVariationsProvider());
 		
-
-				
-		var result2 = new Executor()
+		val algorithmFactory = new AlgorithmFactory();
+		algorithmFactory.addProvider(new MoeaOptimisationAlgorithmProvider)
+			
+		
+		new Executor()
 		   .usingAlgorithmFactory(algorithmFactory)
 	       .withAlgorithm(algorithmName)
 	       //Initialize problem with our solution generator
@@ -76,32 +76,5 @@ class MoeaOptimisation implements IOptimisation {
 	       .withMaxEvaluations(optimisationProperties.get("maxEvolutions") as Integer)
 	       //.distributeOnAllCores() //Leave this on for now. Should perhaps be configurable
 	       .run()
-	    
-	   ProblemFactory.getInstance().addProvider(new MoeaMdeoProblemProvider(solutionGenerator, algorithmProvider));
-		
-	    
-	    var instrumenter = new Instrumenter()
-		    .withProblem("problemName")
-		    .withFrequency(100)
-		    .attachAllMetricCollectors
-		    .attachElapsedTimeCollector();
-	    
-	    var result = new Executor()
-		   .usingAlgorithmFactory(algorithmFactory)
-	       .withAlgorithm(algorithmName)
-	       //Initialize problem with our solution generator
-	       .withProblem("problemName")
-	       .withProperties(optimisationProperties)
-	       .withInstrumenter(instrumenter)
-	       .withMaxEvaluations(optimisationProperties.get("maxEvolutions") as Integer)
-	       //.distributeOnAllCores() //Leave this on for now. Should perhaps be configurable
-	       .run()
-	    
-	    
-	    var accumulator = instrumenter.lastAccumulator;
-	    
-	    println(accumulator.toCSV())
-	    
-	    return result
 	}
 }
