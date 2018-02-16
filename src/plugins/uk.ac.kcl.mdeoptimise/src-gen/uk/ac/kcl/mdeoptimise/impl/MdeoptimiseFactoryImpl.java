@@ -67,7 +67,7 @@ public class MdeoptimiseFactoryImpl extends EFactoryImpl implements MdeoptimiseF
     switch (eClass.getClassifierID())
     {
       case MdeoptimisePackage.OPTIMISATION: return createOptimisation();
-      case MdeoptimisePackage.BASEPATH_SPEC: return createBasepathSpec();
+      case MdeoptimisePackage.BASE_PATH_SPEC: return createBasePathSpec();
       case MdeoptimisePackage.META_MODEL_SPEC: return createMetaModelSpec();
       case MdeoptimisePackage.MODEL_PATH_SPEC: return createModelPathSpec();
       case MdeoptimisePackage.OBJECTIVE_INTERPRETER_SPEC: return createObjectiveInterpreterSpec();
@@ -133,10 +133,10 @@ public class MdeoptimiseFactoryImpl extends EFactoryImpl implements MdeoptimiseF
    * <!-- end-user-doc -->
    * @generated
    */
-  public BasepathSpec createBasepathSpec()
+  public BasePathSpec createBasePathSpec()
   {
-    BasepathSpecImpl basepathSpec = new BasepathSpecImpl();
-    return basepathSpec;
+    BasePathSpecImpl basePathSpec = new BasePathSpecImpl();
+    return basePathSpec;
   }
 
   /**

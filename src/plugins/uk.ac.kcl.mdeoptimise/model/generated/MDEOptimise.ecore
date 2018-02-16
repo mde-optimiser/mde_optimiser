@@ -2,7 +2,7 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="mdeoptimise" nsURI="http://www.ac.uk/kcl/MDEOptimise" nsPrefix="mdeoptimise">
   <eClassifiers xsi:type="ecore:EClass" name="Optimisation">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="basepath" eType="#//BasepathSpec"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="basepath" eType="#//BasePathSpec"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="metamodel" eType="#//MetaModelSpec"
         containment="true"/>
@@ -17,7 +17,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="optimisation" eType="#//OptimisationSpec"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="BasepathSpec">
+  <eClassifiers xsi:type="ecore:EClass" name="BasePathSpec">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MetaModelSpec">

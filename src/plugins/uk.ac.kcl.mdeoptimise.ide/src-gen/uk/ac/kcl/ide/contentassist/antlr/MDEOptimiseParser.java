@@ -79,7 +79,7 @@ public class MDEOptimiseParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXImportDeclarationAccess().getAlternatives_1_0_3(), "rule__XImportDeclaration__Alternatives_1_0_3");
 					put(grammarAccess.getEvolverTypeAccess().getAlternatives(), "rule__EvolverType__Alternatives");
 					put(grammarAccess.getOptimisationAccess().getGroup(), "rule__Optimisation__Group__0");
-					put(grammarAccess.getBasepathSpecAccess().getGroup(), "rule__BasepathSpec__Group__0");
+					put(grammarAccess.getBasePathSpecAccess().getGroup(), "rule__BasePathSpec__Group__0");
 					put(grammarAccess.getMetaModelSpecAccess().getGroup(), "rule__MetaModelSpec__Group__0");
 					put(grammarAccess.getModelPathSpecAccess().getGroup(), "rule__ModelPathSpec__Group__0");
 					put(grammarAccess.getObjectiveInterpreterSpecAccess().getGroup(), "rule__ObjectiveInterpreterSpec__Group__0");
@@ -281,7 +281,7 @@ public class MDEOptimiseParser extends AbstractContentAssistParser {
 					put(grammarAccess.getOptimisationAccess().getConstraintsAssignment_4(), "rule__Optimisation__ConstraintsAssignment_4");
 					put(grammarAccess.getOptimisationAccess().getEvolversAssignment_5(), "rule__Optimisation__EvolversAssignment_5");
 					put(grammarAccess.getOptimisationAccess().getOptimisationAssignment_6(), "rule__Optimisation__OptimisationAssignment_6");
-					put(grammarAccess.getBasepathSpecAccess().getLocationAssignment_1(), "rule__BasepathSpec__LocationAssignment_1");
+					put(grammarAccess.getBasePathSpecAccess().getLocationAssignment_1(), "rule__BasePathSpec__LocationAssignment_1");
 					put(grammarAccess.getMetaModelSpecAccess().getLocationAssignment_1(), "rule__MetaModelSpec__LocationAssignment_1");
 					put(grammarAccess.getModelPathSpecAccess().getLocationAssignment_1(), "rule__ModelPathSpec__LocationAssignment_1");
 					put(grammarAccess.getObjectiveInterpreterSpecAccess().getObjectiveNameAssignment_1(), "rule__ObjectiveInterpreterSpec__ObjectiveNameAssignment_1");
