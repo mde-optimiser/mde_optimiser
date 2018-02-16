@@ -74,6 +74,51 @@ class MoeaOptimisationTests {
     
     //Some tests to run optimisation manually for now
 	@Test
+	def void runMoeaOptimisationNSGA2CRAReports() {
+		
+			val pathPrefix = "gen/"
+			
+			model = parser.parse('''
+				basepath <src/models/cra/>
+				metamodel <architectureCRA.ecore>
+				model <TTC_InputRDG_C.xmi>
+				objective MaximiseCRA maximise java { "models.moea.MaximiseCRA" }
+				constraint MinimiseClasslessFeatures java { "models.moea.MinimiseClasslessFeatures" }
+				report ReportFunction { "models.moea.MaximiseCRA" }
+				mutate using <craEvolvers.henshin> unit "createClass"
+				mutate using <craEvolvers.henshin> unit "assignFeature"
+				mutate using <craEvolvers.henshin> unit "moveFeature"
+				mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
+				optimisation provider moea algorithm NSGAII variation mutation evolutions 10 population 5 batches 2
+			''')
+
+			//Assert that there are no grammar issues
+			model.assertNoIssues
+
+			if(model !== null){
+					
+					val mdeoResultsOutput = new MDEOResultsOutput(new Date(), new Path(pathPrefix), new Path(""), model);	
+					
+					var experimentId = 0;
+					do {
+							            		
+	            		val startTime = System.nanoTime;
+	            		val optimisationOutcome = new OptimisationInterpreter("", model).start();
+	            		val endTime = System.nanoTime;
+	            		
+	            		val experimentDuration = (endTime - startTime) / 1000000
+	            		
+	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome))		
+						
+						experimentId++
+					} while(experimentId < model.optimisation.algorithmBatches);
+
+	            	mdeoResultsOutput.saveOutcome();
+	        }
+	}
+	
+	    //Some tests to run optimisation manually for now
+	@Test
 	def void runMoeaOptimisationNSGA2CRA() {
 		
 			val pathPrefix = "gen/"

@@ -9,6 +9,7 @@ Optimisation:
 	model=ModelPathSpec
 	objectives+=ObjectiveInterpreterSpec+
 	constraints+=ConstraintInterpreterSpec*
+	reports+=ReportInterpreterSpec*
 	evolvers+=EvolverSpec+
 	optimisation=OptimisationSpec
 ;
@@ -38,6 +39,10 @@ ObjectiveInterpreterSpec:
 
 ConstraintInterpreterSpec:
 	"constraint" constraintName=ValidID constraintType=ENTITY_TYPE "{" (constraintSpec=STRING) "}"
+;
+
+ReportInterpreterSpec:
+	"report" reportName=ValidID "{" (reportSpec=STRING) "}"
 ;
 
 EvolverSpec:

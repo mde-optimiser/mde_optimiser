@@ -72,6 +72,7 @@ import uk.ac.kcl.mdeoptimise.Optimisation;
 import uk.ac.kcl.mdeoptimise.OptimisationSpec;
 import uk.ac.kcl.mdeoptimise.ParameterFunction;
 import uk.ac.kcl.mdeoptimise.ProbabilityVariation;
+import uk.ac.kcl.mdeoptimise.ReportInterpreterSpec;
 import uk.ac.kcl.services.MDEOptimiseGrammarAccess;
 
 @SuppressWarnings("all")
@@ -123,6 +124,9 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 				return; 
 			case MdeoptimisePackage.PROBABILITY_VARIATION:
 				sequence_ProbabilityVariation(context, (ProbabilityVariation) semanticObject); 
+				return; 
+			case MdeoptimisePackage.REPORT_INTERPRETER_SPEC:
+				sequence_ReportInterpreterSpec(context, (ReportInterpreterSpec) semanticObject); 
 				return; 
 			}
 		else if (epackage == TypesPackage.eINSTANCE)
@@ -539,6 +543,7 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 	 *         model=ModelPathSpec 
 	 *         objectives+=ObjectiveInterpreterSpec+ 
 	 *         constraints+=ConstraintInterpreterSpec* 
+	 *         reports+=ReportInterpreterSpec* 
 	 *         evolvers+=EvolverSpec+ 
 	 *         optimisation=OptimisationSpec
 	 *     )
@@ -569,6 +574,27 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 	 */
 	protected void sequence_ProbabilityVariation(ISerializationContext context, ProbabilityVariation semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ReportInterpreterSpec returns ReportInterpreterSpec
+	 *
+	 * Constraint:
+	 *     (reportName=ValidID reportSpec=STRING)
+	 */
+	protected void sequence_ReportInterpreterSpec(ISerializationContext context, ReportInterpreterSpec semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.REPORT_INTERPRETER_SPEC__REPORT_NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.REPORT_INTERPRETER_SPEC__REPORT_NAME));
+			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.REPORT_INTERPRETER_SPEC__REPORT_SPEC) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.REPORT_INTERPRETER_SPEC__REPORT_SPEC));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getReportInterpreterSpecAccess().getReportNameValidIDParserRuleCall_1_0(), semanticObject.getReportName());
+		feeder.accept(grammarAccess.getReportInterpreterSpecAccess().getReportSpecSTRINGTerminalRuleCall_3_0(), semanticObject.getReportSpec());
+		feeder.finish();
 	}
 	
 	

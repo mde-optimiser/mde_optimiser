@@ -115,6 +115,13 @@ public class MdeoptimiseSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case MdeoptimisePackage.REPORT_INTERPRETER_SPEC:
+      {
+        ReportInterpreterSpec reportInterpreterSpec = (ReportInterpreterSpec)theEObject;
+        T result = caseReportInterpreterSpec(reportInterpreterSpec);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case MdeoptimisePackage.EVOLVER_SPEC:
       {
         EvolverSpec evolverSpec = (EvolverSpec)theEObject;
@@ -253,6 +260,22 @@ public class MdeoptimiseSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseConstraintInterpreterSpec(ConstraintInterpreterSpec object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Report Interpreter Spec</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Report Interpreter Spec</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseReportInterpreterSpec(ReportInterpreterSpec object)
   {
     return null;
   }
