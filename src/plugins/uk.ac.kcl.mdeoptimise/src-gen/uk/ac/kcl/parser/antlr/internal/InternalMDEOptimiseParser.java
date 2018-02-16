@@ -23,7 +23,7 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalMDEOptimiseParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_URL", "RULE_OBJECTIVE_TENDENCY", "RULE_ENTITY_TYPE", "RULE_STRING", "RULE_ALGORITHM_FACTORY", "RULE_ALGORITHM_NAME", "RULE_INT", "RULE_MUTATION_VARIATION", "RULE_CROSSOVER_VARIATION", "RULE_GENETIC_VARIATION", "RULE_HEX", "RULE_DECIMAL", "RULE_ID", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'basepath'", "'metamodel'", "'model'", "'objective'", "'{'", "'}'", "'constraint'", "'using'", "'unit'", "'parameters'", "','", "'=>'", "'('", "')'", "'optimisation'", "'provider'", "'algorithm'", "'variation'", "'evolutions'", "'population'", "'experiments'", "'='", "'+='", "'-='", "'*='", "'/='", "'%='", "'<'", "'>'", "'>='", "'||'", "'&&'", "'=='", "'!='", "'==='", "'!=='", "'instanceof'", "'->'", "'..<'", "'..'", "'<>'", "'?:'", "'+'", "'-'", "'*'", "'**'", "'/'", "'%'", "'!'", "'as'", "'++'", "'--'", "'.'", "'::'", "'?.'", "'#'", "'['", "']'", "'|'", "';'", "'if'", "'else'", "'switch'", "':'", "'default'", "'case'", "'for'", "'while'", "'do'", "'var'", "'val'", "'extends'", "'static'", "'import'", "'extension'", "'super'", "'new'", "'false'", "'true'", "'null'", "'typeof'", "'throw'", "'return'", "'try'", "'finally'", "'synchronized'", "'catch'", "'?'", "'&'", "'mutate'", "'breed'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_URL", "RULE_OBJECTIVE_TENDENCY", "RULE_ENTITY_TYPE", "RULE_STRING", "RULE_ALGORITHM_FACTORY", "RULE_ALGORITHM_NAME", "RULE_INT", "RULE_MUTATION_VARIATION", "RULE_CROSSOVER_VARIATION", "RULE_GENETIC_VARIATION", "RULE_HEX", "RULE_DECIMAL", "RULE_ID", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'basepath'", "'metamodel'", "'model'", "'objective'", "'{'", "'}'", "'constraint'", "'using'", "'unit'", "'parameters'", "','", "'=>'", "'('", "')'", "'optimisation'", "'provider'", "'algorithm'", "'variation'", "'evolutions'", "'population'", "'batches'", "'='", "'+='", "'-='", "'*='", "'/='", "'%='", "'<'", "'>'", "'>='", "'||'", "'&&'", "'=='", "'!='", "'==='", "'!=='", "'instanceof'", "'->'", "'..<'", "'..'", "'<>'", "'?:'", "'+'", "'-'", "'*'", "'**'", "'/'", "'%'", "'!'", "'as'", "'++'", "'--'", "'.'", "'::'", "'?.'", "'#'", "'['", "']'", "'|'", "';'", "'if'", "'else'", "'switch'", "':'", "'default'", "'case'", "'for'", "'while'", "'do'", "'var'", "'val'", "'extends'", "'static'", "'import'", "'extension'", "'super'", "'new'", "'false'", "'true'", "'null'", "'typeof'", "'throw'", "'return'", "'try'", "'finally'", "'synchronized'", "'catch'", "'?'", "'&'", "'mutate'", "'breed'"
     };
     public static final int RULE_HEX=14;
     public static final int T__50=50;
@@ -2151,7 +2151,7 @@ public class InternalMDEOptimiseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleOptimisationSpec"
-    // InternalMDEOptimise.g:827:1: ruleOptimisationSpec returns [EObject current=null] : (otherlv_0= 'optimisation' otherlv_1= 'provider' ( (lv_algorithmFactory_2_0= RULE_ALGORITHM_FACTORY ) ) otherlv_3= 'algorithm' ( (lv_algorithmName_4_0= RULE_ALGORITHM_NAME ) ) otherlv_5= 'variation' ( (lv_algorithmVariation_6_0= ruleAlgorithmVariation ) ) otherlv_7= 'evolutions' ( (lv_algorithmEvolutions_8_0= RULE_INT ) ) otherlv_9= 'population' ( (lv_algorithmPopulation_10_0= RULE_INT ) ) (otherlv_11= 'experiments' ( (lv_algorithmExperiments_12_0= RULE_INT ) ) )? ) ;
+    // InternalMDEOptimise.g:827:1: ruleOptimisationSpec returns [EObject current=null] : (otherlv_0= 'optimisation' otherlv_1= 'provider' ( (lv_algorithmFactory_2_0= RULE_ALGORITHM_FACTORY ) ) otherlv_3= 'algorithm' ( (lv_algorithmName_4_0= RULE_ALGORITHM_NAME ) ) otherlv_5= 'variation' ( (lv_algorithmVariation_6_0= ruleAlgorithmVariation ) ) otherlv_7= 'evolutions' ( (lv_algorithmEvolutions_8_0= RULE_INT ) ) otherlv_9= 'population' ( (lv_algorithmPopulation_10_0= RULE_INT ) ) (otherlv_11= 'batches' ( (lv_algorithmBatches_12_0= RULE_INT ) ) )? ) ;
     public final EObject ruleOptimisationSpec() throws RecognitionException {
         EObject current = null;
 
@@ -2166,7 +2166,7 @@ public class InternalMDEOptimiseParser extends AbstractInternalAntlrParser {
         Token otherlv_9=null;
         Token lv_algorithmPopulation_10_0=null;
         Token otherlv_11=null;
-        Token lv_algorithmExperiments_12_0=null;
+        Token lv_algorithmBatches_12_0=null;
         EObject lv_algorithmVariation_6_0 = null;
 
 
@@ -2174,11 +2174,11 @@ public class InternalMDEOptimiseParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalMDEOptimise.g:833:2: ( (otherlv_0= 'optimisation' otherlv_1= 'provider' ( (lv_algorithmFactory_2_0= RULE_ALGORITHM_FACTORY ) ) otherlv_3= 'algorithm' ( (lv_algorithmName_4_0= RULE_ALGORITHM_NAME ) ) otherlv_5= 'variation' ( (lv_algorithmVariation_6_0= ruleAlgorithmVariation ) ) otherlv_7= 'evolutions' ( (lv_algorithmEvolutions_8_0= RULE_INT ) ) otherlv_9= 'population' ( (lv_algorithmPopulation_10_0= RULE_INT ) ) (otherlv_11= 'experiments' ( (lv_algorithmExperiments_12_0= RULE_INT ) ) )? ) )
-            // InternalMDEOptimise.g:834:2: (otherlv_0= 'optimisation' otherlv_1= 'provider' ( (lv_algorithmFactory_2_0= RULE_ALGORITHM_FACTORY ) ) otherlv_3= 'algorithm' ( (lv_algorithmName_4_0= RULE_ALGORITHM_NAME ) ) otherlv_5= 'variation' ( (lv_algorithmVariation_6_0= ruleAlgorithmVariation ) ) otherlv_7= 'evolutions' ( (lv_algorithmEvolutions_8_0= RULE_INT ) ) otherlv_9= 'population' ( (lv_algorithmPopulation_10_0= RULE_INT ) ) (otherlv_11= 'experiments' ( (lv_algorithmExperiments_12_0= RULE_INT ) ) )? )
+            // InternalMDEOptimise.g:833:2: ( (otherlv_0= 'optimisation' otherlv_1= 'provider' ( (lv_algorithmFactory_2_0= RULE_ALGORITHM_FACTORY ) ) otherlv_3= 'algorithm' ( (lv_algorithmName_4_0= RULE_ALGORITHM_NAME ) ) otherlv_5= 'variation' ( (lv_algorithmVariation_6_0= ruleAlgorithmVariation ) ) otherlv_7= 'evolutions' ( (lv_algorithmEvolutions_8_0= RULE_INT ) ) otherlv_9= 'population' ( (lv_algorithmPopulation_10_0= RULE_INT ) ) (otherlv_11= 'batches' ( (lv_algorithmBatches_12_0= RULE_INT ) ) )? ) )
+            // InternalMDEOptimise.g:834:2: (otherlv_0= 'optimisation' otherlv_1= 'provider' ( (lv_algorithmFactory_2_0= RULE_ALGORITHM_FACTORY ) ) otherlv_3= 'algorithm' ( (lv_algorithmName_4_0= RULE_ALGORITHM_NAME ) ) otherlv_5= 'variation' ( (lv_algorithmVariation_6_0= ruleAlgorithmVariation ) ) otherlv_7= 'evolutions' ( (lv_algorithmEvolutions_8_0= RULE_INT ) ) otherlv_9= 'population' ( (lv_algorithmPopulation_10_0= RULE_INT ) ) (otherlv_11= 'batches' ( (lv_algorithmBatches_12_0= RULE_INT ) ) )? )
             {
-            // InternalMDEOptimise.g:834:2: (otherlv_0= 'optimisation' otherlv_1= 'provider' ( (lv_algorithmFactory_2_0= RULE_ALGORITHM_FACTORY ) ) otherlv_3= 'algorithm' ( (lv_algorithmName_4_0= RULE_ALGORITHM_NAME ) ) otherlv_5= 'variation' ( (lv_algorithmVariation_6_0= ruleAlgorithmVariation ) ) otherlv_7= 'evolutions' ( (lv_algorithmEvolutions_8_0= RULE_INT ) ) otherlv_9= 'population' ( (lv_algorithmPopulation_10_0= RULE_INT ) ) (otherlv_11= 'experiments' ( (lv_algorithmExperiments_12_0= RULE_INT ) ) )? )
-            // InternalMDEOptimise.g:835:3: otherlv_0= 'optimisation' otherlv_1= 'provider' ( (lv_algorithmFactory_2_0= RULE_ALGORITHM_FACTORY ) ) otherlv_3= 'algorithm' ( (lv_algorithmName_4_0= RULE_ALGORITHM_NAME ) ) otherlv_5= 'variation' ( (lv_algorithmVariation_6_0= ruleAlgorithmVariation ) ) otherlv_7= 'evolutions' ( (lv_algorithmEvolutions_8_0= RULE_INT ) ) otherlv_9= 'population' ( (lv_algorithmPopulation_10_0= RULE_INT ) ) (otherlv_11= 'experiments' ( (lv_algorithmExperiments_12_0= RULE_INT ) ) )?
+            // InternalMDEOptimise.g:834:2: (otherlv_0= 'optimisation' otherlv_1= 'provider' ( (lv_algorithmFactory_2_0= RULE_ALGORITHM_FACTORY ) ) otherlv_3= 'algorithm' ( (lv_algorithmName_4_0= RULE_ALGORITHM_NAME ) ) otherlv_5= 'variation' ( (lv_algorithmVariation_6_0= ruleAlgorithmVariation ) ) otherlv_7= 'evolutions' ( (lv_algorithmEvolutions_8_0= RULE_INT ) ) otherlv_9= 'population' ( (lv_algorithmPopulation_10_0= RULE_INT ) ) (otherlv_11= 'batches' ( (lv_algorithmBatches_12_0= RULE_INT ) ) )? )
+            // InternalMDEOptimise.g:835:3: otherlv_0= 'optimisation' otherlv_1= 'provider' ( (lv_algorithmFactory_2_0= RULE_ALGORITHM_FACTORY ) ) otherlv_3= 'algorithm' ( (lv_algorithmName_4_0= RULE_ALGORITHM_NAME ) ) otherlv_5= 'variation' ( (lv_algorithmVariation_6_0= ruleAlgorithmVariation ) ) otherlv_7= 'evolutions' ( (lv_algorithmEvolutions_8_0= RULE_INT ) ) otherlv_9= 'population' ( (lv_algorithmPopulation_10_0= RULE_INT ) ) (otherlv_11= 'batches' ( (lv_algorithmBatches_12_0= RULE_INT ) ) )?
             {
             otherlv_0=(Token)match(input,35,FOLLOW_24); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -2371,7 +2371,7 @@ public class InternalMDEOptimiseParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalMDEOptimise.g:950:3: (otherlv_11= 'experiments' ( (lv_algorithmExperiments_12_0= RULE_INT ) ) )?
+            // InternalMDEOptimise.g:950:3: (otherlv_11= 'batches' ( (lv_algorithmBatches_12_0= RULE_INT ) ) )?
             int alt8=2;
             int LA8_0 = input.LA(1);
 
@@ -2380,24 +2380,24 @@ public class InternalMDEOptimiseParser extends AbstractInternalAntlrParser {
             }
             switch (alt8) {
                 case 1 :
-                    // InternalMDEOptimise.g:951:4: otherlv_11= 'experiments' ( (lv_algorithmExperiments_12_0= RULE_INT ) )
+                    // InternalMDEOptimise.g:951:4: otherlv_11= 'batches' ( (lv_algorithmBatches_12_0= RULE_INT ) )
                     {
                     otherlv_11=(Token)match(input,41,FOLLOW_31); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      				newLeafNode(otherlv_11, grammarAccess.getOptimisationSpecAccess().getExperimentsKeyword_11_0());
+                      				newLeafNode(otherlv_11, grammarAccess.getOptimisationSpecAccess().getBatchesKeyword_11_0());
                       			
                     }
-                    // InternalMDEOptimise.g:955:4: ( (lv_algorithmExperiments_12_0= RULE_INT ) )
-                    // InternalMDEOptimise.g:956:5: (lv_algorithmExperiments_12_0= RULE_INT )
+                    // InternalMDEOptimise.g:955:4: ( (lv_algorithmBatches_12_0= RULE_INT ) )
+                    // InternalMDEOptimise.g:956:5: (lv_algorithmBatches_12_0= RULE_INT )
                     {
-                    // InternalMDEOptimise.g:956:5: (lv_algorithmExperiments_12_0= RULE_INT )
-                    // InternalMDEOptimise.g:957:6: lv_algorithmExperiments_12_0= RULE_INT
+                    // InternalMDEOptimise.g:956:5: (lv_algorithmBatches_12_0= RULE_INT )
+                    // InternalMDEOptimise.g:957:6: lv_algorithmBatches_12_0= RULE_INT
                     {
-                    lv_algorithmExperiments_12_0=(Token)match(input,RULE_INT,FOLLOW_2); if (state.failed) return current;
+                    lv_algorithmBatches_12_0=(Token)match(input,RULE_INT,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      						newLeafNode(lv_algorithmExperiments_12_0, grammarAccess.getOptimisationSpecAccess().getAlgorithmExperimentsINTTerminalRuleCall_11_1_0());
+                      						newLeafNode(lv_algorithmBatches_12_0, grammarAccess.getOptimisationSpecAccess().getAlgorithmBatchesINTTerminalRuleCall_11_1_0());
                       					
                     }
                     if ( state.backtracking==0 ) {
@@ -2407,8 +2407,8 @@ public class InternalMDEOptimiseParser extends AbstractInternalAntlrParser {
                       						}
                       						setWithLastConsumed(
                       							current,
-                      							"algorithmExperiments",
-                      							lv_algorithmExperiments_12_0,
+                      							"algorithmBatches",
+                      							lv_algorithmBatches_12_0,
                       							"org.eclipse.xtext.xbase.Xbase.INT");
                       					
                     }

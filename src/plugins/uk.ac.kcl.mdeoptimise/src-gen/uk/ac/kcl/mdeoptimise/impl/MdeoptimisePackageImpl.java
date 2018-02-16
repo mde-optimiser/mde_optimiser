@@ -604,7 +604,7 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getOptimisationSpec_AlgorithmExperiments()
+  public EAttribute getOptimisationSpec_AlgorithmBatches()
   {
     return (EAttribute)optimisationSpecEClass.getEStructuralFeatures().get(5);
   }
@@ -769,7 +769,7 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
     createEReference(optimisationSpecEClass, OPTIMISATION_SPEC__ALGORITHM_VARIATION);
     createEAttribute(optimisationSpecEClass, OPTIMISATION_SPEC__ALGORITHM_EVOLUTIONS);
     createEAttribute(optimisationSpecEClass, OPTIMISATION_SPEC__ALGORITHM_POPULATION);
-    createEAttribute(optimisationSpecEClass, OPTIMISATION_SPEC__ALGORITHM_EXPERIMENTS);
+    createEAttribute(optimisationSpecEClass, OPTIMISATION_SPEC__ALGORITHM_BATCHES);
 
     algorithmVariationEClass = createEClass(ALGORITHM_VARIATION);
     createEReference(algorithmVariationEClass, ALGORITHM_VARIATION__PROBABILITY_VARIATION);
@@ -865,7 +865,7 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
     initEReference(getOptimisationSpec_AlgorithmVariation(), this.getAlgorithmVariation(), null, "algorithmVariation", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getOptimisationSpec_AlgorithmEvolutions(), ecorePackage.getEInt(), "algorithmEvolutions", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getOptimisationSpec_AlgorithmPopulation(), ecorePackage.getEInt(), "algorithmPopulation", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getOptimisationSpec_AlgorithmExperiments(), ecorePackage.getEInt(), "algorithmExperiments", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getOptimisationSpec_AlgorithmBatches(), ecorePackage.getEInt(), "algorithmBatches", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(algorithmVariationEClass, AlgorithmVariation.class, "AlgorithmVariation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getAlgorithmVariation_ProbabilityVariation(), this.getProbabilityVariation(), null, "probabilityVariation", null, 0, 1, AlgorithmVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
