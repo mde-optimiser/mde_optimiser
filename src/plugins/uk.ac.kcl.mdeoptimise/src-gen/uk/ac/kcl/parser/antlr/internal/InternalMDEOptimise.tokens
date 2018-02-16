@@ -43,6 +43,7 @@
 'algorithm'=37
 'as'=70
 'basepath'=21
+'batches'=41
 'breed'=111
 'case'=86
 'catch'=107
@@ -51,7 +52,6 @@
 'do'=89
 'else'=82
 'evolutions'=39
-'experiments'=41
 'extends'=92
 'extension'=95
 'false'=98

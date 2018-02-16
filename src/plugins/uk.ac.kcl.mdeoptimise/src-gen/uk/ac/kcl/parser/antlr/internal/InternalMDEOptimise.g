@@ -948,15 +948,15 @@ ruleOptimisationSpec returns [EObject current=null]
 			)
 		)
 		(
-			otherlv_11='experiments'
+			otherlv_11='batches'
 			{
-				newLeafNode(otherlv_11, grammarAccess.getOptimisationSpecAccess().getExperimentsKeyword_11_0());
+				newLeafNode(otherlv_11, grammarAccess.getOptimisationSpecAccess().getBatchesKeyword_11_0());
 			}
 			(
 				(
-					lv_algorithmExperiments_12_0=RULE_INT
+					lv_algorithmBatches_12_0=RULE_INT
 					{
-						newLeafNode(lv_algorithmExperiments_12_0, grammarAccess.getOptimisationSpecAccess().getAlgorithmExperimentsINTTerminalRuleCall_11_1_0());
+						newLeafNode(lv_algorithmBatches_12_0, grammarAccess.getOptimisationSpecAccess().getAlgorithmBatchesINTTerminalRuleCall_11_1_0());
 					}
 					{
 						if ($current==null) {
@@ -964,8 +964,8 @@ ruleOptimisationSpec returns [EObject current=null]
 						}
 						setWithLastConsumed(
 							$current,
-							"algorithmExperiments",
-							lv_algorithmExperiments_12_0,
+							"algorithmBatches",
+							lv_algorithmBatches_12_0,
 							"org.eclipse.xtext.xbase.Xbase.INT");
 					}
 				)

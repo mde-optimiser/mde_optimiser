@@ -306,7 +306,7 @@ public class MDEOptimiseParser extends AbstractContentAssistParser {
 					put(grammarAccess.getOptimisationSpecAccess().getAlgorithmVariationAssignment_6(), "rule__OptimisationSpec__AlgorithmVariationAssignment_6");
 					put(grammarAccess.getOptimisationSpecAccess().getAlgorithmEvolutionsAssignment_8(), "rule__OptimisationSpec__AlgorithmEvolutionsAssignment_8");
 					put(grammarAccess.getOptimisationSpecAccess().getAlgorithmPopulationAssignment_10(), "rule__OptimisationSpec__AlgorithmPopulationAssignment_10");
-					put(grammarAccess.getOptimisationSpecAccess().getAlgorithmExperimentsAssignment_11_1(), "rule__OptimisationSpec__AlgorithmExperimentsAssignment_11_1");
+					put(grammarAccess.getOptimisationSpecAccess().getAlgorithmBatchesAssignment_11_1(), "rule__OptimisationSpec__AlgorithmBatchesAssignment_11_1");
 					put(grammarAccess.getAlgorithmVariationAccess().getProbabilityVariationAssignment_0(), "rule__AlgorithmVariation__ProbabilityVariationAssignment_0");
 					put(grammarAccess.getAlgorithmVariationAccess().getSimpleVariationAssignment_1(), "rule__AlgorithmVariation__SimpleVariationAssignment_1");
 					put(grammarAccess.getProbabilityVariationAccess().getTypeAssignment_0(), "rule__ProbabilityVariation__TypeAssignment_0");

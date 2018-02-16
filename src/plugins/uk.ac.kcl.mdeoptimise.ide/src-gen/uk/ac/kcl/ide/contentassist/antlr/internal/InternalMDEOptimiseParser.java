@@ -23,7 +23,7 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalMDEOptimiseParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_MUTATION_VARIATION", "RULE_CROSSOVER_VARIATION", "RULE_HEX", "RULE_INT", "RULE_DECIMAL", "RULE_URL", "RULE_OBJECTIVE_TENDENCY", "RULE_ENTITY_TYPE", "RULE_STRING", "RULE_ALGORITHM_FACTORY", "RULE_ALGORITHM_NAME", "RULE_GENETIC_VARIATION", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'='", "'||'", "'&&'", "'+='", "'-='", "'*='", "'/='", "'%='", "'=='", "'!='", "'==='", "'!=='", "'>='", "'>'", "'<'", "'->'", "'..<'", "'..'", "'=>'", "'<>'", "'?:'", "'+'", "'-'", "'*'", "'**'", "'/'", "'%'", "'!'", "'++'", "'--'", "'.'", "'val'", "'extends'", "'static'", "'import'", "'extension'", "'super'", "'false'", "'mutate'", "'breed'", "'basepath'", "'metamodel'", "'model'", "'objective'", "'{'", "'}'", "'constraint'", "'using'", "'unit'", "'parameters'", "','", "'('", "')'", "'optimisation'", "'provider'", "'algorithm'", "'variation'", "'evolutions'", "'population'", "'experiments'", "'instanceof'", "'as'", "'#'", "'['", "']'", "';'", "'if'", "'else'", "'switch'", "':'", "'default'", "'case'", "'for'", "'while'", "'do'", "'new'", "'null'", "'typeof'", "'throw'", "'return'", "'try'", "'finally'", "'synchronized'", "'catch'", "'?'", "'&'", "'::'", "'?.'", "'|'", "'var'", "'true'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_MUTATION_VARIATION", "RULE_CROSSOVER_VARIATION", "RULE_HEX", "RULE_INT", "RULE_DECIMAL", "RULE_URL", "RULE_OBJECTIVE_TENDENCY", "RULE_ENTITY_TYPE", "RULE_STRING", "RULE_ALGORITHM_FACTORY", "RULE_ALGORITHM_NAME", "RULE_GENETIC_VARIATION", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'='", "'||'", "'&&'", "'+='", "'-='", "'*='", "'/='", "'%='", "'=='", "'!='", "'==='", "'!=='", "'>='", "'>'", "'<'", "'->'", "'..<'", "'..'", "'=>'", "'<>'", "'?:'", "'+'", "'-'", "'*'", "'**'", "'/'", "'%'", "'!'", "'++'", "'--'", "'.'", "'val'", "'extends'", "'static'", "'import'", "'extension'", "'super'", "'false'", "'mutate'", "'breed'", "'basepath'", "'metamodel'", "'model'", "'objective'", "'{'", "'}'", "'constraint'", "'using'", "'unit'", "'parameters'", "','", "'('", "')'", "'optimisation'", "'provider'", "'algorithm'", "'variation'", "'evolutions'", "'population'", "'batches'", "'instanceof'", "'as'", "'#'", "'['", "']'", "';'", "'if'", "'else'", "'switch'", "':'", "'default'", "'case'", "'for'", "'while'", "'do'", "'new'", "'null'", "'typeof'", "'throw'", "'return'", "'try'", "'finally'", "'synchronized'", "'catch'", "'?'", "'&'", "'::'", "'?.'", "'|'", "'var'", "'true'"
     };
     public static final int RULE_HEX=7;
     public static final int T__50=50;
@@ -17955,24 +17955,24 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__OptimisationSpec__Group_11__0__Impl"
-    // InternalMDEOptimise.g:5066:1: rule__OptimisationSpec__Group_11__0__Impl : ( 'experiments' ) ;
+    // InternalMDEOptimise.g:5066:1: rule__OptimisationSpec__Group_11__0__Impl : ( 'batches' ) ;
     public final void rule__OptimisationSpec__Group_11__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMDEOptimise.g:5070:1: ( ( 'experiments' ) )
-            // InternalMDEOptimise.g:5071:1: ( 'experiments' )
+            // InternalMDEOptimise.g:5070:1: ( ( 'batches' ) )
+            // InternalMDEOptimise.g:5071:1: ( 'batches' )
             {
-            // InternalMDEOptimise.g:5071:1: ( 'experiments' )
-            // InternalMDEOptimise.g:5072:2: 'experiments'
+            // InternalMDEOptimise.g:5071:1: ( 'batches' )
+            // InternalMDEOptimise.g:5072:2: 'batches'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getOptimisationSpecAccess().getExperimentsKeyword_11_0()); 
+               before(grammarAccess.getOptimisationSpecAccess().getBatchesKeyword_11_0()); 
             }
             match(input,80,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getOptimisationSpecAccess().getExperimentsKeyword_11_0()); 
+               after(grammarAccess.getOptimisationSpecAccess().getBatchesKeyword_11_0()); 
             }
 
             }
@@ -18029,26 +18029,26 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__OptimisationSpec__Group_11__1__Impl"
-    // InternalMDEOptimise.g:5092:1: rule__OptimisationSpec__Group_11__1__Impl : ( ( rule__OptimisationSpec__AlgorithmExperimentsAssignment_11_1 ) ) ;
+    // InternalMDEOptimise.g:5092:1: rule__OptimisationSpec__Group_11__1__Impl : ( ( rule__OptimisationSpec__AlgorithmBatchesAssignment_11_1 ) ) ;
     public final void rule__OptimisationSpec__Group_11__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMDEOptimise.g:5096:1: ( ( ( rule__OptimisationSpec__AlgorithmExperimentsAssignment_11_1 ) ) )
-            // InternalMDEOptimise.g:5097:1: ( ( rule__OptimisationSpec__AlgorithmExperimentsAssignment_11_1 ) )
+            // InternalMDEOptimise.g:5096:1: ( ( ( rule__OptimisationSpec__AlgorithmBatchesAssignment_11_1 ) ) )
+            // InternalMDEOptimise.g:5097:1: ( ( rule__OptimisationSpec__AlgorithmBatchesAssignment_11_1 ) )
             {
-            // InternalMDEOptimise.g:5097:1: ( ( rule__OptimisationSpec__AlgorithmExperimentsAssignment_11_1 ) )
-            // InternalMDEOptimise.g:5098:2: ( rule__OptimisationSpec__AlgorithmExperimentsAssignment_11_1 )
+            // InternalMDEOptimise.g:5097:1: ( ( rule__OptimisationSpec__AlgorithmBatchesAssignment_11_1 ) )
+            // InternalMDEOptimise.g:5098:2: ( rule__OptimisationSpec__AlgorithmBatchesAssignment_11_1 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getOptimisationSpecAccess().getAlgorithmExperimentsAssignment_11_1()); 
+               before(grammarAccess.getOptimisationSpecAccess().getAlgorithmBatchesAssignment_11_1()); 
             }
-            // InternalMDEOptimise.g:5099:2: ( rule__OptimisationSpec__AlgorithmExperimentsAssignment_11_1 )
-            // InternalMDEOptimise.g:5099:3: rule__OptimisationSpec__AlgorithmExperimentsAssignment_11_1
+            // InternalMDEOptimise.g:5099:2: ( rule__OptimisationSpec__AlgorithmBatchesAssignment_11_1 )
+            // InternalMDEOptimise.g:5099:3: rule__OptimisationSpec__AlgorithmBatchesAssignment_11_1
             {
             pushFollow(FOLLOW_2);
-            rule__OptimisationSpec__AlgorithmExperimentsAssignment_11_1();
+            rule__OptimisationSpec__AlgorithmBatchesAssignment_11_1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -18056,7 +18056,7 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getOptimisationSpecAccess().getAlgorithmExperimentsAssignment_11_1()); 
+               after(grammarAccess.getOptimisationSpecAccess().getAlgorithmBatchesAssignment_11_1()); 
             }
 
             }
@@ -57087,9 +57087,9 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
     // $ANTLR end "rule__OptimisationSpec__AlgorithmPopulationAssignment_10"
 
 
-    // $ANTLR start "rule__OptimisationSpec__AlgorithmExperimentsAssignment_11_1"
-    // InternalMDEOptimise.g:17421:1: rule__OptimisationSpec__AlgorithmExperimentsAssignment_11_1 : ( RULE_INT ) ;
-    public final void rule__OptimisationSpec__AlgorithmExperimentsAssignment_11_1() throws RecognitionException {
+    // $ANTLR start "rule__OptimisationSpec__AlgorithmBatchesAssignment_11_1"
+    // InternalMDEOptimise.g:17421:1: rule__OptimisationSpec__AlgorithmBatchesAssignment_11_1 : ( RULE_INT ) ;
+    public final void rule__OptimisationSpec__AlgorithmBatchesAssignment_11_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -57101,11 +57101,11 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
             // InternalMDEOptimise.g:17427:3: RULE_INT
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getOptimisationSpecAccess().getAlgorithmExperimentsINTTerminalRuleCall_11_1_0()); 
+               before(grammarAccess.getOptimisationSpecAccess().getAlgorithmBatchesINTTerminalRuleCall_11_1_0()); 
             }
             match(input,RULE_INT,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getOptimisationSpecAccess().getAlgorithmExperimentsINTTerminalRuleCall_11_1_0()); 
+               after(grammarAccess.getOptimisationSpecAccess().getAlgorithmBatchesINTTerminalRuleCall_11_1_0()); 
             }
 
             }
@@ -57125,7 +57125,7 @@ public class InternalMDEOptimiseParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "rule__OptimisationSpec__AlgorithmExperimentsAssignment_11_1"
+    // $ANTLR end "rule__OptimisationSpec__AlgorithmBatchesAssignment_11_1"
 
 
     // $ANTLR start "rule__AlgorithmVariation__ProbabilityVariationAssignment_0"
