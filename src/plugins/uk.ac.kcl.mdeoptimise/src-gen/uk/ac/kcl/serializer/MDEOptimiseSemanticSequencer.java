@@ -520,7 +520,7 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 	 *         algorithmVariation=AlgorithmVariation 
 	 *         algorithmEvolutions=INT 
 	 *         algorithmPopulation=INT 
-	 *         algorithmExperiments=INT?
+	 *         algorithmBatches=INT?
 	 *     )
 	 */
 	protected void sequence_OptimisationSpec(ISerializationContext context, OptimisationSpec semanticObject) {

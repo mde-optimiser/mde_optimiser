@@ -71,7 +71,7 @@ OptimisationSpec:
 				"variation" algorithmVariation=AlgorithmVariation
 				"evolutions" algorithmEvolutions=INT
 				"population" algorithmPopulation=INT
-				("experiments" algorithmExperiments=INT)?
+				("batches" algorithmBatches=INT)?
 ;
 
 AlgorithmVariation:
