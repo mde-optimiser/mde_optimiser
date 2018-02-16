@@ -60,7 +60,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//OptimisationSpec/algorithmVariation"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//OptimisationSpec/algorithmEvolutions"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//OptimisationSpec/algorithmPopulation"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//OptimisationSpec/algorithmExperiments"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//OptimisationSpec/algorithmBatches"/>
     </genClasses>
     <genClasses ecoreClass="MDEOptimise.ecore#//AlgorithmVariation">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//AlgorithmVariation/probabilityVariation"/>
