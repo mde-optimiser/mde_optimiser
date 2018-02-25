@@ -27,7 +27,7 @@ class MoeaProbabilisticVariation implements Variation {
 		this.mutationRate = mutationRate;
 	}
 	
-	//USed to evolve a solution using the henshin evolvers
+	//Used to evolve a solution using the henshin evolvers
 	override evolve(Solution[] parents) {
 		var result = Arrays.copyOf(parents, parents.length);
 		var random = new Random();

@@ -15,7 +15,7 @@ import org.sidiff.common.henshin.HenshinRuleAnalysisUtilEx
 import org.sidiff.serge.configuration.GlobalConstants
 import org.eclipse.emf.ecore.EClass
 
-class DeleteNodeLBRepairRuleCommand implements IRuleGenerationCommand {
+class DeleteNodeLBRepairManyRuleCommand implements IRuleGenerationCommand {
 	
 	Multiplicity multiplicity;
 	EPackage refinedMetamodelWrapper;
@@ -36,7 +36,7 @@ class DeleteNodeLBRepairRuleCommand implements IRuleGenerationCommand {
 		
 		//Create the Delete rule as an invesrse of the Create rule
 		//TODO This assumes that there is only one rule in the Module
-		var createNodeRuleCommand = new CreateNodeLBRepairRuleCommand(multiplicity, refinedMetamodelWrapper, metamodelAnalyser);
+		var createNodeRuleCommand = new CreateNodeLBRepairManyRuleCommand(multiplicity, refinedMetamodelWrapper, metamodelAnalyser);
 		var deleteModule = createNodeRuleCommand.generate();
 		
 		//Create an inverse of the delete module
@@ -44,7 +44,7 @@ class DeleteNodeLBRepairRuleCommand implements IRuleGenerationCommand {
 		
 		var deleteRule = HenshinModuleAnalysis.getAllRules(module).get(0);
 		
-		module.setName(module.getName()+"_lb_repair");
+		module.setName(module.getName()+"_lb_repair_many");
 		
 		//Apply the repair operations for this rule
 		//applyRepairOperations(deleteRule)
