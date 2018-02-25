@@ -15,7 +15,10 @@ import uk.ac.kcl.mdeoptimise.rulegen.metamodel.Multiplicity
 import org.sidiff.serge.configuration.GlobalConstants
 import org.eclipse.emf.ecore.EClass
 
-class CreateNodeLBRepairRuleCommand implements IRuleGenerationCommand {
+/**
+ * Takes the n lb required repair nodes from N preserve nodes
+ */
+class CreateNodeLBRepairManyRuleCommand implements IRuleGenerationCommand {
 	
 	Multiplicity multiplicity;
 	EPackage refinedMetamodelWrapper;
@@ -88,20 +91,21 @@ class CreateNodeLBRepairRuleCommand implements IRuleGenerationCommand {
 	private def void applyRepairOperations(Rule rule){
 		
 		
-		rule.name = rule.name + "_lb_repair"
+		rule.name = rule.name + "_lb_repair_many"
 		
 		//Get the created node from the rule graphs
 		var createdNode = HenshinRuleAnalysisUtilEx.getRHSMinusLHSNodes(rule).get(0);
 		
-		//Create existing node A from which to take the existing target node
-		val existingsourceNodeName = Common.getFreeNodeName(GlobalConstants.NEWTGT, rule);
-		val existingSourceNode = HenshinRuleAnalysisUtilEx.createPreservedNode(rule, existingsourceNodeName, multiplicity.sourceNode as EClass);
 		
 		createdNode.getOutgoing(multiplicity.EReference).forEach[ outgoingEdge |
 			
 			//Find existing target node
 			var existingTargetNode =  HenshinRuleAnalysisUtilEx.findCorrespondingNodeInLHS(outgoingEdge.getTarget())
-			
+		
+			//Create existing node A from which to take the existing target node
+			val existingsourceNodeName = Common.getFreeNodeName(GlobalConstants.NEWTGT, rule);
+			val existingSourceNode = HenshinRuleAnalysisUtilEx.createPreservedNode(rule, existingsourceNodeName, multiplicity.sourceNode as EClass);
+	
 			//Create a delete edge between existing node A and an existing node B
 			HenshinRuleAnalysisUtilEx.createDeleteEdge(existingSourceNode.lhsNode, existingTargetNode, multiplicity.EReference, rule);
 		]
@@ -109,8 +113,8 @@ class CreateNodeLBRepairRuleCommand implements IRuleGenerationCommand {
 	
 	//Apply the NACs
 	private def void applyRuleNacConditions(Rule rule){
-		
-		new LowerBoundManyRepairCheckGenerator(rule).generate();
+	
+		new LowerBoundCheckGenerator(rule).generate();
 		new UpperBoundCheckGenerator(rule).generate();
 	}
 	
