@@ -141,7 +141,7 @@ class CreateNodeRuleCommandOrchestratorMetamodelTests {
 		
 		val module = createNodeRuleCommand.generate();
 		
-		writeModel(module, "src/resources/cases/", "case_1_rule_2_create_node_a_orchestrator.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
+		writeModel(module, "src/resources/cases/orchestrator/", "case_1_rule_2_create_node_a_orchestrator.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
 		
 		assertEquals("CREATE_Node_Orchestrator_Rules", module.name);
 		assertEquals(1, module.allRules.size);
