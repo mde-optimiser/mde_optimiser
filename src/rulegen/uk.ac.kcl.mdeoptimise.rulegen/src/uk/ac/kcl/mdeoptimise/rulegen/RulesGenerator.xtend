@@ -46,6 +46,11 @@ class RulesGenerator {
 	
 	def void applyRefinements() {
 		
+		
+		var node = "Class";
+		
+		
+		
 		refinedMultiplicities.forEach[ multiplicity |
 			generateRules(multiplicity, refinedMetamodelWrapper, metamodelAnalyser)
 		]

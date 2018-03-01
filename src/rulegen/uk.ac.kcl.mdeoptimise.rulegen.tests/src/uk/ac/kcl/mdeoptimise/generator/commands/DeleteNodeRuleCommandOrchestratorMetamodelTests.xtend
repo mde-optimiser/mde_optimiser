@@ -113,7 +113,7 @@ class DeleteNodeRuleCommandOrchestratorMetamodelTests {
 		
 		val module = createNodeRuleCommand.generate();
 		
-		writeModel(module, "src/resources/cases/", "case_1_rule_1_delete_node_a_orchestrator.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
+		writeModel(module, "src/resources/cases/orchestrator/", "case_1_rule_1_delete_node_a_orchestrator.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
 		
 		assertEquals("DELETE_Node_Orchestrator_Rules", module.name);
 		assertEquals(1, module.allRules.size);
@@ -143,7 +143,7 @@ class DeleteNodeRuleCommandOrchestratorMetamodelTests {
 		
 		val module = createNodeRuleCommand.generate();
 		
-		writeModel(module, "src/resources/cases/", "case_1_rule_2_delete_node_a_orchestrator.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
+		writeModel(module, "src/resources/cases/orchestrator/", "case_1_rule_2_delete_node_a_orchestrator.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
 		
 		assertEquals("DELETE_Node_Orchestrator_Rules_lb_repair", module.name);
 		assertEquals(1, module.allRules.size);

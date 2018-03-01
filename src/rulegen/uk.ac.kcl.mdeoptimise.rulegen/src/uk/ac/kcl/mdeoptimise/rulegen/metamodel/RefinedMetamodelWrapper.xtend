@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EReference
 import uk.ac.kcl.mdeoptimise.rulegen.exceptions.MultiplicityException
 import org.eclipse.emf.ecore.EClass
 import java.util.List
+import org.eclipse.emf.common.util.EList
 
 class RefinedMetamodelWrapper {
 
@@ -128,5 +129,22 @@ class RefinedMetamodelWrapper {
 
 	def List<Multiplicity> getRefinedMultiplicities() {
 		return this.refinedMultiplicities
+	}
+	
+	def EClass getNode(String nodeName){
+		
+		val nodeClassifier = refinedMetamodel.EClassifiers
+			.filter[classifier | (classifier as EClass).name.equals(nodeName)].head as EClass
+			
+		return nodeClassifier
+	}
+	
+	/**
+	 * Returns a list of bidirectional references for which our algorithm can generate repair operations.
+	 * For each of these references, we will then run the repair generation algorithm.
+	 */
+	def List<EReference> getBidirectionalReferences(EClass node) {
+		
+		return node.EAllReferences.filter[reference | reference.EOpposite != null].toList
 	}
 }
