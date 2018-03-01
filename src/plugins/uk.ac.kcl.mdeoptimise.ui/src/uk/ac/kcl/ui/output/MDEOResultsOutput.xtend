@@ -18,6 +18,8 @@ import java.util.TimeZone
 import java.util.HashMap
 import com.google.common.io.Files
 import java.nio.charset.Charset
+import org.eclipse.emf.ecore.xmi.XMIResource
+import java.util.Map
 
 class MDEOResultsOutput {
 	
@@ -148,7 +150,12 @@ class MDEOResultsOutput {
 			resource.contents.clear
 		}
 		resource.contents.add(model)
-		resource.save(Collections.EMPTY_MAP)
+		
+		// Keep schema location in output models
+		val Map<Object,Object> options = new HashMap<Object,Object>();
+		options.put(XMIResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
+		
+		resource.save(options)
 	}
 
 	private def storeSolutionData(PrintWriter infoWriter, String modelPath, MoeaOptimisationSolution solution){
