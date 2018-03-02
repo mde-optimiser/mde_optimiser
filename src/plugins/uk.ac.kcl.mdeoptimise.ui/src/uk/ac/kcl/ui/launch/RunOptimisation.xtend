@@ -65,11 +65,13 @@ class RunOptimisation {
 					var experimentId = 0;
 	            	do {	
 	            		val startTime = System.nanoTime;
-	            		val optimisationOutcome = new OptimisationInterpreter(moptProjectPath, optimisationModel).start();
+	            		var optimisationInterpreter = new OptimisationInterpreter(moptProjectPath, optimisationModel);
+	            		val optimisationOutcome = optimisationInterpreter.start();
 	            		val endTime = System.nanoTime;
 	            		
 	            		val experimentDuration = (endTime - startTime) / 1000000
-	            		
+	      
+	            		//TODO Output generated mutation operators for each experiment? or each batch?
 	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome))		
 	            		
 	            		experimentId++
@@ -84,6 +86,4 @@ class RunOptimisation {
 			}
 		}
 	}
-	
-
 }

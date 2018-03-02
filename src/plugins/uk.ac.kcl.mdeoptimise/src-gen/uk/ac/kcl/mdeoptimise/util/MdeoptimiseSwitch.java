@@ -115,10 +115,38 @@ public class MdeoptimiseSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case MdeoptimisePackage.RULEGEN_SPEC:
+      {
+        RulegenSpec rulegenSpec = (RulegenSpec)theEObject;
+        T result = caseRulegenSpec(rulegenSpec);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MdeoptimisePackage.RULEGEN_NODE:
+      {
+        RulegenNode rulegenNode = (RulegenNode)theEObject;
+        T result = caseRulegenNode(rulegenNode);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MdeoptimisePackage.RULEGEN_EDGE:
+      {
+        RulegenEdge rulegenEdge = (RulegenEdge)theEObject;
+        T result = caseRulegenEdge(rulegenEdge);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case MdeoptimisePackage.EVOLVER_SPEC:
       {
         EvolverSpec evolverSpec = (EvolverSpec)theEObject;
         T result = caseEvolverSpec(evolverSpec);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MdeoptimisePackage.MULTIPLICITY_REFINEMENT_SPEC:
+      {
+        MultiplicityRefinementSpec multiplicityRefinementSpec = (MultiplicityRefinementSpec)theEObject;
+        T result = caseMultiplicityRefinementSpec(multiplicityRefinementSpec);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -258,6 +286,54 @@ public class MdeoptimiseSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Rulegen Spec</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Rulegen Spec</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRulegenSpec(RulegenSpec object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Rulegen Node</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Rulegen Node</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRulegenNode(RulegenNode object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Rulegen Edge</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Rulegen Edge</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRulegenEdge(RulegenEdge object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Evolver Spec</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -269,6 +345,22 @@ public class MdeoptimiseSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseEvolverSpec(EvolverSpec object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Multiplicity Refinement Spec</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Multiplicity Refinement Spec</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMultiplicityRefinementSpec(MultiplicityRefinementSpec object)
   {
     return null;
   }

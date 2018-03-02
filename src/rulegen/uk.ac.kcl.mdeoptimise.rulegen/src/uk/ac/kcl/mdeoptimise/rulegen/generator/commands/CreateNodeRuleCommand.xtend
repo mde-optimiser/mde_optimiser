@@ -35,8 +35,8 @@ class CreateNodeRuleCommand implements IRuleGenerationCommand {
 		this.metamodelAnalyser = metamodelAnalyser;
 	}
 	
-	new(String node, RefinedMetamodelWrapper refinedMetamodelWrapper, EClassifierInfoManagement metamodelAnalyser){
-		this.node = refinedMetamodelWrapper.getNode(node);
+	new(EClass node, RefinedMetamodelWrapper refinedMetamodelWrapper, EClassifierInfoManagement metamodelAnalyser){
+		this.node = node;
 		this.refinedMetamodelWrapper = refinedMetamodelWrapper;
 		this.metamodelAnalyser = metamodelAnalyser;
 	}

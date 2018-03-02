@@ -67,11 +67,15 @@ import uk.ac.kcl.mdeoptimise.EvolverSpec;
 import uk.ac.kcl.mdeoptimise.MdeoptimisePackage;
 import uk.ac.kcl.mdeoptimise.MetaModelSpec;
 import uk.ac.kcl.mdeoptimise.ModelPathSpec;
+import uk.ac.kcl.mdeoptimise.MultiplicityRefinementSpec;
 import uk.ac.kcl.mdeoptimise.ObjectiveInterpreterSpec;
 import uk.ac.kcl.mdeoptimise.Optimisation;
 import uk.ac.kcl.mdeoptimise.OptimisationSpec;
 import uk.ac.kcl.mdeoptimise.ParameterFunction;
 import uk.ac.kcl.mdeoptimise.ProbabilityVariation;
+import uk.ac.kcl.mdeoptimise.RulegenEdge;
+import uk.ac.kcl.mdeoptimise.RulegenNode;
+import uk.ac.kcl.mdeoptimise.RulegenSpec;
 import uk.ac.kcl.services.MDEOptimiseGrammarAccess;
 
 @SuppressWarnings("all")
@@ -109,6 +113,9 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 			case MdeoptimisePackage.MODEL_PATH_SPEC:
 				sequence_ModelPathSpec(context, (ModelPathSpec) semanticObject); 
 				return; 
+			case MdeoptimisePackage.MULTIPLICITY_REFINEMENT_SPEC:
+				sequence_MultiplicityRefinementSpec(context, (MultiplicityRefinementSpec) semanticObject); 
+				return; 
 			case MdeoptimisePackage.OBJECTIVE_INTERPRETER_SPEC:
 				sequence_ObjectiveInterpreterSpec(context, (ObjectiveInterpreterSpec) semanticObject); 
 				return; 
@@ -123,6 +130,15 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 				return; 
 			case MdeoptimisePackage.PROBABILITY_VARIATION:
 				sequence_ProbabilityVariation(context, (ProbabilityVariation) semanticObject); 
+				return; 
+			case MdeoptimisePackage.RULEGEN_EDGE:
+				sequence_RulegenEdge(context, (RulegenEdge) semanticObject); 
+				return; 
+			case MdeoptimisePackage.RULEGEN_NODE:
+				sequence_RulegenNode(context, (RulegenNode) semanticObject); 
+				return; 
+			case MdeoptimisePackage.RULEGEN_SPEC:
+				sequence_RulegenSpec(context, (RulegenSpec) semanticObject); 
 				return; 
 			}
 		else if (epackage == TypesPackage.eINSTANCE)
@@ -484,6 +500,33 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     MultiplicityRefinementSpec returns MultiplicityRefinementSpec
+	 *
+	 * Constraint:
+	 *     (node=STRING edge=STRING lowerBound=INT upperBound=INT)
+	 */
+	protected void sequence_MultiplicityRefinementSpec(ISerializationContext context, MultiplicityRefinementSpec semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.MULTIPLICITY_REFINEMENT_SPEC__NODE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.MULTIPLICITY_REFINEMENT_SPEC__NODE));
+			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.MULTIPLICITY_REFINEMENT_SPEC__EDGE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.MULTIPLICITY_REFINEMENT_SPEC__EDGE));
+			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.MULTIPLICITY_REFINEMENT_SPEC__LOWER_BOUND) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.MULTIPLICITY_REFINEMENT_SPEC__LOWER_BOUND));
+			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.MULTIPLICITY_REFINEMENT_SPEC__UPPER_BOUND) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.MULTIPLICITY_REFINEMENT_SPEC__UPPER_BOUND));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getMultiplicityRefinementSpecAccess().getNodeSTRINGTerminalRuleCall_2_0(), semanticObject.getNode());
+		feeder.accept(grammarAccess.getMultiplicityRefinementSpecAccess().getEdgeSTRINGTerminalRuleCall_4_0(), semanticObject.getEdge());
+		feeder.accept(grammarAccess.getMultiplicityRefinementSpecAccess().getLowerBoundINTTerminalRuleCall_6_0(), semanticObject.getLowerBound());
+		feeder.accept(grammarAccess.getMultiplicityRefinementSpecAccess().getUpperBoundINTTerminalRuleCall_8_0(), semanticObject.getUpperBound());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     ObjectiveInterpreterSpec returns ObjectiveInterpreterSpec
 	 *
 	 * Constraint:
@@ -537,9 +580,11 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 	 *         basepath=BasePathSpec 
 	 *         metamodel=MetaModelSpec 
 	 *         model=ModelPathSpec 
+	 *         refinements+=MultiplicityRefinementSpec* 
 	 *         objectives+=ObjectiveInterpreterSpec+ 
 	 *         constraints+=ConstraintInterpreterSpec* 
-	 *         evolvers+=EvolverSpec+ 
+	 *         evolvers+=EvolverSpec* 
+	 *         rulegen+=RulegenSpec* 
 	 *         optimisation=OptimisationSpec
 	 *     )
 	 */
@@ -568,6 +613,42 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 	 *     (type=GENETIC_VARIATION (crossover_rate=Number mutation_rate=Number)?)
 	 */
 	protected void sequence_ProbabilityVariation(ISerializationContext context, ProbabilityVariation semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     RulegenEdge returns RulegenEdge
+	 *
+	 * Constraint:
+	 *     (node=STRING edge=STRING (generationRestriction=ADD_EDGE | generationRestriction=REMOVE_EDGE)?)
+	 */
+	protected void sequence_RulegenEdge(ISerializationContext context, RulegenEdge semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     RulegenNode returns RulegenNode
+	 *
+	 * Constraint:
+	 *     (node=STRING (generationRestriction=CREATE_NODE | generationRestriction=DELETE_NODE)?)
+	 */
+	protected void sequence_RulegenNode(ISerializationContext context, RulegenNode semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     RulegenSpec returns RulegenSpec
+	 *
+	 * Constraint:
+	 *     (nodeSpec=RulegenNode | edgeSpec=RulegenEdge)
+	 */
+	protected void sequence_RulegenSpec(ISerializationContext context, RulegenSpec semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

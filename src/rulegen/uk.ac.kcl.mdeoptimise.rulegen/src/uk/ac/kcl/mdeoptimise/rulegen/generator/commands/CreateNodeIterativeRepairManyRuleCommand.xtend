@@ -24,10 +24,10 @@ class CreateNodeIterativeRepairRuleCommand implements IRuleGenerationCommand {
 	EClassifierInfoManagement metamodelAnalyser;
 	EClass node;
 
-	new(String node, RefinedMetamodelWrapper refinedMetamodelWrapper, EClassifierInfoManagement metamodelAnalyser){
+	new(EClass node, RefinedMetamodelWrapper refinedMetamodelWrapper, EClassifierInfoManagement metamodelAnalyser){
 		this.refinedMetamodelWrapper = refinedMetamodelWrapper;
 		this.metamodelAnalyser = metamodelAnalyser;
-		this.node = refinedMetamodelWrapper.getNode(node); 
+		this.node = node; 
 	}
 	
 	override generate() {

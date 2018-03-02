@@ -25,9 +25,11 @@ import uk.ac.kcl.mdeoptimise.EvolverSpec;
 import uk.ac.kcl.mdeoptimise.MdeoptimisePackage;
 import uk.ac.kcl.mdeoptimise.MetaModelSpec;
 import uk.ac.kcl.mdeoptimise.ModelPathSpec;
+import uk.ac.kcl.mdeoptimise.MultiplicityRefinementSpec;
 import uk.ac.kcl.mdeoptimise.ObjectiveInterpreterSpec;
 import uk.ac.kcl.mdeoptimise.Optimisation;
 import uk.ac.kcl.mdeoptimise.OptimisationSpec;
+import uk.ac.kcl.mdeoptimise.RulegenSpec;
 
 /**
  * <!-- begin-user-doc -->
@@ -40,9 +42,11 @@ import uk.ac.kcl.mdeoptimise.OptimisationSpec;
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationImpl#getBasepath <em>Basepath</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationImpl#getMetamodel <em>Metamodel</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationImpl#getModel <em>Model</em>}</li>
+ *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationImpl#getRefinements <em>Refinements</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationImpl#getObjectives <em>Objectives</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationImpl#getConstraints <em>Constraints</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationImpl#getEvolvers <em>Evolvers</em>}</li>
+ *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationImpl#getRulegen <em>Rulegen</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationImpl#getOptimisation <em>Optimisation</em>}</li>
  * </ul>
  *
@@ -81,6 +85,16 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
   protected ModelPathSpec model;
 
   /**
+   * The cached value of the '{@link #getRefinements() <em>Refinements</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRefinements()
+   * @generated
+   * @ordered
+   */
+  protected EList<MultiplicityRefinementSpec> refinements;
+
+  /**
    * The cached value of the '{@link #getObjectives() <em>Objectives</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -109,6 +123,16 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
    * @ordered
    */
   protected EList<EvolverSpec> evolvers;
+
+  /**
+   * The cached value of the '{@link #getRulegen() <em>Rulegen</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRulegen()
+   * @generated
+   * @ordered
+   */
+  protected EList<RulegenSpec> rulegen;
 
   /**
    * The cached value of the '{@link #getOptimisation() <em>Optimisation</em>}' containment reference.
@@ -290,6 +314,20 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<MultiplicityRefinementSpec> getRefinements()
+  {
+    if (refinements == null)
+    {
+      refinements = new EObjectContainmentEList<MultiplicityRefinementSpec>(MultiplicityRefinementSpec.class, this, MdeoptimisePackage.OPTIMISATION__REFINEMENTS);
+    }
+    return refinements;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<ObjectiveInterpreterSpec> getObjectives()
   {
     if (objectives == null)
@@ -325,6 +363,20 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
       evolvers = new EObjectContainmentEList<EvolverSpec>(EvolverSpec.class, this, MdeoptimisePackage.OPTIMISATION__EVOLVERS);
     }
     return evolvers;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<RulegenSpec> getRulegen()
+  {
+    if (rulegen == null)
+    {
+      rulegen = new EObjectContainmentEList<RulegenSpec>(RulegenSpec.class, this, MdeoptimisePackage.OPTIMISATION__RULEGEN);
+    }
+    return rulegen;
   }
 
   /**
@@ -391,12 +443,16 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
         return basicSetMetamodel(null, msgs);
       case MdeoptimisePackage.OPTIMISATION__MODEL:
         return basicSetModel(null, msgs);
+      case MdeoptimisePackage.OPTIMISATION__REFINEMENTS:
+        return ((InternalEList<?>)getRefinements()).basicRemove(otherEnd, msgs);
       case MdeoptimisePackage.OPTIMISATION__OBJECTIVES:
         return ((InternalEList<?>)getObjectives()).basicRemove(otherEnd, msgs);
       case MdeoptimisePackage.OPTIMISATION__CONSTRAINTS:
         return ((InternalEList<?>)getConstraints()).basicRemove(otherEnd, msgs);
       case MdeoptimisePackage.OPTIMISATION__EVOLVERS:
         return ((InternalEList<?>)getEvolvers()).basicRemove(otherEnd, msgs);
+      case MdeoptimisePackage.OPTIMISATION__RULEGEN:
+        return ((InternalEList<?>)getRulegen()).basicRemove(otherEnd, msgs);
       case MdeoptimisePackage.OPTIMISATION__OPTIMISATION:
         return basicSetOptimisation(null, msgs);
     }
@@ -419,12 +475,16 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
         return getMetamodel();
       case MdeoptimisePackage.OPTIMISATION__MODEL:
         return getModel();
+      case MdeoptimisePackage.OPTIMISATION__REFINEMENTS:
+        return getRefinements();
       case MdeoptimisePackage.OPTIMISATION__OBJECTIVES:
         return getObjectives();
       case MdeoptimisePackage.OPTIMISATION__CONSTRAINTS:
         return getConstraints();
       case MdeoptimisePackage.OPTIMISATION__EVOLVERS:
         return getEvolvers();
+      case MdeoptimisePackage.OPTIMISATION__RULEGEN:
+        return getRulegen();
       case MdeoptimisePackage.OPTIMISATION__OPTIMISATION:
         return getOptimisation();
     }
@@ -451,6 +511,10 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
       case MdeoptimisePackage.OPTIMISATION__MODEL:
         setModel((ModelPathSpec)newValue);
         return;
+      case MdeoptimisePackage.OPTIMISATION__REFINEMENTS:
+        getRefinements().clear();
+        getRefinements().addAll((Collection<? extends MultiplicityRefinementSpec>)newValue);
+        return;
       case MdeoptimisePackage.OPTIMISATION__OBJECTIVES:
         getObjectives().clear();
         getObjectives().addAll((Collection<? extends ObjectiveInterpreterSpec>)newValue);
@@ -462,6 +526,10 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
       case MdeoptimisePackage.OPTIMISATION__EVOLVERS:
         getEvolvers().clear();
         getEvolvers().addAll((Collection<? extends EvolverSpec>)newValue);
+        return;
+      case MdeoptimisePackage.OPTIMISATION__RULEGEN:
+        getRulegen().clear();
+        getRulegen().addAll((Collection<? extends RulegenSpec>)newValue);
         return;
       case MdeoptimisePackage.OPTIMISATION__OPTIMISATION:
         setOptimisation((OptimisationSpec)newValue);
@@ -489,6 +557,9 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
       case MdeoptimisePackage.OPTIMISATION__MODEL:
         setModel((ModelPathSpec)null);
         return;
+      case MdeoptimisePackage.OPTIMISATION__REFINEMENTS:
+        getRefinements().clear();
+        return;
       case MdeoptimisePackage.OPTIMISATION__OBJECTIVES:
         getObjectives().clear();
         return;
@@ -497,6 +568,9 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
         return;
       case MdeoptimisePackage.OPTIMISATION__EVOLVERS:
         getEvolvers().clear();
+        return;
+      case MdeoptimisePackage.OPTIMISATION__RULEGEN:
+        getRulegen().clear();
         return;
       case MdeoptimisePackage.OPTIMISATION__OPTIMISATION:
         setOptimisation((OptimisationSpec)null);
@@ -521,12 +595,16 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
         return metamodel != null;
       case MdeoptimisePackage.OPTIMISATION__MODEL:
         return model != null;
+      case MdeoptimisePackage.OPTIMISATION__REFINEMENTS:
+        return refinements != null && !refinements.isEmpty();
       case MdeoptimisePackage.OPTIMISATION__OBJECTIVES:
         return objectives != null && !objectives.isEmpty();
       case MdeoptimisePackage.OPTIMISATION__CONSTRAINTS:
         return constraints != null && !constraints.isEmpty();
       case MdeoptimisePackage.OPTIMISATION__EVOLVERS:
         return evolvers != null && !evolvers.isEmpty();
+      case MdeoptimisePackage.OPTIMISATION__RULEGEN:
+        return rulegen != null && !rulegen.isEmpty();
       case MdeoptimisePackage.OPTIMISATION__OPTIMISATION:
         return optimisation != null;
     }
