@@ -43,7 +43,7 @@ class CreateNodeIterativeRepairManyRuleCommand implements IRuleGenerationCommand
 		module.getImports().add(refinedMetamodelWrapper.refinedMetamodel)
 		
 		//TODO Test this case with a metamodel variant that has more than one container for the same 
-		//classifier
+		//classifier. The name should be unique but unclear about this yet
 		val classifierInfo = metamodelAnalyser.getAllParentContext(node, true);
 		
 		for(var contextReferenceId = 0; contextReferenceId < classifierInfo.keySet.size; contextReferenceId++) {

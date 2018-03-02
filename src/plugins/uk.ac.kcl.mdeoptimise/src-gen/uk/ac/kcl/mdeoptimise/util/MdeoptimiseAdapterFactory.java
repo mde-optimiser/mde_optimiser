@@ -106,9 +106,29 @@ public class MdeoptimiseAdapterFactory extends AdapterFactoryImpl
         return createConstraintInterpreterSpecAdapter();
       }
       @Override
+      public Adapter caseRulegenSpec(RulegenSpec object)
+      {
+        return createRulegenSpecAdapter();
+      }
+      @Override
+      public Adapter caseRulegenNode(RulegenNode object)
+      {
+        return createRulegenNodeAdapter();
+      }
+      @Override
+      public Adapter caseRulegenEdge(RulegenEdge object)
+      {
+        return createRulegenEdgeAdapter();
+      }
+      @Override
       public Adapter caseEvolverSpec(EvolverSpec object)
       {
         return createEvolverSpecAdapter();
+      }
+      @Override
+      public Adapter caseMultiplicityRefinementSpec(MultiplicityRefinementSpec object)
+      {
+        return createMultiplicityRefinementSpecAdapter();
       }
       @Override
       public Adapter caseEvolverParameter(EvolverParameter object)
@@ -248,6 +268,51 @@ public class MdeoptimiseAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.mdeoptimise.RulegenSpec <em>Rulegen Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.mdeoptimise.RulegenSpec
+   * @generated
+   */
+  public Adapter createRulegenSpecAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.mdeoptimise.RulegenNode <em>Rulegen Node</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.mdeoptimise.RulegenNode
+   * @generated
+   */
+  public Adapter createRulegenNodeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.mdeoptimise.RulegenEdge <em>Rulegen Edge</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.mdeoptimise.RulegenEdge
+   * @generated
+   */
+  public Adapter createRulegenEdgeAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link uk.ac.kcl.mdeoptimise.EvolverSpec <em>Evolver Spec</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -258,6 +323,21 @@ public class MdeoptimiseAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createEvolverSpecAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.mdeoptimise.MultiplicityRefinementSpec <em>Multiplicity Refinement Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.mdeoptimise.MultiplicityRefinementSpec
+   * @generated
+   */
+  public Adapter createMultiplicityRefinementSpecAdapter()
   {
     return null;
   }

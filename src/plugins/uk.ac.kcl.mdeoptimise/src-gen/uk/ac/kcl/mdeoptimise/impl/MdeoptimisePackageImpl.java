@@ -21,11 +21,15 @@ import uk.ac.kcl.mdeoptimise.MdeoptimiseFactory;
 import uk.ac.kcl.mdeoptimise.MdeoptimisePackage;
 import uk.ac.kcl.mdeoptimise.MetaModelSpec;
 import uk.ac.kcl.mdeoptimise.ModelPathSpec;
+import uk.ac.kcl.mdeoptimise.MultiplicityRefinementSpec;
 import uk.ac.kcl.mdeoptimise.ObjectiveInterpreterSpec;
 import uk.ac.kcl.mdeoptimise.Optimisation;
 import uk.ac.kcl.mdeoptimise.OptimisationSpec;
 import uk.ac.kcl.mdeoptimise.ParameterFunction;
 import uk.ac.kcl.mdeoptimise.ProbabilityVariation;
+import uk.ac.kcl.mdeoptimise.RulegenEdge;
+import uk.ac.kcl.mdeoptimise.RulegenNode;
+import uk.ac.kcl.mdeoptimise.RulegenSpec;
 
 /**
  * <!-- begin-user-doc -->
@@ -82,7 +86,35 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass rulegenSpecEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass rulegenNodeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass rulegenEdgeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass evolverSpecEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass multiplicityRefinementSpecEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -234,7 +266,7 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOptimisation_Objectives()
+  public EReference getOptimisation_Refinements()
   {
     return (EReference)optimisationEClass.getEStructuralFeatures().get(3);
   }
@@ -244,7 +276,7 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOptimisation_Constraints()
+  public EReference getOptimisation_Objectives()
   {
     return (EReference)optimisationEClass.getEStructuralFeatures().get(4);
   }
@@ -254,7 +286,7 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOptimisation_Evolvers()
+  public EReference getOptimisation_Constraints()
   {
     return (EReference)optimisationEClass.getEStructuralFeatures().get(5);
   }
@@ -264,9 +296,29 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOptimisation_Optimisation()
+  public EReference getOptimisation_Evolvers()
   {
     return (EReference)optimisationEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getOptimisation_Rulegen()
+  {
+    return (EReference)optimisationEClass.getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getOptimisation_Optimisation()
+  {
+    return (EReference)optimisationEClass.getEStructuralFeatures().get(8);
   }
 
   /**
@@ -424,6 +476,106 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getRulegenSpec()
+  {
+    return rulegenSpecEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getRulegenSpec_NodeSpec()
+  {
+    return (EReference)rulegenSpecEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getRulegenSpec_EdgeSpec()
+  {
+    return (EReference)rulegenSpecEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getRulegenNode()
+  {
+    return rulegenNodeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getRulegenNode_Node()
+  {
+    return (EAttribute)rulegenNodeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getRulegenNode_GenerationRestriction()
+  {
+    return (EAttribute)rulegenNodeEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getRulegenEdge()
+  {
+    return rulegenEdgeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getRulegenEdge_Node()
+  {
+    return (EAttribute)rulegenEdgeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getRulegenEdge_Edge()
+  {
+    return (EAttribute)rulegenEdgeEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getRulegenEdge_GenerationRestriction()
+  {
+    return (EAttribute)rulegenEdgeEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getEvolverSpec()
   {
     return evolverSpecEClass;
@@ -467,6 +619,56 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
   public EReference getEvolverSpec_Parameters()
   {
     return (EReference)evolverSpecEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getMultiplicityRefinementSpec()
+  {
+    return multiplicityRefinementSpecEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getMultiplicityRefinementSpec_Node()
+  {
+    return (EAttribute)multiplicityRefinementSpecEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getMultiplicityRefinementSpec_Edge()
+  {
+    return (EAttribute)multiplicityRefinementSpecEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getMultiplicityRefinementSpec_LowerBound()
+  {
+    return (EAttribute)multiplicityRefinementSpecEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getMultiplicityRefinementSpec_UpperBound()
+  {
+    return (EAttribute)multiplicityRefinementSpecEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -723,9 +925,11 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
     createEReference(optimisationEClass, OPTIMISATION__BASEPATH);
     createEReference(optimisationEClass, OPTIMISATION__METAMODEL);
     createEReference(optimisationEClass, OPTIMISATION__MODEL);
+    createEReference(optimisationEClass, OPTIMISATION__REFINEMENTS);
     createEReference(optimisationEClass, OPTIMISATION__OBJECTIVES);
     createEReference(optimisationEClass, OPTIMISATION__CONSTRAINTS);
     createEReference(optimisationEClass, OPTIMISATION__EVOLVERS);
+    createEReference(optimisationEClass, OPTIMISATION__RULEGEN);
     createEReference(optimisationEClass, OPTIMISATION__OPTIMISATION);
 
     basePathSpecEClass = createEClass(BASE_PATH_SPEC);
@@ -748,11 +952,30 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
     createEAttribute(constraintInterpreterSpecEClass, CONSTRAINT_INTERPRETER_SPEC__CONSTRAINT_TYPE);
     createEAttribute(constraintInterpreterSpecEClass, CONSTRAINT_INTERPRETER_SPEC__CONSTRAINT_SPEC);
 
+    rulegenSpecEClass = createEClass(RULEGEN_SPEC);
+    createEReference(rulegenSpecEClass, RULEGEN_SPEC__NODE_SPEC);
+    createEReference(rulegenSpecEClass, RULEGEN_SPEC__EDGE_SPEC);
+
+    rulegenNodeEClass = createEClass(RULEGEN_NODE);
+    createEAttribute(rulegenNodeEClass, RULEGEN_NODE__NODE);
+    createEAttribute(rulegenNodeEClass, RULEGEN_NODE__GENERATION_RESTRICTION);
+
+    rulegenEdgeEClass = createEClass(RULEGEN_EDGE);
+    createEAttribute(rulegenEdgeEClass, RULEGEN_EDGE__NODE);
+    createEAttribute(rulegenEdgeEClass, RULEGEN_EDGE__EDGE);
+    createEAttribute(rulegenEdgeEClass, RULEGEN_EDGE__GENERATION_RESTRICTION);
+
     evolverSpecEClass = createEClass(EVOLVER_SPEC);
     createEAttribute(evolverSpecEClass, EVOLVER_SPEC__EVOLVER_TYPE);
     createEAttribute(evolverSpecEClass, EVOLVER_SPEC__RULE_LOCATION);
     createEAttribute(evolverSpecEClass, EVOLVER_SPEC__UNIT);
     createEReference(evolverSpecEClass, EVOLVER_SPEC__PARAMETERS);
+
+    multiplicityRefinementSpecEClass = createEClass(MULTIPLICITY_REFINEMENT_SPEC);
+    createEAttribute(multiplicityRefinementSpecEClass, MULTIPLICITY_REFINEMENT_SPEC__NODE);
+    createEAttribute(multiplicityRefinementSpecEClass, MULTIPLICITY_REFINEMENT_SPEC__EDGE);
+    createEAttribute(multiplicityRefinementSpecEClass, MULTIPLICITY_REFINEMENT_SPEC__LOWER_BOUND);
+    createEAttribute(multiplicityRefinementSpecEClass, MULTIPLICITY_REFINEMENT_SPEC__UPPER_BOUND);
 
     evolverParameterEClass = createEClass(EVOLVER_PARAMETER);
     createEAttribute(evolverParameterEClass, EVOLVER_PARAMETER__NAME);
@@ -819,9 +1042,11 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
     initEReference(getOptimisation_Basepath(), this.getBasePathSpec(), null, "basepath", null, 0, 1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOptimisation_Metamodel(), this.getMetaModelSpec(), null, "metamodel", null, 0, 1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOptimisation_Model(), this.getModelPathSpec(), null, "model", null, 0, 1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getOptimisation_Refinements(), this.getMultiplicityRefinementSpec(), null, "refinements", null, 0, -1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOptimisation_Objectives(), this.getObjectiveInterpreterSpec(), null, "objectives", null, 0, -1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOptimisation_Constraints(), this.getConstraintInterpreterSpec(), null, "constraints", null, 0, -1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOptimisation_Evolvers(), this.getEvolverSpec(), null, "evolvers", null, 0, -1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getOptimisation_Rulegen(), this.getRulegenSpec(), null, "rulegen", null, 0, -1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOptimisation_Optimisation(), this.getOptimisationSpec(), null, "optimisation", null, 0, 1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(basePathSpecEClass, BasePathSpec.class, "BasePathSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -844,11 +1069,30 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
     initEAttribute(getConstraintInterpreterSpec_ConstraintType(), ecorePackage.getEString(), "constraintType", null, 0, 1, ConstraintInterpreterSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getConstraintInterpreterSpec_ConstraintSpec(), ecorePackage.getEString(), "constraintSpec", null, 0, 1, ConstraintInterpreterSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(rulegenSpecEClass, RulegenSpec.class, "RulegenSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getRulegenSpec_NodeSpec(), this.getRulegenNode(), null, "nodeSpec", null, 0, 1, RulegenSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRulegenSpec_EdgeSpec(), this.getRulegenEdge(), null, "edgeSpec", null, 0, 1, RulegenSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(rulegenNodeEClass, RulegenNode.class, "RulegenNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getRulegenNode_Node(), ecorePackage.getEString(), "node", null, 0, 1, RulegenNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRulegenNode_GenerationRestriction(), ecorePackage.getEString(), "generationRestriction", null, 0, 1, RulegenNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(rulegenEdgeEClass, RulegenEdge.class, "RulegenEdge", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getRulegenEdge_Node(), ecorePackage.getEString(), "node", null, 0, 1, RulegenEdge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRulegenEdge_Edge(), ecorePackage.getEString(), "edge", null, 0, 1, RulegenEdge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRulegenEdge_GenerationRestriction(), ecorePackage.getEString(), "generationRestriction", null, 0, 1, RulegenEdge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(evolverSpecEClass, EvolverSpec.class, "EvolverSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getEvolverSpec_EvolverType(), this.getEvolverType(), "evolverType", null, 0, 1, EvolverSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getEvolverSpec_Rule_location(), ecorePackage.getEString(), "rule_location", null, 0, 1, EvolverSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getEvolverSpec_Unit(), ecorePackage.getEString(), "unit", null, 0, 1, EvolverSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getEvolverSpec_Parameters(), this.getEvolverParameter(), null, "parameters", null, 0, -1, EvolverSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(multiplicityRefinementSpecEClass, MultiplicityRefinementSpec.class, "MultiplicityRefinementSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getMultiplicityRefinementSpec_Node(), ecorePackage.getEString(), "node", null, 0, 1, MultiplicityRefinementSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMultiplicityRefinementSpec_Edge(), ecorePackage.getEString(), "edge", null, 0, 1, MultiplicityRefinementSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMultiplicityRefinementSpec_LowerBound(), ecorePackage.getEInt(), "lowerBound", null, 0, 1, MultiplicityRefinementSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMultiplicityRefinementSpec_UpperBound(), ecorePackage.getEInt(), "upperBound", null, 0, 1, MultiplicityRefinementSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(evolverParameterEClass, EvolverParameter.class, "EvolverParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getEvolverParameter_Name(), ecorePackage.getEString(), "name", null, 0, 1, EvolverParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

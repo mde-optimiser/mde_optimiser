@@ -14,6 +14,11 @@ import org.eclipse.core.runtime.IPath
 import org.eclipse.core.runtime.Path
 import java.util.Iterator
 import uk.ac.kcl.optimisation.moea.MoeaOptimisationSolution
+import uk.ac.kcl.mdeoptimise.rulegen.RulesGenerator
+import org.eclipse.emf.henshin.model.Module
+import uk.ac.kcl.mdeoptimise.rulegen.metamodel.Multiplicity
+import java.util.ArrayList
+import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RuleSpec
 
 class OptimisationInterpreter {
 	
@@ -77,6 +82,8 @@ class OptimisationInterpreter {
     }
     
     def getMutationOperators() {
+    	
+    	//TODO: Doesn't make sense?
     	if(mutationOperators == null){
 			
 			mutationOperators = new LinkedList
@@ -87,6 +94,70 @@ class OptimisationInterpreter {
     		
     	}
     	
+    	//Automatically generate mutations operators
+    	var generatedMutations = getRulegenOperators();
+    	
+    	if(!generatedMutations.empty){
+    		//For each of the automatically generated modules, add the generated mutations to the list of evolvers
+    		generatedMutations.forEach[mutation |
+    			mutationOperators.addAll(mutation.allRules)
+    		]
+    	}
+    	
     	mutationOperators
+    }
+    
+    def List<Multiplicity> getMultiplicityRefinements(){
+    	 //A list of multiplicity refinements specified by the user in the DSL.
+    	//This is optional.
+    	var refinements = model.refinements;
+ 		
+ 		val multiplicityRefinements = new ArrayList<Multiplicity>();
+ 		
+ 		if(!refinements.empty){
+ 			refinements.forEach[refinement | 
+ 				multiplicityRefinements.add(new Multiplicity(refinement.node, refinement.edge, refinement.lowerBound, refinement.upperBound, getMetamodel));
+ 			]
+ 		}
+ 		
+ 		return multiplicityRefinements;
+    }
+    
+    def List<RuleSpec> getRulegenSpecs(){
+    	
+    	var rulegenSpecs = model.rulegen;
+    	
+    	val ruleSpecs = new ArrayList<RuleSpec>();
+ 
+ 		
+ 		if(!rulegenSpecs.empty){
+ 			
+ 			rulegenSpecs.forEach[rulegenSpec |
+ 				
+ 				//Crete the spec for a node or an edge generation
+ 				if(rulegenSpec.nodeSpec !== null){
+ 					ruleSpecs.add(new RuleSpec(rulegenSpec.nodeSpec.node, rulegenSpec.nodeSpec.generationRestriction))
+ 				} else {
+ 					ruleSpecs.add(new RuleSpec(rulegenSpec.edgeSpec.node, rulegenSpec.edgeSpec.edge, rulegenSpec.edgeSpec.generationRestriction))
+ 				}
+ 			]
+ 		}
+    	
+    	return ruleSpecs;
+    }
+    
+    /**
+     * If there are any rule generation instructions present, then generate the corresponding rules.
+     * @return list of generated mutation operators
+     */
+    def List<Module> getRulegenOperators(){
+ 		   	   	
+    	var multiplicityRefinements = getMultiplicityRefinements();
+    	var rulegenSpecs = getRulegenSpecs();
+    	
+  		//Generate the list of modules that are automatically generated
+    	var mutations = new RulesGenerator(getMetamodel, multiplicityRefinements, rulegenSpecs);
+    	
+    	return mutations.generatedRules
     }
 }

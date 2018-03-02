@@ -78,6 +78,33 @@ public interface MdeoptimiseFactory extends EFactory
   ConstraintInterpreterSpec createConstraintInterpreterSpec();
 
   /**
+   * Returns a new object of class '<em>Rulegen Spec</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Rulegen Spec</em>'.
+   * @generated
+   */
+  RulegenSpec createRulegenSpec();
+
+  /**
+   * Returns a new object of class '<em>Rulegen Node</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Rulegen Node</em>'.
+   * @generated
+   */
+  RulegenNode createRulegenNode();
+
+  /**
+   * Returns a new object of class '<em>Rulegen Edge</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Rulegen Edge</em>'.
+   * @generated
+   */
+  RulegenEdge createRulegenEdge();
+
+  /**
    * Returns a new object of class '<em>Evolver Spec</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -85,6 +112,15 @@ public interface MdeoptimiseFactory extends EFactory
    * @generated
    */
   EvolverSpec createEvolverSpec();
+
+  /**
+   * Returns a new object of class '<em>Multiplicity Refinement Spec</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Multiplicity Refinement Spec</em>'.
+   * @generated
+   */
+  MultiplicityRefinementSpec createMultiplicityRefinementSpec();
 
   /**
    * Returns a new object of class '<em>Evolver Parameter</em>'.

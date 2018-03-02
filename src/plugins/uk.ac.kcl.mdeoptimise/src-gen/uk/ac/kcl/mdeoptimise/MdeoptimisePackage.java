@@ -96,13 +96,22 @@ public interface MdeoptimisePackage extends EPackage
   int OPTIMISATION__MODEL = 2;
 
   /**
+   * The feature id for the '<em><b>Refinements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OPTIMISATION__REFINEMENTS = 3;
+
+  /**
    * The feature id for the '<em><b>Objectives</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OPTIMISATION__OBJECTIVES = 3;
+  int OPTIMISATION__OBJECTIVES = 4;
 
   /**
    * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
@@ -111,7 +120,7 @@ public interface MdeoptimisePackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPTIMISATION__CONSTRAINTS = 4;
+  int OPTIMISATION__CONSTRAINTS = 5;
 
   /**
    * The feature id for the '<em><b>Evolvers</b></em>' containment reference list.
@@ -120,7 +129,16 @@ public interface MdeoptimisePackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPTIMISATION__EVOLVERS = 5;
+  int OPTIMISATION__EVOLVERS = 6;
+
+  /**
+   * The feature id for the '<em><b>Rulegen</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OPTIMISATION__RULEGEN = 7;
 
   /**
    * The feature id for the '<em><b>Optimisation</b></em>' containment reference.
@@ -129,7 +147,7 @@ public interface MdeoptimisePackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPTIMISATION__OPTIMISATION = 6;
+  int OPTIMISATION__OPTIMISATION = 8;
 
   /**
    * The number of structural features of the '<em>Optimisation</em>' class.
@@ -138,7 +156,7 @@ public interface MdeoptimisePackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPTIMISATION_FEATURE_COUNT = 7;
+  int OPTIMISATION_FEATURE_COUNT = 9;
 
   /**
    * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.BasePathSpecImpl <em>Base Path Spec</em>}' class.
@@ -326,6 +344,126 @@ public interface MdeoptimisePackage extends EPackage
   int CONSTRAINT_INTERPRETER_SPEC_FEATURE_COUNT = 3;
 
   /**
+   * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.RulegenSpecImpl <em>Rulegen Spec</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.mdeoptimise.impl.RulegenSpecImpl
+   * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getRulegenSpec()
+   * @generated
+   */
+  int RULEGEN_SPEC = 6;
+
+  /**
+   * The feature id for the '<em><b>Node Spec</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RULEGEN_SPEC__NODE_SPEC = 0;
+
+  /**
+   * The feature id for the '<em><b>Edge Spec</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RULEGEN_SPEC__EDGE_SPEC = 1;
+
+  /**
+   * The number of structural features of the '<em>Rulegen Spec</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RULEGEN_SPEC_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.RulegenNodeImpl <em>Rulegen Node</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.mdeoptimise.impl.RulegenNodeImpl
+   * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getRulegenNode()
+   * @generated
+   */
+  int RULEGEN_NODE = 7;
+
+  /**
+   * The feature id for the '<em><b>Node</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RULEGEN_NODE__NODE = 0;
+
+  /**
+   * The feature id for the '<em><b>Generation Restriction</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RULEGEN_NODE__GENERATION_RESTRICTION = 1;
+
+  /**
+   * The number of structural features of the '<em>Rulegen Node</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RULEGEN_NODE_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.RulegenEdgeImpl <em>Rulegen Edge</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.mdeoptimise.impl.RulegenEdgeImpl
+   * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getRulegenEdge()
+   * @generated
+   */
+  int RULEGEN_EDGE = 8;
+
+  /**
+   * The feature id for the '<em><b>Node</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RULEGEN_EDGE__NODE = 0;
+
+  /**
+   * The feature id for the '<em><b>Edge</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RULEGEN_EDGE__EDGE = 1;
+
+  /**
+   * The feature id for the '<em><b>Generation Restriction</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RULEGEN_EDGE__GENERATION_RESTRICTION = 2;
+
+  /**
+   * The number of structural features of the '<em>Rulegen Edge</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RULEGEN_EDGE_FEATURE_COUNT = 3;
+
+  /**
    * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.EvolverSpecImpl <em>Evolver Spec</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -333,7 +471,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getEvolverSpec()
    * @generated
    */
-  int EVOLVER_SPEC = 6;
+  int EVOLVER_SPEC = 9;
 
   /**
    * The feature id for the '<em><b>Evolver Type</b></em>' attribute.
@@ -381,6 +519,61 @@ public interface MdeoptimisePackage extends EPackage
   int EVOLVER_SPEC_FEATURE_COUNT = 4;
 
   /**
+   * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.MultiplicityRefinementSpecImpl <em>Multiplicity Refinement Spec</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.mdeoptimise.impl.MultiplicityRefinementSpecImpl
+   * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getMultiplicityRefinementSpec()
+   * @generated
+   */
+  int MULTIPLICITY_REFINEMENT_SPEC = 10;
+
+  /**
+   * The feature id for the '<em><b>Node</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTIPLICITY_REFINEMENT_SPEC__NODE = 0;
+
+  /**
+   * The feature id for the '<em><b>Edge</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTIPLICITY_REFINEMENT_SPEC__EDGE = 1;
+
+  /**
+   * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTIPLICITY_REFINEMENT_SPEC__LOWER_BOUND = 2;
+
+  /**
+   * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTIPLICITY_REFINEMENT_SPEC__UPPER_BOUND = 3;
+
+  /**
+   * The number of structural features of the '<em>Multiplicity Refinement Spec</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTIPLICITY_REFINEMENT_SPEC_FEATURE_COUNT = 4;
+
+  /**
    * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.EvolverParameterImpl <em>Evolver Parameter</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -388,7 +581,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getEvolverParameter()
    * @generated
    */
-  int EVOLVER_PARAMETER = 7;
+  int EVOLVER_PARAMETER = 11;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -434,7 +627,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getParameterFunction()
    * @generated
    */
-  int PARAMETER_FUNCTION = 8;
+  int PARAMETER_FUNCTION = 12;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -471,7 +664,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getOptimisationSpec()
    * @generated
    */
-  int OPTIMISATION_SPEC = 9;
+  int OPTIMISATION_SPEC = 13;
 
   /**
    * The feature id for the '<em><b>Algorithm Factory</b></em>' attribute.
@@ -544,7 +737,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getAlgorithmVariation()
    * @generated
    */
-  int ALGORITHM_VARIATION = 10;
+  int ALGORITHM_VARIATION = 14;
 
   /**
    * The feature id for the '<em><b>Probability Variation</b></em>' containment reference.
@@ -581,7 +774,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getProbabilityVariation()
    * @generated
    */
-  int PROBABILITY_VARIATION = 11;
+  int PROBABILITY_VARIATION = 15;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -627,7 +820,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getEvolverType()
    * @generated
    */
-  int EVOLVER_TYPE = 12;
+  int EVOLVER_TYPE = 16;
 
 
   /**
@@ -674,6 +867,17 @@ public interface MdeoptimisePackage extends EPackage
   EReference getOptimisation_Model();
 
   /**
+   * Returns the meta object for the containment reference list '{@link uk.ac.kcl.mdeoptimise.Optimisation#getRefinements <em>Refinements</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Refinements</em>'.
+   * @see uk.ac.kcl.mdeoptimise.Optimisation#getRefinements()
+   * @see #getOptimisation()
+   * @generated
+   */
+  EReference getOptimisation_Refinements();
+
+  /**
    * Returns the meta object for the containment reference list '{@link uk.ac.kcl.mdeoptimise.Optimisation#getObjectives <em>Objectives</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -705,6 +909,17 @@ public interface MdeoptimisePackage extends EPackage
    * @generated
    */
   EReference getOptimisation_Evolvers();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link uk.ac.kcl.mdeoptimise.Optimisation#getRulegen <em>Rulegen</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Rulegen</em>'.
+   * @see uk.ac.kcl.mdeoptimise.Optimisation#getRulegen()
+   * @see #getOptimisation()
+   * @generated
+   */
+  EReference getOptimisation_Rulegen();
 
   /**
    * Returns the meta object for the containment reference '{@link uk.ac.kcl.mdeoptimise.Optimisation#getOptimisation <em>Optimisation</em>}'.
@@ -878,6 +1093,113 @@ public interface MdeoptimisePackage extends EPackage
   EAttribute getConstraintInterpreterSpec_ConstraintSpec();
 
   /**
+   * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.RulegenSpec <em>Rulegen Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Rulegen Spec</em>'.
+   * @see uk.ac.kcl.mdeoptimise.RulegenSpec
+   * @generated
+   */
+  EClass getRulegenSpec();
+
+  /**
+   * Returns the meta object for the containment reference '{@link uk.ac.kcl.mdeoptimise.RulegenSpec#getNodeSpec <em>Node Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Node Spec</em>'.
+   * @see uk.ac.kcl.mdeoptimise.RulegenSpec#getNodeSpec()
+   * @see #getRulegenSpec()
+   * @generated
+   */
+  EReference getRulegenSpec_NodeSpec();
+
+  /**
+   * Returns the meta object for the containment reference '{@link uk.ac.kcl.mdeoptimise.RulegenSpec#getEdgeSpec <em>Edge Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Edge Spec</em>'.
+   * @see uk.ac.kcl.mdeoptimise.RulegenSpec#getEdgeSpec()
+   * @see #getRulegenSpec()
+   * @generated
+   */
+  EReference getRulegenSpec_EdgeSpec();
+
+  /**
+   * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.RulegenNode <em>Rulegen Node</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Rulegen Node</em>'.
+   * @see uk.ac.kcl.mdeoptimise.RulegenNode
+   * @generated
+   */
+  EClass getRulegenNode();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.RulegenNode#getNode <em>Node</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Node</em>'.
+   * @see uk.ac.kcl.mdeoptimise.RulegenNode#getNode()
+   * @see #getRulegenNode()
+   * @generated
+   */
+  EAttribute getRulegenNode_Node();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.RulegenNode#getGenerationRestriction <em>Generation Restriction</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Generation Restriction</em>'.
+   * @see uk.ac.kcl.mdeoptimise.RulegenNode#getGenerationRestriction()
+   * @see #getRulegenNode()
+   * @generated
+   */
+  EAttribute getRulegenNode_GenerationRestriction();
+
+  /**
+   * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.RulegenEdge <em>Rulegen Edge</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Rulegen Edge</em>'.
+   * @see uk.ac.kcl.mdeoptimise.RulegenEdge
+   * @generated
+   */
+  EClass getRulegenEdge();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.RulegenEdge#getNode <em>Node</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Node</em>'.
+   * @see uk.ac.kcl.mdeoptimise.RulegenEdge#getNode()
+   * @see #getRulegenEdge()
+   * @generated
+   */
+  EAttribute getRulegenEdge_Node();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.RulegenEdge#getEdge <em>Edge</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Edge</em>'.
+   * @see uk.ac.kcl.mdeoptimise.RulegenEdge#getEdge()
+   * @see #getRulegenEdge()
+   * @generated
+   */
+  EAttribute getRulegenEdge_Edge();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.RulegenEdge#getGenerationRestriction <em>Generation Restriction</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Generation Restriction</em>'.
+   * @see uk.ac.kcl.mdeoptimise.RulegenEdge#getGenerationRestriction()
+   * @see #getRulegenEdge()
+   * @generated
+   */
+  EAttribute getRulegenEdge_GenerationRestriction();
+
+  /**
    * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.EvolverSpec <em>Evolver Spec</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -930,6 +1252,60 @@ public interface MdeoptimisePackage extends EPackage
    * @generated
    */
   EReference getEvolverSpec_Parameters();
+
+  /**
+   * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.MultiplicityRefinementSpec <em>Multiplicity Refinement Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Multiplicity Refinement Spec</em>'.
+   * @see uk.ac.kcl.mdeoptimise.MultiplicityRefinementSpec
+   * @generated
+   */
+  EClass getMultiplicityRefinementSpec();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.MultiplicityRefinementSpec#getNode <em>Node</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Node</em>'.
+   * @see uk.ac.kcl.mdeoptimise.MultiplicityRefinementSpec#getNode()
+   * @see #getMultiplicityRefinementSpec()
+   * @generated
+   */
+  EAttribute getMultiplicityRefinementSpec_Node();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.MultiplicityRefinementSpec#getEdge <em>Edge</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Edge</em>'.
+   * @see uk.ac.kcl.mdeoptimise.MultiplicityRefinementSpec#getEdge()
+   * @see #getMultiplicityRefinementSpec()
+   * @generated
+   */
+  EAttribute getMultiplicityRefinementSpec_Edge();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.MultiplicityRefinementSpec#getLowerBound <em>Lower Bound</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Lower Bound</em>'.
+   * @see uk.ac.kcl.mdeoptimise.MultiplicityRefinementSpec#getLowerBound()
+   * @see #getMultiplicityRefinementSpec()
+   * @generated
+   */
+  EAttribute getMultiplicityRefinementSpec_LowerBound();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.MultiplicityRefinementSpec#getUpperBound <em>Upper Bound</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Upper Bound</em>'.
+   * @see uk.ac.kcl.mdeoptimise.MultiplicityRefinementSpec#getUpperBound()
+   * @see #getMultiplicityRefinementSpec()
+   * @generated
+   */
+  EAttribute getMultiplicityRefinementSpec_UpperBound();
 
   /**
    * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.EvolverParameter <em>Evolver Parameter</em>}'.
@@ -1225,6 +1601,14 @@ public interface MdeoptimisePackage extends EPackage
     EReference OPTIMISATION__MODEL = eINSTANCE.getOptimisation_Model();
 
     /**
+     * The meta object literal for the '<em><b>Refinements</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference OPTIMISATION__REFINEMENTS = eINSTANCE.getOptimisation_Refinements();
+
+    /**
      * The meta object literal for the '<em><b>Objectives</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1247,6 +1631,14 @@ public interface MdeoptimisePackage extends EPackage
      * @generated
      */
     EReference OPTIMISATION__EVOLVERS = eINSTANCE.getOptimisation_Evolvers();
+
+    /**
+     * The meta object literal for the '<em><b>Rulegen</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference OPTIMISATION__RULEGEN = eINSTANCE.getOptimisation_Rulegen();
 
     /**
      * The meta object literal for the '<em><b>Optimisation</b></em>' containment reference feature.
@@ -1387,6 +1779,92 @@ public interface MdeoptimisePackage extends EPackage
     EAttribute CONSTRAINT_INTERPRETER_SPEC__CONSTRAINT_SPEC = eINSTANCE.getConstraintInterpreterSpec_ConstraintSpec();
 
     /**
+     * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.RulegenSpecImpl <em>Rulegen Spec</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.mdeoptimise.impl.RulegenSpecImpl
+     * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getRulegenSpec()
+     * @generated
+     */
+    EClass RULEGEN_SPEC = eINSTANCE.getRulegenSpec();
+
+    /**
+     * The meta object literal for the '<em><b>Node Spec</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference RULEGEN_SPEC__NODE_SPEC = eINSTANCE.getRulegenSpec_NodeSpec();
+
+    /**
+     * The meta object literal for the '<em><b>Edge Spec</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference RULEGEN_SPEC__EDGE_SPEC = eINSTANCE.getRulegenSpec_EdgeSpec();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.RulegenNodeImpl <em>Rulegen Node</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.mdeoptimise.impl.RulegenNodeImpl
+     * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getRulegenNode()
+     * @generated
+     */
+    EClass RULEGEN_NODE = eINSTANCE.getRulegenNode();
+
+    /**
+     * The meta object literal for the '<em><b>Node</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute RULEGEN_NODE__NODE = eINSTANCE.getRulegenNode_Node();
+
+    /**
+     * The meta object literal for the '<em><b>Generation Restriction</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute RULEGEN_NODE__GENERATION_RESTRICTION = eINSTANCE.getRulegenNode_GenerationRestriction();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.RulegenEdgeImpl <em>Rulegen Edge</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.mdeoptimise.impl.RulegenEdgeImpl
+     * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getRulegenEdge()
+     * @generated
+     */
+    EClass RULEGEN_EDGE = eINSTANCE.getRulegenEdge();
+
+    /**
+     * The meta object literal for the '<em><b>Node</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute RULEGEN_EDGE__NODE = eINSTANCE.getRulegenEdge_Node();
+
+    /**
+     * The meta object literal for the '<em><b>Edge</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute RULEGEN_EDGE__EDGE = eINSTANCE.getRulegenEdge_Edge();
+
+    /**
+     * The meta object literal for the '<em><b>Generation Restriction</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute RULEGEN_EDGE__GENERATION_RESTRICTION = eINSTANCE.getRulegenEdge_GenerationRestriction();
+
+    /**
      * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.EvolverSpecImpl <em>Evolver Spec</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1427,6 +1905,48 @@ public interface MdeoptimisePackage extends EPackage
      * @generated
      */
     EReference EVOLVER_SPEC__PARAMETERS = eINSTANCE.getEvolverSpec_Parameters();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.MultiplicityRefinementSpecImpl <em>Multiplicity Refinement Spec</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.mdeoptimise.impl.MultiplicityRefinementSpecImpl
+     * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getMultiplicityRefinementSpec()
+     * @generated
+     */
+    EClass MULTIPLICITY_REFINEMENT_SPEC = eINSTANCE.getMultiplicityRefinementSpec();
+
+    /**
+     * The meta object literal for the '<em><b>Node</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MULTIPLICITY_REFINEMENT_SPEC__NODE = eINSTANCE.getMultiplicityRefinementSpec_Node();
+
+    /**
+     * The meta object literal for the '<em><b>Edge</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MULTIPLICITY_REFINEMENT_SPEC__EDGE = eINSTANCE.getMultiplicityRefinementSpec_Edge();
+
+    /**
+     * The meta object literal for the '<em><b>Lower Bound</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MULTIPLICITY_REFINEMENT_SPEC__LOWER_BOUND = eINSTANCE.getMultiplicityRefinementSpec_LowerBound();
+
+    /**
+     * The meta object literal for the '<em><b>Upper Bound</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MULTIPLICITY_REFINEMENT_SPEC__UPPER_BOUND = eINSTANCE.getMultiplicityRefinementSpec_UpperBound();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.EvolverParameterImpl <em>Evolver Parameter</em>}' class.

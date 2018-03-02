@@ -35,27 +35,34 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cMetamodelMetaModelSpecParserRuleCall_1_0 = (RuleCall)cMetamodelAssignment_1.eContents().get(0);
 		private final Assignment cModelAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cModelModelPathSpecParserRuleCall_2_0 = (RuleCall)cModelAssignment_2.eContents().get(0);
-		private final Assignment cObjectivesAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cObjectivesObjectiveInterpreterSpecParserRuleCall_3_0 = (RuleCall)cObjectivesAssignment_3.eContents().get(0);
-		private final Assignment cConstraintsAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cConstraintsConstraintInterpreterSpecParserRuleCall_4_0 = (RuleCall)cConstraintsAssignment_4.eContents().get(0);
-		private final Assignment cEvolversAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cEvolversEvolverSpecParserRuleCall_5_0 = (RuleCall)cEvolversAssignment_5.eContents().get(0);
-		private final Assignment cOptimisationAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cOptimisationOptimisationSpecParserRuleCall_6_0 = (RuleCall)cOptimisationAssignment_6.eContents().get(0);
+		private final Assignment cRefinementsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cRefinementsMultiplicityRefinementSpecParserRuleCall_3_0 = (RuleCall)cRefinementsAssignment_3.eContents().get(0);
+		private final Assignment cObjectivesAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cObjectivesObjectiveInterpreterSpecParserRuleCall_4_0 = (RuleCall)cObjectivesAssignment_4.eContents().get(0);
+		private final Assignment cConstraintsAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cConstraintsConstraintInterpreterSpecParserRuleCall_5_0 = (RuleCall)cConstraintsAssignment_5.eContents().get(0);
+		private final Assignment cEvolversAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cEvolversEvolverSpecParserRuleCall_6_0 = (RuleCall)cEvolversAssignment_6.eContents().get(0);
+		private final Assignment cRulegenAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cRulegenRulegenSpecParserRuleCall_7_0 = (RuleCall)cRulegenAssignment_7.eContents().get(0);
+		private final Assignment cOptimisationAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cOptimisationOptimisationSpecParserRuleCall_8_0 = (RuleCall)cOptimisationAssignment_8.eContents().get(0);
 		
 		//Optimisation:
 		//	basepath=BasePathSpec
 		//	metamodel=MetaModelSpec
 		//	model=ModelPathSpec
+		//	refinements+=MultiplicityRefinementSpec*
 		//	objectives+=ObjectiveInterpreterSpec+
 		//	constraints+=ConstraintInterpreterSpec*
-		//	evolvers+=EvolverSpec+
+		//	evolvers+=EvolverSpec*
+		//	rulegen+=RulegenSpec*
 		//	optimisation=OptimisationSpec;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//basepath=BasePathSpec metamodel=MetaModelSpec model=ModelPathSpec objectives+=ObjectiveInterpreterSpec+
-		//constraints+=ConstraintInterpreterSpec* evolvers+=EvolverSpec+ optimisation=OptimisationSpec
+		//basepath=BasePathSpec metamodel=MetaModelSpec model=ModelPathSpec refinements+=MultiplicityRefinementSpec*
+		//objectives+=ObjectiveInterpreterSpec+ constraints+=ConstraintInterpreterSpec* evolvers+=EvolverSpec*
+		//rulegen+=RulegenSpec* optimisation=OptimisationSpec
 		public Group getGroup() { return cGroup; }
 		
 		//basepath=BasePathSpec
@@ -76,29 +83,41 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		//ModelPathSpec
 		public RuleCall getModelModelPathSpecParserRuleCall_2_0() { return cModelModelPathSpecParserRuleCall_2_0; }
 		
+		//refinements+=MultiplicityRefinementSpec*
+		public Assignment getRefinementsAssignment_3() { return cRefinementsAssignment_3; }
+		
+		//MultiplicityRefinementSpec
+		public RuleCall getRefinementsMultiplicityRefinementSpecParserRuleCall_3_0() { return cRefinementsMultiplicityRefinementSpecParserRuleCall_3_0; }
+		
 		//objectives+=ObjectiveInterpreterSpec+
-		public Assignment getObjectivesAssignment_3() { return cObjectivesAssignment_3; }
+		public Assignment getObjectivesAssignment_4() { return cObjectivesAssignment_4; }
 		
 		//ObjectiveInterpreterSpec
-		public RuleCall getObjectivesObjectiveInterpreterSpecParserRuleCall_3_0() { return cObjectivesObjectiveInterpreterSpecParserRuleCall_3_0; }
+		public RuleCall getObjectivesObjectiveInterpreterSpecParserRuleCall_4_0() { return cObjectivesObjectiveInterpreterSpecParserRuleCall_4_0; }
 		
 		//constraints+=ConstraintInterpreterSpec*
-		public Assignment getConstraintsAssignment_4() { return cConstraintsAssignment_4; }
+		public Assignment getConstraintsAssignment_5() { return cConstraintsAssignment_5; }
 		
 		//ConstraintInterpreterSpec
-		public RuleCall getConstraintsConstraintInterpreterSpecParserRuleCall_4_0() { return cConstraintsConstraintInterpreterSpecParserRuleCall_4_0; }
+		public RuleCall getConstraintsConstraintInterpreterSpecParserRuleCall_5_0() { return cConstraintsConstraintInterpreterSpecParserRuleCall_5_0; }
 		
-		//evolvers+=EvolverSpec+
-		public Assignment getEvolversAssignment_5() { return cEvolversAssignment_5; }
+		//evolvers+=EvolverSpec*
+		public Assignment getEvolversAssignment_6() { return cEvolversAssignment_6; }
 		
 		//EvolverSpec
-		public RuleCall getEvolversEvolverSpecParserRuleCall_5_0() { return cEvolversEvolverSpecParserRuleCall_5_0; }
+		public RuleCall getEvolversEvolverSpecParserRuleCall_6_0() { return cEvolversEvolverSpecParserRuleCall_6_0; }
+		
+		//rulegen+=RulegenSpec*
+		public Assignment getRulegenAssignment_7() { return cRulegenAssignment_7; }
+		
+		//RulegenSpec
+		public RuleCall getRulegenRulegenSpecParserRuleCall_7_0() { return cRulegenRulegenSpecParserRuleCall_7_0; }
 		
 		//optimisation=OptimisationSpec
-		public Assignment getOptimisationAssignment_6() { return cOptimisationAssignment_6; }
+		public Assignment getOptimisationAssignment_8() { return cOptimisationAssignment_8; }
 		
 		//OptimisationSpec
-		public RuleCall getOptimisationOptimisationSpecParserRuleCall_6_0() { return cOptimisationOptimisationSpecParserRuleCall_6_0; }
+		public RuleCall getOptimisationOptimisationSpecParserRuleCall_8_0() { return cOptimisationOptimisationSpecParserRuleCall_8_0; }
 	}
 	public class BasePathSpecElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.BasePathSpec");
@@ -107,6 +126,32 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cLocationAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cLocationURLTerminalRuleCall_1_0 = (RuleCall)cLocationAssignment_1.eContents().get(0);
 		
+		////Rulegen dsl additions
+		////problem metamodel <metamodel.ecore>
+		////model <input-model.xmi>
+		////refine metamodel {Node, edge, lb, ub}
+		////...
+		////mutation {Sprint} //Implies all actions for this node
+		////mutation {Sprint,CREATE} //Implies only creation allowed
+		////mutation {Sprint,DELETE} //Implies only deletion allowed
+		////mutation {Sprint,isEncapsulatedBy} //Implies only add and remove edge allowed
+		////mutation {Sprint,isEncapsulatedBy,ADD} //Implies only add edge allowed
+		////mutation {Sprint,isEncapsulatedBy,REMOVE} //Implies only remove edge allowed
+		////objective ...
+		////constraint ...
+		////optimisation ...
+		//// Current DSL
+		////
+		////basepath <src/models/cra/>
+		////metamodel <architectureCRA.ecore>
+		////model <TTC_InputRDG_C.xmi>
+		////objective MaximiseCRA maximise java { "models.moea.MaximiseCRA" }
+		////constraint MinimiseClasslessFeatures java { "models.moea.MinimiseClasslessFeatures" }
+		////mutate using <craEvolvers.henshin> unit "createClass"
+		////mutate using <craEvolvers.henshin> unit "assignFeature"
+		////mutate using <craEvolvers.henshin> unit "moveFeature"
+		////mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
+		////optimisation provider moea algorithm NSGAII variation mutation evolutions 1000 population 30 experiments 2
 		/// **
 		// * Use this to identify a basepath to be set in the HenshinResourceSet so that Henshin 
 		// * transformations referencing file-based meta-models through relative paths will work 
@@ -279,6 +324,147 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 	}
+	public class RulegenSpecElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.RulegenSpec");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cMutateKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Assignment cNodeSpecAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
+		private final RuleCall cNodeSpecRulegenNodeParserRuleCall_2_0_0 = (RuleCall)cNodeSpecAssignment_2_0.eContents().get(0);
+		private final Assignment cEdgeSpecAssignment_2_1 = (Assignment)cAlternatives_2.eContents().get(1);
+		private final RuleCall cEdgeSpecRulegenEdgeParserRuleCall_2_1_0 = (RuleCall)cEdgeSpecAssignment_2_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		
+		//RulegenSpec:
+		//	"mutate" "{" (nodeSpec=RulegenNode | edgeSpec=RulegenEdge) "}";
+		@Override public ParserRule getRule() { return rule; }
+		
+		//"mutate" "{" (nodeSpec=RulegenNode | edgeSpec=RulegenEdge) "}"
+		public Group getGroup() { return cGroup; }
+		
+		//"mutate"
+		public Keyword getMutateKeyword_0() { return cMutateKeyword_0; }
+		
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
+		
+		//(nodeSpec=RulegenNode | edgeSpec=RulegenEdge)
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
+		
+		//nodeSpec=RulegenNode
+		public Assignment getNodeSpecAssignment_2_0() { return cNodeSpecAssignment_2_0; }
+		
+		//RulegenNode
+		public RuleCall getNodeSpecRulegenNodeParserRuleCall_2_0_0() { return cNodeSpecRulegenNodeParserRuleCall_2_0_0; }
+		
+		//edgeSpec=RulegenEdge
+		public Assignment getEdgeSpecAssignment_2_1() { return cEdgeSpecAssignment_2_1; }
+		
+		//RulegenEdge
+		public RuleCall getEdgeSpecRulegenEdgeParserRuleCall_2_1_0() { return cEdgeSpecRulegenEdgeParserRuleCall_2_1_0; }
+		
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
+	}
+	public class RulegenNodeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.RulegenNode");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNodeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNodeSTRINGTerminalRuleCall_0_0 = (RuleCall)cNodeAssignment_0.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cCommaKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cGenerationRestrictionAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final Alternatives cGenerationRestrictionAlternatives_1_1_0 = (Alternatives)cGenerationRestrictionAssignment_1_1.eContents().get(0);
+		private final RuleCall cGenerationRestrictionCREATE_NODETerminalRuleCall_1_1_0_0 = (RuleCall)cGenerationRestrictionAlternatives_1_1_0.eContents().get(0);
+		private final RuleCall cGenerationRestrictionDELETE_NODETerminalRuleCall_1_1_0_1 = (RuleCall)cGenerationRestrictionAlternatives_1_1_0.eContents().get(1);
+		
+		//RulegenNode:
+		//	node=STRING ("," generationRestriction=(CREATE_NODE | DELETE_NODE))?;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//node=STRING ("," generationRestriction=(CREATE_NODE | DELETE_NODE))?
+		public Group getGroup() { return cGroup; }
+		
+		//node=STRING
+		public Assignment getNodeAssignment_0() { return cNodeAssignment_0; }
+		
+		//STRING
+		public RuleCall getNodeSTRINGTerminalRuleCall_0_0() { return cNodeSTRINGTerminalRuleCall_0_0; }
+		
+		//("," generationRestriction=(CREATE_NODE | DELETE_NODE))?
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//","
+		public Keyword getCommaKeyword_1_0() { return cCommaKeyword_1_0; }
+		
+		//generationRestriction=(CREATE_NODE | DELETE_NODE)
+		public Assignment getGenerationRestrictionAssignment_1_1() { return cGenerationRestrictionAssignment_1_1; }
+		
+		//(CREATE_NODE | DELETE_NODE)
+		public Alternatives getGenerationRestrictionAlternatives_1_1_0() { return cGenerationRestrictionAlternatives_1_1_0; }
+		
+		//CREATE_NODE
+		public RuleCall getGenerationRestrictionCREATE_NODETerminalRuleCall_1_1_0_0() { return cGenerationRestrictionCREATE_NODETerminalRuleCall_1_1_0_0; }
+		
+		//DELETE_NODE
+		public RuleCall getGenerationRestrictionDELETE_NODETerminalRuleCall_1_1_0_1() { return cGenerationRestrictionDELETE_NODETerminalRuleCall_1_1_0_1; }
+	}
+	public class RulegenEdgeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.RulegenEdge");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNodeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNodeSTRINGTerminalRuleCall_0_0 = (RuleCall)cNodeAssignment_0.eContents().get(0);
+		private final Keyword cCommaKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cEdgeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cEdgeSTRINGTerminalRuleCall_2_0 = (RuleCall)cEdgeAssignment_2.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cCommaKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cGenerationRestrictionAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final Alternatives cGenerationRestrictionAlternatives_3_1_0 = (Alternatives)cGenerationRestrictionAssignment_3_1.eContents().get(0);
+		private final RuleCall cGenerationRestrictionADD_EDGETerminalRuleCall_3_1_0_0 = (RuleCall)cGenerationRestrictionAlternatives_3_1_0.eContents().get(0);
+		private final RuleCall cGenerationRestrictionREMOVE_EDGETerminalRuleCall_3_1_0_1 = (RuleCall)cGenerationRestrictionAlternatives_3_1_0.eContents().get(1);
+		
+		//RulegenEdge:
+		//	node=STRING "," edge=STRING ("," generationRestriction=(ADD_EDGE | REMOVE_EDGE))?;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//node=STRING "," edge=STRING ("," generationRestriction=(ADD_EDGE | REMOVE_EDGE))?
+		public Group getGroup() { return cGroup; }
+		
+		//node=STRING
+		public Assignment getNodeAssignment_0() { return cNodeAssignment_0; }
+		
+		//STRING
+		public RuleCall getNodeSTRINGTerminalRuleCall_0_0() { return cNodeSTRINGTerminalRuleCall_0_0; }
+		
+		//","
+		public Keyword getCommaKeyword_1() { return cCommaKeyword_1; }
+		
+		//edge=STRING
+		public Assignment getEdgeAssignment_2() { return cEdgeAssignment_2; }
+		
+		//STRING
+		public RuleCall getEdgeSTRINGTerminalRuleCall_2_0() { return cEdgeSTRINGTerminalRuleCall_2_0; }
+		
+		//("," generationRestriction=(ADD_EDGE | REMOVE_EDGE))?
+		public Group getGroup_3() { return cGroup_3; }
+		
+		//","
+		public Keyword getCommaKeyword_3_0() { return cCommaKeyword_3_0; }
+		
+		//generationRestriction=(ADD_EDGE | REMOVE_EDGE)
+		public Assignment getGenerationRestrictionAssignment_3_1() { return cGenerationRestrictionAssignment_3_1; }
+		
+		//(ADD_EDGE | REMOVE_EDGE)
+		public Alternatives getGenerationRestrictionAlternatives_3_1_0() { return cGenerationRestrictionAlternatives_3_1_0; }
+		
+		//ADD_EDGE
+		public RuleCall getGenerationRestrictionADD_EDGETerminalRuleCall_3_1_0_0() { return cGenerationRestrictionADD_EDGETerminalRuleCall_3_1_0_0; }
+		
+		//REMOVE_EDGE
+		public RuleCall getGenerationRestrictionREMOVE_EDGETerminalRuleCall_3_1_0_1() { return cGenerationRestrictionREMOVE_EDGETerminalRuleCall_3_1_0_1; }
+	}
 	public class EvolverSpecElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.EvolverSpec");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -365,6 +551,73 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_5_4() { return cRightCurlyBracketKeyword_5_4; }
+	}
+	public class MultiplicityRefinementSpecElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.MultiplicityRefinementSpec");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cRefineMetamodelKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNodeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNodeSTRINGTerminalRuleCall_2_0 = (RuleCall)cNodeAssignment_2.eContents().get(0);
+		private final Keyword cCommaKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cEdgeAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cEdgeSTRINGTerminalRuleCall_4_0 = (RuleCall)cEdgeAssignment_4.eContents().get(0);
+		private final Keyword cCommaKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cLowerBoundAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cLowerBoundINTTerminalRuleCall_6_0 = (RuleCall)cLowerBoundAssignment_6.eContents().get(0);
+		private final Keyword cCommaKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cUpperBoundAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cUpperBoundINTTerminalRuleCall_8_0 = (RuleCall)cUpperBoundAssignment_8.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		
+		//MultiplicityRefinementSpec:
+		//	"refine metamodel" "{" node=STRING "," edge=STRING "," lowerBound=INT "," upperBound=INT "}";
+		@Override public ParserRule getRule() { return rule; }
+		
+		//"refine metamodel" "{" node=STRING "," edge=STRING "," lowerBound=INT "," upperBound=INT "}"
+		public Group getGroup() { return cGroup; }
+		
+		//"refine metamodel"
+		public Keyword getRefineMetamodelKeyword_0() { return cRefineMetamodelKeyword_0; }
+		
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
+		
+		//node=STRING
+		public Assignment getNodeAssignment_2() { return cNodeAssignment_2; }
+		
+		//STRING
+		public RuleCall getNodeSTRINGTerminalRuleCall_2_0() { return cNodeSTRINGTerminalRuleCall_2_0; }
+		
+		//","
+		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
+		
+		//edge=STRING
+		public Assignment getEdgeAssignment_4() { return cEdgeAssignment_4; }
+		
+		//STRING
+		public RuleCall getEdgeSTRINGTerminalRuleCall_4_0() { return cEdgeSTRINGTerminalRuleCall_4_0; }
+		
+		//","
+		public Keyword getCommaKeyword_5() { return cCommaKeyword_5; }
+		
+		//lowerBound=INT
+		public Assignment getLowerBoundAssignment_6() { return cLowerBoundAssignment_6; }
+		
+		//INT
+		public RuleCall getLowerBoundINTTerminalRuleCall_6_0() { return cLowerBoundINTTerminalRuleCall_6_0; }
+		
+		//","
+		public Keyword getCommaKeyword_7() { return cCommaKeyword_7; }
+		
+		//upperBound=INT
+		public Assignment getUpperBoundAssignment_8() { return cUpperBoundAssignment_8; }
+		
+		//INT
+		public RuleCall getUpperBoundINTTerminalRuleCall_8_0() { return cUpperBoundINTTerminalRuleCall_8_0; }
+		
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_9() { return cRightCurlyBracketKeyword_9; }
 	}
 	public class EvolverParameterElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.EvolverParameter");
@@ -674,13 +927,21 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	private final ModelPathSpecElements pModelPathSpec;
 	private final ObjectiveInterpreterSpecElements pObjectiveInterpreterSpec;
 	private final ConstraintInterpreterSpecElements pConstraintInterpreterSpec;
+	private final RulegenSpecElements pRulegenSpec;
+	private final RulegenNodeElements pRulegenNode;
+	private final RulegenEdgeElements pRulegenEdge;
 	private final EvolverSpecElements pEvolverSpec;
+	private final MultiplicityRefinementSpecElements pMultiplicityRefinementSpec;
 	private final EvolverParameterElements pEvolverParameter;
 	private final ParameterFunctionElements pParameterFunction;
 	private final EvolverTypeElements eEvolverType;
 	private final OptimisationSpecElements pOptimisationSpec;
 	private final AlgorithmVariationElements pAlgorithmVariation;
 	private final ProbabilityVariationElements pProbabilityVariation;
+	private final TerminalRule tCREATE_NODE;
+	private final TerminalRule tDELETE_NODE;
+	private final TerminalRule tADD_EDGE;
+	private final TerminalRule tREMOVE_EDGE;
 	private final TerminalRule tGENETIC_VARIATION;
 	private final TerminalRule tCROSSOVER_VARIATION;
 	private final TerminalRule tMUTATION_VARIATION;
@@ -709,13 +970,21 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		this.pModelPathSpec = new ModelPathSpecElements();
 		this.pObjectiveInterpreterSpec = new ObjectiveInterpreterSpecElements();
 		this.pConstraintInterpreterSpec = new ConstraintInterpreterSpecElements();
+		this.pRulegenSpec = new RulegenSpecElements();
+		this.pRulegenNode = new RulegenNodeElements();
+		this.pRulegenEdge = new RulegenEdgeElements();
 		this.pEvolverSpec = new EvolverSpecElements();
+		this.pMultiplicityRefinementSpec = new MultiplicityRefinementSpecElements();
 		this.pEvolverParameter = new EvolverParameterElements();
 		this.pParameterFunction = new ParameterFunctionElements();
 		this.eEvolverType = new EvolverTypeElements();
 		this.pOptimisationSpec = new OptimisationSpecElements();
 		this.pAlgorithmVariation = new AlgorithmVariationElements();
 		this.pProbabilityVariation = new ProbabilityVariationElements();
+		this.tCREATE_NODE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.CREATE_NODE");
+		this.tDELETE_NODE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.DELETE_NODE");
+		this.tADD_EDGE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.ADD_EDGE");
+		this.tREMOVE_EDGE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.REMOVE_EDGE");
 		this.tGENETIC_VARIATION = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.GENETIC_VARIATION");
 		this.tCROSSOVER_VARIATION = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.CROSSOVER_VARIATION");
 		this.tMUTATION_VARIATION = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.MUTATION_VARIATION");
@@ -761,9 +1030,11 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	//	basepath=BasePathSpec
 	//	metamodel=MetaModelSpec
 	//	model=ModelPathSpec
+	//	refinements+=MultiplicityRefinementSpec*
 	//	objectives+=ObjectiveInterpreterSpec+
 	//	constraints+=ConstraintInterpreterSpec*
-	//	evolvers+=EvolverSpec+
+	//	evolvers+=EvolverSpec*
+	//	rulegen+=RulegenSpec*
 	//	optimisation=OptimisationSpec;
 	public OptimisationElements getOptimisationAccess() {
 		return pOptimisation;
@@ -773,6 +1044,32 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		return getOptimisationAccess().getRule();
 	}
 	
+	////Rulegen dsl additions
+	////problem metamodel <metamodel.ecore>
+	////model <input-model.xmi>
+	////refine metamodel {Node, edge, lb, ub}
+	////...
+	////mutation {Sprint} //Implies all actions for this node
+	////mutation {Sprint,CREATE} //Implies only creation allowed
+	////mutation {Sprint,DELETE} //Implies only deletion allowed
+	////mutation {Sprint,isEncapsulatedBy} //Implies only add and remove edge allowed
+	////mutation {Sprint,isEncapsulatedBy,ADD} //Implies only add edge allowed
+	////mutation {Sprint,isEncapsulatedBy,REMOVE} //Implies only remove edge allowed
+	////objective ...
+	////constraint ...
+	////optimisation ...
+	//// Current DSL
+	////
+	////basepath <src/models/cra/>
+	////metamodel <architectureCRA.ecore>
+	////model <TTC_InputRDG_C.xmi>
+	////objective MaximiseCRA maximise java { "models.moea.MaximiseCRA" }
+	////constraint MinimiseClasslessFeatures java { "models.moea.MinimiseClasslessFeatures" }
+	////mutate using <craEvolvers.henshin> unit "createClass"
+	////mutate using <craEvolvers.henshin> unit "assignFeature"
+	////mutate using <craEvolvers.henshin> unit "moveFeature"
+	////mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
+	////optimisation provider moea algorithm NSGAII variation mutation evolutions 1000 population 30 experiments 2
 	/// **
 	// * Use this to identify a basepath to be set in the HenshinResourceSet so that Henshin 
 	// * transformations referencing file-based meta-models through relative paths will work 
@@ -830,6 +1127,36 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		return getConstraintInterpreterSpecAccess().getRule();
 	}
 	
+	//RulegenSpec:
+	//	"mutate" "{" (nodeSpec=RulegenNode | edgeSpec=RulegenEdge) "}";
+	public RulegenSpecElements getRulegenSpecAccess() {
+		return pRulegenSpec;
+	}
+	
+	public ParserRule getRulegenSpecRule() {
+		return getRulegenSpecAccess().getRule();
+	}
+	
+	//RulegenNode:
+	//	node=STRING ("," generationRestriction=(CREATE_NODE | DELETE_NODE))?;
+	public RulegenNodeElements getRulegenNodeAccess() {
+		return pRulegenNode;
+	}
+	
+	public ParserRule getRulegenNodeRule() {
+		return getRulegenNodeAccess().getRule();
+	}
+	
+	//RulegenEdge:
+	//	node=STRING "," edge=STRING ("," generationRestriction=(ADD_EDGE | REMOVE_EDGE))?;
+	public RulegenEdgeElements getRulegenEdgeAccess() {
+		return pRulegenEdge;
+	}
+	
+	public ParserRule getRulegenEdgeRule() {
+		return getRulegenEdgeAccess().getRule();
+	}
+	
 	//EvolverSpec:
 	//	evolverType=EvolverType "using" rule_location=URL
 	//	"unit" unit=STRING ("parameters" '{'
@@ -841,6 +1168,16 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getEvolverSpecRule() {
 		return getEvolverSpecAccess().getRule();
+	}
+	
+	//MultiplicityRefinementSpec:
+	//	"refine metamodel" "{" node=STRING "," edge=STRING "," lowerBound=INT "," upperBound=INT "}";
+	public MultiplicityRefinementSpecElements getMultiplicityRefinementSpecAccess() {
+		return pMultiplicityRefinementSpec;
+	}
+	
+	public ParserRule getMultiplicityRefinementSpecRule() {
+		return getMultiplicityRefinementSpecAccess().getRule();
 	}
 	
 	/// **
@@ -909,6 +1246,30 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getProbabilityVariationRule() {
 		return getProbabilityVariationAccess().getRule();
+	}
+	
+	//terminal CREATE_NODE:
+	//	'CREATE';
+	public TerminalRule getCREATE_NODERule() {
+		return tCREATE_NODE;
+	}
+	
+	//terminal DELETE_NODE:
+	//	'DELETE';
+	public TerminalRule getDELETE_NODERule() {
+		return tDELETE_NODE;
+	}
+	
+	//terminal ADD_EDGE:
+	//	'ADD';
+	public TerminalRule getADD_EDGERule() {
+		return tADD_EDGE;
+	}
+	
+	//terminal REMOVE_EDGE:
+	//	'REMOVE';
+	public TerminalRule getREMOVE_EDGERule() {
+		return tREMOVE_EDGE;
 	}
 	
 	//terminal GENETIC_VARIATION:
