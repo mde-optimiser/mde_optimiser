@@ -11,10 +11,8 @@ class ParetoChartOutputDescriptor implements ResultsDescriptor {
 	override generateDescription(IPath batchPath, MDEOBatch batch, StringBuilder batchOverallOutput) {
 		
 		//If there is only one objectove, don't show the chart
-		if(!batch.solutions.empty){
-			if(batch.solutions.head.objectives.length < 2) {
-				return
-			}
+		if(!batch.solutions.empty && batch.solutions.head.objectives.length < 2){
+			return
 		}
 		
 		var objectivesOutputPath = batchPath.append(String.format("batch-%s-pareto-front.jpeg", batch.id));

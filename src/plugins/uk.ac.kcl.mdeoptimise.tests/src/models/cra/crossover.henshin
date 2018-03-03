@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_FankgL8aEeeH6Nvtdou3Xg">
+  <imports href="architectureCRA.ecore#/"/>
+  <units xsi:type="henshin:SequentialUnit" xmi:id="_NJf7wL8aEeeH6Nvtdou3Xg" name="selectClass_injectAsNewClass">
+    <subUnits xsi:type="henshin:Rule" href="selection.henshin#_aW018K_2Eee_bbiNPfCysw"/>
+    <subUnits xsi:type="henshin:SequentialUnit" href="injection.henshin#_x0WEQL1zEeejLezHaXfvPA"/>
+  </units>
+  <units xsi:type="henshin:SequentialUnit" xmi:id="_AyrMML8eEeeH6Nvtdou3Xg" name="selectRandomFeatures_injectPreservingDistribution">
+    <parameters xmi:id="_K0S8QDfqEeid1ZZ0CJeEPQ" name="matchingSelection" kind="IN">
+      <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </parameters>
+    <parameterMappings xmi:id="_VwfkEDfqEeid1ZZ0CJeEPQ" source="_K0S8QDfqEeid1ZZ0CJeEPQ">
+      <target href="selection.henshin#_T8S8cDdDEeinP9BKKZ_JlA"/>
+    </parameterMappings>
+    <parameterMappings xmi:id="_YYaBgDfqEeid1ZZ0CJeEPQ" target="_K0S8QDfqEeid1ZZ0CJeEPQ">
+      <source href="selection.henshin#_T8S8cDdDEeinP9BKKZ_JlA"/>
+    </parameterMappings>
+    <subUnits xsi:type="henshin:SequentialUnit" href="selection.henshin#_Qw_vML1fEeejLezHaXfvPA"/>
+    <subUnits xsi:type="henshin:SequentialUnit" href="injection.henshin#_NdgKcShsEeiR0YYg77PFhg"/>
+  </units>
+  <units xsi:type="henshin:SequentialUnit" xmi:id="_JV4jYL8eEeeH6Nvtdou3Xg" name="selectRandomFeatures_injectAsNewClass">
+    <parameters xmi:id="_wvBNwDfvEeid1ZZ0CJeEPQ" name="matchingSelection" kind="IN">
+      <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </parameters>
+    <parameterMappings xmi:id="_2Z2CkDfvEeid1ZZ0CJeEPQ" source="_wvBNwDfvEeid1ZZ0CJeEPQ">
+      <target href="selection.henshin#_T8S8cDdDEeinP9BKKZ_JlA"/>
+    </parameterMappings>
+    <parameterMappings xmi:id="_32oJoDfvEeid1ZZ0CJeEPQ" target="_wvBNwDfvEeid1ZZ0CJeEPQ">
+      <source href="selection.henshin#_T8S8cDdDEeinP9BKKZ_JlA"/>
+    </parameterMappings>
+    <subUnits xsi:type="henshin:SequentialUnit" href="selection.henshin#_Qw_vML1fEeejLezHaXfvPA"/>
+    <subUnits xsi:type="henshin:SequentialUnit" href="injection.henshin#_x0WEQL1zEeejLezHaXfvPA"/>
+  </units>
+  <units xsi:type="henshin:SequentialUnit" xmi:id="_YFu2IMMHEeeFMf6hH3ICug" name="selectMixedDependencies_injectPreservingDependencies">
+    <parameters xmi:id="_FIp9MDfsEeid1ZZ0CJeEPQ" name="matchingSelection" kind="IN">
+      <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </parameters>
+    <parameterMappings xmi:id="_g4l9EDfuEeid1ZZ0CJeEPQ" source="_FIp9MDfsEeid1ZZ0CJeEPQ">
+      <target href="selection.henshin#_xNMqEC3UEeiWeOp4rOZWZQ"/>
+    </parameterMappings>
+    <parameterMappings xmi:id="_HQkE4DfsEeid1ZZ0CJeEPQ" target="_FIp9MDfsEeid1ZZ0CJeEPQ">
+      <source href="selection.henshin#_xNMqEC3UEeiWeOp4rOZWZQ"/>
+    </parameterMappings>
+    <subUnits xsi:type="henshin:SequentialUnit" href="selection.henshin#_yE4eQMujEeeDh6mgHe3vQw"/>
+    <subUnits xsi:type="henshin:SequentialUnit" href="injection.henshin#_1N_G8DdAEeinP9BKKZ_JlA"/>
+  </units>
+  <units xsi:type="henshin:SequentialUnit" xmi:id="_w1SgIMMHEeeFMf6hH3ICug" name="selectFulfilledDependencies_injectAsNewClass">
+    <parameters xmi:id="_bCFuoDfsEeid1ZZ0CJeEPQ" name="matchingSelection" kind="IN">
+      <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </parameters>
+    <parameterMappings xmi:id="_gK73wDfsEeid1ZZ0CJeEPQ" source="_bCFuoDfsEeid1ZZ0CJeEPQ">
+      <target href="selection.henshin#_24RyAS3eEeiWeOp4rOZWZQ"/>
+    </parameterMappings>
+    <parameterMappings xmi:id="_gjhW4DfsEeid1ZZ0CJeEPQ" target="_bCFuoDfsEeid1ZZ0CJeEPQ">
+      <source href="selection.henshin#_24RyAS3eEeiWeOp4rOZWZQ"/>
+    </parameterMappings>
+    <subUnits xsi:type="henshin:SequentialUnit" href="selection.henshin#_24RyAC3eEeiWeOp4rOZWZQ"/>
+    <subUnits xsi:type="henshin:SequentialUnit" href="injection.henshin#_x0WEQL1zEeejLezHaXfvPA"/>
+  </units>
+  <units xsi:type="henshin:SequentialUnit" xmi:id="_P8ynkMOgEeelgcduZXxRXQ" name="selectMixedDependencies_injectPreservingDistribution">
+    <parameters xmi:id="_wPFtUDfrEeid1ZZ0CJeEPQ" name="matchingSelection" kind="IN">
+      <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </parameters>
+    <parameterMappings xmi:id="_yO3zwDfrEeid1ZZ0CJeEPQ" source="_wPFtUDfrEeid1ZZ0CJeEPQ">
+      <target href="selection.henshin#_xNMqEC3UEeiWeOp4rOZWZQ"/>
+    </parameterMappings>
+    <parameterMappings xmi:id="_ymJrUDfrEeid1ZZ0CJeEPQ" target="_wPFtUDfrEeid1ZZ0CJeEPQ">
+      <source href="selection.henshin#_xNMqEC3UEeiWeOp4rOZWZQ"/>
+    </parameterMappings>
+    <subUnits xsi:type="henshin:SequentialUnit" href="selection.henshin#_yE4eQMujEeeDh6mgHe3vQw"/>
+    <subUnits xsi:type="henshin:SequentialUnit" href="injection.henshin#_NdgKcShsEeiR0YYg77PFhg"/>
+  </units>
+  <units xsi:type="henshin:SequentialUnit" xmi:id="_ozKMgMupEeeDh6mgHe3vQw" name="selectFulfilledDependencies_injectPreservingDistribution">
+    <parameters xmi:id="_x6cmcDfsEeid1ZZ0CJeEPQ" name="matchingSelection" kind="IN">
+      <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </parameters>
+    <parameterMappings xmi:id="_zgqWUDfsEeid1ZZ0CJeEPQ" source="_x6cmcDfsEeid1ZZ0CJeEPQ">
+      <target href="selection.henshin#_24RyAS3eEeiWeOp4rOZWZQ"/>
+    </parameterMappings>
+    <parameterMappings xmi:id="_0zzZMDfsEeid1ZZ0CJeEPQ" target="_x6cmcDfsEeid1ZZ0CJeEPQ">
+      <source href="selection.henshin#_24RyAS3eEeiWeOp4rOZWZQ"/>
+    </parameterMappings>
+    <subUnits xsi:type="henshin:SequentialUnit" href="selection.henshin#_24RyAC3eEeiWeOp4rOZWZQ"/>
+    <subUnits xsi:type="henshin:SequentialUnit" href="injection.henshin#_NdgKcShsEeiR0YYg77PFhg"/>
+  </units>
+  <units xsi:type="henshin:SequentialUnit" xmi:id="_82_gUM3wEeepxZbs0sdntw" name="selectMixedDependencies_injectAsNewClass">
+    <parameters xmi:id="_fUi3wDfrEeid1ZZ0CJeEPQ" name="matchingSelection" kind="IN">
+      <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </parameters>
+    <parameterMappings xmi:id="_qYg7gDfrEeid1ZZ0CJeEPQ" source="_fUi3wDfrEeid1ZZ0CJeEPQ">
+      <target href="selection.henshin#_xNMqEC3UEeiWeOp4rOZWZQ"/>
+    </parameterMappings>
+    <parameterMappings xmi:id="_sXE58DfrEeid1ZZ0CJeEPQ" target="_fUi3wDfrEeid1ZZ0CJeEPQ">
+      <source href="selection.henshin#_xNMqEC3UEeiWeOp4rOZWZQ"/>
+    </parameterMappings>
+    <subUnits xsi:type="henshin:SequentialUnit" href="selection.henshin#_yE4eQMujEeeDh6mgHe3vQw"/>
+    <subUnits xsi:type="henshin:SequentialUnit" href="injection.henshin#_x0WEQL1zEeejLezHaXfvPA"/>
+  </units>
+  <units xsi:type="henshin:SequentialUnit" xmi:id="_3Nks8DfsEeid1ZZ0CJeEPQ" name="selectFulfilledDependencies_injectPreservingDependencies">
+    <parameters xmi:id="_34GQoDfsEeid1ZZ0CJeEPQ" name="matchingSelection" kind="IN">
+      <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </parameters>
+    <parameterMappings xmi:id="_AO6xoDftEeid1ZZ0CJeEPQ" source="_34GQoDfsEeid1ZZ0CJeEPQ">
+      <target href="selection.henshin#_24RyAS3eEeiWeOp4rOZWZQ"/>
+    </parameterMappings>
+    <parameterMappings xmi:id="_AhqugDftEeid1ZZ0CJeEPQ" target="_34GQoDfsEeid1ZZ0CJeEPQ">
+      <source href="selection.henshin#_24RyAS3eEeiWeOp4rOZWZQ"/>
+    </parameterMappings>
+    <subUnits xsi:type="henshin:SequentialUnit" href="selection.henshin#_24RyAC3eEeiWeOp4rOZWZQ"/>
+    <subUnits xsi:type="henshin:SequentialUnit" href="injection.henshin#_1N_G8DdAEeinP9BKKZ_JlA"/>
+  </units>
+  <units xsi:type="henshin:SequentialUnit" xmi:id="_D8WFoDftEeid1ZZ0CJeEPQ" name="selectUnfulfilledDependencies_injectPreservingDependencies">
+    <parameters xmi:id="_ESGTMDftEeid1ZZ0CJeEPQ" name="matchingSelection" kind="IN">
+      <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </parameters>
+    <parameterMappings xmi:id="_Y9tmoDftEeid1ZZ0CJeEPQ" source="_ESGTMDftEeid1ZZ0CJeEPQ">
+      <target href="selection.henshin#_3IcU8S3eEeiWeOp4rOZWZQ"/>
+    </parameterMappings>
+    <parameterMappings xmi:id="_ZOa8IDftEeid1ZZ0CJeEPQ" target="_ESGTMDftEeid1ZZ0CJeEPQ">
+      <source href="selection.henshin#_3IcU8S3eEeiWeOp4rOZWZQ"/>
+    </parameterMappings>
+    <subUnits xsi:type="henshin:SequentialUnit" href="selection.henshin#_3IcU8C3eEeiWeOp4rOZWZQ"/>
+    <subUnits xsi:type="henshin:SequentialUnit" href="injection.henshin#_1N_G8DdAEeinP9BKKZ_JlA"/>
+  </units>
+  <units xsi:type="henshin:SequentialUnit" xmi:id="_KqjqEDftEeid1ZZ0CJeEPQ" name="selectUnfulfilledDependencies_injectPreservingDistribution">
+    <parameters xmi:id="_LRdSADftEeid1ZZ0CJeEPQ" name="matchingSelection" kind="IN">
+      <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </parameters>
+    <parameterMappings xmi:id="_uDtwADftEeid1ZZ0CJeEPQ" source="_LRdSADftEeid1ZZ0CJeEPQ">
+      <target href="selection.henshin#_3IcU8S3eEeiWeOp4rOZWZQ"/>
+    </parameterMappings>
+    <parameterMappings xmi:id="_uX3bEDftEeid1ZZ0CJeEPQ" target="_LRdSADftEeid1ZZ0CJeEPQ">
+      <source href="selection.henshin#_3IcU8S3eEeiWeOp4rOZWZQ"/>
+    </parameterMappings>
+    <subUnits xsi:type="henshin:SequentialUnit" href="selection.henshin#_3IcU8C3eEeiWeOp4rOZWZQ"/>
+    <subUnits xsi:type="henshin:SequentialUnit" href="injection.henshin#_NdgKcShsEeiR0YYg77PFhg"/>
+  </units>
+  <units xsi:type="henshin:SequentialUnit" xmi:id="_xs6rUDftEeid1ZZ0CJeEPQ" name="selectUnfulfilledDependencies_injectAsNewClass">
+    <parameters xmi:id="_0Xh3cDftEeid1ZZ0CJeEPQ" name="matchingSelection" kind="IN">
+      <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </parameters>
+    <parameterMappings xmi:id="_HgTfIDfuEeid1ZZ0CJeEPQ" source="_0Xh3cDftEeid1ZZ0CJeEPQ">
+      <target href="selection.henshin#_3IcU8S3eEeiWeOp4rOZWZQ"/>
+    </parameterMappings>
+    <parameterMappings xmi:id="_Hys2sDfuEeid1ZZ0CJeEPQ" target="_0Xh3cDftEeid1ZZ0CJeEPQ">
+      <source href="selection.henshin#_3IcU8S3eEeiWeOp4rOZWZQ"/>
+    </parameterMappings>
+    <subUnits xsi:type="henshin:SequentialUnit" href="selection.henshin#_3IcU8C3eEeiWeOp4rOZWZQ"/>
+    <subUnits xsi:type="henshin:SequentialUnit" href="injection.henshin#_x0WEQL1zEeejLezHaXfvPA"/>
+  </units>
+</henshin:Module>

@@ -58,6 +58,11 @@ BasePathSpec:
 	"basepath" location=URL
 ;
 
+/**
+ * URL might be a file location, relative to basepath, in which case we load the metamodel dynamically.
+ * It may also be a dot-separated fully-qualified class name for a meta-model package, in which case we
+ * register that globally.
+ */
 MetaModelSpec:
 	"metamodel" location=URL
 ;
@@ -99,7 +104,7 @@ EvolverSpec:
 ;
 
 MultiplicityRefinementSpec:
-	"refine metamodel" "{" node=STRING "," edge=STRING "," lowerBound=INT "," upperBound=INT "}"
+	"refine metamodel" "{" node=STRING "," edge=STRING "," lowerBound=INT "," upperBound=SignedInteger "}"
 ;
 
 /**
@@ -135,6 +140,9 @@ AlgorithmVariation:
 ProbabilityVariation:
 	 type=GENETIC_VARIATION ('(' crossover_rate=Number ',' mutation_rate=Number ')')?
 ;
+
+SignedInteger returns ecore::EIntegerObject:
+  '-'? INT;
 
 terminal CREATE_NODE returns ecore::EString:
 	'CREATE'

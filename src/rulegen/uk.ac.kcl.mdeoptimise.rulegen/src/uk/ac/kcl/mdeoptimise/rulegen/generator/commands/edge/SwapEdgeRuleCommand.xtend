@@ -1,49 +1,79 @@
 package uk.ac.kcl.mdeoptimise.rulegen.generator.commands.edge
 
+import java.util.List
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.henshin.model.HenshinFactory
 import org.eclipse.emf.henshin.model.Module
 import org.eclipse.emf.henshin.model.Rule
-import org.sidiff.common.emf.extensions.impl.EClassifierInfoManagement
 import org.sidiff.common.henshin.HenshinRuleAnalysisUtilEx
 import org.sidiff.serge.configuration.GlobalConstants
 import org.sidiff.serge.core.Common
 import uk.ac.kcl.mdeoptimise.rulegen.generator.IRuleGenerationCommand
-import uk.ac.kcl.mdeoptimise.rulegen.metamodel.Multiplicity
-import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RefinedMetamodelWrapper
+import uk.ac.kcl.mdeoptimise.rulegen.generator.specs.RepairSpec
+import uk.ac.kcl.mdeoptimise.rulegen.metamodel.MetamodelWrapper
+import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RuleSpec
 import uk.ac.kcl.mdeoptimiser.rulegen.lang.NamingConstants
+import uk.ac.kcl.mdeoptimiser.rulegen.lang.RuleNameGenerator
 
 class SwapEdgeRuleCommand implements IRuleGenerationCommand {
 	
-	Multiplicity multiplicity;
-	RefinedMetamodelWrapper refinedMetamodelWrapper;
-	EClassifierInfoManagement metamodelAnalyser;
+	MetamodelWrapper metamodelWrapper;
 	EClass node;
 	EReference edge;
-
-	new(EClass node, EReference edge, RefinedMetamodelWrapper refinedMetamodelWrapper, EClassifierInfoManagement metamodelAnalyser){
-		this.node = node;
-		this.edge = edge;
-		this.refinedMetamodelWrapper = refinedMetamodelWrapper;
-		this.metamodelAnalyser = metamodelAnalyser;
+	
+	RuleSpec ruleSpec;
+	List<RepairSpec> repairSpecs;
+	
+	new(MetamodelWrapper metamodelWrapper, RuleSpec ruleSpec, List<RepairSpec> repairSpecs) {
+		this.metamodelWrapper = metamodelWrapper;
+		this.ruleSpec = ruleSpec;
+		this.repairSpecs = repairSpecs;
+	}
+	
+	new(EClass node, MetamodelWrapper metamodelWrapper, RuleSpec ruleSpec, List<RepairSpec> repairSpecs){
+		this.metamodelWrapper = metamodelWrapper;
+		this.node = node; 
+		this.repairSpecs = repairSpecs;
+		this.ruleSpec = ruleSpec;
+	}
+	
+	def EClass getNode(){
+		
+		if(this.node == null){
+			this.node = metamodelWrapper.getNode(ruleSpec.getNode)	
+		}
+		
+		return this.node;
+	}
+	
+	def EReference getEdge(){
+		
+		if(this.edge == null){
+			this.edge = repairSpecs.head.edge
+		}
+		
+		return this.edge;
 	}
 	
 	override generate() {
 		
-		var moduleName = NamingConstants.SWAP_prefix + multiplicity.getEReference.name + "_edge_rules_in_all_contexts";
+		var moduleName = NamingConstants.SWAP_prefix + this.getEdge.name + "_edge_for_" + this.getNode.name + "_rules";
 		//Create module
 		val module = HenshinFactory.eINSTANCE.createModule();
 		
 		//Set module name
-		module.setName(moduleName)
-		module.setDescription("Changes " + multiplicity.getEReference.name + " edge from " + multiplicity.sourceNode.name + " to " + multiplicity.targetNode.name);
+		var ruleName = RuleNameGenerator.getRuleName(ruleSpec, repairSpecs, this.metamodelWrapper.ruleType)
+				
+		//Set module name
+		module.setName(ruleName)
+		module.setDescription("Changes " + this.getEdge.name + " edge from " + this.getNode.name + " to " + this.getEdge.EType.name);
 		
 		//Set module metamodels
-		module.getImports().add(refinedMetamodelWrapper.refinedMetamodel)
+		module.getImports().add(metamodelWrapper.getMetamodel)
 		
 		//TODO Test this case with a metamodel variant that has more than one container for the same classifier
-		val classifierInfo = metamodelAnalyser.getAllParentContext(multiplicity.sourceNode, true);
+		val classifierInfo = metamodelWrapper.metamodelAnalyser.getAllParentContext(node, true);
 		
 		for(var contextReferenceId = 0; contextReferenceId < classifierInfo.keySet.size; contextReferenceId++) {
 			
@@ -52,7 +82,7 @@ class SwapEdgeRuleCommand implements IRuleGenerationCommand {
 			//Create a new rule in the module for each context container of the refined multiplicity node	
 			for(var contextId = 0; contextId < context.size; contextId++){
 				
-				var rule = generateBasicRule(module, multiplicity.getEReference, multiplicity.sourceNode as EClass, multiplicity.targetNode as EClass);
+				var rule = generateBasicRule(module, this.getEdge, this.getNode, this.getEdge.EType as EClass);
 				
 				//Add rule to module for this context classifier
 				module.getUnits().add(rule);

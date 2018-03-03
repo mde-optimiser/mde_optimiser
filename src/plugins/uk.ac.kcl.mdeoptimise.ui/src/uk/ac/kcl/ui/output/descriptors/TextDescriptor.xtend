@@ -72,7 +72,7 @@ class TextDescriptor implements ResultsDescriptor {
 		//Pretty print the objectives
 		var objectives = solution.formattedObjectives
 		objectives.forEach[key, value | 
-			infoWriter.println(String.format("%s: %s", key, -1 * value))
+			infoWriter.println(String.format("%s: %s", key, value))
 		]
 		infoWriter.println("")
 

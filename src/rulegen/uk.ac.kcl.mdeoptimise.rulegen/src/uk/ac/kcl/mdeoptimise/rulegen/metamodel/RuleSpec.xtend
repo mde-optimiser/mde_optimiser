@@ -5,6 +5,7 @@ class RuleSpec {
 	private String node;
 	private String edge;
 	private String action;	
+	private boolean isEdgeRepair = false;
 	
 	new(String node, String action){
 		this.node = node;
@@ -15,6 +16,7 @@ class RuleSpec {
 		this.node = node;
 		this.edge = edge;
 		this.action = action;
+		this.isEdgeRepair = true;
 	}
 	
 	def String getNode(){
@@ -41,4 +43,9 @@ class RuleSpec {
 	def boolean isNode(){
 		return this.edge === null
 	}
+	
+	def boolean isEdge(){
+		return this.edge !== null;
+	}
+	
 }

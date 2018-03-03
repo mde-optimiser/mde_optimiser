@@ -11,20 +11,57 @@ import org.sidiff.serge.generators.conditions.LowerBoundCheckGenerator
 import org.sidiff.serge.generators.conditions.UpperBoundCheckGenerator
 import uk.ac.kcl.mdeoptimise.rulegen.generator.IRuleGenerationCommand
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RefinedMetamodelWrapper
+import org.eclipse.emf.henshin.model.Not
+import org.eclipse.emf.henshin.model.NestedCondition
+import org.sidiff.common.henshin.HenshinConditionUtil
+import org.sidiff.common.henshin.HenshinRuleAnalysisUtilEx.FormulaCombineOperator
+import uk.ac.kcl.mdeoptimise.rulegen.metamodel.MetamodelWrapper
+import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RuleSpec
+import java.util.List
+import uk.ac.kcl.mdeoptimise.rulegen.generator.specs.RepairSpec
+import uk.ac.kcl.mdeoptimiser.rulegen.lang.RuleNameGenerator
 
 class AddEdgeRuleCommand implements IRuleGenerationCommand {
 	
-	RefinedMetamodelWrapper refinedMetamodelWrapper;
-	EClassifierInfoManagement metamodelAnalyser;
+	MetamodelWrapper metamodelWrapper;
 	EClass node;
 	EReference edge;
 	
-	new(EClass node, EReference edge, RefinedMetamodelWrapper refinedMetamodelWrapper, EClassifierInfoManagement metamodelAnalyser){
-		this.node = node;
-		this.edge = edge;
-		this.refinedMetamodelWrapper = refinedMetamodelWrapper;
-		this.metamodelAnalyser = metamodelAnalyser;
+	RuleSpec ruleSpec;
+	List<RepairSpec> repairSpecs;
+	
+	new(MetamodelWrapper metamodelWrapper, RuleSpec ruleSpec, List<RepairSpec> repairSpecs) {
+		this.metamodelWrapper = metamodelWrapper;
+		this.ruleSpec = ruleSpec;
+		this.repairSpecs = repairSpecs;
 	}
+	
+	new(EClass node, MetamodelWrapper metamodelWrapper, RuleSpec ruleSpec, List<RepairSpec> repairSpecs){
+		this.metamodelWrapper = metamodelWrapper;
+		this.node = node; 
+		this.repairSpecs = repairSpecs;
+		this.ruleSpec = ruleSpec;
+	}
+	
+	def EClass getNode(){
+		
+		if(this.node == null){
+			this.node = metamodelWrapper.getNode(ruleSpec.getNode)	
+		}
+		
+		return this.node;
+	}
+	
+	def EReference getEdge(){
+		
+		if(this.edge == null){
+			this.edge = repairSpecs.head.edge
+		}
+		
+		return this.edge;
+	}
+	
+	
 	
 	override generate() {
 		
@@ -32,14 +69,17 @@ class AddEdgeRuleCommand implements IRuleGenerationCommand {
 		val module = HenshinFactory.eINSTANCE.createModule();
 		
 		//Set module name
-		module.setName("ADD_EdgeRules")
-		module.setDescription("Adds to " + node.name + " edge of type " + edge.name)
+		var ruleName = RuleNameGenerator.getRuleName(ruleSpec, repairSpecs, this.metamodelWrapper.ruleType)
+				
+		//Set module name
+		module.setName(ruleName)
+		module.setDescription("Adds to " + this.getNode.name + " edge of type " + this.getEdge.name)
 		
 		//Set module metamodels
-		module.getImports().add(refinedMetamodelWrapper.refinedMetamodel)
+		module.getImports().add(metamodelWrapper.getMetamodel)
 		
 		//TODO Test this case with a metamodel variant that has more than one container for the same classifier
-		val classifierInfo = metamodelAnalyser.getAllParentContext(node, true);
+		val classifierInfo = metamodelWrapper.metamodelAnalyser.getAllParentContext(this.getNode, true);
 		
 		for(var contextReferenceId = 0; contextReferenceId < classifierInfo.keySet.size; contextReferenceId++) {
 			
@@ -48,9 +88,9 @@ class AddEdgeRuleCommand implements IRuleGenerationCommand {
 			//Create a new rule in the module for each context container of the refined multiplicity node	
 			for(var contextId = 0; contextId < context.size; contextId++){
 				
-				val rule = createRule(node, edge, edge.getEType as EClass)
+				val rule = createRule(this.getNode, this.getEdge, this.getEdge.getEType as EClass)
 				
-				applyRuleNacConditions(rule)
+				//applyRuleNacConditions(rule)
 				//Add rule to module for this context classifier
 				module.getUnits().add(rule);
 			}
@@ -75,8 +115,30 @@ class AddEdgeRuleCommand implements IRuleGenerationCommand {
 		// EOpposite, if any
 		HenshinRuleAnalysisUtilEx.createCreateEdge(selectedNodePair.getRhsNode(), newNodePair.getRhsNode(), outReference);
 		
+		applyRuleNacConditions(rule)
+			
+		var nestedCond = HenshinFactory.eINSTANCE.createNestedCondition();
+		var graph = HenshinFactory.eINSTANCE.createGraph();
+		
+		var sourceNode = HenshinFactory.eINSTANCE.createNode(graph, selectedNodePair.lhsNode.type, "");
+		var targetNode = HenshinFactory.eINSTANCE.createNode(graph, newNodePair.lhsNode.type, "");
+		
+		HenshinFactory.eINSTANCE.createEdge(sourceNode, targetNode, outReference)
+		
+		nestedCond.setConclusion(graph);
+		
+		nestedCond.getMappings().add(HenshinFactory.eINSTANCE.createMapping(selectedNodePair.getLhsNode(), sourceNode));
+		nestedCond.getMappings().add(HenshinFactory.eINSTANCE.createMapping(newNodePair.getLhsNode(), targetNode));
+		
+		var formula = HenshinFactory.eINSTANCE.createNot();
+		formula.setChild(nestedCond);
+		
+		HenshinConditionUtil.addFormula(formula, rule.getLhs(), FormulaCombineOperator.AND);
+	
 		return rule;
 	}
+	
+
 	
 	//Apply the NACs
 	private def void applyRuleNacConditions(Rule rule){

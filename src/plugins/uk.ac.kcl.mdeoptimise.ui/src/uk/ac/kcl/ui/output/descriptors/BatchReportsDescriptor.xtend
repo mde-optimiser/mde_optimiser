@@ -25,6 +25,10 @@ class BatchReportsDescriptor implements ResultsDescriptor {
 	
 	override generateDescription(IPath batchOutputPath, MDEOBatch batch, StringBuilder batchOverallOutput) {
 
+		if(this.reportFunctions.empty){
+			return;
+		}
+
 		var objectivesOutputPath = batchOutputPath.append(String.format("batch-%s-serialized-reports.txt", batch.id));
 		
 		batchOverallOutput.append("Serialized batch reports saved to: " + objectivesOutputPath.toPortableString)

@@ -16,6 +16,11 @@ class GeneratedMutationOperatorsDescriptor implements ResultsDescriptor {
 		
 	override generateDescription(IPath batchOutputPath, MDEOBatch batch, StringBuilder batchOverallOutput) {
 	
+		//Do nothing if there are no generated mutation operators
+		if(batch.generatedRules.empty){
+			return
+		}
+	
 		var mutationGenerationpath = batchOutputPath.append("mutation-operators/");	
 		this.resourceSet = new HenshinResourceSet(mutationGenerationpath.toPortableString);
 		

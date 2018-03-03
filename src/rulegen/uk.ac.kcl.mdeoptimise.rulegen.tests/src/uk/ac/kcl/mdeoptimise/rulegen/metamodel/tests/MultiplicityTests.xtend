@@ -66,7 +66,7 @@ class MultiplicityTests {
 		var basepath = mock(BasePathSpec);
 		var metamodel = mock(MetaModelSpec);
 		when(basepath.location).thenReturn("src/resources/");
-		when(metamodel.location).thenReturn("service-composition.ecore")
+		when(metamodel.location).thenReturn("OrchestrationMM.ecore")
 		
 		when(model.basepath).thenReturn(basepath)
 		when(model.metamodel).thenReturn(metamodel)
