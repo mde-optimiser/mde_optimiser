@@ -39,21 +39,6 @@ class MoeaMdeoProblemProvider extends ProblemProvider {
 	
 	override getReferenceSet(String name) {
 		return this.algo.result;
-//		//if (name != null) {
-//			//var fileName = Settings.getProblemReferenceSet(name);
-//			
-//			if (fileName != null) {
-//				try {
-//					return new NondominatedPopulation(
-//							PopulationIO.readObjectives(new File(fileName)));
-//				} catch (Exception e) {
-//					return null;
-//				}
-//			}
-//		//}
-//
-//		return null;
-
 	}
 	
 }

@@ -36,5 +36,6 @@ profiler/
 
 
 # Ignore rulegen integration test artifacts
-src/rulegen/uk.ac.kcl.mdeoptimise.rulegen.tests/src/resources/
-!src/rulegen/uk.ac.kcl.mdeoptimise.rulegen.tests/src/resources/architectureCRA.ecore
+src/rulegen/uk.ac.kcl.mdeoptimise.rulegen.tests/src/resources/cases/
+src/rulegen/uk.ac.kcl.mdeoptimise.rulegen.tests/src/**/*.henshin_diagram
+src/rulegen/uk.ac.kcl.mdeoptimise.rulegen.tests/src/resources/expected/new/

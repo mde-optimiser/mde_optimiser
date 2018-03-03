@@ -33,13 +33,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<dependencies>
-		<dependency>
-			<groupId>uk.ac.kcl.mdeoptimise</groupId>
-			<artifactId>uk.ac.kcl.mdeo.rulegen</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
-			<type>eclipse-plugin</type>
-		</dependency>
-	</dependencies>
 </project>

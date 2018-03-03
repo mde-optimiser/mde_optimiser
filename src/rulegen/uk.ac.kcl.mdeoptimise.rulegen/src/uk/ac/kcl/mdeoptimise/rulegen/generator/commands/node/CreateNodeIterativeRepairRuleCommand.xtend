@@ -16,6 +16,7 @@ import org.sidiff.serge.generators.conditions.UpperBoundCheckGenerator
 import uk.ac.kcl.mdeoptimise.rulegen.generator.IRuleGenerationCommand
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RefinedMetamodelWrapper
 import org.sidiff.serge.generators.actions.RuleParameterGenerator
+import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.LowerBoundManyRepairCheckGenerator
 
 class CreateNodeIterativeRepairRuleCommand implements IRuleGenerationCommand {
 	
@@ -35,7 +36,7 @@ class CreateNodeIterativeRepairRuleCommand implements IRuleGenerationCommand {
 		val module = HenshinFactory.eINSTANCE.createModule();
 		
 		//Set module name
-		module.setName("CREATE_Node_" + node.name + "_Rules_Iterative_Repair")
+		module.setName("CREATE_" + node.name + "_iterative_repair_single")
 		module.setDescription("Creates a node and generates an iterative repair for all outgoing edges.")
 
 		//Set module metamodels
@@ -94,8 +95,10 @@ class CreateNodeIterativeRepairRuleCommand implements IRuleGenerationCommand {
 		val validReferences = new ArrayList<EReference>();
 		
 		bidirectionalReferences.forEach[reference | 
+		
 			
 			if(reference.getEOpposite.lowerBound > 0 && reference.getEOpposite.upperBound > 0){
+						
 				validReferences.add(reference);
 			}
 		]
@@ -128,15 +131,13 @@ class CreateNodeIterativeRepairRuleCommand implements IRuleGenerationCommand {
 				//Create a delete edge between existing node A and an existing node B
 				HenshinRuleAnalysisUtilEx.createDeleteEdge(existingSourceNode.lhsNode, existingTargetNode, edge, rule);
 			]
-		]
-		
+		]	
 	}
-	
 	
 	//Apply the NACs
 	private def void applyRuleNacConditions(Rule rule){
 		
-		new uk.ac.kcl.mdeoptimise.rulegen.generator.commands.LowerBoundManyRepairCheckGenerator(rule).generate();
+		new LowerBoundManyRepairCheckGenerator(rule).generate();
 		new UpperBoundCheckGenerator(rule).generate();
 	}
 	

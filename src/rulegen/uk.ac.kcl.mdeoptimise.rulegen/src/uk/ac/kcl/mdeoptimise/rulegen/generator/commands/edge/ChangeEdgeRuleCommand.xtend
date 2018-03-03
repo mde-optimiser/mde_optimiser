@@ -12,36 +12,72 @@ import org.sidiff.serge.generators.conditions.UpperBoundCheckGenerator
 import uk.ac.kcl.mdeoptimise.rulegen.generator.IRuleGenerationCommand
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RefinedMetamodelWrapper
 import uk.ac.kcl.mdeoptimiser.rulegen.lang.NamingConstants
+import org.eclipse.emf.henshin.model.impl.RuleImpl
+import org.eclipse.emf.henshin.model.Unit
+import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RuleSpec
+import uk.ac.kcl.mdeoptimise.rulegen.metamodel.MetamodelWrapper
+import java.util.List
+import uk.ac.kcl.mdeoptimise.rulegen.generator.specs.RepairSpec
+import uk.ac.kcl.mdeoptimiser.rulegen.lang.RuleNameGenerator
 
 class ChangeEdgeRuleCommand implements IRuleGenerationCommand {
 
-	RefinedMetamodelWrapper refinedMetamodelWrapper;
-	EClassifierInfoManagement metamodelAnalyser;
+	MetamodelWrapper metamodelWrapper;
 	EClass node;
 	EReference edge;
 	
-	new(EClass node, EReference edge, RefinedMetamodelWrapper refinedMetamodelWrapper, EClassifierInfoManagement metamodelAnalyser){
-		this.node = node;
-		this.edge = edge;
-		this.refinedMetamodelWrapper = refinedMetamodelWrapper;
-		this.metamodelAnalyser = metamodelAnalyser;
+	RuleSpec ruleSpec;
+	List<RepairSpec> repairSpecs;
+	
+	new(MetamodelWrapper metamodelWrapper, RuleSpec ruleSpec, List<RepairSpec> repairSpecs) {
+		this.metamodelWrapper = metamodelWrapper;
+		this.ruleSpec = ruleSpec;
+		this.repairSpecs = repairSpecs;
+	}
+	
+	new(EClass node, MetamodelWrapper metamodelWrapper, RuleSpec ruleSpec, List<RepairSpec> repairSpecs){
+		this.metamodelWrapper = metamodelWrapper;
+		this.node = node; 
+		this.repairSpecs = repairSpecs;
+		this.ruleSpec = ruleSpec;
+	}
+	
+	def EClass getNode(){
+		
+		if(this.node == null){
+			this.node = metamodelWrapper.getNode(ruleSpec.getNode)	
+		}
+		
+		return this.node;
+	}
+	
+	def EReference getEdge(){
+		
+		if(this.edge == null){
+			this.edge = repairSpecs.head.edge
+		}
+		
+		return this.edge;
 	}
 	
 	override generate() {
 		
-		var moduleName = NamingConstants.CHANGE_prefix + edge.name + "_edge_rules_in_all_contexts";
+		var moduleName = NamingConstants.CHANGE_prefix + this.getEdge.name + "_edge_for_" + this.getNode.name + "_rules";
 		//Create module
 		val module = HenshinFactory.eINSTANCE.createModule();
 		
 		//Set module name
-		module.setName(moduleName)
-		module.setDescription("Changes " + edge.name + " edge from " + node.name + " to " + edge.getEType.name);
+		var ruleName = RuleNameGenerator.getRuleName(ruleSpec, repairSpecs, this.metamodelWrapper.ruleType)
+				
+		//Set module name
+		module.setName(ruleName)
+		module.setDescription("Changes " + this.getEdge.name + " edge from " + this.getNode.name + " to " + this.getEdge.getEType.name);
 		
 		//Set module metamodels
-		module.getImports().add(refinedMetamodelWrapper.refinedMetamodel)
+		module.getImports().add(metamodelWrapper.getMetamodel)
 		
 		//TODO Test this case with a metamodel variant that has more than one container for the same classifier
-		val classifierInfo = metamodelAnalyser.getAllParentContext(node, true);
+		val classifierInfo = metamodelWrapper.metamodelAnalyser.getAllParentContext(this.getNode, true);
 		
 		for(var contextReferenceId = 0; contextReferenceId < classifierInfo.keySet.size; contextReferenceId++) {
 			
@@ -50,8 +86,14 @@ class ChangeEdgeRuleCommand implements IRuleGenerationCommand {
 			//Create a new rule in the module for each context container of the refined multiplicity node	
 			for(var contextId = 0; contextId < context.size; contextId++){
 				
-				val rule = Common.createBasicRule(module, edge, node, 
-					edge.getEType, null, null, OperationType.CHANGE_REFERENCE);
+				
+				var Rule rule = null;
+				
+				if(this.getEdge.EOpposite == null){
+					rule = Common.createBasicRule(module, this.getEdge, this.getNode, this.getEdge.EType, null, null, OperationType.CHANGE_REFERENCE);
+				} else {
+					rule = Common.createBasicRule(module, this.getEdge.EOpposite, this.getEdge.EType, this.getNode, null, null, OperationType.CHANGE_REFERENCE);
+				}
 				
 				applyRuleNacConditions(rule);
 

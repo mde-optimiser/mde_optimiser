@@ -15,9 +15,11 @@ Require-Bundle: org.junit;bundle-version="4.7.0",
  org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional,
  uk.ac.kcl.mdeoptimise.ui;bundle-version="1.0.0",
  org.apache.commons.math3,
- org.sidiff.common.henshin;bundle-version="0.0.1"
+ org.sidiff.common.henshin;bundle-version="0.0.1",
+ org.eclipse.xtext.testing,
+ org.eclipse.xtext.xbase.testing
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: uk.ac.kcl.tests
+Export-Package: uk.ac.kcl.tests;x-internal=true
 Dynamic-ImportPackage: *
 Import-Package: com.google.inject,
  org.hamcrest.core,

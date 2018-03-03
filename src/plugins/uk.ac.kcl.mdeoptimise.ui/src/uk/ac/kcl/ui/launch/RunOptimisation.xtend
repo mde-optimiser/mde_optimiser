@@ -22,6 +22,12 @@ class RunOptimisation {
 	@Inject
 	private Provider<ResourceSet> resourceSetProvider
 	
+	/*
+	 * Flag to enable choice between Henshin nondeterministic matching in SolutionGenerator
+	 * and RandomMutationSelection for model evolution.
+	 */
+	private boolean enableManualRandomMatching = false;
+	
 	/**
 	 * Static method invoked by the MDEOptimiser launch configuration
 	 * @param the configured mopt file path to run the optimisation from
@@ -33,7 +39,13 @@ class RunOptimisation {
 			app.run(args.get(0), args.get(1))
 		} else {
 			println("Invalid number of arguments. Cannot launch optimisation.")
-			println("Expecting a valid mopt file path. Received " + args)
+			println("Expecting a valid project path and a valid mopt file path.")
+		}
+		
+		if(args.length === 3 && Boolean.parseBoolean(args.get(2)) == true) {
+			println("You have chosen to use random matching instead of Henshin nondeterministic matching for model evolution.")
+			app.enableManualRandomMatching = true;
+			app.run(args.get(0), args.get(1))
 		}
 	}
 	
@@ -58,7 +70,7 @@ class RunOptimisation {
 				val optimisationModel = resource.contents.head as Optimisation
 				
 				val mdeoResultsOutput = new MDEOResultsOutput(new Date(), new Path(moptProjectPath), 
-					new Path(configuredMoptFilePath), optimisationModel
+					new Path(configuredMoptFilePath), optimisationModel, this.enableManualRandomMatching
 				);	
 				
 				if(optimisationModel !== null){
@@ -67,7 +79,13 @@ class RunOptimisation {
 	            	do {
 	            		val startTime = System.nanoTime;
 	            		var optimisationInterpreter = new OptimisationInterpreter(moptProjectPath, optimisationModel);
+	            		
+	            		if(this.enableManualRandomMatching){
+	            			optimisationInterpreter.enableManualRandomMatching = enableManualRandomMatching;
+	            		}
+	            		
 	            		val optimisationOutcome = optimisationInterpreter.start();
+	            		
 	            		val endTime = System.nanoTime;
 	            		
 	            		val experimentDuration = (endTime - startTime) / 1000000

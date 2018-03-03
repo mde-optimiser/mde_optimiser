@@ -110,7 +110,8 @@ class CreateNodeLBRepairRuleCommand implements IRuleGenerationCommand {
 	//Apply the NACs
 	private def void applyRuleNacConditions(Rule rule){
 		
-		new LowerBoundManyRepairCheckGenerator(rule).generate();
+		//new LowerBoundManyRepairCheckGenerator(rule).generate();
+		new LowerBoundCheckGenerator(rule).generate();
 		new UpperBoundCheckGenerator(rule).generate();
 	}
 	

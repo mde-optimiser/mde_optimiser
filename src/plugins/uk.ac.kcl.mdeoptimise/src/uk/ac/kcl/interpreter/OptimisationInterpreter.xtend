@@ -1,11 +1,10 @@
 package uk.ac.kcl.interpreter
 
-import com.google.common.collect.Maps
 import java.util.ArrayList
 import java.util.Iterator
 import java.util.LinkedList
 import java.util.List
-import org.apache.commons.lang3.tuple.ImmutablePair
+import java.util.Map
 import org.eclipse.core.runtime.IPath
 import org.eclipse.core.runtime.Path
 import org.eclipse.emf.common.util.URI
@@ -21,8 +20,6 @@ import uk.ac.kcl.optimisation.SolutionGenerator
 import uk.ac.kcl.optimisation.UserModelProvider
 import uk.ac.kcl.optimisation.moea.MoeaOptimisation
 import uk.ac.kcl.optimisation.moea.MoeaOptimisationSolution
-import java.util.HashMap
-import java.util.Map
 
 class OptimisationInterpreter {
 	
@@ -34,6 +31,8 @@ class OptimisationInterpreter {
 	private List<Unit> breedingOperators
 	private List<Unit> mutationOperators
 	private IPath projectRootPath;
+	private boolean enableManualRandomMatching = false;
+	private  Map<EPackage, List<Module>> generatedOperators;
 
 	new (String projectPath, Optimisation model){
 		this.model = model;
@@ -50,6 +49,11 @@ class OptimisationInterpreter {
 											userModelProvider, 
 											getMetamodel);
 
+		//TODO Find a better way to do this stuff
+		if(this.enableManualRandomMatching){
+			solutionGenerator.setEnableManualRandomMatching(this.enableManualRandomMatching);
+		}
+		
 		return new MoeaOptimisation()
 									.execute(model.optimisation, solutionGenerator)
 	}
@@ -64,7 +68,13 @@ class OptimisationInterpreter {
 
     def getMetamodel() {
         if (theMetamodel == null) {
-            theMetamodel = getResourceSet(this.model.basepath.location).registerDynamicEPackages(model.metamodel.location).head
+        	if (!model.metamodel.location.endsWith(".ecore")) {
+        		// The location is not an ecore file, assume it's a class name
+        		val packageInterface = (Class.forName(model.metamodel.location) as Class<EPackage>)
+        		theMetamodel = packageInterface.getDeclaredField("eINSTANCE").get(null) as EPackage
+        	} else {
+ 				theMetamodel = getResourceSet(projectRootPath.append(model.basepath.location).toPortableString).registerDynamicEPackages(model.metamodel.location).head	
+        	}
         }
 
         theMetamodel
@@ -159,13 +169,23 @@ class OptimisationInterpreter {
      * @return list of generated mutation operators
      */
     def Map<EPackage, List<Module>> getRulegenOperators(){
- 		   	   	
-    	var multiplicityRefinements = getMultiplicityRefinements();
-    	var rulegenSpecs = getRulegenSpecs();
-    	
-  		//Generate the list of modules that are automatically generated
-    	var mutations = new RulesGenerator(getMetamodel, multiplicityRefinements, rulegenSpecs);
-    	    	
-    	return mutations.generatedRules;
+ 		
+ 		if(this.generatedOperators == null){
+ 			var multiplicityRefinements = getMultiplicityRefinements();
+	    	var rulegenSpecs = getRulegenSpecs();
+	    	
+	  		//Generate the list of modules that are automatically generated
+	    	var mutations = new RulesGenerator(getMetamodel, multiplicityRefinements, rulegenSpecs);
+	    	    	
+	    	this.generatedOperators = mutations.generateRules;
+ 		}
+ 		
+ 		return this.generatedOperators  	   	
+
     }
+	
+	def setEnableManualRandomMatching(boolean enableRandomMatching) {
+		this.enableManualRandomMatching = enableRandomMatching;
+	}
+	
 }

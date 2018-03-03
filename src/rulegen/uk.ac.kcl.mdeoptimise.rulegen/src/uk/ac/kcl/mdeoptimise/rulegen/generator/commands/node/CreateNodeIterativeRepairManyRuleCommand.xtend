@@ -16,6 +16,7 @@ import org.sidiff.serge.generators.conditions.UpperBoundCheckGenerator
 import uk.ac.kcl.mdeoptimise.rulegen.generator.IRuleGenerationCommand
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RefinedMetamodelWrapper
 import com.google.common.collect.Sets
+import org.sidiff.serge.generators.actions.RuleParameterGenerator
 
 class CreateNodeIterativeRepairManyRuleCommand implements IRuleGenerationCommand {
 	
@@ -35,7 +36,7 @@ class CreateNodeIterativeRepairManyRuleCommand implements IRuleGenerationCommand
 		val module = HenshinFactory.eINSTANCE.createModule();
 		
 		//Set module name
-		module.setName("CREATE_Node_" + node.name + "_Rules_Iterative_Repair")
+		module.setName("CREATE_" + node.name + "_iterative_repair_many")
 		module.setDescription("Creates a node and generates an iterative repair for all outgoing edges.")
 
 		//Set module metamodels
@@ -77,6 +78,8 @@ class CreateNodeIterativeRepairManyRuleCommand implements IRuleGenerationCommand
 				conditionalIterativeRepairGenerator(rule)
 				
 				applyRuleNacConditions(rule);
+				applyRuleParameters(rule);
+				
 				//Add rule to module for this context classifier
 				module.getUnits().add(rule);
 			}
@@ -150,6 +153,11 @@ class CreateNodeIterativeRepairManyRuleCommand implements IRuleGenerationCommand
 		
 		new uk.ac.kcl.mdeoptimise.rulegen.generator.commands.LowerBoundManyRepairCheckGenerator(rule).generate();
 		new UpperBoundCheckGenerator(rule).generate();
+	}
+	
+	//Create the rule parameters
+	private def void applyRuleParameters(Rule rule) {
+		new RuleParameterGenerator(rule).generate();
 	}
 	
 }

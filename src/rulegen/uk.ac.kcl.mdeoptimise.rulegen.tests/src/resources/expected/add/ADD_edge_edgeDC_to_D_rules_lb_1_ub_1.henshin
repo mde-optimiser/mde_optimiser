@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ASCII"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_hFKTYCpOEeiEENGCISzB5g" name="ADD_edge_edgeDC_to_D_rules" description="Adds to D edge of type edgeDC">
+  <imports href="rulegen.ecore#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_hFMIkCpOEeiEENGCISzB5g" name="addToD_edgeDC_C" description="Adds to D's reference edgeDC the target C">
+    <lhs xmi:id="_hFMIkSpOEeiEENGCISzB5g" name="Lhs">
+      <nodes xmi:id="_hFMIkipOEeiEENGCISzB5g" name="Selected">
+        <type href="rulegen.ecore#//D"/>
+      </nodes>
+      <nodes xmi:id="_hFMIkypOEeiEENGCISzB5g" name="NewTarget">
+        <type href="rulegen.ecore#//C"/>
+      </nodes>
+      <formula xsi:type="henshin:And" xmi:id="_hFMIlCpOEeiEENGCISzB5g">
+        <left xsi:type="henshin:Not" xmi:id="_hFMIlSpOEeiEENGCISzB5g">
+          <child xsi:type="henshin:NestedCondition" xmi:id="_hFMvoCpOEeiEENGCISzB5g">
+            <conclusion xmi:id="_hFMvoSpOEeiEENGCISzB5g" name="ub0">
+              <nodes xmi:id="_hFMvoipOEeiEENGCISzB5g" name="" outgoing="_hFMvpCpOEeiEENGCISzB5g">
+                <type href="rulegen.ecore#//D"/>
+              </nodes>
+              <nodes xmi:id="_hFMvoypOEeiEENGCISzB5g" name="" incoming="_hFMvpCpOEeiEENGCISzB5g">
+                <type href="rulegen.ecore#//C"/>
+              </nodes>
+              <edges xmi:id="_hFMvpCpOEeiEENGCISzB5g" source="_hFMvoipOEeiEENGCISzB5g" target="_hFMvoypOEeiEENGCISzB5g">
+                <type href="rulegen.ecore#//D/edgeDC"/>
+              </edges>
+            </conclusion>
+            <mappings xmi:id="_hFMvpSpOEeiEENGCISzB5g" origin="_hFMIkipOEeiEENGCISzB5g" image="_hFMvoipOEeiEENGCISzB5g"/>
+          </child>
+        </left>
+        <right xsi:type="henshin:Not" xmi:id="_hFMvpipOEeiEENGCISzB5g">
+          <child xsi:type="henshin:NestedCondition" xmi:id="_hFMvpypOEeiEENGCISzB5g">
+            <conclusion xmi:id="_hFMvqCpOEeiEENGCISzB5g">
+              <nodes xmi:id="_hFMvqSpOEeiEENGCISzB5g" name="" outgoing="_hFMvqypOEeiEENGCISzB5g">
+                <type href="rulegen.ecore#//D"/>
+              </nodes>
+              <nodes xmi:id="_hFMvqipOEeiEENGCISzB5g" name="" incoming="_hFMvqypOEeiEENGCISzB5g">
+                <type href="rulegen.ecore#//C"/>
+              </nodes>
+              <edges xmi:id="_hFMvqypOEeiEENGCISzB5g" source="_hFMvqSpOEeiEENGCISzB5g" target="_hFMvqipOEeiEENGCISzB5g">
+                <type href="rulegen.ecore#//D/edgeDC"/>
+              </edges>
+            </conclusion>
+            <mappings xmi:id="_hFMvrCpOEeiEENGCISzB5g" origin="_hFMIkipOEeiEENGCISzB5g" image="_hFMvqSpOEeiEENGCISzB5g"/>
+            <mappings xmi:id="_hFMvrSpOEeiEENGCISzB5g" origin="_hFMIkypOEeiEENGCISzB5g" image="_hFMvqipOEeiEENGCISzB5g"/>
+          </child>
+        </right>
+      </formula>
+    </lhs>
+    <rhs xmi:id="_hFMvripOEeiEENGCISzB5g" name="Rhs">
+      <nodes xmi:id="_hFMvrypOEeiEENGCISzB5g" name="Selected" outgoing="_hFMvsSpOEeiEENGCISzB5g">
+        <type href="rulegen.ecore#//D"/>
+      </nodes>
+      <nodes xmi:id="_hFMvsCpOEeiEENGCISzB5g" name="NewTarget" incoming="_hFMvsSpOEeiEENGCISzB5g">
+        <type href="rulegen.ecore#//C"/>
+      </nodes>
+      <edges xmi:id="_hFMvsSpOEeiEENGCISzB5g" source="_hFMvrypOEeiEENGCISzB5g" target="_hFMvsCpOEeiEENGCISzB5g">
+        <type href="rulegen.ecore#//D/edgeDC"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_hFMvsipOEeiEENGCISzB5g" origin="_hFMIkipOEeiEENGCISzB5g" image="_hFMvrypOEeiEENGCISzB5g"/>
+    <mappings xmi:id="_hFMvsypOEeiEENGCISzB5g" origin="_hFMIkypOEeiEENGCISzB5g" image="_hFMvsCpOEeiEENGCISzB5g"/>
+  </units>
+</henshin:Module>

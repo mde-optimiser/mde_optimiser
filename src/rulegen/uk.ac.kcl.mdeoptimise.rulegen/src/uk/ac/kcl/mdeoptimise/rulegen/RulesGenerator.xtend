@@ -1,34 +1,32 @@
 package uk.ac.kcl.mdeoptimise.rulegen
 
 import java.util.ArrayList
+import java.util.HashMap
 import java.util.List
 import java.util.Map
 import java.util.Set
-import java.util.Stack
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.henshin.model.Module
-import org.sidiff.common.emf.extensions.impl.EClassifierInfoManagement
 import uk.ac.kcl.mdeoptimise.rulegen.generator.IRuleGenerationCommand
+import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.node.RuleGenerationCommandFactory
+import uk.ac.kcl.mdeoptimise.rulegen.generator.specs.RepairSpec
+import uk.ac.kcl.mdeoptimise.rulegen.generator.specs.SpecsGenerator
+import uk.ac.kcl.mdeoptimise.rulegen.metamodel.MetamodelWrapper
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.Multiplicity
-import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RefinedMetamodelWrapper
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RuleSpec
-import org.eclipse.emf.ecore.EClass
-import org.eclipse.emf.ecore.EReference
-import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.node.CreateNodeRuleCommand
-import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.node.CreateNodeIterativeRepairManyRuleCommand
-import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.node.CreateNodeIterativeRepairRuleCommand
-import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.edge.AddEdgeRuleCommand
-import java.util.HashMap
+import org.sidiff.serge.util.RuleSemanticsChecker
+import org.sidiff.common.henshin.HenshinModuleAnalysis
 
 class RulesGenerator {
 	
 	Map<String, Set<Module>> modules
 	List<Multiplicity> refinedMultiplicities
-	RefinedMetamodelWrapper refinedMetamodelWrapper;
+
 	EPackage metamodel;
 	List<RuleSpec> ruleSpecs;
-	private List<IRuleGenerationCommand> rulesGenerationList;
-	private EClassifierInfoManagement metamodelAnalyser;
+	
+	private SpecsGenerator specsGenerator;
+	private RuleGenerationCommandFactory ruleGenerationCommandFactory;
 	
 	//TODO The metamodel should ideally be a list as there are some cases where this is requested
 	new(EPackage metamodel, List<Multiplicity> refinedMultiplicities, List<RuleSpec> rulegenSpecs){
@@ -36,23 +34,89 @@ class RulesGenerator {
 		this.refinedMultiplicities = refinedMultiplicities;
 		this.metamodel = metamodel;
 		this.ruleSpecs = rulegenSpecs;
-		this.refinedMetamodelWrapper = new RefinedMetamodelWrapper(metamodel, refinedMultiplicities)
-		this.rulesGenerationList = new ArrayList<IRuleGenerationCommand>();
+		this.specsGenerator = new SpecsGenerator();
 		
-		this.analyseMetamodel();
 	}
 	
-	def void analyseMetamodel(){
+	def RuleGenerationCommandFactory getRuleGenerationCommandFactory(){
 		
-		val metamodels = new Stack<EPackage>();
-		metamodels.add(this.refinedMetamodelWrapper.refinedMetamodel);
+		if(this.ruleGenerationCommandFactory == null){
+			this.ruleGenerationCommandFactory = new RuleGenerationCommandFactory()
+		}
 		
-		
-		metamodelAnalyser = new EClassifierInfoManagement();
-		metamodelAnalyser.gatherInformation(false, metamodels);
+		return this.ruleGenerationCommandFactory;
 	}
 	
-	def List<Module> runRuleGenerationCommands(){
+	def Map<EPackage, List<Module>> generateRules(){
+		
+		val generatedRules = new HashMap<EPackage, List<Module>>();
+		
+		val generatedRulesListProblem = new ArrayList<Module>();
+		
+		val generatedRulesListSolution = new ArrayList<Module>();
+		
+		val problemMetamodelWrapper = new MetamodelWrapper(this.metamodel)
+		
+		//Get each of the rule generation specs specs
+		ruleSpecs.forEach[ruleSpec |
+			
+			//Generate the set of repair spec combinations
+			var repairSpecs = this.specsGenerator.getRepairsForRuleSpec(ruleSpec, problemMetamodelWrapper)
+			
+			//Generate the rules for those combinations
+			generatedRulesListProblem.addAll(this.generateSpecRules(ruleSpec, repairSpecs, problemMetamodelWrapper))
+		]	
+		
+		if(this.refinedMultiplicities.length > 0) {
+			val solutionMetamodelWrapper = new MetamodelWrapper(this.metamodel, this.refinedMultiplicities)
+			
+			//Get each of the rule generation specs specs
+			ruleSpecs.forEach[ruleSpec |
+				
+				//Generate the set of repair spec combinations
+				var repairSpecs = this.specsGenerator.getRepairsForRuleSpec(ruleSpec, solutionMetamodelWrapper)
+				
+				//Generate the rules for those combinations
+				generatedRulesListSolution.addAll(this.generateSpecRules(ruleSpec, repairSpecs, solutionMetamodelWrapper))
+			]
+		}
+		
+		//TODO reverse metamodel multiplicities to original one
+		
+		generatedRules.put(this.metamodel, removeDupplicateRules(generatedRulesListProblem, generatedRulesListSolution));		
+		
+		return generatedRules;
+	}
+	
+	private def List<Module> removeDupplicateRules(List<Module> problemRules, List<Module> solutionRules){
+		
+		val uniqueRules = new ArrayList<Module>();
+		
+		problemRules.forEach[ problemRule |
+			
+			uniqueRules.add(problemRule)
+			
+			solutionRules.forEach[ solutionRule | 
+			
+				var leftRule = HenshinModuleAnalysis.getAllRules(problemRule).get(0);
+				var rightRule = HenshinModuleAnalysis.getAllRules(solutionRule).get(0);
+			
+				var checker = new RuleSemanticsChecker(leftRule, rightRule);
+				if (checker.isEqual()) {
+					println(String.format("Found similar rules: %s, %s", problemRule.name, solutionRule.name))
+					uniqueRules.remove(problemRule)
+				} else {
+					if(!uniqueRules.contains(solutionRule)) {
+						uniqueRules.add(solutionRule)	
+					}
+				}
+			]
+		]
+		
+		return uniqueRules
+	}
+	
+	private def List<Module> runRuleGenerationCommands(List<IRuleGenerationCommand> rulesGenerationList){
 		
 		val generatedRules = new ArrayList<Module>();
 		
@@ -61,113 +125,23 @@ class RulesGenerator {
 		];
 		
 		return generatedRules;
-		
 	}
 	
-	def EPackage getRefinedMetamodel(){
-		return refinedMetamodelWrapper.refinedMetamodel;
-	}
-	
-	def Map<EPackage, List<Module>> getGeneratedRules(){
-		
-		val generatedRules = new HashMap<EPackage, List<Module>>();
-		
-		ruleSpecs.forEach[ruleSpec |
-				
-			var node = refinedMetamodelWrapper.getNode(ruleSpec.getNode);
+	private def List<Module> generateSpecRules(RuleSpec ruleSpec, Map<String, Set<List<RepairSpec>>> mappedRepairSpecs, MetamodelWrapper metamodelWrapper) {
+
+		val rulesGenerationList = new ArrayList<IRuleGenerationCommand>();
+
+		mappedRepairSpecs.forEach[repairType, repairSpecsSet |
 			
-			//Generate nodes
-			if(ruleSpec.isNode){
+			//For each repair spec type, generate rules for all the combinations
+			repairSpecsSet.forEach[repairSpecs |
 				
-				generateNodeRules(node, ruleSpec.actions, this.refinedMetamodelWrapper, this.metamodelAnalyser)
-			
-			} else {
-				var edge = refinedMetamodelWrapper.getEdge(ruleSpec.getNode, ruleSpec.edge)
-				generateEdgeRules(node, edge, ruleSpec.actions, this.refinedMetamodelWrapper, this.metamodelAnalyser)
-			}	
+				//for each repair spec, pick a command from the factory and add it to the command executor
+				rulesGenerationList.add(this.getRuleGenerationCommandFactory().makeCommand(repairType, metamodelWrapper, ruleSpec, repairSpecs))
+			]
 		]
-		
-		generatedRules.put(getRefinedMetamodel(), runRuleGenerationCommands());
-		
-		return generatedRules;
-	}
-	
-	//TODO Perhaps not the best name?
-	def void generate(IRuleGenerationCommand command){
-		rulesGenerationList.add(command);
-	}
-	
-	def List<Module> generateEdgeRules(EClass node, EReference edge, String actions, RefinedMetamodelWrapper refinedMetamodelWrapper, 
-		EClassifierInfoManagement metamodelAnalyser){
-		
-		
-		//Generate edge rules for each bidirectional edge from node A
-		
-		//Generate edge rules for each unidirectional edge from node A
-		
-		if(actions.equals("ALL")){
-			generate(new AddEdgeRuleCommand(node, edge, refinedMetamodelWrapper, metamodelAnalyser))
-		}
-		
-		if(actions.equals("ADD")){
 			
-		}
-		
-		if(actions.equals("REMOVE")){
-			
-		}
-	}
-	
-	def List<Module> generateNodeRules(EClass node, String actions, RefinedMetamodelWrapper refinedMetamodelWrapper, 
-		EClassifierInfoManagement metamodelAnalyser){
-			
-			
-		
-		var references = refinedMetamodelWrapper.getBidirectionalReferences(node);
-		
-		if(actions.equals("ALL")){
-			//Generate create simple
-			
-			//create basic rule and nac
-			generate(new CreateNodeRuleCommand(node, refinedMetamodelWrapper, metamodelAnalyser))
-			
-			if(refinedMetamodelWrapper.hasEdgesForSingleRepair(node)) {
-				//generate(new CreateNodeIterativeRepairRuleCommand(node, refinedMetamodelWrapper, metamodelAnalyser))
-				//generate delete
-			}
-				
-			if(refinedMetamodelWrapper.hasEdgesForMultiRepair(node)){
-				//generate(new CreateNodeIterativeRepairManyRuleCommand(node, refinedMetamodelWrapper, metamodelAnalyser))	
-				//generate delete
-			}
-			
-			//opposite lb = ub = 1
-				//lb repair one
-				
-			//opposite lb = 1 and ub > 1 but not *
-				//lb repair many
-			//Generate create lb repair
-			//Generate create lb repair many		
-		}
-		
-		if(actions.equals("CREATE")){
-			
-			generate(new CreateNodeRuleCommand(node, refinedMetamodelWrapper, metamodelAnalyser))
-			
-			if(refinedMetamodelWrapper.hasEdgesForSingleRepair(node)) {
-				generate(new CreateNodeIterativeRepairRuleCommand(node, refinedMetamodelWrapper, metamodelAnalyser))
-			}
-				
-			if(refinedMetamodelWrapper.hasEdgesForMultiRepair(node)){
-				generate(new CreateNodeIterativeRepairManyRuleCommand(node, refinedMetamodelWrapper, metamodelAnalyser))	
-			}
-			
-		}
-		
-		if(actions.equals("DELETE")){
-			//just delete
-		}
-		
-		//Generate operations for all edges of this node
+		//Execute the rule generation commands
+		return this.runRuleGenerationCommands(rulesGenerationList);
 	}
 }

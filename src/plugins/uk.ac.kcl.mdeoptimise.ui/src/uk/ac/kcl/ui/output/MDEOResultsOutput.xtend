@@ -20,6 +20,8 @@ import uk.ac.kcl.ui.output.descriptors.MOEAObjectivesOutputDescriptor
 import uk.ac.kcl.ui.output.descriptors.ParetoChartOutputDescriptor
 import uk.ac.kcl.ui.output.descriptors.BatchReportsDescriptor
 import uk.ac.kcl.ui.output.descriptors.GeneratedMutationOperatorsDescriptor
+import uk.ac.kcl.ui.output.descriptors.HypervolumeDescriptor
+import uk.ac.kcl.ui.output.descriptors.ExperimentCSVSerializer
 
 class MDEOResultsOutput {
 	
@@ -30,9 +32,13 @@ class MDEOResultsOutput {
 	private IPath moptFile;
 	private Optimisation moptConfiguration;
 	private List<ResultsDescriptor> resultsDescriptors;
-	
+	private boolean classicRuleMatchingEnabled;
 	
 	new(Date startTime, IPath projectRoot, IPath moptFile, Optimisation moptConfiguration){
+		this(startTime, projectRoot, moptFile, moptConfiguration, false)
+	}
+	
+	new(Date startTime, IPath projectRoot, IPath moptFile, Optimisation moptConfiguration, boolean classicRuleMatchingEnabled){
 		experimentStartTime = startTime
 		//Store output of a batch experiment id, solutions set
 		batches = new LinkedList<MDEOBatch>();
@@ -41,6 +47,7 @@ class MDEOResultsOutput {
 		this.moptConfiguration = moptConfiguration;
 		this.moptFile = moptFile;
 		this.resultsDescriptors = loadDescriptors();
+		this.classicRuleMatchingEnabled = classicRuleMatchingEnabled;
 	}
 	
 	def void logBatch(MDEOBatch batch){
@@ -50,7 +57,9 @@ class MDEOResultsOutput {
 	def void saveOutcome(){
 		
 		val experimentDate = new SimpleDateFormat("yyMMdd-HHmmss").format(experimentStartTime);
-		val outcomePath = projectRoot.append(String.format("mdeo-results/experiment-%s/", experimentDate));
+		val outcomePath = projectRoot.append(String.format("mdeo-results/experiment-%s-%s-matching-%s/", 
+			experimentDate, moptFile.lastSegment, this.matchingType
+		));
 		
 		//Used to generate the experiments summary	
 		val batchesOutput = new StringBuilder();
@@ -83,21 +92,21 @@ class MDEOResultsOutput {
 		for(var i = 0; i < batches.size; i++){
 
 			val batch = batches.get(i);			
-			val averageBatchObjectives = new HashMap<String, Double>();
+			val sumBatchObjectives = new HashMap<String, Double>();
 			
 			batch.solutions.forEach[solution | 
 				solution.formattedObjectives.forEach[p1, p2| 
-					if(averageBatchObjectives.containsKey(p1)) {
-						averageBatchObjectives.put(p1, averageBatchObjectives.get(p1) + p2)
+					if(sumBatchObjectives.containsKey(p1)) {
+						sumBatchObjectives.put(p1, sumBatchObjectives.get(p1) + p2)
 					} else {
-						averageBatchObjectives.put(p1, p2)	
+						sumBatchObjectives.put(p1, p2)	
 					}
 				]
 			]
 			
-			averageBatchObjectives.forEach[p1, p2 |
+			sumBatchObjectives.forEach[p1, p2 |
 				if(averageObjectiveValues.containsKey(p1)){
-					averageObjectiveValues.put(p1, averageObjectiveValues.get(p1) + p2)
+					averageObjectiveValues.put(p1, averageObjectiveValues.get(p1) + p2 / batch.solutions.size)
 				} else {
 					averageObjectiveValues.put(p1, p2);	
 				}
@@ -106,11 +115,16 @@ class MDEOResultsOutput {
 				
 		val infoWriter = new PrintWriter(new File(outcomePath + "overall-results.txt"))
 		
+		
 		infoWriter.println(String.format("Average experiment time: %s", formatter.format(averageTime)))
 		infoWriter.println()
-		averageObjectiveValues.forEach[p1, p2|
-			infoWriter.println(String.format("Average value for %s objective: %s", p1, -1 * averageObjectiveValues.get(p1)/batches.size))
-		]
+		
+		//If configuration has one objective only then show an average
+		//if(batches.head.solutions.head.objectives.length == 1){
+			averageObjectiveValues.forEach[p1, p2|
+				infoWriter.println(String.format("Average value for %s objective: %s", p1, averageObjectiveValues.get(p1)/batches.size))
+			]
+		//}
 		
 		infoWriter.println(batchesOutput.toString)
 		
@@ -120,6 +134,13 @@ class MDEOResultsOutput {
 			Files.copy(new File(moptFile.toPortableString), 
 				new File(outcomePath.append(moptFile.lastSegment).toPortableString))
 		}
+	}
+	
+	def String getMatchingType(){
+		if(this.classicRuleMatchingEnabled){
+			return "classic"
+		}
+		return "henshin"
 	}
 	
 	/**
@@ -136,6 +157,8 @@ class MDEOResultsOutput {
 		descriptors.add(new ParetoChartOutputDescriptor())
 		descriptors.add(new BatchReportsDescriptor(this.moptConfiguration))
 		descriptors.add(new GeneratedMutationOperatorsDescriptor())
+		//descriptors.add(new HypervolumeDescriptor())
+		descriptors.add(new ExperimentCSVSerializer())
 		
 		return descriptors;
 		

@@ -13,13 +13,16 @@ Require-Bundle: org.eclipse.xtext.ide,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.xtend.lib,
  org.eclipse.xtend.lib.macro,
- org.sidiff.serge;bundle-version="1.0.0",
+ org.sidiff.serge,
+ org.sidiff.common.emf,
+ org.sidiff.common,
  com.google.guava
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: uk.ac.kcl.mdeoptimise.rulegen,
  uk.ac.kcl.mdeoptimise.rulegen.metamodel,
  uk.ac.kcl.mdeoptimise.rulegen.exceptions,
  uk.ac.kcl.mdeoptimise.rulegen.generator,
+ uk.ac.kcl.mdeoptimise.rulegen.generator.specs,
  uk.ac.kcl.mdeoptimise.rulegen.generator.commands,
  uk.ac.kcl.mdeoptimise.rulegen.generator.commands.node,
  uk.ac.kcl.mdeoptimise.rulegen.generator.commands.edge
