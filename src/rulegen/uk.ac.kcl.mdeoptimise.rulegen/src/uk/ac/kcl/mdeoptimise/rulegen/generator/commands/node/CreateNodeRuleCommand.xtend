@@ -1,6 +1,6 @@
-package uk.ac.kcl.mdeoptimise.rulegen.generator.commands
+package uk.ac.kcl.mdeoptimise.rulegen.generator.commands.node
 
-import org.eclipse.emf.ecore.EPackage
+import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.henshin.model.HenshinFactory
 import org.eclipse.emf.henshin.model.Rule
 import org.sidiff.common.emf.extensions.impl.EClassifierInfoManagement
@@ -8,32 +8,17 @@ import org.sidiff.common.henshin.HenshinRuleAnalysisUtilEx
 import org.sidiff.serge.configuration.Configuration.OperationType
 import org.sidiff.serge.core.Common
 import org.sidiff.serge.filter.ElementFilter
+import org.sidiff.serge.generators.actions.RuleParameterGenerator
 import org.sidiff.serge.generators.conditions.LowerBoundCheckGenerator
 import org.sidiff.serge.generators.conditions.UpperBoundCheckGenerator
 import uk.ac.kcl.mdeoptimise.rulegen.generator.IRuleGenerationCommand
-import uk.ac.kcl.mdeoptimise.rulegen.metamodel.Multiplicity
-import org.sidiff.serge.generators.actions.RuleParameterGenerator
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RefinedMetamodelWrapper
-import org.eclipse.emf.ecore.EClass
 
 class CreateNodeRuleCommand implements IRuleGenerationCommand {
 	
-	Multiplicity multiplicity;
 	RefinedMetamodelWrapper refinedMetamodelWrapper;
 	EClassifierInfoManagement metamodelAnalyser;
 	EClass node;
-	
-	
-	//TODO get rid of this and refactor accordingly
-	new(Multiplicity multiplicity, EPackage refinedMetamodelWrapper, EClassifierInfoManagement metamodelAnalyser){
-	}
-	
-	new(Multiplicity multiplicity, RefinedMetamodelWrapper refinedMetamodelWrapper, EClassifierInfoManagement metamodelAnalyser){
-		this.multiplicity = multiplicity;
-		this.node = multiplicity.sourceNode as EClass;
-		this.refinedMetamodelWrapper = refinedMetamodelWrapper;
-		this.metamodelAnalyser = metamodelAnalyser;
-	}
 	
 	new(EClass node, RefinedMetamodelWrapper refinedMetamodelWrapper, EClassifierInfoManagement metamodelAnalyser){
 		this.node = node;
@@ -109,3 +94,4 @@ class CreateNodeRuleCommand implements IRuleGenerationCommand {
 		new RuleParameterGenerator(rule).generate();
 	}
 }
+	

@@ -29,7 +29,6 @@ class OptimisationInterpreter {
 	
 	private List<Unit> breedingOperators
 	private List<Unit> mutationOperators
-
 	private IPath projectRootPath;
 
 	new (String projectPath, Optimisation model){

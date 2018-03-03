@@ -5,20 +5,21 @@ Bundle-Vendor: My Company
 Bundle-Version: 1.0.0.qualifier
 Bundle-SymbolicName: uk.ac.kcl.mdeoptimise.rulegen; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: uk.ac.kcl.mdeoptimise,
- org.eclipse.xtext.ide,
+Require-Bundle: org.eclipse.xtext.ide,
  org.eclipse.xtext.xbase.ide,
  org.eclipse.emf.henshin.model;bundle-version="1.5.0",
  org.sidiff.common.henshin,
  org.sidiff.common.emf.extensions,
- com.google.guava,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.xtend.lib,
  org.eclipse.xtend.lib.macro,
- org.sidiff.serge;bundle-version="1.0.0"
+ org.sidiff.serge;bundle-version="1.0.0",
+ com.google.guava
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: uk.ac.kcl.mdeoptimise.rulegen,
  uk.ac.kcl.mdeoptimise.rulegen.metamodel,
  uk.ac.kcl.mdeoptimise.rulegen.exceptions,
  uk.ac.kcl.mdeoptimise.rulegen.generator,
- uk.ac.kcl.mdeoptimise.rulegen.generator.commands
+ uk.ac.kcl.mdeoptimise.rulegen.generator.commands,
+ uk.ac.kcl.mdeoptimise.rulegen.generator.commands.node,
+ uk.ac.kcl.mdeoptimise.rulegen.generator.commands.edge

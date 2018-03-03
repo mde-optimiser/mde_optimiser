@@ -1,6 +1,7 @@
-package uk.ac.kcl.mdeoptimise.rulegen.generator.commands
+package uk.ac.kcl.mdeoptimise.rulegen.generator.commands.edge
 
-import org.eclipse.emf.ecore.EPackage
+import org.eclipse.emf.ecore.EClass
+import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.henshin.model.Rule
 import org.sidiff.common.emf.extensions.impl.EClassifierInfoManagement
 import org.sidiff.serge.configuration.Configuration.OperationType
@@ -9,14 +10,19 @@ import org.sidiff.serge.generators.conditions.LowerBoundCheckGenerator
 import org.sidiff.serge.generators.conditions.UpperBoundCheckGenerator
 import uk.ac.kcl.mdeoptimise.rulegen.generator.IRuleGenerationCommand
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.Multiplicity
+import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RefinedMetamodelWrapper
 
 class RemoveEdgeRuleCommand implements IRuleGenerationCommand {
 	
 	Multiplicity multiplicity;
-	EPackage refinedMetamodelWrapper;
+	RefinedMetamodelWrapper refinedMetamodelWrapper;
 	EClassifierInfoManagement metamodelAnalyser;
+	EClass node;
+	EReference edge;
 	
-	new(Multiplicity multiplicity, EPackage refinedMetamodelWrapper, EClassifierInfoManagement metamodelAnalyser){
+	new(EClass node, EReference edge, RefinedMetamodelWrapper refinedMetamodelWrapper, EClassifierInfoManagement metamodelAnalyser){
+		this.node = node;
+		this.edge = edge;
 		this.multiplicity = multiplicity;
 		this.refinedMetamodelWrapper = refinedMetamodelWrapper;
 		this.metamodelAnalyser = metamodelAnalyser;
@@ -24,7 +30,7 @@ class RemoveEdgeRuleCommand implements IRuleGenerationCommand {
 	
 	override generate() {
 		
-		var createEdgeRuleCommand = new AddEdgeRuleCommand(multiplicity, refinedMetamodelWrapper, metamodelAnalyser);
+		var createEdgeRuleCommand = new AddEdgeRuleCommand(node, edge, refinedMetamodelWrapper, metamodelAnalyser);
 		
 		var module = Common.createInverse(createEdgeRuleCommand.generate(), OperationType.ADD);
 		

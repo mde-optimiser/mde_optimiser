@@ -17,16 +17,16 @@ import org.sidiff.common.emf.extensions.impl.EClassifierInfoManagement
 import uk.ac.kcl.mdeoptimise.BasePathSpec
 import uk.ac.kcl.mdeoptimise.MetaModelSpec
 import uk.ac.kcl.mdeoptimise.Optimisation
-import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.edge.RemoveEdgeRuleCommand
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.Multiplicity
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RefinedMetamodelWrapper
 import uk.ac.kcl.mdeoptimise.rulegen.tests.utils.MetamodelGenerator
 
 import static org.junit.Assert.*
 import static org.mockito.Mockito.*
+import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.edge.SwapEdgeRuleCommand
 
 @RunWith(XtextRunner)
-class RemoveEdgeRuleCommandTests {
+class SwapEdgeRuleCommandTests {
 	
 	private HenshinResourceSet henshinResourceSet;
 	private EPackage theMetamodel
@@ -88,13 +88,13 @@ class RemoveEdgeRuleCommandTests {
 	}
     
     @Test
-	def void assertThatCase1RemoveEdgeRulesAreGenerated() {
+	def void assertThatCase1AddEdgeRulesAreGenerated() {
 		
 		//Original metamodel with 0..* 0..* multiplicities
 		fakeOptimisationModel()
 		
-		var multiplicityA = new Multiplicity("Class", "encapsulates", 1, 2, getMetamodel);
-		var multiplicityB = new Multiplicity("Feature", "isEncapsulatedBy", 1, 2, getMetamodel);
+		var multiplicityA = new Multiplicity("Class", "encapsulates", 1, 1, getMetamodel);
+		var multiplicityB = new Multiplicity("Feature", "isEncapsulatedBy", 1, 1, getMetamodel);
 		
 		var multiplicities = new LinkedList<Multiplicity>();
 		multiplicities.add(multiplicityA);
@@ -109,16 +109,16 @@ class RemoveEdgeRuleCommandTests {
 		val metamodelAnalyser = new EClassifierInfoManagement();
 		metamodelAnalyser.gatherInformation(false, metamodels)
 		
-		var node = refinedMetamodelWrapper.getNode("Class"); 
-		var edge = refinedMetamodelWrapper.getEdge("Class", "encapsulates")
+		var node = refinedMetamodelWrapper.getNode("Class");
+		var edge = refinedMetamodelWrapper.getEdge("Class", "encapsulates");
 		
-		var createNodeRuleCommand = new RemoveEdgeRuleCommand(node, edge, refinedMetamodelWrapper, metamodelAnalyser);
+		var createNodeRuleCommand = new SwapEdgeRuleCommand(node, edge, refinedMetamodelWrapper, metamodelAnalyser);
 		
 		val module = createNodeRuleCommand.generate();
 		
-		writeModel(module, "src/resources/cases/", "case_1_removeEdge.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
+		writeModel(module, "src/resources/cases/", "case_1_swapEdge.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
 		
-		assertEquals("REMOVE_EdgeRules", module.name);
+		assertEquals("Swap_encapsulates_edge_rules_in_all_contexts", module.name);
 		assertEquals(1, module.allRules.size);
 	}
 }

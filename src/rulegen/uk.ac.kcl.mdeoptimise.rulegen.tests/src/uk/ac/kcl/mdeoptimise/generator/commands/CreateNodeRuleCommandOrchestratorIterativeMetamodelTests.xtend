@@ -17,15 +17,15 @@ import org.sidiff.common.emf.extensions.impl.EClassifierInfoManagement
 import uk.ac.kcl.mdeoptimise.BasePathSpec
 import uk.ac.kcl.mdeoptimise.MetaModelSpec
 import uk.ac.kcl.mdeoptimise.Optimisation
-import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.CreateNodeIterativeRepairRuleCommand
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.Multiplicity
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RefinedMetamodelWrapper
 import uk.ac.kcl.mdeoptimise.rulegen.tests.utils.MetamodelGenerator
 
 import static org.junit.Assert.*
 import static org.mockito.Mockito.*
-import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.CreateNodeRuleCommand
-import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.CreateNodeIterativeRepairManyRuleCommand
+import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.node.CreateNodeRuleCommand
+import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.node.CreateNodeIterativeRepairRuleCommand
+import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.node.CreateNodeIterativeRepairManyRuleCommand
 
 @RunWith(XtextRunner)
 class CreateNodeRuleCommandOrchestratorIterativeMetamodelTests {
@@ -92,8 +92,6 @@ class CreateNodeRuleCommandOrchestratorIterativeMetamodelTests {
 		//Original metamodel with 0..* 0..* multiplicities
 		fakeOptimisationModel()
 		
-		var node = "Orchestrator";
-		
 		var multiplicities = new LinkedList<Multiplicity>();
 		
 		//Refined metamodel wrapper containing the metamodel with the refined multiplicities
@@ -104,6 +102,8 @@ class CreateNodeRuleCommandOrchestratorIterativeMetamodelTests {
 		
 		val metamodelAnalyser = new EClassifierInfoManagement();
 		metamodelAnalyser.gatherInformation(false, metamodels)
+		
+		var node = refinedMetamodelWrapper.getNode("Orchestrator");
 		
 		var createNodeRuleCommand = new CreateNodeIterativeRepairRuleCommand(node, refinedMetamodelWrapper, metamodelAnalyser);
 		
@@ -122,8 +122,6 @@ class CreateNodeRuleCommandOrchestratorIterativeMetamodelTests {
 		//Original metamodel with 0..* 0..* multiplicities
 		fakeOptimisationModel()
 		
-		var node = "Orchestrator";
-		
 		var multiplicities = new LinkedList<Multiplicity>();
 		var multiplicityA = new Multiplicity("Orchestrator", "concreteServices", 1, -1, getMetamodel);
 		var multiplicityB = new Multiplicity("AbstractService", "orchestrators", 1, 5, getMetamodel);
@@ -142,6 +140,8 @@ class CreateNodeRuleCommandOrchestratorIterativeMetamodelTests {
 		
 		val metamodelAnalyser = new EClassifierInfoManagement();
 		metamodelAnalyser.gatherInformation(false, metamodels)
+		
+		var node = refinedMetamodelWrapper.getNode("Orchestrator");
 		
 		var createNodeRuleCommand = new CreateNodeRuleCommand(node, refinedMetamodelWrapper, metamodelAnalyser);
 		
@@ -160,7 +160,7 @@ class CreateNodeRuleCommandOrchestratorIterativeMetamodelTests {
 		//Original metamodel with 0..* 0..* multiplicities
 		fakeOptimisationModel()
 		
-		var node = "Orchestrator";
+
 		
 		var multiplicities = new LinkedList<Multiplicity>();
 		var multiplicityA = new Multiplicity("Orchestrator", "concreteServices", 1, -1, getMetamodel);
@@ -180,6 +180,8 @@ class CreateNodeRuleCommandOrchestratorIterativeMetamodelTests {
 		
 		val metamodelAnalyser = new EClassifierInfoManagement();
 		metamodelAnalyser.gatherInformation(false, metamodels)
+		
+		var node = refinedMetamodelWrapper.getNode("Orchestrator");
 		
 		var createNodeRuleCommand = new CreateNodeIterativeRepairRuleCommand(node, refinedMetamodelWrapper, metamodelAnalyser);
 		
@@ -197,9 +199,7 @@ class CreateNodeRuleCommandOrchestratorIterativeMetamodelTests {
 		
 		//Original metamodel with 0..* 0..* multiplicities
 		fakeOptimisationModel()
-		
-		var node = "Orchestrator";
-		
+				
 		var multiplicities = new LinkedList<Multiplicity>();
 		var multiplicityA = new Multiplicity("Orchestrator", "concreteServices", 1, -1, getMetamodel);
 		var multiplicityB = new Multiplicity("AbstractService", "orchestrators", 1, 5, getMetamodel);
@@ -218,6 +218,8 @@ class CreateNodeRuleCommandOrchestratorIterativeMetamodelTests {
 		
 		val metamodelAnalyser = new EClassifierInfoManagement();
 		metamodelAnalyser.gatherInformation(false, metamodels)
+		
+		var node = refinedMetamodelWrapper.getNode("Orchestrator");
 		
 		var createNodeRuleCommand = new CreateNodeIterativeRepairManyRuleCommand(node, refinedMetamodelWrapper, metamodelAnalyser);
 		

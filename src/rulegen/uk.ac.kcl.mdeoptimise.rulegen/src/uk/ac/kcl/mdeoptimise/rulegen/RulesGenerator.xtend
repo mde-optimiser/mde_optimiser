@@ -14,7 +14,10 @@ import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RefinedMetamodelWrapper
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RuleSpec
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EReference
-import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.CreateNodeRuleCommand
+import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.node.CreateNodeRuleCommand
+import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.node.CreateNodeIterativeRepairManyRuleCommand
+import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.node.CreateNodeIterativeRepairRuleCommand
+import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.edge.AddEdgeRuleCommand
 
 class RulesGenerator {
 	
@@ -46,25 +49,39 @@ class RulesGenerator {
 		metamodelAnalyser.gatherInformation(false, metamodels);
 	}
 	
+	def List<Module> runRuleGenerationCommands(){
+		
+		val generatedRules = new ArrayList<Module>();
+		
+		rulesGenerationList.forEach[command |
+			generatedRules.add(command.generate)
+		];
+		
+		return generatedRules;
+		
+	}
+	
 	def List<Module> getGeneratedRules(){
 		
 		val generatedRules = new ArrayList<Module>();
 		
 		ruleSpecs.forEach[ruleSpec |
-				
+			
+			
+			var node = refinedMetamodelWrapper.getNode(ruleSpec.getNode);
+			
 			//Generate nodes
 			if(ruleSpec.isNode){
 				
-				var node = refinedMetamodelWrapper.getNode(ruleSpec.getNode);
 				generatedRules.addAll(generateNodeRules(node, ruleSpec.actions, this.refinedMetamodelWrapper, this.metamodelAnalyser))
 			
 			} else {
 				var edge = refinedMetamodelWrapper.getEdge(ruleSpec.getNode, ruleSpec.edge)
-				generatedRules.addAll(generateEdgeRules(edge, ruleSpec.actions, this.refinedMetamodelWrapper, this.metamodelAnalyser))
+				generatedRules.addAll(generateEdgeRules(node, edge, ruleSpec.actions, this.refinedMetamodelWrapper, this.metamodelAnalyser))
 			}	
 		]
 		
-		return new ArrayList<Module>();
+		return this.runRuleGenerationCommands
 	}
 	
 	//TODO Perhaps not the best name?
@@ -72,7 +89,7 @@ class RulesGenerator {
 		rulesGenerationList.add(command);
 	}
 	
-	def List<Module> generateEdgeRules(EReference edge, String actions, RefinedMetamodelWrapper refinedMetamodelWrapper, 
+	def List<Module> generateEdgeRules(EClass node, EReference edge, String actions, RefinedMetamodelWrapper refinedMetamodelWrapper, 
 		EClassifierInfoManagement metamodelAnalyser){
 		
 		
@@ -81,6 +98,7 @@ class RulesGenerator {
 		//Generate edge rules for each unidirectional edge from node A
 		
 		if(actions.equals("ALL")){
+			generate(new AddEdgeRuleCommand(node, edge, refinedMetamodelWrapper, metamodelAnalyser))
 		}
 		
 		if(actions.equals("ADD")){
@@ -95,26 +113,44 @@ class RulesGenerator {
 	def List<Module> generateNodeRules(EClass node, String actions, RefinedMetamodelWrapper refinedMetamodelWrapper, 
 		EClassifierInfoManagement metamodelAnalyser){
 		
+		var references = refinedMetamodelWrapper.getBidirectionalReferences(node);
+		
 		if(actions.equals("ALL")){
 			//Generate create simple
 			
 			//create basic rule and nac
 			generate(new CreateNodeRuleCommand(node, refinedMetamodelWrapper, metamodelAnalyser))
 			
+			if(refinedMetamodelWrapper.hasEdgesForSingleRepair(node)) {
+				generate(new CreateNodeIterativeRepairRuleCommand(node, refinedMetamodelWrapper, metamodelAnalyser))
+				//generate delete
+			}
+				
+			if(refinedMetamodelWrapper.hasEdgesForMultiRepair(node)){
+				generate(new CreateNodeIterativeRepairManyRuleCommand(node, refinedMetamodelWrapper, metamodelAnalyser))	
+				//generate delete
+			}
+			
 			//opposite lb = ub = 1
 				//lb repair one
 				
 			//opposite lb = 1 and ub > 1 but not *
 				//lb repair many
-				
-			
 			//Generate create lb repair
 			//Generate create lb repair many
-				
 		}
 		
 		if(actions.equals("CREATE")){
-			//just create	
+			
+			generate(new CreateNodeRuleCommand(node, refinedMetamodelWrapper, metamodelAnalyser))
+			
+			if(refinedMetamodelWrapper.hasEdgesForSingleRepair(node)) {
+				generate(new CreateNodeIterativeRepairRuleCommand(node, refinedMetamodelWrapper, metamodelAnalyser))
+			}
+				
+			if(refinedMetamodelWrapper.hasEdgesForMultiRepair(node)){
+				generate(new CreateNodeIterativeRepairManyRuleCommand(node, refinedMetamodelWrapper, metamodelAnalyser))	
+			}
 		}
 		
 		if(actions.equals("DELETE")){
