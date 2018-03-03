@@ -10,6 +10,7 @@ Optimisation:
 	refinements+=MultiplicityRefinementSpec*
 	objectives+=ObjectiveInterpreterSpec+
 	constraints+=ConstraintInterpreterSpec*
+	reports+=ReportInterpreterSpec*
 	evolvers+=EvolverSpec*
 	rulegen+=RulegenSpec*
 	optimisation=OptimisationSpec
@@ -85,6 +86,10 @@ RulegenEdge:
 	node=STRING "," edge=STRING ("," generationRestriction=(ADD_EDGE|REMOVE_EDGE))?
 ;
 
+ReportInterpreterSpec:
+	"report" reportName=ValidID "{" (reportSpec=STRING) "}"
+;
+
 EvolverSpec:
 	evolverType=EvolverType "using" rule_location=URL
 	         "unit" unit=STRING
@@ -120,7 +125,7 @@ OptimisationSpec:
 				"variation" algorithmVariation=AlgorithmVariation
 				"evolutions" algorithmEvolutions=INT
 				"population" algorithmPopulation=INT
-				("experiments" algorithmExperiments=INT)?
+				("batches" algorithmBatches=INT)?
 ;
 
 AlgorithmVariation:

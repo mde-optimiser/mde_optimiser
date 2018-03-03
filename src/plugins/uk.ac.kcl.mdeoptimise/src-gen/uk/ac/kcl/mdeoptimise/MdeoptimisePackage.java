@@ -123,13 +123,22 @@ public interface MdeoptimisePackage extends EPackage
   int OPTIMISATION__CONSTRAINTS = 5;
 
   /**
+   * The feature id for the '<em><b>Reports</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OPTIMISATION__REPORTS = 6;
+
+  /**
    * The feature id for the '<em><b>Evolvers</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OPTIMISATION__EVOLVERS = 6;
+  int OPTIMISATION__EVOLVERS = 7;
 
   /**
    * The feature id for the '<em><b>Rulegen</b></em>' containment reference list.
@@ -138,7 +147,7 @@ public interface MdeoptimisePackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPTIMISATION__RULEGEN = 7;
+  int OPTIMISATION__RULEGEN = 8;
 
   /**
    * The feature id for the '<em><b>Optimisation</b></em>' containment reference.
@@ -147,7 +156,7 @@ public interface MdeoptimisePackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPTIMISATION__OPTIMISATION = 8;
+  int OPTIMISATION__OPTIMISATION = 9;
 
   /**
    * The number of structural features of the '<em>Optimisation</em>' class.
@@ -156,7 +165,7 @@ public interface MdeoptimisePackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPTIMISATION_FEATURE_COUNT = 9;
+  int OPTIMISATION_FEATURE_COUNT = 10;
 
   /**
    * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.BasePathSpecImpl <em>Base Path Spec</em>}' class.
@@ -464,6 +473,43 @@ public interface MdeoptimisePackage extends EPackage
   int RULEGEN_EDGE_FEATURE_COUNT = 3;
 
   /**
+   * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.ReportInterpreterSpecImpl <em>Report Interpreter Spec</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.mdeoptimise.impl.ReportInterpreterSpecImpl
+   * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getReportInterpreterSpec()
+   * @generated
+   */
+  int REPORT_INTERPRETER_SPEC = 9;
+
+  /**
+   * The feature id for the '<em><b>Report Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REPORT_INTERPRETER_SPEC__REPORT_NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Report Spec</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REPORT_INTERPRETER_SPEC__REPORT_SPEC = 1;
+
+  /**
+   * The number of structural features of the '<em>Report Interpreter Spec</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REPORT_INTERPRETER_SPEC_FEATURE_COUNT = 2;
+
+  /**
    * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.EvolverSpecImpl <em>Evolver Spec</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -471,7 +517,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getEvolverSpec()
    * @generated
    */
-  int EVOLVER_SPEC = 9;
+  int EVOLVER_SPEC = 10;
 
   /**
    * The feature id for the '<em><b>Evolver Type</b></em>' attribute.
@@ -526,7 +572,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getMultiplicityRefinementSpec()
    * @generated
    */
-  int MULTIPLICITY_REFINEMENT_SPEC = 10;
+  int MULTIPLICITY_REFINEMENT_SPEC = 11;
 
   /**
    * The feature id for the '<em><b>Node</b></em>' attribute.
@@ -581,7 +627,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getEvolverParameter()
    * @generated
    */
-  int EVOLVER_PARAMETER = 11;
+  int EVOLVER_PARAMETER = 12;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -627,7 +673,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getParameterFunction()
    * @generated
    */
-  int PARAMETER_FUNCTION = 12;
+  int PARAMETER_FUNCTION = 13;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -664,7 +710,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getOptimisationSpec()
    * @generated
    */
-  int OPTIMISATION_SPEC = 13;
+  int OPTIMISATION_SPEC = 14;
 
   /**
    * The feature id for the '<em><b>Algorithm Factory</b></em>' attribute.
@@ -712,13 +758,13 @@ public interface MdeoptimisePackage extends EPackage
   int OPTIMISATION_SPEC__ALGORITHM_POPULATION = 4;
 
   /**
-   * The feature id for the '<em><b>Algorithm Experiments</b></em>' attribute.
+   * The feature id for the '<em><b>Algorithm Batches</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OPTIMISATION_SPEC__ALGORITHM_EXPERIMENTS = 5;
+  int OPTIMISATION_SPEC__ALGORITHM_BATCHES = 5;
 
   /**
    * The number of structural features of the '<em>Optimisation Spec</em>' class.
@@ -737,7 +783,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getAlgorithmVariation()
    * @generated
    */
-  int ALGORITHM_VARIATION = 14;
+  int ALGORITHM_VARIATION = 15;
 
   /**
    * The feature id for the '<em><b>Probability Variation</b></em>' containment reference.
@@ -774,7 +820,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getProbabilityVariation()
    * @generated
    */
-  int PROBABILITY_VARIATION = 15;
+  int PROBABILITY_VARIATION = 16;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -820,7 +866,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getEvolverType()
    * @generated
    */
-  int EVOLVER_TYPE = 16;
+  int EVOLVER_TYPE = 17;
 
 
   /**
@@ -898,6 +944,17 @@ public interface MdeoptimisePackage extends EPackage
    * @generated
    */
   EReference getOptimisation_Constraints();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link uk.ac.kcl.mdeoptimise.Optimisation#getReports <em>Reports</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Reports</em>'.
+   * @see uk.ac.kcl.mdeoptimise.Optimisation#getReports()
+   * @see #getOptimisation()
+   * @generated
+   */
+  EReference getOptimisation_Reports();
 
   /**
    * Returns the meta object for the containment reference list '{@link uk.ac.kcl.mdeoptimise.Optimisation#getEvolvers <em>Evolvers</em>}'.
@@ -1200,6 +1257,38 @@ public interface MdeoptimisePackage extends EPackage
   EAttribute getRulegenEdge_GenerationRestriction();
 
   /**
+   * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.ReportInterpreterSpec <em>Report Interpreter Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Report Interpreter Spec</em>'.
+   * @see uk.ac.kcl.mdeoptimise.ReportInterpreterSpec
+   * @generated
+   */
+  EClass getReportInterpreterSpec();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.ReportInterpreterSpec#getReportName <em>Report Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Report Name</em>'.
+   * @see uk.ac.kcl.mdeoptimise.ReportInterpreterSpec#getReportName()
+   * @see #getReportInterpreterSpec()
+   * @generated
+   */
+  EAttribute getReportInterpreterSpec_ReportName();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.ReportInterpreterSpec#getReportSpec <em>Report Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Report Spec</em>'.
+   * @see uk.ac.kcl.mdeoptimise.ReportInterpreterSpec#getReportSpec()
+   * @see #getReportInterpreterSpec()
+   * @generated
+   */
+  EAttribute getReportInterpreterSpec_ReportSpec();
+
+  /**
    * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.EvolverSpec <em>Evolver Spec</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1448,15 +1537,15 @@ public interface MdeoptimisePackage extends EPackage
   EAttribute getOptimisationSpec_AlgorithmPopulation();
 
   /**
-   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmExperiments <em>Algorithm Experiments</em>}'.
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmBatches <em>Algorithm Batches</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Algorithm Experiments</em>'.
-   * @see uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmExperiments()
+   * @return the meta object for the attribute '<em>Algorithm Batches</em>'.
+   * @see uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmBatches()
    * @see #getOptimisationSpec()
    * @generated
    */
-  EAttribute getOptimisationSpec_AlgorithmExperiments();
+  EAttribute getOptimisationSpec_AlgorithmBatches();
 
   /**
    * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.AlgorithmVariation <em>Algorithm Variation</em>}'.
@@ -1623,6 +1712,14 @@ public interface MdeoptimisePackage extends EPackage
      * @generated
      */
     EReference OPTIMISATION__CONSTRAINTS = eINSTANCE.getOptimisation_Constraints();
+
+    /**
+     * The meta object literal for the '<em><b>Reports</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference OPTIMISATION__REPORTS = eINSTANCE.getOptimisation_Reports();
 
     /**
      * The meta object literal for the '<em><b>Evolvers</b></em>' containment reference list feature.
@@ -1865,6 +1962,32 @@ public interface MdeoptimisePackage extends EPackage
     EAttribute RULEGEN_EDGE__GENERATION_RESTRICTION = eINSTANCE.getRulegenEdge_GenerationRestriction();
 
     /**
+     * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.ReportInterpreterSpecImpl <em>Report Interpreter Spec</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.mdeoptimise.impl.ReportInterpreterSpecImpl
+     * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getReportInterpreterSpec()
+     * @generated
+     */
+    EClass REPORT_INTERPRETER_SPEC = eINSTANCE.getReportInterpreterSpec();
+
+    /**
+     * The meta object literal for the '<em><b>Report Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute REPORT_INTERPRETER_SPEC__REPORT_NAME = eINSTANCE.getReportInterpreterSpec_ReportName();
+
+    /**
+     * The meta object literal for the '<em><b>Report Spec</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute REPORT_INTERPRETER_SPEC__REPORT_SPEC = eINSTANCE.getReportInterpreterSpec_ReportSpec();
+
+    /**
      * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.EvolverSpecImpl <em>Evolver Spec</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2059,12 +2182,12 @@ public interface MdeoptimisePackage extends EPackage
     EAttribute OPTIMISATION_SPEC__ALGORITHM_POPULATION = eINSTANCE.getOptimisationSpec_AlgorithmPopulation();
 
     /**
-     * The meta object literal for the '<em><b>Algorithm Experiments</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Algorithm Batches</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute OPTIMISATION_SPEC__ALGORITHM_EXPERIMENTS = eINSTANCE.getOptimisationSpec_AlgorithmExperiments();
+    EAttribute OPTIMISATION_SPEC__ALGORITHM_BATCHES = eINSTANCE.getOptimisationSpec_AlgorithmBatches();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.AlgorithmVariationImpl <em>Algorithm Variation</em>}' class.

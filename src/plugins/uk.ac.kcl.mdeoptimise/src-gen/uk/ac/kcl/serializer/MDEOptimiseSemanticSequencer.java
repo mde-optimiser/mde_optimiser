@@ -73,6 +73,7 @@ import uk.ac.kcl.mdeoptimise.Optimisation;
 import uk.ac.kcl.mdeoptimise.OptimisationSpec;
 import uk.ac.kcl.mdeoptimise.ParameterFunction;
 import uk.ac.kcl.mdeoptimise.ProbabilityVariation;
+import uk.ac.kcl.mdeoptimise.ReportInterpreterSpec;
 import uk.ac.kcl.mdeoptimise.RulegenEdge;
 import uk.ac.kcl.mdeoptimise.RulegenNode;
 import uk.ac.kcl.mdeoptimise.RulegenSpec;
@@ -130,6 +131,9 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 				return; 
 			case MdeoptimisePackage.PROBABILITY_VARIATION:
 				sequence_ProbabilityVariation(context, (ProbabilityVariation) semanticObject); 
+				return; 
+			case MdeoptimisePackage.REPORT_INTERPRETER_SPEC:
+				sequence_ReportInterpreterSpec(context, (ReportInterpreterSpec) semanticObject); 
 				return; 
 			case MdeoptimisePackage.RULEGEN_EDGE:
 				sequence_RulegenEdge(context, (RulegenEdge) semanticObject); 
@@ -563,7 +567,7 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 	 *         algorithmVariation=AlgorithmVariation 
 	 *         algorithmEvolutions=INT 
 	 *         algorithmPopulation=INT 
-	 *         algorithmExperiments=INT?
+	 *         algorithmBatches=INT?
 	 *     )
 	 */
 	protected void sequence_OptimisationSpec(ISerializationContext context, OptimisationSpec semanticObject) {
@@ -583,6 +587,7 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 	 *         refinements+=MultiplicityRefinementSpec* 
 	 *         objectives+=ObjectiveInterpreterSpec+ 
 	 *         constraints+=ConstraintInterpreterSpec* 
+	 *         reports+=ReportInterpreterSpec* 
 	 *         evolvers+=EvolverSpec* 
 	 *         rulegen+=RulegenSpec* 
 	 *         optimisation=OptimisationSpec
@@ -614,6 +619,27 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 	 */
 	protected void sequence_ProbabilityVariation(ISerializationContext context, ProbabilityVariation semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ReportInterpreterSpec returns ReportInterpreterSpec
+	 *
+	 * Constraint:
+	 *     (reportName=ValidID reportSpec=STRING)
+	 */
+	protected void sequence_ReportInterpreterSpec(ISerializationContext context, ReportInterpreterSpec semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.REPORT_INTERPRETER_SPEC__REPORT_NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.REPORT_INTERPRETER_SPEC__REPORT_NAME));
+			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.REPORT_INTERPRETER_SPEC__REPORT_SPEC) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.REPORT_INTERPRETER_SPEC__REPORT_SPEC));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getReportInterpreterSpecAccess().getReportNameValidIDParserRuleCall_1_0(), semanticObject.getReportName());
+		feeder.accept(grammarAccess.getReportInterpreterSpecAccess().getReportSpecSTRINGTerminalRuleCall_3_0(), semanticObject.getReportSpec());
+		feeder.finish();
 	}
 	
 	

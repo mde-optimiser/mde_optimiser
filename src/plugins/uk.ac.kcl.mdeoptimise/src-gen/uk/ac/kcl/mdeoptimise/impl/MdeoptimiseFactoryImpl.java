@@ -75,6 +75,7 @@ public class MdeoptimiseFactoryImpl extends EFactoryImpl implements MdeoptimiseF
       case MdeoptimisePackage.RULEGEN_SPEC: return createRulegenSpec();
       case MdeoptimisePackage.RULEGEN_NODE: return createRulegenNode();
       case MdeoptimisePackage.RULEGEN_EDGE: return createRulegenEdge();
+      case MdeoptimisePackage.REPORT_INTERPRETER_SPEC: return createReportInterpreterSpec();
       case MdeoptimisePackage.EVOLVER_SPEC: return createEvolverSpec();
       case MdeoptimisePackage.MULTIPLICITY_REFINEMENT_SPEC: return createMultiplicityRefinementSpec();
       case MdeoptimisePackage.EVOLVER_PARAMETER: return createEvolverParameter();
@@ -218,6 +219,17 @@ public class MdeoptimiseFactoryImpl extends EFactoryImpl implements MdeoptimiseF
   {
     RulegenEdgeImpl rulegenEdge = new RulegenEdgeImpl();
     return rulegenEdge;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ReportInterpreterSpec createReportInterpreterSpec()
+  {
+    ReportInterpreterSpecImpl reportInterpreterSpec = new ReportInterpreterSpecImpl();
+    return reportInterpreterSpec;
   }
 
   /**
