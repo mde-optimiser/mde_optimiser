@@ -15,6 +15,7 @@ import org.sidiff.serge.filter.ElementFilter
 import org.sidiff.serge.generators.conditions.UpperBoundCheckGenerator
 import uk.ac.kcl.mdeoptimise.rulegen.generator.IRuleGenerationCommand
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RefinedMetamodelWrapper
+import org.sidiff.serge.generators.actions.RuleParameterGenerator
 
 class CreateNodeIterativeRepairRuleCommand implements IRuleGenerationCommand {
 	
@@ -76,6 +77,7 @@ class CreateNodeIterativeRepairRuleCommand implements IRuleGenerationCommand {
 				conditionalIterativeRepairGenerator(rule)
 				
 				applyRuleNacConditions(rule);
+				applyRuleParameters(rule);
 				//Add rule to module for this context classifier
 				module.getUnits().add(rule);
 			}
@@ -138,5 +140,9 @@ class CreateNodeIterativeRepairRuleCommand implements IRuleGenerationCommand {
 		new UpperBoundCheckGenerator(rule).generate();
 	}
 	
+	//Create the rule parameters
+	private def void applyRuleParameters(Rule rule) {
+		new RuleParameterGenerator(rule).generate();
+	}
 }
 	

@@ -94,15 +94,16 @@ class MoeaOptimisationTests {
 					do {
 							            		
 	            		val startTime = System.nanoTime;
-	            		val optimisationOutcome = new OptimisationInterpreter("", model).start();
+	            		val optimisationInterpreter = new OptimisationInterpreter("", model);
+	            		val optimisationOutcome = optimisationInterpreter.start();
 	            		val endTime = System.nanoTime;
 	            		
 	            		val experimentDuration = (endTime - startTime) / 1000000
 	            		
-	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome))		
+	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome, optimisationInterpreter.rulegenOperators))		
 						
 						experimentId++
-					} while(experimentId < model.optimisation.algorithmExperiments);
+					} while(experimentId < model.optimisation.algorithmBatches);
 
 	            	mdeoResultsOutput.saveOutcome();
 	        }
@@ -137,16 +138,18 @@ class MoeaOptimisationTests {
 					var experimentId = 0;
 					do {
 							            		
-	            		val startTime = System.nanoTime;
-	            		val optimisationOutcome = new OptimisationInterpreter("", model).start();
+						val startTime = System.nanoTime;
+	            		val optimisationInterpreter = new OptimisationInterpreter("", model);
+	            		val optimisationOutcome = optimisationInterpreter.start();
 	            		val endTime = System.nanoTime;
 	            		
 	            		val experimentDuration = (endTime - startTime) / 1000000
 	            		
-	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome))		
+	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome, optimisationInterpreter.rulegenOperators))		
+							
 						
 						experimentId++
-					} while(experimentId < model.optimisation.algorithmExperiments);
+					} while(experimentId < model.optimisation.algorithmBatches);
 
 	            	mdeoResultsOutput.saveOutcome();
 	        }
@@ -178,16 +181,17 @@ class MoeaOptimisationTests {
 					
 					do {            		
 	            		val startTime = System.nanoTime;
-	            		val optimisationOutcome = new OptimisationInterpreter("", model).start();
+	            		val optimisationInterpreter = new OptimisationInterpreter("", model);
+	            		val optimisationOutcome = optimisationInterpreter.start();
 	            		val endTime = System.nanoTime;
 	            		
 	            		val experimentDuration = (endTime - startTime) / 1000000
 	            		
-	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome))		
+	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome, optimisationInterpreter.rulegenOperators))		
 						
 						experimentId++
 					
-					} while(experimentId < model.optimisation.algorithmExperiments);
+					} while(experimentId < model.optimisation.algorithmBatches);
 
 	            	mdeoResultsOutput.saveOutcome();
 	        }
@@ -218,16 +222,18 @@ class MoeaOptimisationTests {
 					
 					do {            		
 	            		val startTime = System.nanoTime;
-	            		val optimisationOutcome = new OptimisationInterpreter("", model).start();
+	            		val optimisationInterpreter = new OptimisationInterpreter("", model);
+	            		val optimisationOutcome = optimisationInterpreter.start();
 	            		val endTime = System.nanoTime;
 	            		
 	            		val experimentDuration = (endTime - startTime) / 1000000
 	            		
-	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome))		
+	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome, optimisationInterpreter.rulegenOperators))		
+							
 						
 						experimentId++
 					
-					} while(experimentId < model.optimisation.algorithmExperiments);
+					} while(experimentId < model.optimisation.algorithmBatches);
 
 	            	mdeoResultsOutput.saveOutcome();
 	        }
@@ -261,16 +267,18 @@ class MoeaOptimisationTests {
 					
 					do {            		
 	            		val startTime = System.nanoTime;
-	            		val optimisationOutcome = new OptimisationInterpreter("", model).start();
+	            		val optimisationInterpreter = new OptimisationInterpreter("", model);
+	            		val optimisationOutcome = optimisationInterpreter.start();
 	            		val endTime = System.nanoTime;
 	            		
 	            		val experimentDuration = (endTime - startTime) / 1000000
 	            		
-	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome))		
+	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome, optimisationInterpreter.rulegenOperators))		
+								
 						
 						experimentId++
 					
-					} while(experimentId < model.optimisation.algorithmExperiments);
+					} while(experimentId < model.optimisation.algorithmBatches);
 
 	            	mdeoResultsOutput.saveOutcome();
 	        }
@@ -278,25 +286,18 @@ class MoeaOptimisationTests {
 	
 	    //Some tests to run optimisation manually for now
 	@Test
-	def void runMoeaOptimisationNSGA2ScrumPlanning() {
+	def void runMoeaOptimisationNSGA2Rulegen() {
 		
 			val pathPrefix = "gen/"
 			
 			model = parser.parse('''
-				basepath <src/models/scrum/>
-				metamodel <planning.ecore>
-				model <product_debt.xmi>
-				objective MinimiseSprints minimise java { "models.scrum.MinimiseSprints" }
-				objective MaximiseAverageSprintEffort maximise java { "models.scrum.MaximiseAverageSprintEffort" }
-				objective MaximiseAverageStakeholderImportance maximise java { "models.scrum.MaximiseAverageStakeholderImportance" }
-				constraint MinimiseUnassignedWorkItems java { "models.scrum.MinimiseUnassignedWorkItems" }
-				constraint MinimiseSprintsWithInvalidEffort java { "models.scrum.MinimiseSprintsWithInvalidEffort" }
-				constraint MinimiseEmptySprints java { "models.scrum.MinimiseEmptySprints" }
-				mutate using <sprint.henshin> unit "createSprint"
-				mutate using <sprint.henshin> unit "deleteSprint"
-				mutate using <sprint.henshin> unit "addItemToSprint"
-				mutate using <sprint.henshin> unit "removeItemFromSprint"
-				optimisation provider moea algorithm NSGAII variation mutation evolutions 150 population 30 experiments 10
+				basepath <src/models/cra/>
+				metamodel <architectureCRA.ecore>
+				model <TTC_InputRDG_C.xmi>
+				objective MaximiseCRA maximise java { "models.moea.MaximiseCRA" }
+				constraint MinimiseClasslessFeatures java { "models.moea.MinimiseClasslessFeatures" }
+				mutate {"Class"}
+				optimisation provider moea algorithm NSGAII variation mutation evolutions 10 population 30 batches 1
 			''')
 
 			//Assert that there are no grammar issues
@@ -310,15 +311,16 @@ class MoeaOptimisationTests {
 					do {
 							            		
 	            		val startTime = System.nanoTime;
-	            		val optimisationOutcome = new OptimisationInterpreter("", model).start();
+	            		val optimisationInterpreter = new OptimisationInterpreter("", model);
+	            		val optimisationOutcome = optimisationInterpreter.start();
 	            		val endTime = System.nanoTime;
 	            		
 	            		val experimentDuration = (endTime - startTime) / 1000000
 	            		
-	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome))		
+	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome, optimisationInterpreter.rulegenOperators))		
 						
 						experimentId++
-					} while(experimentId < model.optimisation.algorithmExperiments);
+					} while(experimentId < model.optimisation.algorithmBatches);
 
 	            	mdeoResultsOutput.saveOutcome();
 	        }

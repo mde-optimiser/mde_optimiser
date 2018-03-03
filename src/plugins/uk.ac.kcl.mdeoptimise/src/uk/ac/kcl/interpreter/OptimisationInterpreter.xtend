@@ -1,24 +1,28 @@
 package uk.ac.kcl.interpreter
 
-import uk.ac.kcl.mdeoptimise.Optimisation
-import org.eclipse.emf.henshin.model.resource.HenshinResourceSet
-import org.eclipse.emf.ecore.EPackage
-import java.util.List
-import org.eclipse.emf.henshin.model.Unit
-import org.eclipse.emf.common.util.URI
-import uk.ac.kcl.optimisation.moea.MoeaOptimisation
-import uk.ac.kcl.optimisation.SolutionGenerator
-import uk.ac.kcl.optimisation.UserModelProvider
+import com.google.common.collect.Maps
+import java.util.ArrayList
+import java.util.Iterator
 import java.util.LinkedList
+import java.util.List
+import org.apache.commons.lang3.tuple.ImmutablePair
 import org.eclipse.core.runtime.IPath
 import org.eclipse.core.runtime.Path
-import java.util.Iterator
-import uk.ac.kcl.optimisation.moea.MoeaOptimisationSolution
-import uk.ac.kcl.mdeoptimise.rulegen.RulesGenerator
+import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.henshin.model.Module
+import org.eclipse.emf.henshin.model.Unit
+import org.eclipse.emf.henshin.model.resource.HenshinResourceSet
+import uk.ac.kcl.mdeoptimise.Optimisation
+import uk.ac.kcl.mdeoptimise.rulegen.RulesGenerator
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.Multiplicity
-import java.util.ArrayList
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RuleSpec
+import uk.ac.kcl.optimisation.SolutionGenerator
+import uk.ac.kcl.optimisation.UserModelProvider
+import uk.ac.kcl.optimisation.moea.MoeaOptimisation
+import uk.ac.kcl.optimisation.moea.MoeaOptimisationSolution
+import java.util.HashMap
+import java.util.Map
 
 class OptimisationInterpreter {
 	
@@ -97,8 +101,14 @@ class OptimisationInterpreter {
     	var generatedMutations = getRulegenOperators();
     	
     	if(!generatedMutations.empty){
+    		
     		//For each of the automatically generated modules, add the generated mutations to the list of evolvers
-    		generatedMutations.forEach[mutation |
+    		//Are we ever going to have more than one metamodel? Perhaps this should be a pair instead
+    		
+    		var metamodel = generatedMutations.keySet.head;
+    		var mutations = generatedMutations.get(metamodel);
+    		
+    		mutations.forEach[mutation |
     			mutationOperators.addAll(mutation.allRules)
     		]
     	}
@@ -128,8 +138,7 @@ class OptimisationInterpreter {
     	
     	val ruleSpecs = new ArrayList<RuleSpec>();
  
- 		
- 		if(!rulegenSpecs.empty){
+ 		if(!rulegenSpecs.empty) {
  			
  			rulegenSpecs.forEach[rulegenSpec |
  				
@@ -149,14 +158,14 @@ class OptimisationInterpreter {
      * If there are any rule generation instructions present, then generate the corresponding rules.
      * @return list of generated mutation operators
      */
-    def List<Module> getRulegenOperators(){
+    def Map<EPackage, List<Module>> getRulegenOperators(){
  		   	   	
     	var multiplicityRefinements = getMultiplicityRefinements();
     	var rulegenSpecs = getRulegenSpecs();
     	
   		//Generate the list of modules that are automatically generated
     	var mutations = new RulesGenerator(getMetamodel, multiplicityRefinements, rulegenSpecs);
-    	
-    	return mutations.generatedRules
+    	    	
+    	return mutations.generatedRules;
     }
 }

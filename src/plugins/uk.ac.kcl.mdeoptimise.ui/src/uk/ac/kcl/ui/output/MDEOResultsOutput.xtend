@@ -19,6 +19,7 @@ import uk.ac.kcl.ui.output.descriptors.TextDescriptor
 import uk.ac.kcl.ui.output.descriptors.MOEAObjectivesOutputDescriptor
 import uk.ac.kcl.ui.output.descriptors.ParetoChartOutputDescriptor
 import uk.ac.kcl.ui.output.descriptors.BatchReportsDescriptor
+import uk.ac.kcl.ui.output.descriptors.GeneratedMutationOperatorsDescriptor
 
 class MDEOResultsOutput {
 	
@@ -121,6 +122,11 @@ class MDEOResultsOutput {
 		}
 	}
 	
+	/**
+	 * Load a set of descriptors that we would like to run on the produced experiments data.
+	 * They perform tasks such as generating parseable results, serializing models and generated
+	 * mutation operators.
+	 */
 	private def List<ResultsDescriptor> loadDescriptors(){
 		
 		var descriptors = new ArrayList<ResultsDescriptor>();
@@ -129,6 +135,7 @@ class MDEOResultsOutput {
 		descriptors.add(new MOEAObjectivesOutputDescriptor())
 		descriptors.add(new ParetoChartOutputDescriptor())
 		descriptors.add(new BatchReportsDescriptor(this.moptConfiguration))
+		descriptors.add(new GeneratedMutationOperatorsDescriptor())
 		
 		return descriptors;
 		

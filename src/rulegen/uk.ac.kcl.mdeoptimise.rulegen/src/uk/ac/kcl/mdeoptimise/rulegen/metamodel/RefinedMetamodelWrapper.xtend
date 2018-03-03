@@ -27,12 +27,13 @@ class RefinedMetamodelWrapper {
 
 	new(EPackage metamodel, List<Multiplicity> refinedMultiplicities) {
 		this.originalMetamodel = metamodel;
-		this.refinedMetamodel = EcoreUtil.copy(metamodel);
+		this.refinedMetamodel = this.originalMetamodel//EcoreUtil.copy(metamodel);
 		this.refinedMultiplicities = refinedMultiplicities;
 		this.resourceSet = new HenshinResourceSet()
 		
-		var resource = resourceSet.createResource(URI.createURI("metamodel.ecore"))
-		resource.contents.add(this.refinedMetamodel)
+		//TODO check what to do about this - I think we can stick with the solution metamodel to run the search on after the refinements have been applied.
+		//var resource = resourceSet.createResource(URI.createURI("metamodel.ecore"))
+		//resource.contents.add(this.refinedMetamodel)
 		
 		refinedMultiplicities.forEach[multiplicity | 
 			multiplicity.metamodel = this.refinedMetamodel;

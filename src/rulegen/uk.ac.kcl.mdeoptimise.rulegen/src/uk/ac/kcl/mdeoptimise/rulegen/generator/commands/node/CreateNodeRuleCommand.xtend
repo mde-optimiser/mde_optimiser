@@ -13,6 +13,7 @@ import org.sidiff.serge.generators.conditions.LowerBoundCheckGenerator
 import org.sidiff.serge.generators.conditions.UpperBoundCheckGenerator
 import uk.ac.kcl.mdeoptimise.rulegen.generator.IRuleGenerationCommand
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RefinedMetamodelWrapper
+import org.eclipse.emf.ecore.EClassifier
 
 class CreateNodeRuleCommand implements IRuleGenerationCommand {
 	
