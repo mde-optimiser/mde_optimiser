@@ -43,6 +43,7 @@
 <unit id="org.apache.commons.lang3" version="3.1.0"/>
 <unit id="dk.brics.automaton" version="1.11.0.8"/>
 <unit id="org.jfree.jcommon" version="1.0.21"/>
+<unit id="org.jfree.chart" version="1.0.15"/>
 <unit id="org.moeaframework" version="2.12.0"/>
 <unit id="org.mockito.mockito-all" version="1.9.5"/>
 <unit id="org.apache.commons.codec" version="1.8.0"/>

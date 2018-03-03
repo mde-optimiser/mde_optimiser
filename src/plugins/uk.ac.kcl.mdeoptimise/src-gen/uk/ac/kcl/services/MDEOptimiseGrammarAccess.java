@@ -41,12 +41,14 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cObjectivesObjectiveInterpreterSpecParserRuleCall_4_0 = (RuleCall)cObjectivesAssignment_4.eContents().get(0);
 		private final Assignment cConstraintsAssignment_5 = (Assignment)cGroup.eContents().get(5);
 		private final RuleCall cConstraintsConstraintInterpreterSpecParserRuleCall_5_0 = (RuleCall)cConstraintsAssignment_5.eContents().get(0);
-		private final Assignment cEvolversAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cEvolversEvolverSpecParserRuleCall_6_0 = (RuleCall)cEvolversAssignment_6.eContents().get(0);
-		private final Assignment cRulegenAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cRulegenRulegenSpecParserRuleCall_7_0 = (RuleCall)cRulegenAssignment_7.eContents().get(0);
-		private final Assignment cOptimisationAssignment_8 = (Assignment)cGroup.eContents().get(8);
-		private final RuleCall cOptimisationOptimisationSpecParserRuleCall_8_0 = (RuleCall)cOptimisationAssignment_8.eContents().get(0);
+		private final Assignment cReportsAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cReportsReportInterpreterSpecParserRuleCall_6_0 = (RuleCall)cReportsAssignment_6.eContents().get(0);
+		private final Assignment cEvolversAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cEvolversEvolverSpecParserRuleCall_7_0 = (RuleCall)cEvolversAssignment_7.eContents().get(0);
+		private final Assignment cRulegenAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cRulegenRulegenSpecParserRuleCall_8_0 = (RuleCall)cRulegenAssignment_8.eContents().get(0);
+		private final Assignment cOptimisationAssignment_9 = (Assignment)cGroup.eContents().get(9);
+		private final RuleCall cOptimisationOptimisationSpecParserRuleCall_9_0 = (RuleCall)cOptimisationAssignment_9.eContents().get(0);
 		
 		//Optimisation:
 		//	basepath=BasePathSpec
@@ -55,14 +57,15 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		//	refinements+=MultiplicityRefinementSpec*
 		//	objectives+=ObjectiveInterpreterSpec+
 		//	constraints+=ConstraintInterpreterSpec*
+		//	reports+=ReportInterpreterSpec*
 		//	evolvers+=EvolverSpec*
 		//	rulegen+=RulegenSpec*
 		//	optimisation=OptimisationSpec;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//basepath=BasePathSpec metamodel=MetaModelSpec model=ModelPathSpec refinements+=MultiplicityRefinementSpec*
-		//objectives+=ObjectiveInterpreterSpec+ constraints+=ConstraintInterpreterSpec* evolvers+=EvolverSpec*
-		//rulegen+=RulegenSpec* optimisation=OptimisationSpec
+		//objectives+=ObjectiveInterpreterSpec+ constraints+=ConstraintInterpreterSpec* reports+=ReportInterpreterSpec*
+		//evolvers+=EvolverSpec* rulegen+=RulegenSpec* optimisation=OptimisationSpec
 		public Group getGroup() { return cGroup; }
 		
 		//basepath=BasePathSpec
@@ -101,23 +104,29 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		//ConstraintInterpreterSpec
 		public RuleCall getConstraintsConstraintInterpreterSpecParserRuleCall_5_0() { return cConstraintsConstraintInterpreterSpecParserRuleCall_5_0; }
 		
+		//reports+=ReportInterpreterSpec*
+		public Assignment getReportsAssignment_6() { return cReportsAssignment_6; }
+		
+		//ReportInterpreterSpec
+		public RuleCall getReportsReportInterpreterSpecParserRuleCall_6_0() { return cReportsReportInterpreterSpecParserRuleCall_6_0; }
+		
 		//evolvers+=EvolverSpec*
-		public Assignment getEvolversAssignment_6() { return cEvolversAssignment_6; }
+		public Assignment getEvolversAssignment_7() { return cEvolversAssignment_7; }
 		
 		//EvolverSpec
-		public RuleCall getEvolversEvolverSpecParserRuleCall_6_0() { return cEvolversEvolverSpecParserRuleCall_6_0; }
+		public RuleCall getEvolversEvolverSpecParserRuleCall_7_0() { return cEvolversEvolverSpecParserRuleCall_7_0; }
 		
 		//rulegen+=RulegenSpec*
-		public Assignment getRulegenAssignment_7() { return cRulegenAssignment_7; }
+		public Assignment getRulegenAssignment_8() { return cRulegenAssignment_8; }
 		
 		//RulegenSpec
-		public RuleCall getRulegenRulegenSpecParserRuleCall_7_0() { return cRulegenRulegenSpecParserRuleCall_7_0; }
+		public RuleCall getRulegenRulegenSpecParserRuleCall_8_0() { return cRulegenRulegenSpecParserRuleCall_8_0; }
 		
 		//optimisation=OptimisationSpec
-		public Assignment getOptimisationAssignment_8() { return cOptimisationAssignment_8; }
+		public Assignment getOptimisationAssignment_9() { return cOptimisationAssignment_9; }
 		
 		//OptimisationSpec
-		public RuleCall getOptimisationOptimisationSpecParserRuleCall_8_0() { return cOptimisationOptimisationSpecParserRuleCall_8_0; }
+		public RuleCall getOptimisationOptimisationSpecParserRuleCall_9_0() { return cOptimisationOptimisationSpecParserRuleCall_9_0; }
 	}
 	public class BasePathSpecElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.BasePathSpec");
@@ -465,6 +474,45 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		//REMOVE_EDGE
 		public RuleCall getGenerationRestrictionREMOVE_EDGETerminalRuleCall_3_1_0_1() { return cGenerationRestrictionREMOVE_EDGETerminalRuleCall_3_1_0_1; }
 	}
+	public class ReportInterpreterSpecElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.ReportInterpreterSpec");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cReportKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cReportNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cReportNameValidIDParserRuleCall_1_0 = (RuleCall)cReportNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cReportSpecAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cReportSpecSTRINGTerminalRuleCall_3_0 = (RuleCall)cReportSpecAssignment_3.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		//ReportInterpreterSpec:
+		//	"report" reportName=ValidID "{" reportSpec=STRING "}";
+		@Override public ParserRule getRule() { return rule; }
+		
+		//"report" reportName=ValidID "{" reportSpec=STRING "}"
+		public Group getGroup() { return cGroup; }
+		
+		//"report"
+		public Keyword getReportKeyword_0() { return cReportKeyword_0; }
+		
+		//reportName=ValidID
+		public Assignment getReportNameAssignment_1() { return cReportNameAssignment_1; }
+		
+		//ValidID
+		public RuleCall getReportNameValidIDParserRuleCall_1_0() { return cReportNameValidIDParserRuleCall_1_0; }
+		
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+		
+		//reportSpec=STRING
+		public Assignment getReportSpecAssignment_3() { return cReportSpecAssignment_3; }
+		
+		//STRING
+		public RuleCall getReportSpecSTRINGTerminalRuleCall_3_0() { return cReportSpecSTRINGTerminalRuleCall_3_0; }
+		
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+	}
 	public class EvolverSpecElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.EvolverSpec");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -729,21 +777,21 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cAlgorithmPopulationAssignment_10 = (Assignment)cGroup.eContents().get(10);
 		private final RuleCall cAlgorithmPopulationINTTerminalRuleCall_10_0 = (RuleCall)cAlgorithmPopulationAssignment_10.eContents().get(0);
 		private final Group cGroup_11 = (Group)cGroup.eContents().get(11);
-		private final Keyword cExperimentsKeyword_11_0 = (Keyword)cGroup_11.eContents().get(0);
-		private final Assignment cAlgorithmExperimentsAssignment_11_1 = (Assignment)cGroup_11.eContents().get(1);
-		private final RuleCall cAlgorithmExperimentsINTTerminalRuleCall_11_1_0 = (RuleCall)cAlgorithmExperimentsAssignment_11_1.eContents().get(0);
+		private final Keyword cBatchesKeyword_11_0 = (Keyword)cGroup_11.eContents().get(0);
+		private final Assignment cAlgorithmBatchesAssignment_11_1 = (Assignment)cGroup_11.eContents().get(1);
+		private final RuleCall cAlgorithmBatchesINTTerminalRuleCall_11_1_0 = (RuleCall)cAlgorithmBatchesAssignment_11_1.eContents().get(0);
 		
 		//OptimisationSpec:
 		//	"optimisation" "provider" algorithmFactory=ALGORITHM_FACTORY
 		//	"algorithm" algorithmName=ALGORITHM_NAME
 		//	"variation" algorithmVariation=AlgorithmVariation
 		//	"evolutions" algorithmEvolutions=INT
-		//	"population" algorithmPopulation=INT ("experiments" algorithmExperiments=INT)?;
+		//	"population" algorithmPopulation=INT ("batches" algorithmBatches=INT)?;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//"optimisation" "provider" algorithmFactory=ALGORITHM_FACTORY "algorithm" algorithmName=ALGORITHM_NAME "variation"
 		//algorithmVariation=AlgorithmVariation "evolutions" algorithmEvolutions=INT "population" algorithmPopulation=INT
-		//("experiments" algorithmExperiments=INT)?
+		//("batches" algorithmBatches=INT)?
 		public Group getGroup() { return cGroup; }
 		
 		//"optimisation"
@@ -794,17 +842,17 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		//INT
 		public RuleCall getAlgorithmPopulationINTTerminalRuleCall_10_0() { return cAlgorithmPopulationINTTerminalRuleCall_10_0; }
 		
-		//("experiments" algorithmExperiments=INT)?
+		//("batches" algorithmBatches=INT)?
 		public Group getGroup_11() { return cGroup_11; }
 		
-		//"experiments"
-		public Keyword getExperimentsKeyword_11_0() { return cExperimentsKeyword_11_0; }
+		//"batches"
+		public Keyword getBatchesKeyword_11_0() { return cBatchesKeyword_11_0; }
 		
-		//algorithmExperiments=INT
-		public Assignment getAlgorithmExperimentsAssignment_11_1() { return cAlgorithmExperimentsAssignment_11_1; }
+		//algorithmBatches=INT
+		public Assignment getAlgorithmBatchesAssignment_11_1() { return cAlgorithmBatchesAssignment_11_1; }
 		
 		//INT
-		public RuleCall getAlgorithmExperimentsINTTerminalRuleCall_11_1_0() { return cAlgorithmExperimentsINTTerminalRuleCall_11_1_0; }
+		public RuleCall getAlgorithmBatchesINTTerminalRuleCall_11_1_0() { return cAlgorithmBatchesINTTerminalRuleCall_11_1_0; }
 	}
 	public class AlgorithmVariationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.AlgorithmVariation");
@@ -930,6 +978,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	private final RulegenSpecElements pRulegenSpec;
 	private final RulegenNodeElements pRulegenNode;
 	private final RulegenEdgeElements pRulegenEdge;
+	private final ReportInterpreterSpecElements pReportInterpreterSpec;
 	private final EvolverSpecElements pEvolverSpec;
 	private final MultiplicityRefinementSpecElements pMultiplicityRefinementSpec;
 	private final EvolverParameterElements pEvolverParameter;
@@ -973,6 +1022,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		this.pRulegenSpec = new RulegenSpecElements();
 		this.pRulegenNode = new RulegenNodeElements();
 		this.pRulegenEdge = new RulegenEdgeElements();
+		this.pReportInterpreterSpec = new ReportInterpreterSpecElements();
 		this.pEvolverSpec = new EvolverSpecElements();
 		this.pMultiplicityRefinementSpec = new MultiplicityRefinementSpecElements();
 		this.pEvolverParameter = new EvolverParameterElements();
@@ -1033,6 +1083,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	//	refinements+=MultiplicityRefinementSpec*
 	//	objectives+=ObjectiveInterpreterSpec+
 	//	constraints+=ConstraintInterpreterSpec*
+	//	reports+=ReportInterpreterSpec*
 	//	evolvers+=EvolverSpec*
 	//	rulegen+=RulegenSpec*
 	//	optimisation=OptimisationSpec;
@@ -1157,6 +1208,16 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		return getRulegenEdgeAccess().getRule();
 	}
 	
+	//ReportInterpreterSpec:
+	//	"report" reportName=ValidID "{" reportSpec=STRING "}";
+	public ReportInterpreterSpecElements getReportInterpreterSpecAccess() {
+		return pReportInterpreterSpec;
+	}
+	
+	public ParserRule getReportInterpreterSpecRule() {
+		return getReportInterpreterSpecAccess().getRule();
+	}
+	
 	//EvolverSpec:
 	//	evolverType=EvolverType "using" rule_location=URL
 	//	"unit" unit=STRING ("parameters" '{'
@@ -1219,7 +1280,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	//	"algorithm" algorithmName=ALGORITHM_NAME
 	//	"variation" algorithmVariation=AlgorithmVariation
 	//	"evolutions" algorithmEvolutions=INT
-	//	"population" algorithmPopulation=INT ("experiments" algorithmExperiments=INT)?;
+	//	"population" algorithmPopulation=INT ("batches" algorithmBatches=INT)?;
 	public OptimisationSpecElements getOptimisationSpecAccess() {
 		return pOptimisationSpec;
 	}

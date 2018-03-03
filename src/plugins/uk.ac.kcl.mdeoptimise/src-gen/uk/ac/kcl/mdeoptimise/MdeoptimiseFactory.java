@@ -105,6 +105,15 @@ public interface MdeoptimiseFactory extends EFactory
   RulegenEdge createRulegenEdge();
 
   /**
+   * Returns a new object of class '<em>Report Interpreter Spec</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Report Interpreter Spec</em>'.
+   * @generated
+   */
+  ReportInterpreterSpec createReportInterpreterSpec();
+
+  /**
    * Returns a new object of class '<em>Evolver Spec</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

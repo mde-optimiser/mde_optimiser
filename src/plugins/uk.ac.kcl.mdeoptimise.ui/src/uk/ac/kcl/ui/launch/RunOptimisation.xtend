@@ -64,7 +64,7 @@ class RunOptimisation {
 				if(optimisationModel !== null){
 					
 					var experimentId = 0;
-	            	do {	
+	            	do {
 	            		val startTime = System.nanoTime;
 	            		var optimisationInterpreter = new OptimisationInterpreter(moptProjectPath, optimisationModel);
 	            		val optimisationOutcome = optimisationInterpreter.start();
@@ -78,7 +78,8 @@ class RunOptimisation {
 	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome, generatedRules))		
 	            		
 	            		experimentId++
-					} while(experimentId < optimisationModel.optimisation.algorithmExperiments);
+					
+					} while(experimentId < optimisationModel.optimisation.algorithmBatches);
 
 	            	
 	            	mdeoResultsOutput.saveOutcome();

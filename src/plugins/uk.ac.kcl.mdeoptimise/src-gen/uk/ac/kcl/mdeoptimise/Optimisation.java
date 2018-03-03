@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getRefinements <em>Refinements</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getObjectives <em>Objectives</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getConstraints <em>Constraints</em>}</li>
+ *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getReports <em>Reports</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getEvolvers <em>Evolvers</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getRulegen <em>Rulegen</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getOptimisation <em>Optimisation</em>}</li>
@@ -158,6 +159,22 @@ public interface Optimisation extends EObject
    * @generated
    */
   EList<ConstraintInterpreterSpec> getConstraints();
+
+  /**
+   * Returns the value of the '<em><b>Reports</b></em>' containment reference list.
+   * The list contents are of type {@link uk.ac.kcl.mdeoptimise.ReportInterpreterSpec}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Reports</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Reports</em>' containment reference list.
+   * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getOptimisation_Reports()
+   * @model containment="true"
+   * @generated
+   */
+  EList<ReportInterpreterSpec> getReports();
 
   /**
    * Returns the value of the '<em><b>Evolvers</b></em>' containment reference list.
