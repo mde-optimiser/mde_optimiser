@@ -18,6 +18,7 @@ import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.node.CreateNodeRuleComma
 import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.node.CreateNodeIterativeRepairManyRuleCommand
 import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.node.CreateNodeIterativeRepairRuleCommand
 import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.edge.AddEdgeRuleCommand
+import java.util.HashMap
 
 class RulesGenerator {
 	
@@ -37,12 +38,14 @@ class RulesGenerator {
 		this.ruleSpecs = rulegenSpecs;
 		this.refinedMetamodelWrapper = new RefinedMetamodelWrapper(metamodel, refinedMultiplicities)
 		this.rulesGenerationList = new ArrayList<IRuleGenerationCommand>();
+		
+		this.analyseMetamodel();
 	}
 	
 	def void analyseMetamodel(){
 		
 		val metamodels = new Stack<EPackage>();
-		metamodels.add(this.metamodel)
+		metamodels.add(this.refinedMetamodelWrapper.refinedMetamodel);
 		
 		
 		metamodelAnalyser = new EClassifierInfoManagement();
@@ -61,27 +64,32 @@ class RulesGenerator {
 		
 	}
 	
-	def List<Module> getGeneratedRules(){
+	def EPackage getRefinedMetamodel(){
+		return refinedMetamodelWrapper.refinedMetamodel;
+	}
+	
+	def Map<EPackage, List<Module>> getGeneratedRules(){
 		
-		val generatedRules = new ArrayList<Module>();
+		val generatedRules = new HashMap<EPackage, List<Module>>();
 		
 		ruleSpecs.forEach[ruleSpec |
-			
-			
+				
 			var node = refinedMetamodelWrapper.getNode(ruleSpec.getNode);
 			
 			//Generate nodes
 			if(ruleSpec.isNode){
 				
-				generatedRules.addAll(generateNodeRules(node, ruleSpec.actions, this.refinedMetamodelWrapper, this.metamodelAnalyser))
+				generateNodeRules(node, ruleSpec.actions, this.refinedMetamodelWrapper, this.metamodelAnalyser)
 			
 			} else {
 				var edge = refinedMetamodelWrapper.getEdge(ruleSpec.getNode, ruleSpec.edge)
-				generatedRules.addAll(generateEdgeRules(node, edge, ruleSpec.actions, this.refinedMetamodelWrapper, this.metamodelAnalyser))
+				generateEdgeRules(node, edge, ruleSpec.actions, this.refinedMetamodelWrapper, this.metamodelAnalyser)
 			}	
 		]
 		
-		return this.runRuleGenerationCommands
+		generatedRules.put(getRefinedMetamodel(), runRuleGenerationCommands());
+		
+		return generatedRules;
 	}
 	
 	//TODO Perhaps not the best name?
@@ -112,6 +120,8 @@ class RulesGenerator {
 	
 	def List<Module> generateNodeRules(EClass node, String actions, RefinedMetamodelWrapper refinedMetamodelWrapper, 
 		EClassifierInfoManagement metamodelAnalyser){
+			
+			
 		
 		var references = refinedMetamodelWrapper.getBidirectionalReferences(node);
 		
@@ -122,12 +132,12 @@ class RulesGenerator {
 			generate(new CreateNodeRuleCommand(node, refinedMetamodelWrapper, metamodelAnalyser))
 			
 			if(refinedMetamodelWrapper.hasEdgesForSingleRepair(node)) {
-				generate(new CreateNodeIterativeRepairRuleCommand(node, refinedMetamodelWrapper, metamodelAnalyser))
+				//generate(new CreateNodeIterativeRepairRuleCommand(node, refinedMetamodelWrapper, metamodelAnalyser))
 				//generate delete
 			}
 				
 			if(refinedMetamodelWrapper.hasEdgesForMultiRepair(node)){
-				generate(new CreateNodeIterativeRepairManyRuleCommand(node, refinedMetamodelWrapper, metamodelAnalyser))	
+				//generate(new CreateNodeIterativeRepairManyRuleCommand(node, refinedMetamodelWrapper, metamodelAnalyser))	
 				//generate delete
 			}
 			
@@ -137,7 +147,7 @@ class RulesGenerator {
 			//opposite lb = 1 and ub > 1 but not *
 				//lb repair many
 			//Generate create lb repair
-			//Generate create lb repair many
+			//Generate create lb repair many		
 		}
 		
 		if(actions.equals("CREATE")){
@@ -151,10 +161,13 @@ class RulesGenerator {
 			if(refinedMetamodelWrapper.hasEdgesForMultiRepair(node)){
 				generate(new CreateNodeIterativeRepairManyRuleCommand(node, refinedMetamodelWrapper, metamodelAnalyser))	
 			}
+			
 		}
 		
 		if(actions.equals("DELETE")){
 			//just delete
 		}
+		
+		//Generate operations for all edges of this node
 	}
 }
