@@ -21,8 +21,8 @@ import org.eclipse.emf.ecore.xmi.XMIResource
 import org.sidiff.common.emf.extensions.impl.EClassifierInfoManagement
 import java.util.Stack
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RefinedMetamodelWrapper
-import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.ChangeEdgeRuleCommand
 import uk.ac.kcl.mdeoptimise.BasePathSpec
+import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.edge.ChangeEdgeRuleCommand
 
 @RunWith(XtextRunner)
 class ChangeEdgeRuleCommandTests {
@@ -108,7 +108,10 @@ class ChangeEdgeRuleCommandTests {
 		val metamodelAnalyser = new EClassifierInfoManagement();
 		metamodelAnalyser.gatherInformation(false, metamodels)
 		
-		var createNodeRuleCommand = new ChangeEdgeRuleCommand(multiplicityB, refinedMetamodelWrapper.refinedMetamodel, metamodelAnalyser);
+		var node = refinedMetamodelWrapper.getNode("Class");
+		var edge = refinedMetamodelWrapper.getEdge("Class", "encapsulates");
+		
+		var createNodeRuleCommand = new ChangeEdgeRuleCommand(node, edge, refinedMetamodelWrapper, metamodelAnalyser);
 		
 		val module = createNodeRuleCommand.generate();
 

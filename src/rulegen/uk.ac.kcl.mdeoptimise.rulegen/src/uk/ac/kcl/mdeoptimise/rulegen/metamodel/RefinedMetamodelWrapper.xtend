@@ -147,4 +147,24 @@ class RefinedMetamodelWrapper {
 		
 		return node.EAllReferences.filter[reference | reference.EOpposite != null].toList
 	}
+	
+	/**
+	 * Checks if the specified node has any outgoing edges requiring a multi repair
+	 */
+	def boolean hasEdgesForSingleRepair(EClass node){
+		
+		return node.EAllReferences.filter[reference | reference.EOpposite != null].filter[reference |
+			reference.lowerBound == 1
+		].empty
+	}
+	
+	/**
+	 * Checks if the specified node has any outgoing edges requiring a multi repair
+	 */
+	def boolean hasEdgesForMultiRepair(EClass node){
+		
+		return node.EAllReferences.filter[reference | reference.EOpposite != null].filter[reference |
+			reference.lowerBound > 1
+		].empty
+	}
 }

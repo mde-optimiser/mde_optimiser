@@ -1,33 +1,31 @@
-package uk.ac.kcl.mdeoptimise.rulegen.generator.commands
+package uk.ac.kcl.mdeoptimise.rulegen.generator.commands.node
 
-import org.eclipse.emf.ecore.EPackage
+import java.util.ArrayList
+import java.util.List
+import org.eclipse.emf.ecore.EClass
+import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.henshin.model.HenshinFactory
 import org.eclipse.emf.henshin.model.Rule
 import org.sidiff.common.emf.extensions.impl.EClassifierInfoManagement
 import org.sidiff.common.henshin.HenshinRuleAnalysisUtilEx
 import org.sidiff.serge.configuration.Configuration.OperationType
+import org.sidiff.serge.configuration.GlobalConstants
 import org.sidiff.serge.core.Common
 import org.sidiff.serge.filter.ElementFilter
 import org.sidiff.serge.generators.conditions.UpperBoundCheckGenerator
 import uk.ac.kcl.mdeoptimise.rulegen.generator.IRuleGenerationCommand
-import uk.ac.kcl.mdeoptimise.rulegen.metamodel.Multiplicity
-import org.sidiff.serge.configuration.GlobalConstants
-import org.eclipse.emf.ecore.EClass
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RefinedMetamodelWrapper
-import java.util.List
-import org.eclipse.emf.ecore.EReference
-import java.util.ArrayList
 
-class CreateNodeIterativeRepairManyRuleCommand implements IRuleGenerationCommand {
+class CreateNodeIterativeRepairRuleCommand implements IRuleGenerationCommand {
 	
 	RefinedMetamodelWrapper refinedMetamodelWrapper;
 	EClassifierInfoManagement metamodelAnalyser;
 	EClass node;
 
-	new(String node, RefinedMetamodelWrapper refinedMetamodelWrapper, EClassifierInfoManagement metamodelAnalyser){
+	new(EClass node, RefinedMetamodelWrapper refinedMetamodelWrapper, EClassifierInfoManagement metamodelAnalyser){
 		this.refinedMetamodelWrapper = refinedMetamodelWrapper;
 		this.metamodelAnalyser = metamodelAnalyser;
-		this.node = refinedMetamodelWrapper.getNode(node); 
+		this.node = node; 
 	}
 	
 	override generate() {
@@ -43,7 +41,7 @@ class CreateNodeIterativeRepairManyRuleCommand implements IRuleGenerationCommand
 		module.getImports().add(refinedMetamodelWrapper.refinedMetamodel)
 		
 		//TODO Test this case with a metamodel variant that has more than one container for the same 
-		//classifier. The name should be unique but unclear about this yet
+		//classifier
 		val classifierInfo = metamodelAnalyser.getAllParentContext(node, true);
 		
 		for(var contextReferenceId = 0; contextReferenceId < classifierInfo.keySet.size; contextReferenceId++) {
@@ -95,7 +93,7 @@ class CreateNodeIterativeRepairManyRuleCommand implements IRuleGenerationCommand
 		
 		bidirectionalReferences.forEach[reference | 
 			
-			if(reference.EOpposite.lowerBound > 0 && reference.EOpposite.upperBound > 0){
+			if(reference.getEOpposite.lowerBound > 0 && reference.getEOpposite.upperBound > 0){
 				validReferences.add(reference);
 			}
 		]
@@ -105,6 +103,7 @@ class CreateNodeIterativeRepairManyRuleCommand implements IRuleGenerationCommand
 		}
 	}
 	
+	//Fix the LB requirement for the created node by taking one node required for the LB from lb nodes of the same type
 	private def void applyRepairOperations(Rule rule, List<EReference> edges){
 		
 		
@@ -112,17 +111,18 @@ class CreateNodeIterativeRepairManyRuleCommand implements IRuleGenerationCommand
 		
 		//Get the created node from the rule graphs
 		val createdNode = HenshinRuleAnalysisUtilEx.getRHSMinusLHSNodes(rule).get(0);
-			
+		
+		//Create existing node A from which to take the existing target node
+		val existingsourceNodeName = Common.getFreeNodeName(GlobalConstants.NEWTGT, rule);
+		val existingSourceNode = HenshinRuleAnalysisUtilEx.createPreservedNode(rule, existingsourceNodeName, this.node);
+		
+		
 		edges.forEach[edge | 
 			createdNode.getOutgoing(edge).forEach[ outgoingEdge |
 				
 				//Find existing target node
 				var existingTargetNode =  HenshinRuleAnalysisUtilEx.findCorrespondingNodeInLHS(outgoingEdge.getTarget())
-			
-				//Create existing node A from which to take the existing target node
-				val existingsourceNodeName = Common.getFreeNodeName(GlobalConstants.NEWTGT, rule);
-				val existingSourceNode = HenshinRuleAnalysisUtilEx.createPreservedNode(rule, existingsourceNodeName, this.node);
-		
+				
 				//Create a delete edge between existing node A and an existing node B
 				HenshinRuleAnalysisUtilEx.createDeleteEdge(existingSourceNode.lhsNode, existingTargetNode, edge, rule);
 			]
@@ -130,11 +130,13 @@ class CreateNodeIterativeRepairManyRuleCommand implements IRuleGenerationCommand
 		
 	}
 	
+	
 	//Apply the NACs
 	private def void applyRuleNacConditions(Rule rule){
 		
-		new LowerBoundManyRepairCheckGenerator(rule).generate();
+		new uk.ac.kcl.mdeoptimise.rulegen.generator.commands.LowerBoundManyRepairCheckGenerator(rule).generate();
 		new UpperBoundCheckGenerator(rule).generate();
 	}
 	
 }
+	

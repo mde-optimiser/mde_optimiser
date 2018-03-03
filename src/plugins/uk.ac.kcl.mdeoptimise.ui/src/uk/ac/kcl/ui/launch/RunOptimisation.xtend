@@ -13,6 +13,7 @@ import uk.ac.kcl.ui.output.MDEOBatch
 import uk.ac.kcl.ui.output.MDEOResultsOutput
 import java.util.Date
 import org.eclipse.core.runtime.Path
+import java.util.List
 
 class RunOptimisation {
 	
@@ -70,9 +71,11 @@ class RunOptimisation {
 	            		val endTime = System.nanoTime;
 	            		
 	            		val experimentDuration = (endTime - startTime) / 1000000
-	      
+	      				
+	      				var generatedRules = optimisationInterpreter.rulegenOperators;
+	      				
 	            		//TODO Output generated mutation operators for each experiment? or each batch?
-	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome))		
+	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome, generatedRules))		
 	            		
 	            		experimentId++
 					} while(experimentId < optimisationModel.optimisation.algorithmExperiments);

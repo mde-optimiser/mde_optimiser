@@ -8,5 +8,6 @@ interface NamingConstants {
 	public final String CREATE_prefix = "Create_"
 	public final String DELETE_prefix = "Delete_"
 	public final String CHANGE_prefix = "Change_"
+	public final String SWAP_prefix = "Swap_"
 
 }

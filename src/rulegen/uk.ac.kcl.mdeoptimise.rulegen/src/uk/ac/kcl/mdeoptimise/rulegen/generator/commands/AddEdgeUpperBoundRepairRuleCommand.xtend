@@ -1,26 +1,27 @@
 package uk.ac.kcl.mdeoptimise.rulegen.generator.commands
 
-import uk.ac.kcl.mdeoptimise.rulegen.generator.IRuleGenerationCommand
-import uk.ac.kcl.mdeoptimise.rulegen.metamodel.Multiplicity
-import org.eclipse.emf.henshin.model.HenshinFactory
-import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.EClass
-import org.eclipse.emf.henshin.model.Rule
-import org.sidiff.common.henshin.HenshinRuleAnalysisUtilEx
-import org.sidiff.common.emf.extensions.impl.EClassifierInfoManagement
 import org.eclipse.emf.ecore.EReference
+import org.eclipse.emf.henshin.model.HenshinFactory
+import org.eclipse.emf.henshin.model.Rule
+import org.sidiff.common.emf.extensions.impl.EClassifierInfoManagement
+import org.sidiff.common.henshin.HenshinRuleAnalysisUtilEx
 import org.sidiff.serge.configuration.GlobalConstants
 import org.sidiff.serge.generators.conditions.LowerBoundCheckGenerator
 import org.sidiff.serge.generators.conditions.UpperBoundCheckGenerator
+import uk.ac.kcl.mdeoptimise.rulegen.generator.IRuleGenerationCommand
+import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RefinedMetamodelWrapper
 
 class AddEdgeUpperBoundRepairRuleCommand implements IRuleGenerationCommand {
 	
-	Multiplicity multiplicity;
-	EPackage refinedMetamodelWrapper;
+	RefinedMetamodelWrapper refinedMetamodelWrapper;
 	EClassifierInfoManagement metamodelAnalyser;
+	EClass node;
+	EReference edge;
 	
-	new(Multiplicity multiplicity, EPackage refinedMetamodelWrapper, EClassifierInfoManagement metamodelAnalyser){
-		this.multiplicity = multiplicity;
+	new(EClass node, EReference edge, RefinedMetamodelWrapper refinedMetamodelWrapper, EClassifierInfoManagement metamodelAnalyser){
+		this.node = node;
+		this.edge = edge;
 		this.refinedMetamodelWrapper = refinedMetamodelWrapper;
 		this.metamodelAnalyser = metamodelAnalyser;
 	}
@@ -32,13 +33,13 @@ class AddEdgeUpperBoundRepairRuleCommand implements IRuleGenerationCommand {
 		
 		//Set module name
 		module.setName("ADD_EdgeRules")
-		module.setDescription("Adds to " + multiplicity.targetNode.name + " edge of type " + multiplicity.EReference.name)
+		module.setDescription("Adds to " + edge.EType.name + " edge of type " + edge.name)
 		
 		//Set module metamodels
-		module.getImports().add(refinedMetamodelWrapper)
+		module.getImports().add(refinedMetamodelWrapper.refinedMetamodel)
 		
 		//TODO Test this case with a metamodel variant that has more than one container for the same classifier
-		val classifierInfo = metamodelAnalyser.getAllParentContext(multiplicity.targetNode, true);
+		val classifierInfo = metamodelAnalyser.getAllParentContext(edge.EType, true);
 		
 		for(var contextReferenceId = 0; contextReferenceId < classifierInfo.keySet.size; contextReferenceId++) {
 			
@@ -47,7 +48,7 @@ class AddEdgeUpperBoundRepairRuleCommand implements IRuleGenerationCommand {
 			//Create a new rule in the module for each context container of the refined multiplicity node	
 			for(var contextId = 0; contextId < context.size; contextId++){
 				
-				val rule = createRule(multiplicity.targetNode as EClass, multiplicity.EReference, multiplicity.sourceNode as EClass)
+				val rule = createRule(edge.EType as EClass, edge, node)
 				
 				applyRuleNacConditions(rule);
 				

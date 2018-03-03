@@ -21,9 +21,9 @@ import org.eclipse.emf.ecore.xmi.XMIResource
 import org.sidiff.common.emf.extensions.impl.EClassifierInfoManagement
 import java.util.Stack
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RefinedMetamodelWrapper
-import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.AddEdgeRuleCommand
 import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.AddEdgeUpperBoundRepairRuleCommand
 import uk.ac.kcl.mdeoptimise.BasePathSpec
+import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.edge.AddEdgeRuleCommand
 
 @RunWith(XtextRunner)
 class AddEdgeRuleCommandTests {
@@ -109,43 +109,14 @@ class AddEdgeRuleCommandTests {
 		val metamodelAnalyser = new EClassifierInfoManagement();
 		metamodelAnalyser.gatherInformation(false, metamodels)
 		
-		var createNodeRuleCommand = new AddEdgeRuleCommand(multiplicityA, refinedMetamodelWrapper.refinedMetamodel, metamodelAnalyser);
+		var node = refinedMetamodelWrapper.getNode("Class");
+		var edge = refinedMetamodelWrapper.getEdge("Class", "encapsulates");
+		
+		var createNodeRuleCommand = new AddEdgeRuleCommand(node, edge, refinedMetamodelWrapper, metamodelAnalyser);
 		
 		val module = createNodeRuleCommand.generate();
 		
 		writeModel(module, "src/resources/case1/", "case_1_createEdge.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
-		
-		assertEquals("ADD_EdgeRules", module.name);
-		assertEquals(1, module.allRules.size);
-	}
-	
-	@Test
-	def void assertThatCase1AddEdgeUppberBoundRepairRulesAreGenerated(){
-		
-				//Original metamodel with 0..* 0..* multiplicities
-		fakeOptimisationModel()
-		
-		var multiplicityA = new Multiplicity("Class", "encapsulates", 1, 1, getMetamodel);
-		var multiplicityB = new Multiplicity("Feature", "isEncapsulatedBy", 1, 1, getMetamodel);
-		
-		var multiplicities = new LinkedList<Multiplicity>();
-		multiplicities.add(multiplicityA);
-		multiplicities.add(multiplicityB);
-		
-		//Refined metamodel wrapper containing the metamodel with the refined multiplicities
-		val refinedMetamodelWrapper = new RefinedMetamodelWrapper(getMetamodel, multiplicities)
-		
-		val metamodels = new Stack();
-		metamodels.add(refinedMetamodelWrapper.refinedMetamodel);
-		
-		val metamodelAnalyser = new EClassifierInfoManagement();
-		metamodelAnalyser.gatherInformation(false, metamodels)
-		
-		var createNodeRuleCommand = new AddEdgeUpperBoundRepairRuleCommand(multiplicityA, refinedMetamodelWrapper.refinedMetamodel, metamodelAnalyser);
-		
-		val module = createNodeRuleCommand.generate();
-		
-		writeModel(module, "src/resources/case1/", "case_1_add_edge_upper_bound_repair.henshin", refinedMetamodelWrapper.refinedMetamodel, refinedMetamodelWrapper)
 		
 		assertEquals("ADD_EdgeRules", module.name);
 		assertEquals(1, module.allRules.size);

@@ -56,7 +56,6 @@ class DeleteNodeLBRepairRuleCommand implements IRuleGenerationCommand {
 		return module
 	}
 
-
 	//Delete node A and move the B node connected through an edge of type f to 
 	//another node of type A with a NAC forbidding more than one nodes of type B connected to it through and edge of type f;
 	private def void applyRepairOperations(Rule rule){
@@ -85,5 +84,4 @@ class DeleteNodeLBRepairRuleCommand implements IRuleGenerationCommand {
 		new LowerBoundCheckGenerator(rule).generate();
 		new UpperBoundCheckGenerator(rule).generate();
 	}
-
 }
