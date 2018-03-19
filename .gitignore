@@ -35,6 +35,7 @@ local.properties
 gwt-unitCache/
 war/mdeo_status_dashboard_1_0/
 war/WEB-INF/deploy/
+*.gwt.rpc
 
 gen/
 profiler/

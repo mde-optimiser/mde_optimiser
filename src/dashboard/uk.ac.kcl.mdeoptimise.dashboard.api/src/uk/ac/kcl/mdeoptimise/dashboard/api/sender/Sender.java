@@ -30,10 +30,10 @@ public class Sender {
 	final String QUEUE_NAME = "queue";
 	
 	// Use the following connection name when running via Docker.
-	final String CONNECTION_NAME = "amqp://queue:5672";
+	//final String CONNECTION_NAME = "amqp://queue:5672";
 	
 	// Use the following connection name when running locally.
-	//final String CONNECTION_NAME = "amqp://localhost:5672";
+	final String CONNECTION_NAME = "amqp://localhost:5672";
 
 
     public void sendMessage(String message) {

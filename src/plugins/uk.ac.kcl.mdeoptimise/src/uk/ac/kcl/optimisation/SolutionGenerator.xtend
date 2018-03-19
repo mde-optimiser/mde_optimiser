@@ -32,6 +32,7 @@ class SolutionGenerator {
     private EPackage theMetamodel = null
 	private List<Unit> breedingOperators
 	private List<Unit> mutationOperators
+	private String experimentId
 	
 	private Optimisation optimisationModel
 	private IEvolverParametersFactory evolverParametersFactory
@@ -49,13 +50,14 @@ class SolutionGenerator {
 	
 	private Sender sender
 	
-	new(Optimisation model, List<Unit> breedingOperators, List<Unit> mutationOperators, IModelProvider modelProvider, EPackage metamodel){
+	new(Optimisation model, List<Unit> breedingOperators, List<Unit> mutationOperators, IModelProvider modelProvider, EPackage metamodel, String experimentId){
 		this.optimisationModel = model
 		this.breedingOperators = breedingOperators
 		this.mutationOperators = mutationOperators
 		this.initialModelProvider = modelProvider
 		this.theMetamodel = metamodel
 		this.engine = new EngineImpl
+		this.experimentId = experimentId
 		
 		engine.getOptions().put(Engine.OPTION_DETERMINISTIC, false);
 		
@@ -66,9 +68,13 @@ class SolutionGenerator {
 		//Disable henshin warnings
 		ChangeImpl.PRINT_WARNINGS = false;
 		this.sender = new Sender()
-		var message = JsonEncoder.generateWorkerRegistrationText(model)
+		var message = JsonEncoder.generateWorkerRegistrationText(model, experimentId)
 		sender.sendMessage(message)
 		System.out.println("[MDEO] worker registration message sent: " + message);
+	}
+	
+	def String getExperimentId() {
+		return this.experimentId;
 	}
 
     /**

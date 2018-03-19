@@ -3,7 +3,12 @@ package uk.ac.kcl.mdeoptimise.dataloader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.stream.IntStream;
 
 import org.json.JSONArray;
@@ -23,17 +28,25 @@ class Database {
 	private enum CriteriaType {OBJECTIVE, CONSTRAINT}
 	
     // SQL statements for creating new tables.
+	public static final String CREATE_WORKER = 
+    		"CREATE TABLE IF NOT EXISTS worker (mac_address VARCHAR(255) NOT NULL PRIMARY KEY)";
+	public static final String CREATE_MOPT_SPECS = 
+    		"CREATE TABLE IF NOT EXISTS mopt_specs (mopt_id INT NOT NULL PRIMARY KEY, "
+    		+ "model VARCHAR(255) NOT NULL, metamodel VARCHAR(255) NOT NULL)";
     public static final String CREATE_EXPERIMENT = 
-    		"CREATE TABLE IF NOT EXISTS experiment (worker_id INT NOT NULL, worker_name VARCHAR(255), "
-    		+ "experiment_id VARCHAR(255) NOT NULL, metamodel VARCHAR(255), model VARCHAR(255))";
+    		"CREATE TABLE IF NOT EXISTS experiment (experiment_id VARCHAR(255) NOT NULL, "
+    		+ "run_id int NOT NULL IDENTITY(1,1) PRIMARY KEY, worker_id VARCHAR(255) NOT NULL, "
+    		+ "FOREIGN KEY (worker_id) REFERENCES worker(mac_address), mopt_id INT NOT NULL, "
+    		+ "FOREIGN KEY (mopt_id) REFERENCES mopt_specs(mopt_id), start_time TIMESTAMP NOT NULL, "
+    		+ "end_time TIMESTAMP);";
     public static final String CREATE_OBJECTIVE = 
-    		"CREATE TABLE IF NOT EXISTS objective (worker_id INT NOT NULL, experiment_id VARCHAR(255) NOT NULL, "
+    		"CREATE TABLE IF NOT EXISTS objective (worker_id VARCHAR(255) NOT NULL, experiment_id VARCHAR(255) NOT NULL, "
     		+ "objective_name VARCHAR(255) NOT NULL, objective_type VARCHAR(255))";
     public static final String CREATE_CONSTRAINT = 
-    		"CREATE TABLE IF NOT EXISTS constraint (worker_id INT NOT NULL, experiment_id VARCHAR(255) NOT NULL, "
+    		"CREATE TABLE IF NOT EXISTS constraint (worker_id VARCHAR(255) NOT NULL, experiment_id VARCHAR(255) NOT NULL, "
     		+ "constraint_name VARCHAR(255) NOT NULL, constraint_type VARCHAR(255))";
     public static final String CREATE_SOLUTION = 
-    		"CREATE TABLE IF NOT EXISTS solution (worker_id INT NOT NULL, experiment_id VARCHAR(255) NOT NULL, "
+    		"CREATE TABLE IF NOT EXISTS solution (worker_id VARCHAR(255) NOT NULL, experiment_id VARCHAR(255) NOT NULL, "
     		+ "run_id INT, time_taken INT, criteria_type VARCHAR(255), criteria_name VARCHAR(255), "
     		+ "criteria_value FLOAT(8))";
 	
@@ -47,6 +60,7 @@ class Database {
 	 */
 	static void insertIntoDatabase(String message) throws Exception {
 		if (conn == null) { connectToDatabase(); }
+		initialiseSchema();
 		
 		JSONObject messageJSON = new JSONObject(message);
 
@@ -72,7 +86,6 @@ class Database {
 		Class.forName("org.h2.Driver"); 
 		conn = DriverManager.getConnection(Consts.DATABASE_CONNECTION_URL, Consts.DATABASE_USERNAME, Consts.DATABASE_PASSWORD);
 		System.out.println("[DataLoader] Database connected");
-		initialiseSchema();
 	}
 
 	/**
@@ -83,18 +96,43 @@ class Database {
 	private static void initialiseSchema() throws SQLException {
 		System.out.println("[DataLoader] Creating new database schema.");
 		PreparedStatement statement = conn.prepareStatement(
-				CREATE_EXPERIMENT +"; "+ CREATE_OBJECTIVE +"; "+ CREATE_CONSTRAINT +"; "+ CREATE_SOLUTION +"; ");
+				CREATE_WORKER +"; "+ CREATE_MOPT_SPECS +"; "+ CREATE_EXPERIMENT +"; "+ CREATE_OBJECTIVE +"; "+ CREATE_CONSTRAINT +"; "+ CREATE_SOLUTION +"; ");
 		statement.executeUpdate();
 		conn.commit();
 	}
 
-	private static void insertWorkerRegister(JSONObject workerJSON) throws SQLException {
-		PreparedStatement statement = conn.prepareStatement("INSERT INTO experiment VALUES(?, ?, ?, ?, ?);");
-		statement.setInt(1, workerJSON.getInt("worker_id"));
-		statement.setString(2, workerJSON.getString("worker_name"));
-		statement.setString(3, workerJSON.getString("experiment_id"));
-		statement.setString(4, workerJSON.getString("metamodel"));
-		statement.setString(5, workerJSON.getString("model"));
+	private static void insertWorkerRegister(JSONObject workerJSON) throws SQLException, JSONException, ParseException {
+		String workerId = workerJSON.getString("worker_id");
+		ResultSet resultSet = conn.createStatement().executeQuery("SELECT * FROM worker WHERE mac_address='" + workerId + "';");
+		if(!resultSet.next()){
+			PreparedStatement workerStatement = conn.prepareStatement("INSERT INTO worker VALUES('" + workerId + "');");
+			workerStatement.execute();
+			System.out.println("[DataLoader] WORKER table updated with mac_address: " + workerId);
+		}
+		else
+			System.out.println("[DataLoader] WORKER table already contains mac_address: " + workerId);
+
+		int moptId = workerJSON.getInt("mopt_id");
+		ResultSet moptResultSet = conn.createStatement().executeQuery("SELECT * FROM mopt_specs WHERE mopt_id='" + moptId + "';");
+		if(!moptResultSet.next()){
+			PreparedStatement moptStatement = conn.prepareStatement("INSERT INTO mopt_specs VALUES(?, ?, ?);");
+			System.out.println("[DataLoader] MOPT_SPECS table updated: " + workerJSON);
+			moptStatement.setInt(1, moptId);
+			moptStatement.setString(2, workerJSON.getString("model"));
+			moptStatement.setString(3, workerJSON.getString("metamodel"));
+			moptStatement.execute();
+		}
+		else
+			System.out.println("[DataLoader] MOPT_SPECS table already contains mopt_id: " + moptId);
+
+		PreparedStatement statement = conn.prepareStatement("INSERT INTO experiment(experiment_id, worker_id, mopt_id, start_time) VALUES(?, ?, ?, ?);");
+		statement.setString(1, workerJSON.getString("experiment_id"));
+		statement.setString(2, workerJSON.getString("worker_id"));
+		statement.setInt(3, workerJSON.getInt("mopt_id"));
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
+	    Date parsedDate = dateFormat.parse(workerJSON.getString("start_time"));
+	    Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
+		statement.setTimestamp(4, timestamp);
 		statement.execute();
 
 		System.out.println("[DataLoader] EXPERIMENT table updated: " + workerJSON);
@@ -119,7 +157,7 @@ class Database {
 					try {
 						PreparedStatement objectiveStatement = conn
 								.prepareStatement("INSERT INTO " + criteriaType + " VALUES(?, ?, ?, ?);");
-						objectiveStatement.setInt(1, workerJSON.getInt("worker_id"));
+						objectiveStatement.setString(1, workerJSON.getString("worker_id"));
 						objectiveStatement.setString(2, workerJSON.getString("experiment_id"));
 						objectiveStatement.setString(3, criterionJSON.getString("name"));
 						objectiveStatement.setString(4, criterionJSON.getString("type"));
@@ -131,13 +169,23 @@ class Database {
 				});
 	}
 
-	private static void insertFinalSolution(JSONObject solutionJSON) throws SQLException {
+	private static void insertFinalSolution(JSONObject solutionJSON) throws SQLException, JSONException, ParseException {
+		// Update experiment end_time
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
+	    Date parsedDate = dateFormat.parse(solutionJSON.getString("end_time"));
+	    Timestamp endTime = new java.sql.Timestamp(parsedDate.getTime());
+		PreparedStatement statement = conn.prepareStatement("UPDATE experiment SET end_time='" + endTime + 
+				"' WHERE experiment_id='" + solutionJSON.getString("experiment_id") + "';");
+		System.out.println("Adding end time to experiment id: " + solutionJSON.getString("experiment_id") + " end time: " + endTime);
+		statement.execute();
+		System.out.println("[DataLoader] EXPERIMENT table updated (end_time)");
+		
 		JSONArray solutionsArray = solutionJSON.getJSONArray("solutions");
 		IntStream.range(0, solutionsArray.length()).mapToObj(index -> (JSONObject) solutionsArray.get(index))
 				.forEach(solution -> {
 					try {
-						insertFitnessValue(CriteriaType.OBJECTIVE, solution.getJSONArray("objectives"), solutionJSON);
-						insertFitnessValue(CriteriaType.CONSTRAINT, solution.getJSONArray("constraints"), solutionJSON);
+						//insertFitnessValue(CriteriaType.OBJECTIVE, solution.getJSONArray("objectives"), solutionJSON);
+						//insertFitnessValue(CriteriaType.CONSTRAINT, solution.getJSONArray("constraints"), solutionJSON);
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
@@ -155,7 +203,7 @@ class Database {
 						objectiveStatement.setInt(1, solutionJSON.getInt("worker_id"));
 						objectiveStatement.setString(2, solutionJSON.getString("experiment_id"));
 						objectiveStatement.setInt(3, solutionJSON.getInt("run_id"));
-						objectiveStatement.setInt(4, solutionJSON.getInt("time_taken"));
+						objectiveStatement.setInt(4, solutionJSON.getInt("end_time"));
 						objectiveStatement.setString(5, criteriaType.toString().toLowerCase());
 						objectiveStatement.setString(6, criterionJSON.getString("name"));
 						objectiveStatement.setDouble(7, criterionJSON.getDouble("value"));

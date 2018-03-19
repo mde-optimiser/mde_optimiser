@@ -12,6 +12,10 @@ import uk.ac.kcl.mdeoptimise.Optimisation
 import uk.ac.kcl.optimisation.SolutionGenerator
 import uk.ac.kcl.optimisation.UserModelProvider
 import uk.ac.kcl.optimisation.moea.MoeaOptimisation
+import uk.ac.kcl.mdeoptimise.dashboard.api.macaddress.MacAddressRetriever
+import uk.ac.kcl.mdeoptimise.dashboard.api.hashing.Hashing
+import java.text.SimpleDateFormat
+import java.util.Date
 
 class OptimisationInterpreter {
 	
@@ -34,11 +38,23 @@ class OptimisationInterpreter {
 		
 		// This model provider loads the model given by the user in the DSL
 		val userModelProvider = new UserModelProvider(getResourceSet(projectRootPath.append(model.basepath.location).toPortableString), model.model.location)
+		
+		var MacAddressRetriever macAddressRetriever = new MacAddressRetriever();
+		var macAddress = macAddressRetriever.getMacAddress();
+		var moptId = Hashing.generateMoptId(
+			model.getModel().getLocation(), 
+			model.getMetamodel().getLocation());
+		var dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
+		var date = new Date();
+		var startTime = dateFormat.format(date);
+		var experimentId = Hashing.generateExperimentId(macAddress, moptId, startTime);
+		
 		var solutionGenerator = new SolutionGenerator(model, 
 											getBreedingOperators, 
 											getMutationOperators, 
 											userModelProvider, 
-											getMetamodel);
+											getMetamodel,
+											experimentId);
 
 		var optimisation = new MoeaOptimisation()
 									.execute(model.optimisation, solutionGenerator)		

@@ -1,6 +1,9 @@
 package uk.ac.kcl.json;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -12,6 +15,8 @@ import org.json.JSONObject;
 import uk.ac.kcl.mdeoptimise.ConstraintInterpreterSpec;
 import uk.ac.kcl.mdeoptimise.ObjectiveInterpreterSpec;
 import uk.ac.kcl.mdeoptimise.Optimisation;
+import uk.ac.kcl.mdeoptimise.dashboard.api.hashing.Hashing;
+import uk.ac.kcl.mdeoptimise.dashboard.api.macaddress.MacAddressRetriever;
 import uk.ac.kcl.optimisation.moea.MoeaOptimisationSolution;
 
 /**
@@ -23,6 +28,7 @@ import uk.ac.kcl.optimisation.moea.MoeaOptimisationSolution;
 public class JsonEncoder {
 	
 	private enum MessageType {WORKER_REGISTER, FINAL_SOLUTION, INTERMEDIATE_SOLUTION}
+	private static MacAddressRetriever macAddressRetriever = new MacAddressRetriever();
 
 	/**
 	 * Generate JSON text used to send a worker registration message.
@@ -33,6 +39,7 @@ public class JsonEncoder {
 	 * 		{"worker_id":"12345",
 	 * 		"worker_name":"tamara",
 	 * 		"experiment_id":"src\/models\/cra\/",
+	 * 		"mopt_id":"ae235gfdg5",
 	 * 		"metamodel":"architectureCRA.ecore",
 	 * 		"model":"TTC_InputRDG_C.xmi",
 	 * 		"objectives":[
@@ -49,12 +56,21 @@ public class JsonEncoder {
 	 * @return String representation of a JSONObject.
 	 * @throws IOException
 	 */
-	public static String generateWorkerRegistrationText(Optimisation optimisationModel) throws IOException {
+	public static String generateWorkerRegistrationText(Optimisation optimisationModel, String experimentId) throws IOException {
 		// TODO(tamara): what are the worker name and ID?
 		JSONObject workerJSON = new JSONObject();
 		workerJSON.put("worker_name", "tamara");
-		workerJSON.put("worker_id", "12345");
-		workerJSON.put("experiment_id", optimisationModel.getBasepath().getLocation());	// experiment ID is the base path?
+		String macAddress = macAddressRetriever.getMacAddress();
+		workerJSON.put("worker_id", macAddress);
+		int moptId = Hashing.generateMoptId(
+				optimisationModel.getModel().getLocation(), 
+				optimisationModel.getMetamodel().getLocation());
+		workerJSON.put("mopt_id", moptId);
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
+		Date date = new Date();
+		String startTime = dateFormat.format(date);
+		workerJSON.put("start_time", startTime);
+		workerJSON.put("experiment_id", experimentId);	// experiment ID is the base path?
 		workerJSON.put("evolutions", new Integer(optimisationModel.getOptimisation().getAlgorithmEvolutions()));
 		workerJSON.put("population", new Integer(optimisationModel.getOptimisation().getAlgorithmPopulation()));
 		workerJSON.put("model", optimisationModel.getModel().getLocation());
@@ -81,7 +97,7 @@ public class JsonEncoder {
 	 * 		{"worker_id":"12345",
 	 * 		"experiment_id":"src\/models\/cra\/",
 	 * 		"run_id":"1",
-	 * 		"time_taken":1000,
+	 * 		"end_time":1000,
 	 * 		"solutions":[
 	 * 			{"objectives":[
 	 * 				{"name":"MinimiseCoupling","value":-1.0}
@@ -98,12 +114,16 @@ public class JsonEncoder {
 	 * @throws IOException
 	 */
 	public static String generateFinalSolutionText(Optimisation optimisationModel,
-			Iterator<MoeaOptimisationSolution> solutions) throws IOException {
+			Iterator<MoeaOptimisationSolution> solutions, String experimentId) throws IOException {
 		JSONObject solutionJSON = new JSONObject();
-		solutionJSON.put("worker_id", "12345");
-		solutionJSON.put("experiment_id", optimisationModel.getBasepath().getLocation());
+		String macAddress = macAddressRetriever.getMacAddress();
+		solutionJSON.put("worker_id", macAddress);
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
+		Date date = new Date();
+		String startTime = dateFormat.format(date);
+		solutionJSON.put("experiment_id", experimentId);
 		solutionJSON.put("run_id", 1); // TODO(tamara): What is the run ID?
-		solutionJSON.put("time_taken", 1000); // TODO(tamara): Calculate time taken.
+		solutionJSON.put("end_time", startTime);
 
 		// insert an array of solutions
 		solutionJSON.put("solutions", generateSolutionsJsonArray(solutions));

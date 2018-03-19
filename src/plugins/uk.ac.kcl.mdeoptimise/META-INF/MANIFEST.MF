@@ -39,7 +39,8 @@ Require-Bundle: org.eclipse.xtext,
  io.netty.transport;bundle-version="4.1.16",
  io.netty.transport-native-epoll;bundle-version="4.1.16",
  io.netty.transport-native-kqueue;bundle-version="4.1.16",
- io.netty.transport-native-unix-common;bundle-version="4.1.16"
+ io.netty.transport-native-unix-common;bundle-version="4.1.16",
+ uk.ac.kcl.mdeoptimise.dashboard.api
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: uk.ac.kcl.validation,
  uk.ac.kcl,

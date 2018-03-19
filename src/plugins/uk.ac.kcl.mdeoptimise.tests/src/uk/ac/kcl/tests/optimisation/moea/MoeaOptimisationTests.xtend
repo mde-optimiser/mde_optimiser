@@ -20,6 +20,8 @@ import uk.ac.kcl.optimisation.SolutionGenerator
 import uk.ac.kcl.optimisation.UserModelProvider
 import uk.ac.kcl.optimisation.moea.MoeaOptimisation
 import uk.ac.kcl.tests.FullTestInjector
+import uk.ac.kcl.mdeoptimise.dashboard.api.macaddress.MacAddressRetriever
+import uk.ac.kcl.mdeoptimise.dashboard.api.hashing.Hashing
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)
@@ -81,7 +83,7 @@ class MoeaOptimisationTests {
 				mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
 				breed using <exDependencies.henshin> unit "exchangeMultipleDependencies" 
 					parameters { number3 => Random("[0-9]{0,2}"), number => "models.moea.RandomEvolverParameter" }
-				optimisation provider moea algorithm NSGAII variation genetic evolutions 2 population 30
+				optimisation provider moea algorithm NSGAII variation genetic evolutions 100 population 30
 			''')
 
 			//Assert that there are no grammar issues
@@ -92,13 +94,22 @@ class MoeaOptimisationTests {
 			val oclModelProvider = new UserModelProvider(getResourceSet(), "TTC_InputRDG_C.xmi")
 			
 			val optimisationInterpreter = new OptimisationInterpreter("", model)
+			var MacAddressRetriever macAddressRetriever = new MacAddressRetriever();
+		var macAddress = macAddressRetriever.getMacAddress();
+		var moptId = Hashing.generateMoptId(
+				model.getModel().getLocation(), 
+				model.getMetamodel().getLocation());
+		var dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
+		var date = new Date();
+		var startTime = dateFormat.format(date);
+		var experimentId = Hashing.generateExperimentId(macAddress, moptId, startTime);
 			
 			var solutionGenerator = new SolutionGenerator(
 											model, 
 											optimisationInterpreter.breedingOperators, 
 											optimisationInterpreter.mutationOperators, 
 											oclModelProvider, 
-											optimisationInterpreter.metamodel);
+											optimisationInterpreter.metamodel, experimentId);
 
 			var optimisation = new MoeaOptimisation()
 									.execute(model.optimisation, solutionGenerator)

@@ -12,25 +12,24 @@
     <!-- Consider inlining CSS to reduce the number of requested files -->
     <!--                                                               -->
     <link type="text/css" rel="stylesheet" href="MDEO_Status_Dashboard_1_0.css">
+    
+    <style>
+    .workerTable {
+    	padding-bottom: 40px;
+		padding-left: 200px;
+    	text-align: center;
+    
+    }
+    td {
+        text-align: center;
+    }
+    </style>
 
-    <!--                                           -->
-    <!-- Any title is fine                         -->
-    <!--                                           -->
     <title>MDEO Status Dashboard</title>
     
-    <!--                                           -->
-    <!-- This script loads your compiled module.   -->
-    <!-- If you add any GWT meta tags, they must   -->
-    <!-- be added before this line.                -->
-    <!--                                           -->
     <script type="text/javascript" language="javascript" src="mdeo_status_dashboard_1_0/mdeo_status_dashboard_1_0.nocache.js"></script>
   </head>
 
-  <!--                                           -->
-  <!-- The body can have arbitrary html, or      -->
-  <!-- you can leave the body empty if you want  -->
-  <!-- to create a completely dynamic UI.        -->
-  <!--                                           -->
   <body>
 
     <!-- RECOMMENDED if your web app will not function without JavaScript enabled -->
@@ -42,18 +41,28 @@
     </noscript>
 
     <h1>MDEO Status Dashboard</h1>
-
+    <div id="sendButtonContainer"></div>
+    <!-- <label><br />Choose which experiment you want to see:</label>     -->
+    <table>
+    <tr>
+    <!-- <td><label>Worker: </label></td>     -->
+      <td id="workersMenu"></td>
+    </tr>
+    <tr>
+    <!-- <td><label>Experiment: </label></td>     -->
+    <td id="experimentsMenu"></td>
+    </tr>
+  </table>
+  
     <table align="center">
       <tr>
-        <td colspan="2" style="font-weight:bold;">Please enter your name:</td>        
-      </tr>
-      <tr>
         <td id="nameFieldContainer"></td>
-        <td id="sendButtonContainer"></td>
+        <td id="a"></td>
       </tr>
       <tr>
         <td colspan="2" style="color:red;" id="errorLabelContainer"></td>
       </tr>
     </table>
+    <label id="solutionText"></label>
   </body>
 </html>
