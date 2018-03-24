@@ -3,7 +3,6 @@ package uk.ac.kcl.server;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.Timestamp;
 import java.util.LinkedList;
 import java.util.List;
 

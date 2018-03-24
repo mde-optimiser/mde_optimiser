@@ -95,14 +95,14 @@ class MoeaOptimisationTests {
 			
 			val optimisationInterpreter = new OptimisationInterpreter("", model)
 			var MacAddressRetriever macAddressRetriever = new MacAddressRetriever();
-		var macAddress = macAddressRetriever.getMacAddress();
-		var moptId = Hashing.generateMoptId(
+			var macAddress = macAddressRetriever.getMacAddress();
+			var moptId = Hashing.generateMoptId(
 				model.getModel().getLocation(), 
 				model.getMetamodel().getLocation());
-		var dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
-		var date = new Date();
-		var startTime = dateFormat.format(date);
-		var experimentId = Hashing.generateExperimentId(macAddress, moptId, startTime);
+			var dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
+			var date = new Date();
+			var startTime = dateFormat.format(date);
+			var experimentId = Hashing.generateExperimentId(macAddress, moptId, startTime);
 			
 			var solutionGenerator = new SolutionGenerator(
 											model, 
