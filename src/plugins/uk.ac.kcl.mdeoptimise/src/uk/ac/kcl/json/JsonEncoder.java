@@ -62,7 +62,7 @@ public class JsonEncoder {
 		workerJSON.put("worker_name", "tamara");
 		String macAddress = macAddressRetriever.getMacAddress();
 		workerJSON.put("worker_id", macAddress);
-		int moptId = Hashing.generateMoptId(
+		String moptId = Hashing.generateMoptId(
 				optimisationModel.getModel().getLocation(), 
 				optimisationModel.getMetamodel().getLocation());
 		workerJSON.put("mopt_id", moptId);

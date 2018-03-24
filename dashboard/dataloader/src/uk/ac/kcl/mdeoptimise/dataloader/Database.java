@@ -31,12 +31,12 @@ class Database {
 	public static final String CREATE_WORKER = 
     		"CREATE TABLE IF NOT EXISTS worker (mac_address VARCHAR(255) NOT NULL PRIMARY KEY)";
 	public static final String CREATE_MOPT_SPECS = 
-    		"CREATE TABLE IF NOT EXISTS mopt_specs (mopt_id INT NOT NULL PRIMARY KEY, "
+    		"CREATE TABLE IF NOT EXISTS mopt_specs (mopt_id VARCHAR(255) NOT NULL PRIMARY KEY, "
     		+ "model VARCHAR(255) NOT NULL, metamodel VARCHAR(255) NOT NULL)";
     public static final String CREATE_EXPERIMENT = 
     		"CREATE TABLE IF NOT EXISTS experiment (experiment_id VARCHAR(255) NOT NULL, "
     		+ "run_id int NOT NULL IDENTITY(1,1) PRIMARY KEY, worker_id VARCHAR(255) NOT NULL, "
-    		+ "FOREIGN KEY (worker_id) REFERENCES worker(mac_address), mopt_id INT NOT NULL, "
+    		+ "FOREIGN KEY (worker_id) REFERENCES worker(mac_address), mopt_id VARCHAR(255) NOT NULL, "
     		+ "FOREIGN KEY (mopt_id) REFERENCES mopt_specs(mopt_id), start_time TIMESTAMP NOT NULL, "
     		+ "end_time TIMESTAMP);";
     public static final String CREATE_OBJECTIVE = 
@@ -112,12 +112,12 @@ class Database {
 		else
 			System.out.println("[DataLoader] WORKER table already contains mac_address: " + workerId);
 
-		int moptId = workerJSON.getInt("mopt_id");
+		String moptId = workerJSON.getString("mopt_id");
 		ResultSet moptResultSet = conn.createStatement().executeQuery("SELECT * FROM mopt_specs WHERE mopt_id='" + moptId + "';");
 		if(!moptResultSet.next()){
 			PreparedStatement moptStatement = conn.prepareStatement("INSERT INTO mopt_specs VALUES(?, ?, ?);");
 			System.out.println("[DataLoader] MOPT_SPECS table updated: " + workerJSON);
-			moptStatement.setInt(1, moptId);
+			moptStatement.setString(1, moptId);
 			moptStatement.setString(2, workerJSON.getString("model"));
 			moptStatement.setString(3, workerJSON.getString("metamodel"));
 			moptStatement.execute();
@@ -128,7 +128,7 @@ class Database {
 		PreparedStatement statement = conn.prepareStatement("INSERT INTO experiment(experiment_id, worker_id, mopt_id, start_time) VALUES(?, ?, ?, ?);");
 		statement.setString(1, workerJSON.getString("experiment_id"));
 		statement.setString(2, workerJSON.getString("worker_id"));
-		statement.setInt(3, workerJSON.getInt("mopt_id"));
+		statement.setString(3, workerJSON.getString("mopt_id"));
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
 	    Date parsedDate = dateFormat.parse(workerJSON.getString("start_time"));
 	    Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());

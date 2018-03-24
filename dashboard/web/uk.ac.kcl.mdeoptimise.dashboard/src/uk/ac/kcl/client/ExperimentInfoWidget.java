@@ -22,6 +22,8 @@ public class ExperimentInfoWidget extends Composite {
 	}
 
 	@UiField
+	Label experimentId;
+	@UiField
 	Label startTime;
 	@UiField
 	Label endTime;
@@ -30,6 +32,7 @@ public class ExperimentInfoWidget extends Composite {
 
 	public ExperimentInfoWidget(Experiment experiment) {
 		initWidget(uiBinder.createAndBindUi(this));
+		setExperimentId(experiment.getExperimentId());
 		setStartTime(experiment.getStartTime());
 		if (experiment.getEndTime() != null) 
 			setEndTime(experiment.getEndTime());
@@ -37,6 +40,10 @@ public class ExperimentInfoWidget extends Composite {
 		//endTime.setText(endTime.getText() + " " + DateTimeFormat.getFormat("dd/MM/yyyy 'at' HH:mm:ss").format(experiment.getEndTime()));
 	}
 
+	public void setExperimentId(String id){
+		experimentId.setText(experimentId.getText() + " " + id.toUpperCase());	
+	}
+	
 	public void setStartTime(Timestamp time){
 		startTime.setText(startTime.getText() + " " + DateTimeFormat.getFormat("dd/MM/yyyy 'at' HH:mm:ss").format(time));	
 	}
@@ -46,6 +53,6 @@ public class ExperimentInfoWidget extends Composite {
 	}
 	
 	public void setMoptId(String id){
-		moptId.setText(moptId.getText() + " " + id);	
+		moptId.setText(moptId.getText() + " " + id.toUpperCase());	
 	}
 }

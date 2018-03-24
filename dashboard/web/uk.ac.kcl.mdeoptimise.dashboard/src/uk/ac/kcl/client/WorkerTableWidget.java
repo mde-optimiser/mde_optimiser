@@ -118,7 +118,7 @@ public class WorkerTableWidget extends Composite {
 		TextColumn<Experiment> experimentId = new TextColumn<Experiment>() {
 			@Override
 			public String getValue(Experiment object) {
-				return object.getExperimentId();
+				return object.getExperimentId().toUpperCase();
 			}
 		};
 		table.addColumn(experimentId, "Experiment ID");

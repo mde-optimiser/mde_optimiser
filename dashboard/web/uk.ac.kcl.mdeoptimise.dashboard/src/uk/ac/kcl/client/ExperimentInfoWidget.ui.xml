@@ -20,12 +20,13 @@
 	<g:HTMLPanel styleName="{style.container}">
 		<div >
 			Experiment info:
+			<g:Label styleName="{style.text}" ui:field="experimentId" >ID: </g:Label>
 			<g:Label styleName="{style.text}" ui:field="startTime" >Start Time: </g:Label>
 			<g:Label styleName="{style.text}" ui:field="endTime" >End Time: </g:Label>
 		</div>
 		<div >
 			MOPT info:
-			<g:Label styleName="{style.text}" ui:field="moptId" >MOPT id: </g:Label>
+			<g:Label styleName="{style.text}" ui:field="moptId" >ID: </g:Label>
 			<g:Label styleName="{style.text}" ui:field="model" >Model: TTC_InputRDG_C.xmi</g:Label>
 			<g:Label styleName="{style.text}" ui:field="metamodel" >Metamodel: architectureCRA.ecore</g:Label>
 		</div>
