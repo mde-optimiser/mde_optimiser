@@ -31,7 +31,7 @@
 			<g:Label styleName="{style.text}" ui:field="metamodel" >Metamodel: architectureCRA.ecore</g:Label>
 		</div>
 		<div styleName="{style.solution}">
-			(Fake) Final solution: 
+			Best solution found:
 			<g:Label styleName="{style.text}" ui:field="objective" >MinimiseCoupling = -1.0</g:Label>
 			<g:Label styleName="{style.text}" ui:field="constraint" >MinimiseClasslessFeatures = 32.0</g:Label>
 		</div>

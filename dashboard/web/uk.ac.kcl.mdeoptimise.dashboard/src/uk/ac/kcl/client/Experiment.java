@@ -78,13 +78,5 @@ public class Experiment implements Serializable {
 
 	public void setTotalTimeTaken(long totalTimeTaken) {
 		this.totalTimeTaken = 0;
-	}
-	
-	// Running if it is still active, or Finished otherwise.
-	public String getStatus() {
-		if (getEndTime() != null)
-			return "Finished";
-		else
-			return "Running";
 	}*/
 }

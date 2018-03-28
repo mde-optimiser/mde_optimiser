@@ -23,44 +23,38 @@
 
     </style>
 
-    <title>MDEO Status Dashboard</title>
+    <title>MDEO SD</title>
     
     <script type="text/javascript" language="javascript" src="mdeo_status_dashboard_1_0/mdeo_status_dashboard_1_0.nocache.js"></script>
   </head>
 
   <body>
-
-    <!-- RECOMMENDED if your web app will not function without JavaScript enabled -->
-    <noscript>
-      <div style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
-        Your web browser must have JavaScript enabled
-        in order for this application to display correctly.
-      </div>
-    </noscript>
-
-    <h1>MDEO Status Dashboard</h1>
-    <div id="sendButtonContainer"></div>
-    <!-- <label><br />Choose which experiment you want to see:</label>     -->
-    <table>
-    <tr>
-    <!-- <td><label>Worker: </label></td>     -->
-      <td id="workersMenu"></td>
-    </tr>
-    <tr>
-    <!-- <td><label>Experiment: </label></td>     -->
-    <td id="experimentsMenu"></td>
-    </tr>
-  </table>
-  
-    <table align="center">
-      <tr>
-        <td id="nameFieldContainer"></td>
-        <td id="a"></td>
-      </tr>
-      <tr>
-        <td colspan="2" style="color:red;" id="errorLabelContainer"></td>
-      </tr>
-    </table>
-    <label id="solutionText"></label>
+	  <!-- Load the JavaScript code for GWT -->
+	  <script language="javascript" src="ui/org.project.package.ui.Core.nocache.js"></script>
+	
+	  <!-- For some unknown reason in Internet Explorer you have to have cellpadding/spacing ON THE ELEMENT and not on the STYLE if it is in the body tag like this -->
+	  <table id="wrapper" cellpadding="0" cellspacing="0" style="width: 100%;height: 100%;">
+	
+	       <!-- Header row -->
+	       <tr style="height: 25%;">
+	           <h1>MDEO Status Dashboard</h1>
+	           <td colspan="2" id="header"></td>
+	       </tr>
+	
+	       <!-- Body row and left nav row -->
+	       <tr style="height: 65%;">
+	           <td id="leftnav"></td>
+	           <td id="content"></td>
+	       </tr>
+	
+	       <!-- Footer row -->
+	       <tr style="height: 10%;">
+	          <td colspan="2" id="footer"></td>
+	       </tr>
+	       
+	  </table>
+	
+	  <!-- This iframe handles history -->
+	  <iframe id="__gwt_historyFrame" style="width:0;height:0;border:0"></iframe>
   </body>
 </html>

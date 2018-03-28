@@ -9,51 +9,46 @@ import com.google.gwt.dom.client.NodeList;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.TextColumn;
-import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.CellPreviewEvent;
-public class WorkerTableWidget extends Composite {
+
+import uk.ac.kcl.client.constants.PageConstants;
+public class WorkerTableWidget extends Content {
 
 	private ActionCellTable<Experiment> table = new ActionCellTable<Experiment>();
 	private Label label = new Label();
-	List<Experiment> listData;
+	List<Experiment> experiments;
 
 	public class ActionCellTable<T> extends CellTable<T> {
 
 		Integer previousSelectedRow = null;
 
+		// TODO (tamara): Remove this functionality if row expansion is no longer used.
 		public void displayRowDetail(int selectedRow, Element e){
-			/*if (previousSelectedRow != null && previousSelectedRow + 1 == selectedRow) 
-				return;*/
-			
 			// if there was an expanded row, increase the selected row id by one.
 			if (previousSelectedRow != null && previousSelectedRow < selectedRow) 
 				selectedRow++;
-			
-			
-		    //Get the tbody of the Cell Table
-		    //Assumption that we want the first (only?) tbody.
+
+		    // Get the tbody of the Cell Table
 		    Element tbody = this.getElement().getElementsByTagName("tbody").getItem(0);
-		    //Get all the trs in the body
+		    // Get all the trs in the body
 		    NodeList<Element> trs = tbody.getElementsByTagName("tr");
 
-		    //remove previously selected view, if there was one
-		    if(previousSelectedRow!=null){
+		    // Remove previously selected view, if there was one
+		    if(previousSelectedRow!=null) {
 		        trs.getItem(previousSelectedRow+1).removeFromParent();
 		        //If the current is further down the list then the current your index will be one off.
 		        if(selectedRow>previousSelectedRow)selectedRow--;
 		    }
-		    if(previousSelectedRow==null || selectedRow != previousSelectedRow){// if the are equal we don't want to do anything else
+		    
+		    if(previousSelectedRow==null || selectedRow != previousSelectedRow){
 		        Element td = Document.get().createTDElement();
 		        td.setAttribute("colspan", Integer.toString(trs.getItem(selectedRow).getChildNodes().getLength()));
 		        td.appendChild(e);
 
 		        Element tr = Document.get().createTRElement();
 		        tr.appendChild(td);
-		        //int insertIndex = (previousSelectedRow != null && previousSelectedRow > selectedRow) ? selectedRow : selectedRow;
 		        tbody.insertAfter(tr, trs.getItem(selectedRow));
 		        previousSelectedRow=selectedRow;
 		    } else {
@@ -63,38 +58,34 @@ public class WorkerTableWidget extends Composite {
 	}
 	
 	/**
-	 * Constructs an OptionalTextBox with the given caption on the check.
+	 * Creates a widget containing a label with the worker id and a
+	 * table containing all experiments associated to this worker.
 	 * 
-	 * @param caption the caption to be displayed with the check box
+	 * @param worker the worker containing a list of experiments to be added to the table
 	 */
 	public WorkerTableWidget(Worker worker) {
-		// Place the check above the text box using a vertical panel.
 		VerticalPanel panel = new VerticalPanel();
 		panel.add(label);
 		panel.add(table);
 
-		// Set the check box's caption, and check it by default.
 		label.setText("Worker: " + worker.getMacAddress());
-		// Set the total row count. This isn't strictly necessary, but it affects
-		// paging calculations, so its good habit to keep the row count up to date.
-		table.setRowCount(worker.getExperiments().size(), true);
 
 		// Push the data into the widget.
+		table.setRowCount(worker.getExperiments().size(), true);
 		table.setRowData(0, worker.getExperiments());
-		listData = worker.getExperiments();
-		//label.setChecked(true);
-		//label.addClickHandler(this);
+		
+		experiments = worker.getExperiments();
 		
 		table.addCellPreviewHandler(new CellPreviewEvent.Handler<Experiment>() { 
 			@Override public void onCellPreview(CellPreviewEvent<Experiment> event) { 
 				if("click".equals(event.getNativeEvent().getType())) {
-					Element element = DOM.createLabel();
-					element.setInnerText("Selected roww!");
-					Widget w = new ExperimentInfoWidget(event.getValue());
-					table.displayRowDetail(table.getKeyboardSelectedRow(), w.getElement());
-					} 
+					// Commented the lines that expand the row to show experiment details.
+					/*Widget w = new ExperimentInfoWidget(event.getValue());
+					table.displayRowDetail(table.getKeyboardSelectedRow(), w.getElement());*/
+					ContentContainer.getInstance().setContent(new ExperimentDetails(event.getValue()));
 				} 
-			});
+			} 
+		});
 
 		initializeColumns();
 
@@ -110,7 +101,7 @@ public class WorkerTableWidget extends Composite {
 
 		    @Override
 		    public String getValue(Experiment object) {
-		        return Integer.toString(listData.indexOf(object) + 1);
+		        return Integer.toString(experiments.indexOf(object) + 1);
 		    }
 		};
 		table.addColumn(numColumn, "");
@@ -142,7 +133,7 @@ public class WorkerTableWidget extends Composite {
 		};
 		table.addColumn(date, "Date");
 
-		/*TextColumn<Experiment> startTime = new TextColumn<Experiment>() {
+		TextColumn<Experiment> startTime = new TextColumn<Experiment>() {
 			@Override
 			public String getValue(Experiment object) {
 				return DateTimeFormat.getFormat("hh:mm aaa").format(object.getStartTime());
@@ -159,7 +150,7 @@ public class WorkerTableWidget extends Composite {
 					return "-";
 			}
 		};
-		table.addColumn(endTime, "End Time");*/
+		table.addColumn(endTime, "End Time");
 
 		TextColumn<Experiment> timeTaken = new TextColumn<Experiment>() {
 			@Override
@@ -183,24 +174,14 @@ public class WorkerTableWidget extends Composite {
 		table.addColumn(etr, "ETR");
 		
 	}
-	
-	/**
-	 * Sets the caption associated with the check box.
-	 * 
-	 * @param caption the check box's caption
-	 */
-	public void setCaption(String caption) {
-		// Note how we use the use composition of the contained widgets to provide
-		// only the methods that we want to.
-		label.setText(caption);
+
+	@Override
+	public String getToken() {
+		return PageConstants.WORKER_TOKEN;
 	}
 
-	/**
-	 * Gets the caption associated with the check box.
-	 * 
-	 * @return the check box's caption
-	 */
-	public String getCaption() {
-		return label.getText();
+	@Override
+	public String getWindowTitle() {
+		return PageConstants.WORKER_TITLE;
 	}
 }
