@@ -60,7 +60,7 @@ class MoeaOptimisation implements IOptimisation {
 	def NondominatedPopulation runOptimisation(String algorithmName, Properties optimisationProperties) {
 		
 		//OperatorFactory.getInstance().addProvider(new MoeaOptimisationVariationsProvider());
-		
+		//change it to not use the executor; or 
 		val algorithmFactory = new AlgorithmFactory();
 		algorithmFactory.addProvider(new MoeaOptimisationAlgorithmProvider)
 		

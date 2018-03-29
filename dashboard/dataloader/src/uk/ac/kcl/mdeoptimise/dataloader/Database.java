@@ -46,9 +46,18 @@ class Database {
     		"CREATE TABLE IF NOT EXISTS constraint (worker_id VARCHAR(255) NOT NULL, experiment_id VARCHAR(255) NOT NULL, "
     		+ "constraint_name VARCHAR(255) NOT NULL, constraint_type VARCHAR(255))";
     public static final String CREATE_SOLUTION = 
-    		"CREATE TABLE IF NOT EXISTS solution (worker_id VARCHAR(255) NOT NULL, experiment_id VARCHAR(255) NOT NULL, "
-    		+ "run_id INT, time_taken INT, criteria_type VARCHAR(255), criteria_name VARCHAR(255), "
-    		+ "criteria_value FLOAT(8))";
+    		"CREATE TABLE IF NOT EXISTS solution (solution_id VARCHAR(255) NOT NULL PRIMARY KEY, experiment_id VARCHAR(255) NOT NULL, "
+    		+ "FOREIGN KEY (experiment_id) REFERENCES experiment(experiment_id)";
+    public static final String CREATE_SOLUTION_OBJECTIVE = 
+    		"CREATE TABLE IF NOT EXISTS solution_objective (solution_id VARCHAR(255) NOT NULL, "
+    		+ "objective_name VARCHAR(255) NOT NULL, objective_value FLOAT(8) NOT NULL, "
+    		+ "FOREIGN KEY (solution_id) REFERENCES solution(solution_id), "
+    		+ "PRIMARY KEY(solution_id, objective_name)";
+    public static final String CREATE_SOLUTION_CONSTRAINT = 
+    		"CREATE TABLE IF NOT EXISTS solution_constraint (solution_id VARCHAR(255) NOT NULL, "
+    		+ "constraint_name VARCHAR(255) NOT NULL, constraint_value FLOAT(8) NOT NULL, "
+    		+ "FOREIGN KEY (solution_id) REFERENCES solution(solution_id), "
+    		+ "PRIMARY KEY(solution_id, constraint_name)";
 	
 	static Connection conn = null;
 
@@ -96,7 +105,7 @@ class Database {
 	private static void initialiseSchema() throws SQLException {
 		System.out.println("[DataLoader] Creating new database schema.");
 		PreparedStatement statement = conn.prepareStatement(
-				CREATE_WORKER +"; "+ CREATE_MOPT_SPECS +"; "+ CREATE_EXPERIMENT +"; "+ CREATE_OBJECTIVE +"; "+ CREATE_CONSTRAINT +"; "+ CREATE_SOLUTION +"; ");
+				CREATE_WORKER +"; "+ CREATE_MOPT_SPECS +"; "+ CREATE_EXPERIMENT +"; "+ CREATE_OBJECTIVE +"; "+ CREATE_CONSTRAINT +"; ");
 		statement.executeUpdate();
 		conn.commit();
 	}
@@ -184,6 +193,14 @@ class Database {
 		IntStream.range(0, solutionsArray.length()).mapToObj(index -> (JSONObject) solutionsArray.get(index))
 				.forEach(solution -> {
 					try {
+						// TODO (tamara): Insert solutions and its objectives/constraints
+						// insert solution
+						/*PreparedStatement insertSolutionStatement = conn.prepareStatement("INSERT INTO solution VALUES(?, ?);");
+						insertSolutionStatement.setString(1, "solutionID");
+						insertSolutionStatement.setString(2, solutionJSON.getString("experiment_id"));
+						System.out.println("[DataLoader] SOLUTION table updated");*/
+						// insert its constraints
+						// insert its objectives
 						//insertFitnessValue(CriteriaType.OBJECTIVE, solution.getJSONArray("objectives"), solutionJSON);
 						//insertFitnessValue(CriteriaType.CONSTRAINT, solution.getJSONArray("constraints"), solutionJSON);
 					} catch (JSONException e) {

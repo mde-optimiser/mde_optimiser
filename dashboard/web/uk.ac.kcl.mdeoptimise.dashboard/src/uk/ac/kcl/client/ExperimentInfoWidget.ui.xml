@@ -21,8 +21,10 @@
 		<div >
 			Experiment info:
 			<g:Label styleName="{style.text}" ui:field="experimentId" >ID: </g:Label>
+			<g:Label styleName="{style.text}" ui:field="workerId" >Worker MAC Address: </g:Label>
 			<g:Label styleName="{style.text}" ui:field="startTime" >Start Time: </g:Label>
 			<g:Label styleName="{style.text}" ui:field="endTime" >End Time: </g:Label>
+			<g:Label styleName="{style.text}" ui:field="totalTime" >Total Time Taken: </g:Label>
 		</div>
 		<div >
 			MOPT info:
@@ -30,10 +32,10 @@
 			<g:Label styleName="{style.text}" ui:field="model" >Model: TTC_InputRDG_C.xmi</g:Label>
 			<g:Label styleName="{style.text}" ui:field="metamodel" >Metamodel: architectureCRA.ecore</g:Label>
 		</div>
-		<div styleName="{style.solution}">
+		<!-- <div styleName="{style.solution}">
 			Best solution found:
 			<g:Label styleName="{style.text}" ui:field="objective" >MinimiseCoupling = -1.0</g:Label>
 			<g:Label styleName="{style.text}" ui:field="constraint" >MinimiseClasslessFeatures = 32.0</g:Label>
-		</div>
+		</div> -->
 	</g:HTMLPanel>
 </ui:UiBinder> 

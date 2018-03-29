@@ -14,5 +14,5 @@ public interface GreetingService extends RemoteService {
 	List<String> getWorkerIds() throws Exception;
 	List<String> getExperimentIds() throws Exception;
 	List<Experiment> getExperimentData(String workerId) throws Exception;
-	String getSolutions(int worker_id, String experiment_id) throws Exception;
+	List<Solution> getSolutions(String experiment_id) throws Exception;
 }

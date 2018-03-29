@@ -12,5 +12,5 @@ public interface GreetingServiceAsync {
 	void getWorkerIds(AsyncCallback<List<String>> callback);
 	void getExperimentIds(AsyncCallback<List<String>> callback);
 	void getExperimentData(String workerId, AsyncCallback<List<Experiment>> callback);
-	void getSolutions(int worker_id, String experiment_id, AsyncCallback<String> asyncCallback);
+	void getSolutions(String experiment_id, AsyncCallback<List<Solution>> asyncCallback);
 }

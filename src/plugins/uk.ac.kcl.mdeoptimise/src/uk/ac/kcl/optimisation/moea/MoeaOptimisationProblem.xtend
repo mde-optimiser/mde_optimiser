@@ -8,6 +8,9 @@ import uk.ac.kcl.interpreter.guidance.GuidanceFunctionsFactory
 import uk.ac.kcl.interpreter.guidance.GuidanceFunctionAdapter
 import uk.ac.kcl.interpreter.IGuidanceFunction
 import java.util.Random
+import java.util.Map
+import java.util.HashMap
+import java.util.LinkedHashMap
 
 class MoeaOptimisationProblem extends AbstractProblem {
 
@@ -15,6 +18,7 @@ class MoeaOptimisationProblem extends AbstractProblem {
 
 	private List<IGuidanceFunction> fitnessFunctions;
 	private List<IGuidanceFunction> constraintFunctions;
+	private Map<Integer, String> counter = new LinkedHashMap<Integer, String>();
 
 	new(int numberOfVariables, int numberOfObjectives, int numberOfConstraints) {
 		super(numberOfVariables, numberOfObjectives, numberOfConstraints)
@@ -65,7 +69,7 @@ class MoeaOptimisationProblem extends AbstractProblem {
 
 	override evaluate(Solution solution) {
 
-		// TODO if some constraints are the same as the objectives, they shoyuld be cached for the same model
+		// TODO if some constraints are the same as the objectives, they should be cached for the same model
 		val moeaSolution = solution as MoeaOptimisationSolution;
 
 		// Set objectives
@@ -78,6 +82,11 @@ class MoeaOptimisationProblem extends AbstractProblem {
 			moeaSolution.setConstraint(objectiveId, constraintFunction.computeFitness(moeaSolution.model))
 		]
 		
+		//TODO MoeaOptimisationSolution as a value in the hashmap
+		counter.put(counter.size +1, String.format("%05X", moeaSolution.model.hashCode));
+		if(counter.size % solutionGenerator.optimisationModel.optimisation.algorithmPopulation == 0)
+			println(String.format("Finished run %s." ,counter.size/solutionGenerator.optimisationModel.optimisation.algorithmPopulation))
+		println(String.format("Found %s solutions. Evaluating solution %s." ,counter.size,counter.get(counter.size)));
 	}
 
 	override newSolution() {

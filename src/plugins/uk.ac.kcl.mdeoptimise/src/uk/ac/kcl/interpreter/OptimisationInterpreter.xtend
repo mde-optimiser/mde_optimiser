@@ -56,6 +56,7 @@ class OptimisationInterpreter {
 											getMetamodel,
 											experimentId);
 
+// TODO final solutions
 		var optimisation = new MoeaOptimisation()
 									.execute(model.optimisation, solutionGenerator)		
 		

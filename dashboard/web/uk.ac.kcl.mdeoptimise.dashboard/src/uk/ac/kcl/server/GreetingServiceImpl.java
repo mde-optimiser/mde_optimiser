@@ -3,13 +3,17 @@ package uk.ac.kcl.server;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import uk.ac.kcl.client.Experiment;
 import uk.ac.kcl.client.GreetingService;
+import uk.ac.kcl.client.Solution;
 
 /**
  * The server-side implementation of the RPC service.
@@ -97,25 +101,47 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 	}
 
 	@Override
-	public String getSolutions(int worker_id, String experiment_id) throws Exception {
+	public List<Solution> getSolutions(String experimentId) throws Exception {
 		Class.forName("org.h2.Driver"); 
 		Connection conn = DriverManager
 				.getConnection("jdbc:h2:tcp://localhost/~/test", "mdeo", "mdeo"); // add application code here
 		System.out.println(conn.getCatalog());
-		ResultSet resultSet1 = conn.createStatement().executeQuery("SELECT * FROM solution "
-				+ "WHERE worker_id=" + worker_id + " AND experiment_id='" + experiment_id + "';");
+		ResultSet solutionIds = conn.createStatement().executeQuery("SELECT solution_id FROM solution "
+				+ "WHERE experiment_id='" + experimentId + "';");
 		
-		String finalString = "";
-		
-		while(resultSet1.next()){
-			String newSol = "          SOLUTION: " + resultSet1.getInt(1)+ " " +  resultSet1.getString(2)+ " " +  resultSet1.getInt(3)+ " " +  
-					resultSet1.getInt(4)+ " " +  resultSet1.getString(5)+ " " +  resultSet1.getString(6)+ " " +  resultSet1.getFloat(7);
-			System.out.println("new solution: " + newSol);
-			finalString += newSol;
+		List<Solution> list = new LinkedList<>();
+		// For each solution
+		while(solutionIds.next()) {
+			// Add solution to the list
+			list.add(new Solution(
+					experimentId, 
+					getObjectives(conn, solutionIds.getString(1)), 
+					getConstraints(conn, solutionIds.getString(1))));
 		}
 		conn.close();
-		System.out.println("final solution: " + finalString);
-		return finalString;
+		return list;
+	}
+
+	private Map<String, Double> getConstraints(Connection conn, String solutionId) throws SQLException {
+		ResultSet result = conn.createStatement().executeQuery("SELECT constraint_name, constraint_value FROM solution_constraint "
+				+ "WHERE solution_id='" + solutionId + "';");
+		
+		Map<String, Double> constraints = new LinkedHashMap<String, Double>();
+		while(result.next()) {
+			constraints.put(result.getString(1), result.getDouble(2));
+		}
+		return constraints;
+	}
+
+	private Map<String, Double> getObjectives(Connection conn, String solutionId) throws SQLException {
+		ResultSet result = conn.createStatement().executeQuery("SELECT objective_name, objective_value FROM solution_objective "
+				+ "WHERE solution_id='" + solutionId + "';");
+		
+		Map<String, Double> objectives = new LinkedHashMap<String, Double>();
+		while(result.next()) {
+			objectives.put(result.getString(1), result.getDouble(2));
+		}
+		return objectives;
 	}
 
 	@Override
