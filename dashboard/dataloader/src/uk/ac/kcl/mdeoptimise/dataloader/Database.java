@@ -134,6 +134,15 @@ class Database {
 		else
 			System.out.println("[DataLoader] MOPT_SPECS table already contains mopt_id: " + moptId);
 
+		/*while(true) {
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}*/
+		
 		PreparedStatement statement = conn.prepareStatement("INSERT INTO experiment(experiment_id, worker_id, mopt_id, start_time) VALUES(?, ?, ?, ?);");
 		statement.setString(1, workerJSON.getString("experiment_id"));
 		statement.setString(2, workerJSON.getString("worker_id"));

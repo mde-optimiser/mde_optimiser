@@ -37,11 +37,11 @@ services:
     links:
         - "database"
         - "queue"
-  # web:
-  #   build:
-  #     context: ./web
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - "8080:8080"
-  #   volumes:
-  #     - ../../dashboard/web/uk.ac.kcl.mdeoptimise.dashboard:var/app/mdeo/uk.ac.kcl.mdeoptimise.web
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    ports:
+      - "8085:8080"
+    volumes:
+     - ../../dashboard/web/uk.ac.kcl.mdeoptimise.dashboard:/var/app/mdeo/uk.ac.kcl.mdeoptimise.web

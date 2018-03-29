@@ -12,8 +12,7 @@ EXPOSE 8082 9092
 
 CMD java -cp /opt/h2/bin/h2*.jar org.h2.tools.Server \
  	-web -webAllowOthers -webPort 8082 \
- 	-tcp -tcpAllowOthers -tcpPort 9092 \
- 	-baseDir ${DATA_DIR}
+ 	-tcp -tcpAllowOthers -tcpPort 9092
    
 VOLUME ${DATA_DIR}
 
