@@ -79,7 +79,7 @@ public class WorkerTableWidget extends Content {
 		table.addCellPreviewHandler(new CellPreviewEvent.Handler<Experiment>() { 
 			@Override public void onCellPreview(CellPreviewEvent<Experiment> event) { 
 				if("click".equals(event.getNativeEvent().getType())) {
-					// Commented the lines that expand the row to show experiment details.
+					// TODO (tamara): Remove the following lines if row expansion is no longer used.
 					/*Widget w = new ExperimentInfoWidget(event.getValue());
 					table.displayRowDetail(table.getKeyboardSelectedRow(), w.getElement());*/
 					ContentContainer.getInstance().setContent(new ExperimentDetails(event.getValue()));
