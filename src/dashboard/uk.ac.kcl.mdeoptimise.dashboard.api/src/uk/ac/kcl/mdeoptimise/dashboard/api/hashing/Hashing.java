@@ -26,4 +26,15 @@ public class Hashing {
 		
 		return hc.toString();
 	}
+
+	public static String generateSolutionId(String experimentId, int evaluationNumber, int solutionNumber) {
+		HashFunction hf = com.google.common.hash.Hashing.md5();
+		HashCode hc = hf.newHasher()
+		       .putString(experimentId, Charsets.UTF_8)
+		       .putInt(evaluationNumber)
+		       .putInt(solutionNumber)
+		       .hash();
+
+		return hc.toString();
+	}
 }

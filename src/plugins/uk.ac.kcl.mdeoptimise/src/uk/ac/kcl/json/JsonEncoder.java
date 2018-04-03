@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Random;
 
 import org.eclipse.emf.common.util.EList;
 import org.json.JSONArray;
@@ -36,9 +37,8 @@ public class JsonEncoder {
 	 * The message looks like this:
 	 * <pre>
 	 * {"WORKER_REGISTER":
-	 * 		{"worker_id":"12345",
-	 * 		"worker_name":"tamara",
-	 * 		"experiment_id":"src\/models\/cra\/",
+	 * 		{"worker_id":"8C-85-90-24-B7-0F",
+	 * 		"experiment_id":"59a127eea25284dc3501550e7db59ec1",
 	 * 		"mopt_id":"ae235gfdg5",
 	 * 		"metamodel":"architectureCRA.ecore",
 	 * 		"model":"TTC_InputRDG_C.xmi",
@@ -59,14 +59,13 @@ public class JsonEncoder {
 	public static String generateWorkerRegistrationText(Optimisation optimisationModel, String experimentId) throws IOException {
 		// TODO (tamara): what are the worker name and ID?
 		JSONObject workerJSON = new JSONObject();
-		workerJSON.put("worker_name", "tamara");
 		String macAddress = macAddressRetriever.getMacAddress();
 		workerJSON.put("worker_id", macAddress);
 		String moptId = Hashing.generateMoptId(
 				optimisationModel.getModel().getLocation(), 
 				optimisationModel.getMetamodel().getLocation());
 		workerJSON.put("mopt_id", moptId);
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 		Date date = new Date();
 		String startTime = dateFormat.format(date);
 		workerJSON.put("start_time", startTime);
@@ -94,12 +93,13 @@ public class JsonEncoder {
 	 * The message looks like this:
 	 * <pre>
 	 * {"FINAL_SOLUTION":
-	 * 		{"worker_id":"12345",
-	 * 		"experiment_id":"src\/models\/cra\/",
+	 * 		{"worker_id":"8C-85-90-24-B7-0F",
+	 * 		"experiment_id":"59a127eea25284dc3501550e7db59ec1",
 	 * 		"run_id":"1",
-	 * 		"end_time":1000,
+	 * 		"end_time":2018-04-03 07:49:44.362,
 	 * 		"solutions":[
-	 * 			{"objectives":[
+	 * 			{"solution_id":"",
+	 * 			"objectives":[
 	 * 				{"name":"MinimiseCoupling","value":-1.0}
 	 * 			],
 	 * 			"constraints":[
@@ -118,7 +118,7 @@ public class JsonEncoder {
 		JSONObject solutionJSON = new JSONObject();
 		String macAddress = macAddressRetriever.getMacAddress();
 		solutionJSON.put("worker_id", macAddress);
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 		Date date = new Date();
 		String startTime = dateFormat.format(date);
 		solutionJSON.put("experiment_id", experimentId);
@@ -173,6 +173,14 @@ public class JsonEncoder {
 		while (solutions.hasNext()) {
 			MoeaOptimisationSolution solution = solutions.next();
 			JSONObject solutionJSON = new JSONObject();
+
+			// TODO (tamara): Insert correct evaluation number and solution number.
+			Random rand = new Random();
+			solutionJSON.put("solution_id", Hashing.generateSolutionId(
+					solution.getSolutionGenerator().getExperimentId() /*experimentId*/,
+					rand.nextInt(50) + 1 /*evaluationNumber*/,
+					rand.nextInt(50) + 1 /*solutionNumber*/));
+
 			solutionJSON.put("objectives", generateFitnessValuesJsonArray(solution.getFormattedObjectives()));
 			solutionJSON.put("constraints", generateFitnessValuesJsonArray(solution.getFormattedConstraints()));
 			solutionsArray.put(solutionJSON);

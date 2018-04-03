@@ -44,7 +44,7 @@ class OptimisationInterpreter {
 		var moptId = Hashing.generateMoptId(
 			model.getModel().getLocation(), 
 			model.getMetamodel().getLocation());
-		var dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
+		var dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 		var date = new Date();
 		var startTime = dateFormat.format(date);
 		var experimentId = Hashing.generateExperimentId(macAddress, moptId, startTime);

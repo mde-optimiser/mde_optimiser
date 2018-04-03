@@ -65,11 +65,11 @@ public class ExperimentInfoWidget extends Composite {
 	}
 	
 	public void setStartTime(Timestamp time){
-		startTime.setText(startTime.getText() + " " + DateTimeFormat.getFormat("dd/MM/yyyy 'at' HH:mm:ss").format(time));	
+		startTime.setText(startTime.getText() + " " + DateTimeFormat.getFormat("dd/MM/yyyy 'at' hh:mm aaa").format(time));
 	}
 	
 	public void setEndTime(Timestamp time){
-		endTime.setText(endTime.getText() + " " + DateTimeFormat.getFormat("dd/MM/yyyy 'at' HH:mm:ss").format(time));	
+		endTime.setText(endTime.getText() + " " + DateTimeFormat.getFormat("dd/MM/yyyy 'at' hh:mm aaa").format(time));
 	}
 	
 	public void setMoptId(String id){

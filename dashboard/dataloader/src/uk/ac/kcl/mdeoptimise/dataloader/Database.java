@@ -47,17 +47,17 @@ class Database {
     		+ "constraint_name VARCHAR(255) NOT NULL, constraint_type VARCHAR(255))";
     public static final String CREATE_SOLUTION = 
     		"CREATE TABLE IF NOT EXISTS solution (solution_id VARCHAR(255) NOT NULL PRIMARY KEY, experiment_id VARCHAR(255) NOT NULL, "
-    		+ "FOREIGN KEY (experiment_id) REFERENCES experiment(experiment_id)";
+    		+ "FOREIGN KEY (experiment_id) REFERENCES experiment(experiment_id))";
     public static final String CREATE_SOLUTION_OBJECTIVE = 
     		"CREATE TABLE IF NOT EXISTS solution_objective (solution_id VARCHAR(255) NOT NULL, "
     		+ "objective_name VARCHAR(255) NOT NULL, objective_value FLOAT(8) NOT NULL, "
     		+ "FOREIGN KEY (solution_id) REFERENCES solution(solution_id), "
-    		+ "PRIMARY KEY(solution_id, objective_name)";
+    		+ "PRIMARY KEY(solution_id, objective_name))";
     public static final String CREATE_SOLUTION_CONSTRAINT = 
     		"CREATE TABLE IF NOT EXISTS solution_constraint (solution_id VARCHAR(255) NOT NULL, "
     		+ "constraint_name VARCHAR(255) NOT NULL, constraint_value FLOAT(8) NOT NULL, "
     		+ "FOREIGN KEY (solution_id) REFERENCES solution(solution_id), "
-    		+ "PRIMARY KEY(solution_id, constraint_name)";
+    		+ "PRIMARY KEY(solution_id, constraint_name))";
 	
 	static Connection conn = null;
 
@@ -105,7 +105,7 @@ class Database {
 	private static void initialiseSchema() throws SQLException {
 		System.out.println("[DataLoader] Creating new database schema.");
 		PreparedStatement statement = conn.prepareStatement(
-				CREATE_WORKER +"; "+ CREATE_MOPT_SPECS +"; "+ CREATE_EXPERIMENT +"; "+ CREATE_OBJECTIVE +"; "+ CREATE_CONSTRAINT +"; ");
+				CREATE_WORKER +"; "+ CREATE_MOPT_SPECS +"; "+ CREATE_EXPERIMENT +"; "+ CREATE_OBJECTIVE +"; "+ CREATE_CONSTRAINT +"; "+ CREATE_SOLUTION +"; "+ CREATE_SOLUTION_OBJECTIVE +"; "+ CREATE_SOLUTION_CONSTRAINT +"; ");
 		statement.executeUpdate();
 		conn.commit();
 	}
@@ -138,7 +138,7 @@ class Database {
 		statement.setString(1, workerJSON.getString("experiment_id"));
 		statement.setString(2, workerJSON.getString("worker_id"));
 		statement.setString(3, workerJSON.getString("mopt_id"));
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 	    Date parsedDate = dateFormat.parse(workerJSON.getString("start_time"));
 	    Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
 		statement.setTimestamp(4, timestamp);
@@ -179,15 +179,7 @@ class Database {
 	}
 
 	private static void insertFinalSolution(JSONObject solutionJSON) throws SQLException, JSONException, ParseException {
-		// Update experiment end_time
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
-	    Date parsedDate = dateFormat.parse(solutionJSON.getString("end_time"));
-	    Timestamp endTime = new java.sql.Timestamp(parsedDate.getTime());
-		PreparedStatement statement = conn.prepareStatement("UPDATE experiment SET end_time='" + endTime + 
-				"' WHERE experiment_id='" + solutionJSON.getString("experiment_id") + "';");
-		System.out.println("Adding end time to experiment id: " + solutionJSON.getString("experiment_id") + " end time: " + endTime);
-		statement.execute();
-		System.out.println("[DataLoader] EXPERIMENT table updated (end_time)");
+		insertExperimentEndTime(solutionJSON);
 		
 		JSONArray solutionsArray = solutionJSON.getJSONArray("solutions");
 		IntStream.range(0, solutionsArray.length()).mapToObj(index -> (JSONObject) solutionsArray.get(index))
@@ -195,42 +187,51 @@ class Database {
 					try {
 						// TODO (tamara): Insert solutions and its objectives/constraints
 						// insert solution
-						/*PreparedStatement insertSolutionStatement = conn.prepareStatement("INSERT INTO solution VALUES(?, ?);");
-						insertSolutionStatement.setString(1, "solutionID");
+						PreparedStatement insertSolutionStatement = conn.prepareStatement("INSERT INTO solution VALUES(?, ?);");
+						insertSolutionStatement.setString(1, solution.getString("solution_id"));
 						insertSolutionStatement.setString(2, solutionJSON.getString("experiment_id"));
-						System.out.println("[DataLoader] SOLUTION table updated");*/
-						// insert its constraints
+						insertSolutionStatement.execute();
+						conn.commit();
+						System.out.println("[DataLoader] SOLUTION table updated for solution: " + solution.getString("solution_id"));
 						// insert its objectives
-						//insertFitnessValue(CriteriaType.OBJECTIVE, solution.getJSONArray("objectives"), solutionJSON);
-						//insertFitnessValue(CriteriaType.CONSTRAINT, solution.getJSONArray("constraints"), solutionJSON);
-					} catch (JSONException e) {
+						insertFitnessValue(CriteriaType.OBJECTIVE, solution.getJSONArray("objectives"), solution.getString("solution_id"));
+						// insert its constraints
+						insertFitnessValue(CriteriaType.CONSTRAINT, solution.getJSONArray("constraints"), solution.getString("solution_id"));
+					} catch (JSONException | SQLException e) {
 						e.printStackTrace();
 					}
 				});
 		conn.commit();
 	}
-	
-	private static void insertFitnessValue(CriteriaType criteriaType, JSONArray criteriaArray,
-			JSONObject solutionJSON) {
+
+	private static void insertExperimentEndTime(JSONObject solutionJSON) throws JSONException, SQLException, ParseException {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+		Date parsedDate = dateFormat.parse(solutionJSON.getString("end_time"));
+		Timestamp endTime = new java.sql.Timestamp(parsedDate.getTime());
+		PreparedStatement statement = conn.prepareStatement("UPDATE experiment SET end_time='" + endTime +
+				"' WHERE experiment_id='" + solutionJSON.getString("experiment_id") + "';");
+		System.out.println("Adding end time to experiment id: " + solutionJSON.getString("experiment_id") + " end time: " + endTime);
+		statement.execute();
+		System.out.println("[DataLoader] EXPERIMENT table updated (end_time)");
+		conn.commit();
+	}
+
+	private static void insertFitnessValue(CriteriaType criteriaType, JSONArray criteriaArray, String solutionId) throws SQLException {
 		IntStream.range(0, criteriaArray.length()).mapToObj(index -> (JSONObject) criteriaArray.get(index))
 				.forEach(criterionJSON -> {
 					try {
 						PreparedStatement objectiveStatement = conn
-								.prepareStatement("INSERT INTO solution VALUES(?, ?, ?, ?, ?, ?, ?);");
-						objectiveStatement.setInt(1, solutionJSON.getInt("worker_id"));
-						objectiveStatement.setString(2, solutionJSON.getString("experiment_id"));
-						objectiveStatement.setInt(3, solutionJSON.getInt("run_id"));
-						objectiveStatement.setInt(4, solutionJSON.getInt("end_time"));
-						objectiveStatement.setString(5, criteriaType.toString().toLowerCase());
-						objectiveStatement.setString(6, criterionJSON.getString("name"));
-						objectiveStatement.setDouble(7, criterionJSON.getDouble("value"));
+								.prepareStatement("INSERT INTO solution_" + criteriaType + " VALUES(?, ?, ?);");
+						objectiveStatement.setString(1, solutionId);
+						objectiveStatement.setString(2, criterionJSON.getString("name"));
+						objectiveStatement.setDouble(3, criterionJSON.getDouble("value"));
 						objectiveStatement.execute();
-						System.out.println("[DataLoader] solution table updated: "
-								+ criteriaType.toString().toLowerCase() + ":" + criterionJSON);
 					} catch (JSONException | SQLException e) {
 						e.printStackTrace();
 					}
 				});
+		conn.commit();
+		System.out.println("[DataLoader] SOLUTION_" + criteriaType + " table updated for solution: " + solutionId);
 	}
 
 	private static void insertIntermediateSolution(Object object) throws SQLException {
