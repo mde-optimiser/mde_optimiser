@@ -1,7 +1,6 @@
 package uk.ac.kcl.client;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.LinkedHashMap;
 import java.util.Map;
 

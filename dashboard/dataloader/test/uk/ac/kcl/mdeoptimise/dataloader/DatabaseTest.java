@@ -6,7 +6,7 @@ import org.junit.Test;
  * Tests {@link Database} functionality without having to run an actual MDEO experiment, by mimicking its behaviour.
  * Note: requires a connection to a database server.
  * <p>
- * TODO(tamara): Fake a database server.
+ * TODO (tamara): Fake a database server.
  * @author Tamara 
  *
  */

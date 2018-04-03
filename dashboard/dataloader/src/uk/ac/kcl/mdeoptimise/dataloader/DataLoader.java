@@ -21,43 +21,20 @@ import javax.naming.InitialContext;
 public class DataLoader {
 
 	public static void main(String[] args) {
-		/*
-		 * try { // Set the properties ... Properties properties = new
-		 * Properties(); properties.put(Context.INITIAL_CONTEXT_FACTORY,
-		 * Consts.INITIAL_CONTEXT_FACTORY); properties.put("connectionfactory."+
-		 * Consts.CONNECTION_JNDI_NAME , Consts.QUEUE_CONNECTION_NAME);
-		 * properties.put("queue."+ Consts.QUEUE_JNDI_NAME , Consts.QUEUE_NAME);
-		 * 
-		 * // Create the initial context Context context = new
-		 * InitialContext(properties);
-		 * 
-		 * ConnectionFactory factory = (ConnectionFactory)
-		 * context.lookup("myFactoryLookup"); Destination queue = (Destination)
-		 * context.lookup("myQueueLookup");
-		 * 
-		 * Connection connection = factory.createConnection("admin", "admin");
-		 * connection.setExceptionListener(new MyExceptionListener());
-		 * connection.start();
-		 * 
-		 * Session session = connection.createSession(false,
-		 * Session.AUTO_ACKNOWLEDGE); MessageConsumer messageConsumer =
-		 * session.createConsumer(queue); messageConsumer.setMessageListener(new
-		 * QueueMessageListener());
-		 * 
-		 * System.out.println("[DataLoader] Connected to queue"); } catch
-		 * (Exception e) { e.printStackTrace(); }
-		 */
 		try {
-			queueAvailable();
+			connectQueue();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	private static void queueAvailable() throws InterruptedException {
-		boolean queueAvailable = false;
-		while (!queueAvailable) {
+	/**
+	 * Continuously tries to connect to the queue until a connection is established.
+	 * On failure to connect, sleep for five seconds and try again.
+	 */
+	private static void connectQueue() throws InterruptedException {
+		boolean queueConnected = false;
+		while (!queueConnected) {
 			try {
 				Properties properties = new Properties();
 				properties.put(Context.INITIAL_CONTEXT_FACTORY, Consts.INITIAL_CONTEXT_FACTORY);
@@ -79,9 +56,9 @@ public class DataLoader {
 				messageConsumer.setMessageListener(new QueueMessageListener());
 
 				System.out.println("[DataLoader] Connected to queue");
-				queueAvailable = true;
+				queueConnected = true;
 			} catch (JMSException e) {
-				System.out.println("[DataLoader] Sleeping");
+				System.out.println("[DataLoader] Queue is not available. DataLoader is sleeping...");
 				Thread.sleep(5000);
 			} catch (Exception e) {
 				e.printStackTrace();

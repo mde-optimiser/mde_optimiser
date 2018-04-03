@@ -1,16 +1,14 @@
 package uk.ac.kcl.optimisation.moea
 
+import java.util.LinkedHashMap
 import java.util.List
+import java.util.Map
 import org.moeaframework.core.Solution
 import org.moeaframework.problem.AbstractProblem
-import uk.ac.kcl.optimisation.SolutionGenerator
-import uk.ac.kcl.interpreter.guidance.GuidanceFunctionsFactory
-import uk.ac.kcl.interpreter.guidance.GuidanceFunctionAdapter
 import uk.ac.kcl.interpreter.IGuidanceFunction
-import java.util.Random
-import java.util.Map
-import java.util.HashMap
-import java.util.LinkedHashMap
+import uk.ac.kcl.interpreter.guidance.GuidanceFunctionAdapter
+import uk.ac.kcl.interpreter.guidance.GuidanceFunctionsFactory
+import uk.ac.kcl.optimisation.SolutionGenerator
 
 class MoeaOptimisationProblem extends AbstractProblem {
 
@@ -82,7 +80,8 @@ class MoeaOptimisationProblem extends AbstractProblem {
 			moeaSolution.setConstraint(objectiveId, constraintFunction.computeFitness(moeaSolution.model))
 		]
 		
-		//TODO MoeaOptimisationSolution as a value in the hashmap
+		// TODO (tamara): MoeaOptimisationSolution as a value in the hashmap
+		// TODO (tamara): Possibly create a separate class containing the calculations below.
 		counter.put(counter.size +1, String.format("%05X", moeaSolution.model.hashCode));
 		if(counter.size % solutionGenerator.optimisationModel.optimisation.algorithmPopulation == 0)
 			println(String.format("Finished run %s." ,counter.size/solutionGenerator.optimisationModel.optimisation.algorithmPopulation))

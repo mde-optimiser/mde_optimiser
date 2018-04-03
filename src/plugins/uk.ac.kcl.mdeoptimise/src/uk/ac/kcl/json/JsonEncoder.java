@@ -57,7 +57,7 @@ public class JsonEncoder {
 	 * @throws IOException
 	 */
 	public static String generateWorkerRegistrationText(Optimisation optimisationModel, String experimentId) throws IOException {
-		// TODO(tamara): what are the worker name and ID?
+		// TODO (tamara): what are the worker name and ID?
 		JSONObject workerJSON = new JSONObject();
 		workerJSON.put("worker_name", "tamara");
 		String macAddress = macAddressRetriever.getMacAddress();
@@ -122,7 +122,7 @@ public class JsonEncoder {
 		Date date = new Date();
 		String startTime = dateFormat.format(date);
 		solutionJSON.put("experiment_id", experimentId);
-		solutionJSON.put("run_id", 1); // TODO(tamara): What is the run ID?
+		solutionJSON.put("run_id", 1); // TODO (tamara): What is the run ID?
 		solutionJSON.put("end_time", startTime);
 
 		// insert an array of solutions

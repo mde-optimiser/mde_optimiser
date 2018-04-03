@@ -96,7 +96,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 				.getConnection("jdbc:h2:tcp://localhost/~/test", "mdeo", "mdeo"); // add application code here
 		System.out.println(conn.getCatalog());
 		ResultSet resultSet1 = conn.createStatement().executeQuery("SELECT * FROM experiment;");
-		//TODO(tamara): find an alternative for checking if the database is available.
+		// TODO (tamara): find an alternative for checking if the database is available.
 		return resultSet1.toString();
 	}
 

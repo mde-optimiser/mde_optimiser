@@ -18,7 +18,7 @@ import org.json.JSONObject;
 /**
  * Database functionalities, such as establishing a connection and inserting data.
  * <p>
- * TODO(tamara): This class is quite long. Move some functionality to a helper class (e.g. JsonDecoder).
+ * TODO (tamara): This class is quite long. Move some functionality to a helper class (e.g. JsonDecoder).
  * 
  * @author Tamara
  * 
@@ -133,15 +133,6 @@ class Database {
 		}
 		else
 			System.out.println("[DataLoader] MOPT_SPECS table already contains mopt_id: " + moptId);
-
-		/*while(true) {
-			try {
-				Thread.sleep(5000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}*/
 		
 		PreparedStatement statement = conn.prepareStatement("INSERT INTO experiment(experiment_id, worker_id, mopt_id, start_time) VALUES(?, ?, ?, ?);");
 		statement.setString(1, workerJSON.getString("experiment_id"));
@@ -243,7 +234,7 @@ class Database {
 	}
 
 	private static void insertIntermediateSolution(Object object) throws SQLException {
-		// TODO(tamara): Send fitness values to database for intermediate solutions.
+		// TODO (tamara): Send fitness values to database for intermediate solutions.
 		conn.commit();
 	}
 }
