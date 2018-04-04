@@ -11,43 +11,23 @@ import java.util.Map;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
-import uk.ac.kcl.client.Experiment;
-import uk.ac.kcl.client.GreetingService;
-import uk.ac.kcl.client.Solution;
+import uk.ac.kcl.client.constants.PageConstants;
+import uk.ac.kcl.client.data.Experiment;
+import uk.ac.kcl.client.data.Solution;
+import uk.ac.kcl.client.services.MDEOService;
 
 /**
  * The server-side implementation of the RPC service.
  */
 @SuppressWarnings("serial")
-public class GreetingServiceImpl extends RemoteServiceServlet implements GreetingService {
+public class MDEOServiceImpl extends RemoteServiceServlet implements MDEOService {
 
-	public String greetServer(String s) throws IllegalArgumentException {
-		String userAgent = getThreadLocalRequest().getHeader("User-Agent");
-
-		// Escape data from the client to avoid cross-site script vulnerabilities.
-		userAgent = escapeHtml(userAgent);
-		String text = "";
-		try {
-			text = getExampleValue();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		/*return "Hello, " + input + "!<br><br>I am running " + serverInfo + ".<br><br>It looks like you are using:<br>"
-				+ userAgent;*/
-		if (text.isEmpty()) {
-			return "Connecting to the database was unsuccessful.";
-		}
-		else {
-			return "Connecting to the database was successful.";
-		}
-	}
-	
 	public List<String> getWorkerIds() throws Exception {
 		Class.forName("org.h2.Driver"); 
-		Connection conn = DriverManager
-				.getConnection("jdbc:h2:tcp://localhost/~/test", "mdeo", "mdeo"); // add application code here
+		Connection conn = DriverManager.getConnection(
+				PageConstants.DATABSE_URL, 
+				PageConstants.DATABSE_USERNAME, 
+				PageConstants.DATABSE_PASSWORD);
 		System.out.println(conn.getCatalog());
 		ResultSet resultSet1 = conn.createStatement().executeQuery("SELECT mac_address FROM worker;");
 		List<String> list = new LinkedList<>();
@@ -62,8 +42,10 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 	
 	public List<String> getExperimentIds() throws Exception {
 		Class.forName("org.h2.Driver"); 
-		Connection conn = DriverManager
-				.getConnection("jdbc:h2:tcp://localhost/~/test", "mdeo", "mdeo"); // add application code here
+		Connection conn = DriverManager.getConnection(
+				PageConstants.DATABSE_URL, 
+				PageConstants.DATABSE_USERNAME, 
+				PageConstants.DATABSE_PASSWORD);
 		System.out.println(conn.getCatalog());
 		ResultSet resultSet1 = conn.createStatement().executeQuery("SELECT experiment_id FROM experiment;");
 		List<String> list = new LinkedList<>();
@@ -76,47 +58,31 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 		return list;
 	}
 
-	/**
-	 * Escape an html string. Escaping data received from the client helps to
-	 * prevent cross-site script vulnerabilities.
-	 * 
-	 * @param html the html string to escape
-	 * @return the escaped string
-	 */
-	private String escapeHtml(String html) {
-		if (html == null) {
-			return null;
-		}
-		return html.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
-	}
-
-	private String getExampleValue() throws Exception {
-		Class.forName("org.h2.Driver"); 
-		Connection conn = DriverManager
-				.getConnection("jdbc:h2:tcp://localhost/~/test", "mdeo", "mdeo"); // add application code here
-		System.out.println(conn.getCatalog());
-		ResultSet resultSet1 = conn.createStatement().executeQuery("SELECT * FROM experiment;");
-		// TODO (tamara): find an alternative for checking if the database is available.
-		return resultSet1.toString();
-	}
-
 	@Override
 	public List<Solution> getSolutions(String experimentId) throws Exception {
 		Class.forName("org.h2.Driver"); 
-		Connection conn = DriverManager
-				.getConnection("jdbc:h2:tcp://localhost/~/test", "mdeo", "mdeo"); // add application code here
+		Connection conn = DriverManager.getConnection(
+				PageConstants.DATABSE_URL, 
+				PageConstants.DATABSE_USERNAME, 
+				PageConstants.DATABSE_PASSWORD);
 		System.out.println(conn.getCatalog());
 		ResultSet solutionIds = conn.createStatement().executeQuery("SELECT solution_id FROM solution "
-				+ "WHERE experiment_id='" + experimentId + "';");
+				+ "WHERE experiment_id= '" + experimentId.toLowerCase() + "';");
 		
 		List<Solution> list = new LinkedList<>();
+		Map<String, Double> objectives;
+		Map<String, Double> constraints;
 		// For each solution
 		while(solutionIds.next()) {
 			// Add solution to the list
+			String solutionId = solutionIds.getString(1);
+			objectives = getObjectives(conn, solutionId);
+			constraints = getConstraints(conn, solutionId);
 			list.add(new Solution(
 					experimentId, 
-					getObjectives(conn, solutionIds.getString(1)), 
-					getConstraints(conn, solutionIds.getString(1))));
+					solutionId,
+					objectives, 
+					constraints));
 		}
 		conn.close();
 		return list;
@@ -124,7 +90,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
 	private Map<String, Double> getConstraints(Connection conn, String solutionId) throws SQLException {
 		ResultSet result = conn.createStatement().executeQuery("SELECT constraint_name, constraint_value FROM solution_constraint "
-				+ "WHERE solution_id='" + solutionId + "';");
+				+ "WHERE solution_id= '" + solutionId + "';");
 		
 		Map<String, Double> constraints = new LinkedHashMap<String, Double>();
 		while(result.next()) {
@@ -135,7 +101,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
 	private Map<String, Double> getObjectives(Connection conn, String solutionId) throws SQLException {
 		ResultSet result = conn.createStatement().executeQuery("SELECT objective_name, objective_value FROM solution_objective "
-				+ "WHERE solution_id='" + solutionId + "';");
+				+ "WHERE solution_id= '" + solutionId + "';");
 		
 		Map<String, Double> objectives = new LinkedHashMap<String, Double>();
 		while(result.next()) {
@@ -147,8 +113,10 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 	@Override
 	public List<Experiment> getExperimentData(String workerId) throws Exception {
 		Class.forName("org.h2.Driver"); 
-		Connection conn = DriverManager
-				.getConnection("jdbc:h2:tcp://localhost/~/test", "mdeo", "mdeo"); // add application code here
+		Connection conn = DriverManager.getConnection(
+				PageConstants.DATABSE_URL, 
+				PageConstants.DATABSE_USERNAME, 
+				PageConstants.DATABSE_PASSWORD);
 		System.out.println(conn.getCatalog());
 		ResultSet resultSet1 = conn.createStatement().executeQuery("SELECT * FROM experiment "
 				+ "WHERE worker_id='" + workerId + "';");

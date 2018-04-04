@@ -1,6 +1,10 @@
 package uk.ac.kcl.client.constants;
 
 public class PageConstants {
+
+	public static final String DATABSE_URL = "jdbc:h2:tcp://localhost/~/test";
+	public static final String DATABSE_USERNAME = "mdeo";
+	public static final String DATABSE_PASSWORD = "mdeo";
     
     public static final String EXPERIMENT_TOKEN = "experiment-details";
     public static final String EXPERIMENT_TITLE = "MDEO SD | Experiment Details";

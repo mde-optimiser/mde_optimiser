@@ -1,16 +1,18 @@
-package uk.ac.kcl.client;
+package uk.ac.kcl.client.services;
 
 import java.util.List;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
+import uk.ac.kcl.client.data.Experiment;
+import uk.ac.kcl.client.data.Solution;
+
 /**
  * The client-side stub for the RPC service.
  */
-@RemoteServiceRelativePath("greet")
-public interface GreetingService extends RemoteService {
-	String greetServer(String name) throws IllegalArgumentException;
+@RemoteServiceRelativePath("mdeo")
+public interface MDEOService extends RemoteService {
 	List<String> getWorkerIds() throws Exception;
 	List<String> getExperimentIds() throws Exception;
 	List<Experiment> getExperimentData(String workerId) throws Exception;

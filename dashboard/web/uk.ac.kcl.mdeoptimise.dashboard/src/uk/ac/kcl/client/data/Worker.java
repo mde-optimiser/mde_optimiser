@@ -1,4 +1,4 @@
-package uk.ac.kcl.client;
+package uk.ac.kcl.client.data;
 
 import java.util.List;
 

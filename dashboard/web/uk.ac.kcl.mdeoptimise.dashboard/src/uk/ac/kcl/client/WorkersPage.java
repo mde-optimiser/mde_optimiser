@@ -14,7 +14,10 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.view.client.CellPreviewEvent;
 
 import uk.ac.kcl.client.constants.PageConstants;
-public class WorkerTableWidget extends Content {
+import uk.ac.kcl.client.data.Experiment;
+import uk.ac.kcl.client.data.Worker;
+
+public class WorkersPage extends Content {
 
 	private ActionCellTable<Experiment> table = new ActionCellTable<Experiment>();
 	private Label label = new Label();
@@ -63,7 +66,7 @@ public class WorkerTableWidget extends Content {
 	 * 
 	 * @param worker the worker containing a list of experiments to be added to the table
 	 */
-	public WorkerTableWidget(Worker worker) {
+	public WorkersPage(Worker worker) {
 		VerticalPanel panel = new VerticalPanel();
 		panel.add(label);
 		panel.add(table);
@@ -82,7 +85,7 @@ public class WorkerTableWidget extends Content {
 					// TODO (tamara): Remove the following lines if row expansion is no longer used.
 					/*Widget w = new ExperimentInfoWidget(event.getValue());
 					table.displayRowDetail(table.getKeyboardSelectedRow(), w.getElement());*/
-					ContentContainer.getInstance().setContent(new ExperimentDetails(event.getValue()));
+					ContentContainer.getInstance().setContent(new ExperimentPage(event.getValue()));
 				} 
 			} 
 		});

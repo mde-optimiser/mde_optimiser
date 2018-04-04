@@ -12,23 +12,21 @@ import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
+import uk.ac.kcl.client.data.Experiment;
+import uk.ac.kcl.client.data.Worker;
+import uk.ac.kcl.client.services.MDEOService;
+import uk.ac.kcl.client.services.MDEOServiceAsync;
+
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
 public class MDEO_Status_Dashboard_1_0 implements EntryPoint  {
 	
-	/**
-	 * The message displayed to the user when the server cannot be reached or
-	 * returns an error.
-	 */
+	/* The message displayed to the user when the server cannot be reached or returns an error. */
 	private static final String SERVER_ERROR = "An error occurred while "
 			+ "attempting to contact the server. Please check your network connection and try again.<br><br>";
 
-	/**
-	 * Create a remote service proxy to talk to the server-side Greeting
-	 * service.
-	 */
-	private final GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
+	private final MDEOServiceAsync service = GWT.create(MDEOService.class);
 
 	private DialogBox dialogBox;
 	private Button closeButton;
@@ -67,7 +65,7 @@ public class MDEO_Status_Dashboard_1_0 implements EntryPoint  {
 	}
 
 	private void getWorkerIdList() {
-		greetingService.getWorkerIds(new AsyncCallback<List<String>>() {
+		service.getWorkerIds(new AsyncCallback<List<String>>() {
 
 			@Override
 			public void onFailure(Throwable caught) {
@@ -89,7 +87,7 @@ public class MDEO_Status_Dashboard_1_0 implements EntryPoint  {
 	}
 
 	private void getExperiments(String workerId) {
-		greetingService.getExperimentData(workerId, new AsyncCallback<List<Experiment>>() {
+		service.getExperimentData(workerId, new AsyncCallback<List<Experiment>>() {
 
 			@Override
 			public void onFailure(Throwable caught) {
@@ -105,7 +103,7 @@ public class MDEO_Status_Dashboard_1_0 implements EntryPoint  {
 			public void onSuccess(List<Experiment> result) {
 				Worker worker = new Worker(workerId);
 				worker.setExperiments(result);
-				ContentContainer.getInstance().setContent(new WorkerTableWidget(worker));
+				ContentContainer.getInstance().setContent(new WorkersPage(worker));
 			}
 		});
 	}

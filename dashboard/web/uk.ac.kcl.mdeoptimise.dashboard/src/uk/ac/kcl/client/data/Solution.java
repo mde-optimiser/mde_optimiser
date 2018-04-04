@@ -1,11 +1,11 @@
-package uk.ac.kcl.client;
+package uk.ac.kcl.client.data;
 
 import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Encloses experiment data, such as start/end time, status etc. 
+ * Encloses solution data, such as its objectives and constraints. 
  * @author Tamara
  *
  */
@@ -13,31 +13,33 @@ public class Solution implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	private String experimentId;
+	private String solutionId;
 	private Map<String, Double> objectives = new LinkedHashMap<String, Double>();
 	private Map<String, Double> constraints = new LinkedHashMap<String, Double>();
 	
 	public Solution() {}
 
-	public Solution(String experimentId, Map<String, Double> objectives, Map<String,Double> constraints) {
+	public Solution(String experimentId, String solutionId, Map<String, Double> objectives, Map<String,Double> constraints) {
 		super();
+		setSolutionId(solutionId);
 		setExperimentId(experimentId);
 		setObjectives(objectives);
 		setConstraints(constraints);
 	}
 	
-	private Map<String, Double> getConstraints() {
+	public Map<String, Double> getConstraints() {
 		return constraints;
 	}
 
-	private void setConstraints(Map<String, Double> constraints) {
+	public void setConstraints(Map<String, Double> constraints) {
 		this.constraints = constraints;
 	}
 
-	private Map<String, Double> getObjectives() {
+	public Map<String, Double> getObjectives() {
 		return objectives;
 	}
 
-	private void setObjectives(Map<String, Double> objectives) {
+	public void setObjectives(Map<String, Double> objectives) {
 		this.objectives = objectives;
 	}
 
@@ -47,5 +49,13 @@ public class Solution implements Serializable {
 
 	public void setExperimentId(String experimentId) {
 		this.experimentId = experimentId;
+	}
+	
+	public String getSolutionId() {
+		return solutionId;
+	}
+
+	public void setSolutionId(String solutionId) {
+		this.solutionId = solutionId;
 	}
 }

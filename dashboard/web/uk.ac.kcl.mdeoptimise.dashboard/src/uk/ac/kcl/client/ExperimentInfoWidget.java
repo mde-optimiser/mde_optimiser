@@ -10,7 +10,10 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
+
+import uk.ac.kcl.client.data.Experiment;
 
 public class ExperimentInfoWidget extends Composite {
 
@@ -31,6 +34,8 @@ public class ExperimentInfoWidget extends Composite {
 	Label totalTime;
 	@UiField
 	Label moptId;
+	@UiField
+	SimplePanel solutionsTable;
 
 	public ExperimentInfoWidget() {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -71,8 +76,12 @@ public class ExperimentInfoWidget extends Composite {
 	public void setEndTime(Timestamp time){
 		endTime.setText(endTime.getText() + " " + DateTimeFormat.getFormat("dd/MM/yyyy 'at' hh:mm aaa").format(time));
 	}
-	
+
 	public void setMoptId(String id){
 		moptId.setText(moptId.getText() + " " + id.toUpperCase());	
+	}
+	
+	public void setSolutionsTable(SolutionsTable table){
+		solutionsTable.setWidget(table);
 	}
 }
