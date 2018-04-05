@@ -96,7 +96,7 @@ public class WorkersPage extends Content {
 		initWidget(panel);
 
 		// Give the overall composite a style name.
-		setStyleName("workerTable");
+		setStyleName("container");
 	}
 	
 	private void initializeColumns() {

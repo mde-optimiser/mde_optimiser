@@ -6,10 +6,12 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 import uk.ac.kcl.client.data.Experiment;
@@ -37,6 +39,10 @@ public class MDEO_Status_Dashboard_1_0 implements EntryPoint  {
 	 */
 	public void onModuleLoad() {
 		getWorkerIdList();
+		
+		RootPanel contentRoot = RootPanel.get("header");
+        contentRoot.clear();
+        contentRoot.add(new NavBar());
 
 		// Create the popup dialog box
 		dialogBox = new DialogBox();

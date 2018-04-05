@@ -6,30 +6,34 @@
 	.text {
 		color: #595959;
 	}
-	.container {
-		padding-left: 60px;
-		padding-right: 60px;
-		
-	}
-	div {
-		padding-bottom: 5px;
-	}
+
 	</ui:style>
-	<g:HTMLPanel styleName="{style.container}">
-		<div >
-			<b:Label type="INFO">Experiment info:</b:Label>
-			<g:Label styleName="{style.text}" ui:field="experimentId" >ID: </g:Label>
-			<g:Label styleName="{style.text}" ui:field="workerId" >Worker MAC Address: </g:Label>
-			<g:Label styleName="{style.text}" ui:field="startTime" >Start Time: </g:Label>
-			<g:Label styleName="{style.text}" ui:field="endTime" >End Time: </g:Label>
-			<g:Label styleName="{style.text}" ui:field="totalTime" >Total Time Taken: </g:Label>
-		</div>
-		<div >
-			<b:Label type="INFO">MOPT info:</b:Label>
-			<g:Label styleName="{style.text}" ui:field="moptId" >ID: </g:Label>
-			<g:Label styleName="{style.text}" ui:field="model" >Model: TTC_InputRDG_C.xmi</g:Label>
-			<g:Label styleName="{style.text}" ui:field="metamodel" >Metamodel: architectureCRA.ecore</g:Label>
-		</div>
+	<g:HTMLPanel>
+		<b:Row>
+			<b:Column size="4">
+    			<b:Heading size="4">Experiment info</b:Heading>
+				<g:Label styleName="{style.text}" ui:field="experimentId">ID: </g:Label>
+				<g:Label styleName="{style.text}" ui:field="workerId">Worker MAC Address: </g:Label>
+				<g:Label styleName="{style.text}" ui:field="startTime">Start Time: </g:Label>
+				<g:Label styleName="{style.text}" ui:field="endTime">End Time: </g:Label>
+				<g:Label styleName="{style.text}" ui:field="totalTime">Total Time Taken: </g:Label>
+			</b:Column>
+			<b:Column size="4">
+    			<b:Heading size="4">MOPT info</b:Heading>
+				<g:Label styleName="{style.text}" ui:field="moptId">ID: </g:Label>
+				<g:Label styleName="{style.text}" ui:field="model">Model: TTC_InputRDG_C.xmi</g:Label>
+				<g:Label styleName="{style.text}" ui:field="metamodel">Metamodel: architectureCRA.ecore</g:Label>
+			</b:Column>
+		</b:Row>
+		<b:Popover text="Final solutions show the pareto front, whereas intermediate solutions show the progress made during runtime." heading="Choose solution range">
+		
+			<b:ButtonGroup toggle="radio">
+		   		<b:Button active="true">Final</b:Button>
+		   		<b:Button>Intermediate</b:Button>
+		  		<b:Button>All</b:Button>
+			</b:ButtonGroup>
+
+		</b:Popover>
 		<g:SimplePanel ui:field="solutionsTable" />
 	</g:HTMLPanel>
 </ui:UiBinder> 

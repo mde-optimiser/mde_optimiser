@@ -40,7 +40,7 @@ public class ExperimentPage extends Content {
 		// All composites must call initWidget() in their constructors.
 
 		// Give the overall composite a style name.
-		setStyleName("experimentDetails");
+		setStyleName("container");
 	}
 	
 	private void getFinalSolutions(String experimentId) {
