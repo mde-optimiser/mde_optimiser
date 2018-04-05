@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.google.gwt.cell.client.NumberCell;
-import com.google.gwt.user.cellview.client.CellTable;
+import com.github.gwtbootstrap.client.ui.CellTable;
 import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.TextColumn;
 
