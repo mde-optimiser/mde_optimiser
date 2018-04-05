@@ -22,6 +22,9 @@ import uk.ac.kcl.optimisation.moea.MoeaOptimisation
 import uk.ac.kcl.tests.FullTestInjector
 import uk.ac.kcl.mdeoptimise.dashboard.api.macaddress.MacAddressRetriever
 import uk.ac.kcl.mdeoptimise.dashboard.api.hashing.Hashing
+import java.io.File
+import uk.ac.kcl.ui.launch.RunOptimisation
+import uk.ac.kcl.MDEOptimiseStandaloneSetup
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)
@@ -65,6 +68,29 @@ class MoeaOptimisationTests {
         }
     }
     
+    def runMoeaOptimisationStandalone(String projectPath, String moptFilePath) {
+    	val injector = new MDEOptimiseStandaloneSetup().createInjectorAndDoEMFRegistration()
+    	var runOptimisationStandalone = injector.getInstance(RunOptimisation)
+    	
+    	runOptimisationStandalone.run(projectPath, moptFilePath)
+    }
+
+    @Test
+    def void runMoeaOptimisationStandaloneCrossoverTest(){
+		var projectFile = new File("./")
+    	var moptFileLocation = new File("src/models/cra/crossover_experiment.mopt");
+
+    	runMoeaOptimisationStandalone(projectFile.absolutePath, moptFileLocation.absolutePath)
+    }
+
+    @Test
+    def void runMoeaOptimisationStandaloneScrumPlanningTest(){
+		var projectFile = new File("./")
+    	var moptFileLocation = new File("src/models/cra/scrum_planning_base_case.mopt");
+
+    	runMoeaOptimisationStandalone(projectFile.absolutePath, moptFileLocation.absolutePath)
+    }
+
     //Some tests to run optimisation manually for now
 	@Test
 	def void runMoeaOptimisationNSGA2() {

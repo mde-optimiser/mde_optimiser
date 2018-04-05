@@ -1,0 +1,12 @@
+basepath <src/models/cra/>
+metamodel <architectureCRA.ecore>
+model <TTC_InputRDG_C.xmi>
+objective MinimiseCoupling maximise java { "models.moea.MaximiseCRA" }
+constraint MinimiseClasslessFeatures java { "models.moea.MinimiseClasslessFeatures" }
+mutate using <craEvolvers.henshin> unit "createClass"
+mutate using <craEvolvers.henshin> unit "assignFeature"
+mutate using <craEvolvers.henshin> unit "moveFeature"
+mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
+breed using <exDependencies.henshin> unit "exchangeMultipleDependencies" 
+	parameters { number3 => Random("[0-9]{0,2}"), number => "models.moea.RandomEvolverParameter" }
+optimisation provider moea algorithm NSGAII variation genetic evolutions 100 population 30

@@ -1,0 +1,14 @@
+basepath <src/models/scrum/>
+metamodel <planning.ecore>
+model <product_debt.xmi>
+objective MinimiseSprints minimise java { "models.scrum.MinimiseSprints" }
+objective MaximiseAverageSprintEffort maximise java { "models.scrum.MaximiseAverageSprintEffort" }
+objective MaximiseAverageStakeholderImportance maximise java { "models.scrum.MaximiseAverageStakeholderImportance" }
+constraint MinimiseUnassignedWorkItems java { "models.scrum.MinimiseUnassignedWorkItems" }
+constraint MinimiseSprintsWithInvalidEffort java { "models.scrum.MinimiseSprintsWithInvalidEffort" }
+constraint MinimiseEmptySprints java { "models.scrum.MinimiseEmptySprints" }
+mutate using <sprint.henshin> unit "createSprint"
+mutate using <sprint.henshin> unit "deleteSprint"
+mutate using <sprint.henshin> unit "addItemToSprint"
+mutate using <sprint.henshin> unit "removeItemFromSprint"
+optimisation provider moea algorithm NSGAII variation mutation evolutions 150 population 30 experiments 10
