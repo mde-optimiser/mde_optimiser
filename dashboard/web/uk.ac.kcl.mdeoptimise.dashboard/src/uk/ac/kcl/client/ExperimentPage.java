@@ -16,10 +16,6 @@ public class ExperimentPage extends Content {
 
 	private final MDEOServiceAsync service = GWT.create(MDEOService.class);
 	
-	/* The message displayed to the user when the server cannot be reached or returns an error. */
-	private static final String SERVER_ERROR = "An error occurred while "
-			+ "attempting to contact the server. Please check your network connection and try again.<br><br>";
-	
 	private ExperimentInfoWidget experimentWidget;
 	VerticalPanel panel;
 	
@@ -49,7 +45,7 @@ public class ExperimentPage extends Content {
 			@Override
 			public void onFailure(Throwable caught) {
 				// Show the RPC error message to the user
-				Window.alert(SERVER_ERROR + caught.getMessage());
+				Window.alert(PageConstants.SERVER_ERROR + caught.getMessage());
 			}
 
 			@Override

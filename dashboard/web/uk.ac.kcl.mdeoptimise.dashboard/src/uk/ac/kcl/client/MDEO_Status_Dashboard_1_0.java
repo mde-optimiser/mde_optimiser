@@ -6,7 +6,6 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
@@ -14,6 +13,7 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
+import uk.ac.kcl.client.constants.PageConstants;
 import uk.ac.kcl.client.data.Experiment;
 import uk.ac.kcl.client.data.Worker;
 import uk.ac.kcl.client.services.MDEOService;
@@ -24,10 +24,6 @@ import uk.ac.kcl.client.services.MDEOServiceAsync;
  */
 public class MDEO_Status_Dashboard_1_0 implements EntryPoint  {
 	
-	/* The message displayed to the user when the server cannot be reached or returns an error. */
-	private static final String SERVER_ERROR = "An error occurred while "
-			+ "attempting to contact the server. Please check your network connection and try again.<br><br>";
-
 	private final MDEOServiceAsync service = GWT.create(MDEOService.class);
 
 	private DialogBox dialogBox;
@@ -78,7 +74,7 @@ public class MDEO_Status_Dashboard_1_0 implements EntryPoint  {
 				// Show the RPC error message to the user
 				dialogBox.setText("Remote Procedure Call - Failure");
 				serverResponseLabel.addStyleName("serverResponseLabelError");
-				serverResponseLabel.setHTML(SERVER_ERROR + caught.getMessage());
+				serverResponseLabel.setHTML(PageConstants.SERVER_ERROR + caught.getMessage());
 				dialogBox.center();
 				closeButton.setFocus(true);
 			}
@@ -100,7 +96,7 @@ public class MDEO_Status_Dashboard_1_0 implements EntryPoint  {
 				// Show the RPC error message to the user
 				dialogBox.setText("Remote Procedure Call - Failure");
 				serverResponseLabel.addStyleName("serverResponseLabelError");
-				serverResponseLabel.setHTML(SERVER_ERROR + caught.getMessage());
+				serverResponseLabel.setHTML(PageConstants.SERVER_ERROR + caught.getMessage());
 				dialogBox.center();
 				closeButton.setFocus(true);
 			}
