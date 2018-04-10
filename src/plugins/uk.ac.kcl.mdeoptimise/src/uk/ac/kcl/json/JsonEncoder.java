@@ -7,7 +7,6 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Random;
 
 import org.eclipse.emf.common.util.EList;
 import org.json.JSONArray;
@@ -57,7 +56,6 @@ public class JsonEncoder {
 	 * @throws IOException
 	 */
 	public static String generateWorkerRegistrationText(Optimisation optimisationModel, String experimentId) throws IOException {
-		// TODO (tamara): what are the worker name and ID?
 		JSONObject workerJSON = new JSONObject();
 		String macAddress = macAddressRetriever.getMacAddress();
 		workerJSON.put("worker_id", macAddress);
@@ -98,7 +96,7 @@ public class JsonEncoder {
 	 * 		"run_id":"1",
 	 * 		"end_time":2018-04-03 07:49:44.362,
 	 * 		"solutions":[
-	 * 			{"solution_id":"",
+	 * 			{"solution_id":"0b524cba02e9c960a5813d819ea72a41",
 	 * 			"objectives":[
 	 * 				{"name":"MinimiseCoupling","value":-1.0}
 	 * 			],
@@ -122,15 +120,58 @@ public class JsonEncoder {
 		Date date = new Date();
 		String startTime = dateFormat.format(date);
 		solutionJSON.put("experiment_id", experimentId);
-		solutionJSON.put("run_id", 1); // TODO (tamara): What is the run ID?
+		solutionJSON.put("run_id", optimisationModel.getOptimisation().getAlgorithmEvolutions());
 		solutionJSON.put("end_time", startTime);
 
 		// insert an array of solutions
-		solutionJSON.put("solutions", generateSolutionsJsonArray(solutions));
+		solutionJSON.put("solutions", generateSolutionsJsonArray(solutions, optimisationModel.getOptimisation().getAlgorithmEvolutions()));
 
 		// construct a final message with the message type
 		JSONObject messageJSON = new JSONObject();
 		messageJSON.put(MessageType.FINAL_SOLUTION.toString(), solutionJSON);
+
+		return messageJSON.toString();
+	}
+
+	/**
+	 * Generate JSON text used to send intermediate solution message.
+	 *
+	 * The message looks like this:
+	 * <pre>
+	 * {"INTERMEDIATE_SOLUTION":
+	 * 		{"worker_id":"8C-85-90-24-B7-0F",
+	 * 		"experiment_id":"59a127eea25284dc3501550e7db59ec1",
+	 * 		"run_id":"1",
+	 * 		"solutions":[
+	 * 			{"solution_id":"0b524cba02e9c960a5813d819ea72a41",
+	 * 			"objectives":[
+	 * 				{"name":"MinimiseCoupling","value":-1.0}
+	 * 			],
+	 * 			"constraints":[
+	 * 				{"name":"MinimiseClasslessFeatures","value":32.0}
+	 * 			]},
+	 * ]}
+	 * }
+	 * </pre>
+	 * @param optimisationModel used to extract relevant data, such as base path location.
+	 * @param solutions to be represented as a JSON message.
+	 * @return String representation of a JSONObject.
+	 * @throws IOException
+	 */
+	public static String generateIntermediateSolutionText(Optimisation optimisationModel,
+			Iterator<MoeaOptimisationSolution> solutions, String experimentId, int evolutionNumber) throws IOException {
+		JSONObject solutionJSON = new JSONObject();
+		String macAddress = macAddressRetriever.getMacAddress();
+		solutionJSON.put("worker_id", macAddress);
+		solutionJSON.put("experiment_id", experimentId);
+		solutionJSON.put("run_id", evolutionNumber);
+
+		// insert an array of solutions
+		solutionJSON.put("solutions", generateSolutionsJsonArray(solutions, evolutionNumber));
+
+		// construct a final message with the message type
+		JSONObject messageJSON = new JSONObject();
+		messageJSON.put(MessageType.INTERMEDIATE_SOLUTION.toString(), solutionJSON);
 
 		return messageJSON.toString();
 	}
@@ -168,19 +209,16 @@ public class JsonEncoder {
 		return fitnessValuesArray;
 	}
 
-	private static JSONArray generateSolutionsJsonArray(Iterator<MoeaOptimisationSolution> solutions) {
+	private static JSONArray generateSolutionsJsonArray(Iterator<MoeaOptimisationSolution> solutions, int evolutionNumber) {
 		JSONArray solutionsArray = new JSONArray();
+		int solutionCounter = 1;
 		while (solutions.hasNext()) {
 			MoeaOptimisationSolution solution = solutions.next();
 			JSONObject solutionJSON = new JSONObject();
-
-			// TODO (tamara): Insert correct evaluation number and solution number.
-			Random rand = new Random();
 			solutionJSON.put("solution_id", Hashing.generateSolutionId(
 					solution.getSolutionGenerator().getExperimentId() /*experimentId*/,
-					rand.nextInt(50) + 1 /*evaluationNumber*/,
-					rand.nextInt(50) + 1 /*solutionNumber*/));
-
+					evolutionNumber /*evaluationNumber*/,
+					solutionCounter++ /*solutionNumber*/));
 			solutionJSON.put("objectives", generateFitnessValuesJsonArray(solution.getFormattedObjectives()));
 			solutionJSON.put("constraints", generateFitnessValuesJsonArray(solution.getFormattedConstraints()));
 			solutionsArray.put(solutionJSON);

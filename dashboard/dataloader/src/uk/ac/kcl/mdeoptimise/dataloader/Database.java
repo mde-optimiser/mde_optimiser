@@ -24,40 +24,6 @@ import org.json.JSONObject;
  * 
  */
 class Database {
-	private enum MessageType {WORKER_REGISTER, FINAL_SOLUTION, INTERMEDIATE_SOLUTION}
-	private enum CriteriaType {OBJECTIVE, CONSTRAINT}
-	
-    // SQL statements for creating new tables.
-	public static final String CREATE_WORKER = 
-    		"CREATE TABLE IF NOT EXISTS worker (mac_address VARCHAR(255) NOT NULL PRIMARY KEY)";
-	public static final String CREATE_MOPT_SPECS = 
-    		"CREATE TABLE IF NOT EXISTS mopt_specs (mopt_id VARCHAR(255) NOT NULL PRIMARY KEY, "
-    		+ "model VARCHAR(255) NOT NULL, metamodel VARCHAR(255) NOT NULL)";
-    public static final String CREATE_EXPERIMENT = 
-    		"CREATE TABLE IF NOT EXISTS experiment (experiment_id VARCHAR(255) NOT NULL, "
-    		+ "run_id int NOT NULL IDENTITY(1,1) PRIMARY KEY, worker_id VARCHAR(255) NOT NULL, "
-    		+ "FOREIGN KEY (worker_id) REFERENCES worker(mac_address), mopt_id VARCHAR(255) NOT NULL, "
-    		+ "FOREIGN KEY (mopt_id) REFERENCES mopt_specs(mopt_id), start_time TIMESTAMP NOT NULL, "
-    		+ "end_time TIMESTAMP);";
-    public static final String CREATE_OBJECTIVE = 
-    		"CREATE TABLE IF NOT EXISTS objective (worker_id VARCHAR(255) NOT NULL, experiment_id VARCHAR(255) NOT NULL, "
-    		+ "objective_name VARCHAR(255) NOT NULL, objective_type VARCHAR(255))";
-    public static final String CREATE_CONSTRAINT = 
-    		"CREATE TABLE IF NOT EXISTS constraint (worker_id VARCHAR(255) NOT NULL, experiment_id VARCHAR(255) NOT NULL, "
-    		+ "constraint_name VARCHAR(255) NOT NULL, constraint_type VARCHAR(255))";
-    public static final String CREATE_SOLUTION = 
-    		"CREATE TABLE IF NOT EXISTS solution (solution_id VARCHAR(255) NOT NULL PRIMARY KEY, experiment_id VARCHAR(255) NOT NULL, "
-    		+ "FOREIGN KEY (experiment_id) REFERENCES experiment(experiment_id))";
-    public static final String CREATE_SOLUTION_OBJECTIVE = 
-    		"CREATE TABLE IF NOT EXISTS solution_objective (solution_id VARCHAR(255) NOT NULL, "
-    		+ "objective_name VARCHAR(255) NOT NULL, objective_value FLOAT(8) NOT NULL, "
-    		+ "FOREIGN KEY (solution_id) REFERENCES solution(solution_id), "
-    		+ "PRIMARY KEY(solution_id, objective_name))";
-    public static final String CREATE_SOLUTION_CONSTRAINT = 
-    		"CREATE TABLE IF NOT EXISTS solution_constraint (solution_id VARCHAR(255) NOT NULL, "
-    		+ "constraint_name VARCHAR(255) NOT NULL, constraint_value FLOAT(8) NOT NULL, "
-    		+ "FOREIGN KEY (solution_id) REFERENCES solution(solution_id), "
-    		+ "PRIMARY KEY(solution_id, constraint_name))";
 	
 	static Connection conn = null;
 
@@ -73,17 +39,17 @@ class Database {
 		
 		JSONObject messageJSON = new JSONObject(message);
 
-		if (messageJSON.has(MessageType.WORKER_REGISTER.toString())) {
+		if (messageJSON.has(Consts.MessageType.WORKER_REGISTER.toString())) {
 			System.out.println("[DataLoader] WORKER_REGISTER message received: " + message);
-			insertWorkerRegister((JSONObject) messageJSON.get(MessageType.WORKER_REGISTER.toString()));
+			insertWorkerRegister((JSONObject) messageJSON.get(Consts.MessageType.WORKER_REGISTER.toString()));
 		} 
-		else if (messageJSON.has(MessageType.FINAL_SOLUTION.toString())) {
+		else if (messageJSON.has(Consts.MessageType.FINAL_SOLUTION.toString())) {
 			System.out.println("[DataLoader] FINAL_SOLUTION message received: " + message);
-			insertFinalSolution((JSONObject) messageJSON.get(MessageType.FINAL_SOLUTION.toString()));
+			insertFinalSolution((JSONObject) messageJSON.get(Consts.MessageType.FINAL_SOLUTION.toString()));
 		} 
-		else if (messageJSON.has(MessageType.INTERMEDIATE_SOLUTION.toString())) {
+		else if (messageJSON.has(Consts.MessageType.INTERMEDIATE_SOLUTION.toString())) {
 			System.out.println("[DataLoader] INTERMEDIATE_SOLUTION message received: " + message);
-			insertIntermediateSolution((JSONObject) messageJSON.get(MessageType.INTERMEDIATE_SOLUTION.toString()));
+			insertIntermediateSolution((JSONObject) messageJSON.get(Consts.MessageType.INTERMEDIATE_SOLUTION.toString()));
 		}
 		else {
 			throw new Exception("Invalid message type given: " + message);
@@ -103,9 +69,7 @@ class Database {
 	 * @throws SQLException
 	 */
 	private static void initialiseSchema() throws SQLException {
-		System.out.println("[DataLoader] Creating new database schema.");
-		PreparedStatement statement = conn.prepareStatement(
-				CREATE_WORKER +"; "+ CREATE_MOPT_SPECS +"; "+ CREATE_EXPERIMENT +"; "+ CREATE_OBJECTIVE +"; "+ CREATE_CONSTRAINT +"; "+ CREATE_SOLUTION +"; "+ CREATE_SOLUTION_OBJECTIVE +"; "+ CREATE_SOLUTION_CONSTRAINT +"; ");
+		PreparedStatement statement = conn.prepareStatement(Consts.CREATE_TABLES);
 		statement.executeUpdate();
 		conn.commit();
 	}
@@ -147,8 +111,8 @@ class Database {
 		System.out.println("[DataLoader] EXPERIMENT table updated: " + workerJSON);
 
 		// Iterate through all objectives/constraints and insert them into the database.
-		insertCriteria(CriteriaType.OBJECTIVE, workerJSON.getJSONArray("objectives"), workerJSON);
-		insertCriteria(CriteriaType.CONSTRAINT, workerJSON.getJSONArray("constraints"), workerJSON);
+		insertCriteria(Consts.CriteriaType.OBJECTIVE, workerJSON.getJSONArray("objectives"), workerJSON);
+		insertCriteria(Consts.CriteriaType.CONSTRAINT, workerJSON.getJSONArray("constraints"), workerJSON);
 		conn.commit();
 	}
 	
@@ -160,7 +124,7 @@ class Database {
 	 * @param criteriaArray collection of criteria to be inserted into the database
 	 * @param workerJSON full worker register message (contains worker_id, experiment_id etc.)
 	 */
-	private static void insertCriteria(CriteriaType criteriaType, JSONArray criteriaArray, JSONObject workerJSON) {
+	private static void insertCriteria(Consts.CriteriaType criteriaType, JSONArray criteriaArray, JSONObject workerJSON) {
 		IntStream.range(0, criteriaArray.length()).mapToObj(index -> (JSONObject) criteriaArray.get(index))
 				.forEach(criterionJSON -> {
 					try {
@@ -185,18 +149,18 @@ class Database {
 		IntStream.range(0, solutionsArray.length()).mapToObj(index -> (JSONObject) solutionsArray.get(index))
 				.forEach(solution -> {
 					try {
-						// TODO (tamara): Insert solutions and its objectives/constraints
 						// insert solution
-						PreparedStatement insertSolutionStatement = conn.prepareStatement("INSERT INTO solution VALUES(?, ?);");
+						PreparedStatement insertSolutionStatement = conn.prepareStatement("INSERT INTO solution VALUES(?, ?, ?);");
 						insertSolutionStatement.setString(1, solution.getString("solution_id"));
 						insertSolutionStatement.setString(2, solutionJSON.getString("experiment_id"));
+						insertSolutionStatement.setString(3, Consts.SolutionType.FINAL.toString());
 						insertSolutionStatement.execute();
 						conn.commit();
 						System.out.println("[DataLoader] SOLUTION table updated for solution: " + solution.getString("solution_id"));
 						// insert its objectives
-						insertFitnessValue(CriteriaType.OBJECTIVE, solution.getJSONArray("objectives"), solution.getString("solution_id"));
+						insertFitnessValue(Consts.CriteriaType.OBJECTIVE, solution.getJSONArray("objectives"), solution.getString("solution_id"));
 						// insert its constraints
-						insertFitnessValue(CriteriaType.CONSTRAINT, solution.getJSONArray("constraints"), solution.getString("solution_id"));
+						insertFitnessValue(Consts.CriteriaType.CONSTRAINT, solution.getJSONArray("constraints"), solution.getString("solution_id"));
 					} catch (JSONException | SQLException e) {
 						e.printStackTrace();
 					}
@@ -216,7 +180,7 @@ class Database {
 		conn.commit();
 	}
 
-	private static void insertFitnessValue(CriteriaType criteriaType, JSONArray criteriaArray, String solutionId) throws SQLException {
+	private static void insertFitnessValue(Consts.CriteriaType criteriaType, JSONArray criteriaArray, String solutionId) throws SQLException {
 		IntStream.range(0, criteriaArray.length()).mapToObj(index -> (JSONObject) criteriaArray.get(index))
 				.forEach(criterionJSON -> {
 					try {

@@ -1,8 +1,6 @@
 package uk.ac.kcl.optimisation.moea
 
-import java.util.LinkedHashMap
 import java.util.List
-import java.util.Map
 import org.moeaframework.core.Solution
 import org.moeaframework.problem.AbstractProblem
 import uk.ac.kcl.interpreter.IGuidanceFunction
@@ -16,7 +14,7 @@ class MoeaOptimisationProblem extends AbstractProblem {
 
 	private List<IGuidanceFunction> fitnessFunctions;
 	private List<IGuidanceFunction> constraintFunctions;
-	private Map<Integer, String> counter = new LinkedHashMap<Integer, String>();
+	private IntermediateSolutionsCollector solutionsCollector;
 
 	new(int numberOfVariables, int numberOfObjectives, int numberOfConstraints) {
 		super(numberOfVariables, numberOfObjectives, numberOfConstraints)
@@ -27,6 +25,9 @@ class MoeaOptimisationProblem extends AbstractProblem {
 		this(1, solutionGenerator.optimisationModel.objectives.size(),
 			solutionGenerator.optimisationModel.constraints.size())
 		this.solutionGenerator = solutionGenerator
+		this.solutionsCollector = new IntermediateSolutionsCollector(
+			solutionGenerator.optimisationModel /* optimisation model */,
+			solutionGenerator.experimentId /* experiment ID */);
 	}
 
 	def SolutionGenerator getSolutionGenerator() {
@@ -80,12 +81,8 @@ class MoeaOptimisationProblem extends AbstractProblem {
 			moeaSolution.setConstraint(objectiveId, constraintFunction.computeFitness(moeaSolution.model))
 		]
 		
-		// TODO (tamara): MoeaOptimisationSolution as a value in the hashmap
-		// TODO (tamara): Possibly create a separate class containing the calculations below.
-		counter.put(counter.size +1, String.format("%05X", moeaSolution.model.hashCode));
-		if(counter.size % solutionGenerator.optimisationModel.optimisation.algorithmPopulation == 0)
-			println(String.format("Finished run %s." ,counter.size/solutionGenerator.optimisationModel.optimisation.algorithmPopulation))
-		println(String.format("Found %s solutions. Evaluating solution %s." ,counter.size,counter.get(counter.size)));
+		// Collect the current intermediate solution
+		solutionsCollector.addIntermediateSolution(moeaSolution)
 	}
 
 	override newSolution() {
