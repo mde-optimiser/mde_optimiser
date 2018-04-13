@@ -116,8 +116,7 @@ public class ExperimentInfoWidget extends Composite {
 	}
 
 	private void getSolutions(String experimentId, String solutionType) {
-		// TODO (tamara): use the solution type to pull different solutions from the database
-		service.getSolutions(experimentId, new AsyncCallback<List<Solution>>() {
+		service.getSolutions(experimentId, solutionType, new AsyncCallback<List<Solution>>() {
 
 			@Override
 			public void onFailure(Throwable caught) {
@@ -127,7 +126,15 @@ public class ExperimentInfoWidget extends Composite {
 
 			@Override
 			public void onSuccess(List<Solution> result) {
-				setSolutionsTable(new SolutionsTable(result));
+				if (result.size() > 0)
+					setSolutionsTable(new SolutionsTable(result));
+				else {
+					// Show an error message if there are no solutions of the selected solution type
+					Window.alert("ERROR: solutions of type '" + solutionType + "' are not available.");
+					intermediateSolutions.setActive(true);
+					finalSolutions.setActive(false);
+					allSolutions.setActive(false);
+				}
 			}
 		});
 	}
@@ -142,9 +149,9 @@ public class ExperimentInfoWidget extends Composite {
 
 		@Override
 		public void onClick(ClickEvent event) {
-			String solutionType = ((Button) event.getSource()).getName();
-			Window.alert(solutionType + " SOLUTIONS CHOSEN");
-			getSolutions(experiment.getExperimentId(), solutionType);
+			getSolutions(
+					experiment.getExperimentId() /* experiment ID */,
+					((Button) event.getSource()).getName() /* selected solution type */ );
 		}
 	}
 }

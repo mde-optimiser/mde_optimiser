@@ -16,5 +16,5 @@ public interface MDEOService extends RemoteService {
 	List<String> getWorkerIds() throws Exception;
 	List<String> getExperimentIds() throws Exception;
 	List<Experiment> getExperimentData(String workerId) throws Exception;
-	List<Solution> getSolutions(String experiment_id) throws Exception;
+	List<Solution> getSolutions(String experiment_id, String solution_type) throws Exception;
 }

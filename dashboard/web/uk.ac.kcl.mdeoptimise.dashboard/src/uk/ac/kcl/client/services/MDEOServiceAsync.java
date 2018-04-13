@@ -14,5 +14,5 @@ public interface MDEOServiceAsync {
 	void getWorkerIds(AsyncCallback<List<String>> callback);
 	void getExperimentIds(AsyncCallback<List<String>> callback);
 	void getExperimentData(String workerId, AsyncCallback<List<Experiment>> callback);
-	void getSolutions(String experiment_id, AsyncCallback<List<Solution>> asyncCallback);
+	void getSolutions(String experiment_id, String solution_type, AsyncCallback<List<Solution>> asyncCallback);
 }

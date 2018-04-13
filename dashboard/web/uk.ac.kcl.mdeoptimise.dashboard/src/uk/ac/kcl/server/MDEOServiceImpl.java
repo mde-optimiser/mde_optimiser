@@ -22,6 +22,8 @@ import uk.ac.kcl.client.services.MDEOService;
 @SuppressWarnings("serial")
 public class MDEOServiceImpl extends RemoteServiceServlet implements MDEOService {
 
+	private static enum SolutionType {FINAL, INTERMEDIATE}
+
 	public List<String> getWorkerIds() throws Exception {
 		Class.forName("org.h2.Driver"); 
 		Connection conn = DriverManager.getConnection(
@@ -59,15 +61,23 @@ public class MDEOServiceImpl extends RemoteServiceServlet implements MDEOService
 	}
 
 	@Override
-	public List<Solution> getSolutions(String experimentId) throws Exception {
+	public List<Solution> getSolutions(String experimentId, String solution_type) throws Exception {
 		Class.forName("org.h2.Driver"); 
 		Connection conn = DriverManager.getConnection(
 				PageConstants.DATABSE_URL, 
 				PageConstants.DATABSE_USERNAME, 
 				PageConstants.DATABSE_PASSWORD);
 		System.out.println(conn.getCatalog());
-		ResultSet solutionIds = conn.createStatement().executeQuery("SELECT solution_id, run_id FROM solution "
-				+ "WHERE experiment_id= '" + experimentId.toLowerCase() + "' ORDER BY run_id;");
+
+		ResultSet solutionIds;
+		if (solution_type.equalsIgnoreCase(SolutionType.FINAL.toString()) ||
+				solution_type.equalsIgnoreCase(SolutionType.INTERMEDIATE.toString()))
+			solutionIds = conn.createStatement().executeQuery("SELECT solution_id, run_id FROM solution "
+				+ "WHERE experiment_id= '" + experimentId.toLowerCase() + "' "
+						+ "AND solution_type= '" + solution_type + "' ORDER BY run_id;");
+		else
+			solutionIds = conn.createStatement().executeQuery("SELECT solution_id, run_id FROM solution "
+					+ "WHERE experiment_id= '" + experimentId.toLowerCase() + "' ORDER BY run_id;");
 		
 		List<Solution> list = new LinkedList<>();
 		// For each solution

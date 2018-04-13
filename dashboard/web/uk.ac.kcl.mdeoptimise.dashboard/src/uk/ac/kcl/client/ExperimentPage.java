@@ -40,7 +40,8 @@ public class ExperimentPage extends Content {
 	}
 	
 	private void getFinalSolutions(String experimentId) {
-		service.getSolutions(experimentId, new AsyncCallback<List<Solution>>() {
+		// TODO (tamara): use constant/enum instead of a string
+		service.getSolutions(experimentId, "ALL", new AsyncCallback<List<Solution>>() {
 
 			@Override
 			public void onFailure(Throwable caught) {

@@ -56,8 +56,6 @@ class OptimisationInterpreter {
 											getMetamodel,
 											experimentId);
 
-		// TODO (tamara): Send final solutions.
-
 		var optimisation = new MoeaOptimisation()
 									.execute(model.optimisation, solutionGenerator)		
 		
