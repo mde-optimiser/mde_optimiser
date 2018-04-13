@@ -16,7 +16,7 @@
 				<g:Label styleName="{style.text}" ui:field="workerId">Worker MAC Address: </g:Label>
 				<g:Label styleName="{style.text}" ui:field="startTime">Start Time: </g:Label>
 				<g:Label styleName="{style.text}" ui:field="endTime">End Time: </g:Label>
-				<g:Label styleName="{style.text}" ui:field="totalTime">Total Time Taken: </g:Label>
+				<g:Label styleName="{style.text}" ui:field="totalTime">Time Elapsed: </g:Label>
 			</b:Column>
 			<b:Column size="4">
     			<b:Heading size="4">MOPT info</b:Heading>

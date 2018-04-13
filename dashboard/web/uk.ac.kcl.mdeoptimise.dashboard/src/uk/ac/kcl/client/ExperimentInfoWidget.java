@@ -3,7 +3,6 @@ package uk.ac.kcl.client;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 import com.github.gwtbootstrap.client.ui.Button;
 import com.google.gwt.core.client.GWT;
@@ -66,20 +65,20 @@ public class ExperimentInfoWidget extends Composite {
 		setExperimentId(experiment.getExperimentId());
 		setWorkerId(experiment.getWorkerId());
 		setStartTime(experiment.getStartTime());
-		if (experiment.getEndTime() != null)
+		if (experiment.getEndTime() != null) {
 			setEndTime(experiment.getEndTime());
-		setTotalTime(experiment.getStartTime(), Optional.of(experiment.getEndTime()));
+			setTotalTime(experiment.getEndTime().getTime() - experiment.getStartTime().getTime());
+		}
+		else {
+			setEndTime("N/A");
+			setTotalTime(new Date().getTime() - experiment.getStartTime().getTime());
+		}
 		setMoptId(experiment.getMoptId());
 		setButtonListeners();
 	}
 
-	private void setTotalTime(Timestamp startTime, Optional<Timestamp> endTime) {
-		long total;
-		if (endTime.isPresent())
-			total = endTime.get().getTime() - startTime.getTime();
-		else
-			total = new Date().getTime() - startTime.getTime();
-		totalTime.setText(totalTime.getText() + " " + DateTimeFormat.getFormat("HH:mm:ss").format(new Date(total)));
+	private void setTotalTime(long timeElapsed) {
+		totalTime.setText(totalTime.getText() + " " + DateTimeFormat.getFormat("HH:mm:ss").format(new Date(timeElapsed)));
 	}
 
 	private void setWorkerId(String id) {
@@ -96,6 +95,10 @@ public class ExperimentInfoWidget extends Composite {
 	
 	public void setEndTime(Timestamp time){
 		endTime.setText(endTime.getText() + " " + DateTimeFormat.getFormat("dd/MM/yyyy 'at' hh:mm aaa").format(time));
+	}
+
+	public void setEndTime(String text){
+		endTime.setText(endTime.getText() + " " + text);
 	}
 
 	public void setMoptId(String id){
