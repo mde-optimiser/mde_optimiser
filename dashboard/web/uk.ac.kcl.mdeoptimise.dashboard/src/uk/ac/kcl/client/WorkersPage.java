@@ -3,11 +3,8 @@ package uk.ac.kcl.client;
 import java.util.Date;
 import java.util.List;
 
-import com.google.gwt.dom.client.Document;
-import com.google.gwt.dom.client.Element;
-import com.google.gwt.dom.client.NodeList;
-import com.google.gwt.i18n.client.DateTimeFormat;
 import com.github.gwtbootstrap.client.ui.CellTable;
+import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -19,47 +16,10 @@ import uk.ac.kcl.client.data.Worker;
 
 public class WorkersPage extends Content {
 
-	private ActionCellTable<Experiment> table = new ActionCellTable<Experiment>();
+	private CellTable<Experiment> table = new CellTable<Experiment>();
 	private Label label = new Label();
 	List<Experiment> experiments;
 
-	public class ActionCellTable<T> extends CellTable<T> {
-
-		Integer previousSelectedRow = null;
-
-		// TODO (tamara): Remove this functionality if row expansion is no longer used.
-		public void displayRowDetail(int selectedRow, Element e){
-			// if there was an expanded row, increase the selected row id by one.
-			if (previousSelectedRow != null && previousSelectedRow < selectedRow) 
-				selectedRow++;
-
-		    // Get the tbody of the Cell Table
-		    Element tbody = this.getElement().getElementsByTagName("tbody").getItem(0);
-		    // Get all the trs in the body
-		    NodeList<Element> trs = tbody.getElementsByTagName("tr");
-
-		    // Remove previously selected view, if there was one
-		    if(previousSelectedRow!=null) {
-		        trs.getItem(previousSelectedRow+1).removeFromParent();
-		        //If the current is further down the list then the current your index will be one off.
-		        if(selectedRow>previousSelectedRow)selectedRow--;
-		    }
-		    
-		    if(previousSelectedRow==null || selectedRow != previousSelectedRow){
-		        Element td = Document.get().createTDElement();
-		        td.setAttribute("colspan", Integer.toString(trs.getItem(selectedRow).getChildNodes().getLength()));
-		        td.appendChild(e);
-
-		        Element tr = Document.get().createTRElement();
-		        tr.appendChild(td);
-		        tbody.insertAfter(tr, trs.getItem(selectedRow));
-		        previousSelectedRow=selectedRow;
-		    } else {
-		        previousSelectedRow=null;
-		    }
-		}
-	}
-	
 	/**
 	 * Creates a widget containing a label with the worker id and a
 	 * table containing all experiments associated to this worker.
@@ -82,9 +42,6 @@ public class WorkersPage extends Content {
 		table.addCellPreviewHandler(new CellPreviewEvent.Handler<Experiment>() { 
 			@Override public void onCellPreview(CellPreviewEvent<Experiment> event) { 
 				if("click".equals(event.getNativeEvent().getType())) {
-					// TODO (tamara): Remove the following lines if row expansion is no longer used.
-					/*Widget w = new ExperimentInfoWidget(event.getValue());
-					table.displayRowDetail(table.getKeyboardSelectedRow(), w.getElement());*/
 					ContentContainer.getInstance().setContent(new ExperimentPage(event.getValue()));
 				} 
 			} 
