@@ -112,7 +112,8 @@ public class WorkersPage extends Content {
 		TextColumn<Experiment> experimentId = new TextColumn<Experiment>() {
 			@Override
 			public String getValue(Experiment object) {
-				return object.getExperimentId().toUpperCase();
+				String s = object.getExperimentId().toUpperCase();
+				return s.substring(0, Math.min(s.length(), 10)) +"...";
 			}
 		};
 		table.addColumn(experimentId, "Experiment ID");
@@ -175,7 +176,8 @@ public class WorkersPage extends Content {
 			}
 		};
 		table.addColumn(etr, "ETR");
-		
+
+		table.setVisibleRange(0, experiments.size());
 	}
 
 	@Override

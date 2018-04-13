@@ -66,21 +66,21 @@ public class MDEOServiceImpl extends RemoteServiceServlet implements MDEOService
 				PageConstants.DATABSE_USERNAME, 
 				PageConstants.DATABSE_PASSWORD);
 		System.out.println(conn.getCatalog());
-		ResultSet solutionIds = conn.createStatement().executeQuery("SELECT solution_id FROM solution "
-				+ "WHERE experiment_id= '" + experimentId.toLowerCase() + "';");
+		ResultSet solutionIds = conn.createStatement().executeQuery("SELECT solution_id, run_id FROM solution "
+				+ "WHERE experiment_id= '" + experimentId.toLowerCase() + "' ORDER BY run_id;");
 		
 		List<Solution> list = new LinkedList<>();
-		Map<String, Double> objectives;
-		Map<String, Double> constraints;
 		// For each solution
 		while(solutionIds.next()) {
 			// Add solution to the list
 			String solutionId = solutionIds.getString(1);
-			objectives = getObjectives(conn, solutionId);
-			constraints = getConstraints(conn, solutionId);
+			int runId = solutionIds.getInt(2);
+			Map<String, Double> objectives = getObjectives(conn, solutionId);
+			Map<String, Double> constraints = getConstraints(conn, solutionId);
 			list.add(new Solution(
 					experimentId, 
 					solutionId,
+					runId,
 					objectives, 
 					constraints));
 		}

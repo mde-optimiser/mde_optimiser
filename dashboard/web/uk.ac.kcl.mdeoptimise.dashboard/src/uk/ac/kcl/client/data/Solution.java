@@ -14,15 +14,17 @@ public class Solution implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String experimentId;
 	private String solutionId;
+	private int evolutionNumber;
 	private Map<String, Double> objectives = new LinkedHashMap<String, Double>();
 	private Map<String, Double> constraints = new LinkedHashMap<String, Double>();
 	
 	public Solution() {}
 
-	public Solution(String experimentId, String solutionId, Map<String, Double> objectives, Map<String,Double> constraints) {
+	public Solution(String experimentId, String solutionId, int evolutionNumber, Map<String, Double> objectives, Map<String,Double> constraints) {
 		super();
 		setSolutionId(solutionId);
 		setExperimentId(experimentId);
+		setEvolutionNumber(evolutionNumber);
 		setObjectives(objectives);
 		setConstraints(constraints);
 	}
@@ -49,6 +51,14 @@ public class Solution implements Serializable {
 
 	public void setExperimentId(String experimentId) {
 		this.experimentId = experimentId;
+	}
+
+	public int getEvolutionNumber() {
+		return evolutionNumber;
+	}
+
+	public void setEvolutionNumber(int evolutionNumber) {
+		this.evolutionNumber = evolutionNumber;
 	}
 	
 	public String getSolutionId() {

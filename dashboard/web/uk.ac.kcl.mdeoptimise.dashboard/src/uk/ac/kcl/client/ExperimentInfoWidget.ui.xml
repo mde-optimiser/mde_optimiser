@@ -28,9 +28,9 @@
 		<b:Popover text="Final solutions show the pareto front, whereas intermediate solutions show the progress made during runtime." heading="Choose solution range">
 		
 			<b:ButtonGroup toggle="radio" ui:field="solutionTypeButtonGroup">
-		   		<b:Button active="true" name="FINAL" ui:field="finalSolutions">Final</b:Button>
+		  		<b:Button active="true" name="ALL" ui:field="allSolutions">All</b:Button>
+		   		<b:Button name="FINAL" ui:field="finalSolutions">Final</b:Button>
 		   		<b:Button name="INTERMEDIATE" ui:field="intermediateSolutions">Intermediate</b:Button>
-		  		<b:Button name="ALL" ui:field="allSolutions">All</b:Button>
 			</b:ButtonGroup>
 
 		</b:Popover>

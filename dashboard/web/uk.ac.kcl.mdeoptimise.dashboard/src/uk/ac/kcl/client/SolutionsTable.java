@@ -1,17 +1,18 @@
 package uk.ac.kcl.client;
 
 import java.util.List;
-import java.util.Map;
+import java.util.Set;
 
-import com.google.gwt.cell.client.NumberCell;
 import com.github.gwtbootstrap.client.ui.CellTable;
+import com.google.gwt.cell.client.NumberCell;
 import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.TextColumn;
 
 import uk.ac.kcl.client.data.Solution;
 
 public class SolutionsTable extends CellTable<Solution> {
-	List<Solution> solutions;
+	private static enum CriterionType {OBJECTIVE, CONSTRAINT}
+	private List<Solution> solutions;
 
 	/**
 	 * Creates a specialised <code>CellTable<code> containing all solutions with their  objective/constraint values.
@@ -47,9 +48,19 @@ public class SolutionsTable extends CellTable<Solution> {
 			}
 		};
 		addColumn(SolutionId, "Solution ID");
+		
+		NumberCell numberCell = new NumberCell();
+		Column<Solution, Number> evolutionColumn = new Column<Solution, Number>(numberCell) {
+			@Override
+			public Number getValue(Solution object) {
+				return object.getEvolutionNumber();
+			}
+		};
+		addColumn(evolutionColumn, "Evolution n.");
 
-		addSpecialColumn("o:", solutions.get(0).getObjectives());
-		addSpecialColumn("c:", solutions.get(0).getConstraints());
+		addSpecialColumn(CriterionType.OBJECTIVE);
+		addSpecialColumn(CriterionType.CONSTRAINT);
+		setVisibleRange(0, solutions.size());
 	}
 	
 	/**
@@ -57,20 +68,41 @@ public class SolutionsTable extends CellTable<Solution> {
 	 * The column header string is criterion type followed by criterion name.
 	 * E.g. o:MinimiseCoupling.
 	 * 
-	 * @param text to be added to the column header, representing criterion type.
-	 * It can be "o:" for objective, or "c:" for constraint
-	 * @param criteria a map containing all objectives/constraints with their values
+	 * @param type criterion type, which can be objective or constraint
 	 */
-	private void addSpecialColumn(String text, Map<String, Double> criteria) {
-		for (String objectiveName : criteria.keySet()) {
+	private void addSpecialColumn(CriterionType type) {
+		String text;
+		Set<String> criteria;
+		switch (type) {
+		case OBJECTIVE :
+			text = "o:";
+			criteria = solutions.get(0).getObjectives().keySet();
+			break;
+		case CONSTRAINT :
+			text = "c:";
+			criteria = solutions.get(0).getConstraints().keySet();
+			break;
+		default :
+			text = null;
+			criteria = null;
+			break;
+		}
+		
+		for (String criterionName : criteria) {
 			NumberCell numberCell = new NumberCell();
 			Column<Solution, Number> column = new Column<Solution, Number>(numberCell) {
 				@Override
 				public Number getValue(Solution object) {
-					return criteria.get(objectiveName);
+					switch (type) {
+					case OBJECTIVE :
+						return object.getObjectives().get(criterionName);
+					case CONSTRAINT :
+						return object.getConstraints().get(criterionName);
+					}
+					return null;
 				}
 			};
-			addColumn(column, text + objectiveName);
+			addColumn(column, text + criterionName);
 		}
 	}
 }
