@@ -52,8 +52,11 @@ public class ExperimentInfoWidget extends Composite {
 	Button intermediateSolutions;
 	@UiField
 	Button allSolutions;
+	@UiField
+	Button refresh;
 	
 	private Experiment experiment;
+	private String selectedSolutionType = "ALL";
 
 	public ExperimentInfoWidget() {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -113,6 +116,13 @@ public class ExperimentInfoWidget extends Composite {
 		finalSolutions.addClickHandler(new MyRadioButtonHandler(experiment));
 		intermediateSolutions.addClickHandler(new MyRadioButtonHandler(experiment));
 		allSolutions.addClickHandler(new MyRadioButtonHandler(experiment));
+		refresh.addClickHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+				getSolutions(experiment.getExperimentId(), selectedSolutionType);
+			}
+		});
 	}
 
 	private void getSolutions(String experimentId, String solutionType) {
@@ -149,9 +159,8 @@ public class ExperimentInfoWidget extends Composite {
 
 		@Override
 		public void onClick(ClickEvent event) {
-			getSolutions(
-					experiment.getExperimentId() /* experiment ID */,
-					((Button) event.getSource()).getName() /* selected solution type */ );
+			selectedSolutionType = ((Button) event.getSource()).getName();
+			getSolutions(experiment.getExperimentId(), selectedSolutionType);
 		}
 	}
 }
