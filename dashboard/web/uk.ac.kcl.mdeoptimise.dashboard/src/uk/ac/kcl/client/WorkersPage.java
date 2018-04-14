@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.github.gwtbootstrap.client.ui.CellTable;
+import com.github.gwtbootstrap.client.ui.Heading;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.ui.Label;
@@ -19,6 +20,7 @@ public class WorkersPage extends Content {
 	private CellTable<Experiment> table = new CellTable<Experiment>();
 	private Label label = new Label();
 	List<Experiment> experiments;
+	private Heading heading = new Heading(3, "Workers and Experiments");
 
 	/**
 	 * Creates a widget containing a label with the worker id and a
@@ -28,6 +30,7 @@ public class WorkersPage extends Content {
 	 */
 	public WorkersPage(Worker worker) {
 		VerticalPanel panel = new VerticalPanel();
+		panel.add(heading);
 		panel.add(label);
 		panel.add(table);
 

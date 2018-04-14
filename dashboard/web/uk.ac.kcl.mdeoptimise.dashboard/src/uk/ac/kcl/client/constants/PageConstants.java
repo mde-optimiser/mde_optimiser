@@ -19,4 +19,6 @@ public class PageConstants {
     public static final String HOME_TOKEN = "home";
     public static final String HOME_TITLE = "MDEO SD";
 
+    public static final String HELP_TOKEN = "help";
+    public static final String HELP_TITLE = "MDEO SD | Help";
 }

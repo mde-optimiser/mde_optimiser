@@ -6,18 +6,16 @@
 	.important {
 		font-weight: bold;
 	}
-
-	
 	</ui:style>
 	<g:HTMLPanel>
 		<b:ResponsiveNavbar>
-    		<b:Brand>MDEO Status Dashboard</b:Brand>
-   			 <b:Nav>
-        		<b:NavLink ui:field="home">Home</b:NavLink>
-    		</b:Nav>
-    		<b:Nav alignment="RIGHT">
-        		<b:NavLink>Test</b:NavLink>
-    		</b:Nav>
+			<b:Brand>MDEO Status Dashboard</b:Brand>
+			<b:Nav>
+				<b:NavLink ui:field="home">Home</b:NavLink>
+			</b:Nav>
+			<b:Nav alignment="RIGHT">
+				<b:NavLink ui:field="help">Help</b:NavLink>
+			</b:Nav>
 		</b:ResponsiveNavbar>
 	</g:HTMLPanel>
 </ui:UiBinder> 
