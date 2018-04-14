@@ -144,6 +144,7 @@ public class ExperimentInfoWidget extends Composite {
 					intermediateSolutions.setActive(true);
 					finalSolutions.setActive(false);
 					allSolutions.setActive(false);
+					selectedSolutionType = "INTERMEDIATE";
 				}
 			}
 		});
