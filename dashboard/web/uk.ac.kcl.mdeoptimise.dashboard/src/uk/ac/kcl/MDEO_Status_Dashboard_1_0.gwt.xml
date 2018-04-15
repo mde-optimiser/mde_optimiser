@@ -5,7 +5,7 @@
 -->
 <!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.7.0//EN"
   "http://gwtproject.org/doctype/2.7.0/gwt-module.dtd">
-<module rename-to='mdeo_status_dashboard_1_0'>
+<module rename-to='mdeostatusdashboard'>
   <!-- Inherit the core Web Toolkit stuff.                        -->
   <inherits name='com.google.gwt.user.User'/>
 

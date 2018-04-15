@@ -13,12 +13,12 @@
   
   <servlet-mapping>
     <servlet-name>mdeoServlet</servlet-name>
-    <url-pattern>/mdeo_status_dashboard_1_0/mdeo</url-pattern>
+    <url-pattern>/mdeostatusdashboard/mdeo</url-pattern>
   </servlet-mapping>
   
   <!-- Default page to serve -->
   <welcome-file-list>
-    <welcome-file>MDEO_Status_Dashboard_1_0.html</welcome-file>
+    <welcome-file>MDEOStatusDashboard.html</welcome-file>
   </welcome-file-list>
 
 </web-app>
