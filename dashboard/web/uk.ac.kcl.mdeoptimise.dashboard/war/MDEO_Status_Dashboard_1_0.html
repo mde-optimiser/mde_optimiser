@@ -14,11 +14,8 @@
     <link type="text/css" rel="stylesheet" href="MDEO_Status_Dashboard_1_0.css">
     
     <style>
-	    .workerTable {
-	    	padding-bottom: 40px;
-			padding-left: 300px;
+	    .table th, .table td {
 	    	text-align: center;
-	    
 	    }
 	    body {
 	        padding-top: 0px;
@@ -39,16 +36,20 @@
 		    color: rgb(45, 190, 96);
 		}
 		.container {
-			margin-left: 20px;
-			margin-right: 20px;
-			
+			text-align: center;
 		}
 		div {
 			padding-bottom: 10px;
 		}
+		.span4 {
+			margin-left: 0px;
+		}
 		h3 {
 			font-size: 22px;
 			color: #595959;
+		}
+		.left {
+			text-align: left;
 		}
     </style>
 
@@ -71,8 +72,7 @@
 	
 	       <!-- Body row and left nav row -->
 	       <tr style="height: 65%;">
-	           <td id="leftnav"></td>
-	           <td id="content"></td>
+	           <td id="content" style="width: 100%;"></td>
 	       </tr>
 	
 	       <!-- Footer row -->

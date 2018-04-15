@@ -12,11 +12,13 @@
 	}
 	</ui:style>
 	<g:HTMLPanel styleName="container">
-		<b:Heading size="3" ui:field="title">Help</b:Heading>
-		<b:Heading size="4">What is MDEO Status Dashboard?</b:Heading>
-		<b:Paragraph>MDEO Status Dashboard is a tool used in combination with
-			MDEOptimiser.</b:Paragraph>
-		<b:Heading size="4">What is MDEOptimiser?</b:Heading>
-		<b:Paragraph>MDEOptimiser.</b:Paragraph>
+		<g:HTMLPanel styleName="left">
+			<b:Heading size="3" ui:field="title">Help</b:Heading>
+			<b:Heading size="4">What is MDEO Status Dashboard?</b:Heading>
+			<b:Paragraph>MDEO Status Dashboard is a tool used in combination with
+				MDEOptimiser.</b:Paragraph>
+			<b:Heading size="4">What is MDEOptimiser?</b:Heading>
+			<b:Paragraph>MDEOptimiser.</b:Paragraph>
+		</g:HTMLPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

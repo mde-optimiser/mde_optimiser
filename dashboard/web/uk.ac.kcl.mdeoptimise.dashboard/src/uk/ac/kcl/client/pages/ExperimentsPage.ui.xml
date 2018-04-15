@@ -8,13 +8,14 @@
 	}
 	</ui:style>
 	<g:HTMLPanel styleName="container">
-		<b:Heading size="3" ui:field="title">Experiment Details</b:Heading>
-		<b:Row>
+		<b:Heading size="3" ui:field="title" styleName="left">Experiment Details</b:Heading>
+		<b:Row styleName="left">
 			<b:Column size="4">
 				<b:Heading size="4">Experiment info</b:Heading>
 				<g:Label styleName="{style.text}" ui:field="experimentId">ID: </g:Label>
 				<g:Label styleName="{style.text}" ui:field="workerId">Worker MAC
-					Address: </g:Label>
+					Address:
+				</g:Label>
 				<g:Label styleName="{style.text}" ui:field="startTime">Start Time: </g:Label>
 				<g:Label styleName="{style.text}" ui:field="endTime">End Time: </g:Label>
 				<g:Label styleName="{style.text}" ui:field="totalTime">Time Elapsed: </g:Label>
@@ -28,8 +29,9 @@
 					architectureCRA.ecore</g:Label>
 			</b:Column>
 		</b:Row>
-		<g:SimplePanel ui:field="experimentInfoWidget" />
 		<b:Row>
+		</b:Row>
+		<b:Row styleName="left">
 			<b:Column size="4">
 				<b:Popover
 					text="Final solutions show the pareto front, whereas intermediate solutions show the progress made during runtime."
@@ -41,7 +43,7 @@
 					</b:ButtonGroup>
 				</b:Popover>
 			</b:Column>
-			<b:Column size="2">
+			<b:Column size="4">
 				<b:Button name="Refresh" ui:field="refresh">Refresh</b:Button>
 			</b:Column>
 		</b:Row>
