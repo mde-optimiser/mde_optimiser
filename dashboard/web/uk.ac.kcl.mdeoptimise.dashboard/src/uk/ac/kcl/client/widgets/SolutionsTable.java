@@ -1,4 +1,4 @@
-package uk.ac.kcl.client;
+package uk.ac.kcl.client.widgets;
 
 import java.util.List;
 import java.util.Set;
@@ -15,7 +15,7 @@ public class SolutionsTable extends CellTable<Solution> {
 	private List<Solution> solutions;
 
 	/**
-	 * Creates a specialised <code>CellTable<code> containing all solutions with their  objective/constraint values.
+	 * Creates a specialised <code>CellTable<code> containing all solutions with their objective/constraint values.
 	 * 
 	 * @param solutions a list of solutions to be added to the table
 	 */
@@ -29,6 +29,7 @@ public class SolutionsTable extends CellTable<Solution> {
 		// Push the data into the widget.
 		setRowCount(solutions.size(), true);
 		setRowData(0, solutions);
+		setVisibleRange(0, solutions.size());
 	}
 	
 	private void initializeColumns() {
@@ -60,7 +61,6 @@ public class SolutionsTable extends CellTable<Solution> {
 
 		addSpecialColumn(CriterionType.OBJECTIVE);
 		addSpecialColumn(CriterionType.CONSTRAINT);
-		setVisibleRange(0, solutions.size());
 	}
 	
 	/**

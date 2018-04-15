@@ -36,7 +36,7 @@ public class ContentContainer implements ValueChangeHandler<String> {
         }
     }
 
-    void setContent(Content content) {
+    public void setContent(Content content) {
         RootPanel contentRoot = RootPanel.get("content");
         contentRoot.clear();
         History.newItem(content.getToken(), false);

@@ -1,9 +1,10 @@
-package uk.ac.kcl.client;
+package uk.ac.kcl.client.pages;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Widget;
 
+import uk.ac.kcl.client.Content;
 import uk.ac.kcl.client.constants.PageConstants;
 
 public class HelpPage extends Content {

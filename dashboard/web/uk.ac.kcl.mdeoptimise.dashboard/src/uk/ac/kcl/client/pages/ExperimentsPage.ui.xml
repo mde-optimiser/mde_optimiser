@@ -7,7 +7,7 @@
 		color: #595959;
 	}
 	</ui:style>
-	<g:HTMLPanel>
+	<g:HTMLPanel styleName="container">
 		<b:Heading size="3" ui:field="title">Experiment Details</b:Heading>
 		<b:Row>
 			<b:Column size="4">
@@ -28,6 +28,7 @@
 					architectureCRA.ecore</g:Label>
 			</b:Column>
 		</b:Row>
+		<g:SimplePanel ui:field="experimentInfoWidget" />
 		<b:Row>
 			<b:Column size="4">
 				<b:Popover

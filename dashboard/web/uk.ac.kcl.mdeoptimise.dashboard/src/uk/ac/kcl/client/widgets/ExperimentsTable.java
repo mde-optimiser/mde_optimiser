@@ -1,64 +1,33 @@
-package uk.ac.kcl.client;
+package uk.ac.kcl.client.widgets;
 
 import java.util.Date;
 import java.util.List;
 
 import com.github.gwtbootstrap.client.ui.CellTable;
-import com.github.gwtbootstrap.client.ui.Heading;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.cellview.client.TextColumn;
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.view.client.CellPreviewEvent;
 
-import uk.ac.kcl.client.constants.PageConstants;
+import uk.ac.kcl.client.ContentContainer;
 import uk.ac.kcl.client.data.Experiment;
-import uk.ac.kcl.client.data.Worker;
+import uk.ac.kcl.client.pages.ExperimentsPage;
 
-public class WorkersPage extends Content {
+public class ExperimentsTable extends CellTable<Experiment> implements CellPreviewEvent.Handler<Experiment> {
 
-	private CellTable<Experiment> table = new CellTable<Experiment>();
-	private Label label = new Label();
-	List<Experiment> experiments;
-	private Heading heading = new Heading(3, "Workers and Experiments");
-
-	/**
-	 * Creates a widget containing a label with the worker id and a
-	 * table containing all experiments associated to this worker.
-	 * 
-	 * @param worker the worker containing a list of experiments to be added to the table
-	 */
-	public WorkersPage(Worker worker) {
-		VerticalPanel panel = new VerticalPanel();
-		panel.add(heading);
-		panel.add(label);
-		panel.add(table);
-
-		label.setText("Worker: " + worker.getMacAddress());
-
-		// Push the data into the widget.
-		table.setRowCount(worker.getExperiments().size(), true);
-		table.setRowData(0, worker.getExperiments());
-		
-		experiments = worker.getExperiments();
-		
-		table.addCellPreviewHandler(new CellPreviewEvent.Handler<Experiment>() { 
-			@Override public void onCellPreview(CellPreviewEvent<Experiment> event) { 
-				if("click".equals(event.getNativeEvent().getType())) {
-					ContentContainer.getInstance().setContent(new ExperimentPage(event.getValue()));
-				} 
-			} 
-		});
-
+	private List<Experiment> experiments;
+	
+	public ExperimentsTable(List<Experiment> experiments) {
+		this.experiments = experiments;
 		initializeColumns();
 
-		// All composites must call initWidget() in their constructors.
-		initWidget(panel);
-
-		// Give the overall composite a style name.
-		setStyleName("container");
+		addCellPreviewHandler(this);
+		
+		// Push the data into the widget.
+		setRowCount(experiments.size(), true);
+		setRowData(0, experiments);
+		setVisibleRange(0, experiments.size());
 	}
-	
+
 	private void initializeColumns() {
 		TextColumn<Experiment> numColumn = new TextColumn<Experiment>() {
 
@@ -67,7 +36,7 @@ public class WorkersPage extends Content {
 		        return Integer.toString(experiments.indexOf(object) + 1);
 		    }
 		};
-		table.addColumn(numColumn, "");
+		addColumn(numColumn, "");
 		
 		TextColumn<Experiment> experimentId = new TextColumn<Experiment>() {
 			@Override
@@ -76,7 +45,7 @@ public class WorkersPage extends Content {
 				return s.substring(0, Math.min(s.length(), 10)) +"...";
 			}
 		};
-		table.addColumn(experimentId, "Experiment ID");
+		addColumn(experimentId, "Experiment ID");
 
 		TextColumn<Experiment> status = new TextColumn<Experiment>() {
 			@Override
@@ -87,7 +56,7 @@ public class WorkersPage extends Content {
 					return "Running";
 			}
 		};
-		table.addColumn(status, "Status");
+		addColumn(status, "Status");
 
 		TextColumn<Experiment> date = new TextColumn<Experiment>() {
 			@Override
@@ -95,7 +64,7 @@ public class WorkersPage extends Content {
 				return DateTimeFormat.getFormat("dd/MM/yyyy").format(object.getStartTime());
 			}
 		};
-		table.addColumn(date, "Date");
+		addColumn(date, "Date");
 
 		TextColumn<Experiment> startTime = new TextColumn<Experiment>() {
 			@Override
@@ -103,7 +72,7 @@ public class WorkersPage extends Content {
 				return DateTimeFormat.getFormat("hh:mm aaa").format(object.getStartTime());
 			}
 		};
-		table.addColumn(startTime, "Start Time");
+		addColumn(startTime, "Start Time");
 
 		TextColumn<Experiment> endTime = new TextColumn<Experiment>() {
 			@Override
@@ -114,7 +83,7 @@ public class WorkersPage extends Content {
 					return "-";
 			}
 		};
-		table.addColumn(endTime, "End Time");
+		addColumn(endTime, "End Time");
 
 		TextColumn<Experiment> timeTaken = new TextColumn<Experiment>() {
 			@Override
@@ -127,7 +96,7 @@ public class WorkersPage extends Content {
 				return DateTimeFormat.getFormat("HH:mm:ss").format(new Date(total));
 			}
 		};
-		table.addColumn(timeTaken, "Time Elapsed");
+		addColumn(timeTaken, "Time Elapsed");
 		
 		TextColumn<Experiment> etr = new TextColumn<Experiment>() {
 			@Override
@@ -135,18 +104,13 @@ public class WorkersPage extends Content {
 				return "-";
 			}
 		};
-		table.addColumn(etr, "ETR");
-
-		table.setVisibleRange(0, experiments.size());
+		addColumn(etr, "ETR");
 	}
 
-	@Override
-	public String getToken() {
-		return PageConstants.WORKER_TOKEN;
-	}
-
-	@Override
-	public String getWindowTitle() {
-		return PageConstants.WORKER_TITLE;
-	}
+	@Override 
+	public void onCellPreview(CellPreviewEvent<Experiment> event) { 
+		if("click".equals(event.getNativeEvent().getType())) {
+			ContentContainer.getInstance().setContent(new ExperimentsPage(event.getValue()));
+		} 
+	} 
 }

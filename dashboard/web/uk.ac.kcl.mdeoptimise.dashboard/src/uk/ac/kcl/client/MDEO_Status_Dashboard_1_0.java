@@ -1,5 +1,6 @@
 package uk.ac.kcl.client;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gwt.core.client.EntryPoint;
@@ -16,8 +17,10 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import uk.ac.kcl.client.constants.PageConstants;
 import uk.ac.kcl.client.data.Experiment;
 import uk.ac.kcl.client.data.Worker;
+import uk.ac.kcl.client.pages.WorkersPage;
 import uk.ac.kcl.client.services.MDEOService;
 import uk.ac.kcl.client.services.MDEOServiceAsync;
+import uk.ac.kcl.client.widgets.NavBar;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -26,9 +29,11 @@ public class MDEO_Status_Dashboard_1_0 implements EntryPoint  {
 	
 	private final MDEOServiceAsync service = GWT.create(MDEOService.class);
 
+	private List<Worker> workers = new ArrayList<Worker>();
 	private DialogBox dialogBox;
 	private Button closeButton;
 	private HTML serverResponseLabel;
+	private int totalNumOfWorkers;
 
 	/**
 	 * This is the entry point method.
@@ -81,6 +86,7 @@ public class MDEO_Status_Dashboard_1_0 implements EntryPoint  {
 
 			@Override
 			public void onSuccess(List<String> result) {
+				totalNumOfWorkers = result.size();
 				for (String workerId : result) {
 					getExperiments(workerId);
 				}
@@ -105,7 +111,9 @@ public class MDEO_Status_Dashboard_1_0 implements EntryPoint  {
 			public void onSuccess(List<Experiment> result) {
 				Worker worker = new Worker(workerId);
 				worker.setExperiments(result);
-				ContentContainer.getInstance().setContent(new WorkersPage(worker));
+				workers.add(worker);
+				if (workers.size() == totalNumOfWorkers)
+					ContentContainer.getInstance().setContent(new WorkersPage(workers));
 			}
 		});
 	}

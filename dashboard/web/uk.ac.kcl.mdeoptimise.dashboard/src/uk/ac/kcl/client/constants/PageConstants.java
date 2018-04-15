@@ -1,6 +1,8 @@
 package uk.ac.kcl.client.constants;
 
 public class PageConstants {
+
+	public static enum SolutionType {FINAL, INTERMEDIATE, ALL}
 	
 	/* The message displayed to the user when the server cannot be reached or returns an error. */
 	public static final String SERVER_ERROR = "An error occurred while "

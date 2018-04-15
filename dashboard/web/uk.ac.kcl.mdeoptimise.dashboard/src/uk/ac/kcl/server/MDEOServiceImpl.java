@@ -12,6 +12,7 @@ import java.util.Map;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import uk.ac.kcl.client.constants.PageConstants;
+import uk.ac.kcl.client.constants.PageConstants.SolutionType;
 import uk.ac.kcl.client.data.Experiment;
 import uk.ac.kcl.client.data.Solution;
 import uk.ac.kcl.client.services.MDEOService;
@@ -21,8 +22,6 @@ import uk.ac.kcl.client.services.MDEOService;
  */
 @SuppressWarnings("serial")
 public class MDEOServiceImpl extends RemoteServiceServlet implements MDEOService {
-
-	private static enum SolutionType {FINAL, INTERMEDIATE}
 
 	public List<String> getWorkerIds() throws Exception {
 		Class.forName("org.h2.Driver"); 
@@ -61,7 +60,7 @@ public class MDEOServiceImpl extends RemoteServiceServlet implements MDEOService
 	}
 
 	@Override
-	public List<Solution> getSolutions(String experimentId, String solution_type) throws Exception {
+	public List<Solution> getSolutions(String experimentId, SolutionType solution_type) throws Exception {
 		Class.forName("org.h2.Driver"); 
 		Connection conn = DriverManager.getConnection(
 				PageConstants.DATABSE_URL, 
@@ -70,11 +69,11 @@ public class MDEOServiceImpl extends RemoteServiceServlet implements MDEOService
 		System.out.println(conn.getCatalog());
 
 		ResultSet solutionIds;
-		if (solution_type.equalsIgnoreCase(SolutionType.FINAL.toString()) ||
-				solution_type.equalsIgnoreCase(SolutionType.INTERMEDIATE.toString()))
+		if (solution_type == PageConstants.SolutionType.FINAL ||
+				solution_type == PageConstants.SolutionType.INTERMEDIATE)
 			solutionIds = conn.createStatement().executeQuery("SELECT solution_id, run_id FROM solution "
 				+ "WHERE experiment_id= '" + experimentId.toLowerCase() + "' "
-						+ "AND solution_type= '" + solution_type + "' ORDER BY run_id;");
+						+ "AND solution_type= '" + solution_type.toString() + "' ORDER BY run_id;");
 		else
 			solutionIds = conn.createStatement().executeQuery("SELECT solution_id, run_id FROM solution "
 					+ "WHERE experiment_id= '" + experimentId.toLowerCase() + "' ORDER BY run_id;");

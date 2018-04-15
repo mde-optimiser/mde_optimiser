@@ -1,4 +1,4 @@
-package uk.ac.kcl.client;
+package uk.ac.kcl.client.pages;
 
 import java.sql.Timestamp;
 import java.util.Date;
@@ -13,23 +13,26 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 
+import uk.ac.kcl.client.Content;
 import uk.ac.kcl.client.constants.PageConstants;
+import uk.ac.kcl.client.constants.PageConstants.SolutionType;
 import uk.ac.kcl.client.data.Experiment;
 import uk.ac.kcl.client.data.Solution;
 import uk.ac.kcl.client.services.MDEOService;
 import uk.ac.kcl.client.services.MDEOServiceAsync;
+import uk.ac.kcl.client.widgets.SolutionsTable;
 
-public class ExperimentInfoWidget extends Composite {
+public class ExperimentsPage extends Content {
 
-	private static ExperimentInfoWidgetUiBinder uiBinder = GWT.create(ExperimentInfoWidgetUiBinder.class);
 	private final MDEOServiceAsync service = GWT.create(MDEOService.class);
+	
+	static ExperimentsPageUiBinder uiBinder = GWT.create(ExperimentsPageUiBinder.class);
 
-	interface ExperimentInfoWidgetUiBinder extends UiBinder<Widget, ExperimentInfoWidget> {
+	interface ExperimentsPageUiBinder extends UiBinder<Widget, ExperimentsPage> {
 	}
 
 	@UiField
@@ -56,13 +59,13 @@ public class ExperimentInfoWidget extends Composite {
 	Button refresh;
 	
 	private Experiment experiment;
-	private String selectedSolutionType = "ALL";
+	private SolutionType selectedSolutionType = SolutionType.ALL;
 
-	public ExperimentInfoWidget() {
+	public ExperimentsPage() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
-	public ExperimentInfoWidget(Experiment experiment) {
+	public ExperimentsPage(Experiment experiment) {
 		initWidget(uiBinder.createAndBindUi(this));
 		this.experiment = experiment;
 		setExperimentId(experiment.getExperimentId());
@@ -78,6 +81,7 @@ public class ExperimentInfoWidget extends Composite {
 		}
 		setMoptId(experiment.getMoptId());
 		setButtonListeners();
+		getSolutions(experiment.getExperimentId(), SolutionType.ALL);
 	}
 
 	private void setTotalTime(long timeElapsed) {
@@ -125,7 +129,7 @@ public class ExperimentInfoWidget extends Composite {
 		});
 	}
 
-	private void getSolutions(String experimentId, String solutionType) {
+	private void getSolutions(String experimentId, SolutionType solutionType) {
 		service.getSolutions(experimentId, solutionType, new AsyncCallback<List<Solution>>() {
 
 			@Override
@@ -140,14 +144,24 @@ public class ExperimentInfoWidget extends Composite {
 					setSolutionsTable(new SolutionsTable(result));
 				else {
 					// Show an error message if there are no solutions of the selected solution type
-					Window.alert("ERROR: solutions of type '" + solutionType + "' are not available.");
+					Window.alert("ERROR: solutions of type '" + solutionType.toString() + "' are not available.");
 					intermediateSolutions.setActive(true);
 					finalSolutions.setActive(false);
 					allSolutions.setActive(false);
-					selectedSolutionType = "INTERMEDIATE";
+					selectedSolutionType = SolutionType.INTERMEDIATE;
 				}
 			}
 		});
+	}
+	
+	@Override
+	public String getToken() {
+		return PageConstants.EXPERIMENT_TOKEN;
+	}
+
+	@Override
+	public String getWindowTitle() {
+		return PageConstants.EXPERIMENT_TITLE;
 	}
 
 	private class MyRadioButtonHandler implements ClickHandler {
@@ -160,7 +174,7 @@ public class ExperimentInfoWidget extends Composite {
 
 		@Override
 		public void onClick(ClickEvent event) {
-			selectedSolutionType = ((Button) event.getSource()).getName();
+			selectedSolutionType = SolutionType.valueOf(((Button) event.getSource()).getName());
 			getSolutions(experiment.getExperimentId(), selectedSolutionType);
 		}
 	}

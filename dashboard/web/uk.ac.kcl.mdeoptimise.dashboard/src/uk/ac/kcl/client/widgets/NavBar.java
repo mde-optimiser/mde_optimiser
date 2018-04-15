@@ -1,4 +1,4 @@
-package uk.ac.kcl.client;
+package uk.ac.kcl.client.widgets;
 
 import com.github.gwtbootstrap.client.ui.NavLink;
 import com.google.gwt.core.client.GWT;
@@ -11,7 +11,9 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
+import uk.ac.kcl.client.ContentContainer;
 import uk.ac.kcl.client.constants.PageConstants;
+import uk.ac.kcl.client.pages.HelpPage;
 
 public class NavBar extends Composite {
 

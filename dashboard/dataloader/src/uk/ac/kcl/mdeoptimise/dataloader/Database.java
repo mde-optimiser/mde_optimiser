@@ -15,6 +15,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import uk.ac.kcl.mdeoptimise.dataloader.Consts.CriteriaType;
+import uk.ac.kcl.mdeoptimise.dataloader.Consts.MessageType;
 import uk.ac.kcl.mdeoptimise.dataloader.Consts.SolutionType;
 
 /**
@@ -41,19 +43,19 @@ class Database {
 
 		JSONObject messageJSON = new JSONObject(message);
 
-		if (messageJSON.has(Consts.MessageType.WORKER_REGISTER.toString())) {
+		if (messageJSON.has(MessageType.WORKER_REGISTER.toString())) {
 			System.out.println("[DataLoader] WORKER_REGISTER message received: " + message);
-			insertWorkerRegister((JSONObject) messageJSON.get(Consts.MessageType.WORKER_REGISTER.toString()));
+			insertWorkerRegister((JSONObject) messageJSON.get(MessageType.WORKER_REGISTER.toString()));
 		} 
-		else if (messageJSON.has(Consts.MessageType.FINAL_SOLUTION.toString())) {
+		else if (messageJSON.has(MessageType.FINAL_SOLUTION.toString())) {
 			System.out.println("[DataLoader] FINAL_SOLUTION message received: " + message);
-			JSONObject solutionJSON = (JSONObject) messageJSON.get(Consts.MessageType.FINAL_SOLUTION.toString());
+			JSONObject solutionJSON = (JSONObject) messageJSON.get(MessageType.FINAL_SOLUTION.toString());
 			insertExperimentEndTime(solutionJSON);
-			insertSolution(Consts.SolutionType.FINAL, solutionJSON);
+			insertSolution(SolutionType.FINAL, solutionJSON);
 		} 
-		else if (messageJSON.has(Consts.MessageType.INTERMEDIATE_SOLUTION.toString())) {
+		else if (messageJSON.has(MessageType.INTERMEDIATE_SOLUTION.toString())) {
 			System.out.println("[DataLoader] INTERMEDIATE_SOLUTION message received: " + message);
-			insertSolution(Consts.SolutionType.INTERMEDIATE, (JSONObject) messageJSON.get(Consts.MessageType.INTERMEDIATE_SOLUTION.toString()));
+			insertSolution(SolutionType.INTERMEDIATE, (JSONObject) messageJSON.get(MessageType.INTERMEDIATE_SOLUTION.toString()));
 		}
 		else {
 			throw new Exception("Invalid message type given: " + message);
@@ -115,8 +117,8 @@ class Database {
 		System.out.println("[DataLoader] EXPERIMENT table updated: " + workerJSON);
 
 		// Iterate through all objectives/constraints and insert them into the database.
-		insertCriteria(Consts.CriteriaType.OBJECTIVE, workerJSON.getJSONArray("objectives"), workerJSON);
-		insertCriteria(Consts.CriteriaType.CONSTRAINT, workerJSON.getJSONArray("constraints"), workerJSON);
+		insertCriteria(CriteriaType.OBJECTIVE, workerJSON.getJSONArray("objectives"), workerJSON);
+		insertCriteria(CriteriaType.CONSTRAINT, workerJSON.getJSONArray("constraints"), workerJSON);
 		conn.commit();
 	}
 
@@ -128,7 +130,7 @@ class Database {
 	 * @param criteriaArray collection of criteria to be inserted into the database
 	 * @param workerJSON full worker register message (contains worker_id, experiment_id etc.)
 	 */
-	private static void insertCriteria(Consts.CriteriaType criteriaType, JSONArray criteriaArray, JSONObject workerJSON) {
+	private static void insertCriteria(CriteriaType criteriaType, JSONArray criteriaArray, JSONObject workerJSON) {
 		IntStream.range(0, criteriaArray.length()).mapToObj(index -> (JSONObject) criteriaArray.get(index))
 		.forEach(criterionJSON -> {
 			try {
@@ -161,9 +163,9 @@ class Database {
 				conn.commit();
 				System.out.println("[DataLoader] SOLUTION table updated for solution: " + solution.getString("solution_id"));
 				// insert its objectives
-				insertFitnessValue(Consts.CriteriaType.OBJECTIVE, solution.getJSONArray("objectives"), solution.getString("solution_id"));
+				insertFitnessValue(CriteriaType.OBJECTIVE, solution.getJSONArray("objectives"), solution.getString("solution_id"));
 				// insert its constraints
-				insertFitnessValue(Consts.CriteriaType.CONSTRAINT, solution.getJSONArray("constraints"), solution.getString("solution_id"));
+				insertFitnessValue(CriteriaType.CONSTRAINT, solution.getJSONArray("constraints"), solution.getString("solution_id"));
 			} catch (JSONException | SQLException e) {
 				e.printStackTrace();
 			}
@@ -182,7 +184,7 @@ class Database {
 		conn.commit();
 	}
 
-	private static void insertFitnessValue(Consts.CriteriaType criteriaType, JSONArray criteriaArray, String solutionId) throws SQLException {
+	private static void insertFitnessValue(CriteriaType criteriaType, JSONArray criteriaArray, String solutionId) throws SQLException {
 		IntStream.range(0, criteriaArray.length()).mapToObj(index -> (JSONObject) criteriaArray.get(index))
 		.forEach(criterionJSON -> {
 			try {
