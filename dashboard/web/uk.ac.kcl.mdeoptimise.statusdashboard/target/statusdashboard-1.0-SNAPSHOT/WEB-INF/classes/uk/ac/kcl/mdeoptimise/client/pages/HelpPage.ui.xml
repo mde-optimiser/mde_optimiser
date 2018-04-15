@@ -1,0 +1,24 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+	<ui:style>
+	.important {
+		font-weight: bold;
+	}
+	
+	h4 {
+		padding-top: 15px;
+	}
+	</ui:style>
+	<g:HTMLPanel styleName="container">
+		<g:HTMLPanel styleName="left">
+			<b:Heading size="3" ui:field="title">Help</b:Heading>
+			<b:Heading size="4">What is MDEO Status Dashboard?</b:Heading>
+			<b:Paragraph>MDEO Status Dashboard is a tool used in combination with
+				MDEOptimiser.</b:Paragraph>
+			<b:Heading size="4">What is MDEOptimiser?</b:Heading>
+			<b:Paragraph>MDEOptimiser.</b:Paragraph>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

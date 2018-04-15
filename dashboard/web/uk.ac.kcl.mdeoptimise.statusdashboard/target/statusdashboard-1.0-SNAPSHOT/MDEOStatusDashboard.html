@@ -1,0 +1,87 @@
+<!doctype html>
+<!-- The DOCTYPE declaration above will set the     -->
+<!-- browser's rendering engine into                -->
+<!-- "Standards Mode". Replacing this declaration   -->
+<!-- with a "Quirks Mode" doctype is not supported. -->
+
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <inherits name="com.google.gwt.logging.Logging"/>
+    <link type="text/css" rel="stylesheet" href="statusdashboard.css">
+    <link rel="stylesheet" href="statusdashboard/css/font-awesome-ie7.css">
+
+    <style>
+	    .table th, .table td {
+	    	text-align: center;
+	    }
+	    body {
+	        padding-top: 0px;
+	    }
+		.navbar-inner {
+			padding-top: 20px;
+			padding-bottom: 20px;
+	    	background: #fff;
+	    	border-bottom: 1px solid #eee;
+		}
+		.navbar .brand {
+			color: rgb(45, 190, 96);
+		}
+		.navbar {
+			margin-bottom: 0px;
+		}
+		.table thead th {
+		    color: rgb(45, 190, 96);
+		}
+		.container {
+			text-align: center;
+		}
+		div {
+			padding-bottom: 10px;
+		}
+		.span4 {
+			margin-left: 0px;
+		}
+		h3 {
+			font-size: 22px;
+			color: #595959;
+		}
+		.left {
+			text-align: left;
+		}
+    </style>
+
+    <title>MDEO SD</title>
+    
+    <script type="text/javascript" language="javascript" src="statusdashboard/statusdashboard.nocache.js"></script>
+  </head>
+
+  <body>
+	  <!-- Load the JavaScript code for GWT -->
+	  <script language="javascript" src="ui/org.project.package.ui.Core.nocache.js"></script>
+	
+	  <!-- For some unknown reason in Internet Explorer you have to have cellpadding/spacing ON THE ELEMENT and not on the STYLE if it is in the body tag like this -->
+	  <table id="wrapper" cellpadding="0" cellspacing="0" style="width: 100%;height: 100%;">
+	
+	       <!-- Header row -->
+	       <tr style="height: 25%;">
+	           <td colspan="2" id="header"></td>
+	       </tr>
+	
+	       <!-- Body row and left nav row -->
+	       <tr style="height: 65%;">
+	           <td id="content" style="width: 100%;"></td>
+	       </tr>
+	
+	       <!-- Footer row -->
+	       <tr style="height: 10%;">
+	          <td colspan="2" id="footer"></td>
+	       </tr>
+	       
+	  </table>
+	
+	  <!-- This iframe handles history -->
+	  <iframe id="__gwt_historyFrame" style="width:0;height:0;border:0"></iframe>
+  </body>
+</html>
+

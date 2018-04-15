@@ -1,0 +1,52 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+	<ui:style>
+	.text {
+		color: #595959;
+	}
+	</ui:style>
+	<g:HTMLPanel styleName="container">
+		<b:Heading size="3" ui:field="title" styleName="left">Experiment Details</b:Heading>
+		<b:Row styleName="left">
+			<b:Column size="4">
+				<b:Heading size="4">Experiment info</b:Heading>
+				<g:Label styleName="{style.text}" ui:field="experimentId">ID: </g:Label>
+				<g:Label styleName="{style.text}" ui:field="workerId">Worker MAC
+					Address:
+				</g:Label>
+				<g:Label styleName="{style.text}" ui:field="startTime">Start Time: </g:Label>
+				<g:Label styleName="{style.text}" ui:field="endTime">End Time: </g:Label>
+				<g:Label styleName="{style.text}" ui:field="totalTime">Time Elapsed: </g:Label>
+			</b:Column>
+			<b:Column size="4">
+				<b:Heading size="4">MOPT info</b:Heading>
+				<g:Label styleName="{style.text}" ui:field="moptId">ID: </g:Label>
+				<g:Label styleName="{style.text}" ui:field="model">Model:
+					TTC_InputRDG_C.xmi</g:Label>
+				<g:Label styleName="{style.text}" ui:field="metamodel">Metamodel:
+					architectureCRA.ecore</g:Label>
+			</b:Column>
+		</b:Row>
+		<b:Row>
+		</b:Row>
+		<b:Row styleName="left">
+			<b:Column size="4">
+				<b:Popover
+					text="Final solutions show the pareto front, whereas intermediate solutions show the progress made during runtime."
+					heading="Choose solution range">
+					<b:ButtonGroup toggle="radio" ui:field="solutionTypeButtonGroup">
+						<b:Button active="true" name="ALL" ui:field="allSolutions">All</b:Button>
+						<b:Button name="FINAL" ui:field="finalSolutions">Final</b:Button>
+						<b:Button name="INTERMEDIATE" ui:field="intermediateSolutions">Intermediate</b:Button>
+					</b:ButtonGroup>
+				</b:Popover>
+			</b:Column>
+			<b:Column size="4">
+				<b:Button name="Refresh" ui:field="refresh">Refresh</b:Button>
+			</b:Column>
+		</b:Row>
+		<g:SimplePanel ui:field="solutionsTable" />
+	</g:HTMLPanel>
+</ui:UiBinder> 

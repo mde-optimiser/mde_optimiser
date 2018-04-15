@@ -1,0 +1,5 @@
+# Module uk.ac.kcl.mdeoptimise.statusdashboardJUnit.JUnit
+# RPC service class, partial path of RPC policy file
+uk.ac.kcl.mdeoptimise.client.GreetingService, 15C07959717975EBB15074B24FAE1E2D.gwt.rpc
+com.google.gwt.junit.client.impl.JUnitHost, 96393FD5B90EFD77EACE5B4F721C3D47.gwt.rpc
+com.google.gwt.logging.shared.RemoteLoggingService, AAFD889F23464636BD1B1A56CF1C681A.gwt.rpc
