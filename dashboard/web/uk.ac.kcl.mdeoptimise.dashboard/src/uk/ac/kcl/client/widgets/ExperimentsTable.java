@@ -23,9 +23,9 @@ public class ExperimentsTable extends CellTable<Experiment> implements CellPrevi
 		addCellPreviewHandler(this);
 		
 		// Push the data into the widget.
+		setVisibleRange(0, experiments.size());
 		setRowCount(experiments.size(), true);
 		setRowData(0, experiments);
-		setVisibleRange(0, experiments.size());
 	}
 
 	private void initializeColumns() {

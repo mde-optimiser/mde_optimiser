@@ -27,9 +27,9 @@ public class SolutionsTable extends CellTable<Solution> {
 		//setStyleName("solutionsTable");
 		
 		// Push the data into the widget.
+		setVisibleRange(0, solutions.size());
 		setRowCount(solutions.size(), true);
 		setRowData(0, solutions);
-		setVisibleRange(0, solutions.size());
 	}
 	
 	private void initializeColumns() {
