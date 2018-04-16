@@ -1,2 +1,0 @@
-serviceClass: uk.ac.kcl.mdeoptimise.client.services.MDEOService
-path: 43E4C54531C5BF4D3B4290516E887840.gwt.rpc

@@ -109,7 +109,7 @@ class MoeaOptimisationTests {
 				mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
 				breed using <exDependencies.henshin> unit "exchangeMultipleDependencies" 
 					parameters { number3 => Random("[0-9]{0,2}"), number => "models.moea.RandomEvolverParameter" }
-				optimisation provider moea algorithm NSGAII variation genetic evolutions 100 population 30
+				optimisation provider moea algorithm NSGAII variation genetic evolutions 10 population 30
 			''')
 
 			//Assert that there are no grammar issues
