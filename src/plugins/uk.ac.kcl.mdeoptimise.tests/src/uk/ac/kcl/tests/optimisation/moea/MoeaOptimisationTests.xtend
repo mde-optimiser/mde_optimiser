@@ -101,7 +101,7 @@ class MoeaOptimisationTests {
 				basepath <src/models/cra/>
 				metamodel <architectureCRA.ecore>
 				model <TTC_InputRDG_C.xmi>
-				objective MinimiseCoupling maximise java { "models.moea.MaximiseCRA" }
+				objective CRA maximise java { "models.moea.MaximiseCRA" }
 				constraint MinimiseClasslessFeatures java { "models.moea.MinimiseClasslessFeatures" }
 				mutate using <craEvolvers.henshin> unit "createClass"
 				mutate using <craEvolvers.henshin> unit "assignFeature"
