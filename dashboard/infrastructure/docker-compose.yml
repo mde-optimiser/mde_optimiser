@@ -19,12 +19,7 @@ services:
       context: ./worker
       dockerfile: Dockerfile
     volumes:
-        - /Users/tammaramanasieva/Documents/Workspace/mde_optimiser_github/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins/:/var/app/plugins
-        - ../../src/plugins/uk.ac.kcl.mdeoptimise/target/classes:/var/app/mdeo/uk.ac.kcl.mdeoptimise/target/classes
-        - ../../src/plugins/uk.ac.kcl.mdeoptimise/lib:/var/app/mdeo/uk.ac.kcl.mdeoptimise.lib
-        - ../../src/plugins/uk.ac.kcl.mdeoptimise.ui/target/classes:/var/app/mdeo/uk.ac.kcl.mdeoptimise.ui/target/classes
-        - ../../src/plugins/uk.ac.kcl.mdeoptimise.tests/target/classes:/var/app/mdeo/uk.ac.kcl.mdeoptimise.tests/target/classes
-        - ../../src/dashboard/uk.ac.kcl.mdeoptimise.dashboard.api/target/classes:/var/app/mdeo/uk.ac.kcl.mdeoptimise.dashboard.api/target/classes
+        - ../../src:/var/app/mdeo
     links: 
         - "queue"
   dataloader:
