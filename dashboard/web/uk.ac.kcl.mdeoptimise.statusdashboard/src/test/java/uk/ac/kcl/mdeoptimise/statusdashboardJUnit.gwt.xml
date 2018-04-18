@@ -10,6 +10,6 @@
   <inherits name='uk.ac.kcl.mdeoptimise.statusdashboard'/>
 
   <!-- Specify the path to any remote services.                   -->
-  <servlet path="/statusdashboard/greet" class="uk.ac.kcl.mdeoptimise.server.GreetingServiceImpl" />
+  <servlet path="/statusdashboard/mdeo" class="uk.ac.kcl.mdeoptimise.server.MDEOServiceImpl" />
 
 </module>
