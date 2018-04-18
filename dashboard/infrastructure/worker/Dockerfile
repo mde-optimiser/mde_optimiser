@@ -13,5 +13,5 @@ RUN wget --no-verbose -O /tmp/apache-maven-3.3.9-bin.tar.gz http://www-eu.apache
     ln -s /opt/maven/bin/mvn /usr/local/bin  && \
     rm -f /tmp/apache-maven-3.3.9-bin.tar.gz
 
-ENTRYPOINT ["/mdeo.sh"]
-#ENTRYPOINT ["/entrypoint.sh"]
+#ENTRYPOINT ["/mdeo.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
