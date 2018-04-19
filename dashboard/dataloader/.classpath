@@ -1,21 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="test"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry including="**/*.java" kind="src" output="target/classes" path="src">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" output="target/test-classes" path="test">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/guava-16.0.1.jar"/>
 	<classpathentry kind="lib" path="lib/h2-1.4.196.jar"/>
 	<classpathentry kind="lib" path="lib/javax.jms-3.1.2.2.jar"/>
-	<classpathentry kind="lib" path="lib/qpid-jms-client-0.1.0.jar"/>
-	<classpathentry kind="lib" path="lib/slf4j-api-1.7.12.jar"/>
-	<classpathentry kind="lib" path="lib/proton-j-0.9.1.jar"/>
-	<classpathentry kind="lib" path="lib/qpid-jms-client-0.27.0.jar"/>
+	<classpathentry kind="lib" path="lib/json-20140107.jar"/>
 	<classpathentry kind="lib" path="lib/netty-buffer-4.1.16.Final.jar"/>
 	<classpathentry kind="lib" path="lib/netty-codec-4.1.16.Final.jar"/>
-	<classpathentry kind="lib" path="lib/netty-transport-4.1.16.Final.jar"/>
 	<classpathentry kind="lib" path="lib/netty-common-4.1.16.Final.jar"/>
 	<classpathentry kind="lib" path="lib/netty-resolver-4.1.16.Final.jar"/>
-	<classpathentry kind="lib" path="lib/json-20140107.jar"/>
-	<classpathentry kind="lib" path="lib/guava-16.0.1.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="lib" path="lib/netty-transport-4.1.16.Final.jar"/>
+	<classpathentry kind="lib" path="lib/proton-j-0.9.1.jar"/>
+	<classpathentry kind="lib" path="lib/qpid-jms-client-0.1.0.jar"/>
+	<classpathentry kind="lib" path="lib/qpid-jms-client-0.27.0.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-api-1.7.12.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
 </classpath>
