@@ -39,4 +39,4 @@ services:
     ports:
       - "8085:8080"
     volumes:
-     - ../../dashboard/web/uk.ac.kcl.mdeoptimise.dashboard:/var/app/mdeo/uk.ac.kcl.mdeoptimise.web
+     - ../../dashboard/web/uk.ac.kcl.mdeoptimise.statusdashboard:/var/app/web
