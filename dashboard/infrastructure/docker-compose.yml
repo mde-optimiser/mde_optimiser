@@ -6,7 +6,6 @@ services:
       dockerfile: Dockerfile
     ports:
       - "5762:5762"
-      - "8080:8080"
   database:
     build:
       context: ./database
@@ -36,7 +35,6 @@ services:
     build:
       context: ./web
       dockerfile: Dockerfile
-    ports:
-      - "8085:8080"
     volumes:
      - ../../dashboard/web/uk.ac.kcl.mdeoptimise.statusdashboard:/var/app/web
+

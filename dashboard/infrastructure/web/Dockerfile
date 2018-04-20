@@ -1,14 +1,27 @@
-FROM openjdk:8-jdk
- 
+FROM java:8
 
- COPY entrypoint.sh /
- COPY web.sh /
+COPY entrypoint.sh /
+COPY web.sh /
 
-# Install maven 3.3.9
-RUN wget --no-verbose -O /tmp/apache-maven-3.3.9-bin.tar.gz http://www-eu.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz && \
-    tar xzf /tmp/apache-maven-3.3.9-bin.tar.gz -C /opt/ && \
-    ln -s /opt/apache-maven-3.3.9 /opt/maven && \
-    ln -s /opt/maven/bin/mvn /usr/local/bin  && \
-    rm -f /tmp/apache-maven-3.3.9-bin.tar.gz
+# Install Jetty
+RUN wget -O /opt/jetty.tar.gz "http://eclipse.org/downloads/download.php?file=/jetty/9.0.7.v20131107/dist/jetty-distribution-9.0.7.v20131107.tar.gz&r=1"
+RUN tar -xvf /opt/jetty.tar.gz -C /opt/
+RUN rm /opt/jetty.tar.gz
+RUN mv /opt/jetty-distribution-9.0.7.v20131107 /opt/jetty
+RUN rm -rf /opt/jetty/webapps.demo
+RUN useradd jetty -U -s /bin/false
+RUN chown -R jetty:jetty /opt/jetty
 
- ENTRYPOINT ["/web.sh"]
+# Ideally at this point we should install Maven and package the web app to create a new .war file (see web.sh)
+
+#ENTRYPOINT ["/entrypoint.sh"]
+
+# When running docker-compose build with the following line it returns an ERROR (no such file or directory)
+#ADD ../../var/web/uk.ac.kcl.mdeoptimise.statusdashboard/target/statusdashboard-1.0-SNAPSHOT.war /opt/jetty/webapps/statusdashboard-1.0-SNAPSHOT.war
+
+# When running docker-compose build with the following line it returns an ERROR (Forbidden path outside the build context:)
+ADD statusdashboard-1.0-SNAPSHOT.war /opt/jetty/webapps/app.war
+
+# Run Jetty
+EXPOSE 8080
+CMD ["java", "-Djetty.home=/opt/jetty", "-jar", "/opt/jetty/start.jar"]

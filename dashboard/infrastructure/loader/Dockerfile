@@ -11,5 +11,4 @@ RUN wget --no-verbose -O /tmp/apache-maven-3.3.9-bin.tar.gz http://www-eu.apache
     rm -f /tmp/apache-maven-3.3.9-bin.tar.gz
 
 #ENTRYPOINT ["/loader.sh"]
-
 ENTRYPOINT ["/entrypoint.sh"]
