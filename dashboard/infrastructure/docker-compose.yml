@@ -35,6 +35,8 @@ services:
     build:
       context: ./web
       dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
     volumes:
      - ../../dashboard/web/uk.ac.kcl.mdeoptimise.statusdashboard:/var/app/web
 
