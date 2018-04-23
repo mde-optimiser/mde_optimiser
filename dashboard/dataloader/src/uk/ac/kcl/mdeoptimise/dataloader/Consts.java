@@ -15,7 +15,7 @@ public final class Consts {
 
 	/** Use the following setting when running via Docker. */
 	static final String QUEUE_CONNECTION_NAME = "amqp://queue:5672";
-    static final String DATABASE_CONNECTION_URL = "jdbc:h2:./test";
+	static final String DATABASE_CONNECTION_URL = "jdbc:h2:tcp://database:9092/./test";
 	static final String DATABASE_USERNAME = "sa";
     static final String DATABASE_PASSWORD = "";
 

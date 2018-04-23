@@ -23,6 +23,5 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="lib/h2-1.4.195.jar"/>
 	<classpathentry kind="output" path="target/statusdashboard-1.0-SNAPSHOT/WEB-INF/classes"/>
 </classpath>

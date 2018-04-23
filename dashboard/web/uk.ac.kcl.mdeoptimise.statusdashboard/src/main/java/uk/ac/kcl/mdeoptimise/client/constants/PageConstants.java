@@ -9,7 +9,7 @@ public class PageConstants {
 			+ "attempting to contact the server. Please check your network connection and try again.<br><br>";
 
 	/** Use the following setting when running via Docker. */
-	public static final String DATABSE_URL = "jdbc:h2:./test";
+	public static final String DATABSE_URL = "jdbc:h2:tcp://database:9092/./test";
 	public static final String DATABSE_USERNAME = "sa";
 	public static final String DATABSE_PASSWORD = "";
 
