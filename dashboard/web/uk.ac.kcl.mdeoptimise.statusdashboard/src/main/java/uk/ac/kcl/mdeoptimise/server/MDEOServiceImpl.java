@@ -14,6 +14,7 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import uk.ac.kcl.mdeoptimise.client.constants.PageConstants;
 import uk.ac.kcl.mdeoptimise.client.constants.PageConstants.SolutionType;
 import uk.ac.kcl.mdeoptimise.client.data.Experiment;
+import uk.ac.kcl.mdeoptimise.client.data.MoptSpecs;
 import uk.ac.kcl.mdeoptimise.client.data.Solution;
 import uk.ac.kcl.mdeoptimise.client.services.MDEOService;
 
@@ -97,6 +98,31 @@ public class MDEOServiceImpl extends RemoteServiceServlet implements MDEOService
 		return list;
 	}
 
+	@Override
+	public MoptSpecs getMoptSpecs(String moptId) throws Exception {
+		Class.forName("org.h2.Driver");
+		Connection conn = DriverManager.getConnection(
+				PageConstants.DATABSE_URL,
+				PageConstants.DATABSE_USERNAME,
+				PageConstants.DATABSE_PASSWORD);
+		System.out.println(conn.getCatalog());
+
+		ResultSet moptData = conn.createStatement().executeQuery("SELECT mopt_id, model, metamodel FROM mopt_specs "
+				+ "WHERE mopt_id= '" + moptId.toLowerCase() + "' ;");
+
+		MoptSpecs moptSpecs = null;
+		if (moptData.next()) {
+			// Add solution to the list
+			String moptId1 = moptData.getString(1);
+			String model = moptData.getString(2);
+			String metamodel = moptData.getString(3);
+			moptSpecs = new MoptSpecs(moptId1, model, metamodel);
+		}
+
+		conn.close();
+		return moptSpecs;
+	}
+
 	private Map<String, Double> getConstraints(Connection conn, String solutionId) throws SQLException {
 		ResultSet result = conn.createStatement().executeQuery("SELECT constraint_name, constraint_value FROM solution_constraint "
 				+ "WHERE solution_id= '" + solutionId + "';");
@@ -130,10 +156,9 @@ public class MDEOServiceImpl extends RemoteServiceServlet implements MDEOService
 		ResultSet resultSet1 = conn.createStatement().executeQuery("SELECT * FROM experiment "
 				+ "WHERE worker_id='" + workerId + "';");
 		List<Experiment> list = new LinkedList<>();
-		//(String experimentId, String workerId, String moptId, Timestamp startTime, Timestamp endTime)
 		while(resultSet1.next()){
-			list.add(new Experiment(resultSet1.getString(1), resultSet1.getString(3), resultSet1.getString(4), 
-					resultSet1.getTimestamp(5), resultSet1.getTimestamp(6)));
+			list.add(new Experiment(resultSet1.getString(1), resultSet1.getString(3), resultSet1.getInt(4), resultSet1.getInt(5), resultSet1.getString(6),
+					resultSet1.getTimestamp(7), resultSet1.getInt(8), resultSet1.getTimestamp(9)));
 		}
 		conn.close();
 		return list;

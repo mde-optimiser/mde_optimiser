@@ -142,6 +142,7 @@ public class JsonEncoder {
 	 * 		{"worker_id":"8C-85-90-24-B7-0F",
 	 * 		"experiment_id":"59a127eea25284dc3501550e7db59ec1",
 	 * 		"run_id":"1",
+	 * 		"current_time":"2018-04-03 07:49:44.362",
 	 * 		"solutions":[
 	 * 			{"solution_id":"0b524cba02e9c960a5813d819ea72a41",
 	 * 			"objectives":[
@@ -165,6 +166,11 @@ public class JsonEncoder {
 		solutionJSON.put("worker_id", macAddress);
 		solutionJSON.put("experiment_id", experimentId);
 		solutionJSON.put("run_id", evolutionNumber);
+
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+		Date date = new Date();
+		String time = dateFormat.format(date);
+		solutionJSON.put("current_time", time);
 
 		// insert an array of solutions
 		solutionJSON.put("solutions", generateSolutionsJsonArray(solutions, evolutionNumber));

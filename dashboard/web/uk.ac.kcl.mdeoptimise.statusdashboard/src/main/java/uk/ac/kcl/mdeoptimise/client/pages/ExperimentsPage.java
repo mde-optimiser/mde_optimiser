@@ -21,6 +21,7 @@ import uk.ac.kcl.mdeoptimise.client.Content;
 import uk.ac.kcl.mdeoptimise.client.constants.PageConstants;
 import uk.ac.kcl.mdeoptimise.client.constants.PageConstants.SolutionType;
 import uk.ac.kcl.mdeoptimise.client.data.Experiment;
+import uk.ac.kcl.mdeoptimise.client.data.MoptSpecs;
 import uk.ac.kcl.mdeoptimise.client.data.Solution;
 import uk.ac.kcl.mdeoptimise.client.services.MDEOService;
 import uk.ac.kcl.mdeoptimise.client.services.MDEOServiceAsync;
@@ -29,7 +30,7 @@ import uk.ac.kcl.mdeoptimise.client.widgets.SolutionsTable;
 public class ExperimentsPage extends Content {
 
 	private final MDEOServiceAsync service = GWT.create(MDEOService.class);
-	
+
 	static ExperimentsPageUiBinder uiBinder = GWT.create(ExperimentsPageUiBinder.class);
 
 	interface ExperimentsPageUiBinder extends UiBinder<Widget, ExperimentsPage> {
@@ -48,6 +49,14 @@ public class ExperimentsPage extends Content {
 	@UiField
 	Label moptId;
 	@UiField
+	Label model;
+	@UiField
+	Label metamodel;
+	@UiField
+	Label totalPopulation;
+	@UiField
+	Label totalEvolutions;
+	@UiField
 	SimplePanel solutionsTable;
 	@UiField
 	Button finalSolutions;
@@ -57,7 +66,7 @@ public class ExperimentsPage extends Content {
 	Button allSolutions;
 	@UiField
 	Button refresh;
-	
+
 	private Experiment experiment;
 	private SolutionType selectedSolutionType = SolutionType.ALL;
 
@@ -81,6 +90,9 @@ public class ExperimentsPage extends Content {
 		}
 		setMoptId(experiment.getMoptId());
 		setButtonListeners();
+		setTotalEvolutions(experiment.getTotalEvolutions());
+		setTotalPopulation(experiment.getTotalPopulation());
+		getMoptInfo(experiment.getMoptId());
 		getSolutions(experiment.getExperimentId(), SolutionType.ALL);
 	}
 
@@ -95,11 +107,11 @@ public class ExperimentsPage extends Content {
 	public void setExperimentId(String id){
 		experimentId.setText(experimentId.getText() + " " + id.toUpperCase());	
 	}
-	
+
 	public void setStartTime(Timestamp time){
 		startTime.setText(startTime.getText() + " " + DateTimeFormat.getFormat("dd/MM/yyyy 'at' hh:mm aaa").format(time));
 	}
-	
+
 	public void setEndTime(Timestamp time){
 		endTime.setText(endTime.getText() + " " + DateTimeFormat.getFormat("dd/MM/yyyy 'at' hh:mm aaa").format(time));
 	}
@@ -108,10 +120,26 @@ public class ExperimentsPage extends Content {
 		endTime.setText(endTime.getText() + " " + text);
 	}
 
+	public void setTotalPopulation(int text){
+		totalPopulation.setText(totalPopulation.getText() + " " + text);
+	}
+
+	public void setTotalEvolutions(int text){
+		totalEvolutions.setText(totalEvolutions.getText() + " " + text);
+	}
+
 	public void setMoptId(String id){
 		moptId.setText(moptId.getText() + " " + id.toUpperCase());	
 	}
-	
+
+	public void setModel(String text){
+		model.setText(model.getText() + " " + text);
+	}
+
+	public void setMetamodel(String text){
+		metamodel.setText(metamodel.getText() + " " + text);
+	}
+
 	public void setSolutionsTable(SolutionsTable table){
 		solutionsTable.setWidget(table);
 	}
@@ -153,7 +181,24 @@ public class ExperimentsPage extends Content {
 			}
 		});
 	}
-	
+
+	private void getMoptInfo(String moptId) {
+		service.getMoptSpecs(moptId, new AsyncCallback<MoptSpecs>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				// Show the RPC error message to the user
+				Window.alert(PageConstants.SERVER_ERROR + caught.getMessage());
+			}
+
+			@Override
+			public void onSuccess(MoptSpecs result) {
+				setModel(result.getModel());
+				setMetamodel(result.getMetamodel());
+			}
+		});
+	}
+
 	@Override
 	public String getToken() {
 		return PageConstants.EXPERIMENT_TOKEN;
@@ -167,7 +212,7 @@ public class ExperimentsPage extends Content {
 	private class MyRadioButtonHandler implements ClickHandler {
 
 		private Experiment experiment;
-		
+
 		public MyRadioButtonHandler(Experiment experiment) {
 			this.experiment = experiment;
 		}

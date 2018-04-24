@@ -14,18 +14,24 @@ public class Experiment implements Serializable {
 	private String experimentId;
 	private String workerId;
 	private String moptId;
+	private int lastEvolutionNumber;
+	private int totalEvaluations;
+	private int totalPopulation;
 	private Timestamp startTime;
 	private Timestamp endTime;
 	
 	public Experiment() {}
 
-	public Experiment(String experimentId, String workerId, String moptId, Timestamp startTime, Timestamp endTime) {
+	public Experiment(String experimentId, String workerId, int totalEvolutions, int totalPopulation, String moptId, Timestamp startTime, int lastEvolutionNumber, Timestamp endTime) {
 		super();
 		setExperimentId(experimentId);
 		setWorkerId(workerId);
 		setMoptId(moptId);
 		setStartTime(startTime);
 		setEndTime(endTime);
+		setLastEvaluationNumber(lastEvolutionNumber);
+		setTotalEvolutions(totalEvolutions);
+		setTotalPopulation(totalPopulation);
 	}
 
 	public String getExperimentId() {
@@ -52,6 +58,22 @@ public class Experiment implements Serializable {
 		this.moptId = moptId;
 	}
 
+	public int getTotalEvolutions() {
+		return totalEvaluations;
+	}
+
+	public void setTotalEvolutions(int totalEvaluations) {
+		this.totalEvaluations = totalEvaluations;
+	}
+
+	public int getTotalPopulation() {
+		return totalPopulation;
+	}
+
+	public void setTotalPopulation(int totalPopulation) {
+		this.totalPopulation = totalPopulation;
+	}
+
 	public Timestamp getStartTime() {
 		return startTime;
 	}
@@ -68,15 +90,11 @@ public class Experiment implements Serializable {
 		this.endTime = endTime;
 	}
 
-	/** Returns elapsed time for active experiments and total time taken for finished experiments. */
-	/*public long getTotalTimeTaken() {
-		if (getEndTime() != null)
-			return getEndTime().getTime() - getStartTime().getTime();
-		else
-			return new Date().getTime() - getStartTime().getTime();
+	public int getLastEvolutionNumber() {
+		return lastEvolutionNumber;
 	}
 
-	public void setTotalTimeTaken(long totalTimeTaken) {
-		this.totalTimeTaken = 0;
-	}*/
+	public void setLastEvaluationNumber(int lastEvolutionNumber) {
+		this.lastEvolutionNumber = lastEvolutionNumber;
+	}
 }

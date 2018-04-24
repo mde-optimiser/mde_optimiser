@@ -6,6 +6,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 
 import uk.ac.kcl.mdeoptimise.client.constants.PageConstants.SolutionType;
 import uk.ac.kcl.mdeoptimise.client.data.Experiment;
+import uk.ac.kcl.mdeoptimise.client.data.MoptSpecs;
 import uk.ac.kcl.mdeoptimise.client.data.Solution;
 
 /**
@@ -16,4 +17,5 @@ public interface MDEOServiceAsync {
 	void getExperimentIds(AsyncCallback<List<String>> callback);
 	void getExperimentData(String workerId, AsyncCallback<List<Experiment>> callback);
 	void getSolutions(String experiment_id, SolutionType solution_type, AsyncCallback<List<Solution>> asyncCallback);
+	void getMoptSpecs(String moptId, AsyncCallback<MoptSpecs> callback);
 }

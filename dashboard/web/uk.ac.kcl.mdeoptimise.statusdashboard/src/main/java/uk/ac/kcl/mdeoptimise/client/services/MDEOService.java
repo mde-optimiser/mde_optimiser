@@ -7,6 +7,7 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 import uk.ac.kcl.mdeoptimise.client.constants.PageConstants.SolutionType;
 import uk.ac.kcl.mdeoptimise.client.data.Experiment;
+import uk.ac.kcl.mdeoptimise.client.data.MoptSpecs;
 import uk.ac.kcl.mdeoptimise.client.data.Solution;
 
 /**
@@ -18,4 +19,5 @@ public interface MDEOService extends RemoteService {
 	List<String> getExperimentIds() throws Exception;
 	List<Experiment> getExperimentData(String workerId) throws Exception;
 	List<Solution> getSolutions(String experiment_id, SolutionType solution_type) throws Exception;
+	MoptSpecs getMoptSpecs(String moptId) throws Exception;
 }

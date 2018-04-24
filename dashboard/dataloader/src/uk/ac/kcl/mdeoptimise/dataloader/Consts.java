@@ -38,9 +38,10 @@ public final class Consts {
 	static final String CREATE_EXPERIMENT =
 			"CREATE TABLE IF NOT EXISTS experiment (experiment_id VARCHAR(255) NOT NULL, "
 					+ "run_id int NOT NULL IDENTITY(1,1) PRIMARY KEY, worker_id VARCHAR(255) NOT NULL, "
+					+ "total_evolutions int, total_population int,"
 					+ "FOREIGN KEY (worker_id) REFERENCES worker(mac_address), mopt_id VARCHAR(255) NOT NULL, "
 					+ "FOREIGN KEY (mopt_id) REFERENCES mopt_specs(mopt_id), start_time TIMESTAMP NOT NULL, "
-					+ "end_time TIMESTAMP);";
+					+ "last_evolution_number int, end_time TIMESTAMP);";
 	static final String CREATE_OBJECTIVE =
 			"CREATE TABLE IF NOT EXISTS objective (worker_id VARCHAR(255) NOT NULL, experiment_id VARCHAR(255) NOT NULL, "
 					+ "objective_name VARCHAR(255) NOT NULL, objective_type VARCHAR(255))";

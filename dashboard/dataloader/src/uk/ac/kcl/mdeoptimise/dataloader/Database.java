@@ -51,10 +51,12 @@ class Database {
 			System.out.println("[DataLoader] FINAL_SOLUTION message received: " + message);
 			JSONObject solutionJSON = (JSONObject) messageJSON.get(MessageType.FINAL_SOLUTION.toString());
 			insertExperimentEndTime(solutionJSON);
+			insertLatestEvolution(solutionJSON);
 			insertSolution(SolutionType.FINAL, solutionJSON);
 		} 
 		else if (messageJSON.has(MessageType.INTERMEDIATE_SOLUTION.toString())) {
 			System.out.println("[DataLoader] INTERMEDIATE_SOLUTION message received: " + message);
+			insertLatestEvolution((JSONObject) messageJSON.get(MessageType.INTERMEDIATE_SOLUTION.toString()));
 			insertSolution(SolutionType.INTERMEDIATE, (JSONObject) messageJSON.get(MessageType.INTERMEDIATE_SOLUTION.toString()));
 		}
 		else {
@@ -104,14 +106,16 @@ class Database {
 		else
 			System.out.println("[DataLoader] MOPT_SPECS table already contains mopt_id: " + moptId);
 
-		PreparedStatement statement = conn.prepareStatement("INSERT INTO experiment(experiment_id, worker_id, mopt_id, start_time) VALUES(?, ?, ?, ?);");
+		PreparedStatement statement = conn.prepareStatement("INSERT INTO experiment(experiment_id, worker_id, mopt_id, total_evolutions, total_population, start_time) VALUES(?, ?, ?, ?, ?, ?);");
 		statement.setString(1, workerJSON.getString("experiment_id"));
 		statement.setString(2, workerJSON.getString("worker_id"));
 		statement.setString(3, workerJSON.getString("mopt_id"));
+		statement.setInt(4, workerJSON.getInt("evolutions"));
+		statement.setInt(5, workerJSON.getInt("population"));
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 		Date parsedDate = dateFormat.parse(workerJSON.getString("start_time"));
 		Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
-		statement.setTimestamp(4, timestamp);
+		statement.setTimestamp(6, timestamp);
 		statement.execute();
 
 		System.out.println("[DataLoader] EXPERIMENT table updated: " + workerJSON);
@@ -161,7 +165,7 @@ class Database {
 				insertSolutionStatement.setDouble(4, solutionJSON.getInt("run_id"));
 				insertSolutionStatement.execute();
 				conn.commit();
-				System.out.println("[DataLoader] SOLUTION table updated for solution: " + solution.getString("solution_id"));
+				System.out.println("[DataLoader] Tables updated for solution: " + solution.getString("solution_id"));
 				// insert its objectives
 				insertFitnessValue(CriteriaType.OBJECTIVE, solution.getJSONArray("objectives"), solution.getString("solution_id"));
 				// insert its constraints
@@ -170,6 +174,17 @@ class Database {
 				e.printStackTrace();
 			}
 		});
+		conn.commit();
+	}
+
+	/**
+	 * Modifies the experiment table (updates last_evolution_number column).
+	 */
+	private static void insertLatestEvolution(JSONObject solutionJSON) throws JSONException, ParseException, SQLException {
+		PreparedStatement statement = conn.prepareStatement("UPDATE experiment SET last_evolution_number='"
+				+ solutionJSON.getInt("run_id") + "' WHERE experiment_id='" + solutionJSON.getString("experiment_id") + "';");
+		statement.execute();
+		System.out.println("[DataLoader] EXPERIMENT table updated (last_evolution_number)");
 		conn.commit();
 	}
 
@@ -199,6 +214,5 @@ class Database {
 			}
 		});
 		conn.commit();
-		System.out.println("[DataLoader] SOLUTION_" + criteriaType + " table updated for solution: " + solutionId);
 	}
 }
