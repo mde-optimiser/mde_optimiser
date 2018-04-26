@@ -7,4 +7,4 @@ mutate using <craEvolvers.henshin> unit "createClass"
 mutate using <craEvolvers.henshin> unit "assignFeature"
 mutate using <craEvolvers.henshin> unit "moveFeature"
 mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
-optimisation provider moea algorithm NSGAII variation mutation evolutions 150 population 30 experiments 10
+optimisation provider moea algorithm NSGAII variation mutation evolutions 30 population 30 experiments 10
