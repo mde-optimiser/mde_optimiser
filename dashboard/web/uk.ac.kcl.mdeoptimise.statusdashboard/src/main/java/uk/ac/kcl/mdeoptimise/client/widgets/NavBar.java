@@ -45,7 +45,6 @@ public class NavBar extends Composite {
 
 			@Override
 			public void onClick(ClickEvent event) {
-				// TODO (tamara): Navigate to the help page
 				ContentContainer.getInstance().setContent(new HelpPage("testing"));
 			}
 		});

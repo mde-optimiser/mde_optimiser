@@ -21,8 +21,6 @@ import uk.ac.kcl.mdeoptimise.dataloader.Consts.SolutionType;
 
 /**
  * Database functionalities, such as establishing a connection and inserting data.
- * <p>
- * TODO (tamara): This class is quite long. Move some functionality to a helper class (e.g. JsonDecoder).
  * 
  * @author Tamara
  * 
