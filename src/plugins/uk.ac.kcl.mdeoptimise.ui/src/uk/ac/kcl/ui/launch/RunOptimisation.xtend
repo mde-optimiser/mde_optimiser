@@ -56,11 +56,10 @@ class RunOptimisation {
 				val resource = resourceSetProvider.get().getResource(URI.createFileURI(moptFile.getAbsolutePath()), true)
 				val optimisationModel = resource.contents.head as Optimisation
 				
-				val mdeoResultsOutput = new MDEOResultsOutput(new Date(), new Path(moptProjectPath), 
-					new Path(configuredMoptFilePath), optimisationModel
-				);	
-				
 				if(optimisationModel !== null){
+										
+					val mdeoResultsOutput = new MDEOResultsOutput(new Date(), new Path(moptProjectPath), 
+						new Path(configuredMoptFilePath), optimisationModel);
 					
 					var experimentId = 0;
 	            	do {	
