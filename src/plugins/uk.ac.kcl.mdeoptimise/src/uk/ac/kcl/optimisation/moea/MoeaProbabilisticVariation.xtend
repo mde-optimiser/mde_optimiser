@@ -45,20 +45,18 @@ class MoeaProbabilisticVariation implements Variation {
 			println("Not running crossover this run")
 		}
 		
-		var solutions = new LinkedList<Solution>();
-		
 		for(var i = 0; i < result.length; i++){
 			
 			var mutationProbability = random.nextDouble
 			if(mutationProbability <= mutationRate){
 				println("Running mutation with probability: " + mutationProbability)
-				solutions.addAll(mutationOperator.evolve(#[result.get(i)]))
+				result.set(i, mutationOperator.evolve(#[result.get(i)]).get(0))
 			} else {
 				println("Not running mutation this run")
 			}
 		}
 		
-		return solutions;	
+		return result;
 
 	}
 	
