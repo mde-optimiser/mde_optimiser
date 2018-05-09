@@ -1,23 +1,24 @@
 package uk.ac.kcl.ui.output
 
-import java.util.Date
-import java.util.List
-import java.util.LinkedList
-import org.eclipse.emf.ecore.resource.ResourceSet
-import uk.ac.kcl.mdeoptimise.Optimisation
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
-import org.eclipse.emf.ecore.EObject
-import java.util.Collections
-import java.text.SimpleDateFormat
-import uk.ac.kcl.optimisation.moea.MoeaOptimisationSolution
-import java.io.PrintWriter
-import java.io.File
-import org.eclipse.emf.common.util.URI
-import org.eclipse.core.runtime.IPath
-import java.util.TimeZone
-import java.util.HashMap
 import com.google.common.io.Files
+import java.io.File
+import java.io.PrintWriter
 import java.nio.charset.Charset
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.HashMap
+import java.util.LinkedList
+import java.util.List
+import java.util.Map
+import java.util.TimeZone
+import org.eclipse.core.runtime.IPath
+import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.resource.ResourceSet
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
+import org.eclipse.emf.ecore.xmi.XMIResource
+import uk.ac.kcl.mdeoptimise.Optimisation
+import uk.ac.kcl.optimisation.moea.MoeaOptimisationSolution
 
 class MDEOResultsOutput {
 	
@@ -42,7 +43,7 @@ class MDEOResultsOutput {
 		batches.add(batch);
 	}
 	
-	def String outputBatchSummary(MDEOBatch batch, IPath outcomePath) {
+	def String outputBatchSummary(MDEOBatch batch, IPath outcomePath, IPath metaModelOutputPath) {
 		var batchOutputPath = outcomePath.append(String.format("batch-%s/", batch.id))
 		var batchInfoPath = batchOutputPath.append("outcome.txt")
 		
@@ -69,7 +70,7 @@ class MDEOResultsOutput {
 			val solution = batch.solutions.get(i);
 			val modelPath = batchOutputPath + String.format("%08X", solution.model.hashCode) + ".xmi"
 			
-			solution.model.writeModel(modelPath)
+			solution.model.writeModel(modelPath, metaModelOutputPath.toPortableString)
 			storeSolutionData(batchWriter, modelPath, solution)
 		}
 		
@@ -130,25 +131,47 @@ class MDEOResultsOutput {
 		}
 	}
 	
+	def IPath copyMetaModel(IPath outcomePath){
+		val metaModelInputPath = projectRoot.append(moptConfiguration.basepath.location).append(moptConfiguration.metamodel.location)
+		val metaModelOutputPath = outcomePath.append(metaModelInputPath.lastSegment)
+		
+		if (!metaModelInputPath.empty) {
+			val outputFile = metaModelOutputPath.toFile
+			Files.createParentDirs(outputFile)
+			Files.copy(metaModelInputPath.toFile, outputFile)
+		}
+		return metaModelOutputPath
+	}
+	
 	def void saveOutcome(){
 		
 		val experimentDate = new SimpleDateFormat("yyMMdd-HHmmss").format(experimentStartTime);
 		val outcomePath = projectRoot.append(String.format("mdeo-results/experiment-%s/", experimentDate));
+				
+		val metaModelOutputPath = copyMetaModel(outcomePath)
 		
 		val batchesOutput = new StringBuilder();
 		
-		batches.forEach[ batch | batchesOutput.append(outputBatchSummary(batch, outcomePath))]
+		batches.forEach[ batch | batchesOutput.append(outputBatchSummary(batch, outcomePath, metaModelOutputPath))]
 		
 		outputExperimentSummary(batches, outcomePath, moptFile, batchesOutput)
 	}
 	
-	def writeModel(EObject model, String path) {
-		val resource = resourceSet.createResource(URI.createFileURI(path))
+	def writeModel(EObject model, String path, String metaModelPath) {
+		val resource = resourceSet.createResource(URI.createFileURI(new File(path).absolutePath))
 		if (resource.loaded) {
 			resource.contents.clear
 		}
 		resource.contents.add(model)
-		resource.save(Collections.EMPTY_MAP)
+		
+		// Change URI of model package to reference the meta model copied to output location
+		model.eClass.EPackage.eResource.URI = URI.createFileURI(metaModelPath)
+				
+		// Keep schema location in output models
+		val Map<Object,Object> options = new HashMap<Object,Object>();
+		options.put(XMIResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
+		
+		resource.save(options)
 	}
 
 	private def storeSolutionData(PrintWriter infoWriter, String modelPath, MoeaOptimisationSolution solution){
