@@ -1,32 +1,29 @@
 package uk.ac.kcl.optimisation
 
 import java.util.ArrayList
+import java.util.Arrays
 import java.util.Iterator
 import java.util.List
 import java.util.Random
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.util.EcoreUtil
+import org.eclipse.emf.henshin.interpreter.EGraph
 import org.eclipse.emf.henshin.interpreter.Engine
 import org.eclipse.emf.henshin.interpreter.impl.ChangeImpl
 import org.eclipse.emf.henshin.interpreter.impl.EGraphImpl
 import org.eclipse.emf.henshin.interpreter.impl.EngineImpl
 import org.eclipse.emf.henshin.interpreter.impl.RuleApplicationImpl
+import org.eclipse.emf.henshin.interpreter.impl.UnitApplicationImpl
+import org.eclipse.emf.henshin.model.HenshinPackage
+import org.eclipse.emf.henshin.model.ParameterKind
 import org.eclipse.emf.henshin.model.Unit
 import uk.ac.kcl.interpreter.IModelProvider
+import uk.ac.kcl.interpreter.evolvers.parameters.EvolverParametersFactory
+import uk.ac.kcl.interpreter.evolvers.parameters.IEvolverParametersFactory
 import uk.ac.kcl.mdeoptimise.Optimisation
 
 import static org.eclipse.emf.henshin.interpreter.impl.ChangeImpl.*
-import org.eclipse.emf.henshin.model.Rule
-import org.eclipse.emf.henshin.interpreter.impl.UnitApplicationImpl
-import uk.ac.kcl.interpreter.evolvers.parameters.IEvolverParametersFactory
-import org.eclipse.emf.henshin.model.HenshinPackage
-import org.eclipse.emf.henshin.interpreter.EGraph
-import java.util.Arrays
-import uk.ac.kcl.interpreter.evolvers.parameters.EvolverParametersFactory
-import org.eclipse.emf.henshin.model.ParameterKind
-import com.google.common.collect.Iterables
-import org.eclipse.emf.henshin.interpreter.impl.LoggingApplicationMonitor
 
 class SolutionGenerator {
 
@@ -145,7 +142,7 @@ class SolutionGenerator {
 		ruleRunner.EGraph = graph
 		ruleRunner.unit = operator
 		
-		if(operator.parameters != null){
+		if(operator.parameters !== null){
 			var inParameters = operator.parameters.filter[parameter | parameter.kind.equals(ParameterKind.IN) 
 				|| parameter.kind.equals(ParameterKind.INOUT)
 			]
@@ -161,7 +158,7 @@ class SolutionGenerator {
 		}
 		
 		//Run the selected Henshin Rule
-		return ruleRunner.execute(new LoggingApplicationMonitor)	
+		return ruleRunner.execute(null)	
 		
 	}
 	
@@ -182,7 +179,7 @@ class SolutionGenerator {
 		}
 		
 		//Run the selected Henshin Unit
-		return unitRunner.execute(new LoggingApplicationMonitor)
+		return unitRunner.execute(null)
 	}
 	
 
