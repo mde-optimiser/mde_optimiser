@@ -24,7 +24,7 @@ import uk.ac.kcl.mdeoptimise.ConstraintInterpreterSpec;
 import uk.ac.kcl.mdeoptimise.EvolverSpec;
 import uk.ac.kcl.mdeoptimise.MdeoptimisePackage;
 import uk.ac.kcl.mdeoptimise.MetaModelSpec;
-import uk.ac.kcl.mdeoptimise.ModelPathSpec;
+import uk.ac.kcl.mdeoptimise.ModelPathSpecs;
 import uk.ac.kcl.mdeoptimise.ObjectiveInterpreterSpec;
 import uk.ac.kcl.mdeoptimise.Optimisation;
 import uk.ac.kcl.mdeoptimise.OptimisationSpec;
@@ -39,7 +39,7 @@ import uk.ac.kcl.mdeoptimise.OptimisationSpec;
  * <ul>
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationImpl#getBasepath <em>Basepath</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationImpl#getMetamodel <em>Metamodel</em>}</li>
- *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationImpl#getModel <em>Model</em>}</li>
+ *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationImpl#getModels <em>Models</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationImpl#getObjectives <em>Objectives</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationImpl#getConstraints <em>Constraints</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationImpl#getEvolvers <em>Evolvers</em>}</li>
@@ -71,14 +71,14 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
   protected MetaModelSpec metamodel;
 
   /**
-   * The cached value of the '{@link #getModel() <em>Model</em>}' containment reference.
+   * The cached value of the '{@link #getModels() <em>Models</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getModel()
+   * @see #getModels()
    * @generated
    * @ordered
    */
-  protected ModelPathSpec model;
+  protected ModelPathSpecs models;
 
   /**
    * The cached value of the '{@link #getObjectives() <em>Objectives</em>}' containment reference list.
@@ -242,9 +242,9 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
    * <!-- end-user-doc -->
    * @generated
    */
-  public ModelPathSpec getModel()
+  public ModelPathSpecs getModels()
   {
-    return model;
+    return models;
   }
 
   /**
@@ -252,13 +252,13 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetModel(ModelPathSpec newModel, NotificationChain msgs)
+  public NotificationChain basicSetModels(ModelPathSpecs newModels, NotificationChain msgs)
   {
-    ModelPathSpec oldModel = model;
-    model = newModel;
+    ModelPathSpecs oldModels = models;
+    models = newModels;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MdeoptimisePackage.OPTIMISATION__MODEL, oldModel, newModel);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MdeoptimisePackage.OPTIMISATION__MODELS, oldModels, newModels);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -269,20 +269,20 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setModel(ModelPathSpec newModel)
+  public void setModels(ModelPathSpecs newModels)
   {
-    if (newModel != model)
+    if (newModels != models)
     {
       NotificationChain msgs = null;
-      if (model != null)
-        msgs = ((InternalEObject)model).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MdeoptimisePackage.OPTIMISATION__MODEL, null, msgs);
-      if (newModel != null)
-        msgs = ((InternalEObject)newModel).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MdeoptimisePackage.OPTIMISATION__MODEL, null, msgs);
-      msgs = basicSetModel(newModel, msgs);
+      if (models != null)
+        msgs = ((InternalEObject)models).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MdeoptimisePackage.OPTIMISATION__MODELS, null, msgs);
+      if (newModels != null)
+        msgs = ((InternalEObject)newModels).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MdeoptimisePackage.OPTIMISATION__MODELS, null, msgs);
+      msgs = basicSetModels(newModels, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MdeoptimisePackage.OPTIMISATION__MODEL, newModel, newModel));
+      eNotify(new ENotificationImpl(this, Notification.SET, MdeoptimisePackage.OPTIMISATION__MODELS, newModels, newModels));
   }
 
   /**
@@ -389,8 +389,8 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
         return basicSetBasepath(null, msgs);
       case MdeoptimisePackage.OPTIMISATION__METAMODEL:
         return basicSetMetamodel(null, msgs);
-      case MdeoptimisePackage.OPTIMISATION__MODEL:
-        return basicSetModel(null, msgs);
+      case MdeoptimisePackage.OPTIMISATION__MODELS:
+        return basicSetModels(null, msgs);
       case MdeoptimisePackage.OPTIMISATION__OBJECTIVES:
         return ((InternalEList<?>)getObjectives()).basicRemove(otherEnd, msgs);
       case MdeoptimisePackage.OPTIMISATION__CONSTRAINTS:
@@ -417,8 +417,8 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
         return getBasepath();
       case MdeoptimisePackage.OPTIMISATION__METAMODEL:
         return getMetamodel();
-      case MdeoptimisePackage.OPTIMISATION__MODEL:
-        return getModel();
+      case MdeoptimisePackage.OPTIMISATION__MODELS:
+        return getModels();
       case MdeoptimisePackage.OPTIMISATION__OBJECTIVES:
         return getObjectives();
       case MdeoptimisePackage.OPTIMISATION__CONSTRAINTS:
@@ -448,8 +448,8 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
       case MdeoptimisePackage.OPTIMISATION__METAMODEL:
         setMetamodel((MetaModelSpec)newValue);
         return;
-      case MdeoptimisePackage.OPTIMISATION__MODEL:
-        setModel((ModelPathSpec)newValue);
+      case MdeoptimisePackage.OPTIMISATION__MODELS:
+        setModels((ModelPathSpecs)newValue);
         return;
       case MdeoptimisePackage.OPTIMISATION__OBJECTIVES:
         getObjectives().clear();
@@ -486,8 +486,8 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
       case MdeoptimisePackage.OPTIMISATION__METAMODEL:
         setMetamodel((MetaModelSpec)null);
         return;
-      case MdeoptimisePackage.OPTIMISATION__MODEL:
-        setModel((ModelPathSpec)null);
+      case MdeoptimisePackage.OPTIMISATION__MODELS:
+        setModels((ModelPathSpecs)null);
         return;
       case MdeoptimisePackage.OPTIMISATION__OBJECTIVES:
         getObjectives().clear();
@@ -519,8 +519,8 @@ public class OptimisationImpl extends MinimalEObjectImpl.Container implements Op
         return basepath != null;
       case MdeoptimisePackage.OPTIMISATION__METAMODEL:
         return metamodel != null;
-      case MdeoptimisePackage.OPTIMISATION__MODEL:
-        return model != null;
+      case MdeoptimisePackage.OPTIMISATION__MODELS:
+        return models != null;
       case MdeoptimisePackage.OPTIMISATION__OBJECTIVES:
         return objectives != null && !objectives.isEmpty();
       case MdeoptimisePackage.OPTIMISATION__CONSTRAINTS:

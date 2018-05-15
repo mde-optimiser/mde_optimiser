@@ -6,7 +6,7 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="metamodel" eType="#//MetaModelSpec"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="model" eType="#//ModelPathSpec"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="models" eType="#//ModelPathSpecs"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="objectives" upperBound="-1"
         eType="#//ObjectiveInterpreterSpec" containment="true"/>
@@ -23,8 +23,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="MetaModelSpec">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ModelPathSpec">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ModelPathSpecs">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="locations" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ObjectiveInterpreterSpec">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="objectiveName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

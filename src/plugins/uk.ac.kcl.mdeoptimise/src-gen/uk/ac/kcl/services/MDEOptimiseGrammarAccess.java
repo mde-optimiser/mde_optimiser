@@ -33,8 +33,8 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cBasepathBasePathSpecParserRuleCall_0_0 = (RuleCall)cBasepathAssignment_0.eContents().get(0);
 		private final Assignment cMetamodelAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cMetamodelMetaModelSpecParserRuleCall_1_0 = (RuleCall)cMetamodelAssignment_1.eContents().get(0);
-		private final Assignment cModelAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cModelModelPathSpecParserRuleCall_2_0 = (RuleCall)cModelAssignment_2.eContents().get(0);
+		private final Assignment cModelsAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cModelsModelPathSpecsParserRuleCall_2_0 = (RuleCall)cModelsAssignment_2.eContents().get(0);
 		private final Assignment cObjectivesAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cObjectivesObjectiveInterpreterSpecParserRuleCall_3_0 = (RuleCall)cObjectivesAssignment_3.eContents().get(0);
 		private final Assignment cConstraintsAssignment_4 = (Assignment)cGroup.eContents().get(4);
@@ -47,14 +47,14 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		//Optimisation:
 		//	basepath=BasePathSpec
 		//	metamodel=MetaModelSpec
-		//	model=ModelPathSpec
+		//	models=ModelPathSpecs
 		//	objectives+=ObjectiveInterpreterSpec+
 		//	constraints+=ConstraintInterpreterSpec*
 		//	evolvers+=EvolverSpec+
 		//	optimisation=OptimisationSpec;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//basepath=BasePathSpec metamodel=MetaModelSpec model=ModelPathSpec objectives+=ObjectiveInterpreterSpec+
+		//basepath=BasePathSpec metamodel=MetaModelSpec models=ModelPathSpecs objectives+=ObjectiveInterpreterSpec+
 		//constraints+=ConstraintInterpreterSpec* evolvers+=EvolverSpec+ optimisation=OptimisationSpec
 		public Group getGroup() { return cGroup; }
 		
@@ -70,11 +70,11 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		//MetaModelSpec
 		public RuleCall getMetamodelMetaModelSpecParserRuleCall_1_0() { return cMetamodelMetaModelSpecParserRuleCall_1_0; }
 		
-		//model=ModelPathSpec
-		public Assignment getModelAssignment_2() { return cModelAssignment_2; }
+		//models=ModelPathSpecs
+		public Assignment getModelsAssignment_2() { return cModelsAssignment_2; }
 		
-		//ModelPathSpec
-		public RuleCall getModelModelPathSpecParserRuleCall_2_0() { return cModelModelPathSpecParserRuleCall_2_0; }
+		//ModelPathSpecs
+		public RuleCall getModelsModelPathSpecsParserRuleCall_2_0() { return cModelsModelPathSpecsParserRuleCall_2_0; }
 		
 		//objectives+=ObjectiveInterpreterSpec+
 		public Assignment getObjectivesAssignment_3() { return cObjectivesAssignment_3; }
@@ -152,28 +152,28 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		//URL
 		public RuleCall getLocationURLTerminalRuleCall_1_0() { return cLocationURLTerminalRuleCall_1_0; }
 	}
-	public class ModelPathSpecElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.ModelPathSpec");
+	public class ModelPathSpecsElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.ModelPathSpecs");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cModelKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cLocationAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cLocationURLTerminalRuleCall_1_0 = (RuleCall)cLocationAssignment_1.eContents().get(0);
+		private final Keyword cModelsKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cLocationsAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cLocationsURLTerminalRuleCall_1_0 = (RuleCall)cLocationsAssignment_1.eContents().get(0);
 		
-		//ModelPathSpec:
-		//	"model" location=URL;
+		//ModelPathSpecs:
+		//	"models" locations+=URL+;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//"model" location=URL
+		//"models" locations+=URL+
 		public Group getGroup() { return cGroup; }
 		
-		//"model"
-		public Keyword getModelKeyword_0() { return cModelKeyword_0; }
+		//"models"
+		public Keyword getModelsKeyword_0() { return cModelsKeyword_0; }
 		
-		//location=URL
-		public Assignment getLocationAssignment_1() { return cLocationAssignment_1; }
+		//locations+=URL+
+		public Assignment getLocationsAssignment_1() { return cLocationsAssignment_1; }
 		
 		//URL
-		public RuleCall getLocationURLTerminalRuleCall_1_0() { return cLocationURLTerminalRuleCall_1_0; }
+		public RuleCall getLocationsURLTerminalRuleCall_1_0() { return cLocationsURLTerminalRuleCall_1_0; }
 	}
 	public class ObjectiveInterpreterSpecElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.ObjectiveInterpreterSpec");
@@ -671,7 +671,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	private final OptimisationElements pOptimisation;
 	private final BasePathSpecElements pBasePathSpec;
 	private final MetaModelSpecElements pMetaModelSpec;
-	private final ModelPathSpecElements pModelPathSpec;
+	private final ModelPathSpecsElements pModelPathSpecs;
 	private final ObjectiveInterpreterSpecElements pObjectiveInterpreterSpec;
 	private final ConstraintInterpreterSpecElements pConstraintInterpreterSpec;
 	private final EvolverSpecElements pEvolverSpec;
@@ -706,7 +706,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		this.pOptimisation = new OptimisationElements();
 		this.pBasePathSpec = new BasePathSpecElements();
 		this.pMetaModelSpec = new MetaModelSpecElements();
-		this.pModelPathSpec = new ModelPathSpecElements();
+		this.pModelPathSpecs = new ModelPathSpecsElements();
 		this.pObjectiveInterpreterSpec = new ObjectiveInterpreterSpecElements();
 		this.pConstraintInterpreterSpec = new ConstraintInterpreterSpecElements();
 		this.pEvolverSpec = new EvolverSpecElements();
@@ -760,7 +760,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	//Optimisation:
 	//	basepath=BasePathSpec
 	//	metamodel=MetaModelSpec
-	//	model=ModelPathSpec
+	//	models=ModelPathSpecs
 	//	objectives+=ObjectiveInterpreterSpec+
 	//	constraints+=ConstraintInterpreterSpec*
 	//	evolvers+=EvolverSpec+
@@ -799,14 +799,14 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		return getMetaModelSpecAccess().getRule();
 	}
 	
-	//ModelPathSpec:
-	//	"model" location=URL;
-	public ModelPathSpecElements getModelPathSpecAccess() {
-		return pModelPathSpec;
+	//ModelPathSpecs:
+	//	"models" locations+=URL+;
+	public ModelPathSpecsElements getModelPathSpecsAccess() {
+		return pModelPathSpecs;
 	}
 	
-	public ParserRule getModelPathSpecRule() {
-		return getModelPathSpecAccess().getRule();
+	public ParserRule getModelPathSpecsRule() {
+		return getModelPathSpecsAccess().getRule();
 	}
 	
 	//ObjectiveInterpreterSpec:
@@ -992,9 +992,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//OpMultiAssign:
-	//	'+=' | '-=' | '*=' | '/=' | '%=' |
-	//	'<' '<' '=' |
-	//	'>' '>'? '>=';
+	//	'+=' | '-=' | '*=' | '/=' | '%=' | '<' '<' '=' | '>' '>'? '>=';
 	public XbaseGrammarAccess.OpMultiAssignElements getOpMultiAssignAccess() {
 		return gaXbase.getOpMultiAssignAccess();
 	}
@@ -1067,8 +1065,8 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//XRelationalExpression XExpression:
-	//	XOtherOperatorExpression (=> ({XInstanceOfExpression.expression=current} 'instanceof') type=JvmTypeReference |
-	//	=> ({XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpCompare])
+	//	XOtherOperatorExpression (=> ({XInstanceOfExpression.expression=current} 'instanceof') type=JvmTypeReference | =>
+	//	({XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpCompare])
 	//	rightOperand=XOtherOperatorExpression)*
 	public XbaseGrammarAccess.XRelationalExpressionElements getXRelationalExpressionAccess() {
 		return gaXbase.getXRelationalExpressionAccess();
@@ -1100,13 +1098,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//OpOther:
-	//	'->'
-	//	| '..<'
-	//	| '>' '..'
-	//	| '..'
-	//	| '=>'
-	//	| '>' (=> ('>' '>') | '>') | '<' (=> ('<' '<') | '<' | '=>') | '<>'
-	//	| '?:';
+	//	'->' | '..<' | '>' '..' | '..' | '=>' | '>' (=> ('>' '>') | '>') | '<' (=> ('<' '<') | '<' | '=>') | '<>' | '?:';
 	public XbaseGrammarAccess.OpOtherElements getOpOtherAccess() {
 		return gaXbase.getOpOtherAccess();
 	}
@@ -1158,8 +1150,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//XUnaryOperation XExpression:
-	//	{XUnaryOperation} feature=[types::JvmIdentifiableElement|OpUnary] operand=XUnaryOperation
-	//	| XCastedExpression
+	//	{XUnaryOperation} feature=[types::JvmIdentifiableElement|OpUnary] operand=XUnaryOperation | XCastedExpression
 	public XbaseGrammarAccess.XUnaryOperationElements getXUnaryOperationAccess() {
 		return gaXbase.getXUnaryOperationAccess();
 	}
@@ -1210,13 +1201,11 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//XMemberFeatureCall XExpression:
 	//	XPrimaryExpression (=> ({XAssignment.assignable=current} ('.' | explicitStatic?="::")
-	//	feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment
-	//	| => ({XMemberFeatureCall.memberCallTarget=current} ("." | nullSafe?="?." | explicitStatic?="::")) ('<'
+	//	feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment | =>
+	//	({XMemberFeatureCall.memberCallTarget=current} ("." | nullSafe?="?." | explicitStatic?="::")) ('<'
 	//	typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?
 	//	feature=[types::JvmIdentifiableElement|IdOrSuper] (=> explicitOperationCall?='(' (memberCallArguments+=XShortClosure
-	//	| memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*)?
-	//	')')?
-	//	memberCallArguments+=XClosure?)*
+	//	| memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*)? ')')? memberCallArguments+=XClosure?)*
 	public XbaseGrammarAccess.XMemberFeatureCallElements getXMemberFeatureCallAccess() {
 		return gaXbase.getXMemberFeatureCallAccess();
 	}
@@ -1278,12 +1267,8 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//XClosure XExpression:
-	//	=> ({XClosure}
-	//	'[')
-	//	=> ((declaredFormalParameters+=JvmFormalParameter (',' declaredFormalParameters+=JvmFormalParameter)*)?
-	//	explicitSyntax?='|')?
-	//	expression=XExpressionInClosure
-	//	']'
+	//	=> ({XClosure} '[') => ((declaredFormalParameters+=JvmFormalParameter (','
+	//	declaredFormalParameters+=JvmFormalParameter)*)? explicitSyntax?='|')? expression=XExpressionInClosure ']'
 	public XbaseGrammarAccess.XClosureElements getXClosureAccess() {
 		return gaXbase.getXClosureAccess();
 	}
@@ -1324,9 +1309,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//XIfExpression XExpression:
-	//	{XIfExpression}
-	//	'if' '(' if=XExpression ')'
-	//	then=XExpression (=> 'else' else=XExpression)?
+	//	{XIfExpression} 'if' '(' if=XExpression ')' then=XExpression (=> 'else' else=XExpression)?
 	public XbaseGrammarAccess.XIfExpressionElements getXIfExpressionAccess() {
 		return gaXbase.getXIfExpressionAccess();
 	}
@@ -1336,11 +1319,9 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//XSwitchExpression XExpression:
-	//	{XSwitchExpression}
-	//	'switch' (=> ('(' declaredParam=JvmFormalParameter ':') switch=XExpression ')'
-	//	| => (declaredParam=JvmFormalParameter ':')? switch=XExpression) '{'
-	//	cases+=XCasePart* ('default' ':' default=XExpression)?
-	//	'}'
+	//	{XSwitchExpression} 'switch' (=> ('(' declaredParam=JvmFormalParameter ':') switch=XExpression ')' | =>
+	//	(declaredParam=JvmFormalParameter ':')? switch=XExpression) '{' cases+=XCasePart* ('default' ':'
+	//	default=XExpression)? '}'
 	public XbaseGrammarAccess.XSwitchExpressionElements getXSwitchExpressionAccess() {
 		return gaXbase.getXSwitchExpressionAccess();
 	}
@@ -1360,8 +1341,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//XForLoopExpression XExpression:
-	//	=> ({XForLoopExpression}
-	//	'for' '(' declaredParam=JvmFormalParameter ':') forExpression=XExpression ')'
+	//	=> ({XForLoopExpression} 'for' '(' declaredParam=JvmFormalParameter ':') forExpression=XExpression ')'
 	//	eachExpression=XExpression
 	public XbaseGrammarAccess.XForLoopExpressionElements getXForLoopExpressionAccess() {
 		return gaXbase.getXForLoopExpressionAccess();
@@ -1372,10 +1352,9 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//XBasicForLoopExpression XExpression:
-	//	{XBasicForLoopExpression}
-	//	'for' '(' (initExpressions+=XExpressionOrVarDeclaration (',' initExpressions+=XExpressionOrVarDeclaration)*)? ';'
-	//	expression=XExpression? ';' (updateExpressions+=XExpression (',' updateExpressions+=XExpression)*)? ')'
-	//	eachExpression=XExpression
+	//	{XBasicForLoopExpression} 'for' '(' (initExpressions+=XExpressionOrVarDeclaration (','
+	//	initExpressions+=XExpressionOrVarDeclaration)*)? ';' expression=XExpression? ';' (updateExpressions+=XExpression (','
+	//	updateExpressions+=XExpression)*)? ')' eachExpression=XExpression
 	public XbaseGrammarAccess.XBasicForLoopExpressionElements getXBasicForLoopExpressionAccess() {
 		return gaXbase.getXBasicForLoopExpressionAccess();
 	}
@@ -1385,9 +1364,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//XWhileExpression XExpression:
-	//	{XWhileExpression}
-	//	'while' '(' predicate=XExpression ')'
-	//	body=XExpression
+	//	{XWhileExpression} 'while' '(' predicate=XExpression ')' body=XExpression
 	public XbaseGrammarAccess.XWhileExpressionElements getXWhileExpressionAccess() {
 		return gaXbase.getXWhileExpressionAccess();
 	}
@@ -1397,10 +1374,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//XDoWhileExpression XExpression:
-	//	{XDoWhileExpression}
-	//	'do'
-	//	body=XExpression
-	//	'while' '(' predicate=XExpression ')'
+	//	{XDoWhileExpression} 'do' body=XExpression 'while' '(' predicate=XExpression ')'
 	public XbaseGrammarAccess.XDoWhileExpressionElements getXDoWhileExpressionAccess() {
 		return gaXbase.getXDoWhileExpressionAccess();
 	}
@@ -1410,9 +1384,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//XBlockExpression XExpression:
-	//	{XBlockExpression}
-	//	'{' (expressions+=XExpressionOrVarDeclaration ';'?)*
-	//	'}'
+	//	{XBlockExpression} '{' (expressions+=XExpressionOrVarDeclaration ';'?)* '}'
 	public XbaseGrammarAccess.XBlockExpressionElements getXBlockExpressionAccess() {
 		return gaXbase.getXBlockExpressionAccess();
 	}
@@ -1465,9 +1437,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	//XFeatureCall XExpression:
 	//	{XFeatureCall} ('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?
 	//	feature=[types::JvmIdentifiableElement|IdOrSuper] (=> explicitOperationCall?='(' (featureCallArguments+=XShortClosure
-	//	| featureCallArguments+=XExpression (',' featureCallArguments+=XExpression)*)?
-	//	')')?
-	//	featureCallArguments+=XClosure?
+	//	| featureCallArguments+=XExpression (',' featureCallArguments+=XExpression)*)? ')')? featureCallArguments+=XClosure?
 	public XbaseGrammarAccess.XFeatureCallElements getXFeatureCallAccess() {
 		return gaXbase.getXFeatureCallAccess();
 	}
@@ -1497,11 +1467,9 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//XConstructorCall XExpression:
-	//	{XConstructorCall}
-	//	'new' constructor=[types::JvmConstructor|QualifiedName] (=> '<' typeArguments+=JvmArgumentTypeReference (','
-	//	typeArguments+=JvmArgumentTypeReference)* '>')? (=> explicitConstructorCall?='(' (arguments+=XShortClosure
-	//	| arguments+=XExpression (',' arguments+=XExpression)*)?
-	//	')')?
+	//	{XConstructorCall} 'new' constructor=[types::JvmConstructor|QualifiedName] (=> '<'
+	//	typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')? (=>
+	//	explicitConstructorCall?='(' (arguments+=XShortClosure | arguments+=XExpression (',' arguments+=XExpression)*)? ')')?
 	//	arguments+=XClosure?
 	public XbaseGrammarAccess.XConstructorCallElements getXConstructorCallAccess() {
 		return gaXbase.getXConstructorCallAccess();
@@ -1582,10 +1550,8 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//XTryCatchFinallyExpression XExpression:
-	//	{XTryCatchFinallyExpression}
-	//	'try'
-	//	expression=XExpression (catchClauses+=XCatchClause+ (=> 'finally' finallyExpression=XExpression)?
-	//	| 'finally' finallyExpression=XExpression)
+	//	{XTryCatchFinallyExpression} 'try' expression=XExpression (catchClauses+=XCatchClause+ (=> 'finally'
+	//	finallyExpression=XExpression)? | 'finally' finallyExpression=XExpression)
 	public XbaseGrammarAccess.XTryCatchFinallyExpressionElements getXTryCatchFinallyExpressionAccess() {
 		return gaXbase.getXTryCatchFinallyExpressionAccess();
 	}
@@ -1595,8 +1561,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//XSynchronizedExpression XExpression:
-	//	=> ({XSynchronizedExpression}
-	//	'synchronized' '(') param=XExpression ')' expression=XExpression
+	//	=> ({XSynchronizedExpression} 'synchronized' '(') param=XExpression ')' expression=XExpression
 	public XbaseGrammarAccess.XSynchronizedExpressionElements getXSynchronizedExpressionAccess() {
 		return gaXbase.getXSynchronizedExpressionAccess();
 	}
@@ -1638,7 +1603,8 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	/// **
 	// * Dummy rule, for "better" downwards compatibility, since GrammarAccess generates non-static inner classes, 
 	// * which makes downstream grammars break on classloading, when a rule is removed.
-	// * / StaticQualifier:
+	// * /
+	//StaticQualifier:
 	//	(ValidID '::')+;
 	public XbaseGrammarAccess.StaticQualifierElements getStaticQualifierAccess() {
 		return gaXbase.getStaticQualifierAccess();
@@ -1667,8 +1633,8 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//JvmTypeReference:
-	//	JvmParameterizedTypeReference => ({JvmGenericArrayTypeReference.componentType=current} ArrayBrackets)*
-	//	| XFunctionTypeRef;
+	//	JvmParameterizedTypeReference => ({JvmGenericArrayTypeReference.componentType=current} ArrayBrackets)* |
+	//	XFunctionTypeRef;
 	public XtypeGrammarAccess.JvmTypeReferenceElements getJvmTypeReferenceAccess() {
 		return gaXtype.getJvmTypeReferenceAccess();
 	}
@@ -1720,8 +1686,8 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//JvmWildcardTypeReference:
-	//	{JvmWildcardTypeReference} '?' (constraints+=JvmUpperBound constraints+=JvmUpperBoundAnded*
-	//	| constraints+=JvmLowerBound constraints+=JvmLowerBoundAnded*)?;
+	//	{JvmWildcardTypeReference} '?' (constraints+=JvmUpperBound constraints+=JvmUpperBoundAnded* |
+	//	constraints+=JvmLowerBound constraints+=JvmLowerBoundAnded*)?;
 	public XtypeGrammarAccess.JvmWildcardTypeReferenceElements getJvmWildcardTypeReferenceAccess() {
 		return gaXtype.getJvmWildcardTypeReferenceAccess();
 	}
@@ -1839,8 +1805,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//terminal STRING:
-	//	'"' ('\\' . | !('\\' | '"'))* '"'? |
-	//	"'" ('\\' . | !('\\' | "'"))* "'"?;
+	//	'"' ('\\' . | !('\\' | '"'))* '"'? | "'" ('\\' . | !('\\' | "'"))* "'"?;
 	public TerminalRule getSTRINGRule() {
 		return gaXtype.getSTRINGRule();
 	}

@@ -66,7 +66,7 @@ import uk.ac.kcl.mdeoptimise.EvolverParameter;
 import uk.ac.kcl.mdeoptimise.EvolverSpec;
 import uk.ac.kcl.mdeoptimise.MdeoptimisePackage;
 import uk.ac.kcl.mdeoptimise.MetaModelSpec;
-import uk.ac.kcl.mdeoptimise.ModelPathSpec;
+import uk.ac.kcl.mdeoptimise.ModelPathSpecs;
 import uk.ac.kcl.mdeoptimise.ObjectiveInterpreterSpec;
 import uk.ac.kcl.mdeoptimise.Optimisation;
 import uk.ac.kcl.mdeoptimise.OptimisationSpec;
@@ -106,8 +106,8 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 			case MdeoptimisePackage.META_MODEL_SPEC:
 				sequence_MetaModelSpec(context, (MetaModelSpec) semanticObject); 
 				return; 
-			case MdeoptimisePackage.MODEL_PATH_SPEC:
-				sequence_ModelPathSpec(context, (ModelPathSpec) semanticObject); 
+			case MdeoptimisePackage.MODEL_PATH_SPECS:
+				sequence_ModelPathSpecs(context, (ModelPathSpecs) semanticObject); 
 				return; 
 			case MdeoptimisePackage.OBJECTIVE_INTERPRETER_SPEC:
 				sequence_ObjectiveInterpreterSpec(context, (ObjectiveInterpreterSpec) semanticObject); 
@@ -466,19 +466,13 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     ModelPathSpec returns ModelPathSpec
+	 *     ModelPathSpecs returns ModelPathSpecs
 	 *
 	 * Constraint:
-	 *     location=URL
+	 *     locations+=URL+
 	 */
-	protected void sequence_ModelPathSpec(ISerializationContext context, ModelPathSpec semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.MODEL_PATH_SPEC__LOCATION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.MODEL_PATH_SPEC__LOCATION));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getModelPathSpecAccess().getLocationURLTerminalRuleCall_1_0(), semanticObject.getLocation());
-		feeder.finish();
+	protected void sequence_ModelPathSpecs(ISerializationContext context, ModelPathSpecs semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -536,7 +530,7 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 	 *     (
 	 *         basepath=BasePathSpec 
 	 *         metamodel=MetaModelSpec 
-	 *         model=ModelPathSpec 
+	 *         models=ModelPathSpecs 
 	 *         objectives+=ObjectiveInterpreterSpec+ 
 	 *         constraints+=ConstraintInterpreterSpec* 
 	 *         evolvers+=EvolverSpec+ 

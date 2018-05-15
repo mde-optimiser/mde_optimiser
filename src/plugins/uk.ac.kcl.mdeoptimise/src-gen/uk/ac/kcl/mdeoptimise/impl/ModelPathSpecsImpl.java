@@ -3,57 +3,50 @@
  */
 package uk.ac.kcl.mdeoptimise.impl;
 
-import org.eclipse.emf.common.notify.Notification;
+import java.util.Collection;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EDataTypeEList;
+
 import uk.ac.kcl.mdeoptimise.MdeoptimisePackage;
-import uk.ac.kcl.mdeoptimise.ModelPathSpec;
+import uk.ac.kcl.mdeoptimise.ModelPathSpecs;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Model Path Spec</b></em>'.
+ * An implementation of the model object '<em><b>Model Path Specs</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link uk.ac.kcl.mdeoptimise.impl.ModelPathSpecImpl#getLocation <em>Location</em>}</li>
+ *   <li>{@link uk.ac.kcl.mdeoptimise.impl.ModelPathSpecsImpl#getLocations <em>Locations</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ModelPathSpecImpl extends MinimalEObjectImpl.Container implements ModelPathSpec
+public class ModelPathSpecsImpl extends MinimalEObjectImpl.Container implements ModelPathSpecs
 {
   /**
-   * The default value of the '{@link #getLocation() <em>Location</em>}' attribute.
+   * The cached value of the '{@link #getLocations() <em>Locations</em>}' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getLocation()
+   * @see #getLocations()
    * @generated
    * @ordered
    */
-  protected static final String LOCATION_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getLocation() <em>Location</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getLocation()
-   * @generated
-   * @ordered
-   */
-  protected String location = LOCATION_EDEFAULT;
+  protected EList<String> locations;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ModelPathSpecImpl()
+  protected ModelPathSpecsImpl()
   {
     super();
   }
@@ -66,7 +59,7 @@ public class ModelPathSpecImpl extends MinimalEObjectImpl.Container implements M
   @Override
   protected EClass eStaticClass()
   {
-    return MdeoptimisePackage.Literals.MODEL_PATH_SPEC;
+    return MdeoptimisePackage.Literals.MODEL_PATH_SPECS;
   }
 
   /**
@@ -74,22 +67,13 @@ public class ModelPathSpecImpl extends MinimalEObjectImpl.Container implements M
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getLocation()
+  public EList<String> getLocations()
   {
-    return location;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setLocation(String newLocation)
-  {
-    String oldLocation = location;
-    location = newLocation;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MdeoptimisePackage.MODEL_PATH_SPEC__LOCATION, oldLocation, location));
+    if (locations == null)
+    {
+      locations = new EDataTypeEList<String>(String.class, this, MdeoptimisePackage.MODEL_PATH_SPECS__LOCATIONS);
+    }
+    return locations;
   }
 
   /**
@@ -102,8 +86,8 @@ public class ModelPathSpecImpl extends MinimalEObjectImpl.Container implements M
   {
     switch (featureID)
     {
-      case MdeoptimisePackage.MODEL_PATH_SPEC__LOCATION:
-        return getLocation();
+      case MdeoptimisePackage.MODEL_PATH_SPECS__LOCATIONS:
+        return getLocations();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -113,13 +97,15 @@ public class ModelPathSpecImpl extends MinimalEObjectImpl.Container implements M
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case MdeoptimisePackage.MODEL_PATH_SPEC__LOCATION:
-        setLocation((String)newValue);
+      case MdeoptimisePackage.MODEL_PATH_SPECS__LOCATIONS:
+        getLocations().clear();
+        getLocations().addAll((Collection<? extends String>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -135,8 +121,8 @@ public class ModelPathSpecImpl extends MinimalEObjectImpl.Container implements M
   {
     switch (featureID)
     {
-      case MdeoptimisePackage.MODEL_PATH_SPEC__LOCATION:
-        setLocation(LOCATION_EDEFAULT);
+      case MdeoptimisePackage.MODEL_PATH_SPECS__LOCATIONS:
+        getLocations().clear();
         return;
     }
     super.eUnset(featureID);
@@ -152,8 +138,8 @@ public class ModelPathSpecImpl extends MinimalEObjectImpl.Container implements M
   {
     switch (featureID)
     {
-      case MdeoptimisePackage.MODEL_PATH_SPEC__LOCATION:
-        return LOCATION_EDEFAULT == null ? location != null : !LOCATION_EDEFAULT.equals(location);
+      case MdeoptimisePackage.MODEL_PATH_SPECS__LOCATIONS:
+        return locations != null && !locations.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -169,10 +155,10 @@ public class ModelPathSpecImpl extends MinimalEObjectImpl.Container implements M
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (location: ");
-    result.append(location);
+    result.append(" (locations: ");
+    result.append(locations);
     result.append(')');
     return result.toString();
   }
 
-} //ModelPathSpecImpl
+} //ModelPathSpecsImpl

@@ -94,10 +94,10 @@ public class MdeoptimiseSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case MdeoptimisePackage.MODEL_PATH_SPEC:
+      case MdeoptimisePackage.MODEL_PATH_SPECS:
       {
-        ModelPathSpec modelPathSpec = (ModelPathSpec)theEObject;
-        T result = caseModelPathSpec(modelPathSpec);
+        ModelPathSpecs modelPathSpecs = (ModelPathSpecs)theEObject;
+        T result = caseModelPathSpecs(modelPathSpecs);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -210,17 +210,17 @@ public class MdeoptimiseSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Model Path Spec</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Model Path Specs</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Model Path Spec</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Model Path Specs</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseModelPathSpec(ModelPathSpec object)
+  public T caseModelPathSpecs(ModelPathSpecs object)
   {
     return null;
   }

@@ -20,7 +20,7 @@ import uk.ac.kcl.mdeoptimise.EvolverType;
 import uk.ac.kcl.mdeoptimise.MdeoptimiseFactory;
 import uk.ac.kcl.mdeoptimise.MdeoptimisePackage;
 import uk.ac.kcl.mdeoptimise.MetaModelSpec;
-import uk.ac.kcl.mdeoptimise.ModelPathSpec;
+import uk.ac.kcl.mdeoptimise.ModelPathSpecs;
 import uk.ac.kcl.mdeoptimise.ObjectiveInterpreterSpec;
 import uk.ac.kcl.mdeoptimise.Optimisation;
 import uk.ac.kcl.mdeoptimise.OptimisationSpec;
@@ -61,7 +61,7 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass modelPathSpecEClass = null;
+  private EClass modelPathSpecsEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -224,7 +224,7 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOptimisation_Model()
+  public EReference getOptimisation_Models()
   {
     return (EReference)optimisationEClass.getEStructuralFeatures().get(2);
   }
@@ -314,9 +314,9 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getModelPathSpec()
+  public EClass getModelPathSpecs()
   {
-    return modelPathSpecEClass;
+    return modelPathSpecsEClass;
   }
 
   /**
@@ -324,9 +324,9 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getModelPathSpec_Location()
+  public EAttribute getModelPathSpecs_Locations()
   {
-    return (EAttribute)modelPathSpecEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)modelPathSpecsEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -722,7 +722,7 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
     optimisationEClass = createEClass(OPTIMISATION);
     createEReference(optimisationEClass, OPTIMISATION__BASEPATH);
     createEReference(optimisationEClass, OPTIMISATION__METAMODEL);
-    createEReference(optimisationEClass, OPTIMISATION__MODEL);
+    createEReference(optimisationEClass, OPTIMISATION__MODELS);
     createEReference(optimisationEClass, OPTIMISATION__OBJECTIVES);
     createEReference(optimisationEClass, OPTIMISATION__CONSTRAINTS);
     createEReference(optimisationEClass, OPTIMISATION__EVOLVERS);
@@ -734,8 +734,8 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
     metaModelSpecEClass = createEClass(META_MODEL_SPEC);
     createEAttribute(metaModelSpecEClass, META_MODEL_SPEC__LOCATION);
 
-    modelPathSpecEClass = createEClass(MODEL_PATH_SPEC);
-    createEAttribute(modelPathSpecEClass, MODEL_PATH_SPEC__LOCATION);
+    modelPathSpecsEClass = createEClass(MODEL_PATH_SPECS);
+    createEAttribute(modelPathSpecsEClass, MODEL_PATH_SPECS__LOCATIONS);
 
     objectiveInterpreterSpecEClass = createEClass(OBJECTIVE_INTERPRETER_SPEC);
     createEAttribute(objectiveInterpreterSpecEClass, OBJECTIVE_INTERPRETER_SPEC__OBJECTIVE_NAME);
@@ -818,7 +818,7 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
     initEClass(optimisationEClass, Optimisation.class, "Optimisation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getOptimisation_Basepath(), this.getBasePathSpec(), null, "basepath", null, 0, 1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOptimisation_Metamodel(), this.getMetaModelSpec(), null, "metamodel", null, 0, 1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getOptimisation_Model(), this.getModelPathSpec(), null, "model", null, 0, 1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getOptimisation_Models(), this.getModelPathSpecs(), null, "models", null, 0, 1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOptimisation_Objectives(), this.getObjectiveInterpreterSpec(), null, "objectives", null, 0, -1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOptimisation_Constraints(), this.getConstraintInterpreterSpec(), null, "constraints", null, 0, -1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOptimisation_Evolvers(), this.getEvolverSpec(), null, "evolvers", null, 0, -1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -830,8 +830,8 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
     initEClass(metaModelSpecEClass, MetaModelSpec.class, "MetaModelSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getMetaModelSpec_Location(), ecorePackage.getEString(), "location", null, 0, 1, MetaModelSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(modelPathSpecEClass, ModelPathSpec.class, "ModelPathSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getModelPathSpec_Location(), ecorePackage.getEString(), "location", null, 0, 1, ModelPathSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(modelPathSpecsEClass, ModelPathSpecs.class, "ModelPathSpecs", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getModelPathSpecs_Locations(), ecorePackage.getEString(), "locations", null, 0, -1, ModelPathSpecs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(objectiveInterpreterSpecEClass, ObjectiveInterpreterSpec.class, "ObjectiveInterpreterSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getObjectiveInterpreterSpec_ObjectiveName(), ecorePackage.getEString(), "objectiveName", null, 0, 1, ObjectiveInterpreterSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

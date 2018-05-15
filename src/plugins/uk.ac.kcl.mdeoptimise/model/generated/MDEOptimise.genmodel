@@ -13,7 +13,7 @@
     <genClasses ecoreClass="MDEOptimise.ecore#//Optimisation">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/basepath"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/metamodel"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/model"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/models"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/objectives"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/constraints"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/evolvers"/>
@@ -25,8 +25,8 @@
     <genClasses ecoreClass="MDEOptimise.ecore#//MetaModelSpec">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//MetaModelSpec/location"/>
     </genClasses>
-    <genClasses ecoreClass="MDEOptimise.ecore#//ModelPathSpec">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//ModelPathSpec/location"/>
+    <genClasses ecoreClass="MDEOptimise.ecore#//ModelPathSpecs">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//ModelPathSpecs/locations"/>
     </genClasses>
     <genClasses ecoreClass="MDEOptimise.ecore#//ObjectiveInterpreterSpec">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//ObjectiveInterpreterSpec/objectiveName"/>

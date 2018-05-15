@@ -51,13 +51,13 @@ public interface MdeoptimiseFactory extends EFactory
   MetaModelSpec createMetaModelSpec();
 
   /**
-   * Returns a new object of class '<em>Model Path Spec</em>'.
+   * Returns a new object of class '<em>Model Path Specs</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Model Path Spec</em>'.
+   * @return a new object of class '<em>Model Path Specs</em>'.
    * @generated
    */
-  ModelPathSpec createModelPathSpec();
+  ModelPathSpecs createModelPathSpecs();
 
   /**
    * Returns a new object of class '<em>Objective Interpreter Spec</em>'.

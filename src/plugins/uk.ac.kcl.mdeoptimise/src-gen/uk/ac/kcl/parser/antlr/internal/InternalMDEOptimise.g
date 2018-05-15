@@ -118,18 +118,18 @@ ruleOptimisation returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getOptimisationAccess().getModelModelPathSpecParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getOptimisationAccess().getModelsModelPathSpecsParserRuleCall_2_0());
 				}
-				lv_model_2_0=ruleModelPathSpec
+				lv_models_2_0=ruleModelPathSpecs
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getOptimisationRule());
 					}
 					set(
 						$current,
-						"model",
-						lv_model_2_0,
-						"uk.ac.kcl.MDEOptimise.ModelPathSpec");
+						"models",
+						lv_models_2_0,
+						"uk.ac.kcl.MDEOptimise.ModelPathSpecs");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -295,15 +295,15 @@ ruleMetaModelSpec returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRuleModelPathSpec
-entryRuleModelPathSpec returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getModelPathSpecRule()); }
-	iv_ruleModelPathSpec=ruleModelPathSpec
-	{ $current=$iv_ruleModelPathSpec.current; }
+// Entry rule entryRuleModelPathSpecs
+entryRuleModelPathSpecs returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getModelPathSpecsRule()); }
+	iv_ruleModelPathSpecs=ruleModelPathSpecs
+	{ $current=$iv_ruleModelPathSpecs.current; }
 	EOF;
 
-// Rule ModelPathSpec
-ruleModelPathSpec returns [EObject current=null]
+// Rule ModelPathSpecs
+ruleModelPathSpecs returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -311,28 +311,28 @@ ruleModelPathSpec returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='model'
+		otherlv_0='models'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getModelPathSpecAccess().getModelKeyword_0());
+			newLeafNode(otherlv_0, grammarAccess.getModelPathSpecsAccess().getModelsKeyword_0());
 		}
 		(
 			(
-				lv_location_1_0=RULE_URL
+				lv_locations_1_0=RULE_URL
 				{
-					newLeafNode(lv_location_1_0, grammarAccess.getModelPathSpecAccess().getLocationURLTerminalRuleCall_1_0());
+					newLeafNode(lv_locations_1_0, grammarAccess.getModelPathSpecsAccess().getLocationsURLTerminalRuleCall_1_0());
 				}
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getModelPathSpecRule());
+						$current = createModelElement(grammarAccess.getModelPathSpecsRule());
 					}
-					setWithLastConsumed(
+					addWithLastConsumed(
 						$current,
-						"location",
-						lv_location_1_0,
+						"locations",
+						lv_locations_1_0,
 						"uk.ac.kcl.MDEOptimise.URL");
 				}
 			)
-		)
+		)+
 	)
 ;
 

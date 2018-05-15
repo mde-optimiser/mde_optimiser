@@ -125,25 +125,25 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-// Entry rule entryRuleModelPathSpec
-entryRuleModelPathSpec
+// Entry rule entryRuleModelPathSpecs
+entryRuleModelPathSpecs
 :
-{ before(grammarAccess.getModelPathSpecRule()); }
-	 ruleModelPathSpec
-{ after(grammarAccess.getModelPathSpecRule()); } 
+{ before(grammarAccess.getModelPathSpecsRule()); }
+	 ruleModelPathSpecs
+{ after(grammarAccess.getModelPathSpecsRule()); } 
 	 EOF 
 ;
 
-// Rule ModelPathSpec
-ruleModelPathSpec 
+// Rule ModelPathSpecs
+ruleModelPathSpecs 
 	@init {
 		int stackSize = keepStackSize();
 	}
 	:
 	(
-		{ before(grammarAccess.getModelPathSpecAccess().getGroup()); }
-		(rule__ModelPathSpec__Group__0)
-		{ after(grammarAccess.getModelPathSpecAccess().getGroup()); }
+		{ before(grammarAccess.getModelPathSpecsAccess().getGroup()); }
+		(rule__ModelPathSpecs__Group__0)
+		{ after(grammarAccess.getModelPathSpecsAccess().getGroup()); }
 	)
 ;
 finally {
@@ -3489,9 +3489,9 @@ rule__Optimisation__Group__2__Impl
 	}
 :
 (
-	{ before(grammarAccess.getOptimisationAccess().getModelAssignment_2()); }
-	(rule__Optimisation__ModelAssignment_2)
-	{ after(grammarAccess.getOptimisationAccess().getModelAssignment_2()); }
+	{ before(grammarAccess.getOptimisationAccess().getModelsAssignment_2()); }
+	(rule__Optimisation__ModelsAssignment_2)
+	{ after(grammarAccess.getOptimisationAccess().getModelsAssignment_2()); }
 )
 ;
 finally {
@@ -3728,53 +3728,60 @@ finally {
 }
 
 
-rule__ModelPathSpec__Group__0
+rule__ModelPathSpecs__Group__0
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__ModelPathSpec__Group__0__Impl
-	rule__ModelPathSpec__Group__1
+	rule__ModelPathSpecs__Group__0__Impl
+	rule__ModelPathSpecs__Group__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ModelPathSpec__Group__0__Impl
+rule__ModelPathSpecs__Group__0__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getModelPathSpecAccess().getModelKeyword_0()); }
-	'model'
-	{ after(grammarAccess.getModelPathSpecAccess().getModelKeyword_0()); }
+	{ before(grammarAccess.getModelPathSpecsAccess().getModelsKeyword_0()); }
+	'models'
+	{ after(grammarAccess.getModelPathSpecsAccess().getModelsKeyword_0()); }
 )
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ModelPathSpec__Group__1
+rule__ModelPathSpecs__Group__1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__ModelPathSpec__Group__1__Impl
+	rule__ModelPathSpecs__Group__1__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ModelPathSpec__Group__1__Impl
+rule__ModelPathSpecs__Group__1__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getModelPathSpecAccess().getLocationAssignment_1()); }
-	(rule__ModelPathSpec__LocationAssignment_1)
-	{ after(grammarAccess.getModelPathSpecAccess().getLocationAssignment_1()); }
+	(
+		{ before(grammarAccess.getModelPathSpecsAccess().getLocationsAssignment_1()); }
+		(rule__ModelPathSpecs__LocationsAssignment_1)
+		{ after(grammarAccess.getModelPathSpecsAccess().getLocationsAssignment_1()); }
+	)
+	(
+		{ before(grammarAccess.getModelPathSpecsAccess().getLocationsAssignment_1()); }
+		(rule__ModelPathSpecs__LocationsAssignment_1)*
+		{ after(grammarAccess.getModelPathSpecsAccess().getLocationsAssignment_1()); }
+	)
 )
 ;
 finally {
@@ -16968,15 +16975,15 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Optimisation__ModelAssignment_2
+rule__Optimisation__ModelsAssignment_2
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getOptimisationAccess().getModelModelPathSpecParserRuleCall_2_0()); }
-		ruleModelPathSpec
-		{ after(grammarAccess.getOptimisationAccess().getModelModelPathSpecParserRuleCall_2_0()); }
+		{ before(grammarAccess.getOptimisationAccess().getModelsModelPathSpecsParserRuleCall_2_0()); }
+		ruleModelPathSpecs
+		{ after(grammarAccess.getOptimisationAccess().getModelsModelPathSpecsParserRuleCall_2_0()); }
 	)
 ;
 finally {
@@ -17073,15 +17080,15 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ModelPathSpec__LocationAssignment_1
+rule__ModelPathSpecs__LocationsAssignment_1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getModelPathSpecAccess().getLocationURLTerminalRuleCall_1_0()); }
+		{ before(grammarAccess.getModelPathSpecsAccess().getLocationsURLTerminalRuleCall_1_0()); }
 		RULE_URL
-		{ after(grammarAccess.getModelPathSpecAccess().getLocationURLTerminalRuleCall_1_0()); }
+		{ after(grammarAccess.getModelPathSpecsAccess().getLocationsURLTerminalRuleCall_1_0()); }
 	)
 ;
 finally {
