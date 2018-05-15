@@ -25,6 +25,8 @@ import org.eclipse.emf.henshin.interpreter.EGraph
 import java.util.Arrays
 import uk.ac.kcl.interpreter.evolvers.parameters.EvolverParametersFactory
 import org.eclipse.emf.henshin.model.ParameterKind
+import com.google.common.collect.Iterables
+import org.eclipse.emf.henshin.interpreter.impl.LoggingApplicationMonitor
 
 class SolutionGenerator {
 
@@ -84,12 +86,16 @@ class SolutionGenerator {
 	 * @returns a list of results offspring
 	 */
 	def List<EObject> crossover(List<EObject> parents) {
-				
-		val crossoverParents = new ArrayList<EObject>;
 		
-		parents.forEach[parent | crossoverParents.add(EcoreUtil.copy(parent))]
+		val firstRunParents = new ArrayList<EObject>;
+		val secondRunParents = new ArrayList<EObject>;
 		
-		val graph = new EGraphImpl(crossoverParents)
+		parents.forEach[parent | firstRunParents.add(EcoreUtil.copy(parent))]
+		parents.reverseView.forEach[parent | secondRunParents.add(EcoreUtil.copy(parent))]
+		
+		val firstRunGraph = new EGraphImpl(firstRunParents);
+		val secondRunGraph = new EGraphImpl(secondRunParents);
+		
 		val triedOperators = new ArrayList<Unit>()
 		
 		// Randomly pick one unit 
@@ -100,14 +106,19 @@ class SolutionGenerator {
 
 			if(operator.eClass().getClassifierID() == HenshinPackage.RULE){
 				//Run the selected Henshin Rule
-				if(runRuleOperator(operator, graph, parents)){
+				
+				if(runRuleOperator(operator, firstRunGraph, parents)
+					&& runRuleOperator(operator, secondRunGraph, parents.reverseView)
+				){
 					//println("Could run mutation" + matchToUse.name)
-					return graph.roots	
+					return #[firstRunGraph.roots.get(1), secondRunGraph.roots.get(1)]
 				}
 			} else {
-				if(runUnitOperator(operator, graph, parents)){
+				if(runUnitOperator(operator, firstRunGraph, parents)
+					&& runUnitOperator(operator, secondRunGraph, parents.reverseView)
+				){
 					//println("Could run mutation" + matchToUse.name)
-					return graph.roots
+					return #[firstRunGraph.roots.get(1), secondRunGraph.roots.get(1)]
 				}
 			}
 			
@@ -135,9 +146,9 @@ class SolutionGenerator {
 		ruleRunner.unit = operator
 		
 		if(operator.parameters != null){
-			//TODO Not sure about this filter. Check what kind of parameter we would expect people
-			//to pass in
-			var inParameters = operator.parameters.filter[parameter | parameter.kind.equals(ParameterKind.IN)]
+			var inParameters = operator.parameters.filter[parameter | parameter.kind.equals(ParameterKind.IN) 
+				|| parameter.kind.equals(ParameterKind.INOUT)
+			]
 			
 			if(!inParameters.empty){
 				inParameters.forEach[  
@@ -150,7 +161,7 @@ class SolutionGenerator {
 		}
 		
 		//Run the selected Henshin Rule
-		return ruleRunner.execute(null)	
+		return ruleRunner.execute(new LoggingApplicationMonitor)	
 		
 	}
 	
@@ -171,7 +182,7 @@ class SolutionGenerator {
 		}
 		
 		//Run the selected Henshin Unit
-		return unitRunner.execute(null)
+		return unitRunner.execute(new LoggingApplicationMonitor)
 	}
 	
 
