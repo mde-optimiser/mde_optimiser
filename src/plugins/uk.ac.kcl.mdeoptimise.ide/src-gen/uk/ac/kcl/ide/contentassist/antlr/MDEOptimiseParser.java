@@ -81,7 +81,7 @@ public class MDEOptimiseParser extends AbstractContentAssistParser {
 					put(grammarAccess.getOptimisationAccess().getGroup(), "rule__Optimisation__Group__0");
 					put(grammarAccess.getBasePathSpecAccess().getGroup(), "rule__BasePathSpec__Group__0");
 					put(grammarAccess.getMetaModelSpecAccess().getGroup(), "rule__MetaModelSpec__Group__0");
-					put(grammarAccess.getModelPathSpecAccess().getGroup(), "rule__ModelPathSpec__Group__0");
+					put(grammarAccess.getModelPathSpecsAccess().getGroup(), "rule__ModelPathSpecs__Group__0");
 					put(grammarAccess.getObjectiveInterpreterSpecAccess().getGroup(), "rule__ObjectiveInterpreterSpec__Group__0");
 					put(grammarAccess.getConstraintInterpreterSpecAccess().getGroup(), "rule__ConstraintInterpreterSpec__Group__0");
 					put(grammarAccess.getEvolverSpecAccess().getGroup(), "rule__EvolverSpec__Group__0");
@@ -276,14 +276,14 @@ public class MDEOptimiseParser extends AbstractContentAssistParser {
 					put(grammarAccess.getQualifiedNameInStaticImportAccess().getGroup(), "rule__QualifiedNameInStaticImport__Group__0");
 					put(grammarAccess.getOptimisationAccess().getBasepathAssignment_0(), "rule__Optimisation__BasepathAssignment_0");
 					put(grammarAccess.getOptimisationAccess().getMetamodelAssignment_1(), "rule__Optimisation__MetamodelAssignment_1");
-					put(grammarAccess.getOptimisationAccess().getModelAssignment_2(), "rule__Optimisation__ModelAssignment_2");
+					put(grammarAccess.getOptimisationAccess().getModelsAssignment_2(), "rule__Optimisation__ModelsAssignment_2");
 					put(grammarAccess.getOptimisationAccess().getObjectivesAssignment_3(), "rule__Optimisation__ObjectivesAssignment_3");
 					put(grammarAccess.getOptimisationAccess().getConstraintsAssignment_4(), "rule__Optimisation__ConstraintsAssignment_4");
 					put(grammarAccess.getOptimisationAccess().getEvolversAssignment_5(), "rule__Optimisation__EvolversAssignment_5");
 					put(grammarAccess.getOptimisationAccess().getOptimisationAssignment_6(), "rule__Optimisation__OptimisationAssignment_6");
 					put(grammarAccess.getBasePathSpecAccess().getLocationAssignment_1(), "rule__BasePathSpec__LocationAssignment_1");
 					put(grammarAccess.getMetaModelSpecAccess().getLocationAssignment_1(), "rule__MetaModelSpec__LocationAssignment_1");
-					put(grammarAccess.getModelPathSpecAccess().getLocationAssignment_1(), "rule__ModelPathSpec__LocationAssignment_1");
+					put(grammarAccess.getModelPathSpecsAccess().getLocationsAssignment_1(), "rule__ModelPathSpecs__LocationsAssignment_1");
 					put(grammarAccess.getObjectiveInterpreterSpecAccess().getObjectiveNameAssignment_1(), "rule__ObjectiveInterpreterSpec__ObjectiveNameAssignment_1");
 					put(grammarAccess.getObjectiveInterpreterSpecAccess().getObjectiveTendencyAssignment_2(), "rule__ObjectiveInterpreterSpec__ObjectiveTendencyAssignment_2");
 					put(grammarAccess.getObjectiveInterpreterSpecAccess().getObjectiveTypeAssignment_3(), "rule__ObjectiveInterpreterSpec__ObjectiveTypeAssignment_3");

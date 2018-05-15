@@ -6,7 +6,7 @@ generate mdeoptimise "http://www.ac.uk/kcl/MDEOptimise"
 Optimisation:
 	basepath=BasePathSpec
 	metamodel=MetaModelSpec
-	model=ModelPathSpec
+	models=ModelPathSpecs
 	objectives+=ObjectiveInterpreterSpec+
 	constraints+=ConstraintInterpreterSpec*
 	evolvers+=EvolverSpec+
@@ -28,8 +28,8 @@ MetaModelSpec:
 	"metamodel" location=URL
 ;
 
-ModelPathSpec:
-	"model" location=URL
+ModelPathSpecs:
+	"models" locations+=URL+
 ;
 
 ObjectiveInterpreterSpec:

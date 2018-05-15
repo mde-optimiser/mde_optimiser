@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getBasepath <em>Basepath</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getMetamodel <em>Metamodel</em>}</li>
- *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getModel <em>Model</em>}</li>
+ *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getModels <em>Models</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getObjectives <em>Objectives</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getConstraints <em>Constraints</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getEvolvers <em>Evolvers</em>}</li>
@@ -84,30 +84,30 @@ public interface Optimisation extends EObject
   void setMetamodel(MetaModelSpec value);
 
   /**
-   * Returns the value of the '<em><b>Model</b></em>' containment reference.
+   * Returns the value of the '<em><b>Models</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Model</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Models</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Model</em>' containment reference.
-   * @see #setModel(ModelPathSpec)
-   * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getOptimisation_Model()
+   * @return the value of the '<em>Models</em>' containment reference.
+   * @see #setModels(ModelPathSpecs)
+   * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getOptimisation_Models()
    * @model containment="true"
    * @generated
    */
-  ModelPathSpec getModel();
+  ModelPathSpecs getModels();
 
   /**
-   * Sets the value of the '{@link uk.ac.kcl.mdeoptimise.Optimisation#getModel <em>Model</em>}' containment reference.
+   * Sets the value of the '{@link uk.ac.kcl.mdeoptimise.Optimisation#getModels <em>Models</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Model</em>' containment reference.
-   * @see #getModel()
+   * @param value the new value of the '<em>Models</em>' containment reference.
+   * @see #getModels()
    * @generated
    */
-  void setModel(ModelPathSpec value);
+  void setModels(ModelPathSpecs value);
 
   /**
    * Returns the value of the '<em><b>Objectives</b></em>' containment reference list.

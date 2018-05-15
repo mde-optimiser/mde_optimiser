@@ -35,7 +35,7 @@ class OptimisationInterpreter {
 	def Iterator<MoeaOptimisationSolution> start() {
 		
 		//This model provider loads the model given by the user in the DSL
-		val userModelProvider = new UserModelProvider(getResourceSet(projectRootPath.append(model.basepath.location).toPortableString), model.model.location)
+		val userModelProvider = new UserModelProvider(getResourceSet(projectRootPath.append(model.basepath.location).toPortableString), model.models.locations)
 		var solutionGenerator = new SolutionGenerator(model, 
 											getBreedingOperators, 
 											getMutationOperators, 
@@ -47,7 +47,7 @@ class OptimisationInterpreter {
 	}
 
 	def getResourceSet(String basePath) {
-        if (henshinResourceSet == null) {
+        if (henshinResourceSet === null) {
             henshinResourceSet = new HenshinResourceSet(basePath);
         }
 
@@ -55,7 +55,7 @@ class OptimisationInterpreter {
     }
 
     def getMetamodel() {
-        if (theMetamodel == null) {
+        if (theMetamodel === null) {
             theMetamodel = getResourceSet(this.model.basepath.location).registerDynamicEPackages(model.metamodel.location).head
         }
 
@@ -63,7 +63,7 @@ class OptimisationInterpreter {
     }
     
     def getBreedingOperators() {
-    	if(breedingOperators == null){
+    	if(breedingOperators === null){
 			
 			breedingOperators = new LinkedList
 			
@@ -77,7 +77,7 @@ class OptimisationInterpreter {
     }
     
     def getMutationOperators() {
-    	if(mutationOperators == null){
+    	if(mutationOperators === null){
 			
 			mutationOperators = new LinkedList
 			

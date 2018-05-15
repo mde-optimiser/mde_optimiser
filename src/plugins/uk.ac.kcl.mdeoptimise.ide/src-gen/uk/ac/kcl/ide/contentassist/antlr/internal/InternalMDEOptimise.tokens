@@ -61,7 +61,7 @@
 'import'=55
 'instanceof'=81
 'metamodel'=62
-'model'=63
+'models'=63
 'mutate'=59
 'new'=96
 'null'=97

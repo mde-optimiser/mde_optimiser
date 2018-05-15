@@ -87,13 +87,13 @@ public interface MdeoptimisePackage extends EPackage
   int OPTIMISATION__METAMODEL = 1;
 
   /**
-   * The feature id for the '<em><b>Model</b></em>' containment reference.
+   * The feature id for the '<em><b>Models</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OPTIMISATION__MODEL = 2;
+  int OPTIMISATION__MODELS = 2;
 
   /**
    * The feature id for the '<em><b>Objectives</b></em>' containment reference list.
@@ -197,32 +197,32 @@ public interface MdeoptimisePackage extends EPackage
   int META_MODEL_SPEC_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.ModelPathSpecImpl <em>Model Path Spec</em>}' class.
+   * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.ModelPathSpecsImpl <em>Model Path Specs</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see uk.ac.kcl.mdeoptimise.impl.ModelPathSpecImpl
-   * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getModelPathSpec()
+   * @see uk.ac.kcl.mdeoptimise.impl.ModelPathSpecsImpl
+   * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getModelPathSpecs()
    * @generated
    */
-  int MODEL_PATH_SPEC = 3;
+  int MODEL_PATH_SPECS = 3;
 
   /**
-   * The feature id for the '<em><b>Location</b></em>' attribute.
+   * The feature id for the '<em><b>Locations</b></em>' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL_PATH_SPEC__LOCATION = 0;
+  int MODEL_PATH_SPECS__LOCATIONS = 0;
 
   /**
-   * The number of structural features of the '<em>Model Path Spec</em>' class.
+   * The number of structural features of the '<em>Model Path Specs</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL_PATH_SPEC_FEATURE_COUNT = 1;
+  int MODEL_PATH_SPECS_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.ObjectiveInterpreterSpecImpl <em>Objective Interpreter Spec</em>}' class.
@@ -663,15 +663,15 @@ public interface MdeoptimisePackage extends EPackage
   EReference getOptimisation_Metamodel();
 
   /**
-   * Returns the meta object for the containment reference '{@link uk.ac.kcl.mdeoptimise.Optimisation#getModel <em>Model</em>}'.
+   * Returns the meta object for the containment reference '{@link uk.ac.kcl.mdeoptimise.Optimisation#getModels <em>Models</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Model</em>'.
-   * @see uk.ac.kcl.mdeoptimise.Optimisation#getModel()
+   * @return the meta object for the containment reference '<em>Models</em>'.
+   * @see uk.ac.kcl.mdeoptimise.Optimisation#getModels()
    * @see #getOptimisation()
    * @generated
    */
-  EReference getOptimisation_Model();
+  EReference getOptimisation_Models();
 
   /**
    * Returns the meta object for the containment reference list '{@link uk.ac.kcl.mdeoptimise.Optimisation#getObjectives <em>Objectives</em>}'.
@@ -760,25 +760,25 @@ public interface MdeoptimisePackage extends EPackage
   EAttribute getMetaModelSpec_Location();
 
   /**
-   * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.ModelPathSpec <em>Model Path Spec</em>}'.
+   * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.ModelPathSpecs <em>Model Path Specs</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Model Path Spec</em>'.
-   * @see uk.ac.kcl.mdeoptimise.ModelPathSpec
+   * @return the meta object for class '<em>Model Path Specs</em>'.
+   * @see uk.ac.kcl.mdeoptimise.ModelPathSpecs
    * @generated
    */
-  EClass getModelPathSpec();
+  EClass getModelPathSpecs();
 
   /**
-   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.ModelPathSpec#getLocation <em>Location</em>}'.
+   * Returns the meta object for the attribute list '{@link uk.ac.kcl.mdeoptimise.ModelPathSpecs#getLocations <em>Locations</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Location</em>'.
-   * @see uk.ac.kcl.mdeoptimise.ModelPathSpec#getLocation()
-   * @see #getModelPathSpec()
+   * @return the meta object for the attribute list '<em>Locations</em>'.
+   * @see uk.ac.kcl.mdeoptimise.ModelPathSpecs#getLocations()
+   * @see #getModelPathSpecs()
    * @generated
    */
-  EAttribute getModelPathSpec_Location();
+  EAttribute getModelPathSpecs_Locations();
 
   /**
    * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.ObjectiveInterpreterSpec <em>Objective Interpreter Spec</em>}'.
@@ -1217,12 +1217,12 @@ public interface MdeoptimisePackage extends EPackage
     EReference OPTIMISATION__METAMODEL = eINSTANCE.getOptimisation_Metamodel();
 
     /**
-     * The meta object literal for the '<em><b>Model</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Models</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference OPTIMISATION__MODEL = eINSTANCE.getOptimisation_Model();
+    EReference OPTIMISATION__MODELS = eINSTANCE.getOptimisation_Models();
 
     /**
      * The meta object literal for the '<em><b>Objectives</b></em>' containment reference list feature.
@@ -1293,22 +1293,22 @@ public interface MdeoptimisePackage extends EPackage
     EAttribute META_MODEL_SPEC__LOCATION = eINSTANCE.getMetaModelSpec_Location();
 
     /**
-     * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.ModelPathSpecImpl <em>Model Path Spec</em>}' class.
+     * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.ModelPathSpecsImpl <em>Model Path Specs</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see uk.ac.kcl.mdeoptimise.impl.ModelPathSpecImpl
-     * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getModelPathSpec()
+     * @see uk.ac.kcl.mdeoptimise.impl.ModelPathSpecsImpl
+     * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getModelPathSpecs()
      * @generated
      */
-    EClass MODEL_PATH_SPEC = eINSTANCE.getModelPathSpec();
+    EClass MODEL_PATH_SPECS = eINSTANCE.getModelPathSpecs();
 
     /**
-     * The meta object literal for the '<em><b>Location</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Locations</b></em>' attribute list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute MODEL_PATH_SPEC__LOCATION = eINSTANCE.getModelPathSpec_Location();
+    EAttribute MODEL_PATH_SPECS__LOCATIONS = eINSTANCE.getModelPathSpecs_Locations();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.ObjectiveInterpreterSpecImpl <em>Objective Interpreter Spec</em>}' class.
