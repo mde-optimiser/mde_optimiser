@@ -144,8 +144,7 @@ class SolutionGenerator {
 		
 		if(operator.parameters !== null){
 			var inParameters = operator.parameters.filter[parameter | parameter.kind.equals(ParameterKind.IN) 
-				|| parameter.kind.equals(ParameterKind.INOUT)
-			]
+				|| parameter.kind.equals(ParameterKind.INOUT)]
 			
 			if(!inParameters.empty){
 				inParameters.forEach[  
@@ -167,8 +166,9 @@ class SolutionGenerator {
 		unitRunner.EGraph = graph
 		unitRunner.unit = operator
 		
-		var inParameters = operator.parameters.filter[parameter | parameter.kind.equals(ParameterKind.IN)]
-		
+		var inParameters = operator.parameters.filter[parameter | parameter.kind.equals(ParameterKind.IN)
+			|| parameter.kind.equals(ParameterKind.INOUT)]
+			
 		if(!inParameters.empty){
 			inParameters.forEach[ 
 				parameter | unitRunner.setParameterValue(
