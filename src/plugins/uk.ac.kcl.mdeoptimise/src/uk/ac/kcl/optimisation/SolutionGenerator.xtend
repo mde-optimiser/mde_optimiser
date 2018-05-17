@@ -104,15 +104,15 @@ class SolutionGenerator {
 			if(operator.eClass().getClassifierID() == HenshinPackage.RULE){
 				//Run the selected Henshin Rule
 				
-				if(runRuleOperator(operator, firstRunGraph, parents)
-					&& runRuleOperator(operator, secondRunGraph, parents.reverseView)
+				if(runRuleOperator(operator, firstRunGraph, firstRunParents)
+					&& runRuleOperator(operator, secondRunGraph, secondRunParents)
 				){
 					//println("Could run mutation" + matchToUse.name)
 					return #[firstRunGraph.roots.get(1), secondRunGraph.roots.get(1)]
 				}
 			} else {
-				if(runUnitOperator(operator, firstRunGraph, parents)
-					&& runUnitOperator(operator, secondRunGraph, parents.reverseView)
+				if(runUnitOperator(operator, firstRunGraph, firstRunParents)
+					&& runUnitOperator(operator, secondRunGraph, secondRunParents)
 				){
 					//println("Could run mutation" + matchToUse.name)
 					return #[firstRunGraph.roots.get(1), secondRunGraph.roots.get(1)]
