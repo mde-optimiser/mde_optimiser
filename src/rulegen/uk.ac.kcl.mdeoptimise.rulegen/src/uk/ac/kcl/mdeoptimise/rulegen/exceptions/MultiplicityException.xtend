@@ -5,8 +5,6 @@ import uk.ac.kcl.mdeoptimise.rulegen.metamodel.Multiplicity
 
 class MultiplicityException extends Exception {
 	
-	String defaultMessage = "Invalid multiplicity values given. "; 
-	
 	new(String message) {
         super(message);
     }
@@ -26,11 +24,8 @@ class MultiplicityException extends Exception {
     }
 
     new(String message, Integer lower, Integer upper, Integer originalLower, Integer originalUpper) {
-    	super(message + "Lower multiplicity given: " 
-    		+ lower + ". Upper multiplicity given: " + upper
-    		+ " Original multiplicities lower: " + originalLower
-    		+ " upper: " + originalUpper 
-    	)
+    	super(String.format("%s Lower multiplicity given: %s. Upper multiplicity given: %s Original multiplicities lower: %s upper %s", 
+    		message, lower, upper, originalLower, originalUpper))
     }
 
     new(Throwable cause) {
@@ -39,9 +34,5 @@ class MultiplicityException extends Exception {
 
     new(String message, Throwable cause) {
         super(message, cause);
-    }
-    
-    def String getInvalidMultiplicityValuesString(Integer lower, Integer upper){
-    	
     }
 }

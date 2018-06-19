@@ -33,7 +33,7 @@ class RuleSpec {
 	 */
 	def String getActions(){
 		
-		if(action == null){
+		if(action === null){
 			return "ALL";
 		} else {
 			return action;

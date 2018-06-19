@@ -87,7 +87,7 @@ class RulegenTests {
 			ExpectedRulesHelper.writeModel(module, "src/resources/expected/new/", module.name + ".henshin");
 		]
 		
-		assertEquals(9, createdRules.get(this.metamodel).length)
+		assertEquals(14, createdRules.get(this.metamodel).length)
 	}
 
 
@@ -133,7 +133,7 @@ class RulegenTests {
 		
 		//assertTrue(String.format("Assert that %s rule is as expected. Differences found: %s",
 		//	module.name, comparator.diferences), equal)
-		assertEquals(9, createdRules.get(this.metamodel).length)
+		assertEquals(1, createdRules.get(this.metamodel).length)
 	}
 	
 	@Test
@@ -176,7 +176,7 @@ class RulegenTests {
 		
 		//assertTrue(String.format("Assert that %s rule is as expected. Differences found: %s",
 		//	module.name, comparator.diferences), equal)
-		assertEquals(9, createdRules.get(this.metamodel).length)
+		assertEquals(2, createdRules.get(this.metamodel).length)
 	}
 	
 	@Test
@@ -219,6 +219,6 @@ class RulegenTests {
 		
 		//assertTrue(String.format("Assert that %s rule is as expected. Differences found: %s",
 		//	module.name, comparator.diferences), equal)
-		assertEquals(9, createdRules.get(this.metamodel).length)
+		assertEquals(8, createdRules.get(this.metamodel).length)
 	}
 }

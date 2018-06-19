@@ -102,13 +102,14 @@ class RulesGenerator {
 				var rightRule = HenshinModuleAnalysis.getAllRules(solutionRule).get(0);
 			
 				var checker = new RuleSemanticsChecker(leftRule, rightRule);
-				if (checker.isEqual()) {
-					println(String.format("Found similar rules: %s, %s", problemRule.name, solutionRule.name))
-					uniqueRules.remove(problemRule)
-				} else {
+				if (!checker.isEqual()) {
 					if(!uniqueRules.contains(solutionRule)) {
 						uniqueRules.add(solutionRule)	
+					} else {
+						println("Rule already added: " + solutionRule.allRules.head.name)
 					}
+				} else {
+					println(String.format("Found similar rules: %s, %s", problemRule.name, solutionRule.name))
 				}
 			]
 		]
@@ -137,7 +138,7 @@ class RulesGenerator {
 			repairSpecsSet.forEach[repairSpecs |
 				
 				//for each repair spec, pick a command from the factory and add it to the command executor
-				rulesGenerationList.add(this.getRuleGenerationCommandFactory().makeCommand(repairType, metamodelWrapper, ruleSpec, repairSpecs))
+				rulesGenerationList.addAll(this.getRuleGenerationCommandFactory().makeCommand(repairType, metamodelWrapper, ruleSpec, repairSpecs))
 			]
 		]
 			

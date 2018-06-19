@@ -19,8 +19,7 @@ Require-Bundle: org.junit;bundle-version="4.7.0",
  org.sidiff.serge,
  org.eclipse.xtext.testing,
  org.eclipse.xtext.xbase.testing,
- org.eclipse.emf.compare,
- org.hamcrest.all;bundle-version="1.3.0"
+ org.eclipse.emf.compare
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: uk.ac.kcl.mdeoptimise.rulegen.tests
 Dynamic-ImportPackage: *
@@ -30,4 +29,5 @@ Import-Package: com.google.inject,
  org.junit.runner.manipulation;version="4.5.0",
  org.junit.runner.notification;version="4.5.0",
  org.junit.runners;version="4.5.0",
- org.junit.runners.model;version="4.5.0"
+ org.junit.runners.model;version="4.5.0",
+ org.hamcrest.collection

@@ -1,24 +1,17 @@
 package uk.ac.kcl.mdeoptimise.rulegen.generator.specs
 
-import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RuleSpec
-import java.util.Map
-import java.util.List
-import java.util.HashMap
-import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RefinedMetamodelWrapper
-import java.util.ArrayList
 import com.google.common.collect.Sets
+import java.util.ArrayList
+import java.util.HashMap
+import java.util.HashSet
+import java.util.List
+import java.util.Map
 import java.util.Set
 import org.eclipse.emf.ecore.EReference
-import java.util.HashSet
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.MetamodelWrapper
+import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RuleSpec
 
 class SpecsGenerator {
-	
-	def void addRuleSpec(RuleSpec ruleSpec){
-		
-		//Generate the repair specs for this rule spec and add to list of repairs
-		//this.repairCommands.put(ruleSpec, this.generateRepairs(ruleSpec));
-	}
 	
 	def Map<String, Set<List<RepairSpec>>> getRepairsForRuleSpec(RuleSpec ruleSpec, MetamodelWrapper metamodelWrapper){
 		
@@ -35,9 +28,7 @@ class SpecsGenerator {
 						generatedRepairSpecs.put("DELETE", generateNodeRepairCombinations(generateNodeDeleteRules(ruleSpec, metamodelWrapper)))
 						generatedRepairSpecs.put("ADD", generateNodeRepairCombinations(generateEdgeAddRules(ruleSpec, metamodelWrapper)))
 						generatedRepairSpecs.put("REMOVE", generateNodeRepairCombinations(generateEdgeRemoveRules(ruleSpec, metamodelWrapper)))
-					}		
-					
-				
+					}
 				}
 			case "CREATE":
 				{
@@ -84,7 +75,7 @@ class SpecsGenerator {
 			var repairs = new HashSet<RepairSpec>();
 			
 			if(edge.EOpposite == null || edge.EOpposite.lowerBound == 0){
-				//Apply single edge repairs
+				
 				repairs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 			} else {
 				
@@ -131,9 +122,9 @@ class SpecsGenerator {
 			var repairs = new HashSet<RepairSpec>();
 			
 			if(edge.EOpposite == null || edge.EOpposite.lowerBound == 0){
-				//Apply single edge repairs
-				//This is the basic scenario
+
 				repairs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+
 			} else {
 								
 				if(edge.EOpposite.lowerBound == 1 && edge.EOpposite.upperBound == 1) {
@@ -177,30 +168,40 @@ class SpecsGenerator {
 			var repairs = new HashSet<RepairSpec>();
 			
 			if(edge.EOpposite == null || edge.EOpposite.lowerBound == 0){
-				//Apply single edge repairs
-				//This is the basic scenario
-				repairs.add(new RepairSpec(node, edge, RepairSpecType.ADD));
+				
+				if(edge.lowerBound === edge.upperBound){
+					repairs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
+				} else {
+					repairs.add(new RepairSpec(node, edge, RepairSpecType.ADD));
+				}
+			
 			} else {
 				
 			
-				if(edge.upperBound != -1) {
-					if(edge.EOpposite.lowerBound == edge.EOpposite.upperBound) {
-							repairs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE));
-					} else {
-							repairs.add(new RepairSpec(node, edge, RepairSpecType.ADD));
-					}
-				}
-				
-				if(edge.upperBound == -1) {
-					if(edge.EOpposite.lowerBound == edge.EOpposite.upperBound) {
-							repairs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE));
-					} else {
-							repairs.add(new RepairSpec(node, edge, RepairSpecType.ADD));
-					}
-				}
+//				if(edge.upperBound != -1) {
+//					if(edge.EOpposite.lowerBound == edge.EOpposite.upperBound) {
+//							repairs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE));
+//					} else {
+//							repairs.add(new RepairSpec(node, edge, RepairSpecType.ADD));
+//					}
+//				}
+//				
+//				if(edge.upperBound == -1) {
+//					if(edge.EOpposite.lowerBound == edge.EOpposite.upperBound) {
+//							repairs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE));
+//					} else {
+//							repairs.add(new RepairSpec(node, edge, RepairSpecType.ADD));
+//					}
+//				}
 				
 				if(edge.lowerBound == edge.upperBound) {
 					repairs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
+				} else {
+					if(edge.EOpposite.lowerBound == edge.EOpposite.upperBound) {
+							repairs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE));
+					} else {
+							repairs.add(new RepairSpec(node, edge, RepairSpecType.ADD));
+					}
 				}
 							
 			}
@@ -222,33 +223,44 @@ class SpecsGenerator {
 			
 			var repairs = new HashSet<RepairSpec>();
 			
-			if(edge.EOpposite == null || edge.EOpposite.lowerBound == 0){
-				//Apply single edge repairs
-				//This is the basic scenario
-				repairs.add(new RepairSpec(node, edge, RepairSpecType.REMOVE));
+			if(edge.EOpposite === null || edge.EOpposite.lowerBound === 0){
+				
+				if(edge.lowerBound === edge.upperBound){
+					repairs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
+				} else {
+					repairs.add(new RepairSpec(node, edge, RepairSpecType.REMOVE));
+				}
+				
 			} else {
-								
-				if(edge.lowerBound != -1){
-					
-					if(edge.EOpposite.lowerBound == edge.EOpposite.upperBound){
-						repairs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE))
-					} else {
-						repairs.add(new RepairSpec(node, edge, RepairSpecType.REMOVE))
-					}
-					
-				}
-				
-				if(edge.lowerBound == -1){
-					if(edge.EOpposite.lowerBound == edge.EOpposite.upperBound){
-						repairs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE))
-					} else {
-						repairs.add(new RepairSpec(node, edge, RepairSpecType.REMOVE))
-					}
-				}
-				
+
 				if(edge.lowerBound == edge.upperBound){
 					repairs.add(new RepairSpec(node, edge, RepairSpecType.SWAP))
+				} else {
+					if(edge.EOpposite.lowerBound == edge.EOpposite.upperBound){
+						repairs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE))
+					} else {
+						repairs.add(new RepairSpec(node, edge, RepairSpecType.REMOVE))
+					}
 				}
+								
+//				if(edge.lowerBound !== -1){
+//					
+//					if(edge.EOpposite.lowerBound == edge.EOpposite.upperBound){
+//						repairs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE))
+//					} else {
+//						repairs.add(new RepairSpec(node, edge, RepairSpecType.REMOVE))
+//					}
+//				}
+//				
+//				if(edge.lowerBound == -1){
+//					if(edge.EOpposite.lowerBound == edge.EOpposite.upperBound){
+//						repairs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE))
+//					} else {
+//						repairs.add(new RepairSpec(node, edge, RepairSpecType.REMOVE))
+//					}
+//				}
+				
+
 			}
 			
 			repairSpecs.put(edge, repairs)

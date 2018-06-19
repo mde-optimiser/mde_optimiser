@@ -95,8 +95,7 @@ class CreateNodeIterativeRepairRuleCommand implements IRuleGenerationCommand {
 		val validReferences = new ArrayList<EReference>();
 		
 		bidirectionalReferences.forEach[reference | 
-		
-			
+
 			if(reference.getEOpposite.lowerBound > 0 && reference.getEOpposite.upperBound > 0){
 						
 				validReferences.add(reference);
@@ -111,7 +110,6 @@ class CreateNodeIterativeRepairRuleCommand implements IRuleGenerationCommand {
 	//Fix the LB requirement for the created node by taking one node required for the LB from lb nodes of the same type
 	private def void applyRepairOperations(Rule rule, List<EReference> edges){
 		
-		
 		rule.name = rule.name + "_lb_repair"
 		
 		//Get the created node from the rule graphs
@@ -120,7 +118,6 @@ class CreateNodeIterativeRepairRuleCommand implements IRuleGenerationCommand {
 		//Create existing node A from which to take the existing target node
 		val existingsourceNodeName = Common.getFreeNodeName(GlobalConstants.NEWTGT, rule);
 		val existingSourceNode = HenshinRuleAnalysisUtilEx.createPreservedNode(rule, existingsourceNodeName, this.node);
-		
 		
 		edges.forEach[edge | 
 			createdNode.getOutgoing(edge).forEach[ outgoingEdge |

@@ -28,7 +28,6 @@ class DeleteNodeRuleCommand implements IRuleGenerationCommand {
 		this.repairSpecs = repairSpecs;
 	}
 	
-	
 	override generate() {
 		
 		//Create the Delete rule as an invesrse of the Create rule
@@ -39,13 +38,7 @@ class DeleteNodeRuleCommand implements IRuleGenerationCommand {
 		//Create an inverse of the delete module
 		var module = Common.createInverse(deleteModule, OperationType.CREATE);
 	
-		module.units.forEach[
-			rule | 
-			
-			//applyRepairOperations(rule as Rule, this.ruleSpec, this.repairSpecs)
-			
-			applyRuleNacConditions(rule as Rule)
-		]
+		module.units.forEach[ rule | applyRuleNacConditions(rule as Rule)]
 		
 		return module
 	}

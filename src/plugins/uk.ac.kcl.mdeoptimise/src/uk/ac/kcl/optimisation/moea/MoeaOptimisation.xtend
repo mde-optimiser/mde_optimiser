@@ -2,17 +2,12 @@ package uk.ac.kcl.optimisation.moea
 
 import java.util.Iterator
 import java.util.Properties
-import org.eclipse.emf.ecore.EObject
 import org.moeaframework.Executor
 import org.moeaframework.core.NondominatedPopulation
 import org.moeaframework.core.spi.AlgorithmFactory
 import uk.ac.kcl.interpreter.IOptimisation
 import uk.ac.kcl.mdeoptimise.OptimisationSpec
 import uk.ac.kcl.optimisation.SolutionGenerator
-import org.moeaframework.Instrumenter
-import java.io.File
-import org.moeaframework.core.Settings
-import org.moeaframework.core.spi.ProblemFactory
 
 class MoeaOptimisation implements IOptimisation {
 	

@@ -59,7 +59,7 @@ class OptimisationInterpreter {
 	}
 
 	def getResourceSet(String basePath) {
-        if (henshinResourceSet == null) {
+        if (henshinResourceSet === null) {
             henshinResourceSet = new HenshinResourceSet(basePath);
         }
 
@@ -67,7 +67,7 @@ class OptimisationInterpreter {
     }
 
     def getMetamodel() {
-        if (theMetamodel == null) {
+        if (theMetamodel === null) {
         	if (!model.metamodel.location.endsWith(".ecore")) {
         		// The location is not an ecore file, assume it's a class name
         		val packageInterface = (Class.forName(model.metamodel.location) as Class<EPackage>)
@@ -81,7 +81,7 @@ class OptimisationInterpreter {
     }
     
     def getBreedingOperators() {
-    	if(breedingOperators == null){
+    	if(breedingOperators === null){
 			
 			breedingOperators = new LinkedList
 			
@@ -97,7 +97,7 @@ class OptimisationInterpreter {
     def getMutationOperators() {
     	
     	//TODO: Doesn't make sense?
-    	if(mutationOperators == null){
+    	if(mutationOperators === null){
 			
 			mutationOperators = new LinkedList
 			
@@ -170,7 +170,7 @@ class OptimisationInterpreter {
      */
     def Map<EPackage, List<Module>> getRulegenOperators(){
  		
- 		if(this.generatedOperators == null){
+ 		if(this.generatedOperators === null){
  			var multiplicityRefinements = getMultiplicityRefinements();
 	    	var rulegenSpecs = getRulegenSpecs();
 	    	

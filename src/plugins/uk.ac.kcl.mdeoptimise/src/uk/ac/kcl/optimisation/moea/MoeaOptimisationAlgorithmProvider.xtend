@@ -1,21 +1,20 @@
 package uk.ac.kcl.optimisation.moea
 
 import java.util.Properties
+import org.moeaframework.algorithm.EpsilonMOEA
 import org.moeaframework.algorithm.NSGAII
 import org.moeaframework.algorithm.SPEA2
 import org.moeaframework.core.Algorithm
+import org.moeaframework.core.EpsilonBoxDominanceArchive
 import org.moeaframework.core.NondominatedSortingPopulation
 import org.moeaframework.core.Problem
+import org.moeaframework.core.Variation
+import org.moeaframework.core.operator.GAVariation
 import org.moeaframework.core.operator.RandomInitialization
 import org.moeaframework.core.operator.TournamentSelection
 import org.moeaframework.core.spi.AlgorithmProvider
-import uk.ac.kcl.optimisation.SolutionGenerator
-import org.moeaframework.algorithm.EpsilonMOEA
-import org.moeaframework.core.EpsilonBoxDominanceArchive
-import org.moeaframework.core.operator.GAVariation
-import org.moeaframework.core.Variation
 import uk.ac.kcl.mdeoptimise.AlgorithmVariation
-import org.moeaframework.core.EvolutionaryAlgorithm
+import uk.ac.kcl.optimisation.SolutionGenerator
 
 class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
 	

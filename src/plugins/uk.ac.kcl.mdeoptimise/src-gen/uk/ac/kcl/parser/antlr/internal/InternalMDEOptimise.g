@@ -1057,19 +1057,23 @@ ruleMultiplicityRefinementSpec returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='refine metamodel'
+		otherlv_0='refine'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getMultiplicityRefinementSpecAccess().getRefineMetamodelKeyword_0());
+			newLeafNode(otherlv_0, grammarAccess.getMultiplicityRefinementSpecAccess().getRefineKeyword_0());
 		}
-		otherlv_1='{'
+		otherlv_1='metamodel'
 		{
-			newLeafNode(otherlv_1, grammarAccess.getMultiplicityRefinementSpecAccess().getLeftCurlyBracketKeyword_1());
+			newLeafNode(otherlv_1, grammarAccess.getMultiplicityRefinementSpecAccess().getMetamodelKeyword_1());
+		}
+		otherlv_2='{'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getMultiplicityRefinementSpecAccess().getLeftCurlyBracketKeyword_2());
 		}
 		(
 			(
-				lv_node_2_0=RULE_STRING
+				lv_node_3_0=RULE_STRING
 				{
-					newLeafNode(lv_node_2_0, grammarAccess.getMultiplicityRefinementSpecAccess().getNodeSTRINGTerminalRuleCall_2_0());
+					newLeafNode(lv_node_3_0, grammarAccess.getMultiplicityRefinementSpecAccess().getNodeSTRINGTerminalRuleCall_3_0());
 				}
 				{
 					if ($current==null) {
@@ -1078,20 +1082,20 @@ ruleMultiplicityRefinementSpec returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"node",
-						lv_node_2_0,
+						lv_node_3_0,
 						"org.eclipse.xtext.xbase.Xtype.STRING");
 				}
 			)
 		)
-		otherlv_3=','
+		otherlv_4=','
 		{
-			newLeafNode(otherlv_3, grammarAccess.getMultiplicityRefinementSpecAccess().getCommaKeyword_3());
+			newLeafNode(otherlv_4, grammarAccess.getMultiplicityRefinementSpecAccess().getCommaKeyword_4());
 		}
 		(
 			(
-				lv_edge_4_0=RULE_STRING
+				lv_edge_5_0=RULE_STRING
 				{
-					newLeafNode(lv_edge_4_0, grammarAccess.getMultiplicityRefinementSpecAccess().getEdgeSTRINGTerminalRuleCall_4_0());
+					newLeafNode(lv_edge_5_0, grammarAccess.getMultiplicityRefinementSpecAccess().getEdgeSTRINGTerminalRuleCall_5_0());
 				}
 				{
 					if ($current==null) {
@@ -1100,20 +1104,20 @@ ruleMultiplicityRefinementSpec returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"edge",
-						lv_edge_4_0,
+						lv_edge_5_0,
 						"org.eclipse.xtext.xbase.Xtype.STRING");
 				}
 			)
 		)
-		otherlv_5=','
+		otherlv_6=','
 		{
-			newLeafNode(otherlv_5, grammarAccess.getMultiplicityRefinementSpecAccess().getCommaKeyword_5());
+			newLeafNode(otherlv_6, grammarAccess.getMultiplicityRefinementSpecAccess().getCommaKeyword_6());
 		}
 		(
 			(
-				lv_lowerBound_6_0=RULE_INT
+				lv_lowerBound_7_0=RULE_INT
 				{
-					newLeafNode(lv_lowerBound_6_0, grammarAccess.getMultiplicityRefinementSpecAccess().getLowerBoundINTTerminalRuleCall_6_0());
+					newLeafNode(lv_lowerBound_7_0, grammarAccess.getMultiplicityRefinementSpecAccess().getLowerBoundINTTerminalRuleCall_7_0());
 				}
 				{
 					if ($current==null) {
@@ -1122,21 +1126,21 @@ ruleMultiplicityRefinementSpec returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"lowerBound",
-						lv_lowerBound_6_0,
+						lv_lowerBound_7_0,
 						"org.eclipse.xtext.xbase.Xbase.INT");
 				}
 			)
 		)
-		otherlv_7=','
+		otherlv_8=','
 		{
-			newLeafNode(otherlv_7, grammarAccess.getMultiplicityRefinementSpecAccess().getCommaKeyword_7());
+			newLeafNode(otherlv_8, grammarAccess.getMultiplicityRefinementSpecAccess().getCommaKeyword_8());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getMultiplicityRefinementSpecAccess().getUpperBoundSignedIntegerParserRuleCall_8_0());
+					newCompositeNode(grammarAccess.getMultiplicityRefinementSpecAccess().getUpperBoundSignedIntegerParserRuleCall_9_0());
 				}
-				lv_upperBound_8_0=ruleSignedInteger
+				lv_upperBound_9_0=ruleSignedInteger
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getMultiplicityRefinementSpecRule());
@@ -1144,15 +1148,15 @@ ruleMultiplicityRefinementSpec returns [EObject current=null]
 					set(
 						$current,
 						"upperBound",
-						lv_upperBound_8_0,
+						lv_upperBound_9_0,
 						"uk.ac.kcl.MDEOptimise.SignedInteger");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_9='}'
+		otherlv_10='}'
 		{
-			newLeafNode(otherlv_9, grammarAccess.getMultiplicityRefinementSpecAccess().getRightCurlyBracketKeyword_9());
+			newLeafNode(otherlv_10, grammarAccess.getMultiplicityRefinementSpecAccess().getRightCurlyBracketKeyword_10());
 		}
 	)
 ;

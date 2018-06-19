@@ -1,30 +1,27 @@
 package uk.ac.kcl.ui.launch
 
-import org.eclipse.debug.ui.AbstractLaunchConfigurationTab
-import org.eclipse.swt.widgets.Composite
+import org.eclipse.core.resources.IFile
+import org.eclipse.core.resources.IResource
+import org.eclipse.core.resources.ResourcesPlugin
+import org.eclipse.core.runtime.CoreException
 import org.eclipse.debug.core.ILaunchConfiguration
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
-import org.eclipse.swt.widgets.Text
-import org.eclipse.jface.layout.GridLayoutFactory
-import org.eclipse.jface.layout.GridDataFactory
-import org.eclipse.core.runtime.CoreException
-import org.eclipse.swt.widgets.Group
-import org.eclipse.swt.widgets.Label
-import org.eclipse.swt.SWT
-import org.eclipse.swt.widgets.Button
-import org.eclipse.swt.widgets.Listener
-import org.eclipse.swt.widgets.Event
-import org.eclipse.swt.widgets.Shell
-import org.eclipse.core.resources.IFile
-import org.eclipse.core.resources.ResourcesPlugin
-import org.eclipse.core.resources.IResource
-import org.eclipse.ui.dialogs.FilteredResourcesSelectionDialog
+import org.eclipse.debug.ui.AbstractLaunchConfigurationTab
 import org.eclipse.jface.window.Window
-import org.eclipse.swt.layout.FillLayout
-import org.eclipse.swt.layout.GridLayout
-import org.eclipse.swt.layout.GridData
-import org.eclipse.swt.events.ModifyListener
+import org.eclipse.swt.SWT
 import org.eclipse.swt.events.ModifyEvent
+import org.eclipse.swt.events.ModifyListener
+import org.eclipse.swt.layout.FillLayout
+import org.eclipse.swt.layout.GridData
+import org.eclipse.swt.layout.GridLayout
+import org.eclipse.swt.widgets.Button
+import org.eclipse.swt.widgets.Composite
+import org.eclipse.swt.widgets.Event
+import org.eclipse.swt.widgets.Group
+import org.eclipse.swt.widgets.Listener
+import org.eclipse.swt.widgets.Shell
+import org.eclipse.swt.widgets.Text
+import org.eclipse.ui.dialogs.FilteredResourcesSelectionDialog
 
 class MDEOptimiserSourceConfigurationTab extends AbstractLaunchConfigurationTab implements ModifyListener {
 
@@ -127,7 +124,7 @@ class MDEOptimiserSourceConfigurationTab extends AbstractLaunchConfigurationTab 
     	
     	var file = browseFile(shell, title, message, pattern)
     	
-    	if(file != null) {
+    	if(file !== null) {
     		return file.getFullPath.toString()
     	}
     	

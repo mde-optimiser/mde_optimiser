@@ -1,11 +1,10 @@
 package uk.ac.kcl.mdeoptimise.rulegen.metamodel
 
-import uk.ac.kcl.mdeoptimise.rulegen.exceptions.MultiplicityException
-import org.eclipse.emf.ecore.EReference
-import org.eclipse.emf.ecore.EPackage
-import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EClass
-import java.util.ArrayList
+import org.eclipse.emf.ecore.EClassifier
+import org.eclipse.emf.ecore.EPackage
+import org.eclipse.emf.ecore.EReference
+import uk.ac.kcl.mdeoptimise.rulegen.exceptions.MultiplicityException
 
 class Multiplicity {
 	
