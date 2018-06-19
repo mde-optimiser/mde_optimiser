@@ -20,24 +20,24 @@ class RemoveEdgeRuleCommand implements IRuleGenerationCommand {
 	EReference edge;
 	
 	RuleSpec ruleSpec;
-	List<RepairSpec> repairSpecs;
+	RepairSpec repairSpec;
 	
-	new(MetamodelWrapper metamodelWrapper, RuleSpec ruleSpec, List<RepairSpec> repairSpecs) {
+	new(MetamodelWrapper metamodelWrapper, RuleSpec ruleSpec,RepairSpec repairSpec) {
 		this.metamodelWrapper = metamodelWrapper;
 		this.ruleSpec = ruleSpec;
-		this.repairSpecs = repairSpecs;
+		this.repairSpec = repairSpec;
 	}
 	
 	new(EClass node, MetamodelWrapper metamodelWrapper, RuleSpec ruleSpec, List<RepairSpec> repairSpecs){
 		this.metamodelWrapper = metamodelWrapper;
 		this.node = node; 
-		this.repairSpecs = repairSpecs;
+		this.repairSpec = repairSpec;
 		this.ruleSpec = ruleSpec;
 	}
 	
 	def EClass getNode(){
 		
-		if(this.node == null){
+		if(this.node === null){
 			this.node = metamodelWrapper.getNode(ruleSpec.getNode)	
 		}
 		
@@ -46,7 +46,7 @@ class RemoveEdgeRuleCommand implements IRuleGenerationCommand {
 	
 	def EReference getEdge(){
 		
-		if(this.edge == null){
+		if(this.edge === null){
 			this.edge = metamodelWrapper.getEdge(ruleSpec.getNode, ruleSpec.getEdge)	
 		}
 		
@@ -55,7 +55,7 @@ class RemoveEdgeRuleCommand implements IRuleGenerationCommand {
 	
 	override generate() {
 		
-		var createEdgeRuleCommand = new AddEdgeRuleCommand(this.getNode, metamodelWrapper, ruleSpec, repairSpecs);
+		var createEdgeRuleCommand = new AddEdgeRuleCommand(this.getNode, metamodelWrapper, ruleSpec, repairSpec);
 		
 		var module = Common.createInverse(createEdgeRuleCommand.generate(), OperationType.ADD);
 				

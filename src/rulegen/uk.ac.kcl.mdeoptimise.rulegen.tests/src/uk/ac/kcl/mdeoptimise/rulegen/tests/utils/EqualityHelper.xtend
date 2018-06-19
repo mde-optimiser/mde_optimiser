@@ -26,6 +26,5 @@ final class EqualityHelper extends EcoreUtil.EqualityHelper {
 		(l1.size == l2.size) && l1.forall[eo|l2.exists[eo2|equals(eo, eo2)]] && l2.forall [eo |
 			l1.exists[eo2|equals(eo, eo2)]
 		]
-
 	}
 }

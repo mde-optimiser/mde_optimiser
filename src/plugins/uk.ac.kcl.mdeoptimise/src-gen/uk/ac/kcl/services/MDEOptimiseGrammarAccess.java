@@ -607,69 +607,73 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	public class MultiplicityRefinementSpecElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.MultiplicityRefinementSpec");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cRefineMetamodelKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNodeAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNodeSTRINGTerminalRuleCall_2_0 = (RuleCall)cNodeAssignment_2.eContents().get(0);
-		private final Keyword cCommaKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cEdgeAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cEdgeSTRINGTerminalRuleCall_4_0 = (RuleCall)cEdgeAssignment_4.eContents().get(0);
-		private final Keyword cCommaKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Assignment cLowerBoundAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cLowerBoundINTTerminalRuleCall_6_0 = (RuleCall)cLowerBoundAssignment_6.eContents().get(0);
-		private final Keyword cCommaKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		private final Assignment cUpperBoundAssignment_8 = (Assignment)cGroup.eContents().get(8);
-		private final RuleCall cUpperBoundSignedIntegerParserRuleCall_8_0 = (RuleCall)cUpperBoundAssignment_8.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Keyword cRefineKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cMetamodelKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cNodeAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cNodeSTRINGTerminalRuleCall_3_0 = (RuleCall)cNodeAssignment_3.eContents().get(0);
+		private final Keyword cCommaKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cEdgeAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cEdgeSTRINGTerminalRuleCall_5_0 = (RuleCall)cEdgeAssignment_5.eContents().get(0);
+		private final Keyword cCommaKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cLowerBoundAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cLowerBoundINTTerminalRuleCall_7_0 = (RuleCall)cLowerBoundAssignment_7.eContents().get(0);
+		private final Keyword cCommaKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Assignment cUpperBoundAssignment_9 = (Assignment)cGroup.eContents().get(9);
+		private final RuleCall cUpperBoundSignedIntegerParserRuleCall_9_0 = (RuleCall)cUpperBoundAssignment_9.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_10 = (Keyword)cGroup.eContents().get(10);
 		
 		//MultiplicityRefinementSpec:
-		//	"refine metamodel" "{" node=STRING "," edge=STRING "," lowerBound=INT "," upperBound=SignedInteger "}";
+		//	"refine" "metamodel" "{" node=STRING "," edge=STRING "," lowerBound=INT "," upperBound=SignedInteger "}";
 		@Override public ParserRule getRule() { return rule; }
 		
-		//"refine metamodel" "{" node=STRING "," edge=STRING "," lowerBound=INT "," upperBound=SignedInteger "}"
+		//"refine" "metamodel" "{" node=STRING "," edge=STRING "," lowerBound=INT "," upperBound=SignedInteger "}"
 		public Group getGroup() { return cGroup; }
 		
-		//"refine metamodel"
-		public Keyword getRefineMetamodelKeyword_0() { return cRefineMetamodelKeyword_0; }
+		//"refine"
+		public Keyword getRefineKeyword_0() { return cRefineKeyword_0; }
+		
+		//"metamodel"
+		public Keyword getMetamodelKeyword_1() { return cMetamodelKeyword_1; }
 		
 		//"{"
-		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 		
 		//node=STRING
-		public Assignment getNodeAssignment_2() { return cNodeAssignment_2; }
+		public Assignment getNodeAssignment_3() { return cNodeAssignment_3; }
 		
 		//STRING
-		public RuleCall getNodeSTRINGTerminalRuleCall_2_0() { return cNodeSTRINGTerminalRuleCall_2_0; }
+		public RuleCall getNodeSTRINGTerminalRuleCall_3_0() { return cNodeSTRINGTerminalRuleCall_3_0; }
 		
 		//","
-		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
+		public Keyword getCommaKeyword_4() { return cCommaKeyword_4; }
 		
 		//edge=STRING
-		public Assignment getEdgeAssignment_4() { return cEdgeAssignment_4; }
+		public Assignment getEdgeAssignment_5() { return cEdgeAssignment_5; }
 		
 		//STRING
-		public RuleCall getEdgeSTRINGTerminalRuleCall_4_0() { return cEdgeSTRINGTerminalRuleCall_4_0; }
+		public RuleCall getEdgeSTRINGTerminalRuleCall_5_0() { return cEdgeSTRINGTerminalRuleCall_5_0; }
 		
 		//","
-		public Keyword getCommaKeyword_5() { return cCommaKeyword_5; }
+		public Keyword getCommaKeyword_6() { return cCommaKeyword_6; }
 		
 		//lowerBound=INT
-		public Assignment getLowerBoundAssignment_6() { return cLowerBoundAssignment_6; }
+		public Assignment getLowerBoundAssignment_7() { return cLowerBoundAssignment_7; }
 		
 		//INT
-		public RuleCall getLowerBoundINTTerminalRuleCall_6_0() { return cLowerBoundINTTerminalRuleCall_6_0; }
+		public RuleCall getLowerBoundINTTerminalRuleCall_7_0() { return cLowerBoundINTTerminalRuleCall_7_0; }
 		
 		//","
-		public Keyword getCommaKeyword_7() { return cCommaKeyword_7; }
+		public Keyword getCommaKeyword_8() { return cCommaKeyword_8; }
 		
 		//upperBound=SignedInteger
-		public Assignment getUpperBoundAssignment_8() { return cUpperBoundAssignment_8; }
+		public Assignment getUpperBoundAssignment_9() { return cUpperBoundAssignment_9; }
 		
 		//SignedInteger
-		public RuleCall getUpperBoundSignedIntegerParserRuleCall_8_0() { return cUpperBoundSignedIntegerParserRuleCall_8_0; }
+		public RuleCall getUpperBoundSignedIntegerParserRuleCall_9_0() { return cUpperBoundSignedIntegerParserRuleCall_9_0; }
 		
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_9() { return cRightCurlyBracketKeyword_9; }
+		public Keyword getRightCurlyBracketKeyword_10() { return cRightCurlyBracketKeyword_10; }
 	}
 	public class EvolverParameterElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.EvolverParameter");
@@ -1261,7 +1265,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//MultiplicityRefinementSpec:
-	//	"refine metamodel" "{" node=STRING "," edge=STRING "," lowerBound=INT "," upperBound=SignedInteger "}";
+	//	"refine" "metamodel" "{" node=STRING "," edge=STRING "," lowerBound=INT "," upperBound=SignedInteger "}";
 	public MultiplicityRefinementSpecElements getMultiplicityRefinementSpecAccess() {
 		return pMultiplicityRefinementSpec;
 	}

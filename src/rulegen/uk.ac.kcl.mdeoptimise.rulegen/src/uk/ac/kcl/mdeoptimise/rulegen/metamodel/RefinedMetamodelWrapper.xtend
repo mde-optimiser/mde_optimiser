@@ -1,25 +1,18 @@
 package uk.ac.kcl.mdeoptimise.rulegen.metamodel
 
-import org.eclipse.emf.ecore.EPackage
-import org.eclipse.emf.ecore.util.EcoreUtil
-import org.eclipse.emf.henshin.model.resource.HenshinResourceSet
-import java.util.HashMap
-import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl
-import org.eclipse.emf.ecore.resource.Resource
-import java.io.InvalidObjectException
-import org.eclipse.emf.common.util.URI
-import org.eclipse.emf.ecore.xmi.XMIResource
-import java.io.FileOutputStream
-import java.io.File
 import java.io.IOException
-import org.eclipse.emf.ecore.EReference
-import uk.ac.kcl.mdeoptimise.rulegen.exceptions.MultiplicityException
-import org.eclipse.emf.ecore.EClass
+import java.util.HashMap
 import java.util.List
-import org.eclipse.emf.common.util.EList
-import java.util.ArrayList
-import org.sidiff.common.emf.extensions.impl.EClassifierInfoManagement
 import java.util.Stack
+import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.ecore.EClass
+import org.eclipse.emf.ecore.EPackage
+import org.eclipse.emf.ecore.EReference
+import org.eclipse.emf.ecore.util.EcoreUtil
+import org.eclipse.emf.ecore.xmi.XMIResource
+import org.eclipse.emf.henshin.model.resource.HenshinResourceSet
+import org.sidiff.common.emf.extensions.impl.EClassifierInfoManagement
+import uk.ac.kcl.mdeoptimise.rulegen.exceptions.MultiplicityException
 
 class RefinedMetamodelWrapper {
 
@@ -35,11 +28,6 @@ class RefinedMetamodelWrapper {
 		this.refinedMetamodel = metamodel;
 		this.refinedMultiplicities = refinedMultiplicities;
 		this.resourceSet = new HenshinResourceSet()
-		
-		//TODO check what to do about this - I think we can stick with the solution metamodel to run the search on after the refinements have been applied.
-		//var resource = resourceSet.createResource(URI.createURI("metamodel.ecore"))
-		//resource.contents.add(this.refinedMetamodel)
-		
 		this.setOriginalMetamodelAnalyser();
 		this.setRefinedMetamodelAnalyser();
 	}
@@ -133,7 +121,7 @@ class RefinedMetamodelWrapper {
 	private def updateEdgeUpperBound(Multiplicity multiplicity) {
 		var edge = getRefinedEdge(multiplicity)
 
-		if ((edge.upperBound == -1 && multiplicity.upper >= edge.upperBound) ||
+		if ((edge.upperBound === -1 && multiplicity.upper >= edge.upperBound) ||
 			(edge.upperBound > -1 && multiplicity.upper <= edge.upperBound)) {
 			edge.upperBound = multiplicity.upper;
 		} else {
@@ -187,11 +175,10 @@ class RefinedMetamodelWrapper {
 	
 	def EReference getRefinedEdge(String edgeSource, String edgeName) {
 		
-		var container = refinedMetamodel.EClassifiers.filter[classifier|classifier.name.equals(edgeSource)].
-			get(0) as EClass;
+		var container = refinedMetamodel.EClassifiers.filter[classifier|classifier.name.equals(edgeSource)].head as EClass;
 		var references = container.EAllStructuralFeatures.filter[reference|reference.name.equals(edgeName)].toList
 
-		references.get(0) as EReference;
+		references.head as EReference;
 	}
 	
 	/**
@@ -208,9 +195,9 @@ class RefinedMetamodelWrapper {
 	 */
 	def boolean hasEdgesForSingleRepair(EClass node){
 		
-		return node.EAllReferences.filter[reference | reference.EOpposite != null].filter[reference |
-			reference.lowerBound == 1 && reference.EOpposite.lowerBound == 1
-		].empty == false
+		return node.EAllReferences.filter[reference | reference.EOpposite !== null].filter[reference |
+			reference.lowerBound === 1 && reference.EOpposite.lowerBound === 1
+		].empty === false
 	}
 	
 	/**
@@ -218,17 +205,17 @@ class RefinedMetamodelWrapper {
 	 */
 	def boolean hasEdgesForMultiRepair(EClass node){
 		
-		return node.EAllReferences.filter[reference | reference.EOpposite != null].filter[reference |
+		return node.EAllReferences.filter[reference | reference.EOpposite !== null].filter[reference |
 			reference.lowerBound > 1 && reference.EOpposite.lowerBound > 1
-		].empty == false
+		].empty === false
 	}
 	
 	def boolean hasInvalidEdgesForDeleteNode(EClass node) {
 		
 		//Check if the node has any opposide nodes with fixed multiplicity that would require a repair
 		//operation for this node to be deleted
-		var hasOppositeFixedReferences = node.EAllReferences.filter[reference | reference.EOpposite != null].filter[ reference |
-			reference.EOpposite.lowerBound == reference.EOpposite.upperBound
+		var hasOppositeFixedReferences = node.EAllReferences.filter[reference | reference.EOpposite !== null].filter[ reference |
+			reference.EOpposite.lowerBound === reference.EOpposite.upperBound
 		].empty
 	
 		//Check if the node has any unidirectional income edges that have fixed multiplicity and
@@ -237,10 +224,7 @@ class RefinedMetamodelWrapper {
 				
 		var hasIncomingLbReferences = incomingReferenceSettings.filter[incomingReference | incomingReference instanceof EReference].filter[reference |
 			var ref = (reference as EReference);
-			
-			if(ref.EOpposite == null && ref.EType.equals(node) && ref.lowerBound == ref.upperBound && ref.lowerBound > 0) {
-				return true
-			}
+			(ref.EOpposite === null && ref.EType.equals(node) && ref.lowerBound === ref.upperBound && ref.lowerBound > 0) return true
 			
 		].empty
 		

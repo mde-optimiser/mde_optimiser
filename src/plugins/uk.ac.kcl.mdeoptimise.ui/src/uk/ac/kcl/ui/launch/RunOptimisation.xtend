@@ -1,19 +1,18 @@
-package uk.ac.kcl.ui.launch 
+package uk.ac.kcl.ui.launch
 
 import com.google.inject.Inject
 import com.google.inject.Injector
-import uk.ac.kcl.MDEOptimiseStandaloneSetup
-import uk.ac.kcl.mdeoptimise.Optimisation
-import uk.ac.kcl.interpreter.OptimisationInterpreter
 import com.google.inject.Provider
-import org.eclipse.emf.ecore.resource.ResourceSet
-import org.eclipse.emf.common.util.URI
 import java.io.File
-import uk.ac.kcl.ui.output.MDEOBatch
-import uk.ac.kcl.ui.output.MDEOResultsOutput
 import java.util.Date
 import org.eclipse.core.runtime.Path
-import java.util.List
+import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.ecore.resource.ResourceSet
+import uk.ac.kcl.MDEOptimiseStandaloneSetup
+import uk.ac.kcl.interpreter.OptimisationInterpreter
+import uk.ac.kcl.mdeoptimise.Optimisation
+import uk.ac.kcl.ui.output.MDEOBatch
+import uk.ac.kcl.ui.output.MDEOResultsOutput
 
 class RunOptimisation {
 	
@@ -35,14 +34,14 @@ class RunOptimisation {
 	def public static void main(String[] args){
 		val app = injector.getInstance(RunOptimisation)
 		
-		if(args.length == 2) {
+		if(args.length === 2) {
 			app.run(args.get(0), args.get(1))
 		} else {
 			println("Invalid number of arguments. Cannot launch optimisation.")
 			println("Expecting a valid project path and a valid mopt file path.")
 		}
 		
-		if(args.length === 3 && Boolean.parseBoolean(args.get(2)) == true) {
+		if(args.length === 3 && Boolean.parseBoolean(args.get(2)) === true) {
 			println("You have chosen to use random matching instead of Henshin nondeterministic matching for model evolution.")
 			app.enableManualRandomMatching = true;
 			app.run(args.get(0), args.get(1))

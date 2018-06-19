@@ -315,10 +315,10 @@ public class MDEOptimiseParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEvolverSpecAccess().getUnitAssignment_4(), "rule__EvolverSpec__UnitAssignment_4");
 					put(grammarAccess.getEvolverSpecAccess().getParametersAssignment_5_2(), "rule__EvolverSpec__ParametersAssignment_5_2");
 					put(grammarAccess.getEvolverSpecAccess().getParametersAssignment_5_3_1(), "rule__EvolverSpec__ParametersAssignment_5_3_1");
-					put(grammarAccess.getMultiplicityRefinementSpecAccess().getNodeAssignment_2(), "rule__MultiplicityRefinementSpec__NodeAssignment_2");
-					put(grammarAccess.getMultiplicityRefinementSpecAccess().getEdgeAssignment_4(), "rule__MultiplicityRefinementSpec__EdgeAssignment_4");
-					put(grammarAccess.getMultiplicityRefinementSpecAccess().getLowerBoundAssignment_6(), "rule__MultiplicityRefinementSpec__LowerBoundAssignment_6");
-					put(grammarAccess.getMultiplicityRefinementSpecAccess().getUpperBoundAssignment_8(), "rule__MultiplicityRefinementSpec__UpperBoundAssignment_8");
+					put(grammarAccess.getMultiplicityRefinementSpecAccess().getNodeAssignment_3(), "rule__MultiplicityRefinementSpec__NodeAssignment_3");
+					put(grammarAccess.getMultiplicityRefinementSpecAccess().getEdgeAssignment_5(), "rule__MultiplicityRefinementSpec__EdgeAssignment_5");
+					put(grammarAccess.getMultiplicityRefinementSpecAccess().getLowerBoundAssignment_7(), "rule__MultiplicityRefinementSpec__LowerBoundAssignment_7");
+					put(grammarAccess.getMultiplicityRefinementSpecAccess().getUpperBoundAssignment_9(), "rule__MultiplicityRefinementSpec__UpperBoundAssignment_9");
 					put(grammarAccess.getEvolverParameterAccess().getNameAssignment_0(), "rule__EvolverParameter__NameAssignment_0");
 					put(grammarAccess.getEvolverParameterAccess().getFunctionAssignment_1_1_0(), "rule__EvolverParameter__FunctionAssignment_1_1_0");
 					put(grammarAccess.getEvolverParameterAccess().getCustomFunctionAssignment_1_1_1(), "rule__EvolverParameter__CustomFunctionAssignment_1_1_1");

@@ -1,13 +1,12 @@
 package uk.ac.kcl.mdeoptimise.rulegen.metamodel
 
-import org.eclipse.emf.ecore.EPackage
 import java.util.List
-import org.eclipse.emf.ecore.EReference
-import org.eclipse.emf.ecore.EClass
-import uk.ac.kcl.mdeoptimise.rulegen.exceptions.MultiplicityException
-import org.sidiff.common.emf.extensions.impl.EClassifierInfoManagement
 import java.util.Stack
-import org.eclipse.emf.ecore.util.EcoreUtil
+import org.eclipse.emf.ecore.EClass
+import org.eclipse.emf.ecore.EPackage
+import org.eclipse.emf.ecore.EReference
+import org.sidiff.common.emf.extensions.impl.EClassifierInfoManagement
+import uk.ac.kcl.mdeoptimise.rulegen.exceptions.MultiplicityException
 
 class MetamodelWrapper {
 	

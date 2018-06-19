@@ -1,6 +1,5 @@
 package uk.ac.kcl.mdeoptimise.rulegen.generator.commands.edge
 
-import java.util.List
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.henshin.model.HenshinFactory
@@ -13,7 +12,6 @@ import uk.ac.kcl.mdeoptimise.rulegen.generator.IRuleGenerationCommand
 import uk.ac.kcl.mdeoptimise.rulegen.generator.specs.RepairSpec
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.MetamodelWrapper
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RuleSpec
-import uk.ac.kcl.mdeoptimiser.rulegen.lang.NamingConstants
 import uk.ac.kcl.mdeoptimiser.rulegen.lang.RuleNameGenerator
 
 class SwapEdgeRuleCommand implements IRuleGenerationCommand {
@@ -23,15 +21,15 @@ class SwapEdgeRuleCommand implements IRuleGenerationCommand {
 	EReference edge;
 	
 	RuleSpec ruleSpec;
-	List<RepairSpec> repairSpecs;
+	RepairSpec repairSpecs;
 	
-	new(MetamodelWrapper metamodelWrapper, RuleSpec ruleSpec, List<RepairSpec> repairSpecs) {
+	new(MetamodelWrapper metamodelWrapper, RuleSpec ruleSpec, RepairSpec repairSpecs) {
 		this.metamodelWrapper = metamodelWrapper;
 		this.ruleSpec = ruleSpec;
 		this.repairSpecs = repairSpecs;
 	}
 	
-	new(EClass node, MetamodelWrapper metamodelWrapper, RuleSpec ruleSpec, List<RepairSpec> repairSpecs){
+	new(EClass node, MetamodelWrapper metamodelWrapper, RuleSpec ruleSpec, RepairSpec repairSpecs){
 		this.metamodelWrapper = metamodelWrapper;
 		this.node = node; 
 		this.repairSpecs = repairSpecs;
@@ -40,7 +38,7 @@ class SwapEdgeRuleCommand implements IRuleGenerationCommand {
 	
 	def EClass getNode(){
 		
-		if(this.node == null){
+		if(this.node === null){
 			this.node = metamodelWrapper.getNode(ruleSpec.getNode)	
 		}
 		
@@ -49,8 +47,8 @@ class SwapEdgeRuleCommand implements IRuleGenerationCommand {
 	
 	def EReference getEdge(){
 		
-		if(this.edge == null){
-			this.edge = repairSpecs.head.edge
+		if(this.edge === null){
+			this.edge = repairSpecs.edge
 		}
 		
 		return this.edge;
@@ -58,7 +56,6 @@ class SwapEdgeRuleCommand implements IRuleGenerationCommand {
 	
 	override generate() {
 		
-		var moduleName = NamingConstants.SWAP_prefix + this.getEdge.name + "_edge_for_" + this.getNode.name + "_rules";
 		//Create module
 		val module = HenshinFactory.eINSTANCE.createModule();
 		

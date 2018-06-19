@@ -521,10 +521,10 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.MULTIPLICITY_REFINEMENT_SPEC__UPPER_BOUND));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getMultiplicityRefinementSpecAccess().getNodeSTRINGTerminalRuleCall_2_0(), semanticObject.getNode());
-		feeder.accept(grammarAccess.getMultiplicityRefinementSpecAccess().getEdgeSTRINGTerminalRuleCall_4_0(), semanticObject.getEdge());
-		feeder.accept(grammarAccess.getMultiplicityRefinementSpecAccess().getLowerBoundINTTerminalRuleCall_6_0(), semanticObject.getLowerBound());
-		feeder.accept(grammarAccess.getMultiplicityRefinementSpecAccess().getUpperBoundSignedIntegerParserRuleCall_8_0(), semanticObject.getUpperBound());
+		feeder.accept(grammarAccess.getMultiplicityRefinementSpecAccess().getNodeSTRINGTerminalRuleCall_3_0(), semanticObject.getNode());
+		feeder.accept(grammarAccess.getMultiplicityRefinementSpecAccess().getEdgeSTRINGTerminalRuleCall_5_0(), semanticObject.getEdge());
+		feeder.accept(grammarAccess.getMultiplicityRefinementSpecAccess().getLowerBoundINTTerminalRuleCall_7_0(), semanticObject.getLowerBound());
+		feeder.accept(grammarAccess.getMultiplicityRefinementSpecAccess().getUpperBoundSignedIntegerParserRuleCall_9_0(), semanticObject.getUpperBound());
 		feeder.finish();
 	}
 	

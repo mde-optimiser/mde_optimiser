@@ -3,7 +3,7 @@ package uk.ac.kcl.mdeoptimise.rulegen.metamodel.tests
 import java.util.LinkedList
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.henshin.model.resource.HenshinResourceSet
-import org.eclipse.xtext.junit4.XtextRunner
+import org.eclipse.xtext.testing.XtextRunner
 import org.junit.Test
 import org.junit.runner.RunWith
 import uk.ac.kcl.mdeoptimise.BasePathSpec

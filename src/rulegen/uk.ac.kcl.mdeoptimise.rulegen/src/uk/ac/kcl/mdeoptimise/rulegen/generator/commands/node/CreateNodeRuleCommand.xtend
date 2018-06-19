@@ -42,7 +42,7 @@ class CreateNodeRuleCommand implements IRuleGenerationCommand {
 	
 	def EClass getNode(){
 		
-		if(this.node == null){
+		if(this.node === null){
 			this.node = metamodelWrapper.getNode(ruleSpec.getNode)	
 		}
 		
@@ -132,7 +132,7 @@ class CreateNodeRuleCommand implements IRuleGenerationCommand {
 			createdNode.getOutgoing(repairSpec.edge).forEach[ outgoingEdge |
 				
 				//Find existing target node
-				var existingTargetNode =  HenshinRuleAnalysisUtilEx.findCorrespondingNodeInLHS(outgoingEdge.getTarget())
+				var existingTargetNode = HenshinRuleAnalysisUtilEx.findCorrespondingNodeInLHS(outgoingEdge.getTarget())
 			
 				//Create existing node A from which to take the existing target node
 				val existingsourceNodeName = Common.getFreeNodeName(GlobalConstants.NEWTGT, rule);
@@ -150,8 +150,8 @@ class CreateNodeRuleCommand implements IRuleGenerationCommand {
 			//Get the created node from the rule graphs
 			val createdNode = HenshinRuleAnalysisUtilEx.getRHSMinusLHSNodes(rule).get(0);
 			
-			repairSpecs.filter[repairSpec | repairSpec.repairSpecType == RepairSpecType.DELETE_LB_REPAIR
-				|| repairSpec.repairSpecType == RepairSpecType.CREATE_LB_REPAIR
+			repairSpecs.filter[repairSpec | repairSpec.repairSpecType === RepairSpecType.DELETE_LB_REPAIR
+				|| repairSpec.repairSpecType === RepairSpecType.CREATE_LB_REPAIR
 			].forEach[ repairSpec | 
 			
 				//Create existing node A from which to take the existing target node
@@ -161,7 +161,7 @@ class CreateNodeRuleCommand implements IRuleGenerationCommand {
 				createdNode.getOutgoing(repairSpec.edge).forEach[ outgoingEdge |
 					
 					//Find existing target node
-					var existingTargetNode =  HenshinRuleAnalysisUtilEx.findCorrespondingNodeInLHS(outgoingEdge.getTarget())
+					var existingTargetNode = HenshinRuleAnalysisUtilEx.findCorrespondingNodeInLHS(outgoingEdge.getTarget())
 					
 					//Create a delete edge between existing node A and an existing node B
 					HenshinRuleAnalysisUtilEx.createDeleteEdge(existingSourceNode.lhsNode, existingTargetNode, repairSpec.edge, rule);

@@ -12,11 +12,11 @@ import org.sidiff.serge.configuration.Configuration.OperationType
 import org.sidiff.serge.configuration.GlobalConstants
 import org.sidiff.serge.core.Common
 import org.sidiff.serge.filter.ElementFilter
+import org.sidiff.serge.generators.actions.RuleParameterGenerator
 import org.sidiff.serge.generators.conditions.UpperBoundCheckGenerator
 import uk.ac.kcl.mdeoptimise.rulegen.generator.IRuleGenerationCommand
+import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.LowerBoundManyRepairCheckGenerator
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RefinedMetamodelWrapper
-import com.google.common.collect.Sets
-import org.sidiff.serge.generators.actions.RuleParameterGenerator
 
 class CreateNodeIterativeRepairManyRuleCommand implements IRuleGenerationCommand {
 	
@@ -130,28 +130,12 @@ class CreateNodeIterativeRepairManyRuleCommand implements IRuleGenerationCommand
 			]
 		]
 	
-	
-//		List<T> list = new ArrayList<T>(originalSet);
-//		int n = list.size();
-//		
-//		Set<Set<T>> powerSet = new HashSet<Set<T>>();
-//		
-//		for( long i = 0; i < (1 << n); i++) {
-//		    Set<T> element = new HashSet<T>();
-//		    for( int j = 0; j < n; j++ )
-//		        if( (i >> j) % 2 == 1 ) element.add(list.get(j));
-//		    powerSet.add(element); 
-//		}
-//		
-//		return powerSet;	
-	
-	
 	}
 	
 	//Apply the NACs
 	private def void applyRuleNacConditions(Rule rule){
 		
-		new uk.ac.kcl.mdeoptimise.rulegen.generator.commands.LowerBoundManyRepairCheckGenerator(rule).generate();
+		new LowerBoundManyRepairCheckGenerator(rule).generate();
 		new UpperBoundCheckGenerator(rule).generate();
 	}
 	

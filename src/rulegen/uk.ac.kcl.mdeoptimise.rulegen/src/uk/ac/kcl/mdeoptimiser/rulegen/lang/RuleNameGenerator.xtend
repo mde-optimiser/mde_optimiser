@@ -10,6 +10,9 @@ class RuleNameGenerator {
 		return String.format("%s_%s_%s_%s", ruleType, ruleSpec.actions, ruleSpec.getNode, combineRepairSpecNames(repairSpecs))
 	}
 	
+	def static String getRuleName(RuleSpec ruleSpec, RepairSpec repairSpec, String ruleType) {
+		return String.format("%s_%s_%s_%s", ruleType, ruleSpec.actions, ruleSpec.getNode, combineRepairSpecNames(#[repairSpec]))
+	}
 	
 	private static def String combineRepairSpecNames(List<RepairSpec> repairSpecs) {
 		
