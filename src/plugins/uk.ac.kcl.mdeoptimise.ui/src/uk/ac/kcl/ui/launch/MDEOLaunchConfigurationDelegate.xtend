@@ -1,6 +1,5 @@
 package uk.ac.kcl.ui.launch
 
-import com.google.inject.Injector
 import java.util.ArrayList
 import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.core.runtime.CoreException
@@ -14,7 +13,6 @@ import org.eclipse.jdt.launching.AbstractJavaLaunchConfigurationDelegate
 import org.eclipse.jdt.launching.ExecutionArguments
 import org.eclipse.jdt.launching.VMRunnerConfiguration
 import org.osgi.framework.FrameworkUtil
-import uk.ac.kcl.MDEOptimiseStandaloneSetup
 
 class MDEOLaunchConfigurationDelegate extends AbstractJavaLaunchConfigurationDelegate {
 		
@@ -130,10 +128,10 @@ class MDEOLaunchConfigurationDelegate extends AbstractJavaLaunchConfigurationDel
 	 */
 	def String[] buildStandaloneClasspath(ILaunchConfiguration configuration) {
 		
-		val bundlesContext =  FrameworkUtil.getBundle(this.class).getBundleContext();
+		val bundlesContext = FrameworkUtil.getBundle(this.class).getBundleContext();
 		val bundles = bundlesContext.getBundles();
 		
-		val bundlesClasspath =  new ArrayList<String>(getClasspath(configuration));
+		val bundlesClasspath = new ArrayList<String>(getClasspath(configuration));
 		
 		/**
 		 * TODO This is a hack to allow running the bundles from within eclipse.

@@ -3,63 +3,86 @@
  */
 package uk.ac.kcl.validation
 
+import org.eclipse.core.resources.ResourcesPlugin
+import org.eclipse.core.runtime.Path
+import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.jdt.core.JavaCore
+import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.validation.Check
-import uk.ac.kcl.mdeoptimise.Optimisation
-import org.eclipse.xtext.validation.CheckType
-import org.eclipse.xtext.resource.XtextResource
+import uk.ac.kcl.mdeoptimise.ConstraintInterpreterSpec
+import uk.ac.kcl.mdeoptimise.ObjectiveInterpreterSpec
+import org.eclipse.core.runtime.Platform
 
 /**
  * This class contains custom validation rules. 
- *
+ * 
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
  */
 class MDEOptimiseValidator extends AbstractMDEOptimiseValidator {
-	
+
 	public static val MDEO_PREFIX = "uk.ac.kcl.mdeoptimiser.";
 	public static val MDEO_LIB_NOT_ON_CLASSPATH = MDEO_PREFIX + 'mdeo_lib_not_on_classpath'
-//
-//	@Check
-//	def checkGreetingStartsWithCapital(Greeting greeting) {
-//		if (!Character.isUpperCase(greeting.name.charAt(0))) {
-//			warning('Name should start with a capital', 
-//					MDEOptimisePackage.Literals.GREETING__NAME,
-//					INVALID_NAME)
-//		}
-//	}
-	
-	  @Check
-	  def void checkClasspath(Optimisation moptFile)
-	  {
-	  	val typeReferences = getServices().getTypeReferences();
 
-	  	
-		  	if(typeReferences.findDeclaredType(Optimisation, moptFile) == null){
-				error("Couldn't find the mandatory library 'uk.ac.kcl.mdeoptimise' on the classpath.", 
-					moptFile, null, MDEOptimiseValidatorIssues.MDEO_LIB_NOT_ON_CLASSPATH);
-		  	}
-	  }
-	
-	
 	@Check
-	def checkMutationTypeConfigurationIsValid(Optimisation optimisationModel){
-		
-//		val optimisationType = optimisationModel.optimisation.algorithmVariation
-//		
-//		if(optimisationType.equals("mutation") 
-//			&& optimisationModel.evolvers.filter[ e | e.evolverType.equals("mutate")].empty
-//		){
-//			warning('Variation type mutation requires at least one evolver of type mutate', 
-//				MdeoptimisePackage.Literals::OPTIMISATION_SPEC__ALGORITHM_VARIATION)
-//		}
-//
-//		if(optimisationType.equals("genetic") 
-//			&& (optimisationModel.evolvers.filter[ e | e.evolverType.equals("mutate")].empty
-//				|| optimisationModel.evolvers.filter[ e | e.evolverType.equals("breed")].empty
-//			)
-//		){
-//			warning('Variation type genetic requires at least one evolver of type mutate and one of type breed', 
-//				MdeoptimisePackage.Literals::OPTIMISATION_SPEC__ALGORITHM_VARIATION)
-//		}
-		
+	def void checkClasspathContainsMdeoLibraryForJavaObjectives(ObjectiveInterpreterSpec objectiveSpec) {
+		if (objectiveSpec.objectiveType.equals("java") && workspaceAccessible) {
+	
+			var resourceURI = EcoreUtil2.getPlatformResourceOrNormalizedURI(objectiveSpec.eContainer);
+			checkMDEOClasspath(objectiveSpec, resourceURI);
+
+		}
+
 	}
+
+	@Check
+	def void checkClasspathContainsMdeoLibraryForJavaConstraints(ConstraintInterpreterSpec objectiveSpec) {
+		
+		if (objectiveSpec.constraintType.equals("java") && workspaceAccessible) {
+
+			var resourceURI = EcoreUtil2.getPlatformResourceOrNormalizedURI(objectiveSpec.eContainer);
+			checkMDEOClasspath(objectiveSpec, resourceURI);
+		}
+
+	}
+	
+	//TODO This might be a heavy check
+	/**
+	 * Check if eclipse is running in GUI mode or headless
+	 */
+	def boolean workspaceAccessible(){
+		return Platform.isRunning
+	}
+
+	def void checkMDEOClasspath(EObject contextObject, URI resourceURI) {
+		
+		
+		var platformStringUri = resourceURI.toPlatformString(true)
+		
+		//Is the resource uri valid?
+		if(resourceURI.empty || platformStringUri == null){
+			return
+		}
+		
+		var path = new Path(platformStringUri)
+		
+		var mdeoOnClasspath = false;
+		
+		var project = ResourcesPlugin.getWorkspace().root.getFile(path)
+
+		var javaProject = JavaCore.create(project.project);
+		var classpath = javaProject.rawClasspath
+
+		for (var i = 0; i < classpath.length; i++) {
+			if (classpath.get(i).getPath().toString().indexOf("uk.ac.kcl.mdeoptimise.MDEO_CONTAINER/dsl") != -1) {
+				mdeoOnClasspath = true;
+			}
+		}
+
+		if (!mdeoOnClasspath) {
+			error("Couldn't find the mandatory library 'uk.ac.kcl.mdeoptimise' on the classpath.", contextObject, null,
+				MDEOptimiseValidatorIssues.MDEO_LIB_NOT_ON_CLASSPATH);
+		}
+	}
+
 }
