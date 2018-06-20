@@ -106,6 +106,11 @@ public class MdeoptimiseAdapterFactory extends AdapterFactoryImpl
         return createConstraintInterpreterSpecAdapter();
       }
       @Override
+      public Adapter caseModelInitialiserSpec(ModelInitialiserSpec object)
+      {
+        return createModelInitialiserSpecAdapter();
+      }
+      @Override
       public Adapter caseRulegenSpec(RulegenSpec object)
       {
         return createRulegenSpecAdapter();
@@ -268,6 +273,21 @@ public class MdeoptimiseAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createConstraintInterpreterSpecAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.mdeoptimise.ModelInitialiserSpec <em>Model Initialiser Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.mdeoptimise.ModelInitialiserSpec
+   * @generated
+   */
+  public Adapter createModelInitialiserSpecAdapter()
   {
     return null;
   }

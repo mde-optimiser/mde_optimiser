@@ -115,6 +115,13 @@ public class MdeoptimiseSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case MdeoptimisePackage.MODEL_INITIALISER_SPEC:
+      {
+        ModelInitialiserSpec modelInitialiserSpec = (ModelInitialiserSpec)theEObject;
+        T result = caseModelInitialiserSpec(modelInitialiserSpec);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case MdeoptimisePackage.RULEGEN_SPEC:
       {
         RulegenSpec rulegenSpec = (RulegenSpec)theEObject;
@@ -288,6 +295,22 @@ public class MdeoptimiseSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseConstraintInterpreterSpec(ConstraintInterpreterSpec object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Model Initialiser Spec</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Model Initialiser Spec</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseModelInitialiserSpec(ModelInitialiserSpec object)
   {
     return null;
   }

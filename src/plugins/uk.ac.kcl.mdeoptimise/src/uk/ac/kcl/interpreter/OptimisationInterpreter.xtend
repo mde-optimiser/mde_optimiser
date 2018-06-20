@@ -42,11 +42,13 @@ class OptimisationInterpreter {
 	def Iterator<MoeaOptimisationSolution> start() {
 		
 		//This model provider loads the model given by the user in the DSL
-		val userModelProvider = new UserModelProvider(getResourceSet(projectRootPath.append(model.basepath.location).toPortableString), model.model.location)
+		
+		
+		
 		var solutionGenerator = new SolutionGenerator(model, 
 											getBreedingOperators, 
 											getMutationOperators, 
-											userModelProvider, 
+											getModelProvider, 
 											getMetamodel);
 
 		//TODO Find a better way to do this stuff
@@ -56,6 +58,23 @@ class OptimisationInterpreter {
 		
 		return new MoeaOptimisation()
 									.execute(model.optimisation, solutionGenerator)
+	}
+	
+	def IModelProvider getModelProvider(){
+		
+		if(model.modelInitialiser !== null){
+			return new UserModelProvider(getModelInitialiser(), getResourceSet(projectRootPath.append(model.basepath.location).toPortableString), model.model.location)
+		}
+		
+		return new UserModelProvider(getResourceSet(projectRootPath.append(model.basepath.location).toPortableString), model.model.location)
+	}
+	
+	def IModelInitialiser getModelInitialiser(){
+		
+		if(model.modelInitialiser !== null){
+			return Class.forName(model.modelInitialiser.initialiser).newInstance() as IModelInitialiser
+		}
+		
 	}
 
 	def getResourceSet(String basePath) {

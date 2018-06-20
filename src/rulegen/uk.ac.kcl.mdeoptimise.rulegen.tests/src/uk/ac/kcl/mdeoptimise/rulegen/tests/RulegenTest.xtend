@@ -24,7 +24,7 @@ import uk.ac.kcl.mdeoptimise.rulegen.tests.utils.MetamodelLoader
 import static org.junit.Assert.*
 
 @RunWith(XtextRunner)
-class RulegenTests {
+class RulegenTest {
 	
 	
 	EPackage metamodel;

@@ -137,9 +137,28 @@ ruleOptimisation returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getOptimisationAccess().getRefinementsMultiplicityRefinementSpecParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getOptimisationAccess().getModelInitialiserModelInitialiserSpecParserRuleCall_3_0());
 				}
-				lv_refinements_3_0=ruleMultiplicityRefinementSpec
+				lv_modelInitialiser_3_0=ruleModelInitialiserSpec
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getOptimisationRule());
+					}
+					set(
+						$current,
+						"modelInitialiser",
+						lv_modelInitialiser_3_0,
+						"uk.ac.kcl.MDEOptimise.ModelInitialiserSpec");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)?
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getOptimisationAccess().getRefinementsMultiplicityRefinementSpecParserRuleCall_4_0());
+				}
+				lv_refinements_4_0=ruleMultiplicityRefinementSpec
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getOptimisationRule());
@@ -147,7 +166,7 @@ ruleOptimisation returns [EObject current=null]
 					add(
 						$current,
 						"refinements",
-						lv_refinements_3_0,
+						lv_refinements_4_0,
 						"uk.ac.kcl.MDEOptimise.MultiplicityRefinementSpec");
 					afterParserOrEnumRuleCall();
 				}
@@ -156,9 +175,9 @@ ruleOptimisation returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getOptimisationAccess().getObjectivesObjectiveInterpreterSpecParserRuleCall_4_0());
+					newCompositeNode(grammarAccess.getOptimisationAccess().getObjectivesObjectiveInterpreterSpecParserRuleCall_5_0());
 				}
-				lv_objectives_4_0=ruleObjectiveInterpreterSpec
+				lv_objectives_5_0=ruleObjectiveInterpreterSpec
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getOptimisationRule());
@@ -166,7 +185,7 @@ ruleOptimisation returns [EObject current=null]
 					add(
 						$current,
 						"objectives",
-						lv_objectives_4_0,
+						lv_objectives_5_0,
 						"uk.ac.kcl.MDEOptimise.ObjectiveInterpreterSpec");
 					afterParserOrEnumRuleCall();
 				}
@@ -175,9 +194,9 @@ ruleOptimisation returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getOptimisationAccess().getConstraintsConstraintInterpreterSpecParserRuleCall_5_0());
+					newCompositeNode(grammarAccess.getOptimisationAccess().getConstraintsConstraintInterpreterSpecParserRuleCall_6_0());
 				}
-				lv_constraints_5_0=ruleConstraintInterpreterSpec
+				lv_constraints_6_0=ruleConstraintInterpreterSpec
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getOptimisationRule());
@@ -185,7 +204,7 @@ ruleOptimisation returns [EObject current=null]
 					add(
 						$current,
 						"constraints",
-						lv_constraints_5_0,
+						lv_constraints_6_0,
 						"uk.ac.kcl.MDEOptimise.ConstraintInterpreterSpec");
 					afterParserOrEnumRuleCall();
 				}
@@ -194,9 +213,9 @@ ruleOptimisation returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getOptimisationAccess().getReportsReportInterpreterSpecParserRuleCall_6_0());
+					newCompositeNode(grammarAccess.getOptimisationAccess().getReportsReportInterpreterSpecParserRuleCall_7_0());
 				}
-				lv_reports_6_0=ruleReportInterpreterSpec
+				lv_reports_7_0=ruleReportInterpreterSpec
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getOptimisationRule());
@@ -204,7 +223,7 @@ ruleOptimisation returns [EObject current=null]
 					add(
 						$current,
 						"reports",
-						lv_reports_6_0,
+						lv_reports_7_0,
 						"uk.ac.kcl.MDEOptimise.ReportInterpreterSpec");
 					afterParserOrEnumRuleCall();
 				}
@@ -213,9 +232,9 @@ ruleOptimisation returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getOptimisationAccess().getEvolversEvolverSpecParserRuleCall_7_0());
+					newCompositeNode(grammarAccess.getOptimisationAccess().getEvolversEvolverSpecParserRuleCall_8_0());
 				}
-				lv_evolvers_7_0=ruleEvolverSpec
+				lv_evolvers_8_0=ruleEvolverSpec
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getOptimisationRule());
@@ -223,7 +242,7 @@ ruleOptimisation returns [EObject current=null]
 					add(
 						$current,
 						"evolvers",
-						lv_evolvers_7_0,
+						lv_evolvers_8_0,
 						"uk.ac.kcl.MDEOptimise.EvolverSpec");
 					afterParserOrEnumRuleCall();
 				}
@@ -232,9 +251,9 @@ ruleOptimisation returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getOptimisationAccess().getRulegenRulegenSpecParserRuleCall_8_0());
+					newCompositeNode(grammarAccess.getOptimisationAccess().getRulegenRulegenSpecParserRuleCall_9_0());
 				}
-				lv_rulegen_8_0=ruleRulegenSpec
+				lv_rulegen_9_0=ruleRulegenSpec
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getOptimisationRule());
@@ -242,7 +261,7 @@ ruleOptimisation returns [EObject current=null]
 					add(
 						$current,
 						"rulegen",
-						lv_rulegen_8_0,
+						lv_rulegen_9_0,
 						"uk.ac.kcl.MDEOptimise.RulegenSpec");
 					afterParserOrEnumRuleCall();
 				}
@@ -251,9 +270,9 @@ ruleOptimisation returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getOptimisationAccess().getOptimisationOptimisationSpecParserRuleCall_9_0());
+					newCompositeNode(grammarAccess.getOptimisationAccess().getOptimisationOptimisationSpecParserRuleCall_10_0());
 				}
-				lv_optimisation_9_0=ruleOptimisationSpec
+				lv_optimisation_10_0=ruleOptimisationSpec
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getOptimisationRule());
@@ -261,7 +280,7 @@ ruleOptimisation returns [EObject current=null]
 					set(
 						$current,
 						"optimisation",
-						lv_optimisation_9_0,
+						lv_optimisation_10_0,
 						"uk.ac.kcl.MDEOptimise.OptimisationSpec");
 					afterParserOrEnumRuleCall();
 				}
@@ -580,6 +599,55 @@ ruleConstraintInterpreterSpec returns [EObject current=null]
 		{
 			newLeafNode(otherlv_5, grammarAccess.getConstraintInterpreterSpecAccess().getRightCurlyBracketKeyword_5());
 		}
+	)
+;
+
+// Entry rule entryRuleModelInitialiserSpec
+entryRuleModelInitialiserSpec returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getModelInitialiserSpecRule()); }
+	iv_ruleModelInitialiserSpec=ruleModelInitialiserSpec
+	{ $current=$iv_ruleModelInitialiserSpec.current; }
+	EOF;
+
+// Rule ModelInitialiserSpec
+ruleModelInitialiserSpec returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='initialise'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getModelInitialiserSpecAccess().getInitialiseKeyword_0());
+		}
+		otherlv_1='models'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getModelInitialiserSpecAccess().getModelsKeyword_1());
+		}
+		otherlv_2='using'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getModelInitialiserSpecAccess().getUsingKeyword_2());
+		}
+		(
+			(
+				lv_initialiser_3_0=RULE_URL
+				{
+					newLeafNode(lv_initialiser_3_0, grammarAccess.getModelInitialiserSpecAccess().getInitialiserURLTerminalRuleCall_3_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getModelInitialiserSpecRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"initialiser",
+						lv_initialiser_3_0,
+						"uk.ac.kcl.MDEOptimise.URL");
+				}
+			)
+		)
 	)
 ;
 

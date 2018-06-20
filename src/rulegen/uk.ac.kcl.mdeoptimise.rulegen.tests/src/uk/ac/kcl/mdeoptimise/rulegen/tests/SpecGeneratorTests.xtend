@@ -6722,7 +6722,7 @@ class SpecGeneratorTests {
 				println(String.format("Generated rules: %s", combinations.head))
 				
 				assertThat(combinations.repairSpecsFromSet, IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray))
-				//assertEquals(1, combinations.length)
+				assertEquals(1, combinations.length)
 			}
 			
 
