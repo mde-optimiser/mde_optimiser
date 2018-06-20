@@ -83,6 +83,7 @@ public class MDEOptimiseParser extends AbstractContentAssistParser {
 					put(grammarAccess.getModelPathSpecAccess().getGroup(), "rule__ModelPathSpec__Group__0");
 					put(grammarAccess.getObjectiveInterpreterSpecAccess().getGroup(), "rule__ObjectiveInterpreterSpec__Group__0");
 					put(grammarAccess.getConstraintInterpreterSpecAccess().getGroup(), "rule__ConstraintInterpreterSpec__Group__0");
+					put(grammarAccess.getModelInitialiserSpecAccess().getGroup(), "rule__ModelInitialiserSpec__Group__0");
 					put(grammarAccess.getRulegenSpecAccess().getGroup(), "rule__RulegenSpec__Group__0");
 					put(grammarAccess.getRulegenNodeAccess().getGroup(), "rule__RulegenNode__Group__0");
 					put(grammarAccess.getRulegenNodeAccess().getGroup_1(), "rule__RulegenNode__Group_1__0");
@@ -284,13 +285,14 @@ public class MDEOptimiseParser extends AbstractContentAssistParser {
 					put(grammarAccess.getOptimisationAccess().getBasepathAssignment_0(), "rule__Optimisation__BasepathAssignment_0");
 					put(grammarAccess.getOptimisationAccess().getMetamodelAssignment_1(), "rule__Optimisation__MetamodelAssignment_1");
 					put(grammarAccess.getOptimisationAccess().getModelAssignment_2(), "rule__Optimisation__ModelAssignment_2");
-					put(grammarAccess.getOptimisationAccess().getRefinementsAssignment_3(), "rule__Optimisation__RefinementsAssignment_3");
-					put(grammarAccess.getOptimisationAccess().getObjectivesAssignment_4(), "rule__Optimisation__ObjectivesAssignment_4");
-					put(grammarAccess.getOptimisationAccess().getConstraintsAssignment_5(), "rule__Optimisation__ConstraintsAssignment_5");
-					put(grammarAccess.getOptimisationAccess().getReportsAssignment_6(), "rule__Optimisation__ReportsAssignment_6");
-					put(grammarAccess.getOptimisationAccess().getEvolversAssignment_7(), "rule__Optimisation__EvolversAssignment_7");
-					put(grammarAccess.getOptimisationAccess().getRulegenAssignment_8(), "rule__Optimisation__RulegenAssignment_8");
-					put(grammarAccess.getOptimisationAccess().getOptimisationAssignment_9(), "rule__Optimisation__OptimisationAssignment_9");
+					put(grammarAccess.getOptimisationAccess().getModelInitialiserAssignment_3(), "rule__Optimisation__ModelInitialiserAssignment_3");
+					put(grammarAccess.getOptimisationAccess().getRefinementsAssignment_4(), "rule__Optimisation__RefinementsAssignment_4");
+					put(grammarAccess.getOptimisationAccess().getObjectivesAssignment_5(), "rule__Optimisation__ObjectivesAssignment_5");
+					put(grammarAccess.getOptimisationAccess().getConstraintsAssignment_6(), "rule__Optimisation__ConstraintsAssignment_6");
+					put(grammarAccess.getOptimisationAccess().getReportsAssignment_7(), "rule__Optimisation__ReportsAssignment_7");
+					put(grammarAccess.getOptimisationAccess().getEvolversAssignment_8(), "rule__Optimisation__EvolversAssignment_8");
+					put(grammarAccess.getOptimisationAccess().getRulegenAssignment_9(), "rule__Optimisation__RulegenAssignment_9");
+					put(grammarAccess.getOptimisationAccess().getOptimisationAssignment_10(), "rule__Optimisation__OptimisationAssignment_10");
 					put(grammarAccess.getBasePathSpecAccess().getLocationAssignment_1(), "rule__BasePathSpec__LocationAssignment_1");
 					put(grammarAccess.getMetaModelSpecAccess().getLocationAssignment_1(), "rule__MetaModelSpec__LocationAssignment_1");
 					put(grammarAccess.getModelPathSpecAccess().getLocationAssignment_1(), "rule__ModelPathSpec__LocationAssignment_1");
@@ -301,6 +303,7 @@ public class MDEOptimiseParser extends AbstractContentAssistParser {
 					put(grammarAccess.getConstraintInterpreterSpecAccess().getConstraintNameAssignment_1(), "rule__ConstraintInterpreterSpec__ConstraintNameAssignment_1");
 					put(grammarAccess.getConstraintInterpreterSpecAccess().getConstraintTypeAssignment_2(), "rule__ConstraintInterpreterSpec__ConstraintTypeAssignment_2");
 					put(grammarAccess.getConstraintInterpreterSpecAccess().getConstraintSpecAssignment_4(), "rule__ConstraintInterpreterSpec__ConstraintSpecAssignment_4");
+					put(grammarAccess.getModelInitialiserSpecAccess().getInitialiserAssignment_3(), "rule__ModelInitialiserSpec__InitialiserAssignment_3");
 					put(grammarAccess.getRulegenSpecAccess().getNodeSpecAssignment_2_0(), "rule__RulegenSpec__NodeSpecAssignment_2_0");
 					put(grammarAccess.getRulegenSpecAccess().getEdgeSpecAssignment_2_1(), "rule__RulegenSpec__EdgeSpecAssignment_2_1");
 					put(grammarAccess.getRulegenNodeAccess().getNodeAssignment_0(), "rule__RulegenNode__NodeAssignment_0");

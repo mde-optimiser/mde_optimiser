@@ -66,6 +66,7 @@ import uk.ac.kcl.mdeoptimise.EvolverParameter;
 import uk.ac.kcl.mdeoptimise.EvolverSpec;
 import uk.ac.kcl.mdeoptimise.MdeoptimisePackage;
 import uk.ac.kcl.mdeoptimise.MetaModelSpec;
+import uk.ac.kcl.mdeoptimise.ModelInitialiserSpec;
 import uk.ac.kcl.mdeoptimise.ModelPathSpec;
 import uk.ac.kcl.mdeoptimise.MultiplicityRefinementSpec;
 import uk.ac.kcl.mdeoptimise.ObjectiveInterpreterSpec;
@@ -110,6 +111,9 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 				return; 
 			case MdeoptimisePackage.META_MODEL_SPEC:
 				sequence_MetaModelSpec(context, (MetaModelSpec) semanticObject); 
+				return; 
+			case MdeoptimisePackage.MODEL_INITIALISER_SPEC:
+				sequence_ModelInitialiserSpec(context, (ModelInitialiserSpec) semanticObject); 
 				return; 
 			case MdeoptimisePackage.MODEL_PATH_SPEC:
 				sequence_ModelPathSpec(context, (ModelPathSpec) semanticObject); 
@@ -486,6 +490,24 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     ModelInitialiserSpec returns ModelInitialiserSpec
+	 *
+	 * Constraint:
+	 *     initialiser=URL
+	 */
+	protected void sequence_ModelInitialiserSpec(ISerializationContext context, ModelInitialiserSpec semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.MODEL_INITIALISER_SPEC__INITIALISER) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.MODEL_INITIALISER_SPEC__INITIALISER));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getModelInitialiserSpecAccess().getInitialiserURLTerminalRuleCall_3_0(), semanticObject.getInitialiser());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     ModelPathSpec returns ModelPathSpec
 	 *
 	 * Constraint:
@@ -584,6 +606,7 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 	 *         basepath=BasePathSpec 
 	 *         metamodel=MetaModelSpec 
 	 *         model=ModelPathSpec 
+	 *         modelInitialiser=ModelInitialiserSpec? 
 	 *         refinements+=MultiplicityRefinementSpec* 
 	 *         objectives+=ObjectiveInterpreterSpec+ 
 	 *         constraints+=ConstraintInterpreterSpec* 

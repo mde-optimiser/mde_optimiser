@@ -96,13 +96,22 @@ public interface MdeoptimisePackage extends EPackage
   int OPTIMISATION__MODEL = 2;
 
   /**
+   * The feature id for the '<em><b>Model Initialiser</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OPTIMISATION__MODEL_INITIALISER = 3;
+
+  /**
    * The feature id for the '<em><b>Refinements</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OPTIMISATION__REFINEMENTS = 3;
+  int OPTIMISATION__REFINEMENTS = 4;
 
   /**
    * The feature id for the '<em><b>Objectives</b></em>' containment reference list.
@@ -111,7 +120,7 @@ public interface MdeoptimisePackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPTIMISATION__OBJECTIVES = 4;
+  int OPTIMISATION__OBJECTIVES = 5;
 
   /**
    * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
@@ -120,7 +129,7 @@ public interface MdeoptimisePackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPTIMISATION__CONSTRAINTS = 5;
+  int OPTIMISATION__CONSTRAINTS = 6;
 
   /**
    * The feature id for the '<em><b>Reports</b></em>' containment reference list.
@@ -129,7 +138,7 @@ public interface MdeoptimisePackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPTIMISATION__REPORTS = 6;
+  int OPTIMISATION__REPORTS = 7;
 
   /**
    * The feature id for the '<em><b>Evolvers</b></em>' containment reference list.
@@ -138,7 +147,7 @@ public interface MdeoptimisePackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPTIMISATION__EVOLVERS = 7;
+  int OPTIMISATION__EVOLVERS = 8;
 
   /**
    * The feature id for the '<em><b>Rulegen</b></em>' containment reference list.
@@ -147,7 +156,7 @@ public interface MdeoptimisePackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPTIMISATION__RULEGEN = 8;
+  int OPTIMISATION__RULEGEN = 9;
 
   /**
    * The feature id for the '<em><b>Optimisation</b></em>' containment reference.
@@ -156,7 +165,7 @@ public interface MdeoptimisePackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPTIMISATION__OPTIMISATION = 9;
+  int OPTIMISATION__OPTIMISATION = 10;
 
   /**
    * The number of structural features of the '<em>Optimisation</em>' class.
@@ -165,7 +174,7 @@ public interface MdeoptimisePackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPTIMISATION_FEATURE_COUNT = 10;
+  int OPTIMISATION_FEATURE_COUNT = 11;
 
   /**
    * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.BasePathSpecImpl <em>Base Path Spec</em>}' class.
@@ -353,6 +362,34 @@ public interface MdeoptimisePackage extends EPackage
   int CONSTRAINT_INTERPRETER_SPEC_FEATURE_COUNT = 3;
 
   /**
+   * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.ModelInitialiserSpecImpl <em>Model Initialiser Spec</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.mdeoptimise.impl.ModelInitialiserSpecImpl
+   * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getModelInitialiserSpec()
+   * @generated
+   */
+  int MODEL_INITIALISER_SPEC = 6;
+
+  /**
+   * The feature id for the '<em><b>Initialiser</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODEL_INITIALISER_SPEC__INITIALISER = 0;
+
+  /**
+   * The number of structural features of the '<em>Model Initialiser Spec</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODEL_INITIALISER_SPEC_FEATURE_COUNT = 1;
+
+  /**
    * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.RulegenSpecImpl <em>Rulegen Spec</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -360,7 +397,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getRulegenSpec()
    * @generated
    */
-  int RULEGEN_SPEC = 6;
+  int RULEGEN_SPEC = 7;
 
   /**
    * The feature id for the '<em><b>Node Spec</b></em>' containment reference.
@@ -397,7 +434,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getRulegenNode()
    * @generated
    */
-  int RULEGEN_NODE = 7;
+  int RULEGEN_NODE = 8;
 
   /**
    * The feature id for the '<em><b>Node</b></em>' attribute.
@@ -434,7 +471,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getRulegenEdge()
    * @generated
    */
-  int RULEGEN_EDGE = 8;
+  int RULEGEN_EDGE = 9;
 
   /**
    * The feature id for the '<em><b>Node</b></em>' attribute.
@@ -480,7 +517,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getReportInterpreterSpec()
    * @generated
    */
-  int REPORT_INTERPRETER_SPEC = 9;
+  int REPORT_INTERPRETER_SPEC = 10;
 
   /**
    * The feature id for the '<em><b>Report Name</b></em>' attribute.
@@ -517,7 +554,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getEvolverSpec()
    * @generated
    */
-  int EVOLVER_SPEC = 10;
+  int EVOLVER_SPEC = 11;
 
   /**
    * The feature id for the '<em><b>Evolver Type</b></em>' attribute.
@@ -572,7 +609,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getMultiplicityRefinementSpec()
    * @generated
    */
-  int MULTIPLICITY_REFINEMENT_SPEC = 11;
+  int MULTIPLICITY_REFINEMENT_SPEC = 12;
 
   /**
    * The feature id for the '<em><b>Node</b></em>' attribute.
@@ -627,7 +664,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getEvolverParameter()
    * @generated
    */
-  int EVOLVER_PARAMETER = 12;
+  int EVOLVER_PARAMETER = 13;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -673,7 +710,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getParameterFunction()
    * @generated
    */
-  int PARAMETER_FUNCTION = 13;
+  int PARAMETER_FUNCTION = 14;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -710,7 +747,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getOptimisationSpec()
    * @generated
    */
-  int OPTIMISATION_SPEC = 14;
+  int OPTIMISATION_SPEC = 15;
 
   /**
    * The feature id for the '<em><b>Algorithm Factory</b></em>' attribute.
@@ -783,7 +820,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getAlgorithmVariation()
    * @generated
    */
-  int ALGORITHM_VARIATION = 15;
+  int ALGORITHM_VARIATION = 16;
 
   /**
    * The feature id for the '<em><b>Probability Variation</b></em>' containment reference.
@@ -820,7 +857,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getProbabilityVariation()
    * @generated
    */
-  int PROBABILITY_VARIATION = 16;
+  int PROBABILITY_VARIATION = 17;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -866,7 +903,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getEvolverType()
    * @generated
    */
-  int EVOLVER_TYPE = 17;
+  int EVOLVER_TYPE = 18;
 
 
   /**
@@ -911,6 +948,17 @@ public interface MdeoptimisePackage extends EPackage
    * @generated
    */
   EReference getOptimisation_Model();
+
+  /**
+   * Returns the meta object for the containment reference '{@link uk.ac.kcl.mdeoptimise.Optimisation#getModelInitialiser <em>Model Initialiser</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Model Initialiser</em>'.
+   * @see uk.ac.kcl.mdeoptimise.Optimisation#getModelInitialiser()
+   * @see #getOptimisation()
+   * @generated
+   */
+  EReference getOptimisation_ModelInitialiser();
 
   /**
    * Returns the meta object for the containment reference list '{@link uk.ac.kcl.mdeoptimise.Optimisation#getRefinements <em>Refinements</em>}'.
@@ -1148,6 +1196,27 @@ public interface MdeoptimisePackage extends EPackage
    * @generated
    */
   EAttribute getConstraintInterpreterSpec_ConstraintSpec();
+
+  /**
+   * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.ModelInitialiserSpec <em>Model Initialiser Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Model Initialiser Spec</em>'.
+   * @see uk.ac.kcl.mdeoptimise.ModelInitialiserSpec
+   * @generated
+   */
+  EClass getModelInitialiserSpec();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.ModelInitialiserSpec#getInitialiser <em>Initialiser</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Initialiser</em>'.
+   * @see uk.ac.kcl.mdeoptimise.ModelInitialiserSpec#getInitialiser()
+   * @see #getModelInitialiserSpec()
+   * @generated
+   */
+  EAttribute getModelInitialiserSpec_Initialiser();
 
   /**
    * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.RulegenSpec <em>Rulegen Spec</em>}'.
@@ -1690,6 +1759,14 @@ public interface MdeoptimisePackage extends EPackage
     EReference OPTIMISATION__MODEL = eINSTANCE.getOptimisation_Model();
 
     /**
+     * The meta object literal for the '<em><b>Model Initialiser</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference OPTIMISATION__MODEL_INITIALISER = eINSTANCE.getOptimisation_ModelInitialiser();
+
+    /**
      * The meta object literal for the '<em><b>Refinements</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1874,6 +1951,24 @@ public interface MdeoptimisePackage extends EPackage
      * @generated
      */
     EAttribute CONSTRAINT_INTERPRETER_SPEC__CONSTRAINT_SPEC = eINSTANCE.getConstraintInterpreterSpec_ConstraintSpec();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.ModelInitialiserSpecImpl <em>Model Initialiser Spec</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.mdeoptimise.impl.ModelInitialiserSpecImpl
+     * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getModelInitialiserSpec()
+     * @generated
+     */
+    EClass MODEL_INITIALISER_SPEC = eINSTANCE.getModelInitialiserSpec();
+
+    /**
+     * The meta object literal for the '<em><b>Initialiser</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MODEL_INITIALISER_SPEC__INITIALISER = eINSTANCE.getModelInitialiserSpec_Initialiser();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.RulegenSpecImpl <em>Rulegen Spec</em>}' class.

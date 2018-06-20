@@ -78,6 +78,15 @@ public interface MdeoptimiseFactory extends EFactory
   ConstraintInterpreterSpec createConstraintInterpreterSpec();
 
   /**
+   * Returns a new object of class '<em>Model Initialiser Spec</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Model Initialiser Spec</em>'.
+   * @generated
+   */
+  ModelInitialiserSpec createModelInitialiserSpec();
+
+  /**
    * Returns a new object of class '<em>Rulegen Spec</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

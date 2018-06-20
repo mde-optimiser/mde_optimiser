@@ -72,6 +72,7 @@ public class MdeoptimiseFactoryImpl extends EFactoryImpl implements MdeoptimiseF
       case MdeoptimisePackage.MODEL_PATH_SPEC: return createModelPathSpec();
       case MdeoptimisePackage.OBJECTIVE_INTERPRETER_SPEC: return createObjectiveInterpreterSpec();
       case MdeoptimisePackage.CONSTRAINT_INTERPRETER_SPEC: return createConstraintInterpreterSpec();
+      case MdeoptimisePackage.MODEL_INITIALISER_SPEC: return createModelInitialiserSpec();
       case MdeoptimisePackage.RULEGEN_SPEC: return createRulegenSpec();
       case MdeoptimisePackage.RULEGEN_NODE: return createRulegenNode();
       case MdeoptimisePackage.RULEGEN_EDGE: return createRulegenEdge();
@@ -186,6 +187,17 @@ public class MdeoptimiseFactoryImpl extends EFactoryImpl implements MdeoptimiseF
   {
     ConstraintInterpreterSpecImpl constraintInterpreterSpec = new ConstraintInterpreterSpecImpl();
     return constraintInterpreterSpec;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ModelInitialiserSpec createModelInitialiserSpec()
+  {
+    ModelInitialiserSpecImpl modelInitialiserSpec = new ModelInitialiserSpecImpl();
+    return modelInitialiserSpec;
   }
 
   /**

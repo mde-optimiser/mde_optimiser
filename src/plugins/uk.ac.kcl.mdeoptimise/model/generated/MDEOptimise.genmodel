@@ -14,6 +14,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/basepath"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/metamodel"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/model"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/modelInitialiser"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/refinements"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/objectives"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/constraints"/>
@@ -41,6 +42,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//ConstraintInterpreterSpec/constraintName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//ConstraintInterpreterSpec/constraintType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//ConstraintInterpreterSpec/constraintSpec"/>
+    </genClasses>
+    <genClasses ecoreClass="MDEOptimise.ecore#//ModelInitialiserSpec">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//ModelInitialiserSpec/initialiser"/>
     </genClasses>
     <genClasses ecoreClass="MDEOptimise.ecore#//RulegenSpec">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//RulegenSpec/nodeSpec"/>

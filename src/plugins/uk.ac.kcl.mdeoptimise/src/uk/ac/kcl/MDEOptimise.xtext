@@ -7,6 +7,7 @@ Optimisation:
 	basepath=BasePathSpec
 	metamodel=MetaModelSpec
 	model=ModelPathSpec
+	modelInitialiser=ModelInitialiserSpec?
 	refinements+=MultiplicityRefinementSpec*
 	objectives+=ObjectiveInterpreterSpec+
 	constraints+=ConstraintInterpreterSpec*
@@ -77,6 +78,10 @@ ObjectiveInterpreterSpec:
 
 ConstraintInterpreterSpec:
 	"constraint" constraintName=ValidID constraintType=ENTITY_TYPE "{" (constraintSpec=STRING) "}"
+;
+
+ModelInitialiserSpec:
+	"initialise" "models" "using" initialiser=URL
 ;
 
 RulegenSpec:

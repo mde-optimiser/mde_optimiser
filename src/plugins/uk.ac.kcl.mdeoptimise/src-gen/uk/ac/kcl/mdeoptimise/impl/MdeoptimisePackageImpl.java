@@ -20,6 +20,7 @@ import uk.ac.kcl.mdeoptimise.EvolverType;
 import uk.ac.kcl.mdeoptimise.MdeoptimiseFactory;
 import uk.ac.kcl.mdeoptimise.MdeoptimisePackage;
 import uk.ac.kcl.mdeoptimise.MetaModelSpec;
+import uk.ac.kcl.mdeoptimise.ModelInitialiserSpec;
 import uk.ac.kcl.mdeoptimise.ModelPathSpec;
 import uk.ac.kcl.mdeoptimise.MultiplicityRefinementSpec;
 import uk.ac.kcl.mdeoptimise.ObjectiveInterpreterSpec;
@@ -81,6 +82,13 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * @generated
    */
   private EClass constraintInterpreterSpecEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass modelInitialiserSpecEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -274,7 +282,7 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOptimisation_Refinements()
+  public EReference getOptimisation_ModelInitialiser()
   {
     return (EReference)optimisationEClass.getEStructuralFeatures().get(3);
   }
@@ -284,7 +292,7 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOptimisation_Objectives()
+  public EReference getOptimisation_Refinements()
   {
     return (EReference)optimisationEClass.getEStructuralFeatures().get(4);
   }
@@ -294,7 +302,7 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOptimisation_Constraints()
+  public EReference getOptimisation_Objectives()
   {
     return (EReference)optimisationEClass.getEStructuralFeatures().get(5);
   }
@@ -304,7 +312,7 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOptimisation_Reports()
+  public EReference getOptimisation_Constraints()
   {
     return (EReference)optimisationEClass.getEStructuralFeatures().get(6);
   }
@@ -314,7 +322,7 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOptimisation_Evolvers()
+  public EReference getOptimisation_Reports()
   {
     return (EReference)optimisationEClass.getEStructuralFeatures().get(7);
   }
@@ -324,7 +332,7 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOptimisation_Rulegen()
+  public EReference getOptimisation_Evolvers()
   {
     return (EReference)optimisationEClass.getEStructuralFeatures().get(8);
   }
@@ -334,9 +342,19 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOptimisation_Optimisation()
+  public EReference getOptimisation_Rulegen()
   {
     return (EReference)optimisationEClass.getEStructuralFeatures().get(9);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getOptimisation_Optimisation()
+  {
+    return (EReference)optimisationEClass.getEStructuralFeatures().get(10);
   }
 
   /**
@@ -487,6 +505,26 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
   public EAttribute getConstraintInterpreterSpec_ConstraintSpec()
   {
     return (EAttribute)constraintInterpreterSpecEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getModelInitialiserSpec()
+  {
+    return modelInitialiserSpecEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getModelInitialiserSpec_Initialiser()
+  {
+    return (EAttribute)modelInitialiserSpecEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -973,6 +1011,7 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
     createEReference(optimisationEClass, OPTIMISATION__BASEPATH);
     createEReference(optimisationEClass, OPTIMISATION__METAMODEL);
     createEReference(optimisationEClass, OPTIMISATION__MODEL);
+    createEReference(optimisationEClass, OPTIMISATION__MODEL_INITIALISER);
     createEReference(optimisationEClass, OPTIMISATION__REFINEMENTS);
     createEReference(optimisationEClass, OPTIMISATION__OBJECTIVES);
     createEReference(optimisationEClass, OPTIMISATION__CONSTRAINTS);
@@ -1000,6 +1039,9 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
     createEAttribute(constraintInterpreterSpecEClass, CONSTRAINT_INTERPRETER_SPEC__CONSTRAINT_NAME);
     createEAttribute(constraintInterpreterSpecEClass, CONSTRAINT_INTERPRETER_SPEC__CONSTRAINT_TYPE);
     createEAttribute(constraintInterpreterSpecEClass, CONSTRAINT_INTERPRETER_SPEC__CONSTRAINT_SPEC);
+
+    modelInitialiserSpecEClass = createEClass(MODEL_INITIALISER_SPEC);
+    createEAttribute(modelInitialiserSpecEClass, MODEL_INITIALISER_SPEC__INITIALISER);
 
     rulegenSpecEClass = createEClass(RULEGEN_SPEC);
     createEReference(rulegenSpecEClass, RULEGEN_SPEC__NODE_SPEC);
@@ -1095,6 +1137,7 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
     initEReference(getOptimisation_Basepath(), this.getBasePathSpec(), null, "basepath", null, 0, 1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOptimisation_Metamodel(), this.getMetaModelSpec(), null, "metamodel", null, 0, 1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOptimisation_Model(), this.getModelPathSpec(), null, "model", null, 0, 1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getOptimisation_ModelInitialiser(), this.getModelInitialiserSpec(), null, "modelInitialiser", null, 0, 1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOptimisation_Refinements(), this.getMultiplicityRefinementSpec(), null, "refinements", null, 0, -1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOptimisation_Objectives(), this.getObjectiveInterpreterSpec(), null, "objectives", null, 0, -1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOptimisation_Constraints(), this.getConstraintInterpreterSpec(), null, "constraints", null, 0, -1, Optimisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1122,6 +1165,9 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
     initEAttribute(getConstraintInterpreterSpec_ConstraintName(), ecorePackage.getEString(), "constraintName", null, 0, 1, ConstraintInterpreterSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getConstraintInterpreterSpec_ConstraintType(), ecorePackage.getEString(), "constraintType", null, 0, 1, ConstraintInterpreterSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getConstraintInterpreterSpec_ConstraintSpec(), ecorePackage.getEString(), "constraintSpec", null, 0, 1, ConstraintInterpreterSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(modelInitialiserSpecEClass, ModelInitialiserSpec.class, "ModelInitialiserSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getModelInitialiserSpec_Initialiser(), ecorePackage.getEString(), "initialiser", null, 0, 1, ModelInitialiserSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(rulegenSpecEClass, RulegenSpec.class, "RulegenSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getRulegenSpec_NodeSpec(), this.getRulegenNode(), null, "nodeSpec", null, 0, 1, RulegenSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

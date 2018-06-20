@@ -8,6 +8,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="model" eType="#//ModelPathSpec"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="modelInitialiser" eType="#//ModelInitialiserSpec"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="refinements" upperBound="-1"
         eType="#//MultiplicityRefinementSpec" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="objectives" upperBound="-1"
@@ -42,6 +44,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="constraintName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="constraintType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="constraintSpec" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ModelInitialiserSpec">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="initialiser" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RulegenSpec">
     <eStructuralFeatures xsi:type="ecore:EReference" name="nodeSpec" eType="#//RulegenNode"
