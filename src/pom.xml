@@ -7,8 +7,8 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<tycho-version>1.1.0</tycho-version>
-		<xtextVersion>2.12.0</xtextVersion>
+		<tycho-version>1.0.0</tycho-version>
+		<xtextVersion>2.10.0</xtextVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
@@ -20,11 +20,8 @@
 		<module>plugins/uk.ac.kcl.mdeoptimise.target</module>
 		<module>features/uk.ac.kcl.mdeoptimise.feature</module>
         <module>releng/uk.ac.kcl.mdeoptimise.repository</module>
-        <module>releng/uk.ac.kcl.mdeoptimise.repository.standalone</module>
 		<module>plugins/uk.ac.kcl.mdeoptimise.tests</module>
 		<module>plugins/uk.ac.kcl.mdeoptimise.ui.tests</module>
-        <module>rulegen/uk.ac.kcl.mdeoptimise.rulegen</module>
-        <module>rulegen/uk.ac.kcl.mdeoptimise.rulegen.tests</module>
 	</modules>
 	<build>
 		<plugins>
@@ -104,18 +101,7 @@
 							<arch>x86_64</arch>
 						</environment>
 					</environments>
-					        <dependency-resolution>
-            <extraRequirements>
-                <!--  Workaround for an issue with mockito depending on hamcrest -->
-                <requirement>
-                    <type>eclipse-plugin</type>
-                    <id>org.hamcrest</id>
-                    <versionRange>0.0.0</versionRange>
-                </requirement>
-            </extraRequirements>
-        </dependency-resolution>
 				</configuration>
-				
 			</plugin>
 		</plugins>
 		<pluginManagement>
@@ -253,33 +239,6 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-	<repositories>
-		<repository>
-			<id>codehaus-snapshots</id>
-			<name>disable dead 'Codehaus Snapshots' repository, see https://bugs.eclipse.org/bugs/show_bug.cgi?id=481478</name>
-			<url>http://nexus.codehaus.org/snapshots/</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>codehaus-snapshots</id>
-			<name>disable dead 'Codehaus Snapshots' repository, see https://bugs.eclipse.org/bugs/show_bug.cgi?id=481478</name>
-			<url>http://nexus.codehaus.org/snapshots/</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
-
 	<dependencies>
 	</dependencies>
 </project>

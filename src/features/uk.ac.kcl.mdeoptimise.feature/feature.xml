@@ -37,7 +37,7 @@
       <import plugin="org.eclipse.core.runtime"/>
       <import plugin="org.eclipse.core.resources"/>
       <import plugin="org.eclipse.jdt.launching" version="3.8.100" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.jdt.debug.ui" />
+      <import plugin="org.eclipse.jdt.debug.ui" version="3.7.201" match="greaterOrEqual"/>
    	  <!-- MOEA Framework dependencies -->
       <import plugin="org.moeaframework"/>
    	  <import plugin="org.apache.commons.cli" version="1.2.0" match="greaterOrEqual"/>
@@ -50,13 +50,6 @@
    	  <!-- Regex rule parameter generation dependencies -->
    	  <import plugin="dk.brics.automaton" version="1.11.0.8" match="greaterOrEqual"/>
    	  <import plugin="com.github.mifmif.generex" version="1.0.2" match="greaterOrEqual"/>
-   	  <!-- Serge dependencies -->
-   	  <import plugin="org.sidiff.serge" />
-   	  <import plugin="org.sidiff.common.emf" />
-   	  <import plugin="org.sidiff.common" />
-   	  <import plugin="org.sidiff.common.henshin" />
-   	  <import plugin="org.sidiff.common.emf.extensions"/>,
-   	  
    </requires>
 
    <plugin
@@ -75,14 +68,6 @@
 
    <plugin
          id="uk.ac.kcl.mdeoptimise.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-
-   <plugin
-         id="uk.ac.kcl.mdeoptimise.rulegen"
          download-size="0"
          install-size="0"
          version="0.0.0"

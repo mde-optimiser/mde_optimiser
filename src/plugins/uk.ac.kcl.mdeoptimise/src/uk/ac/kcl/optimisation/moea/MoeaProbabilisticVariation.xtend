@@ -1,12 +1,14 @@
 package uk.ac.kcl.optimisation.moea
 
-import java.io.InvalidObjectException
-import java.util.Arrays
-import java.util.LinkedList
-import java.util.Random
 import org.moeaframework.core.Solution
 import org.moeaframework.core.Variation
 import uk.ac.kcl.optimisation.SolutionGenerator
+import org.eclipse.emf.ecore.EObject
+import java.util.ArrayList
+import java.util.Arrays
+import java.util.Random
+import java.io.InvalidObjectException
+import java.util.LinkedList
 
 class MoeaProbabilisticVariation implements Variation {
 	
@@ -25,7 +27,7 @@ class MoeaProbabilisticVariation implements Variation {
 		this.mutationRate = mutationRate;
 	}
 	
-	//Used to evolve a solution using the henshin evolvers
+	//USed to evolve a solution using the henshin evolvers
 	override evolve(Solution[] parents) {
 		var result = Arrays.copyOf(parents, parents.length);
 		var random = new Random();
@@ -34,7 +36,7 @@ class MoeaProbabilisticVariation implements Variation {
 		val crossoverProbability = random.nextDouble
 		if(crossoverProbability <= crossoverRate){
 			println("Running crossover with probability: " + crossoverProbability)
-			if(result.length === crossoverOperator.arity){
+			if(result.length == crossoverOperator.arity){
 				result = crossoverOperator.evolve(result)
 			} else {
 				throw new InvalidObjectException("Invalid number of parents for crossover operator.");

@@ -2,9 +2,9 @@ package uk.ac.kcl.tests.interpreter.objectives.ocl
 
 import javax.inject.Inject
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.testing.InjectWith
-import org.eclipse.xtext.testing.XtextRunner
-import org.eclipse.xtext.testing.validation.ValidationTestHelper
+import org.eclipse.xtext.junit4.InjectWith
+import org.eclipse.xtext.junit4.XtextRunner
+import org.eclipse.xtext.junit4.validation.ValidationTestHelper
 import org.junit.Test
 import org.junit.runner.RunWith
 import uk.ac.kcl.interpreter.guidance.GuidanceFunctionAdapter

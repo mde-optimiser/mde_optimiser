@@ -17,7 +17,7 @@ class MinimiseUnassignedWorkItems implements IGuidanceFunction {
 		
 		println("Unassigned backlog work items: " + fitness)
 		
-		return fitness
+		return fitness * -1
 	}
 	
 	override getName() {

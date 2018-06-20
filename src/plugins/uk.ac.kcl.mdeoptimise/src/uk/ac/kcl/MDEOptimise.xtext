@@ -7,45 +7,11 @@ Optimisation:
 	basepath=BasePathSpec
 	metamodel=MetaModelSpec
 	model=ModelPathSpec
-	refinements+=MultiplicityRefinementSpec*
 	objectives+=ObjectiveInterpreterSpec+
 	constraints+=ConstraintInterpreterSpec*
-	reports+=ReportInterpreterSpec*
-	evolvers+=EvolverSpec*
-	rulegen+=RulegenSpec*
+	evolvers+=EvolverSpec+
 	optimisation=OptimisationSpec
 ;
-
-
-//Rulegen dsl additions
-//problem metamodel <metamodel.ecore>
-//model <input-model.xmi>
-//refine metamodel {Node, edge, lb, ub}
-//...
-//mutation {Sprint} //Implies all actions for this node
-//mutation {Sprint,CREATE} //Implies only creation allowed
-//mutation {Sprint,DELETE} //Implies only deletion allowed
-//mutation {Sprint,isEncapsulatedBy} //Implies only add and remove edge allowed
-//mutation {Sprint,isEncapsulatedBy,ADD} //Implies only add edge allowed
-//mutation {Sprint,isEncapsulatedBy,REMOVE} //Implies only remove edge allowed
-//objective ...
-//constraint ...
-//optimisation ...
-
-
-// Current DSL
-//
-//basepath <src/models/cra/>
-//metamodel <architectureCRA.ecore>
-//model <TTC_InputRDG_C.xmi>
-//objective MaximiseCRA maximise java { "models.moea.MaximiseCRA" }
-//constraint MinimiseClasslessFeatures java { "models.moea.MinimiseClasslessFeatures" }
-//mutate using <craEvolvers.henshin> unit "createClass"
-//mutate using <craEvolvers.henshin> unit "assignFeature"
-//mutate using <craEvolvers.henshin> unit "moveFeature"
-//mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
-//optimisation provider moea algorithm NSGAII variation mutation evolutions 1000 population 30 experiments 2
-
 
 /**
  * Use this to identify a basepath to be set in the HenshinResourceSet so that Henshin 
@@ -58,11 +24,6 @@ BasePathSpec:
 	"basepath" location=URL
 ;
 
-/**
- * URL might be a file location, relative to basepath, in which case we load the metamodel dynamically.
- * It may also be a dot-separated fully-qualified class name for a meta-model package, in which case we
- * register that globally.
- */
 MetaModelSpec:
 	"metamodel" location=URL
 ;
@@ -79,32 +40,12 @@ ConstraintInterpreterSpec:
 	"constraint" constraintName=ValidID constraintType=ENTITY_TYPE "{" (constraintSpec=STRING) "}"
 ;
 
-RulegenSpec:
-	"mutate" "{" (nodeSpec=RulegenNode | edgeSpec=RulegenEdge) "}"
-;
-
-RulegenNode:
-	node=STRING ("," generationRestriction=(CREATE_NODE|DELETE_NODE))?
-;
-
-RulegenEdge:
-	node=STRING "," edge=STRING ("," generationRestriction=(ADD_EDGE|REMOVE_EDGE))?
-;
-
-ReportInterpreterSpec:
-	"report" reportName=ValidID "{" (reportSpec=STRING) "}"
-;
-
 EvolverSpec:
 	evolverType=EvolverType "using" rule_location=URL
 	         "unit" unit=STRING
 	         ("parameters" '{'
 					parameters+=EvolverParameter (',' parameters+=EvolverParameter)*
 				'}')?
-;
-
-MultiplicityRefinementSpec:
-	"refine" "metamodel" "{" node=STRING "," edge=STRING "," lowerBound=INT "," upperBound=SignedInteger "}"
 ;
 
 /**
@@ -130,7 +71,7 @@ OptimisationSpec:
 				"variation" algorithmVariation=AlgorithmVariation
 				"evolutions" algorithmEvolutions=INT
 				"population" algorithmPopulation=INT
-				("batches" algorithmBatches=INT)?
+				("experiments" algorithmExperiments=INT)?
 ;
 
 AlgorithmVariation:
@@ -139,25 +80,6 @@ AlgorithmVariation:
 
 ProbabilityVariation:
 	 type=GENETIC_VARIATION ('(' crossover_rate=Number ',' mutation_rate=Number ')')?
-;
-
-SignedInteger returns ecore::EIntegerObject:
-  '-'? INT;
-
-terminal CREATE_NODE returns ecore::EString:
-	'CREATE'
-;
-
-terminal DELETE_NODE returns ecore::EString:
-	'DELETE'
-;
-
-terminal ADD_EDGE returns ecore::EString:
-	'ADD'
-;
-
-terminal REMOVE_EDGE returns ecore::EString:
-	'REMOVE'
 ;
 
 terminal GENETIC_VARIATION returns ecore::EString:

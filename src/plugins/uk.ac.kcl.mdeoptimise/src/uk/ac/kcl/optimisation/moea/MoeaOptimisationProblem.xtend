@@ -3,10 +3,11 @@ package uk.ac.kcl.optimisation.moea
 import java.util.List
 import org.moeaframework.core.Solution
 import org.moeaframework.problem.AbstractProblem
-import uk.ac.kcl.interpreter.IGuidanceFunction
-import uk.ac.kcl.interpreter.guidance.GuidanceFunctionAdapter
-import uk.ac.kcl.interpreter.guidance.GuidanceFunctionsFactory
 import uk.ac.kcl.optimisation.SolutionGenerator
+import uk.ac.kcl.interpreter.guidance.GuidanceFunctionsFactory
+import uk.ac.kcl.interpreter.guidance.GuidanceFunctionAdapter
+import uk.ac.kcl.interpreter.IGuidanceFunction
+import java.util.Random
 
 class MoeaOptimisationProblem extends AbstractProblem {
 
@@ -31,7 +32,7 @@ class MoeaOptimisationProblem extends AbstractProblem {
 	}
 
 	def getConstraintFunctions() {
-		if (this.constraintFunctions === null) {
+		if (this.constraintFunctions == null) {
 			setConstraintFunctions()
 		}
 
@@ -39,7 +40,7 @@ class MoeaOptimisationProblem extends AbstractProblem {
 	}
 
 	def setConstraintFunctions() {
-		if (constraintFunctions === null) {
+		if (constraintFunctions == null) {
 			this.constraintFunctions = solutionGenerator.optimisationModel.constraints.map [ constraint |
 				new GuidanceFunctionsFactory().loadFunction(new GuidanceFunctionAdapter(constraint))
 			]
@@ -47,7 +48,7 @@ class MoeaOptimisationProblem extends AbstractProblem {
 	}
 
 	def getFitnessFunctions() {
-		if (this.fitnessFunctions === null) {
+		if (this.fitnessFunctions == null) {
 			setFitnessFunctions()
 		}
 
@@ -55,7 +56,7 @@ class MoeaOptimisationProblem extends AbstractProblem {
 	}
 
 	def void setFitnessFunctions() {
-		if (fitnessFunctions === null) {
+		if (fitnessFunctions == null) {
 			this.fitnessFunctions = solutionGenerator.optimisationModel.objectives.map [ objective |
 				new GuidanceFunctionsFactory().loadFunction(new GuidanceFunctionAdapter(objective))
 			]

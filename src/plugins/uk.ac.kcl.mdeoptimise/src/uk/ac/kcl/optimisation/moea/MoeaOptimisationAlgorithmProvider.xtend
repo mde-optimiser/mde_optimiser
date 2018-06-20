@@ -1,38 +1,34 @@
 package uk.ac.kcl.optimisation.moea
 
 import java.util.Properties
-import org.moeaframework.algorithm.EpsilonMOEA
 import org.moeaframework.algorithm.NSGAII
 import org.moeaframework.algorithm.SPEA2
 import org.moeaframework.core.Algorithm
-import org.moeaframework.core.EpsilonBoxDominanceArchive
 import org.moeaframework.core.NondominatedSortingPopulation
 import org.moeaframework.core.Problem
-import org.moeaframework.core.Variation
-import org.moeaframework.core.operator.GAVariation
 import org.moeaframework.core.operator.RandomInitialization
 import org.moeaframework.core.operator.TournamentSelection
 import org.moeaframework.core.spi.AlgorithmProvider
-import uk.ac.kcl.mdeoptimise.AlgorithmVariation
 import uk.ac.kcl.optimisation.SolutionGenerator
+import org.moeaframework.algorithm.EpsilonMOEA
+import org.moeaframework.core.EpsilonBoxDominanceArchive
+import org.moeaframework.core.operator.GAVariation
+import org.moeaframework.core.Variation
+import uk.ac.kcl.mdeoptimise.AlgorithmVariation
 
 class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
-	
-	public Algorithm algo; 
 	
 	override getAlgorithm(String algorithm, Properties properties, Problem problem) {
 		switch algorithm {
 			case "NSGAII":
-				this.algo = createNSGAII(problem, properties)
+				return createNSGAII(problem, properties)
 			case "SPEA2":
-				this.algo = createSPEA2(problem, properties)
+				return createSPEA2(problem, properties)
 			case "eMOEA":
-				this.algo = createeMOEA(problem, properties)
+				return createeMOEA(problem, properties)
 			default:
 				throw new Exception("Invalid algorithm given: " + algorithm)
 		}
-		
-		return this.algo;
 	}
 	
 	def Variation getVariation(Properties properties){

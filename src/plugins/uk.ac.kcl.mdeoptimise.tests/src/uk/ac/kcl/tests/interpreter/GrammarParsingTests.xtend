@@ -1,15 +1,15 @@
 package uk.ac.kcl.tests.interpreter
 
 import javax.inject.Inject
-import org.eclipse.xtext.testing.InjectWith
-import org.eclipse.xtext.testing.XtextRunner
+import org.eclipse.xtext.junit4.InjectWith
+import org.eclipse.xtext.junit4.XtextRunner
+import org.eclipse.xtext.junit4.validation.ValidationTestHelper
 import org.junit.Test
 import org.junit.runner.RunWith
 import uk.ac.kcl.tests.FullTestInjector
 import uk.ac.kcl.tests.TestModelHelper
 
 import static org.junit.Assert.*
-import org.eclipse.xtext.testing.validation.ValidationTestHelper
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)
@@ -47,7 +47,7 @@ class GrammarParsingTests {
 	@Test
 	def void assertJavaObjectiveSignatureAndSpecIsParsed() {
 		
-		val javaObjective = "objective name minimise java { \"models.fitness.Fitness.java\" }"
+		val javaObjective = "objective name minimise java { \"models.fitness.Fitness.java\""
 		
 		val model = testModelHelper.getParsedFullValidModelWithCustomObjectives(javaObjective)
 		
@@ -62,7 +62,7 @@ class GrammarParsingTests {
 	@Test
 	def void assertOclObjectiveSignatureAndSpecIsParsed() {
 		
-		val oclObjective = "objective name maximise ocl { \"Class.allInstances()->size()\" }"
+		val oclObjective = "objective name maximise ocl { \"Class.allInstances()->size()\""
 		
 		val model = testModelHelper.getParsedFullValidModelWithCustomObjectives(oclObjective)
 		

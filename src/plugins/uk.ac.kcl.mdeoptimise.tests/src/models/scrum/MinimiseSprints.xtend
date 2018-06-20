@@ -18,7 +18,7 @@ class MinimiseSprints implements IGuidanceFunction {
 		
 		println("Counted sprints: " + fitness)
 		
-		return fitness
+		return fitness * -1
 	}
 	
 	override getName() {
