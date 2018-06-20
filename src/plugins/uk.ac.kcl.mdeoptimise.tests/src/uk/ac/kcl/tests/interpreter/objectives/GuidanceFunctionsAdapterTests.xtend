@@ -1,7 +1,7 @@
 package uk.ac.kcl.tests.interpreter.objectives
 
 import com.google.inject.Inject
-import org.eclipse.xtext.junit4.XtextRunner
+import org.eclipse.xtext.testing.XtextRunner
 import org.junit.Test
 import org.junit.runner.RunWith
 import uk.ac.kcl.interpreter.guidance.GuidanceFunctionAdapter
@@ -9,7 +9,7 @@ import uk.ac.kcl.tests.TestModelHelper
 
 import static org.junit.Assert.*
 import uk.ac.kcl.tests.FullTestInjector
-import org.eclipse.xtext.junit4.InjectWith
+import org.eclipse.xtext.testing.InjectWith
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)

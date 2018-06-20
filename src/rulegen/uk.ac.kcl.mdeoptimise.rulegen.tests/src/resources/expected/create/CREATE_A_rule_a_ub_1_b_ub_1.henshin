@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_ZSEMsSpdEeil7ZYzJ-FVhw" name="CREATE_A_rule" description="Creates a node in all allowed metamodel contexts">
+  <imports href="rulegen.ecore#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_ZSGB4CpdEeil7ZYzJ-FVhw" name="createA_IN_Context" description="creates one A in the context: Context">
+    <parameters xmi:id="_ZSGB4SpdEeil7ZYzJ-FVhw" name="Selected">
+      <type xsi:type="ecore:EClass" href="rulegen.ecore#//Context"/>
+    </parameters>
+    <parameters xmi:id="_ZSGB4ipdEeil7ZYzJ-FVhw" name="New">
+      <type xsi:type="ecore:EClass" href="rulegen.ecore#//A"/>
+    </parameters>
+    <lhs xmi:id="_ZSGB4ypdEeil7ZYzJ-FVhw" name="Lhs">
+      <nodes xmi:id="_ZSGB5CpdEeil7ZYzJ-FVhw" name="Selected">
+        <type href="rulegen.ecore#//Context"/>
+      </nodes>
+      <formula xsi:type="henshin:Not" xmi:id="_ZSGB5SpdEeil7ZYzJ-FVhw">
+        <child xsi:type="henshin:NestedCondition" xmi:id="_ZSGB5ipdEeil7ZYzJ-FVhw">
+          <conclusion xmi:id="_ZSGB5ypdEeil7ZYzJ-FVhw" name="ub0">
+            <nodes xmi:id="_ZSGB6CpdEeil7ZYzJ-FVhw" name="" outgoing="_ZSGB6ipdEeil7ZYzJ-FVhw">
+              <type href="rulegen.ecore#//Context"/>
+            </nodes>
+            <nodes xmi:id="_ZSGB6SpdEeil7ZYzJ-FVhw" name="" incoming="_ZSGB6ipdEeil7ZYzJ-FVhw">
+              <type href="rulegen.ecore#//A"/>
+            </nodes>
+            <edges xmi:id="_ZSGB6ipdEeil7ZYzJ-FVhw" source="_ZSGB6CpdEeil7ZYzJ-FVhw" target="_ZSGB6SpdEeil7ZYzJ-FVhw">
+              <type href="rulegen.ecore#//Context/a"/>
+            </edges>
+          </conclusion>
+          <mappings xmi:id="_ZSGB6ypdEeil7ZYzJ-FVhw" origin="_ZSGB5CpdEeil7ZYzJ-FVhw" image="_ZSGB6CpdEeil7ZYzJ-FVhw"/>
+        </child>
+      </formula>
+    </lhs>
+    <rhs xmi:id="_ZSGo8CpdEeil7ZYzJ-FVhw" name="Rhs">
+      <nodes xmi:id="_ZSGo8SpdEeil7ZYzJ-FVhw" name="Selected" outgoing="_ZSGo8ypdEeil7ZYzJ-FVhw">
+        <type href="rulegen.ecore#//Context"/>
+      </nodes>
+      <nodes xmi:id="_ZSGo8ipdEeil7ZYzJ-FVhw" name="New" incoming="_ZSGo8ypdEeil7ZYzJ-FVhw">
+        <type href="rulegen.ecore#//A"/>
+      </nodes>
+      <edges xmi:id="_ZSGo8ypdEeil7ZYzJ-FVhw" source="_ZSGo8SpdEeil7ZYzJ-FVhw" target="_ZSGo8ipdEeil7ZYzJ-FVhw">
+        <type href="rulegen.ecore#//Context/a"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_ZSGo9CpdEeil7ZYzJ-FVhw" origin="_ZSGB5CpdEeil7ZYzJ-FVhw" image="_ZSGo8SpdEeil7ZYzJ-FVhw"/>
+  </units>
+</henshin:Module>

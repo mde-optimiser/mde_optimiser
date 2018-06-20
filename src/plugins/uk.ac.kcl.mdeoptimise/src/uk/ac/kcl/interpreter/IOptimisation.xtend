@@ -1,9 +1,8 @@
 package uk.ac.kcl.interpreter
 
-import org.eclipse.emf.ecore.EObject
+import java.util.Iterator
 import uk.ac.kcl.mdeoptimise.OptimisationSpec
 import uk.ac.kcl.optimisation.SolutionGenerator
-import java.util.Iterator
 import uk.ac.kcl.optimisation.moea.MoeaOptimisationSolution
 
 interface IOptimisation {

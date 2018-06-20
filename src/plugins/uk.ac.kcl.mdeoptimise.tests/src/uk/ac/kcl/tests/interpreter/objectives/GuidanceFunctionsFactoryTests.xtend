@@ -3,8 +3,8 @@ package uk.ac.kcl.tests.interpreter.objectives
 import java.io.InvalidObjectException
 import javax.inject.Inject
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.junit4.InjectWith
-import org.eclipse.xtext.junit4.XtextRunner
+import org.eclipse.xtext.testing.InjectWith
+import org.eclipse.xtext.testing.XtextRunner
 import org.junit.Test
 import org.junit.runner.RunWith
 import uk.ac.kcl.interpreter.guidance.GuidanceFunctionAdapter

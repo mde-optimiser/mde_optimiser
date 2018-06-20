@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ASCII"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_Ga7IkCpSEeiho7KPkxR-_g" name="REMOVE_edge_edgeDC_to_D_rules" description="Removes D edge of type edgeDC">
+  <imports href="rulegen.ecore#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_Ga8WsCpSEeiho7KPkxR-_g" name="removeFromD_edgeDC_C" description="Removes from D's reference edgeDC the target C">
+    <lhs xmi:id="_Ga8WsSpSEeiho7KPkxR-_g" name="LHS">
+      <nodes xmi:id="_Ga8WsipSEeiho7KPkxR-_g" name="Selected" outgoing="_Ga8WtCpSEeiho7KPkxR-_g">
+        <type href="rulegen.ecore#//D"/>
+      </nodes>
+      <nodes xmi:id="_Ga8WsypSEeiho7KPkxR-_g" name="OldTarget" incoming="_Ga8WtCpSEeiho7KPkxR-_g">
+        <type href="rulegen.ecore#//C"/>
+      </nodes>
+      <edges xmi:id="_Ga8WtCpSEeiho7KPkxR-_g" source="_Ga8WsipSEeiho7KPkxR-_g" target="_Ga8WsypSEeiho7KPkxR-_g">
+        <type href="rulegen.ecore#//D/edgeDC"/>
+      </edges>
+      <formula xsi:type="henshin:NestedCondition" xmi:id="_Ga8WtSpSEeiho7KPkxR-_g">
+        <conclusion xmi:id="_Ga8WtipSEeiho7KPkxR-_g" name="lb0">
+          <nodes xmi:id="_Ga8WtypSEeiho7KPkxR-_g" name="" outgoing="_Ga8WvSpSEeiho7KPkxR-_g _Ga8WvipSEeiho7KPkxR-_g _Ga8WvypSEeiho7KPkxR-_g _Ga8WwCpSEeiho7KPkxR-_g _Ga8WwSpSEeiho7KPkxR-_g">
+            <type href="rulegen.ecore#//D"/>
+          </nodes>
+          <nodes xmi:id="_Ga8WuCpSEeiho7KPkxR-_g" name="" incoming="_Ga8WvSpSEeiho7KPkxR-_g">
+            <type href="rulegen.ecore#//C"/>
+          </nodes>
+          <nodes xmi:id="_Ga8WuSpSEeiho7KPkxR-_g" name="" incoming="_Ga8WvipSEeiho7KPkxR-_g">
+            <type href="rulegen.ecore#//C"/>
+          </nodes>
+          <nodes xmi:id="_Ga8WuipSEeiho7KPkxR-_g" name="" incoming="_Ga8WvypSEeiho7KPkxR-_g">
+            <type href="rulegen.ecore#//C"/>
+          </nodes>
+          <nodes xmi:id="_Ga8WuypSEeiho7KPkxR-_g" name="" incoming="_Ga8WwCpSEeiho7KPkxR-_g">
+            <type href="rulegen.ecore#//C"/>
+          </nodes>
+          <nodes xmi:id="_Ga8WvCpSEeiho7KPkxR-_g" name="" incoming="_Ga8WwSpSEeiho7KPkxR-_g">
+            <type href="rulegen.ecore#//C"/>
+          </nodes>
+          <edges xmi:id="_Ga8WvSpSEeiho7KPkxR-_g" source="_Ga8WtypSEeiho7KPkxR-_g" target="_Ga8WuCpSEeiho7KPkxR-_g">
+            <type href="rulegen.ecore#//D/edgeDC"/>
+          </edges>
+          <edges xmi:id="_Ga8WvipSEeiho7KPkxR-_g" source="_Ga8WtypSEeiho7KPkxR-_g" target="_Ga8WuSpSEeiho7KPkxR-_g">
+            <type href="rulegen.ecore#//D/edgeDC"/>
+          </edges>
+          <edges xmi:id="_Ga8WvypSEeiho7KPkxR-_g" source="_Ga8WtypSEeiho7KPkxR-_g" target="_Ga8WuipSEeiho7KPkxR-_g">
+            <type href="rulegen.ecore#//D/edgeDC"/>
+          </edges>
+          <edges xmi:id="_Ga8WwCpSEeiho7KPkxR-_g" source="_Ga8WtypSEeiho7KPkxR-_g" target="_Ga8WuypSEeiho7KPkxR-_g">
+            <type href="rulegen.ecore#//D/edgeDC"/>
+          </edges>
+          <edges xmi:id="_Ga8WwSpSEeiho7KPkxR-_g" source="_Ga8WtypSEeiho7KPkxR-_g" target="_Ga8WvCpSEeiho7KPkxR-_g">
+            <type href="rulegen.ecore#//D/edgeDC"/>
+          </edges>
+        </conclusion>
+        <mappings xmi:id="_Ga8WwipSEeiho7KPkxR-_g" origin="_Ga8WsipSEeiho7KPkxR-_g" image="_Ga8WtypSEeiho7KPkxR-_g"/>
+      </formula>
+    </lhs>
+    <rhs xmi:id="_Ga8WwypSEeiho7KPkxR-_g" name="RHS">
+      <nodes xmi:id="_Ga8WxCpSEeiho7KPkxR-_g" name="Selected">
+        <type href="rulegen.ecore#//D"/>
+      </nodes>
+      <nodes xmi:id="_Ga8WxSpSEeiho7KPkxR-_g" name="OldTarget">
+        <type href="rulegen.ecore#//C"/>
+      </nodes>
+    </rhs>
+    <mappings xmi:id="_Ga8WxipSEeiho7KPkxR-_g" origin="_Ga8WsipSEeiho7KPkxR-_g" image="_Ga8WxCpSEeiho7KPkxR-_g"/>
+    <mappings xmi:id="_Ga8WxypSEeiho7KPkxR-_g" origin="_Ga8WsypSEeiho7KPkxR-_g" image="_Ga8WxSpSEeiho7KPkxR-_g"/>
+  </units>
+</henshin:Module>
