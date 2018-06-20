@@ -1,7 +1,7 @@
 package uk.ac.kcl.tests
 
 import com.google.inject.Inject
-import org.eclipse.xtext.junit4.util.ParseHelper
+import org.eclipse.xtext.testing.util.ParseHelper
 import uk.ac.kcl.mdeoptimise.Optimisation
 
 class TestModelHelper {

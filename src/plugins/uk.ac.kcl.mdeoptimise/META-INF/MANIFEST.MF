@@ -25,7 +25,10 @@ Require-Bundle: org.eclipse.xtext,
  org.apache.commons.lang3,
  org.eclipse.xtext.common.types,
  com.github.mifmif.generex,
- dk.brics.automaton
+ dk.brics.automaton,
+ org.eclipse.core.resources,
+ org.eclipse.jdt.core,
+ org.eclipse.core.runtime
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: uk.ac.kcl.validation,
  uk.ac.kcl,
@@ -50,4 +53,6 @@ Import-Package: org.apache.log4j,
  org.eclipse.emf.henshin.interpreter,
  org.eclipse.emf.ecore,
  org.eclipse.emf.common,
- org.eclipse.emf.henshin
+ org.eclipse.emf.henshin,
+ uk.ac.kcl.mdeoptimise.rulegen,
+ uk.ac.kcl.mdeoptimise.rulegen.metamodel

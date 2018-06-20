@@ -25,6 +25,7 @@ import org.eclipse.emf.henshin.interpreter.EGraph
 import java.util.Arrays
 import uk.ac.kcl.interpreter.evolvers.parameters.EvolverParametersFactory
 import org.eclipse.emf.henshin.model.ParameterKind
+import org.eclipse.emf.henshin.interpreter.Match
 
 class SolutionGenerator {
 
@@ -34,6 +35,7 @@ class SolutionGenerator {
 	
 	private Optimisation optimisationModel
 	private IEvolverParametersFactory evolverParametersFactory
+	private boolean enableManualRandomMatching = false;
 	
 	IModelProvider initialModelProvider
 
@@ -61,7 +63,7 @@ class SolutionGenerator {
 		this.evolverParametersFactory = new EvolverParametersFactory(model.evolvers)
 		
 		//Disable henshin warnings
-		ChangeImpl.PRINT_WARNINGS = false;
+		//ChangeImpl.PRINT_WARNINGS = false;
 	}
 
     /**
@@ -169,18 +171,75 @@ class SolutionGenerator {
 				)
 			]	
 		}
-		
+				
 		//Run the selected Henshin Unit
 		return unitRunner.execute(null)
 	}
-	
+
+	/**
+	 * Simple flag to allow us to decide what type of rule matching we want to use.
+	 * Henshin vs manually finding all the matches and randomly selecting one.
+	 */
+	def EObject evolveModel(EObject object){
+		
+		if(this.enableManualRandomMatching){
+			return evolveModelManual(object);
+		}
+		
+		return evolveModelHenshin(object);
+	}
+
 
     /**
      * Produce a new solution from the given one using one of the evolvers defined in the optimisation model.
      * This will try evolvers until one of them can be applied or all evolvers have been tried. If no evolver was applicable, returns <code>null</code>,
      * otherwise returns the result of the first randomly picked evolver that was applicable.
      */
-    def EObject evolveModel(EObject object) {
+    def EObject evolveModelManual(EObject object) {
+    	
+		// Extract Henshin evolvers if necessary
+
+	
+		ChangeImpl.PRINT_WARNINGS = false;
+		
+		val candidateSolution = EcoreUtil.copy(object)
+
+		// Get all matches
+		val graph = new EGraphImpl(candidateSolution)
+		val matchesView = mutationOperators.map [ evolver |
+			engine.findMatches(evolver as Rule, graph, null).map[m | new Pair<Rule, Match>(evolver as Rule, m)]
+		].flatten
+
+		val matches = new ArrayList<Pair<Rule, Match>>(matchesView.toList)
+
+		if (!matches.empty) {
+			// Randomly pick one match
+			val matchToUse = matches.get(new Random().nextInt(matches.size))
+			
+			println("Using rule: " + matchToUse.key.name)
+
+			// Apply the match
+			val runner = new RuleApplicationImpl(engine)
+			runner.EGraph = graph
+			runner.unit = matchToUse.key
+			runner.partialMatch = matchToUse.value
+
+			if (runner.execute(null)) {
+				
+				return graph.roots.head
+			}
+		} 
+		
+		return object
+
+    }
+
+    /**
+     * Produce a new solution from the given one using one of the evolvers defined in the optimisation model.
+     * This will try evolvers until one of them can be applied or all evolvers have been tried. If no evolver was applicable, returns <code>null</code>,
+     * otherwise returns the result of the first randomly picked evolver that was applicable.
+     */
+    def EObject evolveModelHenshin(EObject object) {
     			
 		val candidateSolution = EcoreUtil.copy(object)
 
@@ -196,6 +255,8 @@ class SolutionGenerator {
 			if(operator.eClass().getClassifierID() == HenshinPackage.RULE){
 				//Run the selected Henshin Rule
 				if(runRuleOperator(operator, graph, Arrays.asList(object))){
+			
+					println("Running operator: " + operator.name)
 					//println("Could run mutation" + matchToUse.name)
 					return graph.roots.head	
 				}
@@ -222,4 +283,9 @@ class SolutionGenerator {
         println("Model with no mutation evolvers applicable.....")
         object
     }
+	
+	def setEnableManualRandomMatching(boolean randonMatching) {
+		this.enableManualRandomMatching = randonMatching;
+	}
+	
 }

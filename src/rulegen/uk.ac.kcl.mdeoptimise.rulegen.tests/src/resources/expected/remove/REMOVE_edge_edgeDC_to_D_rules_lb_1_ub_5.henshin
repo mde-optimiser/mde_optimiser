@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ASCII"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_qMKMwCpREeiIkuZWdsxWsg" name="REMOVE_edge_edgeDC_to_D_rules" description="Removes D edge of type edgeDC">
+  <imports href="rulegen.ecore#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_qMLa4CpREeiIkuZWdsxWsg" name="removeFromD_edgeDC_C" description="Removes from D's reference edgeDC the target C">
+    <lhs xmi:id="_qMLa4SpREeiIkuZWdsxWsg" name="LHS">
+      <nodes xmi:id="_qMLa4ipREeiIkuZWdsxWsg" name="Selected" outgoing="_qMLa5CpREeiIkuZWdsxWsg">
+        <type href="rulegen.ecore#//D"/>
+      </nodes>
+      <nodes xmi:id="_qMLa4ypREeiIkuZWdsxWsg" name="OldTarget" incoming="_qMLa5CpREeiIkuZWdsxWsg">
+        <type href="rulegen.ecore#//C"/>
+      </nodes>
+      <edges xmi:id="_qMLa5CpREeiIkuZWdsxWsg" source="_qMLa4ipREeiIkuZWdsxWsg" target="_qMLa4ypREeiIkuZWdsxWsg">
+        <type href="rulegen.ecore#//D/edgeDC"/>
+      </edges>
+      <formula xsi:type="henshin:NestedCondition" xmi:id="_qMLa5SpREeiIkuZWdsxWsg">
+        <conclusion xmi:id="_qMLa5ipREeiIkuZWdsxWsg" name="lb0">
+          <nodes xmi:id="_qMLa5ypREeiIkuZWdsxWsg" name="" outgoing="_qMMB8SpREeiIkuZWdsxWsg">
+            <type href="rulegen.ecore#//D"/>
+          </nodes>
+          <nodes xmi:id="_qMMB8CpREeiIkuZWdsxWsg" name="" incoming="_qMMB8SpREeiIkuZWdsxWsg">
+            <type href="rulegen.ecore#//C"/>
+          </nodes>
+          <edges xmi:id="_qMMB8SpREeiIkuZWdsxWsg" source="_qMLa5ypREeiIkuZWdsxWsg" target="_qMMB8CpREeiIkuZWdsxWsg">
+            <type href="rulegen.ecore#//D/edgeDC"/>
+          </edges>
+        </conclusion>
+        <mappings xmi:id="_qMMB8ipREeiIkuZWdsxWsg" origin="_qMLa4ipREeiIkuZWdsxWsg" image="_qMLa5ypREeiIkuZWdsxWsg"/>
+      </formula>
+    </lhs>
+    <rhs xmi:id="_qMMB8ypREeiIkuZWdsxWsg" name="RHS">
+      <nodes xmi:id="_qMMB9CpREeiIkuZWdsxWsg" name="Selected">
+        <type href="rulegen.ecore#//D"/>
+      </nodes>
+      <nodes xmi:id="_qMMB9SpREeiIkuZWdsxWsg" name="OldTarget">
+        <type href="rulegen.ecore#//C"/>
+      </nodes>
+    </rhs>
+    <mappings xmi:id="_qMMB9ipREeiIkuZWdsxWsg" origin="_qMLa4ipREeiIkuZWdsxWsg" image="_qMMB9CpREeiIkuZWdsxWsg"/>
+    <mappings xmi:id="_qMMB9ypREeiIkuZWdsxWsg" origin="_qMLa4ypREeiIkuZWdsxWsg" image="_qMMB9SpREeiIkuZWdsxWsg"/>
+  </units>
+</henshin:Module>
