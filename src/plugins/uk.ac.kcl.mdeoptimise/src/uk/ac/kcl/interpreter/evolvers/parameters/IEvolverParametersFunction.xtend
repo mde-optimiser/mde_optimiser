@@ -1,7 +1,8 @@
 package uk.ac.kcl.interpreter.evolvers.parameters
 
-import java.util.List
 import org.eclipse.emf.ecore.EObject
+import java.util.List
+import java.lang.reflect.Type
 
 interface IEvolverParametersFunction {
 

@@ -26,7 +26,7 @@ class MinimiseSprintsWithInvalidEffort implements IGuidanceFunction {
 		
 		println("Counted invalid sprints: " + fitness)
 		
-		return fitness
+		return fitness * -1
 	}
 	
 	override getName() {

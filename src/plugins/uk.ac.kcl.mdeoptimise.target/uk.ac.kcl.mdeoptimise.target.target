@@ -3,7 +3,7 @@
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
 <unit id="org.eclipse.emf.mwe2.launcher.feature.group" version="0.0.0"/>
-<repository location="http://download.eclipse.org/modeling/emft/mwe/updates/releases/2.9.0/"/>
+<repository location="http://download.eclipse.org/modeling/emft/mwe/updates/releases/2.8.1/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
 <unit id="org.eclipse.jdt.feature.group" version="0.0.0"/>
@@ -14,7 +14,7 @@
 <unit id="org.eclipse.xpand" version="0.0.0"/>
 <unit id="org.eclipse.xtend" version="0.0.0"/>
 <unit id="org.eclipse.xtend.typesystem.emf" version="0.0.0"/>
-<repository location="http://download.eclipse.org/releases/neon/201606221000/"/>
+<repository location="http://download.eclipse.org/releases/neon/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
 <unit id="org.eclipse.ocl.examples.unified.feature.group" version="4.1.1.v20160808-1615"/>
@@ -25,7 +25,7 @@
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
 <unit id="org.eclipse.xtext.sdk.feature.group" version="0.0.0"/>
-<repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.12.0/"/>
+<repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.10.0/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
 <unit id="org.eclipse.ocl.master.feature.group" version="6.1.1.v20160808-1615"/>
@@ -43,20 +43,11 @@
 <unit id="org.apache.commons.lang3" version="3.1.0"/>
 <unit id="dk.brics.automaton" version="1.11.0.8"/>
 <unit id="org.jfree.jcommon" version="1.0.21"/>
-<unit id="org.jfree.chart" version="1.0.15"/>
 <unit id="org.moeaframework" version="2.12.0"/>
+<unit id="org.mockito.mockito-all" version="1.9.5"/>
 <unit id="org.apache.commons.codec" version="1.8.0"/>
 <unit id="xml-apis" version="1.3.4"/>
 <repository location="http://blog.onboot.org/mopt-p2-repo/target/repository/"/>
-</location>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
-<unit id="org.sidiff.serge" version="0.0.0"/>
-<repository location="http://blog.onboot.org/org.sidiff.serge/deploy/serge-p2-repo/target/repository/" />
-</location>
-<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.hamcrest" version="1.1.0.v20090501071000"/>
-<unit id="org.mockito" version="1.9.5.v201605172210"/>
-<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20180206163158/repository/"/>
 </location>
 </locations>
 </target>

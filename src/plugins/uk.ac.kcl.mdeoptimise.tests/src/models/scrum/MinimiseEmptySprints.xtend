@@ -19,7 +19,7 @@ class MinimiseEmptySprints implements IGuidanceFunction {
 		
 		println("Counted empty sprints: " + fitness)
 		
-		return fitness
+		return fitness * -1
 	}
 	
 	override getName() {

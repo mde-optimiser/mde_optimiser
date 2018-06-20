@@ -4,6 +4,7 @@
 package uk.ac.kcl.ui
 
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
+import org.eclipse.swt.graphics.Image
 
 /**
  * Use this class to register components to be used within the Eclipse IDE.
