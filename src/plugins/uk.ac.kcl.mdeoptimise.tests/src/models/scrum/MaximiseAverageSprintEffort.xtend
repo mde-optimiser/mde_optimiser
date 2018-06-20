@@ -26,7 +26,7 @@ class MaximiseAverageSprintEffort implements IGuidanceFunction {
 		println("Sprint effort distribution: " + fitness)
 		println("Sprint effort standard deviation: " + effortStandardDeviation)
 		
-		return effortStandardDeviation * -1
+		return effortStandardDeviation
 	}
 	
 	override getName() {

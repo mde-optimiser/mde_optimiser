@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_MAD0cCn3EeiFmPneRgjnRQ" name="ADD_edge_edgeDC_to_D_rules" description="Adds to D edge of type edgeDC">
+  <imports href="rulegen.ecore#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_MAFpoCn3EeiFmPneRgjnRQ" name="addToD_edgeDC_C" description="Adds to D's reference edgeDC the target C">
+    <lhs xmi:id="_MAFpoSn3EeiFmPneRgjnRQ" name="Lhs">
+      <nodes xmi:id="_MAFpoin3EeiFmPneRgjnRQ" name="Selected">
+        <type href="rulegen.ecore#//D"/>
+      </nodes>
+      <nodes xmi:id="_MAFpoyn3EeiFmPneRgjnRQ" name="NewTarget">
+        <type href="rulegen.ecore#//C"/>
+      </nodes>
+    </lhs>
+    <rhs xmi:id="_MAFppCn3EeiFmPneRgjnRQ" name="Rhs">
+      <nodes xmi:id="_MAFppSn3EeiFmPneRgjnRQ" name="Selected" outgoing="_MAFppyn3EeiFmPneRgjnRQ">
+        <type href="rulegen.ecore#//D"/>
+      </nodes>
+      <nodes xmi:id="_MAFppin3EeiFmPneRgjnRQ" name="NewTarget" incoming="_MAFppyn3EeiFmPneRgjnRQ">
+        <type href="rulegen.ecore#//C"/>
+      </nodes>
+      <edges xmi:id="_MAFppyn3EeiFmPneRgjnRQ" source="_MAFppSn3EeiFmPneRgjnRQ" target="_MAFppin3EeiFmPneRgjnRQ">
+        <type href="rulegen.ecore#//D/edgeDC"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_MAFpqCn3EeiFmPneRgjnRQ" origin="_MAFpoin3EeiFmPneRgjnRQ" image="_MAFppSn3EeiFmPneRgjnRQ"/>
+    <mappings xmi:id="_MAFpqSn3EeiFmPneRgjnRQ" origin="_MAFpoyn3EeiFmPneRgjnRQ" image="_MAFppin3EeiFmPneRgjnRQ"/>
+  </units>
+</henshin:Module>
