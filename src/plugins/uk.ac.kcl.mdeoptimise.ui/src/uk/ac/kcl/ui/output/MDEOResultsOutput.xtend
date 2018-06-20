@@ -1,23 +1,27 @@
 package uk.ac.kcl.ui.output
 
-import java.util.Date
-import java.util.List
-import java.util.LinkedList
-import org.eclipse.emf.ecore.resource.ResourceSet
-import uk.ac.kcl.mdeoptimise.Optimisation
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
-import org.eclipse.emf.ecore.EObject
-import java.util.Collections
-import java.text.SimpleDateFormat
-import uk.ac.kcl.optimisation.moea.MoeaOptimisationSolution
-import java.io.PrintWriter
-import java.io.File
-import org.eclipse.emf.common.util.URI
-import org.eclipse.core.runtime.IPath
-import java.util.TimeZone
-import java.util.HashMap
 import com.google.common.io.Files
-import java.nio.charset.Charset
+import java.io.File
+import java.io.PrintWriter
+import java.text.SimpleDateFormat
+import java.util.ArrayList
+import java.util.Date
+import java.util.HashMap
+import java.util.LinkedList
+import java.util.List
+import java.util.TimeZone
+import org.eclipse.core.runtime.IPath
+import org.eclipse.emf.ecore.resource.ResourceSet
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
+import uk.ac.kcl.mdeoptimise.Optimisation
+import uk.ac.kcl.ui.output.descriptors.ResultsDescriptor
+import uk.ac.kcl.ui.output.descriptors.TextDescriptor
+import uk.ac.kcl.ui.output.descriptors.MOEAObjectivesOutputDescriptor
+import uk.ac.kcl.ui.output.descriptors.ParetoChartOutputDescriptor
+import uk.ac.kcl.ui.output.descriptors.BatchReportsDescriptor
+import uk.ac.kcl.ui.output.descriptors.GeneratedMutationOperatorsDescriptor
+import uk.ac.kcl.ui.output.descriptors.HypervolumeDescriptor
+import uk.ac.kcl.ui.output.descriptors.ExperimentCSVSerializer
 
 class MDEOResultsOutput {
 	
@@ -27,8 +31,14 @@ class MDEOResultsOutput {
 	private IPath projectRoot;
 	private IPath moptFile;
 	private Optimisation moptConfiguration;
+	private List<ResultsDescriptor> resultsDescriptors;
+	private boolean classicRuleMatchingEnabled;
 	
 	new(Date startTime, IPath projectRoot, IPath moptFile, Optimisation moptConfiguration){
+		this(startTime, projectRoot, moptFile, moptConfiguration, false)
+	}
+	
+	new(Date startTime, IPath projectRoot, IPath moptFile, Optimisation moptConfiguration, boolean classicRuleMatchingEnabled){
 		experimentStartTime = startTime
 		//Store output of a batch experiment id, solutions set
 		batches = new LinkedList<MDEOBatch>();
@@ -36,49 +46,40 @@ class MDEOResultsOutput {
 		this.projectRoot = projectRoot;
 		this.moptConfiguration = moptConfiguration;
 		this.moptFile = moptFile;
+		this.resultsDescriptors = loadDescriptors();
+		this.classicRuleMatchingEnabled = classicRuleMatchingEnabled;
 	}
 	
 	def void logBatch(MDEOBatch batch){
 		batches.add(batch);
 	}
-	
-	def String outputBatchSummary(MDEOBatch batch, IPath outcomePath) {
-		var batchOutputPath = outcomePath.append(String.format("batch-%s/", batch.id))
-		var batchInfoPath = batchOutputPath.append("outcome.txt")
-		
-		var outputFile = new File(batchInfoPath.toPortableString)
-		Files.createParentDirs(outputFile)
-		
-		val batchWriter = new PrintWriter(outputFile)
-		
-		var batchDuration = new Date(batch.duration.longValue);
-		
-		var formatter = new SimpleDateFormat("HH:mm:ss.SSS");
-		formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
-		
-		batchWriter.println()
-		batchWriter.println("============================================")
-		batchWriter.println()
-		batchWriter.println(String.format("Batch %s duration: %s", batch.id, formatter.format(batchDuration.getTime())))
-		batchWriter.println()
 
-		batchWriter.println("--------------------------------------------")
+	def void saveOutcome(){
 		
-		for(var i = 0; i < batch.solutions.length; i++){
+		val experimentDate = new SimpleDateFormat("yyMMdd-HHmmss").format(experimentStartTime);
+		val outcomePath = projectRoot.append(String.format("mdeo-results/experiment-%s-%s-matching-%s/", 
+			experimentDate, moptFile.lastSegment, this.matchingType
+		));
+		
+		//Used to generate the experiments summary	
+		val batchesOutput = new StringBuilder();
+		
+		batches.forEach[ batch | 
+		
+			batchesOutput.append("============================================")
+			batchesOutput.append(System.getProperty("line.separator"));
 			
-			val solution = batch.solutions.get(i);
-			val modelPath = batchOutputPath + String.format("%08X", solution.model.hashCode) + ".xmi"
+			val batchOutputPath = outcomePath.append(String.format("batch-%s/", batch.id))
 			
-			solution.model.writeModel(modelPath)
-			storeSolutionData(batchWriter, modelPath, solution)
-		}
+			this.resultsDescriptors.forEach[ descriptor |
+				descriptor.generateDescription(batchOutputPath, batch, batchesOutput);
+			]
 		
-		batchWriter.println()
-		batchWriter.println("============================================")
-		batchWriter.println()
-		batchWriter.close
+			batchesOutput.append("============================================")
+			batchesOutput.append(System.getProperty("line.separator"));
+		]
 		
-		return Files.toString(outputFile, Charset.defaultCharset())
+		outputExperimentSummary(batches, outcomePath, moptFile, batchesOutput)
 	}
 	
 	def void outputExperimentSummary(List<MDEOBatch> batches, IPath outcomePath, IPath moptFile, StringBuilder batchesOutput){
@@ -91,21 +92,21 @@ class MDEOResultsOutput {
 		for(var i = 0; i < batches.size; i++){
 
 			val batch = batches.get(i);			
-			val averageBatchObjectives = new HashMap<String, Double>();
+			val sumBatchObjectives = new HashMap<String, Double>();
 			
 			batch.solutions.forEach[solution | 
 				solution.formattedObjectives.forEach[p1, p2| 
-					if(averageBatchObjectives.containsKey(p1)) {
-						averageBatchObjectives.put(p1, averageBatchObjectives.get(p1) + p2)
+					if(sumBatchObjectives.containsKey(p1)) {
+						sumBatchObjectives.put(p1, sumBatchObjectives.get(p1) + p2)
 					} else {
-						averageBatchObjectives.put(p1, p2)	
+						sumBatchObjectives.put(p1, p2)	
 					}
 				]
 			]
 			
-			averageBatchObjectives.forEach[p1, p2 |
+			sumBatchObjectives.forEach[p1, p2 |
 				if(averageObjectiveValues.containsKey(p1)){
-					averageObjectiveValues.put(p1, averageObjectiveValues.get(p1) + p2)
+					averageObjectiveValues.put(p1, averageObjectiveValues.get(p1) + p2 / batch.solutions.size)
 				} else {
 					averageObjectiveValues.put(p1, p2);	
 				}
@@ -114,11 +115,16 @@ class MDEOResultsOutput {
 				
 		val infoWriter = new PrintWriter(new File(outcomePath + "overall-results.txt"))
 		
+		
 		infoWriter.println(String.format("Average experiment time: %s", formatter.format(averageTime)))
 		infoWriter.println()
-		averageObjectiveValues.forEach[p1, p2|
-			infoWriter.println(String.format("Average value for %s objective: %s", p1, -1 * averageObjectiveValues.get(p1)/batches.size))
-		]
+		
+		//If configuration has one objective only then show an average
+		//if(batches.head.solutions.head.objectives.length == 1){
+			averageObjectiveValues.forEach[p1, p2|
+				infoWriter.println(String.format("Average value for %s objective: %s", p1, averageObjectiveValues.get(p1)/batches.size))
+			]
+		//}
 		
 		infoWriter.println(batchesOutput.toString)
 		
@@ -130,48 +136,31 @@ class MDEOResultsOutput {
 		}
 	}
 	
-	def void saveOutcome(){
-		
-		val experimentDate = new SimpleDateFormat("yyMMdd-HHmmss").format(experimentStartTime);
-		val outcomePath = projectRoot.append(String.format("mdeo-results/experiment-%s/", experimentDate));
-		
-		val batchesOutput = new StringBuilder();
-		
-		batches.forEach[ batch | batchesOutput.append(outputBatchSummary(batch, outcomePath))]
-		
-		outputExperimentSummary(batches, outcomePath, moptFile, batchesOutput)
+	def String getMatchingType(){
+		if(this.classicRuleMatchingEnabled){
+			return "classic"
+		}
+		return "henshin"
 	}
 	
-	def writeModel(EObject model, String path) {
-		val resource = resourceSet.createResource(URI.createFileURI(path))
-		if (resource.loaded) {
-			resource.contents.clear
-		}
-		resource.contents.add(model)
-		resource.save(Collections.EMPTY_MAP)
-	}
-
-	private def storeSolutionData(PrintWriter infoWriter, String modelPath, MoeaOptimisationSolution solution){
+	/**
+	 * Load a set of descriptors that we would like to run on the produced experiments data.
+	 * They perform tasks such as generating parseable results, serializing models and generated
+	 * mutation operators.
+	 */
+	private def List<ResultsDescriptor> loadDescriptors(){
 		
-		infoWriter.println("Evaluation data for solution: " + modelPath)
-		infoWriter.println()
-		infoWriter.println("Objective values:")
+		var descriptors = new ArrayList<ResultsDescriptor>();
 		
-		//Pretty print the objectives
-		var objectives = solution.formattedObjectives
-		objectives.forEach[key, value | 
-			infoWriter.println(String.format("%s: %s", key, -1 * value))
-		]
-		infoWriter.println("")
-
-		//Pretty print the constraints
-		var constraints = solution.formattedConstraints
-		if(constraints.size > 0) {
-			
-			infoWriter.println("Constraint values:")
-			constraints.forEach[key, value | 
-				infoWriter.println(String.format("%s: %s", key, value))
-			]
-		}
+		descriptors.add(new TextDescriptor());
+		descriptors.add(new MOEAObjectivesOutputDescriptor())
+		descriptors.add(new ParetoChartOutputDescriptor())
+		descriptors.add(new BatchReportsDescriptor(this.moptConfiguration))
+		descriptors.add(new GeneratedMutationOperatorsDescriptor())
+		//descriptors.add(new HypervolumeDescriptor())
+		descriptors.add(new ExperimentCSVSerializer())
+		
+		return descriptors;
+		
 	}
 }
