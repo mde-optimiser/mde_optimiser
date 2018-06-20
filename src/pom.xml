@@ -104,7 +104,18 @@
 							<arch>x86_64</arch>
 						</environment>
 					</environments>
+					        <dependency-resolution>
+            <extraRequirements>
+                <!--  Workaround for an issue with mockito depending on hamcrest -->
+                <requirement>
+                    <type>eclipse-plugin</type>
+                    <id>org.hamcrest</id>
+                    <versionRange>0.0.0</versionRange>
+                </requirement>
+            </extraRequirements>
+        </dependency-resolution>
 				</configuration>
+				
 			</plugin>
 		</plugins>
 		<pluginManagement>
