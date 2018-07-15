@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="ASCII"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_oGr2YHrUEeirnentsvi0Jg" name="S_CREATE_C_edgeCB_edge_CREATE_LB_REPAIR" description="Creates a node in all allowed metamodel contexts">
+  <imports href="rulegen.ecore#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_oGr2YXrUEeirnentsvi0Jg" name="createC_IN_Context" description="creates one C in the context: Context">
+    <parameters xmi:id="_oGr2YnrUEeirnentsvi0Jg" name="Selected">
+      <type xsi:type="ecore:EClass" href="rulegen.ecore#//Context"/>
+    </parameters>
+    <parameters xmi:id="_oGr2Y3rUEeirnentsvi0Jg" name="Existing">
+      <type xsi:type="ecore:EClass" href="rulegen.ecore#//B"/>
+    </parameters>
+    <parameters xmi:id="_oGr2ZHrUEeirnentsvi0Jg" name="Existing1">
+      <type xsi:type="ecore:EClass" href="rulegen.ecore#//B"/>
+    </parameters>
+    <parameters xmi:id="_oGr2ZXrUEeirnentsvi0Jg" name="NewTarget">
+      <type xsi:type="ecore:EClass" href="rulegen.ecore#//C"/>
+    </parameters>
+    <parameters xmi:id="_oGr2ZnrUEeirnentsvi0Jg" name="New">
+      <type xsi:type="ecore:EClass" href="rulegen.ecore#//C"/>
+    </parameters>
+    <lhs xmi:id="_oGr2Z3rUEeirnentsvi0Jg" name="Lhs">
+      <nodes xmi:id="_oGr2aHrUEeirnentsvi0Jg" name="Selected">
+        <type href="rulegen.ecore#//Context"/>
+      </nodes>
+      <nodes xmi:id="_oGr2aXrUEeirnentsvi0Jg" name="Existing" incoming="_oGr2bHrUEeirnentsvi0Jg" outgoing="_oGr2bXrUEeirnentsvi0Jg">
+        <type href="rulegen.ecore#//B"/>
+      </nodes>
+      <nodes xmi:id="_oGr2anrUEeirnentsvi0Jg" name="Existing1" incoming="_oGr2bnrUEeirnentsvi0Jg" outgoing="_oGr2b3rUEeirnentsvi0Jg">
+        <type href="rulegen.ecore#//B"/>
+      </nodes>
+      <nodes xmi:id="_oGr2a3rUEeirnentsvi0Jg" name="NewTarget" incoming="_oGr2bXrUEeirnentsvi0Jg _oGr2b3rUEeirnentsvi0Jg" outgoing="_oGr2bHrUEeirnentsvi0Jg _oGr2bnrUEeirnentsvi0Jg">
+        <type href="rulegen.ecore#//C"/>
+      </nodes>
+      <edges xmi:id="_oGr2bHrUEeirnentsvi0Jg" source="_oGr2a3rUEeirnentsvi0Jg" target="_oGr2aXrUEeirnentsvi0Jg">
+        <type href="rulegen.ecore#//C/edgeCB"/>
+      </edges>
+      <edges xmi:id="_oGr2bXrUEeirnentsvi0Jg" source="_oGr2aXrUEeirnentsvi0Jg" target="_oGr2a3rUEeirnentsvi0Jg">
+        <type href="rulegen.ecore#//B/edgeBC"/>
+      </edges>
+      <edges xmi:id="_oGr2bnrUEeirnentsvi0Jg" source="_oGr2a3rUEeirnentsvi0Jg" target="_oGr2anrUEeirnentsvi0Jg">
+        <type href="rulegen.ecore#//C/edgeCB"/>
+      </edges>
+      <edges xmi:id="_oGr2b3rUEeirnentsvi0Jg" source="_oGr2anrUEeirnentsvi0Jg" target="_oGr2a3rUEeirnentsvi0Jg">
+        <type href="rulegen.ecore#//B/edgeBC"/>
+      </edges>
+      <formula xsi:type="henshin:NestedCondition" xmi:id="_oGr2cHrUEeirnentsvi0Jg">
+        <conclusion xmi:id="_oGr2cXrUEeirnentsvi0Jg" name="lb0">
+          <nodes xmi:id="_oGr2cnrUEeirnentsvi0Jg" name="" outgoing="_oGr2dXrUEeirnentsvi0Jg _oGr2dnrUEeirnentsvi0Jg">
+            <type href="rulegen.ecore#//C"/>
+          </nodes>
+          <nodes xmi:id="_oGr2c3rUEeirnentsvi0Jg" name="" incoming="_oGr2dXrUEeirnentsvi0Jg">
+            <type href="rulegen.ecore#//B"/>
+          </nodes>
+          <nodes xmi:id="_oGr2dHrUEeirnentsvi0Jg" name="" incoming="_oGr2dnrUEeirnentsvi0Jg">
+            <type href="rulegen.ecore#//B"/>
+          </nodes>
+          <edges xmi:id="_oGr2dXrUEeirnentsvi0Jg" source="_oGr2cnrUEeirnentsvi0Jg" target="_oGr2c3rUEeirnentsvi0Jg">
+            <type href="rulegen.ecore#//C/edgeCB"/>
+          </edges>
+          <edges xmi:id="_oGr2dnrUEeirnentsvi0Jg" source="_oGr2cnrUEeirnentsvi0Jg" target="_oGr2dHrUEeirnentsvi0Jg">
+            <type href="rulegen.ecore#//C/edgeCB"/>
+          </edges>
+        </conclusion>
+        <mappings xmi:id="_oGr2d3rUEeirnentsvi0Jg" origin="_oGr2a3rUEeirnentsvi0Jg" image="_oGr2cnrUEeirnentsvi0Jg"/>
+      </formula>
+    </lhs>
+    <rhs xmi:id="_oGr2eHrUEeirnentsvi0Jg" name="Rhs">
+      <nodes xmi:id="_oGr2eXrUEeirnentsvi0Jg" name="Selected" outgoing="_oGr2fnrUEeirnentsvi0Jg">
+        <type href="rulegen.ecore#//Context"/>
+      </nodes>
+      <nodes xmi:id="_oGr2enrUEeirnentsvi0Jg" name="New" incoming="_oGr2fnrUEeirnentsvi0Jg _oGr2gHrUEeirnentsvi0Jg _oGr2gnrUEeirnentsvi0Jg" outgoing="_oGr2f3rUEeirnentsvi0Jg _oGr2gXrUEeirnentsvi0Jg">
+        <type href="rulegen.ecore#//C"/>
+      </nodes>
+      <nodes xmi:id="_oGr2e3rUEeirnentsvi0Jg" name="Existing" incoming="_oGr2f3rUEeirnentsvi0Jg" outgoing="_oGr2gHrUEeirnentsvi0Jg">
+        <type href="rulegen.ecore#//B"/>
+      </nodes>
+      <nodes xmi:id="_oGr2fHrUEeirnentsvi0Jg" name="Existing1" incoming="_oGr2gXrUEeirnentsvi0Jg" outgoing="_oGr2gnrUEeirnentsvi0Jg">
+        <type href="rulegen.ecore#//B"/>
+      </nodes>
+      <nodes xmi:id="_oGr2fXrUEeirnentsvi0Jg" name="NewTarget">
+        <type href="rulegen.ecore#//C"/>
+      </nodes>
+      <edges xmi:id="_oGr2fnrUEeirnentsvi0Jg" source="_oGr2eXrUEeirnentsvi0Jg" target="_oGr2enrUEeirnentsvi0Jg">
+        <type href="rulegen.ecore#//Context/c"/>
+      </edges>
+      <edges xmi:id="_oGr2f3rUEeirnentsvi0Jg" source="_oGr2enrUEeirnentsvi0Jg" target="_oGr2e3rUEeirnentsvi0Jg">
+        <type href="rulegen.ecore#//C/edgeCB"/>
+      </edges>
+      <edges xmi:id="_oGr2gHrUEeirnentsvi0Jg" source="_oGr2e3rUEeirnentsvi0Jg" target="_oGr2enrUEeirnentsvi0Jg">
+        <type href="rulegen.ecore#//B/edgeBC"/>
+      </edges>
+      <edges xmi:id="_oGr2gXrUEeirnentsvi0Jg" source="_oGr2enrUEeirnentsvi0Jg" target="_oGr2fHrUEeirnentsvi0Jg">
+        <type href="rulegen.ecore#//C/edgeCB"/>
+      </edges>
+      <edges xmi:id="_oGr2gnrUEeirnentsvi0Jg" source="_oGr2fHrUEeirnentsvi0Jg" target="_oGr2enrUEeirnentsvi0Jg">
+        <type href="rulegen.ecore#//B/edgeBC"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_oGr2g3rUEeirnentsvi0Jg" origin="_oGr2aHrUEeirnentsvi0Jg" image="_oGr2eXrUEeirnentsvi0Jg"/>
+    <mappings xmi:id="_oGr2hHrUEeirnentsvi0Jg" origin="_oGr2aXrUEeirnentsvi0Jg" image="_oGr2e3rUEeirnentsvi0Jg"/>
+    <mappings xmi:id="_oGr2hXrUEeirnentsvi0Jg" origin="_oGr2anrUEeirnentsvi0Jg" image="_oGr2fHrUEeirnentsvi0Jg"/>
+    <mappings xmi:id="_oGr2hnrUEeirnentsvi0Jg" origin="_oGr2a3rUEeirnentsvi0Jg" image="_oGr2fXrUEeirnentsvi0Jg"/>
+  </units>
+</henshin:Module>

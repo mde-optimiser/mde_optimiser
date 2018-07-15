@@ -205,6 +205,15 @@
 			</activeWhen>
 		</handler>
 	</extension>
+	<extension point="org.eclipse.core.contenttype.contentTypes">
+		<content-type
+			base-type="org.eclipse.core.runtime.text"
+			file-extensions="mopt"
+			id="uk.ac.kcl.MDEOptimise.contenttype"
+			name="MDEOptimise File"
+			priority="normal">
+		</content-type>
+	</extension>
 	<!-- adding resource factories -->
 	<extension
 		point="org.eclipse.emf.ecore.extension_parser">
@@ -240,6 +249,15 @@
 			point="org.eclipse.core.resources.markers">
 		<super type="org.eclipse.xtext.ui.check.expensive"/>
 		<persistent value="true"/>
+	</extension>
+	<extension point="org.eclipse.ui.preferencePages">
+		<page
+			category="uk.ac.kcl.MDEOptimise"
+			class="uk.ac.kcl.ui.MDEOptimiseExecutableExtensionFactory:org.eclipse.xtext.ui.validation.ValidatorPreferencePage"
+			id="uk.ac.kcl.MDEOptimise.validator.preferencePage"
+			name="Errors/Warnings">
+			<keywordReference id="uk.ac.kcl.ui.keyword_MDEOptimise"/>
+		</page>
 	</extension>
 	<extension point="org.eclipse.xtext.builder.participant">
 		<participant
@@ -453,7 +471,7 @@
 	</extension>
 	<extension point="org.eclipse.core.runtime.adapters">
 		<factory class="uk.ac.kcl.ui.MDEOptimiseExecutableExtensionFactory:org.eclipse.xtext.builder.smap.StratumBreakpointAdapterFactory"
-			adaptableType="org.eclipse.xtext.ui.editor.XtextEditor">
+			adaptableType="uk.ac.kcl.ui.editor.MDEOptimiseEditor">
 			<adapter type="org.eclipse.debug.ui.actions.IToggleBreakpointsTarget"/>
 		</factory> 
 	</extension>
@@ -547,12 +565,18 @@
 			class="uk.ac.kcl.ui.MDEOptimiseExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
 			extensions="mopt">
 		</viewer>
+		<contentTypeBinding
+			contentTypeId="uk.ac.kcl.MDEOptimise.contenttype"
+			contentViewerId="uk.ac.kcl.MDEOptimise.compare.contentViewers" />
 	</extension>
 	<extension point="org.eclipse.compare.contentMergeViewers">
 		<viewer id="uk.ac.kcl.MDEOptimise.compare.contentMergeViewers"
 			class="uk.ac.kcl.ui.MDEOptimiseExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
 			extensions="mopt" label="MDEOptimise Compare">
 		</viewer>
+		<contentTypeBinding
+			contentTypeId="uk.ac.kcl.MDEOptimise.contenttype"
+			contentMergeViewerId="uk.ac.kcl.MDEOptimise.compare.contentMergeViewers" />
 	</extension>
 	<extension point="org.eclipse.ui.editors.documentProviders">
 		<provider id="uk.ac.kcl.MDEOptimise.editors.documentProviders"
@@ -565,15 +589,5 @@
 			extension="mopt"
 			type="text">
 		</fileTypes>
-	</extension>
-	<extension
-		point="org.eclipse.ui.newWizards">
-		<wizard
-			category="org.eclipse.xtext.projectwiz"
-			class="uk.ac.kcl.ui.MDEOptimiseExecutableExtensionFactory:uk.ac.kcl.ui.wizard.MDEOptimiseNewProjectWizard"
-			id="uk.ac.kcl.ui.wizard.MDEOptimiseNewProjectWizard"
-			name="MDEOptimise Project"
-				project="true">
-		</wizard>
 	</extension>
 </plugin>

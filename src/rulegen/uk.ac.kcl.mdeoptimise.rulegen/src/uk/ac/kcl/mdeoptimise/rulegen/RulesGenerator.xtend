@@ -30,17 +30,15 @@ class RulesGenerator {
 	
 	//TODO The metamodel should ideally be a list as there are some cases where this is requested
 	new(EPackage metamodel, List<Multiplicity> refinedMultiplicities, List<RuleSpec> rulegenSpecs){
-		this.modules = modules;
 		this.refinedMultiplicities = refinedMultiplicities;
 		this.metamodel = metamodel;
 		this.ruleSpecs = rulegenSpecs;
 		this.specsGenerator = new SpecsGenerator();
-		
 	}
 	
 	def RuleGenerationCommandFactory getRuleGenerationCommandFactory(){
 		
-		if(this.ruleGenerationCommandFactory == null){
+		if(this.ruleGenerationCommandFactory === null){
 			this.ruleGenerationCommandFactory = new RuleGenerationCommandFactory()
 		}
 		
@@ -106,10 +104,14 @@ class RulesGenerator {
 					if(!uniqueRules.contains(solutionRule)) {
 						uniqueRules.add(solutionRule)	
 					} else {
-						println("Rule already added: " + solutionRule.allRules.head.name)
+						
+						//TODO Logger
+						//println("Rule already added: " + solutionRule.allRules.head.name)
 					}
 				} else {
-					println(String.format("Found similar rules: %s, %s", problemRule.name, solutionRule.name))
+					
+					//TODO Logger
+					//println(String.format("Found similar rules: %s, %s", problemRule.name, solutionRule.name))
 				}
 			]
 		]

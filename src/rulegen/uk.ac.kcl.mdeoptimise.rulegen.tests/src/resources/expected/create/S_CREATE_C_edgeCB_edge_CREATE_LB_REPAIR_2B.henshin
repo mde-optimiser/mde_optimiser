@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="ASCII"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_4Zh-0HmMEei0YNvkBAeowg" name="S_CREATE_C_edgeCB_edge_CREATE_LB_REPAIR" description="Creates a node in all allowed metamodel contexts">
+  <imports href="rulegen.ecore#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_4Zh-0XmMEei0YNvkBAeowg" name="createC_IN_Context" description="creates one C in the context: Context">
+    <parameters xmi:id="_4Zh-0nmMEei0YNvkBAeowg" name="Selected">
+      <type xsi:type="ecore:EClass" href="rulegen.ecore#//Context"/>
+    </parameters>
+    <parameters xmi:id="_4Zh-03mMEei0YNvkBAeowg" name="Existing">
+      <type xsi:type="ecore:EClass" href="rulegen.ecore#//B"/>
+    </parameters>
+    <parameters xmi:id="_4Zh-1HmMEei0YNvkBAeowg" name="Existing1">
+      <type xsi:type="ecore:EClass" href="rulegen.ecore#//B"/>
+    </parameters>
+    <parameters xmi:id="_4Zh-1XmMEei0YNvkBAeowg" name="NewTarget">
+      <type xsi:type="ecore:EClass" href="rulegen.ecore#//C"/>
+    </parameters>
+    <parameters xmi:id="_4Zh-1nmMEei0YNvkBAeowg" name="New">
+      <type xsi:type="ecore:EClass" href="rulegen.ecore#//C"/>
+    </parameters>
+    <lhs xmi:id="_4Zh-13mMEei0YNvkBAeowg" name="Lhs">
+      <nodes xmi:id="_4Zh-2HmMEei0YNvkBAeowg" name="Selected">
+        <type href="rulegen.ecore#//Context"/>
+      </nodes>
+      <nodes xmi:id="_4Zh-2XmMEei0YNvkBAeowg" name="Existing" incoming="_4Zh-3HmMEei0YNvkBAeowg" outgoing="_4Zh-3XmMEei0YNvkBAeowg">
+        <type href="rulegen.ecore#//B"/>
+      </nodes>
+      <nodes xmi:id="_4Zh-2nmMEei0YNvkBAeowg" name="Existing1" incoming="_4Zh-3nmMEei0YNvkBAeowg" outgoing="_4Zh-33mMEei0YNvkBAeowg">
+        <type href="rulegen.ecore#//B"/>
+      </nodes>
+      <nodes xmi:id="_4Zh-23mMEei0YNvkBAeowg" name="NewTarget" incoming="_4Zh-3XmMEei0YNvkBAeowg _4Zh-33mMEei0YNvkBAeowg" outgoing="_4Zh-3HmMEei0YNvkBAeowg _4Zh-3nmMEei0YNvkBAeowg">
+        <type href="rulegen.ecore#//C"/>
+      </nodes>
+      <edges xmi:id="_4Zh-3HmMEei0YNvkBAeowg" source="_4Zh-23mMEei0YNvkBAeowg" target="_4Zh-2XmMEei0YNvkBAeowg">
+        <type href="rulegen.ecore#//C/edgeCB"/>
+      </edges>
+      <edges xmi:id="_4Zh-3XmMEei0YNvkBAeowg" source="_4Zh-2XmMEei0YNvkBAeowg" target="_4Zh-23mMEei0YNvkBAeowg">
+        <type href="rulegen.ecore#//B/edgeBC"/>
+      </edges>
+      <edges xmi:id="_4Zh-3nmMEei0YNvkBAeowg" source="_4Zh-23mMEei0YNvkBAeowg" target="_4Zh-2nmMEei0YNvkBAeowg">
+        <type href="rulegen.ecore#//C/edgeCB"/>
+      </edges>
+      <edges xmi:id="_4Zh-33mMEei0YNvkBAeowg" source="_4Zh-2nmMEei0YNvkBAeowg" target="_4Zh-23mMEei0YNvkBAeowg">
+        <type href="rulegen.ecore#//B/edgeBC"/>
+      </edges>
+      <formula xsi:type="henshin:NestedCondition" xmi:id="_4Zh-4HmMEei0YNvkBAeowg">
+        <conclusion xmi:id="_4Zh-4XmMEei0YNvkBAeowg" name="lb0">
+          <nodes xmi:id="_4Zh-4nmMEei0YNvkBAeowg" name="" outgoing="_4Zh-5XmMEei0YNvkBAeowg _4Zh-5nmMEei0YNvkBAeowg">
+            <type href="rulegen.ecore#//C"/>
+          </nodes>
+          <nodes xmi:id="_4Zh-43mMEei0YNvkBAeowg" name="" incoming="_4Zh-5XmMEei0YNvkBAeowg">
+            <type href="rulegen.ecore#//B"/>
+          </nodes>
+          <nodes xmi:id="_4Zh-5HmMEei0YNvkBAeowg" name="" incoming="_4Zh-5nmMEei0YNvkBAeowg">
+            <type href="rulegen.ecore#//B"/>
+          </nodes>
+          <edges xmi:id="_4Zh-5XmMEei0YNvkBAeowg" source="_4Zh-4nmMEei0YNvkBAeowg" target="_4Zh-43mMEei0YNvkBAeowg">
+            <type href="rulegen.ecore#//C/edgeCB"/>
+          </edges>
+          <edges xmi:id="_4Zh-5nmMEei0YNvkBAeowg" source="_4Zh-4nmMEei0YNvkBAeowg" target="_4Zh-5HmMEei0YNvkBAeowg">
+            <type href="rulegen.ecore#//C/edgeCB"/>
+          </edges>
+        </conclusion>
+        <mappings xmi:id="_4Zh-53mMEei0YNvkBAeowg" origin="_4Zh-23mMEei0YNvkBAeowg" image="_4Zh-4nmMEei0YNvkBAeowg"/>
+      </formula>
+    </lhs>
+    <rhs xmi:id="_4Zh-6HmMEei0YNvkBAeowg" name="Rhs">
+      <nodes xmi:id="_4Zh-6XmMEei0YNvkBAeowg" name="Selected" outgoing="_4Zh-7nmMEei0YNvkBAeowg">
+        <type href="rulegen.ecore#//Context"/>
+      </nodes>
+      <nodes xmi:id="_4Zh-6nmMEei0YNvkBAeowg" name="New" incoming="_4Zh-7nmMEei0YNvkBAeowg _4Zh-8HmMEei0YNvkBAeowg _4Zh-8nmMEei0YNvkBAeowg" outgoing="_4Zh-73mMEei0YNvkBAeowg _4Zh-8XmMEei0YNvkBAeowg">
+        <type href="rulegen.ecore#//C"/>
+      </nodes>
+      <nodes xmi:id="_4Zh-63mMEei0YNvkBAeowg" name="Existing" incoming="_4Zh-73mMEei0YNvkBAeowg" outgoing="_4Zh-8HmMEei0YNvkBAeowg">
+        <type href="rulegen.ecore#//B"/>
+      </nodes>
+      <nodes xmi:id="_4Zh-7HmMEei0YNvkBAeowg" name="Existing1" incoming="_4Zh-8XmMEei0YNvkBAeowg" outgoing="_4Zh-8nmMEei0YNvkBAeowg">
+        <type href="rulegen.ecore#//B"/>
+      </nodes>
+      <nodes xmi:id="_4Zh-7XmMEei0YNvkBAeowg" name="NewTarget">
+        <type href="rulegen.ecore#//C"/>
+      </nodes>
+      <edges xmi:id="_4Zh-7nmMEei0YNvkBAeowg" source="_4Zh-6XmMEei0YNvkBAeowg" target="_4Zh-6nmMEei0YNvkBAeowg">
+        <type href="rulegen.ecore#//Context/c"/>
+      </edges>
+      <edges xmi:id="_4Zh-73mMEei0YNvkBAeowg" source="_4Zh-6nmMEei0YNvkBAeowg" target="_4Zh-63mMEei0YNvkBAeowg">
+        <type href="rulegen.ecore#//C/edgeCB"/>
+      </edges>
+      <edges xmi:id="_4Zh-8HmMEei0YNvkBAeowg" source="_4Zh-63mMEei0YNvkBAeowg" target="_4Zh-6nmMEei0YNvkBAeowg">
+        <type href="rulegen.ecore#//B/edgeBC"/>
+      </edges>
+      <edges xmi:id="_4Zh-8XmMEei0YNvkBAeowg" source="_4Zh-6nmMEei0YNvkBAeowg" target="_4Zh-7HmMEei0YNvkBAeowg">
+        <type href="rulegen.ecore#//C/edgeCB"/>
+      </edges>
+      <edges xmi:id="_4Zh-8nmMEei0YNvkBAeowg" source="_4Zh-7HmMEei0YNvkBAeowg" target="_4Zh-6nmMEei0YNvkBAeowg">
+        <type href="rulegen.ecore#//B/edgeBC"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_4Zh-83mMEei0YNvkBAeowg" origin="_4Zh-2HmMEei0YNvkBAeowg" image="_4Zh-6XmMEei0YNvkBAeowg"/>
+    <mappings xmi:id="_4Zh-9HmMEei0YNvkBAeowg" origin="_4Zh-2XmMEei0YNvkBAeowg" image="_4Zh-63mMEei0YNvkBAeowg"/>
+    <mappings xmi:id="_4Zh-9XmMEei0YNvkBAeowg" origin="_4Zh-2nmMEei0YNvkBAeowg" image="_4Zh-7HmMEei0YNvkBAeowg"/>
+    <mappings xmi:id="_4Zh-9nmMEei0YNvkBAeowg" origin="_4Zh-23mMEei0YNvkBAeowg" image="_4Zh-7XmMEei0YNvkBAeowg"/>
+  </units>
+</henshin:Module>

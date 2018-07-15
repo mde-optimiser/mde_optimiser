@@ -40,7 +40,7 @@ class MoeaOptimisationTests {
 	
 	
 	def getResourceSet() {
-        if (henshinResourceSet == null) {
+        if (henshinResourceSet === null) {
             henshinResourceSet = new HenshinResourceSet(model.basepath.location)
         }
 
@@ -48,7 +48,7 @@ class MoeaOptimisationTests {
     }
 
     def getMetamodel() {
-        if (theMetamodel == null) {
+        if (theMetamodel === null) {
             theMetamodel = getResourceSet.registerDynamicEPackages(model.metamodel.location).head
         }
 
@@ -56,7 +56,7 @@ class MoeaOptimisationTests {
     }
     
     def getHenshinEvolvers() {
-    	if (henshinEvolvers == null) {
+    	if (henshinEvolvers === null) {
             val hrs = resourceSet
             henshinEvolvers = model.evolvers.map [ e |
                 hrs.getModule(URI.createURI(e.rule_location), false).getUnit(e.unit)
@@ -80,7 +80,7 @@ class MoeaOptimisationTests {
 				mutate using <craEvolvers.henshin> unit "assignFeature"
 				mutate using <craEvolvers.henshin> unit "moveFeature"
 				mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
-				optimisation provider moea algorithm NSGAII variation mutation evolutions 2000 population 40 batches 1
+				optimisation provider moea algorithm NSGAII variation mutation evolutions 200 population 40 batches 1
 			''')
 
 			//Assert that there are no grammar issues

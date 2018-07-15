@@ -15,6 +15,8 @@ import uk.ac.kcl.mdeoptimise.rulegen.generator.specs.RepairSpec
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.MetamodelWrapper
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RuleSpec
 import uk.ac.kcl.mdeoptimiser.rulegen.lang.RuleNameGenerator
+import java.util.AbstractMap
+import org.eclipse.emf.henshin.model.Formula
 
 class AddEdgeRuleCommand implements IRuleGenerationCommand {
 
@@ -114,7 +116,7 @@ class AddEdgeRuleCommand implements IRuleGenerationCommand {
 
 		var nestedCond = HenshinFactory.eINSTANCE.createNestedCondition();
 		var graph = HenshinFactory.eINSTANCE.createGraph();
-
+		graph.name = "edgeub"
 		var sourceNode = HenshinFactory.eINSTANCE.createNode(graph, selectedNodePair.lhsNode.type, "");
 		var targetNode = HenshinFactory.eINSTANCE.createNode(graph, newNodePair.lhsNode.type, "");
 
@@ -128,7 +130,7 @@ class AddEdgeRuleCommand implements IRuleGenerationCommand {
 		var formula = HenshinFactory.eINSTANCE.createNot();
 		formula.setChild(nestedCond);
 
-		HenshinConditionUtil.addFormula(formula, rule.getLhs(), FormulaCombineOperator.AND);
+		HenshinConditionUtil.addFormula(new AbstractMap.SimpleEntry<String, Formula>("edgeub",formula), rule.getLhs(), FormulaCombineOperator.AND);
 
 		return rule;
 	}
