@@ -1377,11 +1377,12 @@ class SpecGeneratorTests {
 
 		node.EReferences.forEach [ edge |
 			expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+			expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
 		]
 
 		assertThat(combinations.repairSpecsFromSet,
 			IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray))
-		assertEquals(1, combinations.length)
+		assertEquals(2, combinations.length)
 	}
 
 	// 0 .. l
@@ -1411,11 +1412,12 @@ class SpecGeneratorTests {
 
 		node.EReferences.forEach [ edge |
 			expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+			expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
 		]
 
 		assertThat(combinations.repairSpecsFromSet,
 			IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray))
-		assertEquals(1, combinations.length)
+		assertEquals(2, combinations.length)
 	}
 
 	// 0 .. *
@@ -1716,11 +1718,12 @@ class SpecGeneratorTests {
 
 		node.EReferences.forEach [ edge |
 			expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+			expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
 		]
 
 		assertThat(combinations.repairSpecsFromSet,
 			IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray))
-		assertEquals(1, combinations.length)
+		assertEquals(2, combinations.length)
 	}
 
 	// 0 .. l
@@ -1750,11 +1753,12 @@ class SpecGeneratorTests {
 
 		node.EReferences.forEach [ edge |
 			expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+			expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));			
 		]
 
 		assertThat(combinations.repairSpecsFromSet,
 			IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray))
-		assertEquals(1, combinations.length)
+		assertEquals(2, combinations.length)
 	}
 
 	// 0 .. *
@@ -2457,11 +2461,13 @@ class SpecGeneratorTests {
 
 		node.EReferences.forEach [ edge |
 			expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+			expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
+			expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR_MANY));
 		]
 
 		assertThat(combinations.repairSpecsFromSet,
 			IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray))
-		assertEquals(1, combinations.length)
+		assertEquals(3, combinations.length)
 	}
 
 	// 0 .. l
@@ -2491,11 +2497,13 @@ class SpecGeneratorTests {
 
 		node.EReferences.forEach [ edge |
 			expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+			expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
+			expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR_MANY));
 		]
 
 		assertThat(combinations.repairSpecsFromSet,
 			IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray))
-		assertEquals(1, combinations.length)
+		assertEquals(3, combinations.length)
 	}
 
 	// 0 .. *
@@ -2804,11 +2812,13 @@ class SpecGeneratorTests {
 
 		node.EReferences.forEach [ edge |
 			expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+			expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
+			expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR_MANY));
 		]
 
 		assertThat(combinations.repairSpecsFromSet,
 			IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray))
-		assertEquals(1, combinations.length)
+		assertEquals(3, combinations.length)
 	}
 
 	// 0 .. l
@@ -2838,11 +2848,14 @@ class SpecGeneratorTests {
 
 		node.EReferences.forEach [ edge |
 			expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+			expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
+			expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR_MANY));
+			
 		]
 
 		assertThat(combinations.repairSpecsFromSet,
 			IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray))
-		assertEquals(1, combinations.length)
+		assertEquals(3, combinations.length)
 	}
 
 	// 0 .. *
@@ -4659,12 +4672,11 @@ class SpecGeneratorTests {
 
 		node.EReferences.forEach [ edge |
 			expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR));
-			expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR_MANY));
 		]
 
 		assertThat(combinations.repairSpecsFromSet,
 			IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray))
-		assertEquals(2, combinations.length)
+		assertEquals(1, combinations.length)
 	}
 
 	// k .. l
@@ -4972,13 +4984,12 @@ class SpecGeneratorTests {
 
 		node.EReferences.forEach [ edge |
 			expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR));
-			expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR_MANY));
 
 		]
 
 		assertThat(combinations.repairSpecsFromSet,
 			IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray))
-		assertEquals(2, combinations.length)
+		assertEquals(1, combinations.length)
 	}
 
 	// k .. l
