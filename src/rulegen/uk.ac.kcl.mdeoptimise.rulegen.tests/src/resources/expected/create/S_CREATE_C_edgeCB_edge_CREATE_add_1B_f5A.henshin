@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ASCII"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_TV-MYHlnEeiCUskJq7n8Iw" name="S_CREATE_C_edgeCB_edge_CREATE" description="Creates a node in all allowed metamodel contexts">
+  <imports href="rulegen.ecore#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_TV-MYXlnEeiCUskJq7n8Iw" name="createC_IN_Context" description="creates one C in the context: Context">
+    <parameters xmi:id="_TV-MYnlnEeiCUskJq7n8Iw" name="Selected">
+      <type xsi:type="ecore:EClass" href="rulegen.ecore#//Context"/>
+    </parameters>
+    <parameters xmi:id="_TV-MY3lnEeiCUskJq7n8Iw" name="Existing">
+      <type xsi:type="ecore:EClass" href="rulegen.ecore#//B"/>
+    </parameters>
+    <parameters xmi:id="_TV-MZHlnEeiCUskJq7n8Iw" name="New">
+      <type xsi:type="ecore:EClass" href="rulegen.ecore#//C"/>
+    </parameters>
+    <lhs xmi:id="_TV-MZXlnEeiCUskJq7n8Iw" name="Lhs">
+      <nodes xmi:id="_TV-MZnlnEeiCUskJq7n8Iw" name="Selected">
+        <type href="rulegen.ecore#//Context"/>
+      </nodes>
+      <nodes xmi:id="_TV-MZ3lnEeiCUskJq7n8Iw" name="Existing">
+        <type href="rulegen.ecore#//B"/>
+      </nodes>
+      <formula xsi:type="henshin:Not" xmi:id="_TV-MaHlnEeiCUskJq7n8Iw">
+        <child xsi:type="henshin:NestedCondition" xmi:id="_TV-MaXlnEeiCUskJq7n8Iw">
+          <conclusion xmi:id="_TV-ManlnEeiCUskJq7n8Iw" name="ub0">
+            <nodes xmi:id="_TV-Ma3lnEeiCUskJq7n8Iw" name="" outgoing="_TV-McXlnEeiCUskJq7n8Iw _TV-McnlnEeiCUskJq7n8Iw _TV-Mc3lnEeiCUskJq7n8Iw _TV-MdHlnEeiCUskJq7n8Iw _TV-MdXlnEeiCUskJq7n8Iw">
+              <type href="rulegen.ecore#//B"/>
+            </nodes>
+            <nodes xmi:id="_TV-MbHlnEeiCUskJq7n8Iw" name="" incoming="_TV-McXlnEeiCUskJq7n8Iw">
+              <type href="rulegen.ecore#//C"/>
+            </nodes>
+            <nodes xmi:id="_TV-MbXlnEeiCUskJq7n8Iw" name="" incoming="_TV-McnlnEeiCUskJq7n8Iw">
+              <type href="rulegen.ecore#//C"/>
+            </nodes>
+            <nodes xmi:id="_TV-MbnlnEeiCUskJq7n8Iw" name="" incoming="_TV-Mc3lnEeiCUskJq7n8Iw">
+              <type href="rulegen.ecore#//C"/>
+            </nodes>
+            <nodes xmi:id="_TV-Mb3lnEeiCUskJq7n8Iw" name="" incoming="_TV-MdHlnEeiCUskJq7n8Iw">
+              <type href="rulegen.ecore#//C"/>
+            </nodes>
+            <nodes xmi:id="_TV-McHlnEeiCUskJq7n8Iw" name="" incoming="_TV-MdXlnEeiCUskJq7n8Iw">
+              <type href="rulegen.ecore#//C"/>
+            </nodes>
+            <edges xmi:id="_TV-McXlnEeiCUskJq7n8Iw" source="_TV-Ma3lnEeiCUskJq7n8Iw" target="_TV-MbHlnEeiCUskJq7n8Iw">
+              <type href="rulegen.ecore#//B/edgeBC"/>
+            </edges>
+            <edges xmi:id="_TV-McnlnEeiCUskJq7n8Iw" source="_TV-Ma3lnEeiCUskJq7n8Iw" target="_TV-MbXlnEeiCUskJq7n8Iw">
+              <type href="rulegen.ecore#//B/edgeBC"/>
+            </edges>
+            <edges xmi:id="_TV-Mc3lnEeiCUskJq7n8Iw" source="_TV-Ma3lnEeiCUskJq7n8Iw" target="_TV-MbnlnEeiCUskJq7n8Iw">
+              <type href="rulegen.ecore#//B/edgeBC"/>
+            </edges>
+            <edges xmi:id="_TV-MdHlnEeiCUskJq7n8Iw" source="_TV-Ma3lnEeiCUskJq7n8Iw" target="_TV-Mb3lnEeiCUskJq7n8Iw">
+              <type href="rulegen.ecore#//B/edgeBC"/>
+            </edges>
+            <edges xmi:id="_TV-MdXlnEeiCUskJq7n8Iw" source="_TV-Ma3lnEeiCUskJq7n8Iw" target="_TV-McHlnEeiCUskJq7n8Iw">
+              <type href="rulegen.ecore#//B/edgeBC"/>
+            </edges>
+          </conclusion>
+          <mappings xmi:id="_TV-MdnlnEeiCUskJq7n8Iw" origin="_TV-MZ3lnEeiCUskJq7n8Iw" image="_TV-Ma3lnEeiCUskJq7n8Iw"/>
+        </child>
+      </formula>
+    </lhs>
+    <rhs xmi:id="_TV-Md3lnEeiCUskJq7n8Iw" name="Rhs">
+      <nodes xmi:id="_TV-MeHlnEeiCUskJq7n8Iw" name="Selected" outgoing="_TV-Me3lnEeiCUskJq7n8Iw">
+        <type href="rulegen.ecore#//Context"/>
+      </nodes>
+      <nodes xmi:id="_TV-MeXlnEeiCUskJq7n8Iw" name="New" incoming="_TV-Me3lnEeiCUskJq7n8Iw _TV-MfXlnEeiCUskJq7n8Iw" outgoing="_TV-MfHlnEeiCUskJq7n8Iw">
+        <type href="rulegen.ecore#//C"/>
+      </nodes>
+      <nodes xmi:id="_TV-MenlnEeiCUskJq7n8Iw" name="Existing" incoming="_TV-MfHlnEeiCUskJq7n8Iw" outgoing="_TV-MfXlnEeiCUskJq7n8Iw">
+        <type href="rulegen.ecore#//B"/>
+      </nodes>
+      <edges xmi:id="_TV-Me3lnEeiCUskJq7n8Iw" source="_TV-MeHlnEeiCUskJq7n8Iw" target="_TV-MeXlnEeiCUskJq7n8Iw">
+        <type href="rulegen.ecore#//Context/c"/>
+      </edges>
+      <edges xmi:id="_TV-MfHlnEeiCUskJq7n8Iw" source="_TV-MeXlnEeiCUskJq7n8Iw" target="_TV-MenlnEeiCUskJq7n8Iw">
+        <type href="rulegen.ecore#//C/edgeCB"/>
+      </edges>
+      <edges xmi:id="_TV-MfXlnEeiCUskJq7n8Iw" source="_TV-MenlnEeiCUskJq7n8Iw" target="_TV-MeXlnEeiCUskJq7n8Iw">
+        <type href="rulegen.ecore#//B/edgeBC"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_TV-MfnlnEeiCUskJq7n8Iw" origin="_TV-MZnlnEeiCUskJq7n8Iw" image="_TV-MeHlnEeiCUskJq7n8Iw"/>
+    <mappings xmi:id="_TV-Mf3lnEeiCUskJq7n8Iw" origin="_TV-MZ3lnEeiCUskJq7n8Iw" image="_TV-MenlnEeiCUskJq7n8Iw"/>
+  </units>
+</henshin:Module>
