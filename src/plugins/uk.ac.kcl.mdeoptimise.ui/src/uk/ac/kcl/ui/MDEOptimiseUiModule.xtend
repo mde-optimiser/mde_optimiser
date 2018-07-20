@@ -4,11 +4,15 @@
 package uk.ac.kcl.ui
 
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
+import org.eclipse.ui.plugin.AbstractUIPlugin
 
 /**
  * Use this class to register components to be used within the Eclipse IDE.
  */
-@FinalFieldsConstructor
 class MDEOptimiseUiModule extends AbstractMDEOptimiseUiModule {
+	
+	new(AbstractUIPlugin plugin) {
+		super(plugin)
+	}
 	
 }

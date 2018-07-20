@@ -17,8 +17,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmFactory <em>Algorithm Factory</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmName <em>Algorithm Name</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmVariation <em>Algorithm Variation</em>}</li>
- *   <li>{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmEvolutions <em>Algorithm Evolutions</em>}</li>
- *   <li>{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmPopulation <em>Algorithm Population</em>}</li>
+ *   <li>{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmParameters <em>Algorithm Parameters</em>}</li>
+ *   <li>{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getTerminationCondition <em>Termination Condition</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmBatches <em>Algorithm Batches</em>}</li>
  * </ul>
  *
@@ -107,56 +107,56 @@ public interface OptimisationSpec extends EObject
   void setAlgorithmVariation(AlgorithmVariation value);
 
   /**
-   * Returns the value of the '<em><b>Algorithm Evolutions</b></em>' attribute.
+   * Returns the value of the '<em><b>Algorithm Parameters</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Algorithm Evolutions</em>' attribute isn't clear,
+   * If the meaning of the '<em>Algorithm Parameters</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Algorithm Evolutions</em>' attribute.
-   * @see #setAlgorithmEvolutions(int)
-   * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getOptimisationSpec_AlgorithmEvolutions()
-   * @model
+   * @return the value of the '<em>Algorithm Parameters</em>' containment reference.
+   * @see #setAlgorithmParameters(AlgorithmParameters)
+   * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getOptimisationSpec_AlgorithmParameters()
+   * @model containment="true"
    * @generated
    */
-  int getAlgorithmEvolutions();
+  AlgorithmParameters getAlgorithmParameters();
 
   /**
-   * Sets the value of the '{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmEvolutions <em>Algorithm Evolutions</em>}' attribute.
+   * Sets the value of the '{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmParameters <em>Algorithm Parameters</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Algorithm Evolutions</em>' attribute.
-   * @see #getAlgorithmEvolutions()
+   * @param value the new value of the '<em>Algorithm Parameters</em>' containment reference.
+   * @see #getAlgorithmParameters()
    * @generated
    */
-  void setAlgorithmEvolutions(int value);
+  void setAlgorithmParameters(AlgorithmParameters value);
 
   /**
-   * Returns the value of the '<em><b>Algorithm Population</b></em>' attribute.
+   * Returns the value of the '<em><b>Termination Condition</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Algorithm Population</em>' attribute isn't clear,
+   * If the meaning of the '<em>Termination Condition</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Algorithm Population</em>' attribute.
-   * @see #setAlgorithmPopulation(int)
-   * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getOptimisationSpec_AlgorithmPopulation()
-   * @model
+   * @return the value of the '<em>Termination Condition</em>' containment reference.
+   * @see #setTerminationCondition(TerminationConditionParameters)
+   * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getOptimisationSpec_TerminationCondition()
+   * @model containment="true"
    * @generated
    */
-  int getAlgorithmPopulation();
+  TerminationConditionParameters getTerminationCondition();
 
   /**
-   * Sets the value of the '{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmPopulation <em>Algorithm Population</em>}' attribute.
+   * Sets the value of the '{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getTerminationCondition <em>Termination Condition</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Algorithm Population</em>' attribute.
-   * @see #getAlgorithmPopulation()
+   * @param value the new value of the '<em>Termination Condition</em>' containment reference.
+   * @see #getTerminationCondition()
    * @generated
    */
-  void setAlgorithmPopulation(int value);
+  void setTerminationCondition(TerminationConditionParameters value);
 
   /**
    * Returns the value of the '<em><b>Algorithm Batches</b></em>' attribute.

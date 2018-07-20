@@ -1,4 +1,4 @@
-package uk.ac.kcl.optimisation.moea
+package uk.ac.kcl.optimisation.moea.problem
 
 import org.eclipse.emf.ecore.EObject
 import org.moeaframework.core.Variable

@@ -199,6 +199,27 @@ public class MdeoptimiseSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case MdeoptimisePackage.ALGORITHM_PARAMETERS:
+      {
+        AlgorithmParameters algorithmParameters = (AlgorithmParameters)theEObject;
+        T result = caseAlgorithmParameters(algorithmParameters);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MdeoptimisePackage.TERMINATION_CONDITION_PARAMETERS:
+      {
+        TerminationConditionParameters terminationConditionParameters = (TerminationConditionParameters)theEObject;
+        T result = caseTerminationConditionParameters(terminationConditionParameters);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MdeoptimisePackage.PARAMETER:
+      {
+        Parameter parameter = (Parameter)theEObject;
+        T result = caseParameter(parameter);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -487,6 +508,54 @@ public class MdeoptimiseSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseProbabilityVariation(ProbabilityVariation object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Algorithm Parameters</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Algorithm Parameters</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAlgorithmParameters(AlgorithmParameters object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Termination Condition Parameters</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Termination Condition Parameters</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTerminationConditionParameters(TerminationConditionParameters object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Parameter</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseParameter(Parameter object)
   {
     return null;
   }

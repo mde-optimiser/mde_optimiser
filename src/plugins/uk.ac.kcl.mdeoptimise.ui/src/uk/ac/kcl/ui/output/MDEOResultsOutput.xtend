@@ -20,8 +20,8 @@ import uk.ac.kcl.ui.output.descriptors.MOEAObjectivesOutputDescriptor
 import uk.ac.kcl.ui.output.descriptors.ParetoChartOutputDescriptor
 import uk.ac.kcl.ui.output.descriptors.BatchReportsDescriptor
 import uk.ac.kcl.ui.output.descriptors.GeneratedMutationOperatorsDescriptor
-import uk.ac.kcl.ui.output.descriptors.HypervolumeDescriptor
 import uk.ac.kcl.ui.output.descriptors.ExperimentCSVSerializer
+import uk.ac.kcl.ui.output.descriptors.AccumulatorSerialiser
 
 class MDEOResultsOutput {
 	
@@ -55,10 +55,14 @@ class MDEOResultsOutput {
 	}
 
 	def void saveOutcome(){
+		this.saveOutcome(null)
+	}
+
+	def void saveOutcome(Integer customBatch){
 		
 		val experimentDate = new SimpleDateFormat("yyMMdd-HHmmss").format(experimentStartTime);
 		val outcomePath = projectRoot.append(String.format("mdeo-results/experiment-%s-%s-matching-%s/", 
-			experimentDate, moptFile.lastSegment, this.matchingType
+			moptFile.lastSegment, experimentDate, this.matchingType
 		));
 		
 		//Used to generate the experiments summary	
@@ -78,8 +82,10 @@ class MDEOResultsOutput {
 			batchesOutput.append("============================================")
 			batchesOutput.append(System.getProperty("line.separator"));
 		]
-		
-		outputExperimentSummary(batches, outcomePath, moptFile, batchesOutput)
+	
+		if(customBatch === null) {
+			outputExperimentSummary(batches, outcomePath, moptFile, batchesOutput)
+		}	
 	}
 	
 	def void outputExperimentSummary(List<MDEOBatch> batches, IPath outcomePath, IPath moptFile, StringBuilder batchesOutput){
@@ -159,6 +165,7 @@ class MDEOResultsOutput {
 		descriptors.add(new GeneratedMutationOperatorsDescriptor())
 		//descriptors.add(new HypervolumeDescriptor())
 		descriptors.add(new ExperimentCSVSerializer())
+		descriptors.add(new AccumulatorSerialiser())
 		
 		return descriptors;
 		

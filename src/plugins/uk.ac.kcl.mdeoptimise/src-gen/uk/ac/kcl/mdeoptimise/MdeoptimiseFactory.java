@@ -186,6 +186,33 @@ public interface MdeoptimiseFactory extends EFactory
   ProbabilityVariation createProbabilityVariation();
 
   /**
+   * Returns a new object of class '<em>Algorithm Parameters</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Algorithm Parameters</em>'.
+   * @generated
+   */
+  AlgorithmParameters createAlgorithmParameters();
+
+  /**
+   * Returns a new object of class '<em>Termination Condition Parameters</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Termination Condition Parameters</em>'.
+   * @generated
+   */
+  TerminationConditionParameters createTerminationConditionParameters();
+
+  /**
+   * Returns a new object of class '<em>Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Parameter</em>'.
+   * @generated
+   */
+  Parameter createParameter();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

@@ -1,4 +1,4 @@
-package uk.ac.kcl.optimisation.moea
+package uk.ac.kcl.optimisation.moea.algorithms
 
 import java.util.Properties
 import org.moeaframework.algorithm.EpsilonMOEA
@@ -15,6 +15,9 @@ import org.moeaframework.core.operator.TournamentSelection
 import org.moeaframework.core.spi.AlgorithmProvider
 import uk.ac.kcl.mdeoptimise.AlgorithmVariation
 import uk.ac.kcl.optimisation.SolutionGenerator
+import uk.ac.kcl.optimisation.moea.operators.MoeaOptimisationCrossoverVariation
+import uk.ac.kcl.optimisation.moea.operators.MoeaOptimisationMutationVariation
+import uk.ac.kcl.optimisation.moea.operators.MoeaProbabilisticVariation
 
 class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
 	

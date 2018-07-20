@@ -1,17 +1,13 @@
 package uk.ac.kcl.ui.output.descriptors
 
+import com.google.common.collect.Lists
+import com.google.common.io.Files
 import java.io.File
+import java.io.PrintWriter
 import org.eclipse.core.runtime.IPath
-import uk.ac.kcl.ui.output.MDEOBatch
-import uk.ac.kcl.optimisation.moea.MoeaOptimisationSolution
-import uk.ac.kcl.optimisation.moea.MoeaOptimisationProblem
 import org.moeaframework.core.NondominatedPopulation
 import org.moeaframework.core.indicator.Hypervolume
-import com.google.common.io.Files
-import java.io.PrintWriter
-import org.moeaframework.core.indicator.Normalizer
-import com.google.common.collect.Lists
-import org.moeaframework.core.PopulationIO
+import uk.ac.kcl.ui.output.MDEOBatch
 
 class HypervolumeDescriptor implements ResultsDescriptor {
 	

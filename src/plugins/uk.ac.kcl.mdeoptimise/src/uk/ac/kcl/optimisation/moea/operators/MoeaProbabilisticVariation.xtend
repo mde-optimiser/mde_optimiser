@@ -1,4 +1,4 @@
-package uk.ac.kcl.optimisation.moea
+package uk.ac.kcl.optimisation.moea.operators
 
 import java.io.InvalidObjectException
 import java.util.Arrays

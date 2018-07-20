@@ -29,7 +29,8 @@ Require-Bundle: uk.ac.kcl.mdeoptimise,
  org.eclipse.emf.henshin.model;bundle-version="1.5.0",
  org.moeaframework,
  org.jfree.chart,
- org.jfree.jcommon
+ org.jfree.jcommon,
+ org.apache.commons.cli
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: uk.ac.kcl.mdeoptimise.ui.internal,

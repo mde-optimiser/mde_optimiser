@@ -5,7 +5,7 @@ import uk.ac.kcl.ui.output.MDEOBatch
 import java.io.File
 import java.util.ArrayList
 import java.util.LinkedHashMap
-import uk.ac.kcl.optimisation.moea.MoeaOptimisationSolution
+import uk.ac.kcl.optimisation.moea.problem.MoeaOptimisationSolution
 import com.google.common.base.Joiner
 import java.io.FileWriter
 import java.io.BufferedWriter

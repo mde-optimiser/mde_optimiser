@@ -13,6 +13,14 @@ import uk.ac.kcl.interpreter.OptimisationInterpreter
 import uk.ac.kcl.mdeoptimise.Optimisation
 import uk.ac.kcl.ui.output.MDEOBatch
 import uk.ac.kcl.ui.output.MDEOResultsOutput
+import org.apache.commons.cli.Options
+import org.apache.commons.cli.OptionBuilder
+import org.apache.commons.cli.OptionGroup
+import org.apache.commons.cli.BasicParser
+import org.apache.commons.cli.HelpFormatter
+import org.apache.commons.cli.ParseException
+import org.apache.commons.cli.CommandLine
+import org.apache.commons.cli.Option
 
 class RunOptimisation {
 	
@@ -20,6 +28,8 @@ class RunOptimisation {
 	
 	@Inject
 	private Provider<ResourceSet> resourceSetProvider
+	
+	private Options commandLineOptions;
 	
 	/*
 	 * Flag to enable choice between Henshin nondeterministic matching in SolutionGenerator
@@ -34,21 +44,77 @@ class RunOptimisation {
 	def public static void main(String[] args){
 		val app = injector.getInstance(RunOptimisation)
 		
-		if(args.length === 2) {
-			app.run(args.get(0), args.get(1))
-		} else {
-			println("Invalid number of arguments. Cannot launch optimisation.")
-			println("Expecting a valid project path and a valid mopt file path.")
+		
+		var parser = new BasicParser();
+		var CommandLine command = null
+		
+		try {
+						
+			command = parser.parse(app.getCommandLineOptions, args);
+			
+			if(command.hasOption("classic-matching")) {
+				println("You have chosen to use classic matching instead of Henshin nondeterministic matching for model evolution.")
+				app.enableManualRandomMatching = true;
+			}
+			
+			
+			var String projectPath = command.getOptionValue("projectPath")
+			var String moptPath = command.getOptionValue("moptPath")
+			
+			if(command.hasOption("batch")){
+				var int batchId = Integer.parseInt(command.getOptionValue("batch"))
+				
+				app.run(projectPath, moptPath, batchId)
+				
+			} else {
+				app.run(projectPath, moptPath)
+			}
+			
+		} catch (ParseException e) {
+			app.help();
+			System.exit(0);
+		}
+
+	}
+	
+	def void help(){
+		var formatter = new HelpFormatter();
+		
+		var header = "Run MOPT specs from the command line.\n\n";
+ 		var footer = "\nPlease report issues at https://github.com/mde-optimiser/mde_optimiser/issues";
+		
+		formatter.printHelp("mdeo", header, this.getCommandLineOptions, footer, true)
+		
+	}
+	
+	def Options getCommandLineOptions(){
+		
+		if(this.commandLineOptions === null) {
+			
+			this.commandLineOptions = new Options()
+			
+			var projectPath = new Option("p", "projectPath", true, "use given path as the root of the tool" );
+ 			projectPath.setRequired(true);
+ 			projectPath.setArgs(1)
+			
+			var moptPath = new Option("m", "moptPath", true, "use given MOPT configuration file");
+ 			moptPath.setRequired(true);
+			moptPath.setArgs(1)
+			
+			commandLineOptions.addOption(projectPath)
+			commandLineOptions.addOption(moptPath)
+			commandLineOptions.addOption("b", "batch", true, "run a single batch with this numeric ID")
+			commandLineOptions.addOption("s", "classic-matching", false, "use classic matching strategy in Henshin. Default is Henshin matching.")
 		}
 		
-		if(args.length === 3 && Boolean.parseBoolean(args.get(2)) === true) {
-			println("You have chosen to use random matching instead of Henshin nondeterministic matching for model evolution.")
-			app.enableManualRandomMatching = true;
-			app.run(args.get(0), args.get(1))
-		}
+		return this.commandLineOptions	
 	}
 	
 	def void run(String moptProjectPath, String configuredMoptFilePath){
+		this.run(moptProjectPath, configuredMoptFilePath, null)
+	}
+	
+	def void run(String moptProjectPath, String configuredMoptFilePath, Integer batch){
 		
 		if (configuredMoptFilePath === null || configuredMoptFilePath.empty) {
 			println("Received a null or empty mopt file path.")
@@ -73,33 +139,24 @@ class RunOptimisation {
 				);	
 				
 				if(optimisationModel !== null){
-					
-					var experimentId = 0;
-	            	do {
-	            		val startTime = System.nanoTime;
-	            		var optimisationInterpreter = new OptimisationInterpreter(moptProjectPath, optimisationModel);
-	            		
-	            		if(this.enableManualRandomMatching){
-	            			optimisationInterpreter.enableManualRandomMatching = enableManualRandomMatching;
-	            		}
-	            		
-	            		val optimisationOutcome = optimisationInterpreter.start();
-	            		
-	            		val endTime = System.nanoTime;
-	            		
-	            		val experimentDuration = (endTime - startTime) / 1000000
-	      				
-	      				var generatedRules = optimisationInterpreter.rulegenOperators;
-	      				
-	            		//TODO Output generated mutation operators for each experiment? or each batch?
-	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome, generatedRules))		
-	            		
-	            		experimentId++
-					
-					} while(experimentId < optimisationModel.optimisation.algorithmBatches);
+					if(batch === null) {
+						
+						//Run all the batches from the MOPT file
+						
+						var experimentId = 0;
+		            	do {	      				
+		            		//TODO Output generated mutation operators for each experiment? or each batch?
+		            		mdeoResultsOutput.logBatch(runBatch(moptProjectPath, optimisationModel, experimentId, false))
+		            		experimentId++
+						
+						} while(experimentId < optimisationModel.optimisation.algorithmBatches);
+					} else {
+						
+						//Run a specific batch only
+		            	mdeoResultsOutput.logBatch(runBatch(moptProjectPath, optimisationModel, batch, true))
+					}
 
-	            	
-	            	mdeoResultsOutput.saveOutcome();
+	            	mdeoResultsOutput.saveOutcome(batch);
 	            }
 			
 			} else {
@@ -107,4 +164,25 @@ class RunOptimisation {
 			}
 		}
 	}
+	
+	def MDEOBatch runBatch(String moptProjectPath, Optimisation optimisationModel, Integer batch, boolean singleBatch){
+			
+			var optimisationInterpreter = new OptimisationInterpreter(moptProjectPath, optimisationModel);
+	            		
+    		val startTime = System.nanoTime;
+    		if(this.enableManualRandomMatching){
+    			optimisationInterpreter.enableManualRandomMatching = enableManualRandomMatching;
+    		}
+    		
+    		val optimisationOutcome = optimisationInterpreter.start();
+    		
+    		val endTime = System.nanoTime;
+    		
+    		val experimentDuration = (endTime - startTime) / 1000000
+			
+			var generatedRules = optimisationInterpreter.rulegenOperators;
+			
+			return new MDEOBatch(batch, experimentDuration, optimisationOutcome, generatedRules, singleBatch)
+	}
+	
 }

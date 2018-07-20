@@ -133,8 +133,8 @@ OptimisationSpec:
 	"optimisation" "provider" algorithmFactory=ALGORITHM_FACTORY
 				"algorithm" algorithmName=ALGORITHM_NAME
 				"variation" algorithmVariation=AlgorithmVariation
-				"evolutions" algorithmEvolutions=INT
-				"population" algorithmPopulation=INT
+				"parameters" algorithmParameters=AlgorithmParameters
+				"termination" terminationCondition=TerminationConditionParameters
 				("batches" algorithmBatches=INT)?
 ;
 
@@ -148,6 +148,26 @@ ProbabilityVariation:
 
 SignedInteger returns ecore::EIntegerObject:
   '-'? INT;
+
+AlgorithmParameters:
+	"{"
+		parameters+=Parameter
+	"}"
+;
+
+TerminationConditionParameters:
+	"{"
+		parameters+=Parameter
+	"}"
+;
+
+Parameter:
+	name=ID ParameterAssignment value=INT
+;
+
+ParameterAssignment:
+	":"
+;
 
 terminal CREATE_NODE returns ecore::EString:
 	'CREATE'

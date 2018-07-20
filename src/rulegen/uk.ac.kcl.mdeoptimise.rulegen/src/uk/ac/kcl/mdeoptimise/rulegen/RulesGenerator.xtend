@@ -16,6 +16,7 @@ import uk.ac.kcl.mdeoptimise.rulegen.metamodel.Multiplicity
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RuleSpec
 import org.sidiff.serge.util.RuleSemanticsChecker
 import org.sidiff.common.henshin.HenshinModuleAnalysis
+import org.eclipse.emf.henshin.model.Rule
 
 class RulesGenerator {
 	
@@ -27,6 +28,7 @@ class RulesGenerator {
 	
 	private SpecsGenerator specsGenerator;
 	private RuleGenerationCommandFactory ruleGenerationCommandFactory;
+	
 	
 	//TODO The metamodel should ideally be a list as there are some cases where this is requested
 	new(EPackage metamodel, List<Multiplicity> refinedMultiplicities, List<RuleSpec> rulegenSpecs){
@@ -90,33 +92,34 @@ class RulesGenerator {
 		
 		val uniqueRules = new ArrayList<Module>();
 		
-		problemRules.forEach[ problemRule |
+		solutionRules.forEach[module | 
 			
-			uniqueRules.add(problemRule)
+			if(!isRuleInCollection(module, uniqueRules)){
+				uniqueRules.add(module)
+			}
+		]	
+		
+		problemRules.forEach[module |
 			
-			solutionRules.forEach[ solutionRule | 
-			
-				var leftRule = HenshinModuleAnalysis.getAllRules(problemRule).get(0);
-				var rightRule = HenshinModuleAnalysis.getAllRules(solutionRule).get(0);
-			
-				var checker = new RuleSemanticsChecker(leftRule, rightRule);
-				if (!checker.isEqual()) {
-					if(!uniqueRules.contains(solutionRule)) {
-						uniqueRules.add(solutionRule)	
-					} else {
-						
-						//TODO Logger
-						//println("Rule already added: " + solutionRule.allRules.head.name)
-					}
-				} else {
-					
-					//TODO Logger
-					//println(String.format("Found similar rules: %s, %s", problemRule.name, solutionRule.name))
-				}
-			]
+			if(!isRuleInCollection(module, uniqueRules)){
+				uniqueRules.add(module)
+			}
 		]
 		
 		return uniqueRules
+	}
+	
+	
+	private def boolean isRuleInCollection(Module rule, List<Module> uniqueRules) {
+		
+		return uniqueRules.filter[module | 
+				var leftRule = HenshinModuleAnalysis.getAllRules(rule).get(0);
+				var rightRule = HenshinModuleAnalysis.getAllRules(module).get(0);
+			
+				var checker = new RuleSemanticsChecker(leftRule, rightRule);
+				
+				return checker.isEqual()
+		].empty == false
 	}
 	
 	private def List<Module> runRuleGenerationCommands(List<IRuleGenerationCommand> rulesGenerationList){

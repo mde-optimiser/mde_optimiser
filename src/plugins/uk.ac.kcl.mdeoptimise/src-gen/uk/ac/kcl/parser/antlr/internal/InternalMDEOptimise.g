@@ -1466,47 +1466,49 @@ ruleOptimisationSpec returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_7='evolutions'
+		otherlv_7='parameters'
 		{
-			newLeafNode(otherlv_7, grammarAccess.getOptimisationSpecAccess().getEvolutionsKeyword_7());
+			newLeafNode(otherlv_7, grammarAccess.getOptimisationSpecAccess().getParametersKeyword_7());
 		}
 		(
 			(
-				lv_algorithmEvolutions_8_0=RULE_INT
 				{
-					newLeafNode(lv_algorithmEvolutions_8_0, grammarAccess.getOptimisationSpecAccess().getAlgorithmEvolutionsINTTerminalRuleCall_8_0());
+					newCompositeNode(grammarAccess.getOptimisationSpecAccess().getAlgorithmParametersAlgorithmParametersParserRuleCall_8_0());
 				}
+				lv_algorithmParameters_8_0=ruleAlgorithmParameters
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getOptimisationSpecRule());
+						$current = createModelElementForParent(grammarAccess.getOptimisationSpecRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
-						"algorithmEvolutions",
-						lv_algorithmEvolutions_8_0,
-						"org.eclipse.xtext.xbase.Xbase.INT");
+						"algorithmParameters",
+						lv_algorithmParameters_8_0,
+						"uk.ac.kcl.MDEOptimise.AlgorithmParameters");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_9='population'
+		otherlv_9='termination'
 		{
-			newLeafNode(otherlv_9, grammarAccess.getOptimisationSpecAccess().getPopulationKeyword_9());
+			newLeafNode(otherlv_9, grammarAccess.getOptimisationSpecAccess().getTerminationKeyword_9());
 		}
 		(
 			(
-				lv_algorithmPopulation_10_0=RULE_INT
 				{
-					newLeafNode(lv_algorithmPopulation_10_0, grammarAccess.getOptimisationSpecAccess().getAlgorithmPopulationINTTerminalRuleCall_10_0());
+					newCompositeNode(grammarAccess.getOptimisationSpecAccess().getTerminationConditionTerminationConditionParametersParserRuleCall_10_0());
 				}
+				lv_terminationCondition_10_0=ruleTerminationConditionParameters
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getOptimisationSpecRule());
+						$current = createModelElementForParent(grammarAccess.getOptimisationSpecRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
-						"algorithmPopulation",
-						lv_algorithmPopulation_10_0,
-						"org.eclipse.xtext.xbase.Xbase.INT");
+						"terminationCondition",
+						lv_terminationCondition_10_0,
+						"uk.ac.kcl.MDEOptimise.TerminationConditionParameters");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -1731,6 +1733,182 @@ ruleSignedInteger returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleT
 			newLeafNode(this_INT_1, grammarAccess.getSignedIntegerAccess().getINTTerminalRuleCall_1());
 		}
 	)
+;
+
+// Entry rule entryRuleAlgorithmParameters
+entryRuleAlgorithmParameters returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getAlgorithmParametersRule()); }
+	iv_ruleAlgorithmParameters=ruleAlgorithmParameters
+	{ $current=$iv_ruleAlgorithmParameters.current; }
+	EOF;
+
+// Rule AlgorithmParameters
+ruleAlgorithmParameters returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='{'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getAlgorithmParametersAccess().getLeftCurlyBracketKeyword_0());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getAlgorithmParametersAccess().getParametersParameterParserRuleCall_1_0());
+				}
+				lv_parameters_1_0=ruleParameter
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getAlgorithmParametersRule());
+					}
+					add(
+						$current,
+						"parameters",
+						lv_parameters_1_0,
+						"uk.ac.kcl.MDEOptimise.Parameter");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_2='}'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getAlgorithmParametersAccess().getRightCurlyBracketKeyword_2());
+		}
+	)
+;
+
+// Entry rule entryRuleTerminationConditionParameters
+entryRuleTerminationConditionParameters returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getTerminationConditionParametersRule()); }
+	iv_ruleTerminationConditionParameters=ruleTerminationConditionParameters
+	{ $current=$iv_ruleTerminationConditionParameters.current; }
+	EOF;
+
+// Rule TerminationConditionParameters
+ruleTerminationConditionParameters returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='{'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getTerminationConditionParametersAccess().getLeftCurlyBracketKeyword_0());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getTerminationConditionParametersAccess().getParametersParameterParserRuleCall_1_0());
+				}
+				lv_parameters_1_0=ruleParameter
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getTerminationConditionParametersRule());
+					}
+					add(
+						$current,
+						"parameters",
+						lv_parameters_1_0,
+						"uk.ac.kcl.MDEOptimise.Parameter");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_2='}'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getTerminationConditionParametersAccess().getRightCurlyBracketKeyword_2());
+		}
+	)
+;
+
+// Entry rule entryRuleParameter
+entryRuleParameter returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getParameterRule()); }
+	iv_ruleParameter=ruleParameter
+	{ $current=$iv_ruleParameter.current; }
+	EOF;
+
+// Rule Parameter
+ruleParameter returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				lv_name_0_0=RULE_ID
+				{
+					newLeafNode(lv_name_0_0, grammarAccess.getParameterAccess().getNameIDTerminalRuleCall_0_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getParameterRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_0_0,
+						"org.eclipse.xtext.xbase.Xtype.ID");
+				}
+			)
+		)
+		{
+			newCompositeNode(grammarAccess.getParameterAccess().getParameterAssignmentParserRuleCall_1());
+		}
+		ruleParameterAssignment
+		{
+			afterParserOrEnumRuleCall();
+		}
+		(
+			(
+				lv_value_2_0=RULE_INT
+				{
+					newLeafNode(lv_value_2_0, grammarAccess.getParameterAccess().getValueINTTerminalRuleCall_2_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getParameterRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"value",
+						lv_value_2_0,
+						"org.eclipse.xtext.xbase.Xbase.INT");
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleParameterAssignment
+entryRuleParameterAssignment returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getParameterAssignmentRule()); }
+	iv_ruleParameterAssignment=ruleParameterAssignment
+	{ $current=$iv_ruleParameterAssignment.current.getText(); }
+	EOF;
+
+// Rule ParameterAssignment
+ruleParameterAssignment returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	kw=':'
+	{
+		$current.merge(kw);
+		newLeafNode(kw, grammarAccess.getParameterAssignmentAccess().getColonKeyword());
+	}
 ;
 
 // Entry rule entryRuleXExpression

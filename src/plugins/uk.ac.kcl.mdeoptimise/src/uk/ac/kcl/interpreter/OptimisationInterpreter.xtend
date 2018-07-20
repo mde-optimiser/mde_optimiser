@@ -19,7 +19,7 @@ import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RuleSpec
 import uk.ac.kcl.optimisation.SolutionGenerator
 import uk.ac.kcl.optimisation.UserModelProvider
 import uk.ac.kcl.optimisation.moea.MoeaOptimisation
-import uk.ac.kcl.optimisation.moea.MoeaOptimisationSolution
+import org.moeaframework.Instrumenter
 
 class OptimisationInterpreter {
 	
@@ -39,12 +39,9 @@ class OptimisationInterpreter {
 		this.projectRootPath = new Path(projectPath);
 	}
 	
-	def Iterator<MoeaOptimisationSolution> start() {
+	def Instrumenter start() {
 		
 		//This model provider loads the model given by the user in the DSL
-		
-		
-		
 		var solutionGenerator = new SolutionGenerator(model, 
 											getBreedingOperators, 
 											getMutationOperators, 
@@ -56,8 +53,7 @@ class OptimisationInterpreter {
 			solutionGenerator.setEnableManualRandomMatching(this.enableManualRandomMatching);
 		}
 		
-		return new MoeaOptimisation()
-									.execute(model.optimisation, solutionGenerator)
+		return new MoeaOptimisation().execute(model.optimisation, solutionGenerator)
 	}
 	
 	def IModelProvider getModelProvider(){
