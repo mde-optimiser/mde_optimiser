@@ -1,8 +1,9 @@
-package uk.ac.kcl.optimisation.moea
+package uk.ac.kcl.optimisation.moea.operators
 
 import org.moeaframework.core.Solution
 import org.moeaframework.core.Variation
 import uk.ac.kcl.optimisation.SolutionGenerator
+import uk.ac.kcl.optimisation.moea.problem.MoeaOptimisationSolution
 
 class MoeaOptimisationMutationVariation implements Variation {
 	

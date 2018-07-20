@@ -1,4 +1,4 @@
-package uk.ac.kcl.optimisation.moea
+package uk.ac.kcl.optimisation.moea.problem
 
 import org.eclipse.emf.ecore.EObject
 import org.moeaframework.core.Solution
@@ -65,5 +65,41 @@ class MoeaOptimisationSolution extends Solution {
 		]
 		
 		return constraints
+	}
+	
+	override toString(){
+		
+		val sb = new StringBuilder();
+		
+		val objectives = getObjectives()		
+		sb.append("[")
+		
+		objectives.forEach[value,index|
+			sb.append(value)
+			
+			if(index < objectives.size - 1){
+				sb.append(",")
+			}
+		]
+		sb.append("]")
+		
+		val constraints = getConstraints();
+		
+		if(constraints.size > 0){
+			sb.append("[")
+			
+			constraints.forEach[value, index|
+				sb.append(value)
+				
+				if(index < constraints.size - 1){
+					sb.append(",")
+				}
+			]
+		
+			sb.append("]")
+		}
+
+		
+		return sb.toString
 	}
 }

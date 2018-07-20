@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import uk.ac.kcl.mdeoptimise.AlgorithmParameters;
 import uk.ac.kcl.mdeoptimise.AlgorithmVariation;
 import uk.ac.kcl.mdeoptimise.BasePathSpec;
 import uk.ac.kcl.mdeoptimise.ConstraintInterpreterSpec;
@@ -26,12 +27,14 @@ import uk.ac.kcl.mdeoptimise.MultiplicityRefinementSpec;
 import uk.ac.kcl.mdeoptimise.ObjectiveInterpreterSpec;
 import uk.ac.kcl.mdeoptimise.Optimisation;
 import uk.ac.kcl.mdeoptimise.OptimisationSpec;
+import uk.ac.kcl.mdeoptimise.Parameter;
 import uk.ac.kcl.mdeoptimise.ParameterFunction;
 import uk.ac.kcl.mdeoptimise.ProbabilityVariation;
 import uk.ac.kcl.mdeoptimise.ReportInterpreterSpec;
 import uk.ac.kcl.mdeoptimise.RulegenEdge;
 import uk.ac.kcl.mdeoptimise.RulegenNode;
 import uk.ac.kcl.mdeoptimise.RulegenSpec;
+import uk.ac.kcl.mdeoptimise.TerminationConditionParameters;
 
 /**
  * <!-- begin-user-doc -->
@@ -166,6 +169,27 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * @generated
    */
   private EClass probabilityVariationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass algorithmParametersEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass terminationConditionParametersEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass parameterEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -872,9 +896,9 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getOptimisationSpec_AlgorithmEvolutions()
+  public EReference getOptimisationSpec_AlgorithmParameters()
   {
-    return (EAttribute)optimisationSpecEClass.getEStructuralFeatures().get(3);
+    return (EReference)optimisationSpecEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -882,9 +906,9 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getOptimisationSpec_AlgorithmPopulation()
+  public EReference getOptimisationSpec_TerminationCondition()
   {
-    return (EAttribute)optimisationSpecEClass.getEStructuralFeatures().get(4);
+    return (EReference)optimisationSpecEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -965,6 +989,76 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
   public EAttribute getProbabilityVariation_Mutation_rate()
   {
     return (EAttribute)probabilityVariationEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAlgorithmParameters()
+  {
+    return algorithmParametersEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAlgorithmParameters_Parameters()
+  {
+    return (EReference)algorithmParametersEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getTerminationConditionParameters()
+  {
+    return terminationConditionParametersEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getTerminationConditionParameters_Parameters()
+  {
+    return (EReference)terminationConditionParametersEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getParameter()
+  {
+    return parameterEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getParameter_Name()
+  {
+    return (EAttribute)parameterEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getParameter_Value()
+  {
+    return (EAttribute)parameterEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1085,8 +1179,8 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
     createEAttribute(optimisationSpecEClass, OPTIMISATION_SPEC__ALGORITHM_FACTORY);
     createEAttribute(optimisationSpecEClass, OPTIMISATION_SPEC__ALGORITHM_NAME);
     createEReference(optimisationSpecEClass, OPTIMISATION_SPEC__ALGORITHM_VARIATION);
-    createEAttribute(optimisationSpecEClass, OPTIMISATION_SPEC__ALGORITHM_EVOLUTIONS);
-    createEAttribute(optimisationSpecEClass, OPTIMISATION_SPEC__ALGORITHM_POPULATION);
+    createEReference(optimisationSpecEClass, OPTIMISATION_SPEC__ALGORITHM_PARAMETERS);
+    createEReference(optimisationSpecEClass, OPTIMISATION_SPEC__TERMINATION_CONDITION);
     createEAttribute(optimisationSpecEClass, OPTIMISATION_SPEC__ALGORITHM_BATCHES);
 
     algorithmVariationEClass = createEClass(ALGORITHM_VARIATION);
@@ -1097,6 +1191,16 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
     createEAttribute(probabilityVariationEClass, PROBABILITY_VARIATION__TYPE);
     createEAttribute(probabilityVariationEClass, PROBABILITY_VARIATION__CROSSOVER_RATE);
     createEAttribute(probabilityVariationEClass, PROBABILITY_VARIATION__MUTATION_RATE);
+
+    algorithmParametersEClass = createEClass(ALGORITHM_PARAMETERS);
+    createEReference(algorithmParametersEClass, ALGORITHM_PARAMETERS__PARAMETERS);
+
+    terminationConditionParametersEClass = createEClass(TERMINATION_CONDITION_PARAMETERS);
+    createEReference(terminationConditionParametersEClass, TERMINATION_CONDITION_PARAMETERS__PARAMETERS);
+
+    parameterEClass = createEClass(PARAMETER);
+    createEAttribute(parameterEClass, PARAMETER__NAME);
+    createEAttribute(parameterEClass, PARAMETER__VALUE);
 
     // Create enums
     evolverTypeEEnum = createEEnum(EVOLVER_TYPE);
@@ -1211,8 +1315,8 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
     initEAttribute(getOptimisationSpec_AlgorithmFactory(), ecorePackage.getEString(), "algorithmFactory", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getOptimisationSpec_AlgorithmName(), ecorePackage.getEString(), "algorithmName", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOptimisationSpec_AlgorithmVariation(), this.getAlgorithmVariation(), null, "algorithmVariation", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getOptimisationSpec_AlgorithmEvolutions(), ecorePackage.getEInt(), "algorithmEvolutions", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getOptimisationSpec_AlgorithmPopulation(), ecorePackage.getEInt(), "algorithmPopulation", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getOptimisationSpec_AlgorithmParameters(), this.getAlgorithmParameters(), null, "algorithmParameters", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getOptimisationSpec_TerminationCondition(), this.getTerminationConditionParameters(), null, "terminationCondition", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getOptimisationSpec_AlgorithmBatches(), ecorePackage.getEInt(), "algorithmBatches", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(algorithmVariationEClass, AlgorithmVariation.class, "AlgorithmVariation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1223,6 +1327,16 @@ public class MdeoptimisePackageImpl extends EPackageImpl implements MdeoptimiseP
     initEAttribute(getProbabilityVariation_Type(), ecorePackage.getEString(), "type", null, 0, 1, ProbabilityVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getProbabilityVariation_Crossover_rate(), ecorePackage.getEString(), "crossover_rate", null, 0, 1, ProbabilityVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getProbabilityVariation_Mutation_rate(), ecorePackage.getEString(), "mutation_rate", null, 0, 1, ProbabilityVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(algorithmParametersEClass, AlgorithmParameters.class, "AlgorithmParameters", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAlgorithmParameters_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, AlgorithmParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(terminationConditionParametersEClass, TerminationConditionParameters.class, "TerminationConditionParameters", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getTerminationConditionParameters_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, TerminationConditionParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getParameter_Name(), ecorePackage.getEString(), "name", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getParameter_Value(), ecorePackage.getEInt(), "value", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
     initEEnum(evolverTypeEEnum, EvolverType.class, "EvolverType");

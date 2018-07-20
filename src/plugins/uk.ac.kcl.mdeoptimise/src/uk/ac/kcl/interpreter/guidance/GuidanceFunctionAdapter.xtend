@@ -2,14 +2,13 @@ package uk.ac.kcl.interpreter.guidance
 
 import uk.ac.kcl.mdeoptimise.ObjectiveInterpreterSpec
 import uk.ac.kcl.mdeoptimise.ConstraintInterpreterSpec
-import org.eclipse.xtend.lib.annotations.Accessors
 
 class GuidanceFunctionAdapter {
 	
-	@Accessors String functionName
-	@Accessors String functionTendency
-	@Accessors String functionType
-	@Accessors String functionSpec
+	 public String functionName
+	 public String functionTendency
+	 public String functionType
+	 public String functionSpec
 	
 	new(ObjectiveInterpreterSpec objectiveInterpreterSpec){
 		functionName = objectiveInterpreterSpec.objectiveName

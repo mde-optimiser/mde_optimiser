@@ -777,22 +777,22 @@ public interface MdeoptimisePackage extends EPackage
   int OPTIMISATION_SPEC__ALGORITHM_VARIATION = 2;
 
   /**
-   * The feature id for the '<em><b>Algorithm Evolutions</b></em>' attribute.
+   * The feature id for the '<em><b>Algorithm Parameters</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OPTIMISATION_SPEC__ALGORITHM_EVOLUTIONS = 3;
+  int OPTIMISATION_SPEC__ALGORITHM_PARAMETERS = 3;
 
   /**
-   * The feature id for the '<em><b>Algorithm Population</b></em>' attribute.
+   * The feature id for the '<em><b>Termination Condition</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OPTIMISATION_SPEC__ALGORITHM_POPULATION = 4;
+  int OPTIMISATION_SPEC__TERMINATION_CONDITION = 4;
 
   /**
    * The feature id for the '<em><b>Algorithm Batches</b></em>' attribute.
@@ -896,6 +896,99 @@ public interface MdeoptimisePackage extends EPackage
   int PROBABILITY_VARIATION_FEATURE_COUNT = 3;
 
   /**
+   * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.AlgorithmParametersImpl <em>Algorithm Parameters</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.mdeoptimise.impl.AlgorithmParametersImpl
+   * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getAlgorithmParameters()
+   * @generated
+   */
+  int ALGORITHM_PARAMETERS = 18;
+
+  /**
+   * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ALGORITHM_PARAMETERS__PARAMETERS = 0;
+
+  /**
+   * The number of structural features of the '<em>Algorithm Parameters</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ALGORITHM_PARAMETERS_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.TerminationConditionParametersImpl <em>Termination Condition Parameters</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.mdeoptimise.impl.TerminationConditionParametersImpl
+   * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getTerminationConditionParameters()
+   * @generated
+   */
+  int TERMINATION_CONDITION_PARAMETERS = 19;
+
+  /**
+   * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TERMINATION_CONDITION_PARAMETERS__PARAMETERS = 0;
+
+  /**
+   * The number of structural features of the '<em>Termination Condition Parameters</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TERMINATION_CONDITION_PARAMETERS_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.ParameterImpl <em>Parameter</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.mdeoptimise.impl.ParameterImpl
+   * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getParameter()
+   * @generated
+   */
+  int PARAMETER = 20;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER__VALUE = 1;
+
+  /**
+   * The number of structural features of the '<em>Parameter</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER_FEATURE_COUNT = 2;
+
+  /**
    * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.EvolverType <em>Evolver Type</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -903,7 +996,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getEvolverType()
    * @generated
    */
-  int EVOLVER_TYPE = 18;
+  int EVOLVER_TYPE = 21;
 
 
   /**
@@ -1584,26 +1677,26 @@ public interface MdeoptimisePackage extends EPackage
   EReference getOptimisationSpec_AlgorithmVariation();
 
   /**
-   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmEvolutions <em>Algorithm Evolutions</em>}'.
+   * Returns the meta object for the containment reference '{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmParameters <em>Algorithm Parameters</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Algorithm Evolutions</em>'.
-   * @see uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmEvolutions()
+   * @return the meta object for the containment reference '<em>Algorithm Parameters</em>'.
+   * @see uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmParameters()
    * @see #getOptimisationSpec()
    * @generated
    */
-  EAttribute getOptimisationSpec_AlgorithmEvolutions();
+  EReference getOptimisationSpec_AlgorithmParameters();
 
   /**
-   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmPopulation <em>Algorithm Population</em>}'.
+   * Returns the meta object for the containment reference '{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getTerminationCondition <em>Termination Condition</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Algorithm Population</em>'.
-   * @see uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmPopulation()
+   * @return the meta object for the containment reference '<em>Termination Condition</em>'.
+   * @see uk.ac.kcl.mdeoptimise.OptimisationSpec#getTerminationCondition()
    * @see #getOptimisationSpec()
    * @generated
    */
-  EAttribute getOptimisationSpec_AlgorithmPopulation();
+  EReference getOptimisationSpec_TerminationCondition();
 
   /**
    * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.OptimisationSpec#getAlgorithmBatches <em>Algorithm Batches</em>}'.
@@ -1690,6 +1783,80 @@ public interface MdeoptimisePackage extends EPackage
    * @generated
    */
   EAttribute getProbabilityVariation_Mutation_rate();
+
+  /**
+   * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.AlgorithmParameters <em>Algorithm Parameters</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Algorithm Parameters</em>'.
+   * @see uk.ac.kcl.mdeoptimise.AlgorithmParameters
+   * @generated
+   */
+  EClass getAlgorithmParameters();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link uk.ac.kcl.mdeoptimise.AlgorithmParameters#getParameters <em>Parameters</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Parameters</em>'.
+   * @see uk.ac.kcl.mdeoptimise.AlgorithmParameters#getParameters()
+   * @see #getAlgorithmParameters()
+   * @generated
+   */
+  EReference getAlgorithmParameters_Parameters();
+
+  /**
+   * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.TerminationConditionParameters <em>Termination Condition Parameters</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Termination Condition Parameters</em>'.
+   * @see uk.ac.kcl.mdeoptimise.TerminationConditionParameters
+   * @generated
+   */
+  EClass getTerminationConditionParameters();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link uk.ac.kcl.mdeoptimise.TerminationConditionParameters#getParameters <em>Parameters</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Parameters</em>'.
+   * @see uk.ac.kcl.mdeoptimise.TerminationConditionParameters#getParameters()
+   * @see #getTerminationConditionParameters()
+   * @generated
+   */
+  EReference getTerminationConditionParameters_Parameters();
+
+  /**
+   * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.Parameter <em>Parameter</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Parameter</em>'.
+   * @see uk.ac.kcl.mdeoptimise.Parameter
+   * @generated
+   */
+  EClass getParameter();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.Parameter#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see uk.ac.kcl.mdeoptimise.Parameter#getName()
+   * @see #getParameter()
+   * @generated
+   */
+  EAttribute getParameter_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.mdeoptimise.Parameter#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see uk.ac.kcl.mdeoptimise.Parameter#getValue()
+   * @see #getParameter()
+   * @generated
+   */
+  EAttribute getParameter_Value();
 
   /**
    * Returns the meta object for enum '{@link uk.ac.kcl.mdeoptimise.EvolverType <em>Evolver Type</em>}'.
@@ -2261,20 +2428,20 @@ public interface MdeoptimisePackage extends EPackage
     EReference OPTIMISATION_SPEC__ALGORITHM_VARIATION = eINSTANCE.getOptimisationSpec_AlgorithmVariation();
 
     /**
-     * The meta object literal for the '<em><b>Algorithm Evolutions</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Algorithm Parameters</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute OPTIMISATION_SPEC__ALGORITHM_EVOLUTIONS = eINSTANCE.getOptimisationSpec_AlgorithmEvolutions();
+    EReference OPTIMISATION_SPEC__ALGORITHM_PARAMETERS = eINSTANCE.getOptimisationSpec_AlgorithmParameters();
 
     /**
-     * The meta object literal for the '<em><b>Algorithm Population</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Termination Condition</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute OPTIMISATION_SPEC__ALGORITHM_POPULATION = eINSTANCE.getOptimisationSpec_AlgorithmPopulation();
+    EReference OPTIMISATION_SPEC__TERMINATION_CONDITION = eINSTANCE.getOptimisationSpec_TerminationCondition();
 
     /**
      * The meta object literal for the '<em><b>Algorithm Batches</b></em>' attribute feature.
@@ -2343,6 +2510,68 @@ public interface MdeoptimisePackage extends EPackage
      * @generated
      */
     EAttribute PROBABILITY_VARIATION__MUTATION_RATE = eINSTANCE.getProbabilityVariation_Mutation_rate();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.AlgorithmParametersImpl <em>Algorithm Parameters</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.mdeoptimise.impl.AlgorithmParametersImpl
+     * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getAlgorithmParameters()
+     * @generated
+     */
+    EClass ALGORITHM_PARAMETERS = eINSTANCE.getAlgorithmParameters();
+
+    /**
+     * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ALGORITHM_PARAMETERS__PARAMETERS = eINSTANCE.getAlgorithmParameters_Parameters();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.TerminationConditionParametersImpl <em>Termination Condition Parameters</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.mdeoptimise.impl.TerminationConditionParametersImpl
+     * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getTerminationConditionParameters()
+     * @generated
+     */
+    EClass TERMINATION_CONDITION_PARAMETERS = eINSTANCE.getTerminationConditionParameters();
+
+    /**
+     * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TERMINATION_CONDITION_PARAMETERS__PARAMETERS = eINSTANCE.getTerminationConditionParameters_Parameters();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.ParameterImpl <em>Parameter</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.mdeoptimise.impl.ParameterImpl
+     * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getParameter()
+     * @generated
+     */
+    EClass PARAMETER = eINSTANCE.getParameter();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PARAMETER__NAME = eINSTANCE.getParameter_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PARAMETER__VALUE = eINSTANCE.getParameter_Value();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.EvolverType <em>Evolver Type</em>}' enum.

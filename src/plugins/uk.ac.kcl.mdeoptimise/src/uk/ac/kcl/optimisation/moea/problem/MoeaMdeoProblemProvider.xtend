@@ -1,10 +1,11 @@
-package uk.ac.kcl.optimisation.moea
+package uk.ac.kcl.optimisation.moea.problem
 
 import org.moeaframework.core.EvolutionaryAlgorithm
 import org.moeaframework.core.Problem
 import org.moeaframework.core.spi.ProblemProvider
 import org.moeaframework.core.spi.ProviderNotFoundException
 import uk.ac.kcl.optimisation.SolutionGenerator
+import uk.ac.kcl.optimisation.moea.algorithms.MoeaOptimisationAlgorithmProvider
 
 class MoeaMdeoProblemProvider extends ProblemProvider {
 	

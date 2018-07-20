@@ -818,12 +818,12 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cVariationKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Assignment cAlgorithmVariationAssignment_6 = (Assignment)cGroup.eContents().get(6);
 		private final RuleCall cAlgorithmVariationAlgorithmVariationParserRuleCall_6_0 = (RuleCall)cAlgorithmVariationAssignment_6.eContents().get(0);
-		private final Keyword cEvolutionsKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		private final Assignment cAlgorithmEvolutionsAssignment_8 = (Assignment)cGroup.eContents().get(8);
-		private final RuleCall cAlgorithmEvolutionsINTTerminalRuleCall_8_0 = (RuleCall)cAlgorithmEvolutionsAssignment_8.eContents().get(0);
-		private final Keyword cPopulationKeyword_9 = (Keyword)cGroup.eContents().get(9);
-		private final Assignment cAlgorithmPopulationAssignment_10 = (Assignment)cGroup.eContents().get(10);
-		private final RuleCall cAlgorithmPopulationINTTerminalRuleCall_10_0 = (RuleCall)cAlgorithmPopulationAssignment_10.eContents().get(0);
+		private final Keyword cParametersKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cAlgorithmParametersAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cAlgorithmParametersAlgorithmParametersParserRuleCall_8_0 = (RuleCall)cAlgorithmParametersAssignment_8.eContents().get(0);
+		private final Keyword cTerminationKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Assignment cTerminationConditionAssignment_10 = (Assignment)cGroup.eContents().get(10);
+		private final RuleCall cTerminationConditionTerminationConditionParametersParserRuleCall_10_0 = (RuleCall)cTerminationConditionAssignment_10.eContents().get(0);
 		private final Group cGroup_11 = (Group)cGroup.eContents().get(11);
 		private final Keyword cBatchesKeyword_11_0 = (Keyword)cGroup_11.eContents().get(0);
 		private final Assignment cAlgorithmBatchesAssignment_11_1 = (Assignment)cGroup_11.eContents().get(1);
@@ -833,13 +833,13 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		//	"optimisation" "provider" algorithmFactory=ALGORITHM_FACTORY
 		//	"algorithm" algorithmName=ALGORITHM_NAME
 		//	"variation" algorithmVariation=AlgorithmVariation
-		//	"evolutions" algorithmEvolutions=INT
-		//	"population" algorithmPopulation=INT ("batches" algorithmBatches=INT)?;
+		//	"parameters" algorithmParameters=AlgorithmParameters
+		//	"termination" terminationCondition=TerminationConditionParameters ("batches" algorithmBatches=INT)?;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//"optimisation" "provider" algorithmFactory=ALGORITHM_FACTORY "algorithm" algorithmName=ALGORITHM_NAME "variation"
-		//algorithmVariation=AlgorithmVariation "evolutions" algorithmEvolutions=INT "population" algorithmPopulation=INT
-		//("batches" algorithmBatches=INT)?
+		//algorithmVariation=AlgorithmVariation "parameters" algorithmParameters=AlgorithmParameters "termination"
+		//terminationCondition=TerminationConditionParameters ("batches" algorithmBatches=INT)?
 		public Group getGroup() { return cGroup; }
 		
 		//"optimisation"
@@ -872,23 +872,23 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		//AlgorithmVariation
 		public RuleCall getAlgorithmVariationAlgorithmVariationParserRuleCall_6_0() { return cAlgorithmVariationAlgorithmVariationParserRuleCall_6_0; }
 		
-		//"evolutions"
-		public Keyword getEvolutionsKeyword_7() { return cEvolutionsKeyword_7; }
+		//"parameters"
+		public Keyword getParametersKeyword_7() { return cParametersKeyword_7; }
 		
-		//algorithmEvolutions=INT
-		public Assignment getAlgorithmEvolutionsAssignment_8() { return cAlgorithmEvolutionsAssignment_8; }
+		//algorithmParameters=AlgorithmParameters
+		public Assignment getAlgorithmParametersAssignment_8() { return cAlgorithmParametersAssignment_8; }
 		
-		//INT
-		public RuleCall getAlgorithmEvolutionsINTTerminalRuleCall_8_0() { return cAlgorithmEvolutionsINTTerminalRuleCall_8_0; }
+		//AlgorithmParameters
+		public RuleCall getAlgorithmParametersAlgorithmParametersParserRuleCall_8_0() { return cAlgorithmParametersAlgorithmParametersParserRuleCall_8_0; }
 		
-		//"population"
-		public Keyword getPopulationKeyword_9() { return cPopulationKeyword_9; }
+		//"termination"
+		public Keyword getTerminationKeyword_9() { return cTerminationKeyword_9; }
 		
-		//algorithmPopulation=INT
-		public Assignment getAlgorithmPopulationAssignment_10() { return cAlgorithmPopulationAssignment_10; }
+		//terminationCondition=TerminationConditionParameters
+		public Assignment getTerminationConditionAssignment_10() { return cTerminationConditionAssignment_10; }
 		
-		//INT
-		public RuleCall getAlgorithmPopulationINTTerminalRuleCall_10_0() { return cAlgorithmPopulationINTTerminalRuleCall_10_0; }
+		//TerminationConditionParameters
+		public RuleCall getTerminationConditionTerminationConditionParametersParserRuleCall_10_0() { return cTerminationConditionTerminationConditionParametersParserRuleCall_10_0; }
 		
 		//("batches" algorithmBatches=INT)?
 		public Group getGroup_11() { return cGroup_11; }
@@ -1007,6 +1007,106 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		//INT
 		public RuleCall getINTTerminalRuleCall_1() { return cINTTerminalRuleCall_1; }
 	}
+	public class AlgorithmParametersElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.AlgorithmParameters");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cParametersAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cParametersParameterParserRuleCall_1_0 = (RuleCall)cParametersAssignment_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		
+		//AlgorithmParameters:
+		//	"{"
+		//	parameters+=Parameter
+		//	"}";
+		@Override public ParserRule getRule() { return rule; }
+		
+		//"{" parameters+=Parameter "}"
+		public Group getGroup() { return cGroup; }
+		
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_0() { return cLeftCurlyBracketKeyword_0; }
+		
+		//parameters+=Parameter
+		public Assignment getParametersAssignment_1() { return cParametersAssignment_1; }
+		
+		//Parameter
+		public RuleCall getParametersParameterParserRuleCall_1_0() { return cParametersParameterParserRuleCall_1_0; }
+		
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_2() { return cRightCurlyBracketKeyword_2; }
+	}
+	public class TerminationConditionParametersElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.TerminationConditionParameters");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cParametersAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cParametersParameterParserRuleCall_1_0 = (RuleCall)cParametersAssignment_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		
+		//TerminationConditionParameters:
+		//	"{"
+		//	parameters+=Parameter
+		//	"}";
+		@Override public ParserRule getRule() { return rule; }
+		
+		//"{" parameters+=Parameter "}"
+		public Group getGroup() { return cGroup; }
+		
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_0() { return cLeftCurlyBracketKeyword_0; }
+		
+		//parameters+=Parameter
+		public Assignment getParametersAssignment_1() { return cParametersAssignment_1; }
+		
+		//Parameter
+		public RuleCall getParametersParameterParserRuleCall_1_0() { return cParametersParameterParserRuleCall_1_0; }
+		
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_2() { return cRightCurlyBracketKeyword_2; }
+	}
+	public class ParameterElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.Parameter");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
+		private final RuleCall cParameterAssignmentParserRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cValueINTTerminalRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
+		
+		//Parameter:
+		//	name=ID ParameterAssignment value=INT;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//name=ID ParameterAssignment value=INT
+		public Group getGroup() { return cGroup; }
+		
+		//name=ID
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
+		
+		//ParameterAssignment
+		public RuleCall getParameterAssignmentParserRuleCall_1() { return cParameterAssignmentParserRuleCall_1; }
+		
+		//value=INT
+		public Assignment getValueAssignment_2() { return cValueAssignment_2; }
+		
+		//INT
+		public RuleCall getValueINTTerminalRuleCall_2_0() { return cValueINTTerminalRuleCall_2_0; }
+	}
+	public class ParameterAssignmentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.ParameterAssignment");
+		private final Keyword cColonKeyword = (Keyword)rule.eContents().get(1);
+		
+		//ParameterAssignment:
+		//	":";
+		@Override public ParserRule getRule() { return rule; }
+		
+		//":"
+		public Keyword getColonKeyword() { return cColonKeyword; }
+	}
 	
 	public class EvolverTypeElements extends AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.EvolverType");
@@ -1056,6 +1156,10 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	private final AlgorithmVariationElements pAlgorithmVariation;
 	private final ProbabilityVariationElements pProbabilityVariation;
 	private final SignedIntegerElements pSignedInteger;
+	private final AlgorithmParametersElements pAlgorithmParameters;
+	private final TerminationConditionParametersElements pTerminationConditionParameters;
+	private final ParameterElements pParameter;
+	private final ParameterAssignmentElements pParameterAssignment;
 	private final TerminalRule tCREATE_NODE;
 	private final TerminalRule tDELETE_NODE;
 	private final TerminalRule tADD_EDGE;
@@ -1102,6 +1206,10 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		this.pAlgorithmVariation = new AlgorithmVariationElements();
 		this.pProbabilityVariation = new ProbabilityVariationElements();
 		this.pSignedInteger = new SignedIntegerElements();
+		this.pAlgorithmParameters = new AlgorithmParametersElements();
+		this.pTerminationConditionParameters = new TerminationConditionParametersElements();
+		this.pParameter = new ParameterElements();
+		this.pParameterAssignment = new ParameterAssignmentElements();
 		this.tCREATE_NODE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.CREATE_NODE");
 		this.tDELETE_NODE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.DELETE_NODE");
 		this.tADD_EDGE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.ADD_EDGE");
@@ -1365,8 +1473,8 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	//	"optimisation" "provider" algorithmFactory=ALGORITHM_FACTORY
 	//	"algorithm" algorithmName=ALGORITHM_NAME
 	//	"variation" algorithmVariation=AlgorithmVariation
-	//	"evolutions" algorithmEvolutions=INT
-	//	"population" algorithmPopulation=INT ("batches" algorithmBatches=INT)?;
+	//	"parameters" algorithmParameters=AlgorithmParameters
+	//	"termination" terminationCondition=TerminationConditionParameters ("batches" algorithmBatches=INT)?;
 	public OptimisationSpecElements getOptimisationSpecAccess() {
 		return pOptimisationSpec;
 	}
@@ -1403,6 +1511,50 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getSignedIntegerRule() {
 		return getSignedIntegerAccess().getRule();
+	}
+	
+	//AlgorithmParameters:
+	//	"{"
+	//	parameters+=Parameter
+	//	"}";
+	public AlgorithmParametersElements getAlgorithmParametersAccess() {
+		return pAlgorithmParameters;
+	}
+	
+	public ParserRule getAlgorithmParametersRule() {
+		return getAlgorithmParametersAccess().getRule();
+	}
+	
+	//TerminationConditionParameters:
+	//	"{"
+	//	parameters+=Parameter
+	//	"}";
+	public TerminationConditionParametersElements getTerminationConditionParametersAccess() {
+		return pTerminationConditionParameters;
+	}
+	
+	public ParserRule getTerminationConditionParametersRule() {
+		return getTerminationConditionParametersAccess().getRule();
+	}
+	
+	//Parameter:
+	//	name=ID ParameterAssignment value=INT;
+	public ParameterElements getParameterAccess() {
+		return pParameter;
+	}
+	
+	public ParserRule getParameterRule() {
+		return getParameterAccess().getRule();
+	}
+	
+	//ParameterAssignment:
+	//	":";
+	public ParameterAssignmentElements getParameterAssignmentAccess() {
+		return pParameterAssignment;
+	}
+	
+	public ParserRule getParameterAssignmentRule() {
+		return getParameterAssignmentAccess().getRule();
 	}
 	
 	//terminal CREATE_NODE:

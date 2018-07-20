@@ -1,9 +1,8 @@
 package uk.ac.kcl.interpreter
 
-import java.util.Iterator
 import uk.ac.kcl.mdeoptimise.OptimisationSpec
 import uk.ac.kcl.optimisation.SolutionGenerator
-import uk.ac.kcl.optimisation.moea.MoeaOptimisationSolution
+import org.moeaframework.Instrumenter
 
 interface IOptimisation {
 	
@@ -12,6 +11,6 @@ interface IOptimisation {
 	 * Maybe this should also include population information, such as objective values.
 	 * TODO Look at MOEA Instrumentation?
 	 */
-	def Iterator<MoeaOptimisationSolution> execute(OptimisationSpec optimisationSpec, SolutionGenerator solutionGenerator)
+	def Instrumenter execute(OptimisationSpec optimisationSpec, SolutionGenerator solutionGenerator)
 	
 }

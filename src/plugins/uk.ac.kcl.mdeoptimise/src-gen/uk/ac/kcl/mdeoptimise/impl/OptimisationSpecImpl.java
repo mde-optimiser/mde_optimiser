@@ -12,9 +12,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import uk.ac.kcl.mdeoptimise.AlgorithmParameters;
 import uk.ac.kcl.mdeoptimise.AlgorithmVariation;
 import uk.ac.kcl.mdeoptimise.MdeoptimisePackage;
 import uk.ac.kcl.mdeoptimise.OptimisationSpec;
+import uk.ac.kcl.mdeoptimise.TerminationConditionParameters;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,8 +29,8 @@ import uk.ac.kcl.mdeoptimise.OptimisationSpec;
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationSpecImpl#getAlgorithmFactory <em>Algorithm Factory</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationSpecImpl#getAlgorithmName <em>Algorithm Name</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationSpecImpl#getAlgorithmVariation <em>Algorithm Variation</em>}</li>
- *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationSpecImpl#getAlgorithmEvolutions <em>Algorithm Evolutions</em>}</li>
- *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationSpecImpl#getAlgorithmPopulation <em>Algorithm Population</em>}</li>
+ *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationSpecImpl#getAlgorithmParameters <em>Algorithm Parameters</em>}</li>
+ *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationSpecImpl#getTerminationCondition <em>Termination Condition</em>}</li>
  *   <li>{@link uk.ac.kcl.mdeoptimise.impl.OptimisationSpecImpl#getAlgorithmBatches <em>Algorithm Batches</em>}</li>
  * </ul>
  *
@@ -87,44 +89,24 @@ public class OptimisationSpecImpl extends MinimalEObjectImpl.Container implement
   protected AlgorithmVariation algorithmVariation;
 
   /**
-   * The default value of the '{@link #getAlgorithmEvolutions() <em>Algorithm Evolutions</em>}' attribute.
+   * The cached value of the '{@link #getAlgorithmParameters() <em>Algorithm Parameters</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getAlgorithmEvolutions()
+   * @see #getAlgorithmParameters()
    * @generated
    * @ordered
    */
-  protected static final int ALGORITHM_EVOLUTIONS_EDEFAULT = 0;
+  protected AlgorithmParameters algorithmParameters;
 
   /**
-   * The cached value of the '{@link #getAlgorithmEvolutions() <em>Algorithm Evolutions</em>}' attribute.
+   * The cached value of the '{@link #getTerminationCondition() <em>Termination Condition</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getAlgorithmEvolutions()
+   * @see #getTerminationCondition()
    * @generated
    * @ordered
    */
-  protected int algorithmEvolutions = ALGORITHM_EVOLUTIONS_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getAlgorithmPopulation() <em>Algorithm Population</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getAlgorithmPopulation()
-   * @generated
-   * @ordered
-   */
-  protected static final int ALGORITHM_POPULATION_EDEFAULT = 0;
-
-  /**
-   * The cached value of the '{@link #getAlgorithmPopulation() <em>Algorithm Population</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getAlgorithmPopulation()
-   * @generated
-   * @ordered
-   */
-  protected int algorithmPopulation = ALGORITHM_POPULATION_EDEFAULT;
+  protected TerminationConditionParameters terminationCondition;
 
   /**
    * The default value of the '{@link #getAlgorithmBatches() <em>Algorithm Batches</em>}' attribute.
@@ -266,9 +248,9 @@ public class OptimisationSpecImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getAlgorithmEvolutions()
+  public AlgorithmParameters getAlgorithmParameters()
   {
-    return algorithmEvolutions;
+    return algorithmParameters;
   }
 
   /**
@@ -276,12 +258,16 @@ public class OptimisationSpecImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setAlgorithmEvolutions(int newAlgorithmEvolutions)
+  public NotificationChain basicSetAlgorithmParameters(AlgorithmParameters newAlgorithmParameters, NotificationChain msgs)
   {
-    int oldAlgorithmEvolutions = algorithmEvolutions;
-    algorithmEvolutions = newAlgorithmEvolutions;
+    AlgorithmParameters oldAlgorithmParameters = algorithmParameters;
+    algorithmParameters = newAlgorithmParameters;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_EVOLUTIONS, oldAlgorithmEvolutions, algorithmEvolutions));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_PARAMETERS, oldAlgorithmParameters, newAlgorithmParameters);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -289,9 +275,20 @@ public class OptimisationSpecImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getAlgorithmPopulation()
+  public void setAlgorithmParameters(AlgorithmParameters newAlgorithmParameters)
   {
-    return algorithmPopulation;
+    if (newAlgorithmParameters != algorithmParameters)
+    {
+      NotificationChain msgs = null;
+      if (algorithmParameters != null)
+        msgs = ((InternalEObject)algorithmParameters).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_PARAMETERS, null, msgs);
+      if (newAlgorithmParameters != null)
+        msgs = ((InternalEObject)newAlgorithmParameters).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_PARAMETERS, null, msgs);
+      msgs = basicSetAlgorithmParameters(newAlgorithmParameters, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_PARAMETERS, newAlgorithmParameters, newAlgorithmParameters));
   }
 
   /**
@@ -299,12 +296,47 @@ public class OptimisationSpecImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setAlgorithmPopulation(int newAlgorithmPopulation)
+  public TerminationConditionParameters getTerminationCondition()
   {
-    int oldAlgorithmPopulation = algorithmPopulation;
-    algorithmPopulation = newAlgorithmPopulation;
+    return terminationCondition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetTerminationCondition(TerminationConditionParameters newTerminationCondition, NotificationChain msgs)
+  {
+    TerminationConditionParameters oldTerminationCondition = terminationCondition;
+    terminationCondition = newTerminationCondition;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_POPULATION, oldAlgorithmPopulation, algorithmPopulation));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MdeoptimisePackage.OPTIMISATION_SPEC__TERMINATION_CONDITION, oldTerminationCondition, newTerminationCondition);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setTerminationCondition(TerminationConditionParameters newTerminationCondition)
+  {
+    if (newTerminationCondition != terminationCondition)
+    {
+      NotificationChain msgs = null;
+      if (terminationCondition != null)
+        msgs = ((InternalEObject)terminationCondition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MdeoptimisePackage.OPTIMISATION_SPEC__TERMINATION_CONDITION, null, msgs);
+      if (newTerminationCondition != null)
+        msgs = ((InternalEObject)newTerminationCondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MdeoptimisePackage.OPTIMISATION_SPEC__TERMINATION_CONDITION, null, msgs);
+      msgs = basicSetTerminationCondition(newTerminationCondition, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MdeoptimisePackage.OPTIMISATION_SPEC__TERMINATION_CONDITION, newTerminationCondition, newTerminationCondition));
   }
 
   /**
@@ -342,6 +374,10 @@ public class OptimisationSpecImpl extends MinimalEObjectImpl.Container implement
     {
       case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_VARIATION:
         return basicSetAlgorithmVariation(null, msgs);
+      case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_PARAMETERS:
+        return basicSetAlgorithmParameters(null, msgs);
+      case MdeoptimisePackage.OPTIMISATION_SPEC__TERMINATION_CONDITION:
+        return basicSetTerminationCondition(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -362,10 +398,10 @@ public class OptimisationSpecImpl extends MinimalEObjectImpl.Container implement
         return getAlgorithmName();
       case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_VARIATION:
         return getAlgorithmVariation();
-      case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_EVOLUTIONS:
-        return getAlgorithmEvolutions();
-      case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_POPULATION:
-        return getAlgorithmPopulation();
+      case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_PARAMETERS:
+        return getAlgorithmParameters();
+      case MdeoptimisePackage.OPTIMISATION_SPEC__TERMINATION_CONDITION:
+        return getTerminationCondition();
       case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_BATCHES:
         return getAlgorithmBatches();
     }
@@ -391,11 +427,11 @@ public class OptimisationSpecImpl extends MinimalEObjectImpl.Container implement
       case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_VARIATION:
         setAlgorithmVariation((AlgorithmVariation)newValue);
         return;
-      case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_EVOLUTIONS:
-        setAlgorithmEvolutions((Integer)newValue);
+      case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_PARAMETERS:
+        setAlgorithmParameters((AlgorithmParameters)newValue);
         return;
-      case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_POPULATION:
-        setAlgorithmPopulation((Integer)newValue);
+      case MdeoptimisePackage.OPTIMISATION_SPEC__TERMINATION_CONDITION:
+        setTerminationCondition((TerminationConditionParameters)newValue);
         return;
       case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_BATCHES:
         setAlgorithmBatches((Integer)newValue);
@@ -423,11 +459,11 @@ public class OptimisationSpecImpl extends MinimalEObjectImpl.Container implement
       case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_VARIATION:
         setAlgorithmVariation((AlgorithmVariation)null);
         return;
-      case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_EVOLUTIONS:
-        setAlgorithmEvolutions(ALGORITHM_EVOLUTIONS_EDEFAULT);
+      case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_PARAMETERS:
+        setAlgorithmParameters((AlgorithmParameters)null);
         return;
-      case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_POPULATION:
-        setAlgorithmPopulation(ALGORITHM_POPULATION_EDEFAULT);
+      case MdeoptimisePackage.OPTIMISATION_SPEC__TERMINATION_CONDITION:
+        setTerminationCondition((TerminationConditionParameters)null);
         return;
       case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_BATCHES:
         setAlgorithmBatches(ALGORITHM_BATCHES_EDEFAULT);
@@ -452,10 +488,10 @@ public class OptimisationSpecImpl extends MinimalEObjectImpl.Container implement
         return ALGORITHM_NAME_EDEFAULT == null ? algorithmName != null : !ALGORITHM_NAME_EDEFAULT.equals(algorithmName);
       case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_VARIATION:
         return algorithmVariation != null;
-      case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_EVOLUTIONS:
-        return algorithmEvolutions != ALGORITHM_EVOLUTIONS_EDEFAULT;
-      case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_POPULATION:
-        return algorithmPopulation != ALGORITHM_POPULATION_EDEFAULT;
+      case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_PARAMETERS:
+        return algorithmParameters != null;
+      case MdeoptimisePackage.OPTIMISATION_SPEC__TERMINATION_CONDITION:
+        return terminationCondition != null;
       case MdeoptimisePackage.OPTIMISATION_SPEC__ALGORITHM_BATCHES:
         return algorithmBatches != ALGORITHM_BATCHES_EDEFAULT;
     }
@@ -477,10 +513,6 @@ public class OptimisationSpecImpl extends MinimalEObjectImpl.Container implement
     result.append(algorithmFactory);
     result.append(", algorithmName: ");
     result.append(algorithmName);
-    result.append(", algorithmEvolutions: ");
-    result.append(algorithmEvolutions);
-    result.append(", algorithmPopulation: ");
-    result.append(algorithmPopulation);
     result.append(", algorithmBatches: ");
     result.append(algorithmBatches);
     result.append(')');

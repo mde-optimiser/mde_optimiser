@@ -9,9 +9,9 @@ import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import uk.ac.kcl.interpreter.IGuidanceFunction
 import uk.ac.kcl.mdeoptimise.Optimisation
-import uk.ac.kcl.optimisation.moea.MoeaOptimisationSolution
 import uk.ac.kcl.ui.output.MDEOBatch
 import java.util.ArrayList
+import uk.ac.kcl.optimisation.moea.problem.MoeaOptimisationSolution
 
 class BatchReportsDescriptor implements ResultsDescriptor {
 	

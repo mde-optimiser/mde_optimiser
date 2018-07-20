@@ -88,8 +88,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//OptimisationSpec/algorithmFactory"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//OptimisationSpec/algorithmName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//OptimisationSpec/algorithmVariation"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//OptimisationSpec/algorithmEvolutions"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//OptimisationSpec/algorithmPopulation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//OptimisationSpec/algorithmParameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//OptimisationSpec/terminationCondition"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//OptimisationSpec/algorithmBatches"/>
     </genClasses>
     <genClasses ecoreClass="MDEOptimise.ecore#//AlgorithmVariation">
@@ -100,6 +100,16 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//ProbabilityVariation/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//ProbabilityVariation/crossover_rate"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//ProbabilityVariation/mutation_rate"/>
+    </genClasses>
+    <genClasses ecoreClass="MDEOptimise.ecore#//AlgorithmParameters">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//AlgorithmParameters/parameters"/>
+    </genClasses>
+    <genClasses ecoreClass="MDEOptimise.ecore#//TerminationConditionParameters">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//TerminationConditionParameters/parameters"/>
+    </genClasses>
+    <genClasses ecoreClass="MDEOptimise.ecore#//Parameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//Parameter/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//Parameter/value"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

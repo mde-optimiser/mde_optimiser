@@ -1,4 +1,4 @@
-package uk.ac.kcl.optimisation.moea
+package uk.ac.kcl.optimisation.moea.problem
 
 import java.util.List
 import org.moeaframework.core.Solution

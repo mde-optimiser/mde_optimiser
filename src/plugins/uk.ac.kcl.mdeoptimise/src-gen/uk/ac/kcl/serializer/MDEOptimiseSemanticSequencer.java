@@ -59,6 +59,7 @@ import org.eclipse.xtext.xtype.XFunctionTypeRef;
 import org.eclipse.xtext.xtype.XImportDeclaration;
 import org.eclipse.xtext.xtype.XImportSection;
 import org.eclipse.xtext.xtype.XtypePackage;
+import uk.ac.kcl.mdeoptimise.AlgorithmParameters;
 import uk.ac.kcl.mdeoptimise.AlgorithmVariation;
 import uk.ac.kcl.mdeoptimise.BasePathSpec;
 import uk.ac.kcl.mdeoptimise.ConstraintInterpreterSpec;
@@ -78,6 +79,7 @@ import uk.ac.kcl.mdeoptimise.ReportInterpreterSpec;
 import uk.ac.kcl.mdeoptimise.RulegenEdge;
 import uk.ac.kcl.mdeoptimise.RulegenNode;
 import uk.ac.kcl.mdeoptimise.RulegenSpec;
+import uk.ac.kcl.mdeoptimise.TerminationConditionParameters;
 import uk.ac.kcl.services.MDEOptimiseGrammarAccess;
 
 @SuppressWarnings("all")
@@ -94,6 +96,9 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == MdeoptimisePackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case MdeoptimisePackage.ALGORITHM_PARAMETERS:
+				sequence_AlgorithmParameters(context, (AlgorithmParameters) semanticObject); 
+				return; 
 			case MdeoptimisePackage.ALGORITHM_VARIATION:
 				sequence_AlgorithmVariation(context, (AlgorithmVariation) semanticObject); 
 				return; 
@@ -130,6 +135,9 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 			case MdeoptimisePackage.OPTIMISATION_SPEC:
 				sequence_OptimisationSpec(context, (OptimisationSpec) semanticObject); 
 				return; 
+			case MdeoptimisePackage.PARAMETER:
+				sequence_Parameter(context, (uk.ac.kcl.mdeoptimise.Parameter) semanticObject); 
+				return; 
 			case MdeoptimisePackage.PARAMETER_FUNCTION:
 				sequence_ParameterFunction(context, (ParameterFunction) semanticObject); 
 				return; 
@@ -147,6 +155,9 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 				return; 
 			case MdeoptimisePackage.RULEGEN_SPEC:
 				sequence_RulegenSpec(context, (RulegenSpec) semanticObject); 
+				return; 
+			case MdeoptimisePackage.TERMINATION_CONDITION_PARAMETERS:
+				sequence_TerminationConditionParameters(context, (TerminationConditionParameters) semanticObject); 
 				return; 
 			}
 		else if (epackage == TypesPackage.eINSTANCE)
@@ -394,6 +405,18 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     AlgorithmParameters returns AlgorithmParameters
+	 *
+	 * Constraint:
+	 *     parameters+=Parameter
+	 */
+	protected void sequence_AlgorithmParameters(ISerializationContext context, AlgorithmParameters semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     AlgorithmVariation returns AlgorithmVariation
 	 *
 	 * Constraint:
@@ -587,8 +610,8 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 	 *         algorithmFactory=ALGORITHM_FACTORY 
 	 *         algorithmName=ALGORITHM_NAME 
 	 *         algorithmVariation=AlgorithmVariation 
-	 *         algorithmEvolutions=INT 
-	 *         algorithmPopulation=INT 
+	 *         algorithmParameters=AlgorithmParameters 
+	 *         terminationCondition=TerminationConditionParameters 
 	 *         algorithmBatches=INT?
 	 *     )
 	 */
@@ -630,6 +653,27 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 	 */
 	protected void sequence_ParameterFunction(ISerializationContext context, ParameterFunction semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Parameter returns Parameter
+	 *
+	 * Constraint:
+	 *     (name=ID value=INT)
+	 */
+	protected void sequence_Parameter(ISerializationContext context, uk.ac.kcl.mdeoptimise.Parameter semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.PARAMETER__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.PARAMETER__NAME));
+			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.PARAMETER__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.PARAMETER__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getParameterAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getParameterAccess().getValueINTTerminalRuleCall_2_0(), semanticObject.getValue());
+		feeder.finish();
 	}
 	
 	
@@ -698,6 +742,18 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 	 *     (nodeSpec=RulegenNode | edgeSpec=RulegenEdge)
 	 */
 	protected void sequence_RulegenSpec(ISerializationContext context, RulegenSpec semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     TerminationConditionParameters returns TerminationConditionParameters
+	 *
+	 * Constraint:
+	 *     parameters+=Parameter
+	 */
+	protected void sequence_TerminationConditionParameters(ISerializationContext context, TerminationConditionParameters semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

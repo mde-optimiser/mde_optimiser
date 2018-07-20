@@ -84,6 +84,9 @@ public class MdeoptimiseFactoryImpl extends EFactoryImpl implements MdeoptimiseF
       case MdeoptimisePackage.OPTIMISATION_SPEC: return createOptimisationSpec();
       case MdeoptimisePackage.ALGORITHM_VARIATION: return createAlgorithmVariation();
       case MdeoptimisePackage.PROBABILITY_VARIATION: return createProbabilityVariation();
+      case MdeoptimisePackage.ALGORITHM_PARAMETERS: return createAlgorithmParameters();
+      case MdeoptimisePackage.TERMINATION_CONDITION_PARAMETERS: return createTerminationConditionParameters();
+      case MdeoptimisePackage.PARAMETER: return createParameter();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -319,6 +322,39 @@ public class MdeoptimiseFactoryImpl extends EFactoryImpl implements MdeoptimiseF
   {
     ProbabilityVariationImpl probabilityVariation = new ProbabilityVariationImpl();
     return probabilityVariation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AlgorithmParameters createAlgorithmParameters()
+  {
+    AlgorithmParametersImpl algorithmParameters = new AlgorithmParametersImpl();
+    return algorithmParameters;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TerminationConditionParameters createTerminationConditionParameters()
+  {
+    TerminationConditionParametersImpl terminationConditionParameters = new TerminationConditionParametersImpl();
+    return terminationConditionParameters;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Parameter createParameter()
+  {
+    ParameterImpl parameter = new ParameterImpl();
+    return parameter;
   }
 
   /**

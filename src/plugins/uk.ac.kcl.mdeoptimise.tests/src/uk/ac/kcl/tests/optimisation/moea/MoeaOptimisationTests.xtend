@@ -95,7 +95,7 @@ class MoeaOptimisationTests {
 							            		
 	            		val startTime = System.nanoTime;
 	            		val optimisationInterpreter = new OptimisationInterpreter("", model);
-	            		val optimisationOutcome = optimisationInterpreter.start();
+	            		val optimisationOutcome = optimisationInterpreter.start
 	            		val endTime = System.nanoTime;
 	            		
 	            		val experimentDuration = (endTime - startTime) / 1000000
@@ -567,7 +567,14 @@ class MoeaOptimisationTests {
 				constraint HasNoUnassignedWorkItems java { "models.scrum.HasNoUnassignedWorkItems" }
 				constraint HasTheAllowedMaximalNumberOfSprints java { "models.scrum.HasTheAllowedMaximalNumberOfSprints" }
 				mutate {"Sprint"}
-				optimisation provider moea algorithm NSGAII variation mutation evolutions 50 population 40 batches 1
+				optimisation provider moea algorithm NSGAII variation mutation
+				parameters {
+					population: 30
+				}
+				termination {
+					time: 15
+				}
+				batches 2
 			''')
 
 			//Assert that there are no grammar issues

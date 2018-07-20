@@ -1,10 +1,12 @@
-package uk.ac.kcl.optimisation.moea
+package uk.ac.kcl.optimisation.moea.operators
 
 import org.moeaframework.core.Solution
 import org.moeaframework.core.Variation
 import uk.ac.kcl.optimisation.SolutionGenerator
 import org.eclipse.emf.ecore.EObject
 import java.util.ArrayList
+import java.util.Arrays
+import uk.ac.kcl.optimisation.moea.problem.MoeaOptimisationSolution
 
 class MoeaOptimisationCrossoverVariation implements Variation {
 	
