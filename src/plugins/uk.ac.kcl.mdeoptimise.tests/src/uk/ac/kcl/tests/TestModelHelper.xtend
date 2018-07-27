@@ -123,7 +123,7 @@ class TestModelHelper {
 	}
 	
 	def String getValidOptimisation() {
-		return "optimisation provider moea algorithm NSGAII variation genetic evolutions 100000 population 100"
+		return "optimisation provider moea algorithm NSGAII variation mutation parameters { population: 40 } termination { time: 60 } batches 30"
 	}
 	
 }
