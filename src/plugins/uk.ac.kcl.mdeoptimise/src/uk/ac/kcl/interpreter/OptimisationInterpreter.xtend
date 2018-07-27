@@ -33,7 +33,7 @@ class OptimisationInterpreter {
 	private IPath projectRootPath;
 	private boolean enableManualRandomMatching = false;
 	private  Map<EPackage, List<Module>> generatedOperators;
-
+	
 	new (String projectPath, Optimisation model){
 		this.model = model;
 		this.projectRootPath = new Path(projectPath);
@@ -75,10 +75,8 @@ class OptimisationInterpreter {
 
 	def getResourceSet(String basePath) {
         if (henshinResourceSet === null) {
-        	
-        	var resourceSetPath = this.projectRootPath.append(basePath)
-        	
-            henshinResourceSet = new HenshinResourceSet(resourceSetPath.toPortableString);
+
+            henshinResourceSet = new HenshinResourceSet(basePath);
         }
 
         henshinResourceSet
@@ -104,7 +102,7 @@ class OptimisationInterpreter {
 			breedingOperators = new LinkedList
 			
 			breedingOperators.addAll(model.evolvers.filter[ operator | operator.evolverType.getName.equals("BREED")]
-				.map[ operator | getResourceSet(model.basepath.location).getModule(URI.createURI(operator.rule_location), false).getUnit(operator.unit)]
+				.map[ operator | getResourceSet(projectRootPath.append(model.basepath.location).toPortableString).getModule(URI.createURI(operator.rule_location), false).getUnit(operator.unit)]
 			)
     		
     	}
@@ -120,7 +118,7 @@ class OptimisationInterpreter {
 			mutationOperators = new LinkedList
 			
 			mutationOperators.addAll(model.evolvers.filter[ operator | operator.evolverType.getName.equals("MUTATE")]
-				.map[ operator | getResourceSet(model.basepath.location).getModule(URI.createURI(operator.rule_location), false).getUnit(operator.unit)]
+				.map[ operator | getResourceSet(projectRootPath.append(model.basepath.location).toPortableString).getModule(URI.createURI(operator.rule_location), false).getUnit(operator.unit)]
 			)
     		
     	}
