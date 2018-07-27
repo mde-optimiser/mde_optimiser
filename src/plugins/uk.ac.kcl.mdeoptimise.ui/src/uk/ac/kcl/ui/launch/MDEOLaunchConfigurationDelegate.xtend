@@ -112,9 +112,9 @@ class MDEOLaunchConfigurationDelegate extends AbstractJavaLaunchConfigurationDel
 		
 		if(moptFile.exists){
 			
-			arguments += moptFile.getProject().getLocation().toOSString()
+			arguments += "-p " + moptFile.getProject().getLocation().toOSString()
 			arguments += " "
-			arguments += moptFile.getRawLocation().toOSString(); 
+			arguments += "-m " + moptFile.getRawLocation().toOSString(); 
 			
 			return arguments
 		}
