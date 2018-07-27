@@ -75,7 +75,10 @@ class OptimisationInterpreter {
 
 	def getResourceSet(String basePath) {
         if (henshinResourceSet === null) {
-            henshinResourceSet = new HenshinResourceSet(basePath);
+        	
+        	var resourceSetPath = this.projectRootPath.append(basePath)
+        	
+            henshinResourceSet = new HenshinResourceSet(resourceSetPath.toPortableString);
         }
 
         henshinResourceSet
