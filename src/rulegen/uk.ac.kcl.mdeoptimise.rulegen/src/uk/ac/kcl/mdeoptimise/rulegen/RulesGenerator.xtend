@@ -90,16 +90,16 @@ class RulesGenerator {
 	
 	private def List<Module> removeDupplicateRules(List<Module> problemRules, List<Module> solutionRules){
 		
-		val uniqueRules = new ArrayList<Module>();
+		val uniqueRules = new ArrayList<Module>();	
 		
-		solutionRules.forEach[module | 
+		problemRules.forEach[module |
 			
 			if(!isRuleInCollection(module, uniqueRules)){
 				uniqueRules.add(module)
 			}
-		]	
+		]
 		
-		problemRules.forEach[module |
+		solutionRules.forEach[module | 
 			
 			if(!isRuleInCollection(module, uniqueRules)){
 				uniqueRules.add(module)
