@@ -111,6 +111,7 @@ class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
 		new EpsilonMOEA(
 				problem,
 				new NondominatedSortingPopulation(),
+				//TODO This must be a user configurable parameter
 				new EpsilonBoxDominanceArchive(0.01),
 				selection, 
 				getVariation(properties),
