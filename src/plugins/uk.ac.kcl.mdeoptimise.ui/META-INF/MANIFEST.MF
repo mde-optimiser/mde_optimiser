@@ -30,7 +30,7 @@ Require-Bundle: uk.ac.kcl.mdeoptimise,
  org.moeaframework,
  org.jfree.chart,
  org.jfree.jcommon,
- org.apache.commons.cli
+ org.apache.commons.cli;bundle-version="1.2.0"
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: uk.ac.kcl.mdeoptimise.ui.internal,

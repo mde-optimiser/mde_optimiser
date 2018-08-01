@@ -19,7 +19,7 @@ class MDEOptimiseGenerator extends AbstractGenerator {
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 	val root = resource.allContents.head as Optimisation;
 
-	if(root != null){
+	if(root !== null){
 		println(root.metamodel)
 		println(root.basepath)
 	}

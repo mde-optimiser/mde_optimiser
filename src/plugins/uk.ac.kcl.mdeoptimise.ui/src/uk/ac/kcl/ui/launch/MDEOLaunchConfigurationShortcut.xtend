@@ -36,8 +36,6 @@ class MDEOLaunchConfigurationShortcut implements ILaunchShortcut {
 	            // do something
 	        }
 			
-//			app.run(file)
-//			println()
 		}
 	
 	}
