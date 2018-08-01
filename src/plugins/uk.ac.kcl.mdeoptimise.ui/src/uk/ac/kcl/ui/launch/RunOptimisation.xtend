@@ -57,7 +57,6 @@ class RunOptimisation {
 				app.enableManualRandomMatching = true;
 			}
 			
-			
 			var String projectPath = command.getOptionValue("projectPath")
 			var String moptPath = command.getOptionValue("moptPath")
 			
