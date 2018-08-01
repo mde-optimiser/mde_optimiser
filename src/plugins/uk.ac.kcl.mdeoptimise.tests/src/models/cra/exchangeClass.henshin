@@ -434,8 +434,4 @@
       <multiMappings xmi:id="_mCqpUYfmEeeyo6msuqjUNg" origin="_d2NlQIfmEeeyo6msuqjUNg" image="_mCqpUIfmEeeyo6msuqjUNg"/>
     </multiRules>
   </units>
-  <units xsi:type="henshin:Rule" xmi:id="_bv_KYJEYEeibB4l1lP3iYw">
-    <lhs xmi:id="_bwC0wJEYEeibB4l1lP3iYw" name="Lhs"/>
-    <rhs xmi:id="_bwDb0JEYEeibB4l1lP3iYw" name="Rhs"/>
-  </units>
 </henshin:Module>

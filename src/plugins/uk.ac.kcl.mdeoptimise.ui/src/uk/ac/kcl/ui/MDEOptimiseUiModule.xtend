@@ -3,7 +3,6 @@
  */
 package uk.ac.kcl.ui
 
-import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
 import org.eclipse.ui.plugin.AbstractUIPlugin
 
 /**

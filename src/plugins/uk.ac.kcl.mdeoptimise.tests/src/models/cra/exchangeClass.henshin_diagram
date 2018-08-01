@@ -264,12 +264,6 @@
     <element xmi:type="henshin:Rule" href="exchangeClass.henshin#_7MIL0IflEeeyo6msuqjUNg"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7MG96oflEeeyo6msuqjUNg" x="43" y="444" width="990" height="340"/>
   </children>
-  <children xmi:type="notation:Shape" xmi:id="_bwA_kJEYEeibB4l1lP3iYw" type="2001" fontName="Cantarell" italic="true" lineColor="0">
-    <children xmi:type="notation:DecorationNode" xmi:id="_bwBmoJEYEeibB4l1lP3iYw" type="5001"/>
-    <children xmi:type="notation:DecorationNode" xmi:id="_bwBmoZEYEeibB4l1lP3iYw" type="7001"/>
-    <element xmi:type="henshin:Rule" href="exchangeClass.henshin#_bv_KYJEYEeibB4l1lP3iYw"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bwA_kZEYEeibB4l1lP3iYw" x="-129" y="1065"/>
-  </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_YG7nIYdKEeeRCtN9MmImpQ"/>
   <element xmi:type="henshin:Module" href="exchangeClass.henshin#_YGuLwIdKEeeRCtN9MmImpQ"/>
   <edges xmi:type="notation:Connector" xmi:id="_7MmF4IflEeeyo6msuqjUNg" type="4001" source="_LA7vUIdMEeeRCtN9MmImpQ" target="_MCQpcIdMEeeRCtN9MmImpQ">
