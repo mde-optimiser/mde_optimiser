@@ -56,7 +56,11 @@ class MDEOLaunchConfigurationDelegate extends AbstractJavaLaunchConfigurationDel
 	}
 	
 	/**
-	 * Builds a VM runner configuration
+	 * Builds a VM runner configuration to which it appends the required 
+	 * MDEOptimiser dependencies
+	 * 
+	 * @return a JVM configuration containing all the classpath and 
+	 * argument values configured for MDEOptimiser
 	 */
 	def VMRunnerConfiguration getVMRunnerConfiguration(ILaunchConfiguration configuration, String mode, IProgressMonitor monitor) throws CoreException {
 
@@ -149,7 +153,9 @@ class MDEOLaunchConfigurationDelegate extends AbstractJavaLaunchConfigurationDel
 	}
 	
 	/**
-	 * Returns the full mopt file path
+	 * Build the arguments to pass to the headless MDEOptimiser runner class.
+	 * 
+	 * @return headless arguments for running MDEOptimiser with the given mopt file
 	 */
 	def String getStandaloneLauncherArguments(String configuredMoptFile){
 		
@@ -169,7 +175,8 @@ class MDEOLaunchConfigurationDelegate extends AbstractJavaLaunchConfigurationDel
 	
 	/**
 	 * Returns the complete classpath of the launch configuration, including the Eclipse bundles
-	 * as well as all the user configured dependencies
+	 * as well as all the user configured dependencies.
+	 * 
 	 * @param configuration launch configuration
 	 * @return the complete bundles classpath including eclipse jars and user configured classpath
 	 */
@@ -190,35 +197,44 @@ class MDEOLaunchConfigurationDelegate extends AbstractJavaLaunchConfigurationDel
 		bundleDependencies.values.fold(classpathEntriesSet, [set, bundle | {
 			
 			var file = FileLocator.getBundleFile(bundle).canonicalPath
-			println("Adding " + file)
 			set.add(file) 
 			
+			//Is this bundle an unpackaged bundle, then add it's build location to the path
 			if(MDEOClasspathContainer.buildFolderPath(bundle) !== null) {
 				set.add(MDEOClasspathContainer.buildFolderPath(bundle).toPortableString);
 			}
-			
-			
+				
 			return set
 			
-			}
-		])
+		}])
 
 		return classpathEntriesSet
 	}
 	
+	/**
+	 * Recursively read the dependency model of a given bundle.
+	 * 
+	 * @return a map of the dependent bundle IDs and the loaded bundles.
+	 */
 	private def HashMap<Long, Bundle> getBundleDependencies(HashMap<Long, Bundle> bundleDependencies, Bundle bundle){
 		
 		if(!bundleDependencies.keySet.contains(bundle.bundleId)) {
 
-				bundleDependencies.put(bundle.bundleId, bundle)
+			bundleDependencies.put(bundle.bundleId, bundle)
 
-				val dependencies = getBundleWiredDependencies(bundle)
-				dependencies.forEach[ d | getBundleDependencies(bundleDependencies, d) ]
+			val dependencies = getBundleWiredDependencies(bundle)
+			dependencies.forEach[ d | getBundleDependencies(bundleDependencies, d) ]
 		}
 		
 		return bundleDependencies;
 	} 
 	
+	/**
+	 * Fetches the dependent bundles from a given bundle. It looks both bundle 
+	 * references as well as package references.
+	 * 
+	 * @return a list of dependent bundles, or an empty set
+	 */
 	private def LinkedHashSet<Bundle> getBundleWiredDependencies(Bundle bundle) {
 		
 	  val wiredBundles = new LinkedHashSet<Bundle>();
@@ -237,8 +253,15 @@ class MDEOLaunchConfigurationDelegate extends AbstractJavaLaunchConfigurationDel
 	
 	}
 	
-	
-	def String[][] getMDEOClasspathAndModulePath(ILaunchConfiguration config) throws CoreException {
+	/**
+	 * Fetches a classpath from the launch configuration and appends the dependency tree 
+	 * of the resolved MDEOptimiser bundles.
+	 * 
+	 * This method is supposed to be used for cases where the JDK version supports modules.
+	 * 
+	 * @return an array containing classpath dependencies and module dependencies
+	 */
+	private def String[][] getMDEOClasspathAndModulePath(ILaunchConfiguration config) throws CoreException {
 		
 		var classpathAndModulePath = getClasspathAndModulepath(config)
 		
@@ -246,15 +269,18 @@ class MDEOLaunchConfigurationDelegate extends AbstractJavaLaunchConfigurationDel
 	}
 	
 	
-	def static String concat(String args1, String args2) {
+	private def static String concat(String args1, String args2) {
 		val args = new StringBuilder();
+		
 		if (args1 !== null && !args1.isEmpty()) {
 			args.append(args1);
 		}
+		
 		if (args2 !== null && !args2.isEmpty()) {
 			args.append(" ");
 			args.append(args2);
 		}
+		
 		return args.toString();
 	}
 }

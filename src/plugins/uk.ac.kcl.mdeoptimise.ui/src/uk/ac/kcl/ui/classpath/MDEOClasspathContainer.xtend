@@ -56,6 +56,8 @@ class MDEOClasspathContainer implements IClasspathContainer {
 		val bundle = Platform.getBundle(bundleId);
 		
 		if(bundle !== null) {
+			
+			//We may need to add target/classes to the bundle path if in Debug mode
 			if(buildFolderPath(bundle) !== null) {
 				classpathEntries.add(JavaCore.newLibraryEntry(buildFolderPath(bundle), null, null, false));
 			}

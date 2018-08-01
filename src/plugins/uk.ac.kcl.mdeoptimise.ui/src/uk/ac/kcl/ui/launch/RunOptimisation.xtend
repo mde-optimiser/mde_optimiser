@@ -5,6 +5,12 @@ import com.google.inject.Injector
 import com.google.inject.Provider
 import java.io.File
 import java.util.Date
+import org.apache.commons.cli.BasicParser
+import org.apache.commons.cli.CommandLine
+import org.apache.commons.cli.HelpFormatter
+import org.apache.commons.cli.Option
+import org.apache.commons.cli.Options
+import org.apache.commons.cli.ParseException
 import org.eclipse.core.runtime.Path
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.ResourceSet
@@ -13,14 +19,6 @@ import uk.ac.kcl.interpreter.OptimisationInterpreter
 import uk.ac.kcl.mdeoptimise.Optimisation
 import uk.ac.kcl.ui.output.MDEOBatch
 import uk.ac.kcl.ui.output.MDEOResultsOutput
-import org.apache.commons.cli.Options
-import org.apache.commons.cli.OptionBuilder
-import org.apache.commons.cli.OptionGroup
-import org.apache.commons.cli.BasicParser
-import org.apache.commons.cli.HelpFormatter
-import org.apache.commons.cli.ParseException
-import org.apache.commons.cli.CommandLine
-import org.apache.commons.cli.Option
 
 class RunOptimisation {
 	

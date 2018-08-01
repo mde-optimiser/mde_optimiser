@@ -442,13 +442,12 @@
 			name="MDEOptimiser DSL Library"
 			class="uk.ac.kcl.ui.classpath.MDEOClasspathContainerPage"/>
 	</extension>
-	<!--Removed the shortcuts to launch the app for now. -->
-	<!--<extension point="org.eclipse.debug.ui.launchShortcuts">
+	<extension point="org.eclipse.debug.ui.launchShortcuts">
 	    <shortcut
 	        class="uk.ac.kcl.ui.launch.MDEOLaunchConfigurationShortcut"
-	        icon="icons/vogella.png"
+	        icon="icons/mdeo.png"
 	        id="uk.ac.kcl.ui.mdeo.launchConfiguration.shortcut"
-	        label="Run MDEO Search"
+	        label="MDEOptimiser Search"
 	        modes="run">
 	        <contextualLaunch>
 	            <enablement>
@@ -462,6 +461,6 @@
 	            </enablement>
 	        </contextualLaunch>
 	    </shortcut>
-	</extension>-->
+	</extension>
 	
 </plugin>
