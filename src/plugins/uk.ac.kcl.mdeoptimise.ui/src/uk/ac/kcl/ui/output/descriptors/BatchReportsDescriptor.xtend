@@ -67,7 +67,7 @@ class BatchReportsDescriptor implements ResultsDescriptor {
 				writer.newLine();
 			}
 		} finally {
-			if (writer != null) {
+			if (writer !== null) {
 				writer.close();
 			}
 		}	

@@ -14,7 +14,6 @@ import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.TimeZone
 import java.util.Date
-import java.util.List
 
 class ExperimentCSVSerializer implements ResultsDescriptor {
 
