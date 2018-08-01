@@ -413,7 +413,7 @@
 		<launchConfigurationType
 			name="MDEOptimiser Search"
 			delegate="uk.ac.kcl.ui.launch.MDEOLaunchConfigurationDelegate"
-			modes="run"
+			modes="run, debug"
 			id="uk.ac.kcl.ui.mdeo.launchConfiguration">
 		</launchConfigurationType>
 	</extension>
@@ -448,7 +448,7 @@
 	        icon="icons/mdeo.png"
 	        id="uk.ac.kcl.ui.mdeo.launchConfiguration.shortcut"
 	        label="MDEOptimiser Search"
-	        modes="run">
+	        modes="run, debug">
 	        <contextualLaunch>
 	            <enablement>
 	                <with variable="selection">
