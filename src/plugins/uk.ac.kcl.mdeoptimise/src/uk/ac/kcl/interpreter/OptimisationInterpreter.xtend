@@ -19,7 +19,7 @@ import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RuleSpec
 import uk.ac.kcl.optimisation.SolutionGenerator
 import uk.ac.kcl.optimisation.UserModelProvider
 import uk.ac.kcl.optimisation.moea.MoeaOptimisation
-import uk.ac.kcl.optimisation.moea.MoeaOptimisationSolution
+import org.moeaframework.Instrumenter
 
 class OptimisationInterpreter {
 	
@@ -33,20 +33,19 @@ class OptimisationInterpreter {
 	private IPath projectRootPath;
 	private boolean enableManualRandomMatching = false;
 	private  Map<EPackage, List<Module>> generatedOperators;
-
+	
 	new (String projectPath, Optimisation model){
 		this.model = model;
 		this.projectRootPath = new Path(projectPath);
 	}
 	
-	def Iterator<MoeaOptimisationSolution> start() {
+	def Instrumenter start() {
 		
 		//This model provider loads the model given by the user in the DSL
-		val userModelProvider = new UserModelProvider(getResourceSet(projectRootPath.append(model.basepath.location).toPortableString), model.model.location)
 		var solutionGenerator = new SolutionGenerator(model, 
 											getBreedingOperators, 
 											getMutationOperators, 
-											userModelProvider, 
+											getModelProvider, 
 											getMetamodel);
 
 		//TODO Find a better way to do this stuff
@@ -54,12 +53,29 @@ class OptimisationInterpreter {
 			solutionGenerator.setEnableManualRandomMatching(this.enableManualRandomMatching);
 		}
 		
-		return new MoeaOptimisation()
-									.execute(model.optimisation, solutionGenerator)
+		return new MoeaOptimisation().execute(model.optimisation, solutionGenerator)
+	}
+	
+	def IModelProvider getModelProvider(){
+		
+		if(model.modelInitialiser !== null){
+			return new UserModelProvider(getModelInitialiser(), getResourceSet(projectRootPath.append(model.basepath.location).toPortableString), model.model.location)
+		}
+		
+		return new UserModelProvider(getResourceSet(projectRootPath.append(model.basepath.location).toPortableString), model.model.location)
+	}
+	
+	def IModelInitialiser getModelInitialiser(){
+		
+		if(model.modelInitialiser !== null){
+			return Class.forName(model.modelInitialiser.initialiser).newInstance() as IModelInitialiser
+		}
+		
 	}
 
 	def getResourceSet(String basePath) {
         if (henshinResourceSet === null) {
+
             henshinResourceSet = new HenshinResourceSet(basePath);
         }
 
@@ -86,7 +102,7 @@ class OptimisationInterpreter {
 			breedingOperators = new LinkedList
 			
 			breedingOperators.addAll(model.evolvers.filter[ operator | operator.evolverType.getName.equals("BREED")]
-				.map[ operator | getResourceSet(model.basepath.location).getModule(URI.createURI(operator.rule_location), false).getUnit(operator.unit)]
+				.map[ operator | getResourceSet(projectRootPath.append(model.basepath.location).toPortableString).getModule(URI.createURI(operator.rule_location), false).getUnit(operator.unit)]
 			)
     		
     	}
@@ -102,7 +118,7 @@ class OptimisationInterpreter {
 			mutationOperators = new LinkedList
 			
 			mutationOperators.addAll(model.evolvers.filter[ operator | operator.evolverType.getName.equals("MUTATE")]
-				.map[ operator | getResourceSet(model.basepath.location).getModule(URI.createURI(operator.rule_location), false).getUnit(operator.unit)]
+				.map[ operator | getResourceSet(projectRootPath.append(model.basepath.location).toPortableString).getModule(URI.createURI(operator.rule_location), false).getUnit(operator.unit)]
 			)
     		
     	}

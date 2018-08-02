@@ -8,6 +8,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="model" eType="#//ModelPathSpec"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="modelInitialiser" eType="#//ModelInitialiserSpec"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="refinements" upperBound="-1"
         eType="#//MultiplicityRefinementSpec" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="objectives" upperBound="-1"
@@ -42,6 +44,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="constraintName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="constraintType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="constraintSpec" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ModelInitialiserSpec">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="initialiser" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RulegenSpec">
     <eStructuralFeatures xsi:type="ecore:EReference" name="nodeSpec" eType="#//RulegenNode"
@@ -96,8 +101,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="algorithmName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="algorithmVariation" eType="#//AlgorithmVariation"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="algorithmEvolutions" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="algorithmPopulation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="algorithmParameters" eType="#//AlgorithmParameters"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="terminationCondition" eType="#//TerminationConditionParameters"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="algorithmBatches" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AlgorithmVariation">
@@ -109,5 +116,17 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="crossover_rate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mutation_rate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AlgorithmParameters">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="#//Parameter" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TerminationConditionParameters">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="#//Parameter" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Parameter">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
 </ecore:EPackage>

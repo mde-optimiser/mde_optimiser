@@ -6,7 +6,9 @@ import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.debug.core.ILaunchConfiguration
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
-import org.eclipse.debug.ui.AbstractLaunchConfigurationTab
+import org.eclipse.debug.ui.ILaunchConfigurationTab
+import org.eclipse.jdt.debug.ui.launchConfigurations.JavaLaunchTab
+import org.eclipse.jdt.launching.IJavaLaunchConfigurationConstants
 import org.eclipse.jface.window.Window
 import org.eclipse.swt.SWT
 import org.eclipse.swt.events.ModifyEvent
@@ -22,10 +24,13 @@ import org.eclipse.swt.widgets.Listener
 import org.eclipse.swt.widgets.Shell
 import org.eclipse.swt.widgets.Text
 import org.eclipse.ui.dialogs.FilteredResourcesSelectionDialog
+import org.eclipse.jdt.core.JavaCore
+import org.eclipse.core.runtime.Path
 
-class MDEOptimiserSourceConfigurationTab extends AbstractLaunchConfigurationTab implements ModifyListener {
+class MDEOptimiserSourceConfigurationTab extends JavaLaunchTab implements ModifyListener {
 
     Text moptFilePath;
+    IFile moptFile;
 
     override createControl(Composite parent) {
 
@@ -63,27 +68,50 @@ class MDEOptimiserSourceConfigurationTab extends AbstractLaunchConfigurationTab 
 		canSave();
     }
 
-    @Override
-    override setDefaults(ILaunchConfigurationWorkingCopy configuration) {	
-    }
-
-    @Override
+	/**
+	 * Called when displaying this configuration in launch configurations
+	 */
     override initializeFrom(ILaunchConfiguration configuration) {
 		try {
+			
 			moptFilePath.setText(configuration.getAttribute(getSourceAttributeName(), ""));
+			setMoptFile(moptFilePath.getText())
+			
 			canSave();
 			updateLaunchConfigurationDialog();
+		
 		} catch (CoreException e) {
 			//Ignore
 		}
     }
 
-    @Override
     override performApply(ILaunchConfigurationWorkingCopy configuration) {
+		
 		configuration.setAttribute(getSourceAttributeName(), moptFilePath.getText());
+		
+		if (this.moptFilePath !== null && 
+			!this.moptFilePath.getText().empty
+		) {	
+					
+			initializeJavaProject(JavaCore.create(this.moptFile.project), configuration);
+		} else {
+			configuration.setAttribute(IJavaLaunchConfigurationConstants.ATTR_PROJECT_NAME, "");
+		}
 	}
 
-    @Override
+	/* (non-Javadoc)
+	 * @see ILaunchConfigurationTab#setDefaults(org.eclipse.debug.core.ILaunchConfigurationWorkingCopy)
+	 */
+	override void setDefaults(ILaunchConfigurationWorkingCopy config) {
+
+		if (this.moptFilePath !== null) {			
+			initializeJavaProject(JavaCore.create(this.moptFile.project), config);
+		}
+		else {
+			config.setAttribute(IJavaLaunchConfigurationConstants.ATTR_PROJECT_NAME, "");
+		}
+	}
+
     override String getName() {
         return "MDEO Search Launch Tab";
     }
@@ -93,7 +121,7 @@ class MDEOptimiserSourceConfigurationTab extends AbstractLaunchConfigurationTab 
 		updateLaunchConfigurationDialog();
 	}
 	
-    def Button createBrowseWorkspaceButton(Composite parent, Text target) {
+    private def Button createBrowseWorkspaceButton(Composite parent, Text target) {
     	
     	val button = new Button(parent, SWT.NONE)
     	
@@ -105,16 +133,16 @@ class MDEOptimiserSourceConfigurationTab extends AbstractLaunchConfigurationTab 
 				//TODO The file extension must be coming from somewhere in the xtext configs surely
 				var selectedMoptFilePath = browseFilePath(getShell(), "Select MOPT file", "MOPT files in the workspace", "mopt")
 				
-				if(selectedMoptFilePath != null) target.setText(selectedMoptFilePath)
-				
+				if(selectedMoptFilePath !== null){ 
+					target.setText(selectedMoptFilePath)
+				}
 			}
       	})
     	
     	return button
-    	
     }
     
-    def String browseFilePath(Shell shell, String title, String message, String ext) {
+    private def String browseFilePath(Shell shell, String title, String message, String ext) {
     	
     	var pattern = "";
     	
@@ -125,13 +153,17 @@ class MDEOptimiserSourceConfigurationTab extends AbstractLaunchConfigurationTab 
     	var file = browseFile(shell, title, message, pattern)
     	
     	if(file !== null) {
+    		this.moptFile = file;
     		return file.getFullPath.toString()
     	}
     	
     	return null
     }
     
-    def IFile browseFile(Shell shell, String title, String message, String pattern) {
+    /**
+     * File browser functionality to search for all the mopt files
+     */
+    private def IFile browseFile(Shell shell, String title, String message, String pattern) {
     	
     	var dialog = new FilteredResourcesSelectionDialog(shell, false, ResourcesPlugin.getWorkspace().getRoot(), IResource.FILE);
     	
@@ -142,7 +174,7 @@ class MDEOptimiserSourceConfigurationTab extends AbstractLaunchConfigurationTab 
     	dialog.open()
     	
     	if(dialog.getReturnCode() == Window.OK) {
-    		return dialog.getResult().get(0) as IFile
+    		return dialog.getResult().head as IFile
     	}
     	
     	null
@@ -152,7 +184,14 @@ class MDEOptimiserSourceConfigurationTab extends AbstractLaunchConfigurationTab 
 	 * Sets the name of the source attribute used to fetch its value from
 	 * the launch configuration properties collection.
 	 */
-	def String getSourceAttributeName() {
+	private def String getSourceAttributeName() {
 		return MDEOptimiserLaunchConfigurationAttributes.ATTR_MOPT_SOURCE_PATH;
+	}
+	
+	private def void setMoptFile(String moptFilePath) {
+		
+		if(moptFilePath !== null && !moptFilePath.empty) {
+			this.moptFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(moptFilePath));
+		}
 	}
 }
