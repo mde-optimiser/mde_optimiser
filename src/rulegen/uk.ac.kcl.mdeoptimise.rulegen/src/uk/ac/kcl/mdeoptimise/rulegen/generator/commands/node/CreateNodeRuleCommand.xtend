@@ -18,6 +18,11 @@ import uk.ac.kcl.mdeoptimise.rulegen.generator.specs.RepairSpecType
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.MetamodelWrapper
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RuleSpec
 import uk.ac.kcl.mdeoptimiser.rulegen.lang.RuleNameGenerator
+import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.LowerBoundManyRepairCheckGenerator
+import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.UpperBoundManyRepairCheckGenerator
+import org.sidiff.common.emf.extensions.impl.EClassifierInfo
+import org.eclipse.emf.henshin.model.Node
+import org.sidiff.common.emf.extensions.impl.EClassifierInfoManagement
 
 class CreateNodeRuleCommand implements IRuleGenerationCommand {
 	
@@ -128,7 +133,27 @@ class CreateNodeRuleCommand implements IRuleGenerationCommand {
 		repairSpecs.filter[repairSpec | repairSpec.repairSpecType == RepairSpecType.CREATE_LB_REPAIR_MANY
 			|| repairSpec.repairSpecType == RepairSpecType.DELETE_LB_REPAIR_MANY
 		].forEach[ repairSpec | 
-						
+			
+			
+			//TODO Move this to the delete node class
+			if(repairSpec.repairSpecType === RepairSpecType.DELETE_LB_REPAIR_MANY){
+				
+				if(repairSpec.edge.EOpposite.lowerBound == repairSpec.edge.EOpposite.upperBound 
+					&& repairSpec.edge.EOpposite.lowerBound > 1
+					&& repairSpec.edge.lowerBound == 0
+				) {
+
+					val childInfo = metamodelWrapper.metamodelAnalyser.getEClassifierInfo(this.getNode());
+					childInfo.mandatoryNeighbours
+					childInfo.mandatoryChildren
+		
+					val elementFilter = new ElementFilter(metamodelWrapper.metamodelAnalyser);
+		
+					Common.createRepairOppositeMandatoryNeighbours(rule, childInfo, createdNode, OperationType.CREATE, true, metamodelWrapper.metamodelAnalyser, elementFilter)
+					
+				}
+			}
+	
 			createdNode.getOutgoing(repairSpec.edge).forEach[ outgoingEdge |
 				
 				//Find existing target node
@@ -146,13 +171,33 @@ class CreateNodeRuleCommand implements IRuleGenerationCommand {
 	
 	private def void applyRepairOperationsLbSingle(Rule rule, List<RepairSpec> repairSpecs){
 		
-		
+		 
 			//Get the created node from the rule graphs
 			val createdNode = HenshinRuleAnalysisUtilEx.getRHSMinusLHSNodes(rule).get(0);
 			
 			repairSpecs.filter[repairSpec | repairSpec.repairSpecType === RepairSpecType.DELETE_LB_REPAIR
 				|| repairSpec.repairSpecType === RepairSpecType.CREATE_LB_REPAIR
 			].forEach[ repairSpec | 
+			
+			
+				//TODO Move this to the delete node class
+				if(repairSpec.repairSpecType === RepairSpecType.DELETE_LB_REPAIR){
+					
+					if(repairSpec.edge.EOpposite.lowerBound == repairSpec.edge.EOpposite.upperBound 
+						&& repairSpec.edge.EOpposite.lowerBound > 0
+						&& repairSpec.edge.lowerBound == 0
+					) {
+
+						val childInfo = metamodelWrapper.metamodelAnalyser.getEClassifierInfo(this.getNode());
+						childInfo.mandatoryNeighbours
+						childInfo.mandatoryChildren
+			
+						val elementFilter = new ElementFilter(metamodelWrapper.metamodelAnalyser);
+			
+						Common.createRepairOppositeMandatoryNeighbours(rule, childInfo, createdNode, OperationType.CREATE, true, metamodelWrapper.metamodelAnalyser, elementFilter)
+						
+					}
+				}
 			
 				//Create existing node A from which to take the existing target node
 				val existingsourceNodeName = Common.getFreeNodeName(GlobalConstants.NEWTGT, rule);
@@ -168,14 +213,11 @@ class CreateNodeRuleCommand implements IRuleGenerationCommand {
 				]
 			]	
 	}
-	
-	
+
 	//Apply the NACs
 	private def void applyRuleNacConditions(Rule rule){
-	
-		//new LowerBoundManyRepairCheckGenerator(rule).generate();
-		new LowerBoundCheckGenerator(rule).generate();
-		new UpperBoundCheckGenerator(rule).generate();
+		new LowerBoundManyRepairCheckGenerator(rule).generate();
+		new UpperBoundManyRepairCheckGenerator(rule).generate();
 	}
 	
 	//Create the rule parameters

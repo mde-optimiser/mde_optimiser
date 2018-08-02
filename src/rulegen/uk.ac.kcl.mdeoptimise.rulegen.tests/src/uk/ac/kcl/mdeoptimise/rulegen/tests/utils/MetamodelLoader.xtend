@@ -5,7 +5,6 @@ import org.eclipse.emf.ecore.EPackage
 import uk.ac.kcl.mdeoptimise.Optimisation
 import java.util.List
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.Multiplicity
-import static org.junit.Assert.*
 import static org.mockito.Mockito.*
 import uk.ac.kcl.mdeoptimise.BasePathSpec
 import uk.ac.kcl.mdeoptimise.MetaModelSpec
@@ -18,7 +17,7 @@ class MetamodelLoader {
 	Optimisation model;
 	
 	def getResourceSet() {
-        if (henshinResourceSet == null) {
+        if (henshinResourceSet === null) {
             henshinResourceSet = new HenshinResourceSet(model.basepath.location)
         }
 
@@ -26,7 +25,7 @@ class MetamodelLoader {
     }
 
     def getMetamodel() {
-        if (theMetamodel == null) {
+        if (theMetamodel === null) {
             theMetamodel = getResourceSet.registerDynamicEPackages(model.metamodel.location).head
         }
 

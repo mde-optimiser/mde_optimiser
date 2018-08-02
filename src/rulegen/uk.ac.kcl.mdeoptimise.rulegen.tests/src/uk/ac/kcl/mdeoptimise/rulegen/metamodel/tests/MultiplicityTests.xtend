@@ -2,23 +2,23 @@ package uk.ac.kcl.mdeoptimise.rulegen.metamodel.tests
 
 import java.util.LinkedList
 import org.eclipse.emf.ecore.EPackage
-import org.eclipse.emf.henshin.model.resource.HenshinResourceSet
-import org.eclipse.xtext.testing.XtextRunner
-import org.junit.Test
-import org.junit.runner.RunWith
-import uk.ac.kcl.mdeoptimise.BasePathSpec
-import uk.ac.kcl.mdeoptimise.MetaModelSpec
-import uk.ac.kcl.mdeoptimise.Optimisation
-import uk.ac.kcl.mdeoptimise.rulegen.metamodel.Multiplicity
 import uk.ac.kcl.mdeoptimise.rulegen.tests.utils.MetamodelGenerator
+import uk.ac.kcl.mdeoptimise.Optimisation
+import uk.ac.kcl.mdeoptimise.MetaModelSpec
+import uk.ac.kcl.mdeoptimise.BasePathSpec
+import org.junit.jupiter.api.^extension.ExtendWith
+import org.eclipse.emf.henshin.model.resource.HenshinResourceSet
+import uk.ac.kcl.mdeoptimise.rulegen.metamodel.Multiplicity
+import org.eclipse.xtext.testing.extensions.InjectionExtension
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*
-import static org.mockito.Mockito.*
-
-@RunWith(XtextRunner)
+import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
+ 
+@ExtendWith(InjectionExtension)
 class MultiplicityTests {
 	
-	private HenshinResourceSet henshinResourceSet;
+	HenshinResourceSet henshinResourceSet;
 	private EPackage theMetamodel
 	Optimisation model;
 	
@@ -82,19 +82,19 @@ class MultiplicityTests {
 		
 		var multiplicityA = new Multiplicity("Class", "encapsulates", 1, 1, getMetamodel);
 		
-		assertEquals("Unexpected source node name", "Class", multiplicityA.sourceNode.name);
-		assertEquals("Unexpected target node name", "Feature", multiplicityA.targetNode.name);
-		assertEquals("Unexpected outgoing reference name", "encapsulates", multiplicityA.EReference.name);
-		assertEquals("Unexpected opposite reference name", "isEncapsulatedBy", multiplicityA.EReference.EOpposite.name);
+		assertEquals("Class", multiplicityA.sourceNode.name, "Unexpected source node name")
+		assertEquals("Feature", multiplicityA.targetNode.name, "Unexpected target node name");
+		assertEquals("encapsulates", multiplicityA.EReference.name, "Unexpected outgoing reference name");
+		assertEquals("isEncapsulatedBy", multiplicityA.EReference.EOpposite.name, "Unexpected opposite reference name");
 	}
 	
 	@Test
 	def void assertThatMultiplicityRangeValidityReturnsTrueForValidLb(){
 		
-		assertTrue("Unexpected multiplicity range lb == 0 && ub > lb", Multiplicity.checkMultiplicityRangeValidity(0, 1))
-		assertTrue("Unexpected multiplicity range lb == 0 && ub >= lb", Multiplicity.checkMultiplicityRangeValidity(1, 2))
-		assertTrue("Unexpected multiplicity range lb > 0 && ub >= lb", Multiplicity.checkMultiplicityRangeValidity(1, 1))
-		assertTrue("Unexpected multiplicity range lb = ub = -1", Multiplicity.checkMultiplicityRangeValidity(1, -1))
+		assertTrue(Multiplicity.checkMultiplicityRangeValidity(0, 1), "Unexpected multiplicity range lb == 0 && ub > lb")
+		assertTrue(Multiplicity.checkMultiplicityRangeValidity(1, 2), "Unexpected multiplicity range lb == 0 && ub >= lb")
+		assertTrue(Multiplicity.checkMultiplicityRangeValidity(1, 1), "Unexpected multiplicity range lb > 0 && ub >= lb")
+		assertTrue(Multiplicity.checkMultiplicityRangeValidity(1, -1), "Unexpected multiplicity range lb = ub = -1")
 	}
 	
 	@Test
@@ -104,7 +104,7 @@ class MultiplicityTests {
 		
 		var multiplicityA = new Multiplicity("Method", "dataDependency", 1, 1, getMetamodel);
 		
-		assertEquals("EOpposite reference for unidirectional reference is null", null, multiplicityA.EReference.EOpposite)
+		assertEquals(null, multiplicityA.EReference.EOpposite, "EOpposite reference for unidirectional reference is null")
 	}
 	
 	@Test
@@ -113,9 +113,9 @@ class MultiplicityTests {
 		
 		var multiplicityA = new Multiplicity("Class", "encapsulates", 1, 1, getMetamodel);
 		
-		assertNotNull("EOpposite reference for bidirectional reference is not null", multiplicityA.EReference.EOpposite)
-		assertEquals("EOpposite reference for bidirectional reference has correct name", 
-			"isEncapsulatedBy", multiplicityA.EReference.EOpposite.getName)
+		assertNotNull(multiplicityA.EReference.EOpposite, "EOpposite reference for bidirectional reference is not null")
+		assertEquals("isEncapsulatedBy", multiplicityA.EReference.EOpposite.getName, 
+		"EOpposite reference for bidirectional reference has correct name")
 	}
 	
 	@Test
@@ -125,8 +125,7 @@ class MultiplicityTests {
 		
 		var multiplicityA = new Multiplicity("Orchestrator", "concreteServices", 1, -1, getMetamodel);
 		
-		assertNotNull("EReference is not null", multiplicityA.EReference)
-		assertEquals("EReference has the correct container", 
-			"Orchestrator", multiplicityA.EReference.EContainingClass.name)
+		assertNotNull(multiplicityA.EReference, "EReference is not null")
+		assertEquals("Orchestrator", multiplicityA.EReference.EContainingClass.name, "EReference has the correct container")
 	}
 }

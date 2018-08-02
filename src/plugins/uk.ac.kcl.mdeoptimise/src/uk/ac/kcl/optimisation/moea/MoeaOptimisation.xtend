@@ -1,13 +1,18 @@
 package uk.ac.kcl.optimisation.moea
 
-import java.util.Iterator
 import java.util.Properties
 import org.moeaframework.Executor
-import org.moeaframework.core.NondominatedPopulation
 import org.moeaframework.core.spi.AlgorithmFactory
 import uk.ac.kcl.interpreter.IOptimisation
 import uk.ac.kcl.mdeoptimise.OptimisationSpec
 import uk.ac.kcl.optimisation.SolutionGenerator
+import org.moeaframework.core.TerminationCondition
+import org.moeaframework.Instrumenter
+import org.moeaframework.algorithm.PeriodicAction
+import uk.ac.kcl.optimisation.moea.instrumentation.PopulationCollector
+import uk.ac.kcl.optimisation.moea.algorithms.MoeaOptimisationAlgorithmProvider
+import uk.ac.kcl.optimisation.moea.termination.conditions.TerminationConditionAdapter
+import uk.ac.kcl.optimisation.moea.problem.MoeaOptimisationProblem
 
 class MoeaOptimisation implements IOptimisation {
 	
@@ -19,15 +24,8 @@ class MoeaOptimisation implements IOptimisation {
 		
 		var optimisationProperties = getOptimisationProperties(optimisationSpec)
 		
-		//Run the optimisation executor
-		val population = runOptimisation(optimisationSpec.algorithmName, optimisationProperties);
-		
 		//Extract optimisation models from the problem solutions
-		return getOptimisationOutcomeObjects(population);
-	}
-	
-	def Iterator<MoeaOptimisationSolution> getOptimisationOutcomeObjects(NondominatedPopulation population){
-		return population.iterator.map[ p | (p as MoeaOptimisationSolution)]
+		return runOptimisation(optimisationSpec.algorithmName, optimisationProperties);
 	}
 	
 	/**
@@ -38,12 +36,12 @@ class MoeaOptimisation implements IOptimisation {
 		
 		var properties = new Properties()
 		
-		properties.put("populationSize", optimisationSpec.algorithmPopulation)
-		properties.put("maxEvolutions", optimisationSpec.algorithmPopulation * optimisationSpec.algorithmEvolutions)
+		properties.put("populationSize", optimisationSpec.algorithmParameters.parameters.filter[p| p.name.equals("population")].head.value)
+		//properties.put("maxEvolutions", optimisationSpec.algorithmPopulation * optimisationSpec.algorithmEvolutions)
 		properties.put("solutionGenerator", solutionGenerator)
 		//Crossover and mutation or mutation only
 		properties.put("variationType", optimisationSpec.algorithmVariation)
-		
+		properties.put("terminationCondition", new TerminationConditionAdapter(optimisationSpec.terminationCondition).condition)
 		return properties
 	}
 	
@@ -52,15 +50,20 @@ class MoeaOptimisation implements IOptimisation {
 	 * TODO This should actually return an object containing all the information about 
 	 * the run, not just the solution
 	 */
-	def NondominatedPopulation runOptimisation(String algorithmName, Properties optimisationProperties) {
+	def Instrumenter runOptimisation(String algorithmName, Properties optimisationProperties) {
 		
-		//OperatorFactory.getInstance().addProvider(new MoeaOptimisationVariationsProvider());
-		
-		//OperatorFactory.getInstance().addProvider(new MoeaOptimisationVariationsProvider());
 		
 		val algorithmFactory = new AlgorithmFactory();
 		algorithmFactory.addProvider(new MoeaOptimisationAlgorithmProvider)
-			
+		
+		var instrumenter = new Instrumenter()
+				.withProblemClass(MoeaOptimisationProblem, solutionGenerator)
+				.attachApproximationSetCollector()
+				.attachElapsedTimeCollector()
+				.attachPopulationSizeCollector
+				.attach(new PopulationCollector())
+				.withFrequency(1)
+				.withFrequencyType(PeriodicAction.FrequencyType.STEPS)
 		
 		new Executor()
 		   .usingAlgorithmFactory(algorithmFactory)
@@ -68,8 +71,14 @@ class MoeaOptimisation implements IOptimisation {
 	       //Initialize problem with our solution generator
 	       .withProblemClass(MoeaOptimisationProblem, solutionGenerator)
 	       .withProperties(optimisationProperties)
-	       .withMaxEvaluations(optimisationProperties.get("maxEvolutions") as Integer)
+	       .withInstrumenter(instrumenter)
 	       //.distributeOnAllCores() //Leave this on for now. Should perhaps be configurable
+	       .withTerminationCondition(optimisationProperties.get("terminationCondition") as TerminationCondition)
 	       .run()
+
+		return instrumenter;
+	
 	}
+	
+	
 }

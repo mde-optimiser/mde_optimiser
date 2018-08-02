@@ -14,7 +14,7 @@
           <styles xmi:type="notation:FilteringStyle" xmi:id="_5QP01BEmEeabmunMZOrd-Q"/>
         </children>
         <element xmi:type="henshin:Node" href="craEvolvers.henshin#_AflYUA4REeagj8t_lc0Ypw"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5QPNwREmEeabmunMZOrd-Q" x="6"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5QPNwREmEeabmunMZOrd-Q" x="50" y="19"/>
       </children>
       <children xmi:type="notation:Shape" xmi:id="_5QP01REmEeabmunMZOrd-Q" type="3001" fontName="Segoe UI">
         <children xmi:type="notation:DecorationNode" xmi:id="_5QP01xEmEeabmunMZOrd-Q" type="5002"/>
@@ -24,7 +24,7 @@
           <styles xmi:type="notation:FilteringStyle" xmi:id="_5QP02xEmEeabmunMZOrd-Q"/>
         </children>
         <element xmi:type="henshin:Node" href="craEvolvers.henshin#_BwSLMA4REeagj8t_lc0Ypw"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5QP01hEmEeabmunMZOrd-Q" x="186"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5QP01hEmEeabmunMZOrd-Q" x="230" y="19"/>
       </children>
       <children xmi:type="notation:Shape" xmi:id="_Ugpu8BXdEeaaFYH0yhaZhQ" type="3001" fontName="Segoe UI">
         <children xmi:type="notation:DecorationNode" xmi:id="_UgqWABXdEeaaFYH0yhaZhQ" type="5002"/>
@@ -34,7 +34,7 @@
           <styles xmi:type="notation:FilteringStyle" xmi:id="_UgqWBBXdEeaaFYH0yhaZhQ"/>
         </children>
         <element xmi:type="henshin:Node" href="craEvolvers.henshin#_Ugog0BXdEeaaFYH0yhaZhQ"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ugpu8RXdEeaaFYH0yhaZhQ" x="180" y="79"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ugpu8RXdEeaaFYH0yhaZhQ" x="224" y="98"/>
       </children>
       <children xmi:type="notation:Shape" xmi:id="_VbEv0BXdEeaaFYH0yhaZhQ" type="3001" fontName="Segoe UI">
         <children xmi:type="notation:DecorationNode" xmi:id="_VbEv0hXdEeaaFYH0yhaZhQ" type="5002"/>
@@ -44,11 +44,11 @@
           <styles xmi:type="notation:FilteringStyle" xmi:id="_VbEv1hXdEeaaFYH0yhaZhQ"/>
         </children>
         <element xmi:type="henshin:Node" href="craEvolvers.henshin#_VbEIwBXdEeaaFYH0yhaZhQ"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VbEv0RXdEeaaFYH0yhaZhQ" x="32" y="79"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VbEv0RXdEeaaFYH0yhaZhQ" x="76" y="98"/>
       </children>
     </children>
     <element xmi:type="henshin:Rule" href="craEvolvers.henshin#__Ei9sA4QEeagj8t_lc0Ypw"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5QNYkREmEeabmunMZOrd-Q" x="572" y="24" width="325" height="197"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5QNYkREmEeabmunMZOrd-Q" x="572" y="24" width="385" height="197"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_5QN_oBEmEeabmunMZOrd-Q" type="2001" fontName="Segoe UI" italic="true" lineColor="0">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_QCdoYBEnEeabmunMZOrd-Q" source="defaultAction">
@@ -188,7 +188,7 @@
       </children>
     </children>
     <element xmi:type="henshin:Rule" href="craEvolvers.henshin#_fJ2-wBXcEeaaFYH0yhaZhQ"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fKHdcRXcEeaaFYH0yhaZhQ" x="572" y="250" width="385" height="118"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fKHdcRXcEeaaFYH0yhaZhQ" x="572" y="233" width="385" height="118"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_fyWScIhBEee7qaBoH-VMlg" type="2001" fontName="Cantarell" italic="true" lineColor="0">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_lLKKM4hBEee7qaBoH-VMlg" source="defaultAction">
@@ -328,7 +328,7 @@
       </children>
     </children>
     <element xmi:type="henshin:Rule" href="craEvolvers.henshin#_HvS6YIhHEee7qaBoH-VMlg"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HvWk4YhHEee7qaBoH-VMlg" x="919" y="24" width="325" height="197"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HvWk4YhHEee7qaBoH-VMlg" x="1096" y="193" width="325" height="197"/>
   </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_5Mlc0REmEeabmunMZOrd-Q"/>
   <element xmi:type="henshin:Module" href="craEvolvers.henshin#_6uYOsA4QEeagj8t_lc0Ypw"/>

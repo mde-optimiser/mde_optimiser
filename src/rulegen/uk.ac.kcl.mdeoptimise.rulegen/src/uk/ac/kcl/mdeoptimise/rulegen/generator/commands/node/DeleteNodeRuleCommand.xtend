@@ -6,12 +6,12 @@ import org.eclipse.emf.henshin.model.Rule
 import org.sidiff.common.emf.extensions.impl.EClassifierInfoManagement
 import org.sidiff.serge.configuration.Configuration.OperationType
 import org.sidiff.serge.core.Common
-import org.sidiff.serge.generators.conditions.LowerBoundCheckGenerator
-import org.sidiff.serge.generators.conditions.UpperBoundCheckGenerator
 import uk.ac.kcl.mdeoptimise.rulegen.generator.IRuleGenerationCommand
 import uk.ac.kcl.mdeoptimise.rulegen.generator.specs.RepairSpec
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.MetamodelWrapper
 import uk.ac.kcl.mdeoptimise.rulegen.metamodel.RuleSpec
+import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.LowerBoundManyRepairCheckGenerator
+import uk.ac.kcl.mdeoptimise.rulegen.generator.commands.UpperBoundManyRepairCheckGenerator
 
 class DeleteNodeRuleCommand implements IRuleGenerationCommand {
 	
@@ -30,7 +30,7 @@ class DeleteNodeRuleCommand implements IRuleGenerationCommand {
 	
 	override generate() {
 		
-		//Create the Delete rule as an invesrse of the Create rule
+		//Create the Delete rule as an inverse of the Create rule
 		//TODO This assumes that there is only one rule in the Module
 		var createNodeRuleCommand = new CreateNodeRuleCommand(node, refinedMetamodelWrapper, ruleSpec, repairSpecs);
 		var deleteModule = createNodeRuleCommand.generate();
@@ -46,8 +46,8 @@ class DeleteNodeRuleCommand implements IRuleGenerationCommand {
 	//Apply the NACs
 	private def void applyRuleNacConditions(Rule rule){
 	
-		new LowerBoundCheckGenerator(rule).generate();
-		new UpperBoundCheckGenerator(rule).generate();
+		new LowerBoundManyRepairCheckGenerator(rule).generate();
+		new UpperBoundManyRepairCheckGenerator(rule).generate();
 	}
 
 }
