@@ -74,8 +74,7 @@ class SpecsGenerator {
 			
 			var repairs = new HashSet<RepairSpec>();
 			
-			if(edge.EOpposite == null || edge.EOpposite.lowerBound == 0){
-				
+			if(edge.EOpposite === null){
 				repairs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 			} else {
 				
@@ -86,11 +85,11 @@ class SpecsGenerator {
 						
 				} else if(edge.lowerBound != edge.upperBound){
 					
-					if(edge.EOpposite.lowerBound > 0 && edge.EOpposite.lowerBound != edge.EOpposite.upperBound) {
+					if(edge.EOpposite.lowerBound >= 0 && edge.EOpposite.lowerBound != edge.EOpposite.upperBound) {
 						repairs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 					}
 					
-					if(edge.lowerBound > 0 && edge.EOpposite.upperBound != -1){
+					if(edge.lowerBound >= 0 && edge.EOpposite.upperBound != -1){
 						repairs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
 					}
 				
@@ -99,8 +98,9 @@ class SpecsGenerator {
 					}
 				
 				} else if(edge.lowerBound == edge.upperBound){
-					
-					repairs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));				
+					if(edge.EOpposite.lowerBound != edge.EOpposite.upperBound){
+						repairs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));	
+					}
 				}
 			}
 			
@@ -121,32 +121,35 @@ class SpecsGenerator {
 			
 			var repairs = new HashSet<RepairSpec>();
 			
-			if(edge.EOpposite == null || edge.EOpposite.lowerBound == 0){
+			if(edge.EOpposite === null || edge.EOpposite.lowerBound == 0){
 
 				repairs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
 			} else {
-								
-				if(edge.EOpposite.lowerBound == 1 && edge.EOpposite.upperBound == 1) {
+
+				if(edge.EOpposite.lowerBound > 0 
+					&& (edge.EOpposite.upperBound > edge.EOpposite.lowerBound || edge.EOpposite.upperBound === -1)
+				) {
+					repairs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+				}
+				
+				//Second set				
+				if(edge.EOpposite.lowerBound === 1 && edge.EOpposite.upperBound === 1) {
 					
 					if(edge.lowerBound != edge.upperBound) {
 						
 						repairs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR));
 					}
 				}
-				
-				if(edge.EOpposite.lowerBound > 0 
-					&& (edge.EOpposite.upperBound > edge.EOpposite.lowerBound || edge.EOpposite.upperBound == -1)
-				) {
-					repairs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
-				}
-				
-				if(edge.EOpposite.lowerBound == edge.EOpposite.upperBound && edge.EOpposite.lowerBound > 1) {
+								
+				if(edge.EOpposite.lowerBound === edge.EOpposite.upperBound && edge.EOpposite.lowerBound > 1) {
 					
-					if(edge.lowerBound != edge.upperBound){
+					if(edge.lowerBound !== edge.upperBound){
 						
 						repairs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR));
-						repairs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR_MANY));
+						if(edge.lowerBound == 0 || edge.lowerBound > 1) {
+							repairs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR_MANY));
+						}
 					}
 				}
 			}
@@ -167,7 +170,7 @@ class SpecsGenerator {
 			
 			var repairs = new HashSet<RepairSpec>();
 			
-			if(edge.EOpposite == null || edge.EOpposite.lowerBound == 0){
+			if(edge.EOpposite === null || edge.EOpposite.lowerBound === 0){
 				
 				if(edge.lowerBound === edge.upperBound){
 					repairs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
@@ -194,10 +197,10 @@ class SpecsGenerator {
 //					}
 //				}
 				
-				if(edge.lowerBound == edge.upperBound) {
+				if(edge.lowerBound === edge.upperBound) {
 					repairs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
 				} else {
-					if(edge.EOpposite.lowerBound == edge.EOpposite.upperBound) {
+					if(edge.EOpposite.lowerBound === edge.EOpposite.upperBound) {
 							repairs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE));
 					} else {
 							repairs.add(new RepairSpec(node, edge, RepairSpecType.ADD));
@@ -233,10 +236,10 @@ class SpecsGenerator {
 				
 			} else {
 
-				if(edge.lowerBound == edge.upperBound){
+				if(edge.lowerBound === edge.upperBound){
 					repairs.add(new RepairSpec(node, edge, RepairSpecType.SWAP))
 				} else {
-					if(edge.EOpposite.lowerBound == edge.EOpposite.upperBound){
+					if(edge.EOpposite.lowerBound === edge.EOpposite.upperBound){
 						repairs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE))
 					} else {
 						repairs.add(new RepairSpec(node, edge, RepairSpecType.REMOVE))

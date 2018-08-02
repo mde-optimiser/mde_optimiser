@@ -5,9 +5,9 @@ import org.eclipse.xtend.lib.annotations.Accessors
 
 class EvolverParameterAdapter {
 
-	@Accessors String name;
-	@Accessors String function;
-	@Accessors String parameter;
+	public String name;
+	public String function;
+	public String parameter;
 
 	new(EvolverParameter evolverParameterSpec) {
 		name = evolverParameterSpec.name;

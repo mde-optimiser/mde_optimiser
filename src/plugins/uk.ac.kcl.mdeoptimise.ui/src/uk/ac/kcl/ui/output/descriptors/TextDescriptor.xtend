@@ -6,7 +6,6 @@ import java.util.Date
 import java.io.PrintWriter
 import java.text.SimpleDateFormat
 import java.util.TimeZone
-import uk.ac.kcl.optimisation.moea.MoeaOptimisationSolution
 import com.google.common.io.Files
 import java.io.File
 import org.eclipse.emf.ecore.EObject
@@ -15,6 +14,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import org.eclipse.emf.common.util.URI
 import java.nio.charset.Charset
+import uk.ac.kcl.optimisation.moea.problem.MoeaOptimisationSolution
 
 class TextDescriptor implements ResultsDescriptor {
 	

@@ -17,7 +17,6 @@ import org.eclipse.jdt.core.JavaCore
 import org.eclipse.core.runtime.NullProgressMonitor
 import org.eclipse.jdt.core.IClasspathEntry
 import java.util.LinkedList
-import uk.ac.kcl.ui.classpath.MDEOClasspathContainerInitializer
 import uk.ac.kcl.ui.classpath.MDEOClasspathContainer
 
 /**
