@@ -33,7 +33,7 @@ class GuidanceFunctionsFactoryTests {
 		
 		val objectivesFactory = new GuidanceFunctionsFactory();
 		
-		val javaObjectiveFunction = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(0)))
+		val javaObjectiveFunction = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.goal.constraints.get(0)))
 		
 		assertThat("Produced guidance function for a Java objective spec has type of the Java fitness class.", 
 			javaObjectiveFunction, instanceOf(models.java.JavaObjectiveFunction)
@@ -50,7 +50,7 @@ class GuidanceFunctionsFactoryTests {
 		
 		val objectivesFactory = new GuidanceFunctionsFactory();
 		
-		val oclObjectiveFunction = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(0)))
+		val oclObjectiveFunction = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.goal.constraints.get(0)))
 		
 		assertThat("Produced objectives factory for ocl objective type is an instance of the OCL fitness class.", 
 			oclObjectiveFunction, instanceOf(uk.ac.kcl.interpreter.guidance.ocl.OclGuidanceFunction)
@@ -67,7 +67,7 @@ class GuidanceFunctionsFactoryTests {
 		
 		val objectivesFactory = new GuidanceFunctionsFactory();
 		
-		val javaObjectiveFunction = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(0)))
+		val javaObjectiveFunction = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.goal.constraints.get(0)))
 		
 		val mockedEObject = mock(EObject)
 		
@@ -85,7 +85,7 @@ class GuidanceFunctionsFactoryTests {
 			
 			val objectivesFactory = new GuidanceFunctionsFactory();
 			
-			objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(0)))
+			objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.goal.constraints.get(0)))
 		} catch(ClassNotFoundException e) {
 			assertEquals("Invalid objective class path: invalid-path", e.getMessage())
 		}
@@ -103,7 +103,7 @@ class GuidanceFunctionsFactoryTests {
 
 			val objectivesFactory = new GuidanceFunctionsFactory();
 	
-			objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.getObjectives().get(0)))
+			objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.goal.objectives.get(0)))
 		} catch(InvalidObjectException e) {
 			assertEquals("Invalid objective type: random", e.getMessage())
 		}
@@ -122,7 +122,7 @@ class GuidanceFunctionsFactoryTests {
 		
 		val constraintsFactory = new GuidanceFunctionsFactory();
 		
-		val javaConstraintFunction = constraintsFactory.loadFunction(new GuidanceFunctionAdapter(model.getConstraints().get(0)))
+		val javaConstraintFunction = constraintsFactory.loadFunction(new GuidanceFunctionAdapter(model.goal.constraints.get(0)))
 		
 		assertThat("Produced guidance function for a Java constraint spec has type of the Java fitness class",
 			javaConstraintFunction, instanceOf(models.java.JavaObjectiveFunction)
@@ -139,7 +139,7 @@ class GuidanceFunctionsFactoryTests {
 		
 		val constraintsFactory = new GuidanceFunctionsFactory();
 		
-		val oclConstraintFunction = constraintsFactory.loadFunction(new GuidanceFunctionAdapter(model.getConstraints().get(0)))
+		val oclConstraintFunction = constraintsFactory.loadFunction(new GuidanceFunctionAdapter(model.goal.constraints.get(0)))
 		
 		assertThat("Produced guidance function for an Ocl constraint spec has type of the Ocl constraint class",
 			oclConstraintFunction, instanceOf(uk.ac.kcl.interpreter.guidance.ocl.OclGuidanceFunction)

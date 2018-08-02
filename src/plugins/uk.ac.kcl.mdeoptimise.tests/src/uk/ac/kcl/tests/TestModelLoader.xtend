@@ -18,7 +18,7 @@ class TestModelLoader {
 	
 	def getResourceSet() {
         if (henshinResourceSet == null) {
-            henshinResourceSet = new HenshinResourceSet(model.basepath.location)
+            henshinResourceSet = new HenshinResourceSet(model.problem.basepath.location)
         }
 
         henshinResourceSet
@@ -26,7 +26,7 @@ class TestModelLoader {
 
     def getMetamodel() {
         if (theMetamodel == null) {
-            theMetamodel = getResourceSet.registerDynamicEPackages(model.metamodel.location).head
+            theMetamodel = getResourceSet.registerDynamicEPackages(model.problem.metamodel.location).head
         }
 
         theMetamodel

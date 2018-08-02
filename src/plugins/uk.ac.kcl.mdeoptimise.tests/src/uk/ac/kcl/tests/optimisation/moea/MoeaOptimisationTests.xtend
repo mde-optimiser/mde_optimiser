@@ -41,7 +41,7 @@ class MoeaOptimisationTests {
 	
 	def getResourceSet() {
         if (henshinResourceSet === null) {
-            henshinResourceSet = new HenshinResourceSet(model.basepath.location)
+            henshinResourceSet = new HenshinResourceSet(model.problem.basepath.location)
         }
 
         henshinResourceSet
@@ -49,7 +49,7 @@ class MoeaOptimisationTests {
 
     def getMetamodel() {
         if (theMetamodel === null) {
-            theMetamodel = getResourceSet.registerDynamicEPackages(model.metamodel.location).head
+            theMetamodel = getResourceSet.registerDynamicEPackages(model.problem.metamodel.location).head
         }
 
         theMetamodel
@@ -58,7 +58,7 @@ class MoeaOptimisationTests {
     def getHenshinEvolvers() {
     	if (henshinEvolvers === null) {
             val hrs = resourceSet
-            henshinEvolvers = model.evolvers.map [ e |
+            henshinEvolvers = model.search.evolvers.map [ e |
                 hrs.getModule(URI.createURI(e.rule_location), false).getUnit(e.unit)
             ]
         }
@@ -71,16 +71,31 @@ class MoeaOptimisationTests {
 			val pathPrefix = "gen/"
 			
 			model = parser.parse('''
-				basepath <src/models/cra/>
-				metamodel <architectureCRA.ecore>
-				model <TTC_InputRDG_D.xmi>
-				objective MaximiseCRA maximise java { "models.moea.MaximiseCRA" }
-				constraint MinimiseClasslessFeatures java { "models.moea.MinimiseClasslessFeatures" }
-				mutate using <craEvolvers.henshin> unit "createClass"
-				mutate using <craEvolvers.henshin> unit "assignFeature"
-				mutate using <craEvolvers.henshin> unit "moveFeature"
-				mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
-				optimisation provider moea algorithm NSGAII variation mutation evolutions 200 population 40 batches 1
+				problem {
+					basepath <src/models/cra/>
+					metamodel <architectureCRA.ecore>
+					model <TTC_InputRDG_D.xmi>
+				}
+				goal {
+					objective MaximiseCRA maximise java { "models.moea.MaximiseCRA" }
+					constraint MinimiseClasslessFeatures java { "models.moea.MinimiseClasslessFeatures" }
+				}
+				search {
+					mutate using <craEvolvers.henshin> unit "createClass"
+					mutate using <craEvolvers.henshin> unit "assignFeature"
+					mutate using <craEvolvers.henshin> unit "moveFeature"
+					mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
+				}
+				solver {
+					optimisation provider moea algorithm NSGAII variation mutation
+					parameters {
+						population: 30
+					}
+					termination {
+						time: 15
+					}
+					batches 1
+				}
 			''')
 
 			//Assert that there are no grammar issues
@@ -103,7 +118,7 @@ class MoeaOptimisationTests {
 	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome, optimisationInterpreter.rulegenOperators))		
 						
 						experimentId++
-					} while(experimentId < model.optimisation.algorithmBatches);
+					} while(experimentId < model.solver.optimisation.algorithmBatches);
 
 	            	mdeoResultsOutput.saveOutcome();
 	        }
@@ -148,7 +163,7 @@ class MoeaOptimisationTests {
 							
 						
 						experimentId++
-					} while(experimentId < model.optimisation.algorithmBatches);
+					} while(experimentId < model.solver.optimisation.algorithmBatches);
 
 	            	mdeoResultsOutput.saveOutcome();
 	        }
@@ -190,7 +205,7 @@ class MoeaOptimisationTests {
 						
 						experimentId++
 					
-					} while(experimentId < model.optimisation.algorithmBatches);
+					} while(experimentId < model.solver.optimisation.algorithmBatches);
 
 	            	mdeoResultsOutput.saveOutcome();
 	        }
@@ -232,7 +247,7 @@ class MoeaOptimisationTests {
 						
 						experimentId++
 					
-					} while(experimentId < model.optimisation.algorithmBatches);
+					} while(experimentId < model.solver.optimisation.algorithmBatches);
 
 	            	mdeoResultsOutput.saveOutcome();
 	        }
@@ -277,7 +292,7 @@ class MoeaOptimisationTests {
 						
 						experimentId++
 					
-					} while(experimentId < model.optimisation.algorithmBatches);
+					} while(experimentId < model.solver.optimisation.algorithmBatches);
 
 	            	mdeoResultsOutput.saveOutcome();
 	        }
@@ -319,7 +334,7 @@ class MoeaOptimisationTests {
 	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome, optimisationInterpreter.rulegenOperators))		
 						
 						experimentId++
-					} while(experimentId < model.optimisation.algorithmBatches);
+					} while(experimentId < model.solver.optimisation.algorithmBatches);
 
 	            	mdeoResultsOutput.saveOutcome();
 	        }
@@ -363,7 +378,7 @@ class MoeaOptimisationTests {
 	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome, optimisationInterpreter.rulegenOperators))		
 						
 						experimentId++
-					} while(experimentId < model.optimisation.algorithmBatches);
+					} while(experimentId < model.solver.optimisation.algorithmBatches);
 
 	            	mdeoResultsOutput.saveOutcome();
 	        }
@@ -411,7 +426,7 @@ class MoeaOptimisationTests {
 	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome, optimisationInterpreter.rulegenOperators))		
 						
 						experimentId++
-					} while(experimentId < model.optimisation.algorithmBatches);
+					} while(experimentId < model.solver.optimisation.algorithmBatches);
 
 	            	mdeoResultsOutput.saveOutcome();
 	        }
@@ -453,7 +468,7 @@ class MoeaOptimisationTests {
 	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome, optimisationInterpreter.rulegenOperators))		
 						
 						experimentId++
-					} while(experimentId < model.optimisation.algorithmBatches);
+					} while(experimentId < model.solver.optimisation.algorithmBatches);
 
 	            	mdeoResultsOutput.saveOutcome();
 	        }
@@ -499,7 +514,7 @@ class MoeaOptimisationTests {
 	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome, optimisationInterpreter.rulegenOperators))		
 						
 						experimentId++
-					} while(experimentId < model.optimisation.algorithmBatches);
+					} while(experimentId < model.solver.optimisation.algorithmBatches);
 
 	            	mdeoResultsOutput.saveOutcome();
 	        }
@@ -546,7 +561,7 @@ class MoeaOptimisationTests {
 	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome, optimisationInterpreter.rulegenOperators))		
 						
 						experimentId++
-					} while(experimentId < model.optimisation.algorithmBatches);
+					} while(experimentId < model.solver.optimisation.algorithmBatches);
 
 	            	mdeoResultsOutput.saveOutcome();
 	        }
@@ -597,7 +612,7 @@ class MoeaOptimisationTests {
 	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome, optimisationInterpreter.rulegenOperators))		
 						
 						experimentId++
-					} while(experimentId < model.optimisation.algorithmBatches);
+					} while(experimentId < model.solver.optimisation.algorithmBatches);
 
 	            	mdeoResultsOutput.saveOutcome();
 	        }

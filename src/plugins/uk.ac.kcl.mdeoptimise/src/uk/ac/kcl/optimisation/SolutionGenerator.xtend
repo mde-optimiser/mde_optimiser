@@ -60,7 +60,7 @@ class SolutionGenerator {
 		
 		this.unitRunner = new UnitApplicationImpl(engine)
 		this.ruleRunner = new RuleApplicationImpl(engine)
-		this.evolverParametersFactory = new EvolverParametersFactory(model.evolvers)
+		this.evolverParametersFactory = new EvolverParametersFactory(model.search.evolvers)
 		
 		//Disable henshin warnings
 		//ChangeImpl.PRINT_WARNINGS = false;

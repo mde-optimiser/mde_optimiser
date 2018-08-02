@@ -20,6 +20,8 @@ import uk.ac.kcl.optimisation.SolutionGenerator
 import uk.ac.kcl.optimisation.UserModelProvider
 import uk.ac.kcl.optimisation.moea.MoeaOptimisation
 import org.moeaframework.Instrumenter
+import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
 
 class OptimisationInterpreter {
 	
@@ -53,22 +55,25 @@ class OptimisationInterpreter {
 			solutionGenerator.setEnableManualRandomMatching(this.enableManualRandomMatching);
 		}
 		
-		return new MoeaOptimisation().execute(model.optimisation, solutionGenerator)
+		return new MoeaOptimisation().execute(model.solver.optimisation, solutionGenerator)
 	}
 	
 	def IModelProvider getModelProvider(){
 		
-		if(model.modelInitialiser !== null){
-			return new UserModelProvider(getModelInitialiser(), getResourceSet(projectRootPath.append(model.basepath.location).toPortableString), model.model.location)
+		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(
+    "nrp", new XMIResourceFactoryImpl());
+		
+		if(model.problem.modelInitialiser !== null){
+			return new UserModelProvider(getModelInitialiser(), getResourceSet(projectRootPath.append(model.problem.basepath.location).toPortableString), model.problem.model.location)
 		}
 		
-		return new UserModelProvider(getResourceSet(projectRootPath.append(model.basepath.location).toPortableString), model.model.location)
+		return new UserModelProvider(getResourceSet(projectRootPath.append(model.problem.basepath.location).toPortableString), model.problem.model.location)
 	}
 	
 	def IModelInitialiser getModelInitialiser(){
 		
-		if(model.modelInitialiser !== null){
-			return Class.forName(model.modelInitialiser.initialiser).newInstance() as IModelInitialiser
+		if(model.problem.modelInitialiser !== null){
+			return Class.forName(model.problem.modelInitialiser.initialiser).newInstance() as IModelInitialiser
 		}
 		
 	}
@@ -84,12 +89,12 @@ class OptimisationInterpreter {
 
     def getMetamodel() {
         if (theMetamodel === null) {
-        	if (!model.metamodel.location.endsWith(".ecore")) {
+        	if (!model.problem.metamodel.location.endsWith(".ecore")) {
         		// The location is not an ecore file, assume it's a class name
-        		val packageInterface = (Class.forName(model.metamodel.location) as Class<EPackage>)
+        		val packageInterface = (Class.forName(model.problem.metamodel.location) as Class<EPackage>)
         		theMetamodel = packageInterface.getDeclaredField("eINSTANCE").get(null) as EPackage
         	} else {
- 				theMetamodel = getResourceSet(projectRootPath.append(model.basepath.location).toPortableString).registerDynamicEPackages(model.metamodel.location).head	
+ 				theMetamodel = getResourceSet(projectRootPath.append(model.problem.basepath.location).toPortableString).registerDynamicEPackages(model.problem.metamodel.location).head	
         	}
         }
 
@@ -101,8 +106,8 @@ class OptimisationInterpreter {
 			
 			breedingOperators = new LinkedList
 			
-			breedingOperators.addAll(model.evolvers.filter[ operator | operator.evolverType.getName.equals("BREED")]
-				.map[ operator | getResourceSet(projectRootPath.append(model.basepath.location).toPortableString).getModule(URI.createURI(operator.rule_location), false).getUnit(operator.unit)]
+			breedingOperators.addAll(model.search.evolvers.filter[ operator | operator.evolverType.getName.equals("BREED")]
+				.map[ operator | getResourceSet(projectRootPath.append(model.problem.basepath.location).toPortableString).getModule(URI.createURI(operator.rule_location), false).getUnit(operator.unit)]
 			)
     		
     	}
@@ -117,8 +122,8 @@ class OptimisationInterpreter {
 			
 			mutationOperators = new LinkedList
 			
-			mutationOperators.addAll(model.evolvers.filter[ operator | operator.evolverType.getName.equals("MUTATE")]
-				.map[ operator | getResourceSet(projectRootPath.append(model.basepath.location).toPortableString).getModule(URI.createURI(operator.rule_location), false).getUnit(operator.unit)]
+			mutationOperators.addAll(model.search.evolvers.filter[ operator | operator.evolverType.getName.equals("MUTATE")]
+				.map[ operator | getResourceSet(projectRootPath.append(model.problem.basepath.location).toPortableString).getModule(URI.createURI(operator.rule_location), false).getUnit(operator.unit)]
 			)
     		
     	}
@@ -145,7 +150,7 @@ class OptimisationInterpreter {
     def List<Multiplicity> getMultiplicityRefinements(){
     	 //A list of multiplicity refinements specified by the user in the DSL.
     	//This is optional.
-    	var refinements = model.refinements;
+    	var refinements = model.goal.refinements;
  		
  		val multiplicityRefinements = new ArrayList<Multiplicity>();
  		
@@ -160,7 +165,7 @@ class OptimisationInterpreter {
     
     def List<RuleSpec> getRulegenSpecs(){
     	
-    	var rulegenSpecs = model.rulegen;
+    	var rulegenSpecs = model.search.rulegen;
     	
     	val ruleSpecs = new ArrayList<RuleSpec>();
  

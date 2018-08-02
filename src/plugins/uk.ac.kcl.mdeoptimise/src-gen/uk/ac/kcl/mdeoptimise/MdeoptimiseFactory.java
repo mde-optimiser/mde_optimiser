@@ -33,6 +33,42 @@ public interface MdeoptimiseFactory extends EFactory
   Optimisation createOptimisation();
 
   /**
+   * Returns a new object of class '<em>Problem Spec</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Problem Spec</em>'.
+   * @generated
+   */
+  ProblemSpec createProblemSpec();
+
+  /**
+   * Returns a new object of class '<em>Goal Spec</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Goal Spec</em>'.
+   * @generated
+   */
+  GoalSpec createGoalSpec();
+
+  /**
+   * Returns a new object of class '<em>Search Spec</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Search Spec</em>'.
+   * @generated
+   */
+  SearchSpec createSearchSpec();
+
+  /**
+   * Returns a new object of class '<em>Solver Spec</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Solver Spec</em>'.
+   * @generated
+   */
+  SolverSpec createSolverSpec();
+
+  /**
    * Returns a new object of class '<em>Base Path Spec</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

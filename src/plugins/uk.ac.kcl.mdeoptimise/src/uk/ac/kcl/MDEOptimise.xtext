@@ -4,17 +4,10 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 generate mdeoptimise "http://www.ac.uk/kcl/MDEOptimise"
 
 Optimisation:
-	basepath=BasePathSpec
-	metamodel=MetaModelSpec
-	model=ModelPathSpec
-	modelInitialiser=ModelInitialiserSpec?
-	refinements+=MultiplicityRefinementSpec*
-	objectives+=ObjectiveInterpreterSpec+
-	constraints+=ConstraintInterpreterSpec*
-	reports+=ReportInterpreterSpec*
-	evolvers+=EvolverSpec*
-	rulegen+=RulegenSpec*
-	optimisation=OptimisationSpec
+	problem=ProblemSpec
+	goal=GoalSpec
+	search=SearchSpec
+	solver=SolverSpec
 ;
 
 
@@ -46,6 +39,38 @@ Optimisation:
 //mutate using <craEvolvers.henshin> unit "moveFeature"
 //mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
 //optimisation provider moea algorithm NSGAII variation mutation evolutions 1000 population 30 experiments 2
+
+
+ProblemSpec:
+	"problem" "{"
+		basepath=BasePathSpec
+		metamodel=MetaModelSpec
+		model=ModelPathSpec
+		modelInitialiser=ModelInitialiserSpec?
+	"}"
+;
+
+GoalSpec:
+	"goal" "{"
+		refinements+=MultiplicityRefinementSpec*
+		objectives+=ObjectiveInterpreterSpec+
+		constraints+=ConstraintInterpreterSpec*
+	"}"
+;
+
+SearchSpec:
+	"search" "{"
+		reports+=ReportInterpreterSpec*
+		evolvers+=EvolverSpec*
+		rulegen+=RulegenSpec*
+	"}"
+;
+
+SolverSpec:
+	"solver" "{"
+		optimisation=OptimisationSpec
+	"}"
+;
 
 
 /**

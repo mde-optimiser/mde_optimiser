@@ -33,7 +33,7 @@ class GrammarParsingTests {
 	@Test
 	def void assertBasePathIsParsed() {
 		val model = testModelHelper.parsedFullValidModel
-		assertEquals("src/models/cra/", model.getBasepath.location)
+		assertEquals("src/models/cra/", model.problem.getBasepath.location)
 	}
 	
 	@Test
@@ -41,7 +41,7 @@ class GrammarParsingTests {
 		
 		val model = testModelHelper.parsedFullValidModel
 		
-		assertEquals("architectureCRA.ecore", model.getMetamodel.location)
+		assertEquals("architectureCRA.ecore", model.problem.getMetamodel.location)
 	}
 	
 	@Test
@@ -52,10 +52,10 @@ class GrammarParsingTests {
 		val model = testModelHelper.getParsedFullValidModelWithCustomObjectives(javaObjective)
 		
 		//First objective JAVA
-		assertEquals("Could not get java objective type.", "java", model.objectives.get(0).getObjectiveType())
-		assertEquals("Could not get java objective name.", "name", model.objectives.get(0).getObjectiveName())
-		assertEquals("Could not get expected java objective path.", "models.fitness.Fitness.java", model.objectives.get(0).getObjectiveSpec())
-		assertEquals("Could not get java objective tendency.", "minimise", model.objectives.get(0).getObjectiveTendency())
+		assertEquals("Could not get java objective type.", "java", model.goal.objectives.get(0).getObjectiveType())
+		assertEquals("Could not get java objective name.", "name", model.goal.objectives.get(0).getObjectiveName())
+		assertEquals("Could not get expected java objective path.", "models.fitness.Fitness.java", model.goal.objectives.get(0).getObjectiveSpec())
+		assertEquals("Could not get java objective tendency.", "minimise", model.goal.objectives.get(0).getObjectiveTendency())
 		
 	}
 	
@@ -67,10 +67,10 @@ class GrammarParsingTests {
 		val model = testModelHelper.getParsedFullValidModelWithCustomObjectives(oclObjective)
 		
 		//Second objective OCL
-		assertEquals("Could not get ocl objective type.", "ocl", model.objectives.get(0).getObjectiveType())
-		assertEquals("Could not get ocl objective name.", "name", model.objectives.get(0).getObjectiveName())
-		assertEquals("Could not get expected ocl objective query.", "Class.allInstances()->size()", model.objectives.get(0).getObjectiveSpec())
-		assertEquals("Could not get ocl objective tendency.", "maximise", model.objectives.get(0).getObjectiveTendency())
+		assertEquals("Could not get ocl objective type.", "ocl", model.goal.objectives.get(0).getObjectiveType())
+		assertEquals("Could not get ocl objective name.", "name", model.goal.objectives.get(0).getObjectiveName())
+		assertEquals("Could not get expected ocl objective query.", "Class.allInstances()->size()", model.goal.objectives.get(0).getObjectiveSpec())
+		assertEquals("Could not get ocl objective tendency.", "maximise", model.goal.objectives.get(0).getObjectiveTendency())
 	}
 //TODO FIX	
 //	@Test
@@ -93,9 +93,9 @@ class GrammarParsingTests {
 		
 		val model = testModelHelper.getParsedFullValidModelWithCustomConstraints(oclConstraint)
 		
-		assertEquals("Could not get ocl constraint name", "constraintName", model.constraints.get(0).constraintName)
-		assertEquals("Could not get ocl constraint type", "ocl", model.constraints.get(0).constraintType)
-		assertEquals("Could not get ocl constraint spec", "Class.allInstances->size()", model.constraints.get(0).constraintSpec)
+		assertEquals("Could not get ocl constraint name", "constraintName", model.goal.constraints.get(0).constraintName)
+		assertEquals("Could not get ocl constraint type", "ocl", model.goal.constraints.get(0).constraintType)
+		assertEquals("Could not get ocl constraint spec", "Class.allInstances->size()", model.goal.constraints.get(0).constraintSpec)
 	}
 	
 	@Test
@@ -105,9 +105,9 @@ class GrammarParsingTests {
 		
 		val model = testModelHelper.getParsedFullValidModelWithCustomConstraints(javaConstraint)
 		
-		assertEquals("Could not get java constraint name", "constraintName", model.constraints.get(0).constraintName)
-		assertEquals("Could not get java constraint type", "java", model.constraints.get(0).constraintType)
-		assertEquals("Could not get java constraint spec", "models.constraints.Constraint.java", model.constraints.get(0).constraintSpec)
+		assertEquals("Could not get java constraint name", "constraintName", model.goal.constraints.get(0).constraintName)
+		assertEquals("Could not get java constraint type", "java", model.goal.constraints.get(0).constraintType)
+		assertEquals("Could not get java constraint spec", "models.constraints.Constraint.java", model.goal.constraints.get(0).constraintSpec)
 	}
 	
 	@Test
@@ -116,7 +116,7 @@ class GrammarParsingTests {
 		val model = testModelHelper.getParsedFullValidModelWithCustomConstraints("")
 		
 		assertEquals("There are no parsed constraints when no constraint specified", 
-			0, model.getConstraints().size()
+			0, model.goal.constraints.size()
 		)
 	}
 }

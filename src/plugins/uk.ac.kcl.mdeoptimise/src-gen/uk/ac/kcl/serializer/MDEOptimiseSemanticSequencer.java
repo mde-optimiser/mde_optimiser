@@ -65,6 +65,7 @@ import uk.ac.kcl.mdeoptimise.BasePathSpec;
 import uk.ac.kcl.mdeoptimise.ConstraintInterpreterSpec;
 import uk.ac.kcl.mdeoptimise.EvolverParameter;
 import uk.ac.kcl.mdeoptimise.EvolverSpec;
+import uk.ac.kcl.mdeoptimise.GoalSpec;
 import uk.ac.kcl.mdeoptimise.MdeoptimisePackage;
 import uk.ac.kcl.mdeoptimise.MetaModelSpec;
 import uk.ac.kcl.mdeoptimise.ModelInitialiserSpec;
@@ -75,10 +76,13 @@ import uk.ac.kcl.mdeoptimise.Optimisation;
 import uk.ac.kcl.mdeoptimise.OptimisationSpec;
 import uk.ac.kcl.mdeoptimise.ParameterFunction;
 import uk.ac.kcl.mdeoptimise.ProbabilityVariation;
+import uk.ac.kcl.mdeoptimise.ProblemSpec;
 import uk.ac.kcl.mdeoptimise.ReportInterpreterSpec;
 import uk.ac.kcl.mdeoptimise.RulegenEdge;
 import uk.ac.kcl.mdeoptimise.RulegenNode;
 import uk.ac.kcl.mdeoptimise.RulegenSpec;
+import uk.ac.kcl.mdeoptimise.SearchSpec;
+import uk.ac.kcl.mdeoptimise.SolverSpec;
 import uk.ac.kcl.mdeoptimise.TerminationConditionParameters;
 import uk.ac.kcl.services.MDEOptimiseGrammarAccess;
 
@@ -114,6 +118,9 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 			case MdeoptimisePackage.EVOLVER_SPEC:
 				sequence_EvolverSpec(context, (EvolverSpec) semanticObject); 
 				return; 
+			case MdeoptimisePackage.GOAL_SPEC:
+				sequence_GoalSpec(context, (GoalSpec) semanticObject); 
+				return; 
 			case MdeoptimisePackage.META_MODEL_SPEC:
 				sequence_MetaModelSpec(context, (MetaModelSpec) semanticObject); 
 				return; 
@@ -144,6 +151,9 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 			case MdeoptimisePackage.PROBABILITY_VARIATION:
 				sequence_ProbabilityVariation(context, (ProbabilityVariation) semanticObject); 
 				return; 
+			case MdeoptimisePackage.PROBLEM_SPEC:
+				sequence_ProblemSpec(context, (ProblemSpec) semanticObject); 
+				return; 
 			case MdeoptimisePackage.REPORT_INTERPRETER_SPEC:
 				sequence_ReportInterpreterSpec(context, (ReportInterpreterSpec) semanticObject); 
 				return; 
@@ -155,6 +165,12 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 				return; 
 			case MdeoptimisePackage.RULEGEN_SPEC:
 				sequence_RulegenSpec(context, (RulegenSpec) semanticObject); 
+				return; 
+			case MdeoptimisePackage.SEARCH_SPEC:
+				sequence_SearchSpec(context, (SearchSpec) semanticObject); 
+				return; 
+			case MdeoptimisePackage.SOLVER_SPEC:
+				sequence_SolverSpec(context, (SolverSpec) semanticObject); 
 				return; 
 			case MdeoptimisePackage.TERMINATION_CONDITION_PARAMETERS:
 				sequence_TerminationConditionParameters(context, (TerminationConditionParameters) semanticObject); 
@@ -495,6 +511,18 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     GoalSpec returns GoalSpec
+	 *
+	 * Constraint:
+	 *     (refinements+=MultiplicityRefinementSpec* objectives+=ObjectiveInterpreterSpec+ constraints+=ConstraintInterpreterSpec*)
+	 */
+	protected void sequence_GoalSpec(ISerializationContext context, GoalSpec semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     MetaModelSpec returns MetaModelSpec
 	 *
 	 * Constraint:
@@ -625,22 +653,25 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 	 *     Optimisation returns Optimisation
 	 *
 	 * Constraint:
-	 *     (
-	 *         basepath=BasePathSpec 
-	 *         metamodel=MetaModelSpec 
-	 *         model=ModelPathSpec 
-	 *         modelInitialiser=ModelInitialiserSpec? 
-	 *         refinements+=MultiplicityRefinementSpec* 
-	 *         objectives+=ObjectiveInterpreterSpec+ 
-	 *         constraints+=ConstraintInterpreterSpec* 
-	 *         reports+=ReportInterpreterSpec* 
-	 *         evolvers+=EvolverSpec* 
-	 *         rulegen+=RulegenSpec* 
-	 *         optimisation=OptimisationSpec
-	 *     )
+	 *     (problem=ProblemSpec goal=GoalSpec search=SearchSpec solver=SolverSpec)
 	 */
 	protected void sequence_Optimisation(ISerializationContext context, Optimisation semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION__PROBLEM) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION__PROBLEM));
+			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION__GOAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION__GOAL));
+			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION__SEARCH) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION__SEARCH));
+			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION__SOLVER) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.OPTIMISATION__SOLVER));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getOptimisationAccess().getProblemProblemSpecParserRuleCall_0_0(), semanticObject.getProblem());
+		feeder.accept(grammarAccess.getOptimisationAccess().getGoalGoalSpecParserRuleCall_1_0(), semanticObject.getGoal());
+		feeder.accept(grammarAccess.getOptimisationAccess().getSearchSearchSpecParserRuleCall_2_0(), semanticObject.getSearch());
+		feeder.accept(grammarAccess.getOptimisationAccess().getSolverSolverSpecParserRuleCall_3_0(), semanticObject.getSolver());
+		feeder.finish();
 	}
 	
 	
@@ -685,6 +716,18 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 	 *     (type=GENETIC_VARIATION (crossover_rate=Number mutation_rate=Number)?)
 	 */
 	protected void sequence_ProbabilityVariation(ISerializationContext context, ProbabilityVariation semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ProblemSpec returns ProblemSpec
+	 *
+	 * Constraint:
+	 *     (basepath=BasePathSpec metamodel=MetaModelSpec model=ModelPathSpec modelInitialiser=ModelInitialiserSpec?)
+	 */
+	protected void sequence_ProblemSpec(ISerializationContext context, ProblemSpec semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -743,6 +786,40 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 	 */
 	protected void sequence_RulegenSpec(ISerializationContext context, RulegenSpec semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     SearchSpec returns SearchSpec
+	 *
+	 * Constraint:
+	 *     (
+	 *         (reports+=ReportInterpreterSpec* evolvers+=EvolverSpec+ rulegen+=RulegenSpec+) | 
+	 *         (reports+=ReportInterpreterSpec* rulegen+=RulegenSpec+) | 
+	 *         rulegen+=RulegenSpec+
+	 *     )?
+	 */
+	protected void sequence_SearchSpec(ISerializationContext context, SearchSpec semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     SolverSpec returns SolverSpec
+	 *
+	 * Constraint:
+	 *     optimisation=OptimisationSpec
+	 */
+	protected void sequence_SolverSpec(ISerializationContext context, SolverSpec semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MdeoptimisePackage.Literals.SOLVER_SPEC__OPTIMISATION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MdeoptimisePackage.Literals.SOLVER_SPEC__OPTIMISATION));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getSolverSpecAccess().getOptimisationOptimisationSpecParserRuleCall_2_0(), semanticObject.getOptimisation());
+		feeder.finish();
 	}
 	
 	

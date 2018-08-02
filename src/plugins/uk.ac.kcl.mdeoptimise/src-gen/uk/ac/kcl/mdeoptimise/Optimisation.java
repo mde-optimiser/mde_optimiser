@@ -3,8 +3,6 @@
  */
 package uk.ac.kcl.mdeoptimise;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -16,17 +14,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getBasepath <em>Basepath</em>}</li>
- *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getMetamodel <em>Metamodel</em>}</li>
- *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getModel <em>Model</em>}</li>
- *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getModelInitialiser <em>Model Initialiser</em>}</li>
- *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getRefinements <em>Refinements</em>}</li>
- *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getObjectives <em>Objectives</em>}</li>
- *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getConstraints <em>Constraints</em>}</li>
- *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getReports <em>Reports</em>}</li>
- *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getEvolvers <em>Evolvers</em>}</li>
- *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getRulegen <em>Rulegen</em>}</li>
- *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getOptimisation <em>Optimisation</em>}</li>
+ *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getProblem <em>Problem</em>}</li>
+ *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getGoal <em>Goal</em>}</li>
+ *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getSearch <em>Search</em>}</li>
+ *   <li>{@link uk.ac.kcl.mdeoptimise.Optimisation#getSolver <em>Solver</em>}</li>
  * </ul>
  *
  * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getOptimisation()
@@ -36,229 +27,107 @@ import org.eclipse.emf.ecore.EObject;
 public interface Optimisation extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Basepath</b></em>' containment reference.
+   * Returns the value of the '<em><b>Problem</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Basepath</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Problem</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Basepath</em>' containment reference.
-   * @see #setBasepath(BasePathSpec)
-   * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getOptimisation_Basepath()
+   * @return the value of the '<em>Problem</em>' containment reference.
+   * @see #setProblem(ProblemSpec)
+   * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getOptimisation_Problem()
    * @model containment="true"
    * @generated
    */
-  BasePathSpec getBasepath();
+  ProblemSpec getProblem();
 
   /**
-   * Sets the value of the '{@link uk.ac.kcl.mdeoptimise.Optimisation#getBasepath <em>Basepath</em>}' containment reference.
+   * Sets the value of the '{@link uk.ac.kcl.mdeoptimise.Optimisation#getProblem <em>Problem</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Basepath</em>' containment reference.
-   * @see #getBasepath()
+   * @param value the new value of the '<em>Problem</em>' containment reference.
+   * @see #getProblem()
    * @generated
    */
-  void setBasepath(BasePathSpec value);
+  void setProblem(ProblemSpec value);
 
   /**
-   * Returns the value of the '<em><b>Metamodel</b></em>' containment reference.
+   * Returns the value of the '<em><b>Goal</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Metamodel</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Goal</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Metamodel</em>' containment reference.
-   * @see #setMetamodel(MetaModelSpec)
-   * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getOptimisation_Metamodel()
+   * @return the value of the '<em>Goal</em>' containment reference.
+   * @see #setGoal(GoalSpec)
+   * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getOptimisation_Goal()
    * @model containment="true"
    * @generated
    */
-  MetaModelSpec getMetamodel();
+  GoalSpec getGoal();
 
   /**
-   * Sets the value of the '{@link uk.ac.kcl.mdeoptimise.Optimisation#getMetamodel <em>Metamodel</em>}' containment reference.
+   * Sets the value of the '{@link uk.ac.kcl.mdeoptimise.Optimisation#getGoal <em>Goal</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Metamodel</em>' containment reference.
-   * @see #getMetamodel()
+   * @param value the new value of the '<em>Goal</em>' containment reference.
+   * @see #getGoal()
    * @generated
    */
-  void setMetamodel(MetaModelSpec value);
+  void setGoal(GoalSpec value);
 
   /**
-   * Returns the value of the '<em><b>Model</b></em>' containment reference.
+   * Returns the value of the '<em><b>Search</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Model</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Search</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Model</em>' containment reference.
-   * @see #setModel(ModelPathSpec)
-   * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getOptimisation_Model()
+   * @return the value of the '<em>Search</em>' containment reference.
+   * @see #setSearch(SearchSpec)
+   * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getOptimisation_Search()
    * @model containment="true"
    * @generated
    */
-  ModelPathSpec getModel();
+  SearchSpec getSearch();
 
   /**
-   * Sets the value of the '{@link uk.ac.kcl.mdeoptimise.Optimisation#getModel <em>Model</em>}' containment reference.
+   * Sets the value of the '{@link uk.ac.kcl.mdeoptimise.Optimisation#getSearch <em>Search</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Model</em>' containment reference.
-   * @see #getModel()
+   * @param value the new value of the '<em>Search</em>' containment reference.
+   * @see #getSearch()
    * @generated
    */
-  void setModel(ModelPathSpec value);
+  void setSearch(SearchSpec value);
 
   /**
-   * Returns the value of the '<em><b>Model Initialiser</b></em>' containment reference.
+   * Returns the value of the '<em><b>Solver</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Model Initialiser</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Solver</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Model Initialiser</em>' containment reference.
-   * @see #setModelInitialiser(ModelInitialiserSpec)
-   * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getOptimisation_ModelInitialiser()
+   * @return the value of the '<em>Solver</em>' containment reference.
+   * @see #setSolver(SolverSpec)
+   * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getOptimisation_Solver()
    * @model containment="true"
    * @generated
    */
-  ModelInitialiserSpec getModelInitialiser();
+  SolverSpec getSolver();
 
   /**
-   * Sets the value of the '{@link uk.ac.kcl.mdeoptimise.Optimisation#getModelInitialiser <em>Model Initialiser</em>}' containment reference.
+   * Sets the value of the '{@link uk.ac.kcl.mdeoptimise.Optimisation#getSolver <em>Solver</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Model Initialiser</em>' containment reference.
-   * @see #getModelInitialiser()
+   * @param value the new value of the '<em>Solver</em>' containment reference.
+   * @see #getSolver()
    * @generated
    */
-  void setModelInitialiser(ModelInitialiserSpec value);
-
-  /**
-   * Returns the value of the '<em><b>Refinements</b></em>' containment reference list.
-   * The list contents are of type {@link uk.ac.kcl.mdeoptimise.MultiplicityRefinementSpec}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Refinements</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Refinements</em>' containment reference list.
-   * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getOptimisation_Refinements()
-   * @model containment="true"
-   * @generated
-   */
-  EList<MultiplicityRefinementSpec> getRefinements();
-
-  /**
-   * Returns the value of the '<em><b>Objectives</b></em>' containment reference list.
-   * The list contents are of type {@link uk.ac.kcl.mdeoptimise.ObjectiveInterpreterSpec}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Objectives</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Objectives</em>' containment reference list.
-   * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getOptimisation_Objectives()
-   * @model containment="true"
-   * @generated
-   */
-  EList<ObjectiveInterpreterSpec> getObjectives();
-
-  /**
-   * Returns the value of the '<em><b>Constraints</b></em>' containment reference list.
-   * The list contents are of type {@link uk.ac.kcl.mdeoptimise.ConstraintInterpreterSpec}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Constraints</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Constraints</em>' containment reference list.
-   * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getOptimisation_Constraints()
-   * @model containment="true"
-   * @generated
-   */
-  EList<ConstraintInterpreterSpec> getConstraints();
-
-  /**
-   * Returns the value of the '<em><b>Reports</b></em>' containment reference list.
-   * The list contents are of type {@link uk.ac.kcl.mdeoptimise.ReportInterpreterSpec}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Reports</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Reports</em>' containment reference list.
-   * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getOptimisation_Reports()
-   * @model containment="true"
-   * @generated
-   */
-  EList<ReportInterpreterSpec> getReports();
-
-  /**
-   * Returns the value of the '<em><b>Evolvers</b></em>' containment reference list.
-   * The list contents are of type {@link uk.ac.kcl.mdeoptimise.EvolverSpec}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Evolvers</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Evolvers</em>' containment reference list.
-   * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getOptimisation_Evolvers()
-   * @model containment="true"
-   * @generated
-   */
-  EList<EvolverSpec> getEvolvers();
-
-  /**
-   * Returns the value of the '<em><b>Rulegen</b></em>' containment reference list.
-   * The list contents are of type {@link uk.ac.kcl.mdeoptimise.RulegenSpec}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Rulegen</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Rulegen</em>' containment reference list.
-   * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getOptimisation_Rulegen()
-   * @model containment="true"
-   * @generated
-   */
-  EList<RulegenSpec> getRulegen();
-
-  /**
-   * Returns the value of the '<em><b>Optimisation</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Optimisation</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Optimisation</em>' containment reference.
-   * @see #setOptimisation(OptimisationSpec)
-   * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getOptimisation_Optimisation()
-   * @model containment="true"
-   * @generated
-   */
-  OptimisationSpec getOptimisation();
-
-  /**
-   * Sets the value of the '{@link uk.ac.kcl.mdeoptimise.Optimisation#getOptimisation <em>Optimisation</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Optimisation</em>' containment reference.
-   * @see #getOptimisation()
-   * @generated
-   */
-  void setOptimisation(OptimisationSpec value);
+  void setSolver(SolverSpec value);
 
 } // Optimisation

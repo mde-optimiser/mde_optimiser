@@ -25,7 +25,7 @@ class GuidanceFunctionsAdapterTests {
 		
 		val model = testModelHelper.getParsedFullValidModelWithCustomObjectives(oclObjective)
 		
-		val adapter = new GuidanceFunctionAdapter(model.objectives.get(0))
+		val adapter = new GuidanceFunctionAdapter(model.goal.objectives.get(0))
 
 		assertEquals("objectiveName", adapter.functionName)
 		assertEquals("maximise", adapter.functionTendency)
@@ -40,7 +40,7 @@ class GuidanceFunctionsAdapterTests {
 		
 		val model = testModelHelper.getParsedFullValidModelWithCustomConstraints(oclConstraint)
 		
-		val adapter = new GuidanceFunctionAdapter(model.constraints.get(0))
+		val adapter = new GuidanceFunctionAdapter(model.goal.constraints.get(0))
 
 		assertEquals("constraintName", adapter.functionName)
 		assertEquals(null, adapter.functionTendency)
@@ -55,7 +55,7 @@ class GuidanceFunctionsAdapterTests {
 		
 		val model = testModelHelper.getParsedFullValidModelWithCustomObjectives(oclObjective)
 		
-		val adapter = new GuidanceFunctionAdapter(model.objectives.get(0))
+		val adapter = new GuidanceFunctionAdapter(model.goal.objectives.get(0))
 
 		assertEquals(-1, adapter.getNumericalTendency, 0.0)
 	}
@@ -67,7 +67,7 @@ class GuidanceFunctionsAdapterTests {
 		
 		val model = testModelHelper.getParsedFullValidModelWithCustomObjectives(oclObjective)
 		
-		val adapter = new GuidanceFunctionAdapter(model.objectives.get(0))
+		val adapter = new GuidanceFunctionAdapter(model.goal.objectives.get(0))
 
 		assertEquals(1, adapter.getNumericalTendency, 0.0)
 	}
@@ -78,7 +78,7 @@ class GuidanceFunctionsAdapterTests {
 		
 		val model = testModelHelper.getParsedFullValidModelWithCustomObjectives(oclObjective)
 		
-		val adapter = new GuidanceFunctionAdapter(model.objectives.get(0))
+		val adapter = new GuidanceFunctionAdapter(model.goal.objectives.get(0))
 		
 		assertTrue("This is an objective function",adapter.isObjectiveFunction)
 	}
@@ -89,7 +89,7 @@ class GuidanceFunctionsAdapterTests {
 		
 		val model = testModelHelper.getParsedFullValidModelWithCustomConstraints(oclObjective)
 		
-		val adapter = new GuidanceFunctionAdapter(model.constraints.get(0))
+		val adapter = new GuidanceFunctionAdapter(model.goal.constraints.get(0))
 		
 		assertFalse("This is not a constraint function",adapter.isObjectiveFunction)
 	}

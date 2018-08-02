@@ -20,8 +20,8 @@ class MDEOptimiseGenerator extends AbstractGenerator {
 	val root = resource.allContents.head as Optimisation;
 
 	if(root !== null){
-		println(root.metamodel)
-		println(root.basepath)
+		println(root.problem.metamodel)
+		println(root.problem.basepath)
 	}
 
 //		fsa.generateFile('greetings.txt', 'People to greet: ' + 

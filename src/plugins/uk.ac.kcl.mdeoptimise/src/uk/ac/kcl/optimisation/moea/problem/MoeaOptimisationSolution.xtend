@@ -20,8 +20,8 @@ class MoeaOptimisationSolution extends Solution {
 	}
 	
 	new(SolutionGenerator solutionGenerator){
-		this(solutionGenerator.optimisationModel.objectives.size(), 
-			solutionGenerator.optimisationModel.constraints.size()
+		this(solutionGenerator.optimisationModel.goal.objectives.size(), 
+			solutionGenerator.optimisationModel.goal.constraints.size()
 		)
 		this.solutionGenerator = solutionGenerator;
 		setModel(solutionGenerator.evolveModel(solutionGenerator.initialSolutions.head))
@@ -50,7 +50,7 @@ class MoeaOptimisationSolution extends Solution {
 	def LinkedHashMap<String, Double> getFormattedObjectives(){
 		val objectives = new LinkedHashMap<String, Double>()
 		
-		solutionGenerator.optimisationModel.objectives.forEach[objective , index | 
+		solutionGenerator.optimisationModel.goal.objectives.forEach[objective , index | 
 			objectives.put(objective.objectiveName, this.objectives.get(index))
 		]
 		
@@ -60,7 +60,7 @@ class MoeaOptimisationSolution extends Solution {
 	def LinkedHashMap<String, Double> getFormattedConstraints(){
 		val constraints = new LinkedHashMap<String, Double>()
 		
-		solutionGenerator.optimisationModel.constraints.forEach[constraint , index | 
+		solutionGenerator.optimisationModel.goal.constraints.forEach[constraint , index | 
 			constraints.put(constraint.constraintName, this.constraints.get(index))
 		]
 		

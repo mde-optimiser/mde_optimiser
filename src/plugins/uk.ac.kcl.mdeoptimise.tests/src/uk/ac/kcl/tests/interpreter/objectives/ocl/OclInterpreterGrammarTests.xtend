@@ -28,25 +28,32 @@ class OclInterpreterGrammarTests {
 	
 	def objectiveGrammarBootstrap(String objective) {
 		return '''
-			basepath <src/models/ocl/>
-			metamodel <architectureCRA.ecore>
-			model <model.xmi>
-			''' + objective + '''
-			mutate using <ABC> unit "XYZ"
-			mutate using <CDE> unit "LMN"
-			optimisation provider moea algorithm NSGAII variation mutation
-			parameters {
-					population: 40
-				}
-			termination {
-					time: 60
-				}
-			batches 30
+			problem {
+				basepath <src/models/ocl/>
+				metamodel <architectureCRA.ecore>
+				model <model.xmi>
+			}
+			goal {
+				''' + objective + '''
+			}
+			search {
+				mutate using <ABC> unit "XYZ"
+				mutate using <CDE> unit "LMN"
+			}
+			solver {
+				optimisation provider moea algorithm NSGAII variation mutation
+				parameters {
+						population: 40
+					}
+				termination {
+						time: 60
+					}
+				batches 30
+			}
 		'''
 	}
 	
 	@Test
-	@Ignore
 	def void assertThatEmptyOclStringIsInvalid() {
 		
 		try {
@@ -57,7 +64,7 @@ class OclInterpreterGrammarTests {
 			
 			val objectivesFactory = new GuidanceFunctionsFactory();
 			
-			val oclObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(testModel.getObjectives().get(0)))
+			val oclObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(testModel.goal.getObjectives().get(0)))
 
 			oclObjective.computeFitness(mock(EObject))	
 			
@@ -77,7 +84,7 @@ class OclInterpreterGrammarTests {
 			
 			val objectivesFactory = new GuidanceFunctionsFactory();
 			
-			val oclObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(testModel.getObjectives().get(0)))
+			val oclObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(testModel.goal.getObjectives().get(0)))
 
 			val testModelLoader = new TestModelLoader(testModel);
 
@@ -97,7 +104,7 @@ class OclInterpreterGrammarTests {
 			
 			val objectivesFactory = new GuidanceFunctionsFactory();
 			
-			val oclObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(testModel.getObjectives().get(0)))
+			val oclObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(testModel.goal.getObjectives().get(0)))
 
 			val testModelLoader = new TestModelLoader(testModel);
 
@@ -122,7 +129,7 @@ class OclInterpreterGrammarTests {
 			
 			val objectivesFactory = new GuidanceFunctionsFactory();
 			
-			val oclObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(testModel.getObjectives().get(0)))
+			val oclObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(testModel.goal.getObjectives().get(0)))
 
 			val initialModelObject = new OclModelProvider().initialModels(new TestModelLoader(testModel).getMetamodel()).head
 			

@@ -80,6 +80,34 @@ public class MdeoptimiseSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case MdeoptimisePackage.PROBLEM_SPEC:
+      {
+        ProblemSpec problemSpec = (ProblemSpec)theEObject;
+        T result = caseProblemSpec(problemSpec);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MdeoptimisePackage.GOAL_SPEC:
+      {
+        GoalSpec goalSpec = (GoalSpec)theEObject;
+        T result = caseGoalSpec(goalSpec);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MdeoptimisePackage.SEARCH_SPEC:
+      {
+        SearchSpec searchSpec = (SearchSpec)theEObject;
+        T result = caseSearchSpec(searchSpec);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MdeoptimisePackage.SOLVER_SPEC:
+      {
+        SolverSpec solverSpec = (SolverSpec)theEObject;
+        T result = caseSolverSpec(solverSpec);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case MdeoptimisePackage.BASE_PATH_SPEC:
       {
         BasePathSpec basePathSpec = (BasePathSpec)theEObject;
@@ -236,6 +264,70 @@ public class MdeoptimiseSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseOptimisation(Optimisation object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Problem Spec</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Problem Spec</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseProblemSpec(ProblemSpec object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Goal Spec</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Goal Spec</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseGoalSpec(GoalSpec object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Search Spec</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Search Spec</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSearchSpec(SearchSpec object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Solver Spec</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Solver Spec</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSolverSpec(SolverSpec object)
   {
     return null;
   }

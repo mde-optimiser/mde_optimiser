@@ -32,43 +32,67 @@ class TestModelHelper {
 	
 	//String helpers
 	def String getFullValidModel(){		
-		return getValidBasePath +
+		return "problem { " + getValidBasePath +
 			   getValidMetamodel +
 			   getValidModelPathSet +
-			   getValidObjectivesSet +
+			   "}" +
+			   "goal {" + getValidObjectivesSet +
 			   getValidConstraintsSet +
+			   "}" +
+			   "search {" +
 			   getValidEvolverSet +
-			   getValidOptimisation
+			   "}" +
+			   "solver {" + 
+			   getValidOptimisation +
+			   "}"
 	}
 	
 	def String getFullValidModelWithCustomOptimisation(String optimisation) {
-		return getValidBasePath +
+		return "problem { " + getValidBasePath +
 			   getValidMetamodel +
 			   getValidModelPathSet +
-			   getValidObjectivesSet +
+			   "}" +
+			   "goal {" + getValidObjectivesSet +
 			   getValidConstraintsSet +
+			   "}" +
+			   "search {" +
 			   getValidEvolverSet +
-			   optimisation
+			   "}" +
+			   "solver {" + 
+			   optimisation +
+			   "}"
 	}
 	
 	def String getFullValidModelWithCustomObjectives(String objectives) {
-		return getValidBasePath +
+		return "problem { " + getValidBasePath +
 			   getValidMetamodel +
 			   getValidModelPathSet +
-			   objectives +
+			   "}" +
+			   "goal {" + objectives +
 			   getValidConstraintsSet +
+			   "}" +
+			   "search {" +
 			   getValidEvolverSet +
-			   getValidOptimisation
+			   "}" +
+			   "solver {" + 
+			   getValidOptimisation +
+			   "}"
 	}
 	
 	def String getFullValidModelWithCustomConstraints(String constraints) {
-		return getValidBasePath +
+		return "problem { " + getValidBasePath +
 			   getValidMetamodel +
 			   getValidModelPathSet +
-			   getValidObjectivesSet +
+			   "}" +
+			   "goal {" + getValidObjectivesSet +
 			   constraints +
+			   "}" +
+			   "search {" +
 			   getValidEvolverSet +
-			   getValidOptimisation
+			   "}" +
+			   "solver {" + 
+			   getValidOptimisation +
+			   "}"
 	}
 	
 	def String getValidBasePath() {

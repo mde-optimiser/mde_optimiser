@@ -41,7 +41,7 @@ class BatchReportsDescriptor implements ResultsDescriptor {
 		
 		this.reportFunctions = new ArrayList<IGuidanceFunction>();
 		
-		moptOptimisation.reports.forEach[function |	
+		moptOptimisation.search.reports.forEach[function |	
 			this.reportFunctions.add(Class.forName(function.reportSpec).newInstance() as IGuidanceFunction)
 		]	
 	}

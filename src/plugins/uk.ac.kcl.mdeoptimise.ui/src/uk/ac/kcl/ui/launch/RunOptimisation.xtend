@@ -146,7 +146,7 @@ class RunOptimisation {
 		            		mdeoResultsOutput.logBatch(runBatch(moptProjectPath, optimisationModel, experimentId, false))
 		            		experimentId++
 						
-						} while(experimentId < optimisationModel.optimisation.algorithmBatches);
+						} while(experimentId < optimisationModel.solver.optimisation.algorithmBatches);
 					} else {
 						
 						//Run a specific batch only

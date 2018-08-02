@@ -67,6 +67,10 @@ public class MdeoptimiseFactoryImpl extends EFactoryImpl implements MdeoptimiseF
     switch (eClass.getClassifierID())
     {
       case MdeoptimisePackage.OPTIMISATION: return createOptimisation();
+      case MdeoptimisePackage.PROBLEM_SPEC: return createProblemSpec();
+      case MdeoptimisePackage.GOAL_SPEC: return createGoalSpec();
+      case MdeoptimisePackage.SEARCH_SPEC: return createSearchSpec();
+      case MdeoptimisePackage.SOLVER_SPEC: return createSolverSpec();
       case MdeoptimisePackage.BASE_PATH_SPEC: return createBasePathSpec();
       case MdeoptimisePackage.META_MODEL_SPEC: return createMetaModelSpec();
       case MdeoptimisePackage.MODEL_PATH_SPEC: return createModelPathSpec();
@@ -135,6 +139,50 @@ public class MdeoptimiseFactoryImpl extends EFactoryImpl implements MdeoptimiseF
   {
     OptimisationImpl optimisation = new OptimisationImpl();
     return optimisation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ProblemSpec createProblemSpec()
+  {
+    ProblemSpecImpl problemSpec = new ProblemSpecImpl();
+    return problemSpec;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GoalSpec createGoalSpec()
+  {
+    GoalSpecImpl goalSpec = new GoalSpecImpl();
+    return goalSpec;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SearchSpec createSearchSpec()
+  {
+    SearchSpecImpl searchSpec = new SearchSpecImpl();
+    return searchSpec;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SolverSpec createSolverSpec()
+  {
+    SolverSpecImpl solverSpec = new SolverSpecImpl();
+    return solverSpec;
   }
 
   /**

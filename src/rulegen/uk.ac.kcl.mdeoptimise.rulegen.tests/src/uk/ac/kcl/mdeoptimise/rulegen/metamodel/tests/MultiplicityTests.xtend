@@ -14,7 +14,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
- 
+import uk.ac.kcl.mdeoptimise.ProblemSpec
+
 @ExtendWith(InjectionExtension)
 class MultiplicityTests {
 	
@@ -24,7 +25,7 @@ class MultiplicityTests {
 	
 	def getResourceSet() {
         if (henshinResourceSet == null) {
-            henshinResourceSet = new HenshinResourceSet(model.basepath.location)
+            henshinResourceSet = new HenshinResourceSet(model.problem.basepath.location)
         }
 
         henshinResourceSet
@@ -32,7 +33,7 @@ class MultiplicityTests {
 
     def getMetamodel() {
         if (theMetamodel == null) {
-            theMetamodel = getResourceSet.registerDynamicEPackages(model.metamodel.location).head
+            theMetamodel = getResourceSet.registerDynamicEPackages(model.problem.metamodel.location).head
         }
 
         theMetamodel
@@ -43,11 +44,14 @@ class MultiplicityTests {
     	this.model = mock(Optimisation)
 		var basepath = mock(BasePathSpec);
 		var metamodel = mock(MetaModelSpec);
+		var problem = mock(ProblemSpec);
+		
 		when(basepath.location).thenReturn("src/resources/");
 		when(metamodel.location).thenReturn("architectureCRA.ecore")
 		
-		when(model.basepath).thenReturn(basepath)
-		when(model.metamodel).thenReturn(metamodel)
+		when(model.problem).thenReturn(problem)
+		when(model.problem.basepath).thenReturn(basepath)
+		when(model.problem.metamodel).thenReturn(metamodel)
 		
 		var multiplicityA = new Multiplicity("Class", "encapsulates", 0, -1, getMetamodel);
 		var multiplicityB = new Multiplicity("Feature", "isEncapsulatedBy", 0, -1, getMetamodel);
@@ -65,11 +69,15 @@ class MultiplicityTests {
     	this.model = mock(Optimisation)
 		var basepath = mock(BasePathSpec);
 		var metamodel = mock(MetaModelSpec);
+		
+		var problem = mock(ProblemSpec);
+		
 		when(basepath.location).thenReturn("src/resources/");
 		when(metamodel.location).thenReturn("OrchestrationMM.ecore")
 		
-		when(model.basepath).thenReturn(basepath)
-		when(model.metamodel).thenReturn(metamodel)
+		when(model.problem).thenReturn(problem)
+		when(model.problem.basepath).thenReturn(basepath)
+		when(model.problem.metamodel).thenReturn(metamodel)
 		
 		var multiplicities = new LinkedList<Multiplicity>();
 		return new MetamodelGenerator(getMetamodel()).generate(multiplicities)

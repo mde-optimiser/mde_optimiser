@@ -11,17 +11,29 @@
       <genEnumLiterals ecoreEnumLiteral="MDEOptimise.ecore#//EvolverType/BREED"/>
     </genEnums>
     <genClasses ecoreClass="MDEOptimise.ecore#//Optimisation">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/basepath"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/metamodel"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/model"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/modelInitialiser"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/refinements"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/objectives"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/constraints"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/reports"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/evolvers"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/rulegen"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/optimisation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/problem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/goal"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/search"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//Optimisation/solver"/>
+    </genClasses>
+    <genClasses ecoreClass="MDEOptimise.ecore#//ProblemSpec">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//ProblemSpec/basepath"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//ProblemSpec/metamodel"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//ProblemSpec/model"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//ProblemSpec/modelInitialiser"/>
+    </genClasses>
+    <genClasses ecoreClass="MDEOptimise.ecore#//GoalSpec">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//GoalSpec/refinements"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//GoalSpec/objectives"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//GoalSpec/constraints"/>
+    </genClasses>
+    <genClasses ecoreClass="MDEOptimise.ecore#//SearchSpec">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//SearchSpec/reports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//SearchSpec/evolvers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//SearchSpec/rulegen"/>
+    </genClasses>
+    <genClasses ecoreClass="MDEOptimise.ecore#//SolverSpec">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MDEOptimise.ecore#//SolverSpec/optimisation"/>
     </genClasses>
     <genClasses ecoreClass="MDEOptimise.ecore#//BasePathSpec">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MDEOptimise.ecore#//BasePathSpec/location"/>

@@ -29,120 +29,63 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	public class OptimisationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.Optimisation");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cBasepathAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cBasepathBasePathSpecParserRuleCall_0_0 = (RuleCall)cBasepathAssignment_0.eContents().get(0);
-		private final Assignment cMetamodelAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cMetamodelMetaModelSpecParserRuleCall_1_0 = (RuleCall)cMetamodelAssignment_1.eContents().get(0);
-		private final Assignment cModelAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cModelModelPathSpecParserRuleCall_2_0 = (RuleCall)cModelAssignment_2.eContents().get(0);
-		private final Assignment cModelInitialiserAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cModelInitialiserModelInitialiserSpecParserRuleCall_3_0 = (RuleCall)cModelInitialiserAssignment_3.eContents().get(0);
-		private final Assignment cRefinementsAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cRefinementsMultiplicityRefinementSpecParserRuleCall_4_0 = (RuleCall)cRefinementsAssignment_4.eContents().get(0);
-		private final Assignment cObjectivesAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cObjectivesObjectiveInterpreterSpecParserRuleCall_5_0 = (RuleCall)cObjectivesAssignment_5.eContents().get(0);
-		private final Assignment cConstraintsAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cConstraintsConstraintInterpreterSpecParserRuleCall_6_0 = (RuleCall)cConstraintsAssignment_6.eContents().get(0);
-		private final Assignment cReportsAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cReportsReportInterpreterSpecParserRuleCall_7_0 = (RuleCall)cReportsAssignment_7.eContents().get(0);
-		private final Assignment cEvolversAssignment_8 = (Assignment)cGroup.eContents().get(8);
-		private final RuleCall cEvolversEvolverSpecParserRuleCall_8_0 = (RuleCall)cEvolversAssignment_8.eContents().get(0);
-		private final Assignment cRulegenAssignment_9 = (Assignment)cGroup.eContents().get(9);
-		private final RuleCall cRulegenRulegenSpecParserRuleCall_9_0 = (RuleCall)cRulegenAssignment_9.eContents().get(0);
-		private final Assignment cOptimisationAssignment_10 = (Assignment)cGroup.eContents().get(10);
-		private final RuleCall cOptimisationOptimisationSpecParserRuleCall_10_0 = (RuleCall)cOptimisationAssignment_10.eContents().get(0);
+		private final Assignment cProblemAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cProblemProblemSpecParserRuleCall_0_0 = (RuleCall)cProblemAssignment_0.eContents().get(0);
+		private final Assignment cGoalAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cGoalGoalSpecParserRuleCall_1_0 = (RuleCall)cGoalAssignment_1.eContents().get(0);
+		private final Assignment cSearchAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cSearchSearchSpecParserRuleCall_2_0 = (RuleCall)cSearchAssignment_2.eContents().get(0);
+		private final Assignment cSolverAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cSolverSolverSpecParserRuleCall_3_0 = (RuleCall)cSolverAssignment_3.eContents().get(0);
 		
 		//Optimisation:
-		//	basepath=BasePathSpec
-		//	metamodel=MetaModelSpec
-		//	model=ModelPathSpec
-		//	modelInitialiser=ModelInitialiserSpec?
-		//	refinements+=MultiplicityRefinementSpec*
-		//	objectives+=ObjectiveInterpreterSpec+
-		//	constraints+=ConstraintInterpreterSpec*
-		//	reports+=ReportInterpreterSpec*
-		//	evolvers+=EvolverSpec*
-		//	rulegen+=RulegenSpec*
-		//	optimisation=OptimisationSpec;
+		//	problem=ProblemSpec
+		//	goal=GoalSpec
+		//	search=SearchSpec
+		//	solver=SolverSpec;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//basepath=BasePathSpec metamodel=MetaModelSpec model=ModelPathSpec modelInitialiser=ModelInitialiserSpec?
-		//refinements+=MultiplicityRefinementSpec* objectives+=ObjectiveInterpreterSpec+ constraints+=ConstraintInterpreterSpec*
-		//reports+=ReportInterpreterSpec* evolvers+=EvolverSpec* rulegen+=RulegenSpec* optimisation=OptimisationSpec
+		//problem=ProblemSpec goal=GoalSpec search=SearchSpec solver=SolverSpec
 		public Group getGroup() { return cGroup; }
 		
-		//basepath=BasePathSpec
-		public Assignment getBasepathAssignment_0() { return cBasepathAssignment_0; }
+		//problem=ProblemSpec
+		public Assignment getProblemAssignment_0() { return cProblemAssignment_0; }
 		
-		//BasePathSpec
-		public RuleCall getBasepathBasePathSpecParserRuleCall_0_0() { return cBasepathBasePathSpecParserRuleCall_0_0; }
+		//ProblemSpec
+		public RuleCall getProblemProblemSpecParserRuleCall_0_0() { return cProblemProblemSpecParserRuleCall_0_0; }
 		
-		//metamodel=MetaModelSpec
-		public Assignment getMetamodelAssignment_1() { return cMetamodelAssignment_1; }
+		//goal=GoalSpec
+		public Assignment getGoalAssignment_1() { return cGoalAssignment_1; }
 		
-		//MetaModelSpec
-		public RuleCall getMetamodelMetaModelSpecParserRuleCall_1_0() { return cMetamodelMetaModelSpecParserRuleCall_1_0; }
+		//GoalSpec
+		public RuleCall getGoalGoalSpecParserRuleCall_1_0() { return cGoalGoalSpecParserRuleCall_1_0; }
 		
-		//model=ModelPathSpec
-		public Assignment getModelAssignment_2() { return cModelAssignment_2; }
+		//search=SearchSpec
+		public Assignment getSearchAssignment_2() { return cSearchAssignment_2; }
 		
-		//ModelPathSpec
-		public RuleCall getModelModelPathSpecParserRuleCall_2_0() { return cModelModelPathSpecParserRuleCall_2_0; }
+		//SearchSpec
+		public RuleCall getSearchSearchSpecParserRuleCall_2_0() { return cSearchSearchSpecParserRuleCall_2_0; }
 		
-		//modelInitialiser=ModelInitialiserSpec?
-		public Assignment getModelInitialiserAssignment_3() { return cModelInitialiserAssignment_3; }
+		//solver=SolverSpec
+		public Assignment getSolverAssignment_3() { return cSolverAssignment_3; }
 		
-		//ModelInitialiserSpec
-		public RuleCall getModelInitialiserModelInitialiserSpecParserRuleCall_3_0() { return cModelInitialiserModelInitialiserSpecParserRuleCall_3_0; }
-		
-		//refinements+=MultiplicityRefinementSpec*
-		public Assignment getRefinementsAssignment_4() { return cRefinementsAssignment_4; }
-		
-		//MultiplicityRefinementSpec
-		public RuleCall getRefinementsMultiplicityRefinementSpecParserRuleCall_4_0() { return cRefinementsMultiplicityRefinementSpecParserRuleCall_4_0; }
-		
-		//objectives+=ObjectiveInterpreterSpec+
-		public Assignment getObjectivesAssignment_5() { return cObjectivesAssignment_5; }
-		
-		//ObjectiveInterpreterSpec
-		public RuleCall getObjectivesObjectiveInterpreterSpecParserRuleCall_5_0() { return cObjectivesObjectiveInterpreterSpecParserRuleCall_5_0; }
-		
-		//constraints+=ConstraintInterpreterSpec*
-		public Assignment getConstraintsAssignment_6() { return cConstraintsAssignment_6; }
-		
-		//ConstraintInterpreterSpec
-		public RuleCall getConstraintsConstraintInterpreterSpecParserRuleCall_6_0() { return cConstraintsConstraintInterpreterSpecParserRuleCall_6_0; }
-		
-		//reports+=ReportInterpreterSpec*
-		public Assignment getReportsAssignment_7() { return cReportsAssignment_7; }
-		
-		//ReportInterpreterSpec
-		public RuleCall getReportsReportInterpreterSpecParserRuleCall_7_0() { return cReportsReportInterpreterSpecParserRuleCall_7_0; }
-		
-		//evolvers+=EvolverSpec*
-		public Assignment getEvolversAssignment_8() { return cEvolversAssignment_8; }
-		
-		//EvolverSpec
-		public RuleCall getEvolversEvolverSpecParserRuleCall_8_0() { return cEvolversEvolverSpecParserRuleCall_8_0; }
-		
-		//rulegen+=RulegenSpec*
-		public Assignment getRulegenAssignment_9() { return cRulegenAssignment_9; }
-		
-		//RulegenSpec
-		public RuleCall getRulegenRulegenSpecParserRuleCall_9_0() { return cRulegenRulegenSpecParserRuleCall_9_0; }
-		
-		//optimisation=OptimisationSpec
-		public Assignment getOptimisationAssignment_10() { return cOptimisationAssignment_10; }
-		
-		//OptimisationSpec
-		public RuleCall getOptimisationOptimisationSpecParserRuleCall_10_0() { return cOptimisationOptimisationSpecParserRuleCall_10_0; }
+		//SolverSpec
+		public RuleCall getSolverSolverSpecParserRuleCall_3_0() { return cSolverSolverSpecParserRuleCall_3_0; }
 	}
-	public class BasePathSpecElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.BasePathSpec");
+	public class ProblemSpecElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.ProblemSpec");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cBasepathKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cLocationAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cLocationURLTerminalRuleCall_1_0 = (RuleCall)cLocationAssignment_1.eContents().get(0);
+		private final Keyword cProblemKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cBasepathAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cBasepathBasePathSpecParserRuleCall_2_0 = (RuleCall)cBasepathAssignment_2.eContents().get(0);
+		private final Assignment cMetamodelAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cMetamodelMetaModelSpecParserRuleCall_3_0 = (RuleCall)cMetamodelAssignment_3.eContents().get(0);
+		private final Assignment cModelAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cModelModelPathSpecParserRuleCall_4_0 = (RuleCall)cModelAssignment_4.eContents().get(0);
+		private final Assignment cModelInitialiserAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cModelInitialiserModelInitialiserSpecParserRuleCall_5_0 = (RuleCall)cModelInitialiserAssignment_5.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		////Rulegen dsl additions
 		////problem metamodel <metamodel.ecore>
@@ -170,6 +113,195 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		////mutate using <craEvolvers.henshin> unit "moveFeature"
 		////mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
 		////optimisation provider moea algorithm NSGAII variation mutation evolutions 1000 population 30 experiments 2
+		//ProblemSpec:
+		//	"problem" "{"
+		//	basepath=BasePathSpec
+		//	metamodel=MetaModelSpec
+		//	model=ModelPathSpec
+		//	modelInitialiser=ModelInitialiserSpec?
+		//	"}";
+		@Override public ParserRule getRule() { return rule; }
+		
+		//"problem" "{" basepath=BasePathSpec metamodel=MetaModelSpec model=ModelPathSpec modelInitialiser=ModelInitialiserSpec?
+		//"}"
+		public Group getGroup() { return cGroup; }
+		
+		//"problem"
+		public Keyword getProblemKeyword_0() { return cProblemKeyword_0; }
+		
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
+		
+		//basepath=BasePathSpec
+		public Assignment getBasepathAssignment_2() { return cBasepathAssignment_2; }
+		
+		//BasePathSpec
+		public RuleCall getBasepathBasePathSpecParserRuleCall_2_0() { return cBasepathBasePathSpecParserRuleCall_2_0; }
+		
+		//metamodel=MetaModelSpec
+		public Assignment getMetamodelAssignment_3() { return cMetamodelAssignment_3; }
+		
+		//MetaModelSpec
+		public RuleCall getMetamodelMetaModelSpecParserRuleCall_3_0() { return cMetamodelMetaModelSpecParserRuleCall_3_0; }
+		
+		//model=ModelPathSpec
+		public Assignment getModelAssignment_4() { return cModelAssignment_4; }
+		
+		//ModelPathSpec
+		public RuleCall getModelModelPathSpecParserRuleCall_4_0() { return cModelModelPathSpecParserRuleCall_4_0; }
+		
+		//modelInitialiser=ModelInitialiserSpec?
+		public Assignment getModelInitialiserAssignment_5() { return cModelInitialiserAssignment_5; }
+		
+		//ModelInitialiserSpec
+		public RuleCall getModelInitialiserModelInitialiserSpecParserRuleCall_5_0() { return cModelInitialiserModelInitialiserSpecParserRuleCall_5_0; }
+		
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+	}
+	public class GoalSpecElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.GoalSpec");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cGoalKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cRefinementsAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cRefinementsMultiplicityRefinementSpecParserRuleCall_2_0 = (RuleCall)cRefinementsAssignment_2.eContents().get(0);
+		private final Assignment cObjectivesAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cObjectivesObjectiveInterpreterSpecParserRuleCall_3_0 = (RuleCall)cObjectivesAssignment_3.eContents().get(0);
+		private final Assignment cConstraintsAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cConstraintsConstraintInterpreterSpecParserRuleCall_4_0 = (RuleCall)cConstraintsAssignment_4.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		
+		//GoalSpec:
+		//	"goal" "{"
+		//	refinements+=MultiplicityRefinementSpec*
+		//	objectives+=ObjectiveInterpreterSpec+
+		//	constraints+=ConstraintInterpreterSpec*
+		//	"}";
+		@Override public ParserRule getRule() { return rule; }
+		
+		//"goal" "{" refinements+=MultiplicityRefinementSpec* objectives+=ObjectiveInterpreterSpec+
+		//constraints+=ConstraintInterpreterSpec* "}"
+		public Group getGroup() { return cGroup; }
+		
+		//"goal"
+		public Keyword getGoalKeyword_0() { return cGoalKeyword_0; }
+		
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
+		
+		//refinements+=MultiplicityRefinementSpec*
+		public Assignment getRefinementsAssignment_2() { return cRefinementsAssignment_2; }
+		
+		//MultiplicityRefinementSpec
+		public RuleCall getRefinementsMultiplicityRefinementSpecParserRuleCall_2_0() { return cRefinementsMultiplicityRefinementSpecParserRuleCall_2_0; }
+		
+		//objectives+=ObjectiveInterpreterSpec+
+		public Assignment getObjectivesAssignment_3() { return cObjectivesAssignment_3; }
+		
+		//ObjectiveInterpreterSpec
+		public RuleCall getObjectivesObjectiveInterpreterSpecParserRuleCall_3_0() { return cObjectivesObjectiveInterpreterSpecParserRuleCall_3_0; }
+		
+		//constraints+=ConstraintInterpreterSpec*
+		public Assignment getConstraintsAssignment_4() { return cConstraintsAssignment_4; }
+		
+		//ConstraintInterpreterSpec
+		public RuleCall getConstraintsConstraintInterpreterSpecParserRuleCall_4_0() { return cConstraintsConstraintInterpreterSpecParserRuleCall_4_0; }
+		
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+	}
+	public class SearchSpecElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.SearchSpec");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cSearchKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cReportsAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cReportsReportInterpreterSpecParserRuleCall_2_0 = (RuleCall)cReportsAssignment_2.eContents().get(0);
+		private final Assignment cEvolversAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cEvolversEvolverSpecParserRuleCall_3_0 = (RuleCall)cEvolversAssignment_3.eContents().get(0);
+		private final Assignment cRulegenAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cRulegenRulegenSpecParserRuleCall_4_0 = (RuleCall)cRulegenAssignment_4.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		
+		//SearchSpec:
+		//	"search" "{"
+		//	reports+=ReportInterpreterSpec*
+		//	evolvers+=EvolverSpec*
+		//	rulegen+=RulegenSpec*
+		//	"}";
+		@Override public ParserRule getRule() { return rule; }
+		
+		//"search" "{" reports+=ReportInterpreterSpec* evolvers+=EvolverSpec* rulegen+=RulegenSpec* "}"
+		public Group getGroup() { return cGroup; }
+		
+		//"search"
+		public Keyword getSearchKeyword_0() { return cSearchKeyword_0; }
+		
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
+		
+		//reports+=ReportInterpreterSpec*
+		public Assignment getReportsAssignment_2() { return cReportsAssignment_2; }
+		
+		//ReportInterpreterSpec
+		public RuleCall getReportsReportInterpreterSpecParserRuleCall_2_0() { return cReportsReportInterpreterSpecParserRuleCall_2_0; }
+		
+		//evolvers+=EvolverSpec*
+		public Assignment getEvolversAssignment_3() { return cEvolversAssignment_3; }
+		
+		//EvolverSpec
+		public RuleCall getEvolversEvolverSpecParserRuleCall_3_0() { return cEvolversEvolverSpecParserRuleCall_3_0; }
+		
+		//rulegen+=RulegenSpec*
+		public Assignment getRulegenAssignment_4() { return cRulegenAssignment_4; }
+		
+		//RulegenSpec
+		public RuleCall getRulegenRulegenSpecParserRuleCall_4_0() { return cRulegenRulegenSpecParserRuleCall_4_0; }
+		
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+	}
+	public class SolverSpecElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.SolverSpec");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cSolverKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cOptimisationAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cOptimisationOptimisationSpecParserRuleCall_2_0 = (RuleCall)cOptimisationAssignment_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		
+		//SolverSpec:
+		//	"solver" "{"
+		//	optimisation=OptimisationSpec
+		//	"}";
+		@Override public ParserRule getRule() { return rule; }
+		
+		//"solver" "{" optimisation=OptimisationSpec "}"
+		public Group getGroup() { return cGroup; }
+		
+		//"solver"
+		public Keyword getSolverKeyword_0() { return cSolverKeyword_0; }
+		
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
+		
+		//optimisation=OptimisationSpec
+		public Assignment getOptimisationAssignment_2() { return cOptimisationAssignment_2; }
+		
+		//OptimisationSpec
+		public RuleCall getOptimisationOptimisationSpecParserRuleCall_2_0() { return cOptimisationOptimisationSpecParserRuleCall_2_0; }
+		
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
+	}
+	public class BasePathSpecElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.BasePathSpec");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cBasepathKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cLocationAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cLocationURLTerminalRuleCall_1_0 = (RuleCall)cLocationAssignment_1.eContents().get(0);
+		
 		///**
 		// * Use this to identify a basepath to be set in the HenshinResourceSet so that Henshin 
 		// * transformations referencing file-based meta-models through relative paths will work 
@@ -1137,6 +1269,10 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	private final OptimisationElements pOptimisation;
+	private final ProblemSpecElements pProblemSpec;
+	private final GoalSpecElements pGoalSpec;
+	private final SearchSpecElements pSearchSpec;
+	private final SolverSpecElements pSolverSpec;
 	private final BasePathSpecElements pBasePathSpec;
 	private final MetaModelSpecElements pMetaModelSpec;
 	private final ModelPathSpecElements pModelPathSpec;
@@ -1187,6 +1323,10 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		this.gaXbase = gaXbase;
 		this.gaXtype = gaXtype;
 		this.pOptimisation = new OptimisationElements();
+		this.pProblemSpec = new ProblemSpecElements();
+		this.pGoalSpec = new GoalSpecElements();
+		this.pSearchSpec = new SearchSpecElements();
+		this.pSolverSpec = new SolverSpecElements();
 		this.pBasePathSpec = new BasePathSpecElements();
 		this.pMetaModelSpec = new MetaModelSpecElements();
 		this.pModelPathSpec = new ModelPathSpecElements();
@@ -1256,17 +1396,10 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//Optimisation:
-	//	basepath=BasePathSpec
-	//	metamodel=MetaModelSpec
-	//	model=ModelPathSpec
-	//	modelInitialiser=ModelInitialiserSpec?
-	//	refinements+=MultiplicityRefinementSpec*
-	//	objectives+=ObjectiveInterpreterSpec+
-	//	constraints+=ConstraintInterpreterSpec*
-	//	reports+=ReportInterpreterSpec*
-	//	evolvers+=EvolverSpec*
-	//	rulegen+=RulegenSpec*
-	//	optimisation=OptimisationSpec;
+	//	problem=ProblemSpec
+	//	goal=GoalSpec
+	//	search=SearchSpec
+	//	solver=SolverSpec;
 	public OptimisationElements getOptimisationAccess() {
 		return pOptimisation;
 	}
@@ -1301,6 +1434,61 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	////mutate using <craEvolvers.henshin> unit "moveFeature"
 	////mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
 	////optimisation provider moea algorithm NSGAII variation mutation evolutions 1000 population 30 experiments 2
+	//ProblemSpec:
+	//	"problem" "{"
+	//	basepath=BasePathSpec
+	//	metamodel=MetaModelSpec
+	//	model=ModelPathSpec
+	//	modelInitialiser=ModelInitialiserSpec?
+	//	"}";
+	public ProblemSpecElements getProblemSpecAccess() {
+		return pProblemSpec;
+	}
+	
+	public ParserRule getProblemSpecRule() {
+		return getProblemSpecAccess().getRule();
+	}
+	
+	//GoalSpec:
+	//	"goal" "{"
+	//	refinements+=MultiplicityRefinementSpec*
+	//	objectives+=ObjectiveInterpreterSpec+
+	//	constraints+=ConstraintInterpreterSpec*
+	//	"}";
+	public GoalSpecElements getGoalSpecAccess() {
+		return pGoalSpec;
+	}
+	
+	public ParserRule getGoalSpecRule() {
+		return getGoalSpecAccess().getRule();
+	}
+	
+	//SearchSpec:
+	//	"search" "{"
+	//	reports+=ReportInterpreterSpec*
+	//	evolvers+=EvolverSpec*
+	//	rulegen+=RulegenSpec*
+	//	"}";
+	public SearchSpecElements getSearchSpecAccess() {
+		return pSearchSpec;
+	}
+	
+	public ParserRule getSearchSpecRule() {
+		return getSearchSpecAccess().getRule();
+	}
+	
+	//SolverSpec:
+	//	"solver" "{"
+	//	optimisation=OptimisationSpec
+	//	"}";
+	public SolverSpecElements getSolverSpecAccess() {
+		return pSolverSpec;
+	}
+	
+	public ParserRule getSolverSpecRule() {
+		return getSolverSpecAccess().getRule();
+	}
+	
 	///**
 	// * Use this to identify a basepath to be set in the HenshinResourceSet so that Henshin 
 	// * transformations referencing file-based meta-models through relative paths will work 

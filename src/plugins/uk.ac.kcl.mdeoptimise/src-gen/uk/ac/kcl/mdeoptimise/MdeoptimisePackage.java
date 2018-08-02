@@ -69,103 +69,40 @@ public interface MdeoptimisePackage extends EPackage
   int OPTIMISATION = 0;
 
   /**
-   * The feature id for the '<em><b>Basepath</b></em>' containment reference.
+   * The feature id for the '<em><b>Problem</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OPTIMISATION__BASEPATH = 0;
+  int OPTIMISATION__PROBLEM = 0;
 
   /**
-   * The feature id for the '<em><b>Metamodel</b></em>' containment reference.
+   * The feature id for the '<em><b>Goal</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OPTIMISATION__METAMODEL = 1;
+  int OPTIMISATION__GOAL = 1;
 
   /**
-   * The feature id for the '<em><b>Model</b></em>' containment reference.
+   * The feature id for the '<em><b>Search</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OPTIMISATION__MODEL = 2;
+  int OPTIMISATION__SEARCH = 2;
 
   /**
-   * The feature id for the '<em><b>Model Initialiser</b></em>' containment reference.
+   * The feature id for the '<em><b>Solver</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OPTIMISATION__MODEL_INITIALISER = 3;
-
-  /**
-   * The feature id for the '<em><b>Refinements</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OPTIMISATION__REFINEMENTS = 4;
-
-  /**
-   * The feature id for the '<em><b>Objectives</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OPTIMISATION__OBJECTIVES = 5;
-
-  /**
-   * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OPTIMISATION__CONSTRAINTS = 6;
-
-  /**
-   * The feature id for the '<em><b>Reports</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OPTIMISATION__REPORTS = 7;
-
-  /**
-   * The feature id for the '<em><b>Evolvers</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OPTIMISATION__EVOLVERS = 8;
-
-  /**
-   * The feature id for the '<em><b>Rulegen</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OPTIMISATION__RULEGEN = 9;
-
-  /**
-   * The feature id for the '<em><b>Optimisation</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OPTIMISATION__OPTIMISATION = 10;
+  int OPTIMISATION__SOLVER = 3;
 
   /**
    * The number of structural features of the '<em>Optimisation</em>' class.
@@ -174,7 +111,182 @@ public interface MdeoptimisePackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPTIMISATION_FEATURE_COUNT = 11;
+  int OPTIMISATION_FEATURE_COUNT = 4;
+
+  /**
+   * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.ProblemSpecImpl <em>Problem Spec</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.mdeoptimise.impl.ProblemSpecImpl
+   * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getProblemSpec()
+   * @generated
+   */
+  int PROBLEM_SPEC = 1;
+
+  /**
+   * The feature id for the '<em><b>Basepath</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROBLEM_SPEC__BASEPATH = 0;
+
+  /**
+   * The feature id for the '<em><b>Metamodel</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROBLEM_SPEC__METAMODEL = 1;
+
+  /**
+   * The feature id for the '<em><b>Model</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROBLEM_SPEC__MODEL = 2;
+
+  /**
+   * The feature id for the '<em><b>Model Initialiser</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROBLEM_SPEC__MODEL_INITIALISER = 3;
+
+  /**
+   * The number of structural features of the '<em>Problem Spec</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROBLEM_SPEC_FEATURE_COUNT = 4;
+
+  /**
+   * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.GoalSpecImpl <em>Goal Spec</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.mdeoptimise.impl.GoalSpecImpl
+   * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getGoalSpec()
+   * @generated
+   */
+  int GOAL_SPEC = 2;
+
+  /**
+   * The feature id for the '<em><b>Refinements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GOAL_SPEC__REFINEMENTS = 0;
+
+  /**
+   * The feature id for the '<em><b>Objectives</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GOAL_SPEC__OBJECTIVES = 1;
+
+  /**
+   * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GOAL_SPEC__CONSTRAINTS = 2;
+
+  /**
+   * The number of structural features of the '<em>Goal Spec</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GOAL_SPEC_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.SearchSpecImpl <em>Search Spec</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.mdeoptimise.impl.SearchSpecImpl
+   * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getSearchSpec()
+   * @generated
+   */
+  int SEARCH_SPEC = 3;
+
+  /**
+   * The feature id for the '<em><b>Reports</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SEARCH_SPEC__REPORTS = 0;
+
+  /**
+   * The feature id for the '<em><b>Evolvers</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SEARCH_SPEC__EVOLVERS = 1;
+
+  /**
+   * The feature id for the '<em><b>Rulegen</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SEARCH_SPEC__RULEGEN = 2;
+
+  /**
+   * The number of structural features of the '<em>Search Spec</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SEARCH_SPEC_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.SolverSpecImpl <em>Solver Spec</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.mdeoptimise.impl.SolverSpecImpl
+   * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getSolverSpec()
+   * @generated
+   */
+  int SOLVER_SPEC = 4;
+
+  /**
+   * The feature id for the '<em><b>Optimisation</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SOLVER_SPEC__OPTIMISATION = 0;
+
+  /**
+   * The number of structural features of the '<em>Solver Spec</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SOLVER_SPEC_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link uk.ac.kcl.mdeoptimise.impl.BasePathSpecImpl <em>Base Path Spec</em>}' class.
@@ -184,7 +296,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getBasePathSpec()
    * @generated
    */
-  int BASE_PATH_SPEC = 1;
+  int BASE_PATH_SPEC = 5;
 
   /**
    * The feature id for the '<em><b>Location</b></em>' attribute.
@@ -212,7 +324,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getMetaModelSpec()
    * @generated
    */
-  int META_MODEL_SPEC = 2;
+  int META_MODEL_SPEC = 6;
 
   /**
    * The feature id for the '<em><b>Location</b></em>' attribute.
@@ -240,7 +352,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getModelPathSpec()
    * @generated
    */
-  int MODEL_PATH_SPEC = 3;
+  int MODEL_PATH_SPEC = 7;
 
   /**
    * The feature id for the '<em><b>Location</b></em>' attribute.
@@ -268,7 +380,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getObjectiveInterpreterSpec()
    * @generated
    */
-  int OBJECTIVE_INTERPRETER_SPEC = 4;
+  int OBJECTIVE_INTERPRETER_SPEC = 8;
 
   /**
    * The feature id for the '<em><b>Objective Name</b></em>' attribute.
@@ -323,7 +435,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getConstraintInterpreterSpec()
    * @generated
    */
-  int CONSTRAINT_INTERPRETER_SPEC = 5;
+  int CONSTRAINT_INTERPRETER_SPEC = 9;
 
   /**
    * The feature id for the '<em><b>Constraint Name</b></em>' attribute.
@@ -369,7 +481,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getModelInitialiserSpec()
    * @generated
    */
-  int MODEL_INITIALISER_SPEC = 6;
+  int MODEL_INITIALISER_SPEC = 10;
 
   /**
    * The feature id for the '<em><b>Initialiser</b></em>' attribute.
@@ -397,7 +509,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getRulegenSpec()
    * @generated
    */
-  int RULEGEN_SPEC = 7;
+  int RULEGEN_SPEC = 11;
 
   /**
    * The feature id for the '<em><b>Node Spec</b></em>' containment reference.
@@ -434,7 +546,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getRulegenNode()
    * @generated
    */
-  int RULEGEN_NODE = 8;
+  int RULEGEN_NODE = 12;
 
   /**
    * The feature id for the '<em><b>Node</b></em>' attribute.
@@ -471,7 +583,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getRulegenEdge()
    * @generated
    */
-  int RULEGEN_EDGE = 9;
+  int RULEGEN_EDGE = 13;
 
   /**
    * The feature id for the '<em><b>Node</b></em>' attribute.
@@ -517,7 +629,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getReportInterpreterSpec()
    * @generated
    */
-  int REPORT_INTERPRETER_SPEC = 10;
+  int REPORT_INTERPRETER_SPEC = 14;
 
   /**
    * The feature id for the '<em><b>Report Name</b></em>' attribute.
@@ -554,7 +666,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getEvolverSpec()
    * @generated
    */
-  int EVOLVER_SPEC = 11;
+  int EVOLVER_SPEC = 15;
 
   /**
    * The feature id for the '<em><b>Evolver Type</b></em>' attribute.
@@ -609,7 +721,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getMultiplicityRefinementSpec()
    * @generated
    */
-  int MULTIPLICITY_REFINEMENT_SPEC = 12;
+  int MULTIPLICITY_REFINEMENT_SPEC = 16;
 
   /**
    * The feature id for the '<em><b>Node</b></em>' attribute.
@@ -664,7 +776,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getEvolverParameter()
    * @generated
    */
-  int EVOLVER_PARAMETER = 13;
+  int EVOLVER_PARAMETER = 17;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -710,7 +822,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getParameterFunction()
    * @generated
    */
-  int PARAMETER_FUNCTION = 14;
+  int PARAMETER_FUNCTION = 18;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -747,7 +859,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getOptimisationSpec()
    * @generated
    */
-  int OPTIMISATION_SPEC = 15;
+  int OPTIMISATION_SPEC = 19;
 
   /**
    * The feature id for the '<em><b>Algorithm Factory</b></em>' attribute.
@@ -820,7 +932,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getAlgorithmVariation()
    * @generated
    */
-  int ALGORITHM_VARIATION = 16;
+  int ALGORITHM_VARIATION = 20;
 
   /**
    * The feature id for the '<em><b>Probability Variation</b></em>' containment reference.
@@ -857,7 +969,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getProbabilityVariation()
    * @generated
    */
-  int PROBABILITY_VARIATION = 17;
+  int PROBABILITY_VARIATION = 21;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -903,7 +1015,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getAlgorithmParameters()
    * @generated
    */
-  int ALGORITHM_PARAMETERS = 18;
+  int ALGORITHM_PARAMETERS = 22;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -931,7 +1043,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getTerminationConditionParameters()
    * @generated
    */
-  int TERMINATION_CONDITION_PARAMETERS = 19;
+  int TERMINATION_CONDITION_PARAMETERS = 23;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -959,7 +1071,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getParameter()
    * @generated
    */
-  int PARAMETER = 20;
+  int PARAMETER = 24;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -996,7 +1108,7 @@ public interface MdeoptimisePackage extends EPackage
    * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getEvolverType()
    * @generated
    */
-  int EVOLVER_TYPE = 21;
+  int EVOLVER_TYPE = 25;
 
 
   /**
@@ -1010,125 +1122,209 @@ public interface MdeoptimisePackage extends EPackage
   EClass getOptimisation();
 
   /**
-   * Returns the meta object for the containment reference '{@link uk.ac.kcl.mdeoptimise.Optimisation#getBasepath <em>Basepath</em>}'.
+   * Returns the meta object for the containment reference '{@link uk.ac.kcl.mdeoptimise.Optimisation#getProblem <em>Problem</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Problem</em>'.
+   * @see uk.ac.kcl.mdeoptimise.Optimisation#getProblem()
+   * @see #getOptimisation()
+   * @generated
+   */
+  EReference getOptimisation_Problem();
+
+  /**
+   * Returns the meta object for the containment reference '{@link uk.ac.kcl.mdeoptimise.Optimisation#getGoal <em>Goal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Goal</em>'.
+   * @see uk.ac.kcl.mdeoptimise.Optimisation#getGoal()
+   * @see #getOptimisation()
+   * @generated
+   */
+  EReference getOptimisation_Goal();
+
+  /**
+   * Returns the meta object for the containment reference '{@link uk.ac.kcl.mdeoptimise.Optimisation#getSearch <em>Search</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Search</em>'.
+   * @see uk.ac.kcl.mdeoptimise.Optimisation#getSearch()
+   * @see #getOptimisation()
+   * @generated
+   */
+  EReference getOptimisation_Search();
+
+  /**
+   * Returns the meta object for the containment reference '{@link uk.ac.kcl.mdeoptimise.Optimisation#getSolver <em>Solver</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Solver</em>'.
+   * @see uk.ac.kcl.mdeoptimise.Optimisation#getSolver()
+   * @see #getOptimisation()
+   * @generated
+   */
+  EReference getOptimisation_Solver();
+
+  /**
+   * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.ProblemSpec <em>Problem Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Problem Spec</em>'.
+   * @see uk.ac.kcl.mdeoptimise.ProblemSpec
+   * @generated
+   */
+  EClass getProblemSpec();
+
+  /**
+   * Returns the meta object for the containment reference '{@link uk.ac.kcl.mdeoptimise.ProblemSpec#getBasepath <em>Basepath</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Basepath</em>'.
-   * @see uk.ac.kcl.mdeoptimise.Optimisation#getBasepath()
-   * @see #getOptimisation()
+   * @see uk.ac.kcl.mdeoptimise.ProblemSpec#getBasepath()
+   * @see #getProblemSpec()
    * @generated
    */
-  EReference getOptimisation_Basepath();
+  EReference getProblemSpec_Basepath();
 
   /**
-   * Returns the meta object for the containment reference '{@link uk.ac.kcl.mdeoptimise.Optimisation#getMetamodel <em>Metamodel</em>}'.
+   * Returns the meta object for the containment reference '{@link uk.ac.kcl.mdeoptimise.ProblemSpec#getMetamodel <em>Metamodel</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Metamodel</em>'.
-   * @see uk.ac.kcl.mdeoptimise.Optimisation#getMetamodel()
-   * @see #getOptimisation()
+   * @see uk.ac.kcl.mdeoptimise.ProblemSpec#getMetamodel()
+   * @see #getProblemSpec()
    * @generated
    */
-  EReference getOptimisation_Metamodel();
+  EReference getProblemSpec_Metamodel();
 
   /**
-   * Returns the meta object for the containment reference '{@link uk.ac.kcl.mdeoptimise.Optimisation#getModel <em>Model</em>}'.
+   * Returns the meta object for the containment reference '{@link uk.ac.kcl.mdeoptimise.ProblemSpec#getModel <em>Model</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Model</em>'.
-   * @see uk.ac.kcl.mdeoptimise.Optimisation#getModel()
-   * @see #getOptimisation()
+   * @see uk.ac.kcl.mdeoptimise.ProblemSpec#getModel()
+   * @see #getProblemSpec()
    * @generated
    */
-  EReference getOptimisation_Model();
+  EReference getProblemSpec_Model();
 
   /**
-   * Returns the meta object for the containment reference '{@link uk.ac.kcl.mdeoptimise.Optimisation#getModelInitialiser <em>Model Initialiser</em>}'.
+   * Returns the meta object for the containment reference '{@link uk.ac.kcl.mdeoptimise.ProblemSpec#getModelInitialiser <em>Model Initialiser</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Model Initialiser</em>'.
-   * @see uk.ac.kcl.mdeoptimise.Optimisation#getModelInitialiser()
-   * @see #getOptimisation()
+   * @see uk.ac.kcl.mdeoptimise.ProblemSpec#getModelInitialiser()
+   * @see #getProblemSpec()
    * @generated
    */
-  EReference getOptimisation_ModelInitialiser();
+  EReference getProblemSpec_ModelInitialiser();
 
   /**
-   * Returns the meta object for the containment reference list '{@link uk.ac.kcl.mdeoptimise.Optimisation#getRefinements <em>Refinements</em>}'.
+   * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.GoalSpec <em>Goal Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Goal Spec</em>'.
+   * @see uk.ac.kcl.mdeoptimise.GoalSpec
+   * @generated
+   */
+  EClass getGoalSpec();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link uk.ac.kcl.mdeoptimise.GoalSpec#getRefinements <em>Refinements</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Refinements</em>'.
-   * @see uk.ac.kcl.mdeoptimise.Optimisation#getRefinements()
-   * @see #getOptimisation()
+   * @see uk.ac.kcl.mdeoptimise.GoalSpec#getRefinements()
+   * @see #getGoalSpec()
    * @generated
    */
-  EReference getOptimisation_Refinements();
+  EReference getGoalSpec_Refinements();
 
   /**
-   * Returns the meta object for the containment reference list '{@link uk.ac.kcl.mdeoptimise.Optimisation#getObjectives <em>Objectives</em>}'.
+   * Returns the meta object for the containment reference list '{@link uk.ac.kcl.mdeoptimise.GoalSpec#getObjectives <em>Objectives</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Objectives</em>'.
-   * @see uk.ac.kcl.mdeoptimise.Optimisation#getObjectives()
-   * @see #getOptimisation()
+   * @see uk.ac.kcl.mdeoptimise.GoalSpec#getObjectives()
+   * @see #getGoalSpec()
    * @generated
    */
-  EReference getOptimisation_Objectives();
+  EReference getGoalSpec_Objectives();
 
   /**
-   * Returns the meta object for the containment reference list '{@link uk.ac.kcl.mdeoptimise.Optimisation#getConstraints <em>Constraints</em>}'.
+   * Returns the meta object for the containment reference list '{@link uk.ac.kcl.mdeoptimise.GoalSpec#getConstraints <em>Constraints</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Constraints</em>'.
-   * @see uk.ac.kcl.mdeoptimise.Optimisation#getConstraints()
-   * @see #getOptimisation()
+   * @see uk.ac.kcl.mdeoptimise.GoalSpec#getConstraints()
+   * @see #getGoalSpec()
    * @generated
    */
-  EReference getOptimisation_Constraints();
+  EReference getGoalSpec_Constraints();
 
   /**
-   * Returns the meta object for the containment reference list '{@link uk.ac.kcl.mdeoptimise.Optimisation#getReports <em>Reports</em>}'.
+   * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.SearchSpec <em>Search Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Search Spec</em>'.
+   * @see uk.ac.kcl.mdeoptimise.SearchSpec
+   * @generated
+   */
+  EClass getSearchSpec();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link uk.ac.kcl.mdeoptimise.SearchSpec#getReports <em>Reports</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Reports</em>'.
-   * @see uk.ac.kcl.mdeoptimise.Optimisation#getReports()
-   * @see #getOptimisation()
+   * @see uk.ac.kcl.mdeoptimise.SearchSpec#getReports()
+   * @see #getSearchSpec()
    * @generated
    */
-  EReference getOptimisation_Reports();
+  EReference getSearchSpec_Reports();
 
   /**
-   * Returns the meta object for the containment reference list '{@link uk.ac.kcl.mdeoptimise.Optimisation#getEvolvers <em>Evolvers</em>}'.
+   * Returns the meta object for the containment reference list '{@link uk.ac.kcl.mdeoptimise.SearchSpec#getEvolvers <em>Evolvers</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Evolvers</em>'.
-   * @see uk.ac.kcl.mdeoptimise.Optimisation#getEvolvers()
-   * @see #getOptimisation()
+   * @see uk.ac.kcl.mdeoptimise.SearchSpec#getEvolvers()
+   * @see #getSearchSpec()
    * @generated
    */
-  EReference getOptimisation_Evolvers();
+  EReference getSearchSpec_Evolvers();
 
   /**
-   * Returns the meta object for the containment reference list '{@link uk.ac.kcl.mdeoptimise.Optimisation#getRulegen <em>Rulegen</em>}'.
+   * Returns the meta object for the containment reference list '{@link uk.ac.kcl.mdeoptimise.SearchSpec#getRulegen <em>Rulegen</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Rulegen</em>'.
-   * @see uk.ac.kcl.mdeoptimise.Optimisation#getRulegen()
-   * @see #getOptimisation()
+   * @see uk.ac.kcl.mdeoptimise.SearchSpec#getRulegen()
+   * @see #getSearchSpec()
    * @generated
    */
-  EReference getOptimisation_Rulegen();
+  EReference getSearchSpec_Rulegen();
 
   /**
-   * Returns the meta object for the containment reference '{@link uk.ac.kcl.mdeoptimise.Optimisation#getOptimisation <em>Optimisation</em>}'.
+   * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.SolverSpec <em>Solver Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Solver Spec</em>'.
+   * @see uk.ac.kcl.mdeoptimise.SolverSpec
+   * @generated
+   */
+  EClass getSolverSpec();
+
+  /**
+   * Returns the meta object for the containment reference '{@link uk.ac.kcl.mdeoptimise.SolverSpec#getOptimisation <em>Optimisation</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Optimisation</em>'.
-   * @see uk.ac.kcl.mdeoptimise.Optimisation#getOptimisation()
-   * @see #getOptimisation()
+   * @see uk.ac.kcl.mdeoptimise.SolverSpec#getOptimisation()
+   * @see #getSolverSpec()
    * @generated
    */
-  EReference getOptimisation_Optimisation();
+  EReference getSolverSpec_Optimisation();
 
   /**
    * Returns the meta object for class '{@link uk.ac.kcl.mdeoptimise.BasePathSpec <em>Base Path Spec</em>}'.
@@ -1902,12 +2098,54 @@ public interface MdeoptimisePackage extends EPackage
     EClass OPTIMISATION = eINSTANCE.getOptimisation();
 
     /**
+     * The meta object literal for the '<em><b>Problem</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference OPTIMISATION__PROBLEM = eINSTANCE.getOptimisation_Problem();
+
+    /**
+     * The meta object literal for the '<em><b>Goal</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference OPTIMISATION__GOAL = eINSTANCE.getOptimisation_Goal();
+
+    /**
+     * The meta object literal for the '<em><b>Search</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference OPTIMISATION__SEARCH = eINSTANCE.getOptimisation_Search();
+
+    /**
+     * The meta object literal for the '<em><b>Solver</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference OPTIMISATION__SOLVER = eINSTANCE.getOptimisation_Solver();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.ProblemSpecImpl <em>Problem Spec</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.mdeoptimise.impl.ProblemSpecImpl
+     * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getProblemSpec()
+     * @generated
+     */
+    EClass PROBLEM_SPEC = eINSTANCE.getProblemSpec();
+
+    /**
      * The meta object literal for the '<em><b>Basepath</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference OPTIMISATION__BASEPATH = eINSTANCE.getOptimisation_Basepath();
+    EReference PROBLEM_SPEC__BASEPATH = eINSTANCE.getProblemSpec_Basepath();
 
     /**
      * The meta object literal for the '<em><b>Metamodel</b></em>' containment reference feature.
@@ -1915,7 +2153,7 @@ public interface MdeoptimisePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference OPTIMISATION__METAMODEL = eINSTANCE.getOptimisation_Metamodel();
+    EReference PROBLEM_SPEC__METAMODEL = eINSTANCE.getProblemSpec_Metamodel();
 
     /**
      * The meta object literal for the '<em><b>Model</b></em>' containment reference feature.
@@ -1923,7 +2161,7 @@ public interface MdeoptimisePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference OPTIMISATION__MODEL = eINSTANCE.getOptimisation_Model();
+    EReference PROBLEM_SPEC__MODEL = eINSTANCE.getProblemSpec_Model();
 
     /**
      * The meta object literal for the '<em><b>Model Initialiser</b></em>' containment reference feature.
@@ -1931,7 +2169,17 @@ public interface MdeoptimisePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference OPTIMISATION__MODEL_INITIALISER = eINSTANCE.getOptimisation_ModelInitialiser();
+    EReference PROBLEM_SPEC__MODEL_INITIALISER = eINSTANCE.getProblemSpec_ModelInitialiser();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.GoalSpecImpl <em>Goal Spec</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.mdeoptimise.impl.GoalSpecImpl
+     * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getGoalSpec()
+     * @generated
+     */
+    EClass GOAL_SPEC = eINSTANCE.getGoalSpec();
 
     /**
      * The meta object literal for the '<em><b>Refinements</b></em>' containment reference list feature.
@@ -1939,7 +2187,7 @@ public interface MdeoptimisePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference OPTIMISATION__REFINEMENTS = eINSTANCE.getOptimisation_Refinements();
+    EReference GOAL_SPEC__REFINEMENTS = eINSTANCE.getGoalSpec_Refinements();
 
     /**
      * The meta object literal for the '<em><b>Objectives</b></em>' containment reference list feature.
@@ -1947,7 +2195,7 @@ public interface MdeoptimisePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference OPTIMISATION__OBJECTIVES = eINSTANCE.getOptimisation_Objectives();
+    EReference GOAL_SPEC__OBJECTIVES = eINSTANCE.getGoalSpec_Objectives();
 
     /**
      * The meta object literal for the '<em><b>Constraints</b></em>' containment reference list feature.
@@ -1955,7 +2203,17 @@ public interface MdeoptimisePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference OPTIMISATION__CONSTRAINTS = eINSTANCE.getOptimisation_Constraints();
+    EReference GOAL_SPEC__CONSTRAINTS = eINSTANCE.getGoalSpec_Constraints();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.SearchSpecImpl <em>Search Spec</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.mdeoptimise.impl.SearchSpecImpl
+     * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getSearchSpec()
+     * @generated
+     */
+    EClass SEARCH_SPEC = eINSTANCE.getSearchSpec();
 
     /**
      * The meta object literal for the '<em><b>Reports</b></em>' containment reference list feature.
@@ -1963,7 +2221,7 @@ public interface MdeoptimisePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference OPTIMISATION__REPORTS = eINSTANCE.getOptimisation_Reports();
+    EReference SEARCH_SPEC__REPORTS = eINSTANCE.getSearchSpec_Reports();
 
     /**
      * The meta object literal for the '<em><b>Evolvers</b></em>' containment reference list feature.
@@ -1971,7 +2229,7 @@ public interface MdeoptimisePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference OPTIMISATION__EVOLVERS = eINSTANCE.getOptimisation_Evolvers();
+    EReference SEARCH_SPEC__EVOLVERS = eINSTANCE.getSearchSpec_Evolvers();
 
     /**
      * The meta object literal for the '<em><b>Rulegen</b></em>' containment reference list feature.
@@ -1979,7 +2237,17 @@ public interface MdeoptimisePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference OPTIMISATION__RULEGEN = eINSTANCE.getOptimisation_Rulegen();
+    EReference SEARCH_SPEC__RULEGEN = eINSTANCE.getSearchSpec_Rulegen();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.SolverSpecImpl <em>Solver Spec</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.mdeoptimise.impl.SolverSpecImpl
+     * @see uk.ac.kcl.mdeoptimise.impl.MdeoptimisePackageImpl#getSolverSpec()
+     * @generated
+     */
+    EClass SOLVER_SPEC = eINSTANCE.getSolverSpec();
 
     /**
      * The meta object literal for the '<em><b>Optimisation</b></em>' containment reference feature.
@@ -1987,7 +2255,7 @@ public interface MdeoptimisePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference OPTIMISATION__OPTIMISATION = eINSTANCE.getOptimisation_Optimisation();
+    EReference SOLVER_SPEC__OPTIMISATION = eINSTANCE.getSolverSpec_Optimisation();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.mdeoptimise.impl.BasePathSpecImpl <em>Base Path Spec</em>}' class.

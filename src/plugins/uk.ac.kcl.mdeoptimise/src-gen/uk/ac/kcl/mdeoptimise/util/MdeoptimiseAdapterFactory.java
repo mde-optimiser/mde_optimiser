@@ -81,6 +81,26 @@ public class MdeoptimiseAdapterFactory extends AdapterFactoryImpl
         return createOptimisationAdapter();
       }
       @Override
+      public Adapter caseProblemSpec(ProblemSpec object)
+      {
+        return createProblemSpecAdapter();
+      }
+      @Override
+      public Adapter caseGoalSpec(GoalSpec object)
+      {
+        return createGoalSpecAdapter();
+      }
+      @Override
+      public Adapter caseSearchSpec(SearchSpec object)
+      {
+        return createSearchSpecAdapter();
+      }
+      @Override
+      public Adapter caseSolverSpec(SolverSpec object)
+      {
+        return createSolverSpecAdapter();
+      }
+      @Override
       public Adapter caseBasePathSpec(BasePathSpec object)
       {
         return createBasePathSpecAdapter();
@@ -213,6 +233,66 @@ public class MdeoptimiseAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createOptimisationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.mdeoptimise.ProblemSpec <em>Problem Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.mdeoptimise.ProblemSpec
+   * @generated
+   */
+  public Adapter createProblemSpecAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.mdeoptimise.GoalSpec <em>Goal Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.mdeoptimise.GoalSpec
+   * @generated
+   */
+  public Adapter createGoalSpecAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.mdeoptimise.SearchSpec <em>Search Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.mdeoptimise.SearchSpec
+   * @generated
+   */
+  public Adapter createSearchSpecAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.mdeoptimise.SolverSpec <em>Solver Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.mdeoptimise.SolverSpec
+   * @generated
+   */
+  public Adapter createSolverSpecAdapter()
   {
     return null;
   }

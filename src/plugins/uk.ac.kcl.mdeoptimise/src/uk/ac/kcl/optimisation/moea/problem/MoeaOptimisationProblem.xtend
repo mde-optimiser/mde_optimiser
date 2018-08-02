@@ -21,8 +21,8 @@ class MoeaOptimisationProblem extends AbstractProblem {
 
 	new(SolutionGenerator solutionGenerator) {
 		// Number of variables is for now always one.
-		this(1, solutionGenerator.optimisationModel.objectives.size(),
-			solutionGenerator.optimisationModel.constraints.size())
+		this(1, solutionGenerator.optimisationModel.goal.objectives.size(),
+			solutionGenerator.optimisationModel.goal.constraints.size())
 		this.solutionGenerator = solutionGenerator
 	}
 
@@ -40,7 +40,7 @@ class MoeaOptimisationProblem extends AbstractProblem {
 
 	def setConstraintFunctions() {
 		if (constraintFunctions === null) {
-			this.constraintFunctions = solutionGenerator.optimisationModel.constraints.map [ constraint |
+			this.constraintFunctions = solutionGenerator.optimisationModel.goal.constraints.map [ constraint |
 				new GuidanceFunctionsFactory().loadFunction(new GuidanceFunctionAdapter(constraint))
 			]
 		}
@@ -56,7 +56,7 @@ class MoeaOptimisationProblem extends AbstractProblem {
 
 	def void setFitnessFunctions() {
 		if (fitnessFunctions === null) {
-			this.fitnessFunctions = solutionGenerator.optimisationModel.objectives.map [ objective |
+			this.fitnessFunctions = solutionGenerator.optimisationModel.goal.objectives.map [ objective |
 				new GuidanceFunctionsFactory().loadFunction(new GuidanceFunctionAdapter(objective))
 			]
 		}
