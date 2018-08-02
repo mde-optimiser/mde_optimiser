@@ -279,29 +279,29 @@
       </instructions>
     </touchpointData>
   </unit>
-  <unit id='201808020043.main.source' version='1.0.0.2--cCr6P57735I3I3733A9'>
-    <properties size='2'>
-      <property name='org.eclipse.equinox.p2.name' value='MDEOptimise (Sources)'/>
-      <property name='org.eclipse.equinox.p2.type.category' value='true'/>
-    </properties>
-    <provides size='1'>
-      <provided namespace='org.eclipse.equinox.p2.iu' name='201808020043.main.source' version='1.0.0.2--cCr6P57735I3I3733A9'/>
-    </provides>
-    <requires size='1'>
-      <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.feature.source.feature.group' range='[1.0.0.201808020043,1.0.0.201808020043]'/>
-    </requires>
-    <touchpoint id='null' version='0.0.0'/>
-  </unit>
-  <unit id='201808020043.main' version='1.0.0.2--cCr6E67735I3I3733A9'>
+  <unit id='201808020044.main' version='1.0.0.2--cCr6E67735I3I3733AA'>
     <properties size='2'>
       <property name='org.eclipse.equinox.p2.name' value='MDEOptimise'/>
       <property name='org.eclipse.equinox.p2.type.category' value='true'/>
     </properties>
     <provides size='1'>
-      <provided namespace='org.eclipse.equinox.p2.iu' name='201808020043.main' version='1.0.0.2--cCr6E67735I3I3733A9'/>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='201808020044.main' version='1.0.0.2--cCr6E67735I3I3733AA'/>
     </provides>
     <requires size='1'>
-      <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.feature.feature.group' range='[1.0.0.201808020043,1.0.0.201808020043]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.feature.feature.group' range='[1.0.0.201808020044,1.0.0.201808020044]'/>
+    </requires>
+    <touchpoint id='null' version='0.0.0'/>
+  </unit>
+  <unit id='201808020044.main.source' version='1.0.0.2--cCr6P57735I3I3733AA'>
+    <properties size='2'>
+      <property name='org.eclipse.equinox.p2.name' value='MDEOptimise (Sources)'/>
+      <property name='org.eclipse.equinox.p2.type.category' value='true'/>
+    </properties>
+    <provides size='1'>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='201808020044.main.source' version='1.0.0.2--cCr6P57735I3I3733AA'/>
+    </provides>
+    <requires size='1'>
+      <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.mdeoptimise.feature.source.feature.group' range='[1.0.0.201808020044,1.0.0.201808020044]'/>
     </requires>
     <touchpoint id='null' version='0.0.0'/>
   </unit>
