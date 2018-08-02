@@ -30,7 +30,7 @@ class RepairSpec {
 	
 	override boolean equals(Object o){
 		
-		if(o == null) return false;
+		if(o === null) return false;
 		
 		if (!(o instanceof RepairSpec)) return false;
 		

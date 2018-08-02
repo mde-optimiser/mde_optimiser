@@ -413,7 +413,7 @@
 		<launchConfigurationType
 			name="MDEOptimiser Search"
 			delegate="uk.ac.kcl.ui.launch.MDEOLaunchConfigurationDelegate"
-			modes="run"
+			modes="run, debug"
 			id="uk.ac.kcl.ui.mdeo.launchConfiguration">
 		</launchConfigurationType>
 	</extension>
@@ -442,14 +442,13 @@
 			name="MDEOptimiser DSL Library"
 			class="uk.ac.kcl.ui.classpath.MDEOClasspathContainerPage"/>
 	</extension>
-	<!--Removed the shortcuts to launch the app for now. -->
-	<!--<extension point="org.eclipse.debug.ui.launchShortcuts">
+	<extension point="org.eclipse.debug.ui.launchShortcuts">
 	    <shortcut
 	        class="uk.ac.kcl.ui.launch.MDEOLaunchConfigurationShortcut"
-	        icon="icons/vogella.png"
+	        icon="icons/mdeo.png"
 	        id="uk.ac.kcl.ui.mdeo.launchConfiguration.shortcut"
-	        label="Run MDEO Search"
-	        modes="run">
+	        label="MDEOptimiser Search"
+	        modes="run, debug">
 	        <contextualLaunch>
 	            <enablement>
 	                <with variable="selection">
@@ -462,6 +461,6 @@
 	            </enablement>
 	        </contextualLaunch>
 	    </shortcut>
-	</extension>-->
+	</extension>
 	
 </plugin>

@@ -40,7 +40,7 @@ class MoeaOptimisationTests {
 	
 	
 	def getResourceSet() {
-        if (henshinResourceSet == null) {
+        if (henshinResourceSet === null) {
             henshinResourceSet = new HenshinResourceSet(model.basepath.location)
         }
 
@@ -48,7 +48,7 @@ class MoeaOptimisationTests {
     }
 
     def getMetamodel() {
-        if (theMetamodel == null) {
+        if (theMetamodel === null) {
             theMetamodel = getResourceSet.registerDynamicEPackages(model.metamodel.location).head
         }
 
@@ -56,7 +56,7 @@ class MoeaOptimisationTests {
     }
     
     def getHenshinEvolvers() {
-    	if (henshinEvolvers == null) {
+    	if (henshinEvolvers === null) {
             val hrs = resourceSet
             henshinEvolvers = model.evolvers.map [ e |
                 hrs.getModule(URI.createURI(e.rule_location), false).getUnit(e.unit)
@@ -80,7 +80,7 @@ class MoeaOptimisationTests {
 				mutate using <craEvolvers.henshin> unit "assignFeature"
 				mutate using <craEvolvers.henshin> unit "moveFeature"
 				mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
-				optimisation provider moea algorithm NSGAII variation mutation evolutions 2000 population 40 batches 1
+				optimisation provider moea algorithm NSGAII variation mutation evolutions 200 population 40 batches 1
 			''')
 
 			//Assert that there are no grammar issues
@@ -95,7 +95,7 @@ class MoeaOptimisationTests {
 							            		
 	            		val startTime = System.nanoTime;
 	            		val optimisationInterpreter = new OptimisationInterpreter("", model);
-	            		val optimisationOutcome = optimisationInterpreter.start();
+	            		val optimisationOutcome = optimisationInterpreter.start
 	            		val endTime = System.nanoTime;
 	            		
 	            		val experimentDuration = (endTime - startTime) / 1000000
@@ -567,7 +567,14 @@ class MoeaOptimisationTests {
 				constraint HasNoUnassignedWorkItems java { "models.scrum.HasNoUnassignedWorkItems" }
 				constraint HasTheAllowedMaximalNumberOfSprints java { "models.scrum.HasTheAllowedMaximalNumberOfSprints" }
 				mutate {"Sprint"}
-				optimisation provider moea algorithm NSGAII variation mutation evolutions 50 population 40 batches 1
+				optimisation provider moea algorithm NSGAII variation mutation
+				parameters {
+					population: 30
+				}
+				termination {
+					time: 15
+				}
+				batches 2
 			''')
 
 			//Assert that there are no grammar issues
