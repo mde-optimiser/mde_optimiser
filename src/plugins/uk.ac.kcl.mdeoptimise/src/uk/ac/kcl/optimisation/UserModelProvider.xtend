@@ -5,12 +5,14 @@ import org.eclipse.emf.ecore.EPackage
 import java.util.Collections
 import org.eclipse.emf.henshin.model.resource.HenshinResourceSet
 import uk.ac.kcl.interpreter.IModelInitialiser
+import uk.ac.kcl.interpreter.guidance.Solution
+import java.util.LinkedList
 
 class UserModelProvider implements IModelProvider {
 	
-	private String modelPath
-	private HenshinResourceSet resourceSet;
-	private IModelInitialiser modelInitialiser;
+	String modelPath
+	HenshinResourceSet resourceSet;
+	IModelInitialiser modelInitialiser;
 	
 	new (HenshinResourceSet resourceSet, String userModelPath){
 		this.modelPath = userModelPath;
@@ -22,22 +24,23 @@ class UserModelProvider implements IModelProvider {
 			this.modelInitialiser = modelInitialiser
 	}
 
-	def loadModel(String path) {
+	def Solution loadModel(String path) {
 		val resource = resourceSet.createResource(path)
 		resource.load(Collections.EMPTY_MAP)
 		resource.allContents.head
 		
-		if(this.modelInitialiser != null){
+		if(this.modelInitialiser !== null){
 			return modelInitialiser.initialise(resource.allContents.head)
 		}
 		
-		return resource.allContents.head
+		return new Solution(resource.allContents.head, new LinkedList<String>)
 	}
 
 	override initialModels(EPackage metamodel) {
 		resourceSet.packageRegistry.put(metamodel.nsURI, metamodel)
 		
-		if(this.modelInitialiser != null){
+		if(this.modelInitialiser !== null){
+			
 			return #[loadModel(modelPath)].iterator;
 		}
 

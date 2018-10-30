@@ -5,19 +5,18 @@ import uk.ac.kcl.interpreter.IGuidanceFunction
 import org.eclipse.emf.common.util.EList
 import java.util.ArrayList
 import org.apache.commons.math3.stat.descriptive.moment.StandardDeviation
+import uk.ac.kcl.interpreter.guidance.Solution
 
 class MaximiseAverageStakeholderImportance implements IGuidanceFunction {
 	
-	override computeFitness(EObject model) {
+	override computeFitness(Solution model) {
 		
-		
-		
-		val sprints = (model.getFeature("sprints") as EList<EObject>)
+		val sprints = (model.model.getFeature("sprints") as EList<EObject>)
 		val standardDeviationCalculator = new StandardDeviation();
 		
 		val stakeholderImportanceSprintDeviation = new ArrayList<Double>();
 		
-		(model.getFeature("stakeholders") as EList<EObject>).forEach[stakeholder |
+		(model.model.getFeature("stakeholders") as EList<EObject>).forEach[stakeholder |
 			
 			
 			var effortAccrossSprints = sprints.map[

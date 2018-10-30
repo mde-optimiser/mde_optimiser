@@ -3,12 +3,13 @@ package models.scrum
 import org.eclipse.emf.ecore.EObject
 import uk.ac.kcl.interpreter.IGuidanceFunction
 import org.eclipse.emf.common.util.EList
+import uk.ac.kcl.interpreter.guidance.Solution
 
 class HasTheAllowedMaximalNumberOfSprints implements IGuidanceFunction {
 	
-	override computeFitness(EObject model) {
+	override computeFitness(Solution model) {
 		
-		var workitems = ((model.getFeature("backlog") as EObject).getFeature("workitems") as EList<EObject>);
+		var workitems = ((model.model.getFeature("backlog") as EObject).getFeature("workitems") as EList<EObject>);
 		
 		var totalEffort = workitems.fold(0)[result, item | result + (item.getFeature("Effort") as Integer)];
 		
@@ -27,7 +28,7 @@ class HasTheAllowedMaximalNumberOfSprints implements IGuidanceFunction {
 		
 		}
 		
-		var sprints = (model.getFeature("sprints") as EList<EObject>).filter[ 
+		var sprints = (model.model.getFeature("sprints") as EList<EObject>).filter[ 
 			sprint | (sprint.getFeature("committedItem") as EList<EObject>).length > 0].toList
 		
 		

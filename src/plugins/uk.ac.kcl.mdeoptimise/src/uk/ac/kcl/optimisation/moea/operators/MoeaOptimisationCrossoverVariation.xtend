@@ -3,14 +3,12 @@ package uk.ac.kcl.optimisation.moea.operators
 import org.moeaframework.core.Solution
 import org.moeaframework.core.Variation
 import uk.ac.kcl.optimisation.SolutionGenerator
-import org.eclipse.emf.ecore.EObject
 import java.util.ArrayList
-import java.util.Arrays
 import uk.ac.kcl.optimisation.moea.problem.MoeaOptimisationSolution
 
 class MoeaOptimisationCrossoverVariation implements Variation {
 	
-	private SolutionGenerator solutionGenerator;
+	SolutionGenerator solutionGenerator;
 	
 	new(SolutionGenerator solutionGenerator){
 		this.solutionGenerator = solutionGenerator;
@@ -18,12 +16,9 @@ class MoeaOptimisationCrossoverVariation implements Variation {
 	
 	//USed to evolve a solution using the henshin evolvers
 	override evolve(Solution[] parents) {
-
-//		var parentSolution = parents.head as MoeaOptimisationSolution;
-//		var newSolution = parentSolution.copy
 	
 		val solutions = new ArrayList<MoeaOptimisationSolution>();	
-		val parentModels = new ArrayList<EObject>();
+		val parentModels = new ArrayList<uk.ac.kcl.interpreter.guidance.Solution>();
 		
 		for(Solution parent : parents){
 			val solution = (parent as MoeaOptimisationSolution).copy 
@@ -33,8 +28,6 @@ class MoeaOptimisationCrossoverVariation implements Variation {
 		
 		val children = solutionGenerator.crossover(parentModels)
 	
-		//println("Children:" + children.size)
-		//println("Parents:" + parents.size)
 		for(var i = 0; i < 2; i++){
 			solutions.get(i).model = children.get(i);
 		}

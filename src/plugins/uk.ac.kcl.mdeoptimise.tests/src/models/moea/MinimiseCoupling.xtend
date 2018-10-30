@@ -2,12 +2,13 @@ package models.moea
 
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.common.util.EList
+import uk.ac.kcl.interpreter.guidance.Solution
 
 class MinimiseCoupling extends AbstractModelQueryFitnessFunction {
 
-	override double computeFitness(EObject model) {
+	override double computeFitness(Solution model) {
 		//val cohesion = calculateCohesionRatio(model);
-		val coupling = calculateCouplingRatio(model);
+		val coupling = calculateCouplingRatio(model.model);
 
 		//println("Calculated CRA : " + (cohesion - coupling))
 

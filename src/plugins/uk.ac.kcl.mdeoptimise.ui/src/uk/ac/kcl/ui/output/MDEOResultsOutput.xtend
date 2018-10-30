@@ -11,8 +11,6 @@ import java.util.LinkedList
 import java.util.List
 import java.util.TimeZone
 import org.eclipse.core.runtime.IPath
-import org.eclipse.emf.ecore.resource.ResourceSet
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import uk.ac.kcl.mdeoptimise.Optimisation
 import uk.ac.kcl.ui.output.descriptors.ResultsDescriptor
 import uk.ac.kcl.ui.output.descriptors.TextDescriptor
@@ -25,14 +23,13 @@ import uk.ac.kcl.ui.output.descriptors.AccumulatorSerialiser
 
 class MDEOResultsOutput {
 	
-	private Date experimentStartTime;
-	private List<MDEOBatch> batches;
-	private ResourceSet resourceSet;
-	private IPath projectRoot;
-	private IPath moptFile;
-	private Optimisation moptConfiguration;
-	private List<ResultsDescriptor> resultsDescriptors;
-	private boolean classicRuleMatchingEnabled;
+	Date experimentStartTime;
+	List<MDEOBatch> batches;
+	IPath projectRoot;
+	IPath moptFile;
+	Optimisation moptConfiguration;
+	List<ResultsDescriptor> resultsDescriptors;
+	boolean classicRuleMatchingEnabled;
 	
 	new(Date startTime, IPath projectRoot, IPath moptFile, Optimisation moptConfiguration){
 		this(startTime, projectRoot, moptFile, moptConfiguration, false)
@@ -42,7 +39,6 @@ class MDEOResultsOutput {
 		experimentStartTime = startTime
 		//Store output of a batch experiment id, solutions set
 		batches = new LinkedList<MDEOBatch>();
-		this.resourceSet = new ResourceSetImpl();
 		this.projectRoot = projectRoot;
 		this.moptConfiguration = moptConfiguration;
 		this.moptFile = moptFile;

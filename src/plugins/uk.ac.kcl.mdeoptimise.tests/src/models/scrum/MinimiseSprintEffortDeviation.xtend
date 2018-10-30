@@ -4,12 +4,13 @@ import org.eclipse.emf.ecore.EObject
 import uk.ac.kcl.interpreter.IGuidanceFunction
 import org.eclipse.emf.common.util.EList
 import org.apache.commons.math3.stat.descriptive.moment.StandardDeviation
+import uk.ac.kcl.interpreter.guidance.Solution
 
 class MinimiseSprintEffortDeviation implements IGuidanceFunction {
 	
-	override computeFitness(EObject model) {
+	override computeFitness(Solution model) {
 				
-		var fitness = (model.getFeature("sprints") as EList<EObject>).map[ sprint | 
+		var fitness = (model.model.getFeature("sprints") as EList<EObject>).map[ sprint | 
 			
 			new Double((sprint.getFeature("committedItem") as EList<EObject>).fold(0d)[ result, item |
 				

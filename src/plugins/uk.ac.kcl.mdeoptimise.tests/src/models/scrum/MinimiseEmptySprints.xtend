@@ -3,17 +3,18 @@ package models.scrum
 import org.eclipse.emf.ecore.EObject
 import uk.ac.kcl.interpreter.IGuidanceFunction
 import org.eclipse.emf.common.util.EList
+import uk.ac.kcl.interpreter.guidance.Solution
 
 class MinimiseEmptySprints implements IGuidanceFunction {
 	
-	override computeFitness(EObject model) {
+	override computeFitness(Solution model) {
 		
-		var sprints = (model.getFeature("sprints") as EList<EObject>).filter[ 
-			sprint | (sprint.getFeature("committedItem") as EList<EObject>).length == 0].toList
+		var sprints = (model.model.getFeature("sprints") as EList<EObject>).filter[ 
+			sprint | (sprint.getFeature("committedItem") as EList<EObject>).length === 0].toList
 		
 		var fitness = 0
 		
-		if(sprints != null) {
+		if(sprints !== null) {
 			fitness = sprints.length	
 		}
 		

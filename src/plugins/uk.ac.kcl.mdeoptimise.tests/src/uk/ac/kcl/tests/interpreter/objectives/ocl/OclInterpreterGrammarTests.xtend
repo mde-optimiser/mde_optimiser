@@ -1,7 +1,6 @@
 package uk.ac.kcl.tests.interpreter.objectives.ocl
 
 import javax.inject.Inject
-import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.XtextRunner
 import org.eclipse.xtext.testing.validation.ValidationTestHelper
@@ -15,7 +14,7 @@ import uk.ac.kcl.tests.TestModelLoader
 
 import static org.junit.Assert.*
 import static org.mockito.Mockito.*
-import org.junit.Ignore
+import uk.ac.kcl.interpreter.guidance.Solution
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)
@@ -66,7 +65,7 @@ class OclInterpreterGrammarTests {
 			
 			val oclObjective = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(testModel.goal.getObjectives().get(0)))
 
-			oclObjective.computeFitness(mock(EObject))	
+			oclObjective.computeFitness(mock(Solution))	
 			
 			testModel.assertNoIssues
 			

@@ -10,14 +10,15 @@ import org.eclipse.ocl.expressions.OCLExpression
 import org.eclipse.ocl.helper.OCLHelper
 import uk.ac.kcl.interpreter.IGuidanceFunction
 import uk.ac.kcl.interpreter.guidance.GuidanceFunctionAdapter
+import uk.ac.kcl.interpreter.guidance.Solution
 
 class OclGuidanceFunction implements IGuidanceFunction {
 	
-	private OCL<?, EClassifier, ?, ?, ?, ?, ?, ?, ?, Constraint, EClass, EObject>  ocl
-   	private OCLHelper<EClassifier, ?, ?, Constraint> oclHelper
-   	private GuidanceFunctionAdapter guidanceFunctionAdapter
-	private String objectiveName;
-	private OCLExpression<EClassifier> oclQueryExpression;
+	OCL<?, EClassifier, ?, ?, ?, ?, ?, ?, ?, Constraint, EClass, EObject>  ocl
+   	OCLHelper<EClassifier, ?, ?, Constraint> oclHelper
+   	GuidanceFunctionAdapter guidanceFunctionAdapter
+	String objectiveName;
+	OCLExpression<EClassifier> oclQueryExpression;
 	
 	new(OCL<?, EClassifier, ?, ?, ?, ?, ?, ?, ?, Constraint, EClass, EObject>  ocl, 
 		OCLHelper<EClassifier, ?, ?, Constraint> oclHelper,
@@ -29,8 +30,7 @@ class OclGuidanceFunction implements IGuidanceFunction {
 		this.objectiveName = guidanceFunctionAdapter.functionName
 	}
 	
-	
-	override computeFitness(EObject model) {
+	override computeFitness(Solution solution) {
 		
 		var fitness = 0.0
 		
@@ -40,12 +40,12 @@ class OclGuidanceFunction implements IGuidanceFunction {
 		
         try {
  
-        	if(oclQueryExpression == null){
-        		oclHelper.setContext(model.eClass)
+        	if(oclQueryExpression === null){
+        		oclHelper.setContext(solution.model.eClass)
         		oclQueryExpression = oclHelper.createQuery(guidanceFunctionAdapter.functionSpec)
         	}
         	
-        	fitness = getNumericFitnessValue(ocl.evaluate(model, oclQueryExpression))
+        	fitness = getNumericFitnessValue(ocl.evaluate(solution.model, oclQueryExpression))
         	        
         } catch(ParserException exception){
         	//TODO logger

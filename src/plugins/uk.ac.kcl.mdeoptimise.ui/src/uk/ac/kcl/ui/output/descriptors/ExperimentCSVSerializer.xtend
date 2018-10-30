@@ -17,7 +17,7 @@ import java.util.Date
 
 class ExperimentCSVSerializer implements ResultsDescriptor {
 
-	private String serializedOutputFileName = "experiment-data.csv";
+	String serializedOutputFileName = "experiment-data.csv";
 
 	override generateDescription(IPath batchPath, MDEOBatch batch, StringBuilder batchOverallOutput) {
 		

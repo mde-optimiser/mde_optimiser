@@ -3,12 +3,13 @@ package models.nrp
 import org.eclipse.emf.ecore.EObject
 import uk.ac.kcl.interpreter.IGuidanceFunction
 import org.eclipse.emf.common.util.BasicEList
+import uk.ac.kcl.interpreter.guidance.Solution
 
 class HasValidSolutionBudget  implements IGuidanceFunction {
 	
-	override computeFitness(EObject model) {
+	override computeFitness(Solution model) {
 		
-		val selectedArtifactsCost =  model.getReferenceFeature("solutions").head
+		val selectedArtifactsCost =  model.model.getReferenceFeature("solutions").head
 				.getReferenceFeature("selectedArtifacts").fold(0d)[
 					result, artifact | 
 					

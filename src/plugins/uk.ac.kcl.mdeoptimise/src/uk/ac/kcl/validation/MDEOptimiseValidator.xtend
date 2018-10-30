@@ -60,7 +60,7 @@ class MDEOptimiseValidator extends AbstractMDEOptimiseValidator {
 		var platformStringUri = resourceURI.toPlatformString(true)
 		
 		//Is the resource uri valid?
-		if(resourceURI.empty || platformStringUri == null){
+		if(resourceURI.empty || platformStringUri === null){
 			return
 		}
 		

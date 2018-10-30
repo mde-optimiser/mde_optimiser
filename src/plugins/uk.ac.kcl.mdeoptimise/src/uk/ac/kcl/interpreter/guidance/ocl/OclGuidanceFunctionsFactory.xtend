@@ -12,8 +12,8 @@ import uk.ac.kcl.interpreter.guidance.IGuidanceFunctionsFactory
 
 class OclGuidanceFunctionsFactory implements IGuidanceFunctionsFactory {
 	
-	private final static OCL<?, EClassifier, ?, ?, ?, ?, ?, ?, ?, Constraint, EClass, EObject>  oclInterpreter = OCL.newInstance(EcoreEnvironmentFactory.INSTANCE)
-   	private final static OCLHelper<EClassifier, ?, ?, Constraint> oclHelper = oclInterpreter.createOCLHelper();
+	final static OCL<?, EClassifier, ?, ?, ?, ?, ?, ?, ?, Constraint, EClass, EObject>  oclInterpreter = OCL.newInstance(EcoreEnvironmentFactory.INSTANCE)
+   	final static OCLHelper<EClassifier, ?, ?, Constraint> oclHelper = oclInterpreter.createOCLHelper();
 	
 	/**
 	 * Type - minimise / maximise

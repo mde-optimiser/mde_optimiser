@@ -11,7 +11,7 @@ import uk.ac.kcl.ui.output.MDEOBatch
 
 class GeneratedMutationOperatorsDescriptor implements ResultsDescriptor {
 	
-	private HenshinResourceSet resourceSet;
+	HenshinResourceSet resourceSet;
 		
 	override generateDescription(IPath batchOutputPath, MDEOBatch batch, StringBuilder batchOverallOutput) {
 	

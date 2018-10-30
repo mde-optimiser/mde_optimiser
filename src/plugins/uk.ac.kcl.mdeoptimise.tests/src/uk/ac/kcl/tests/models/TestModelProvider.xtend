@@ -14,7 +14,7 @@ import java.util.stream.Collectors
 import java.io.InputStreamReader
 import java.io.File
 import java.io.PrintWriter
-import models.moea.MinimiseClasslessFeatures
+import uk.ac.kcl.interpreter.guidance.Solution
 
 abstract class TestModelProvider implements IModelProvider {
 
@@ -31,7 +31,7 @@ abstract class TestModelProvider implements IModelProvider {
 	def loadModel(String path) {
 		val resource = resourceSet.createResource(URI.createURI(path))
 		resource.load(Collections.EMPTY_MAP)
-		resource.allContents.head
+		new Solution(resource.allContents.head)
 	}
 
 	def writeModel(EObject model, String path) {
@@ -52,13 +52,6 @@ abstract class TestModelProvider implements IModelProvider {
 	}
 
 	def storeModelAndInfo(EObject model, String pathPrefix, String initialModel) {
-		
-		var fitnessObject = new MinimiseClasslessFeatures();
-		
-//		if(fitnessObject.computeFitness(model) != 0){
-//			println("Ignoring model with unassigned features.")
-//			return;
-//		}
 		
 		storeModel(model, pathPrefix)
 		val info = runEvaluationJarAgainstBestModel(pathPrefix + "/" + String.format("%08X", model.hashCode) + ".xmi")

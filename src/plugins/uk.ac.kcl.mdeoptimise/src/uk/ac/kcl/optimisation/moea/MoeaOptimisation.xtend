@@ -41,7 +41,7 @@ class MoeaOptimisation implements IOptimisation {
 		properties.put("solutionGenerator", solutionGenerator)
 		//Crossover and mutation or mutation only
 		properties.put("variationType", optimisationSpec.algorithmVariation)
-		properties.put("terminationCondition", new TerminationConditionAdapter(optimisationSpec.terminationCondition).condition)
+		properties.put("terminationCondition", new TerminationConditionAdapter(optimisationSpec, optimisationSpec.terminationCondition).condition)
 		return properties
 	}
 	

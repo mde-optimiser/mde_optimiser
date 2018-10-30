@@ -6,7 +6,7 @@ import uk.ac.kcl.ui.output.MDEOBatch
 
 class AccumulatorSerialiser implements ResultsDescriptor {
 
-	private String serializedOutputFileName = "data-steps.csv";
+	String serializedOutputFileName = "data-steps.csv";
 
 	override generateDescription(IPath batchPath, MDEOBatch batch, StringBuilder batchOverallOutput) {
 		

@@ -1,7 +1,6 @@
 package uk.ac.kcl.interpreter
 
 import java.util.ArrayList
-import java.util.Iterator
 import java.util.LinkedList
 import java.util.List
 import java.util.Map
@@ -25,16 +24,16 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
 
 class OptimisationInterpreter {
 	
-	private Optimisation model
+	Optimisation model
 	
-	private HenshinResourceSet henshinResourceSet
-	private EPackage theMetamodel
+	HenshinResourceSet henshinResourceSet
+	EPackage theMetamodel
 	
-	private List<Unit> breedingOperators
-	private List<Unit> mutationOperators
-	private IPath projectRootPath;
-	private boolean enableManualRandomMatching = false;
-	private  Map<EPackage, List<Module>> generatedOperators;
+	List<Unit> breedingOperators
+	List<Unit> mutationOperators
+	IPath projectRootPath;
+	boolean enableManualRandomMatching = false;
+	Map<EPackage, List<Module>> generatedOperators;
 	
 	new (String projectPath, Optimisation model){
 		this.model = model;

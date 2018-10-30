@@ -27,7 +27,7 @@ import uk.ac.kcl.ui.classpath.MDEOClasspathContainer
 class MDEOptimiseQuickfixProvider extends DefaultQuickfixProvider {
 
 	@Inject
-	private IJavaProjectProvider projectProvider;
+	IJavaProjectProvider projectProvider;
 	
 	@Fix(MDEOptimiseValidatorIssues.MDEO_LIB_NOT_ON_CLASSPATH)
 	def putMDEOOnClasspath(Issue issue, IssueResolutionAcceptor acceptor) {

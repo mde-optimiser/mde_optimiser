@@ -10,10 +10,10 @@ import uk.ac.kcl.optimisation.SolutionGenerator
 
 class MoeaOptimisationProblem extends AbstractProblem {
 
-	private SolutionGenerator solutionGenerator
+	SolutionGenerator solutionGenerator
 
-	private List<IGuidanceFunction> fitnessFunctions;
-	private List<IGuidanceFunction> constraintFunctions;
+	List<IGuidanceFunction> fitnessFunctions;
+	List<IGuidanceFunction> constraintFunctions;
 
 	new(int numberOfVariables, int numberOfObjectives, int numberOfConstraints) {
 		super(numberOfVariables, numberOfObjectives, numberOfConstraints)

@@ -1,16 +1,16 @@
 package uk.ac.kcl.optimisation.moea.problem
 
-import org.eclipse.emf.ecore.EObject
 import org.moeaframework.core.Variable
 import uk.ac.kcl.optimisation.SolutionGenerator
+import uk.ac.kcl.interpreter.guidance.Solution
 
 //This is a representation of the evolved model
 class MoeaOptimisationVariable implements Variable {
 
-	private EObject model
-	private SolutionGenerator solutionGenerator;
+	Solution model
+	SolutionGenerator solutionGenerator;
 
-	new(EObject model, SolutionGenerator solutionGenerator){
+	new(Solution model, SolutionGenerator solutionGenerator){
 		this.model = model
 		this.solutionGenerator = solutionGenerator
 	}

@@ -3,16 +3,17 @@ package models.scrum
 import org.eclipse.emf.ecore.EObject
 import uk.ac.kcl.interpreter.IGuidanceFunction
 import org.eclipse.emf.common.util.EList
+import uk.ac.kcl.interpreter.guidance.Solution
 
 class MinimiseSprints implements IGuidanceFunction {
 	
-	override computeFitness(EObject model) {
+	override computeFitness(Solution model) {
 		
-		var sprints = model.getFeature("sprints")
+		var sprints = model.model.getFeature("sprints")
 		
 		var fitness = 0
 		
-		if(sprints != null) {
+		if(sprints !== null) {
 			fitness = (sprints as EList<EObject>).length	
 		}
 		

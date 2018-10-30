@@ -19,15 +19,15 @@ import java.io.IOException
 class MDEOClasspathContainer implements IClasspathContainer {
 	
 	
-	private static final String UK_AC_KCL_MDEO_BUNDLE_ID = "uk.ac.kcl.mdeoptimise";
-	private static final String UK_AC_KCL_MDEO_UI_BUNDLE_ID = "uk.ac.kcl.mdeoptimise.ui";
+	static final String UK_AC_KCL_MDEO_BUNDLE_ID = "uk.ac.kcl.mdeoptimise";
+	static final String UK_AC_KCL_MDEO_UI_BUNDLE_ID = "uk.ac.kcl.mdeoptimise.ui";
 
 	public static final String[] BUNDLE_IDS_TO_INCLUDE = #["org.eclipse.emf.ecore", 
 															"org.eclipse.emf.common", 
 															UK_AC_KCL_MDEO_BUNDLE_ID, 
 															UK_AC_KCL_MDEO_UI_BUNDLE_ID]
 	
-	private IClasspathEntry[] classpathEntries;
+	IClasspathEntry[] classpathEntries;
 	
 	override getClasspathEntries() {
 		

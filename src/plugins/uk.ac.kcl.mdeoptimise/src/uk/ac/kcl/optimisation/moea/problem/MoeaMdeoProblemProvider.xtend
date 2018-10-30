@@ -9,8 +9,8 @@ import uk.ac.kcl.optimisation.moea.algorithms.MoeaOptimisationAlgorithmProvider
 
 class MoeaMdeoProblemProvider extends ProblemProvider {
 	
-	private SolutionGenerator solutionGenerator;
-	private EvolutionaryAlgorithm algo
+	SolutionGenerator solutionGenerator;
+	EvolutionaryAlgorithm algo
 
 	new(SolutionGenerator solutionGenerator, MoeaOptimisationAlgorithmProvider referenceSet){
 		this.solutionGenerator = solutionGenerator;

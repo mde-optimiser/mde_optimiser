@@ -7,7 +7,7 @@ import uk.ac.kcl.optimisation.moea.problem.MoeaOptimisationSolution
 
 class MoeaOptimisationMutationVariation implements Variation {
 	
-	private SolutionGenerator solutionGenerator;
+	SolutionGenerator solutionGenerator;
 	
 	new(SolutionGenerator solutionGenerator){
 		this.solutionGenerator = solutionGenerator;

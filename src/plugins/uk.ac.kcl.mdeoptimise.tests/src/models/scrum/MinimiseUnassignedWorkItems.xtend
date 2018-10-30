@@ -3,16 +3,17 @@ package models.scrum
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.EObject
 import uk.ac.kcl.interpreter.IGuidanceFunction
+import uk.ac.kcl.interpreter.guidance.Solution
 
 class MinimiseUnassignedWorkItems implements IGuidanceFunction {
 	
-	override computeFitness(EObject model) {
+	override computeFitness(Solution model) {
 		
-		var workItems = (model.getFeature("backlog") as EObject).getFeature("workitems") as EList<EObject>
+		var workItems = (model.model.getFeature("backlog") as EObject).getFeature("workitems") as EList<EObject>
 		var fitness = 0
 		
-		if(workItems != null) {
-			fitness = workItems.filter[workItem | workItem.getFeature("isPlannedFor") == null].toList.length
+		if(workItems !== null) {
+			fitness = workItems.filter[workItem | workItem.getFeature("isPlannedFor") === null].toList.length
 		}
 		
 		println("Unassigned backlog work items: " + fitness)

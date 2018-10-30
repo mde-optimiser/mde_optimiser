@@ -6,8 +6,8 @@ import uk.ac.kcl.interpreter.guidance.java.JavaGuidanceFunctionsFactory
 
 class GuidanceFunctionsFactory implements IGuidanceFunctionsFactory {
 	
-	private IGuidanceFunctionsFactory javaObjectiveEngine
-	private IGuidanceFunctionsFactory oclObjectiveEngine
+	IGuidanceFunctionsFactory javaObjectiveEngine
+	IGuidanceFunctionsFactory oclObjectiveEngine
 	
 	new(){
 		javaObjectiveEngine = new JavaGuidanceFunctionsFactory()

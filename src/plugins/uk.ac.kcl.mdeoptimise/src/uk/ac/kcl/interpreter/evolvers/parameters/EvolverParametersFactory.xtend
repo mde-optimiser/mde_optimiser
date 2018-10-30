@@ -3,17 +3,17 @@ package uk.ac.kcl.interpreter.evolvers.parameters
 import java.util.HashMap
 import java.util.List
 import java.util.Map
-import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.henshin.model.Parameter
 import org.eclipse.emf.henshin.model.Unit
 import uk.ac.kcl.interpreter.evolvers.parameters.functions.RandomEvolverParameter
 import uk.ac.kcl.mdeoptimise.EvolverSpec
+import uk.ac.kcl.interpreter.guidance.Solution
 
 class EvolverParametersFactory implements IEvolverParametersFactory {
 	
-	private List<EvolverSpec> evolvers;
+	List<EvolverSpec> evolvers;
 	//Triple <UnitName, <ParameterName, Function>>
-	private Map<String, Map<String, IEvolverParametersFunction>> evolverParameterFunctions;
+	Map<String, Map<String, IEvolverParametersFunction>> evolverParameterFunctions;
 	
 	/**
 	 * Cache parameter functions
@@ -76,11 +76,12 @@ class EvolverParametersFactory implements IEvolverParametersFactory {
 		}
 	}
 	
-	override getParameterValue(Unit unit, Parameter parameter, List<EObject> model) {
+	
+	override getParameterValue(Unit unit, Parameter parameter, List<Solution> solution) {
 		
 		val parameterFunction = evolverParameterFunctions.get(unit.name).get(parameter.name)
 		
-		return parameterFunction.sample(model)
+		return parameterFunction.sample(solution)
 	}
 	
 }

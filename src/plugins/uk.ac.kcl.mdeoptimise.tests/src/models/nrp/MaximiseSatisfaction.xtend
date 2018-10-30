@@ -3,6 +3,7 @@ package models.nrp
 import org.eclipse.emf.common.util.BasicEList
 import org.eclipse.emf.ecore.EObject
 import uk.ac.kcl.interpreter.IGuidanceFunction
+import uk.ac.kcl.interpreter.guidance.Solution
 
 class MaximiseSatisfaction  implements IGuidanceFunction {
 	
@@ -39,8 +40,8 @@ class MaximiseSatisfaction  implements IGuidanceFunction {
 	 * </p> 
 	 * 
 	 */
-	override computeFitness(EObject model) {
-		var satisfaction = model.getReferenceFeature('customers').fold(0.0d)[result, customer | 
+	override computeFitness(Solution model) {
+		var satisfaction = model.model.getReferenceFeature('customers').fold(0.0d)[result, customer | 
 			result + ((customer.getFeature('importance') as Double) * customer.calculateSatisfaction)
 		]
 		

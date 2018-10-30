@@ -12,9 +12,9 @@ import org.moeaframework.core.Solution
 
 class MDEOBatch {
 	
+	List<MoeaOptimisationSolution> solutions;
 	public Integer id;
 	public long duration;
-	private List<MoeaOptimisationSolution> solutions;
 	public Map<EPackage, List<Module>> generatedRules;
 	public Instrumenter instrumenter;
 	public boolean singleBatch;

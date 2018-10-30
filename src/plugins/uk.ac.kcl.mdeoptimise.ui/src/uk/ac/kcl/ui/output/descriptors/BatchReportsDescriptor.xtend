@@ -5,8 +5,6 @@ import java.io.File
 import java.io.FileWriter
 import java.util.List
 import org.eclipse.core.runtime.IPath
-import org.eclipse.emf.ecore.resource.ResourceSet
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import uk.ac.kcl.interpreter.IGuidanceFunction
 import uk.ac.kcl.mdeoptimise.Optimisation
 import uk.ac.kcl.ui.output.MDEOBatch
@@ -15,11 +13,9 @@ import uk.ac.kcl.optimisation.moea.problem.MoeaOptimisationSolution
 
 class BatchReportsDescriptor implements ResultsDescriptor {
 	
-	private ResourceSet resourceSet;
-	private List<IGuidanceFunction> reportFunctions;
+	List<IGuidanceFunction> reportFunctions;
 	
 	new(Optimisation moptOptimisation){
-		this.resourceSet = new ResourceSetImpl();
 		this.loadReportFunctions(moptOptimisation)
 	}
 	

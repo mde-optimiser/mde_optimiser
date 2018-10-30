@@ -2,7 +2,6 @@ package uk.ac.kcl.tests.interpreter.objectives
 
 import java.io.InvalidObjectException
 import javax.inject.Inject
-import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.XtextRunner
 import org.junit.Test
@@ -16,6 +15,7 @@ import static org.hamcrest.CoreMatchers.instanceOf
 import static org.junit.Assert.*
 import static org.mockito.Mockito.*
 import org.junit.Ignore
+import uk.ac.kcl.interpreter.guidance.Solution
 
 @RunWith(XtextRunner)
 @InjectWith(FullTestInjector)
@@ -69,7 +69,7 @@ class GuidanceFunctionsFactoryTests {
 		
 		val javaObjectiveFunction = objectivesFactory.loadFunction(new GuidanceFunctionAdapter(model.goal.constraints.get(0)))
 		
-		val mockedEObject = mock(EObject)
+		val mockedEObject = mock(Solution)
 		
 		assertEquals(5.0, javaObjectiveFunction.computeFitness(mockedEObject), 0.0)
 	}

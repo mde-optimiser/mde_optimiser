@@ -3,12 +3,13 @@ package models.scrum
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.EObject
 import uk.ac.kcl.interpreter.IGuidanceFunction
+import uk.ac.kcl.interpreter.guidance.Solution
 
 class HasNoUnassignedWorkItems implements IGuidanceFunction {
 	
-	override computeFitness(EObject model) {
+	override computeFitness(Solution model) {
 		
-		var workItems = (model.getFeature("backlog") as EObject).getFeature("workitems") as EList<EObject>
+		var workItems = (model.model.getFeature("backlog") as EObject).getFeature("workitems") as EList<EObject>
 		var fitness = 0
 		
 		if(workItems != null) {

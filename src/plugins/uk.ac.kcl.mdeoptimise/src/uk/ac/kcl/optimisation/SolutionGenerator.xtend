@@ -6,7 +6,6 @@ import java.util.List
 import java.util.Random
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EPackage
-import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.emf.henshin.interpreter.Engine
 import org.eclipse.emf.henshin.interpreter.impl.ChangeImpl
 import org.eclipse.emf.henshin.interpreter.impl.EGraphImpl
@@ -26,16 +25,20 @@ import java.util.Arrays
 import uk.ac.kcl.interpreter.evolvers.parameters.EvolverParametersFactory
 import org.eclipse.emf.henshin.model.ParameterKind
 import org.eclipse.emf.henshin.interpreter.Match
+import uk.ac.kcl.optimisation.henshin.MdeoRuleApplicationImpl
+import uk.ac.kcl.optimisation.henshin.MdeoUnitApplicationImpl
+import java.util.LinkedList
+import uk.ac.kcl.interpreter.guidance.Solution
 
 class SolutionGenerator {
 
-    private EPackage theMetamodel = null
-	private List<Unit> breedingOperators
-	private List<Unit> mutationOperators
+    EPackage theMetamodel = null
+	List<Unit> breedingOperators
+	List<Unit> mutationOperators
 	
-	private Optimisation optimisationModel
-	private IEvolverParametersFactory evolverParametersFactory
-	private boolean enableManualRandomMatching = false;
+	Optimisation optimisationModel
+	IEvolverParametersFactory evolverParametersFactory
+	boolean enableManualRandomMatching = false;
 	
 	IModelProvider initialModelProvider
 
@@ -58,8 +61,8 @@ class SolutionGenerator {
 		
 		engine.getOptions().put(Engine.OPTION_DETERMINISTIC, false);
 		
-		this.unitRunner = new UnitApplicationImpl(engine)
-		this.ruleRunner = new RuleApplicationImpl(engine)
+		this.unitRunner = new MdeoUnitApplicationImpl(engine)
+		this.ruleRunner = new MdeoRuleApplicationImpl(engine)
 		this.evolverParametersFactory = new EvolverParametersFactory(model.search.evolvers)
 		
 		//Disable henshin warnings
@@ -69,7 +72,7 @@ class SolutionGenerator {
     /**
      * This will produce a lazy iteration of possible initial solutions
      */
-    def Iterator<EObject> getInitialSolutions() {
+    def Iterator<Solution> getInitialSolutions() {
         initialModelProvider.initialModels(theMetamodel)
     }
     
@@ -85,13 +88,20 @@ class SolutionGenerator {
 	 * @param parents a list of two parent models
 	 * @returns a list of results offspring
 	 */
-	def List<EObject> crossover(List<EObject> parents) {
+	def List<Solution> crossover(List<Solution> parents) {
 				
-		val crossoverParents = new ArrayList<EObject>;
+		val crossoverParents = new ArrayList<Solution>;
 		
-		parents.forEach[parent | crossoverParents.add(EcoreUtil.copy(parent))]
+		parents.forEach[parent | crossoverParents.add(new Solution(parent))]
 		
-		val graph = new EGraphImpl(crossoverParents)
+		//TODO This seems a bit off, but perhaps we get rid of crossover altogether anyway
+		val graph = new EGraphImpl(crossoverParents.fold(new LinkedList<EObject>())[ parentsList, parent |
+			
+			parentsList.add(parent.getModel)
+			return parentsList;
+		])
+		
+		
 		val triedOperators = new ArrayList<Unit>()
 		
 		// Randomly pick one unit 
@@ -104,12 +114,22 @@ class SolutionGenerator {
 				//Run the selected Henshin Rule
 				if(runRuleOperator(operator, graph, parents)){
 					//println("Could run mutation" + matchToUse.name)
-					return graph.roots	
+					return graph.roots.fold(new LinkedList<Solution>())[ parentsList, root |
+			
+						parentsList.add(new Solution(root, new LinkedList<String>))
+						return parentsList
+						
+					]
 				}
 			} else {
 				if(runUnitOperator(operator, graph, parents)){
 					//println("Could run mutation" + matchToUse.name)
-					return graph.roots
+					return graph.roots.fold(new LinkedList<Solution>())[ parentsList, root |
+			
+						parentsList.add(new Solution(root, new LinkedList<String>()))
+						return parentsList
+						
+					]
 				}
 			}
 			
@@ -131,12 +151,12 @@ class SolutionGenerator {
 	}
 
 
-	def boolean runRuleOperator(Unit operator, EGraph graph, List<EObject> object){
+	def boolean runRuleOperator(Unit operator, EGraph graph, List<Solution> object){
 	
 		ruleRunner.EGraph = graph
 		ruleRunner.unit = operator
 		
-		if(operator.parameters != null){
+		if(operator.parameters !== null){
 			//TODO Not sure about this filter. Check what kind of parameter we would expect people
 			//to pass in
 			var inParameters = operator.parameters.filter[parameter | parameter.kind.equals(ParameterKind.IN)]
@@ -156,7 +176,7 @@ class SolutionGenerator {
 		
 	}
 	
-	def boolean runUnitOperator(Unit operator, EGraph graph, List<EObject> object){
+	def boolean runUnitOperator(Unit operator, EGraph graph, List<Solution> object){
 	
 		unitRunner.EGraph = graph
 		unitRunner.unit = operator
@@ -180,7 +200,7 @@ class SolutionGenerator {
 	 * Simple flag to allow us to decide what type of rule matching we want to use.
 	 * Henshin vs manually finding all the matches and randomly selecting one.
 	 */
-	def EObject evolveModel(EObject object){
+	def Solution evolveModel(Solution object){
 		
 		if(this.enableManualRandomMatching){
 			return evolveModelManual(object);
@@ -195,17 +215,17 @@ class SolutionGenerator {
      * This will try evolvers until one of them can be applied or all evolvers have been tried. If no evolver was applicable, returns <code>null</code>,
      * otherwise returns the result of the first randomly picked evolver that was applicable.
      */
-    def EObject evolveModelManual(EObject object) {
+    def Solution evolveModelManual(Solution object) {
     	
 		// Extract Henshin evolvers if necessary
 
 	
 		ChangeImpl.PRINT_WARNINGS = false;
 		
-		val candidateSolution = EcoreUtil.copy(object)
+		val candidateSolution = new Solution(object)
 
 		// Get all matches
-		val graph = new EGraphImpl(candidateSolution)
+		val graph = new EGraphImpl(candidateSolution.getModel)
 		val matchesView = mutationOperators.map [ evolver |
 			engine.findMatches(evolver as Rule, graph, null).map[m | new Pair<Rule, Match>(evolver as Rule, m)]
 		].flatten
@@ -226,7 +246,8 @@ class SolutionGenerator {
 
 			if (runner.execute(null)) {
 				
-				return graph.roots.head
+				candidateSolution.updateModel(graph.roots.head, matchToUse.key.name)
+				return candidateSolution
 			}
 		} 
 		
@@ -239,14 +260,15 @@ class SolutionGenerator {
      * This will try evolvers until one of them can be applied or all evolvers have been tried. If no evolver was applicable, returns <code>null</code>,
      * otherwise returns the result of the first randomly picked evolver that was applicable.
      */
-    def EObject evolveModelHenshin(EObject object) {
+    def Solution evolveModelHenshin(Solution object) {
     			
-		val candidateSolution = EcoreUtil.copy(object)
+    	
+		val candidateSolution = new Solution(object)
 
 		// Get all matches
-		val graph = new EGraphImpl(candidateSolution)
+		val graph = new EGraphImpl(candidateSolution.getModel)
 
-		// Randomly pick one match
+		// Randomly pick one search operator
 		val triedOperators = new ArrayList<Unit>()
 		var operator = mutationOperators.get(new Random().nextInt(mutationOperators.size()))
 					
@@ -254,16 +276,18 @@ class SolutionGenerator {
 			
 			if(operator.eClass().getClassifierID() == HenshinPackage.RULE){
 				//Run the selected Henshin Rule
-				if(runRuleOperator(operator, graph, Arrays.asList(object))){
+				if(runRuleOperator(operator, graph, Arrays.asList(candidateSolution))){
 			
 					println("Running operator: " + operator.name)
 					//println("Could run mutation" + matchToUse.name)
-					return graph.roots.head	
+					candidateSolution.updateModel(graph.roots.head, operator.name)
+					return candidateSolution
 				}
 			} else {
-				if(runUnitOperator(operator, graph, Arrays.asList(object))){
+				if(runUnitOperator(operator, graph, Arrays.asList(candidateSolution))){
 					//println("Could run mutation" + matchToUse.name)
-					return graph.roots.head	
+					candidateSolution.updateModel(graph.roots.head, operator.name)
+					return candidateSolution
 				}
 			}
 			

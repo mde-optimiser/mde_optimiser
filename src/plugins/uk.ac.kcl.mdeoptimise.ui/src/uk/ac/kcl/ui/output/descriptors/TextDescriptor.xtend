@@ -18,7 +18,7 @@ import uk.ac.kcl.optimisation.moea.problem.MoeaOptimisationSolution
 
 class TextDescriptor implements ResultsDescriptor {
 	
-	private ResourceSet resourceSet;
+	ResourceSet resourceSet;
 	
 	new(){
 		this.resourceSet = new ResourceSetImpl();	
@@ -51,7 +51,7 @@ class TextDescriptor implements ResultsDescriptor {
 			val solution = batch.solutions.get(i);
 			val modelPath = batchOutputPath + String.format("%08X", solution.model.hashCode) + ".xmi"
 			
-			solution.model.writeModel(modelPath)
+			solution.model.model.writeModel(modelPath)
 			storeSolutionData(batchWriter, modelPath, solution)
 		}
 		
@@ -84,6 +84,15 @@ class TextDescriptor implements ResultsDescriptor {
 			constraints.forEach[key, value | 
 				infoWriter.println(String.format("%s: %s", key, value))
 			]
+		}
+		
+		infoWriter.println("")
+		
+		var transformations = solution.model.transformationsChain
+		if(transformations.length > 0) {
+			infoWriter.println("Transformations chain:")
+			infoWriter.println(String.format("Length: %s", transformations.length))
+			infoWriter.println(String.format("Sequence: %s", transformations.join(" -> ")))
 		}
 	}
 	

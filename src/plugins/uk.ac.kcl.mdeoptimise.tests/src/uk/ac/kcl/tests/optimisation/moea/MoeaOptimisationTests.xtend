@@ -32,12 +32,11 @@ class MoeaOptimisationTests {
 	
 	Optimisation model
 	
-	private HenshinResourceSet henshinResourceSet
+	HenshinResourceSet henshinResourceSet
 
-    private EPackage theMetamodel
+    EPackage theMetamodel
 	
-	private List<Unit> henshinEvolvers = null
-	
+	List<Unit> henshinEvolvers = null
 	
 	def getResourceSet() {
         if (henshinResourceSet === null) {
@@ -78,6 +77,7 @@ class MoeaOptimisationTests {
 				}
 				goal {
 					objective MaximiseCRA maximise java { "models.moea.MaximiseCRA" }
+					objective MinimiseTransformations minimise java { "models.moea.MinimiseTransformations" }
 					constraint MinimiseClasslessFeatures java { "models.moea.MinimiseClasslessFeatures" }
 				}
 				search {
@@ -89,10 +89,10 @@ class MoeaOptimisationTests {
 				solver {
 					optimisation provider moea algorithm NSGAII variation mutation
 					parameters {
-						population: 30
+						population: 100
 					}
 					termination {
-						time: 15
+						evolutions: 50
 					}
 					batches 1
 				}

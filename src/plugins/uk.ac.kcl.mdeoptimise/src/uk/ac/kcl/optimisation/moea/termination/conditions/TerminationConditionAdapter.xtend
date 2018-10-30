@@ -6,17 +6,29 @@ import java.security.InvalidParameterException
 import org.moeaframework.core.termination.CompoundTerminationCondition
 import org.moeaframework.core.termination.MaxElapsedTime
 import org.moeaframework.core.termination.MaxFunctionEvaluations
+import uk.ac.kcl.mdeoptimise.OptimisationSpec
 
 class TerminationConditionAdapter {
 
+	TerminationCondition terminationCondition;
+	TerminationConditionParameters terminantionConditionParameters;
+	int populationSize;
 
-	private TerminationCondition terminationCondition;
-	private TerminationConditionParameters terminantionConditionParameters;
-
-	new(TerminationConditionParameters terminationConditionParameters){
+	new(OptimisationSpec optimisation, TerminationConditionParameters terminationConditionParameters){
 		this.terminantionConditionParameters = terminationConditionParameters;
+		this.populationSize = getPopulationSize(optimisation);
 	}
 
+	//TODO this is not in the best place
+	def getPopulationSize(OptimisationSpec optimisation){
+			var population = optimisation.algorithmParameters.parameters.filter[parameter | parameter.name.equals("population")]
+			
+			if(!population.empty) {
+				return population.head.value
+			}
+			
+		return 0
+	}
 	
 	def TerminationCondition getCondition(){
 		
@@ -54,7 +66,12 @@ class TerminationConditionAdapter {
 		var evolutions = this.terminantionConditionParameters.parameters.filter[p | p.name.equals("evolutions") ]
 		
 		if(!evolutions.empty){
-			return new MaxFunctionEvaluations(evolutions.head.value) 
+			
+			if(this.populationSize > 0) {
+				return new MaxFunctionEvaluations(evolutions.head.value * this.populationSize) 
+			} else {
+				return new MaxFunctionEvaluations(evolutions.head.value) 
+			}
 		}
 		
 		null
@@ -63,10 +80,10 @@ class TerminationConditionAdapter {
 	
 	private def TerminationCondition getTimeTerminationCondition(){
 		
-		var evolutions = this.terminantionConditionParameters.parameters.filter[p | p.name.equals("time") ]
+		var seconds = this.terminantionConditionParameters.parameters.filter[p | p.name.equals("time") ]
 		
-		if(!evolutions.empty){
-			return new MaxElapsedTime(evolutions.head.value * 1000)	
+		if(!seconds.empty){
+			return new MaxElapsedTime(seconds.head.value * 1000)	
 		}
 		
 		null

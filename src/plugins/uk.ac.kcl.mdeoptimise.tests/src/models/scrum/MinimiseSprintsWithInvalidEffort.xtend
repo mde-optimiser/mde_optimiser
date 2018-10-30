@@ -3,12 +3,13 @@ package models.scrum
 import org.eclipse.emf.ecore.EObject
 import uk.ac.kcl.interpreter.IGuidanceFunction
 import org.eclipse.emf.common.util.EList
+import uk.ac.kcl.interpreter.guidance.Solution
 
 class MinimiseSprintsWithInvalidEffort implements IGuidanceFunction {
 	
-	override computeFitness(EObject model) {
+	override computeFitness(Solution model) {
 		
-		var invalidSprints = (model.getFeature("sprints") as EList<EObject>).filter[ sprint | 
+		var invalidSprints = (model.model.getFeature("sprints") as EList<EObject>).filter[ sprint | 
 			
 			(sprint.getFeature("committedItem") as EList<EObject>).fold(0)[ result, item |
 				

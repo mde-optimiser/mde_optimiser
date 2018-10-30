@@ -1,11 +1,11 @@
 package models.java
 
-import org.eclipse.emf.ecore.EObject
 import uk.ac.kcl.interpreter.IGuidanceFunction
+import uk.ac.kcl.interpreter.guidance.Solution
 
 class JavaObjectiveFunction implements IGuidanceFunction {
 	
-	override computeFitness(EObject model) {
+	override computeFitness(Solution model) {
 		return 5
 	}
 	

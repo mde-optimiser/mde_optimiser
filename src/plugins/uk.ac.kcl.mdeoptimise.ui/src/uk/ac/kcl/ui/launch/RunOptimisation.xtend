@@ -25,21 +25,21 @@ class RunOptimisation {
 	static val Injector injector = new MDEOptimiseStandaloneSetup().createInjectorAndDoEMFRegistration()
 	
 	@Inject
-	private Provider<ResourceSet> resourceSetProvider
+	Provider<ResourceSet> resourceSetProvider
 	
-	private Options commandLineOptions;
+	Options commandLineOptions;
 	
 	/*
 	 * Flag to enable choice between Henshin nondeterministic matching in SolutionGenerator
 	 * and RandomMutationSelection for model evolution.
 	 */
-	private boolean enableManualRandomMatching = false;
+	boolean enableManualRandomMatching = false;
 	
 	/**
 	 * Static method invoked by the MDEOptimiser launch configuration
 	 * @param the configured mopt file path to run the optimisation from
 	 */
-	def public static void main(String[] args){
+	def static void main(String[] args){
 		val app = injector.getInstance(RunOptimisation)
 		
 		
