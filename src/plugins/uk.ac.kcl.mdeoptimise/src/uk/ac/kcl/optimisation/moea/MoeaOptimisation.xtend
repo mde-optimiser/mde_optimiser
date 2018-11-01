@@ -36,12 +36,12 @@ class MoeaOptimisation implements IOptimisation {
 		
 		var properties = new Properties()
 		
-		properties.put("populationSize", optimisationSpec.algorithmParameters.parameters.filter[p| p.name.equals("population")].head.value)
+		properties.put("populationSize", Integer.parseInt(optimisationSpec.algorithmParameters.parameters.filter[p| p.name.equals("population")].head.value))
 		//properties.put("maxEvolutions", optimisationSpec.algorithmPopulation * optimisationSpec.algorithmEvolutions)
 		properties.put("solutionGenerator", solutionGenerator)
 		//Crossover and mutation or mutation only
 		properties.put("variationType", optimisationSpec.algorithmVariation)
-		properties.put("terminationCondition", new TerminationConditionAdapter(optimisationSpec, optimisationSpec.terminationCondition).condition)
+		properties.put("terminationCondition", new TerminationConditionAdapter(optimisationSpec).condition)
 		return properties
 	}
 	
@@ -77,8 +77,5 @@ class MoeaOptimisation implements IOptimisation {
 	       .run()
 
 		return instrumenter;
-	
 	}
-	
-	
 }

@@ -57,7 +57,7 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
    * @generated
    * @ordered
    */
-  protected static final int VALUE_EDEFAULT = 0;
+  protected static final String VALUE_EDEFAULT = null;
 
   /**
    * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -67,7 +67,7 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
    * @generated
    * @ordered
    */
-  protected int value = VALUE_EDEFAULT;
+  protected String value = VALUE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -118,7 +118,7 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getValue()
+  public String getValue()
   {
     return value;
   }
@@ -128,9 +128,9 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setValue(int newValue)
+  public void setValue(String newValue)
   {
-    int oldValue = value;
+    String oldValue = value;
     value = newValue;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, MdeoptimisePackage.PARAMETER__VALUE, oldValue, value));
@@ -168,7 +168,7 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
         setName((String)newValue);
         return;
       case MdeoptimisePackage.PARAMETER__VALUE:
-        setValue((Integer)newValue);
+        setValue((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -207,7 +207,7 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
       case MdeoptimisePackage.PARAMETER__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case MdeoptimisePackage.PARAMETER__VALUE:
-        return value != VALUE_EDEFAULT;
+        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
     }
     return super.eIsSet(featureID);
   }

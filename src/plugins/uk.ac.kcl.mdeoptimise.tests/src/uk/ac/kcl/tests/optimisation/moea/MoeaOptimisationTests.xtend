@@ -63,6 +63,261 @@ class MoeaOptimisationTests {
         }
     }
     
+    
+        //Some tests to run optimisation manually for now
+	@Test
+	def void runMoeaOptimisationNSGA2CRADeltaTerminationConditionRulegen() {
+		
+			val pathPrefix = "gen/"
+			
+			model = parser.parse('''
+				problem {
+					basepath <src/models/cra/>
+					metamodel <architectureCRA.ecore>
+					model <TTC_InputRDG_A.xmi>
+				}
+				goal {
+					refine metamodel {"Feature", "isEncapsulatedBy", 1, 1}
+					objective MaximiseCRA maximise java { "models.moea.MaximiseCRA" }
+					objective MinimiseTransformations minimise java { "models.moea.MinimiseTransformations" }
+					constraint MinimiseClasslessFeatures java { "models.moea.MinimiseClasslessFeatures" }
+				}
+				search {
+					mutate {"Class"}
+				}
+				solver {
+					optimisation provider moea algorithm NSGAII variation mutation
+					parameters {
+						population: 100
+					}
+					termination {
+						delta: 5
+						iterations: 10
+					}
+					batches 1
+				}
+			''')
+
+			//Assert that there are no grammar issues
+			model.assertNoIssues
+
+			if(model !== null){
+					
+					val mdeoResultsOutput = new MDEOResultsOutput(new Date(), new Path(pathPrefix), new Path(""), model);	
+					
+					var experimentId = 0;
+					do {
+							            		
+	            		val startTime = System.nanoTime;
+	            		val optimisationInterpreter = new OptimisationInterpreter("", model);
+	            		optimisationInterpreter.enableManualRandomMatching = true
+	            		val optimisationOutcome = optimisationInterpreter.start
+	            		val endTime = System.nanoTime;
+	            		
+	            		val experimentDuration = (endTime - startTime) / 1000000
+	            		
+	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome, optimisationInterpreter.rulegenOperators))		
+						
+						experimentId++
+					} while(experimentId < model.solver.optimisation.algorithmBatches);
+
+	            	mdeoResultsOutput.saveOutcome();
+	        }
+	}
+    
+    
+    
+   
+    
+    	@Test
+	def void runNRPManualDelta() {
+		
+			val pathPrefix = "gen/"
+			
+			model = parser.parse('''
+				problem {
+				basepath <src/models/nrp/>
+				metamodel <nextReleaseProblem.ecore>
+				model <nrp-model-17-cus-33-req-197-sa.xmi>
+				}
+				goal {
+					refine metamodel {"Solution", "selectedArtifacts", 1, -1}
+					objective MinimiseCost minimise java { "models.nrp.MinimiseCost" }
+					objective MaximiseSatisfaction maximise java { "models.nrp.MaximiseSatisfaction" }
+				}
+				search {
+					mutate using <mutation.henshin> unit "modifySelectionWithHierarchy"
+					mutate using <mutation.henshin> unit "modifySingleSelection"
+					mutate using <mutation.henshin> unit "selectHighestRealisation"
+					mutate using <mutation.henshin> unit "fixDependencies"
+				}
+				solver {
+					optimisation provider moea algorithm NSGAII variation mutation
+					parameters {
+						population: 100
+					}
+					termination {
+						delta: 5
+						iterations: 10
+					}
+					batches 1
+				}
+			''')
+
+			//Assert that there are no grammar issues
+			model.assertNoIssues
+
+			if(model !== null){
+					
+					val mdeoResultsOutput = new MDEOResultsOutput(new Date(), new Path(pathPrefix), new Path(""), model);	
+					
+					var experimentId = 0;
+					do {
+							            		
+	            		val startTime = System.nanoTime;
+	            		val optimisationInterpreter = new OptimisationInterpreter("", model);
+	            		val optimisationOutcome = optimisationInterpreter.start();
+	            		val endTime = System.nanoTime;
+	            		
+	            		val experimentDuration = (endTime - startTime) / 1000000
+	            		
+	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome, optimisationInterpreter.rulegenOperators))		
+						
+						experimentId++
+					} while(experimentId < model.solver.optimisation.algorithmBatches);
+
+	            	mdeoResultsOutput.saveOutcome();
+	        }
+	}
+    
+    
+    @Test
+	def void runNRPRulegenDelta() {
+		
+			val pathPrefix = "gen/"
+			
+			model = parser.parse('''
+				problem {
+				basepath <src/models/nrp/>
+				metamodel <nextReleaseProblem.ecore>
+				model <nrp-model-17-cus-33-req-197-sa.xmi>
+				}
+				goal {
+					refine metamodel {"Solution", "selectedArtifacts", 1, -1}
+					objective MinimiseCost minimise java { "models.nrp.MinimiseCost" }
+					objective MaximiseSatisfaction maximise java { "models.nrp.MaximiseSatisfaction" }
+				}
+				search {
+					mutate {"Solution","selectedArtifacts"}
+				}
+				solver {
+					optimisation provider moea algorithm NSGAII variation mutation
+					parameters {
+						population: 100
+					}
+					termination {
+						delta: 5
+						iterations: 10
+					}
+					batches 1
+				}
+			''')
+
+			//Assert that there are no grammar issues
+			model.assertNoIssues
+
+			if(model !== null){
+					
+					val mdeoResultsOutput = new MDEOResultsOutput(new Date(), new Path(pathPrefix), new Path(""), model);	
+					
+					var experimentId = 0;
+					do {
+							            		
+	            		val startTime = System.nanoTime;
+	            		val optimisationInterpreter = new OptimisationInterpreter("", model);
+	            		val optimisationOutcome = optimisationInterpreter.start();
+	            		val endTime = System.nanoTime;
+	            		
+	            		val experimentDuration = (endTime - startTime) / 1000000
+	            		
+	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome, optimisationInterpreter.rulegenOperators))		
+						
+						experimentId++
+					} while(experimentId < model.solver.optimisation.algorithmBatches);
+
+	            	mdeoResultsOutput.saveOutcome();
+	        }
+	}
+    
+    
+    
+    
+    
+    
+    
+    //Some tests to run optimisation manually for now
+	@Test
+	def void runMoeaOptimisationNSGA2CRADeltaTerminationConditionManual() {
+		
+			val pathPrefix = "gen/"
+			
+			model = parser.parse('''
+				problem {
+					basepath <src/models/cra/>
+					metamodel <architectureCRA.ecore>
+					model <TTC_InputRDG_C.xmi>
+				}
+				goal {
+					objective MaximiseCRA maximise java { "models.moea.MaximiseCRA" }
+					//objective MinimiseTransformations minimise java { "models.moea.MinimiseTransformations" }
+					constraint MinimiseClasslessFeatures java { "models.moea.MinimiseClasslessFeatures" }
+				}
+				search {
+					mutate using <craEvolvers.henshin> unit "createClass"
+					mutate using <craEvolvers.henshin> unit "assignFeature"
+					mutate using <craEvolvers.henshin> unit "moveFeature"
+					mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
+				}
+				solver {
+					optimisation provider moea algorithm NSGAII variation mutation
+					parameters {
+						population: 100
+					}
+					termination {
+						delta: 5
+						iterations: 10
+					}
+					batches 10
+				}
+			''')
+
+			//Assert that there are no grammar issues
+			model.assertNoIssues
+
+			if(model !== null){
+					
+					val mdeoResultsOutput = new MDEOResultsOutput(new Date(), new Path(pathPrefix), new Path(""), model);	
+					
+					var experimentId = 0;
+					do {
+							            		
+	            		val startTime = System.nanoTime;
+	            		val optimisationInterpreter = new OptimisationInterpreter("", model);
+	            		optimisationInterpreter.enableManualRandomMatching = false
+	            		val optimisationOutcome = optimisationInterpreter.start
+	            		val endTime = System.nanoTime;
+	            		
+	            		val experimentDuration = (endTime - startTime) / 1000000
+	            		
+	            		mdeoResultsOutput.logBatch(new MDEOBatch(experimentId, experimentDuration, optimisationOutcome, optimisationInterpreter.rulegenOperators))		
+						
+						experimentId++
+					} while(experimentId < model.solver.optimisation.algorithmBatches);
+
+	            	mdeoResultsOutput.saveOutcome();
+	        }
+	}
+    
     //Some tests to run optimisation manually for now
 	@Test
 	def void runMoeaOptimisationNSGA2CRA() {

@@ -176,18 +176,18 @@ SignedInteger returns ecore::EIntegerObject:
 
 AlgorithmParameters:
 	"{"
-		parameters+=Parameter
+		parameters+=Parameter+
 	"}"
 ;
 
 TerminationConditionParameters:
 	"{"
-		parameters+=Parameter
+		parameters+=Parameter+
 	"}"
 ;
 
 Parameter:
-	name=ID ParameterAssignment value=INT
+	name=ID ParameterAssignment value=Number
 ;
 
 ParameterAssignment:

@@ -7,7 +7,7 @@ class MinimiseTransformations extends AbstractModelQueryFitnessFunction {
 	override double computeFitness(Solution model) {
 		//val cohesion = calculateCohesionRatio(model);
 
-		println("Matches found: " + model.transformationsChain.length)
+		//println("Matches found: " + model.transformationsChain.length)
 		return model.transformationsChain.length
 	}
 	

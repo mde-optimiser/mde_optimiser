@@ -7282,9 +7282,16 @@ rule__AlgorithmParameters__Group__1__Impl
 	}
 :
 (
-	{ before(grammarAccess.getAlgorithmParametersAccess().getParametersAssignment_1()); }
-	(rule__AlgorithmParameters__ParametersAssignment_1)
-	{ after(grammarAccess.getAlgorithmParametersAccess().getParametersAssignment_1()); }
+	(
+		{ before(grammarAccess.getAlgorithmParametersAccess().getParametersAssignment_1()); }
+		(rule__AlgorithmParameters__ParametersAssignment_1)
+		{ after(grammarAccess.getAlgorithmParametersAccess().getParametersAssignment_1()); }
+	)
+	(
+		{ before(grammarAccess.getAlgorithmParametersAccess().getParametersAssignment_1()); }
+		(rule__AlgorithmParameters__ParametersAssignment_1)*
+		{ after(grammarAccess.getAlgorithmParametersAccess().getParametersAssignment_1()); }
+	)
 )
 ;
 finally {
@@ -7363,9 +7370,16 @@ rule__TerminationConditionParameters__Group__1__Impl
 	}
 :
 (
-	{ before(grammarAccess.getTerminationConditionParametersAccess().getParametersAssignment_1()); }
-	(rule__TerminationConditionParameters__ParametersAssignment_1)
-	{ after(grammarAccess.getTerminationConditionParametersAccess().getParametersAssignment_1()); }
+	(
+		{ before(grammarAccess.getTerminationConditionParametersAccess().getParametersAssignment_1()); }
+		(rule__TerminationConditionParameters__ParametersAssignment_1)
+		{ after(grammarAccess.getTerminationConditionParametersAccess().getParametersAssignment_1()); }
+	)
+	(
+		{ before(grammarAccess.getTerminationConditionParametersAccess().getParametersAssignment_1()); }
+		(rule__TerminationConditionParameters__ParametersAssignment_1)*
+		{ after(grammarAccess.getTerminationConditionParametersAccess().getParametersAssignment_1()); }
+	)
 )
 ;
 finally {
@@ -20075,9 +20089,9 @@ rule__Parameter__ValueAssignment_2
 	}
 :
 	(
-		{ before(grammarAccess.getParameterAccess().getValueINTTerminalRuleCall_2_0()); }
-		RULE_INT
-		{ after(grammarAccess.getParameterAccess().getValueINTTerminalRuleCall_2_0()); }
+		{ before(grammarAccess.getParameterAccess().getValueNumberParserRuleCall_2_0()); }
+		ruleNumber
+		{ after(grammarAccess.getParameterAccess().getValueNumberParserRuleCall_2_0()); }
 	)
 ;
 finally {

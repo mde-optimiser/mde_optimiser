@@ -59,12 +59,12 @@ public interface Parameter extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Value</em>' attribute.
-   * @see #setValue(int)
+   * @see #setValue(String)
    * @see uk.ac.kcl.mdeoptimise.MdeoptimisePackage#getParameter_Value()
    * @model
    * @generated
    */
-  int getValue();
+  String getValue();
 
   /**
    * Sets the value of the '{@link uk.ac.kcl.mdeoptimise.Parameter#getValue <em>Value</em>}' attribute.
@@ -74,6 +74,6 @@ public interface Parameter extends EObject
    * @see #getValue()
    * @generated
    */
-  void setValue(int value);
+  void setValue(String value);
 
 } // Parameter

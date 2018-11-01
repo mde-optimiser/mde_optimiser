@@ -8,7 +8,7 @@ class MinimiseClasslessFeatures extends AbstractModelQueryFitnessFunction {
 	
 	override computeFitness(Solution model) {
 		var fitness = (model.model.getFeature("features") as EList<EObject>).filter[feature | feature.getFeature("isEncapsulatedBy") == null].size;
-		println("Classless features:" + fitness)
+		//println("Classless features:" + fitness)
 
 		return fitness;
 	}

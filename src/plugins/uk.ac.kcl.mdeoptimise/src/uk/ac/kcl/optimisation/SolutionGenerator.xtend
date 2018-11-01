@@ -66,7 +66,7 @@ class SolutionGenerator {
 		this.evolverParametersFactory = new EvolverParametersFactory(model.search.evolvers)
 		
 		//Disable henshin warnings
-		//ChangeImpl.PRINT_WARNINGS = false;
+		ChangeImpl.PRINT_WARNINGS = false;
 	}
 
     /**
@@ -236,7 +236,7 @@ class SolutionGenerator {
 			// Randomly pick one match
 			val matchToUse = matches.get(new Random().nextInt(matches.size))
 			
-			println("Using rule: " + matchToUse.key.name)
+			//println("Using rule: " + matchToUse.key.name)
 
 			// Apply the match
 			val runner = new RuleApplicationImpl(engine)
@@ -278,7 +278,7 @@ class SolutionGenerator {
 				//Run the selected Henshin Rule
 				if(runRuleOperator(operator, graph, Arrays.asList(candidateSolution))){
 			
-					println("Running operator: " + operator.name)
+					//println("Running operator: " + operator.name)
 					//println("Could run mutation" + matchToUse.name)
 					candidateSolution.updateModel(graph.roots.head, operator.name)
 					return candidateSolution

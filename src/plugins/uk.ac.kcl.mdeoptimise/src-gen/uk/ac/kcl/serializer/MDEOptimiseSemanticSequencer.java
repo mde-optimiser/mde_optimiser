@@ -424,7 +424,7 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 	 *     AlgorithmParameters returns AlgorithmParameters
 	 *
 	 * Constraint:
-	 *     parameters+=Parameter
+	 *     parameters+=Parameter+
 	 */
 	protected void sequence_AlgorithmParameters(ISerializationContext context, AlgorithmParameters semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -692,7 +692,7 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 	 *     Parameter returns Parameter
 	 *
 	 * Constraint:
-	 *     (name=ID value=INT)
+	 *     (name=ID value=Number)
 	 */
 	protected void sequence_Parameter(ISerializationContext context, uk.ac.kcl.mdeoptimise.Parameter semanticObject) {
 		if (errorAcceptor != null) {
@@ -703,7 +703,7 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getParameterAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getParameterAccess().getValueINTTerminalRuleCall_2_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getParameterAccess().getValueNumberParserRuleCall_2_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -828,7 +828,7 @@ public class MDEOptimiseSemanticSequencer extends XbaseSemanticSequencer {
 	 *     TerminationConditionParameters returns TerminationConditionParameters
 	 *
 	 * Constraint:
-	 *     parameters+=Parameter
+	 *     parameters+=Parameter+
 	 */
 	protected void sequence_TerminationConditionParameters(ISerializationContext context, TerminationConditionParameters semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

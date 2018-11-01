@@ -31,7 +31,12 @@ class MoeaOptimisationSolution extends Solution {
 	}
 	
 	def uk.ac.kcl.interpreter.guidance.Solution getModel(){
-		(getVariable(0) as MoeaOptimisationVariable).model
+		
+		if(getVariable(0) == null) {
+			return null
+		}
+		
+		return (getVariable(0) as MoeaOptimisationVariable).model
 	}
 	
 	def void setModel(uk.ac.kcl.interpreter.guidance.Solution model) {

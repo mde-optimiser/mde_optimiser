@@ -24,7 +24,7 @@
 
 		<mkdir dir="${dist.lib.dir}" />
 
-		<jar jarfile="${dist.lib.dir}/mdeo-dependencies.jar">
+		<jar jarfile="${dist.lib.dir}/mdeo-dependencies.jar" zip64Mode="always">
 			<zipgroupfileset dir="${lib.dir}">
 				<include name="**/*.jar" />
 			</zipgroupfileset>

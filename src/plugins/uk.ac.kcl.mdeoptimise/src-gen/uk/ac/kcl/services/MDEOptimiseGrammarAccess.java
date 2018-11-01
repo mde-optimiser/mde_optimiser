@@ -1149,17 +1149,17 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//AlgorithmParameters:
 		//	"{"
-		//	parameters+=Parameter
+		//	parameters+=Parameter+
 		//	"}";
 		@Override public ParserRule getRule() { return rule; }
 		
-		//"{" parameters+=Parameter "}"
+		//"{" parameters+=Parameter+ "}"
 		public Group getGroup() { return cGroup; }
 		
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_0() { return cLeftCurlyBracketKeyword_0; }
 		
-		//parameters+=Parameter
+		//parameters+=Parameter+
 		public Assignment getParametersAssignment_1() { return cParametersAssignment_1; }
 		
 		//Parameter
@@ -1178,17 +1178,17 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//TerminationConditionParameters:
 		//	"{"
-		//	parameters+=Parameter
+		//	parameters+=Parameter+
 		//	"}";
 		@Override public ParserRule getRule() { return rule; }
 		
-		//"{" parameters+=Parameter "}"
+		//"{" parameters+=Parameter+ "}"
 		public Group getGroup() { return cGroup; }
 		
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_0() { return cLeftCurlyBracketKeyword_0; }
 		
-		//parameters+=Parameter
+		//parameters+=Parameter+
 		public Assignment getParametersAssignment_1() { return cParametersAssignment_1; }
 		
 		//Parameter
@@ -1204,13 +1204,13 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
 		private final RuleCall cParameterAssignmentParserRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
 		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cValueINTTerminalRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
+		private final RuleCall cValueNumberParserRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
 		
 		//Parameter:
-		//	name=ID ParameterAssignment value=INT;
+		//	name=ID ParameterAssignment value=Number;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name=ID ParameterAssignment value=INT
+		//name=ID ParameterAssignment value=Number
 		public Group getGroup() { return cGroup; }
 		
 		//name=ID
@@ -1222,11 +1222,11 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 		//ParameterAssignment
 		public RuleCall getParameterAssignmentParserRuleCall_1() { return cParameterAssignmentParserRuleCall_1; }
 		
-		//value=INT
+		//value=Number
 		public Assignment getValueAssignment_2() { return cValueAssignment_2; }
 		
-		//INT
-		public RuleCall getValueINTTerminalRuleCall_2_0() { return cValueINTTerminalRuleCall_2_0; }
+		//Number
+		public RuleCall getValueNumberParserRuleCall_2_0() { return cValueNumberParserRuleCall_2_0; }
 	}
 	public class ParameterAssignmentElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.MDEOptimise.ParameterAssignment");
@@ -1703,7 +1703,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//AlgorithmParameters:
 	//	"{"
-	//	parameters+=Parameter
+	//	parameters+=Parameter+
 	//	"}";
 	public AlgorithmParametersElements getAlgorithmParametersAccess() {
 		return pAlgorithmParameters;
@@ -1715,7 +1715,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//TerminationConditionParameters:
 	//	"{"
-	//	parameters+=Parameter
+	//	parameters+=Parameter+
 	//	"}";
 	public TerminationConditionParametersElements getTerminationConditionParametersAccess() {
 		return pTerminationConditionParameters;
@@ -1726,7 +1726,7 @@ public class MDEOptimiseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Parameter:
-	//	name=ID ParameterAssignment value=INT;
+	//	name=ID ParameterAssignment value=Number;
 	public ParameterElements getParameterAccess() {
 		return pParameter;
 	}

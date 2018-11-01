@@ -10,7 +10,7 @@ class MaximiseCRA extends AbstractModelQueryFitnessFunction {
 		val cohesion = calculateCohesionRatio(model.model);
 		val coupling = calculateCouplingRatio(model.model);
 
-		println("Calculated CRA : " + (cohesion - coupling))
+		//println("Calculated CRA : " + (cohesion - coupling))
 		
 		return (cohesion - coupling) * -1
 	}

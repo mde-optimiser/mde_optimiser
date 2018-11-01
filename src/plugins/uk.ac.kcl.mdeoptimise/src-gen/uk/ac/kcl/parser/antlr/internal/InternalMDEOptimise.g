@@ -1973,7 +1973,7 @@ ruleAlgorithmParameters returns [EObject current=null]
 					afterParserOrEnumRuleCall();
 				}
 			)
-		)
+		)+
 		otherlv_2='}'
 		{
 			newLeafNode(otherlv_2, grammarAccess.getAlgorithmParametersAccess().getRightCurlyBracketKeyword_2());
@@ -2019,7 +2019,7 @@ ruleTerminationConditionParameters returns [EObject current=null]
 					afterParserOrEnumRuleCall();
 				}
 			)
-		)
+		)+
 		otherlv_2='}'
 		{
 			newLeafNode(otherlv_2, grammarAccess.getTerminationConditionParametersAccess().getRightCurlyBracketKeyword_2());
@@ -2070,19 +2070,20 @@ ruleParameter returns [EObject current=null]
 		}
 		(
 			(
-				lv_value_2_0=RULE_INT
 				{
-					newLeafNode(lv_value_2_0, grammarAccess.getParameterAccess().getValueINTTerminalRuleCall_2_0());
+					newCompositeNode(grammarAccess.getParameterAccess().getValueNumberParserRuleCall_2_0());
 				}
+				lv_value_2_0=ruleNumber
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getParameterRule());
+						$current = createModelElementForParent(grammarAccess.getParameterRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"value",
 						lv_value_2_0,
-						"org.eclipse.xtext.xbase.Xbase.INT");
+						"org.eclipse.xtext.xbase.Xbase.Number");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
