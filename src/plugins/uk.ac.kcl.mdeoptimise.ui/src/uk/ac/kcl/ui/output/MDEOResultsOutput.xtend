@@ -56,20 +56,31 @@ class MDEOResultsOutput {
 
 	def void saveOutcome(Integer customBatch){
 		
-		val experimentDate = new SimpleDateFormat("yyMMdd-HHmmss").format(experimentStartTime);
-		val outcomePath = projectRoot.append(String.format("mdeo-results/experiment-%s-%s-matching-%s/", 
-			moptFile.lastSegment, experimentDate, this.matchingType
+		//When running custom batches no date is needed
+
+		
+		var outcomePath = projectRoot.append(String.format("mdeo-results/experiment-%s-matching-%s/", 
+			moptFile.lastSegment, this.matchingType
 		));
+		
+		if(customBatch === null) {
+			val experimentDate = new SimpleDateFormat("yyMMdd-HHmmss").format(experimentStartTime);
+			outcomePath = projectRoot.append(String.format("mdeo-results/experiment-%s-%s-matching-%s/", 
+				moptFile.lastSegment, experimentDate, this.matchingType
+			));
+		}
 		
 		//Used to generate the experiments summary	
 		val batchesOutput = new StringBuilder();
+		
+		val outcomePathVal = outcomePath
 		
 		batches.forEach[ batch | 
 		
 			batchesOutput.append("============================================")
 			batchesOutput.append(System.getProperty("line.separator"));
 			
-			val batchOutputPath = outcomePath.append(String.format("batch-%s/", batch.id))
+			val batchOutputPath = outcomePathVal.append(String.format("batch-%s/", batch.id))
 			
 			this.resultsDescriptors.forEach[ descriptor |
 				descriptor.generateDescription(batchOutputPath, batch, batchesOutput);
