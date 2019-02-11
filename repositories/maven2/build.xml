@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+    <project name="build" default="dist">
+    <import file="../../build/ant/build-common.xml"/>
+
+    <target name="dist" depends="depend.maven.repositories.eclipse" description="Build distributable">
+      <echo message="${ant.project.name} - building all monorepo components using '${build.environment}'  environment configuration"/>
+    </target>
+<!-- #   <java binary> <vmargs> -jar <equinox launcher jar> <command> <command opts> -->
+    <target name="depend.maven.repositories.eclipse">
+      <java dir="${dependencies.basedir}/build/cbiaggr/tool"
+          jar="${dependencies.basedir}/build/cbiaggr/tool/plugins/org.eclipse.equinox.launcher_1.5.0.v20180207-1446.jar"
+          fork="true"
+          failonerror="true"
+          maxmemory="256m">
+      <arg value="aggregate" />
+      <arg value="--buildModel" />
+      <arg value="${dependencies.basedir}/repositories/p2/uk.ac.kcl.mdeo.repository.aggregation/src/uk.ac.kcl.mdeo.repository.p2.eclipse.aggr" />
+      </java>
+    </target>
+</project>

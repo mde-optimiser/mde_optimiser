@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="mopt.xtext" default="default">
+    <import file="../../build/ant/build-common.xml"/>
+
+    <target name="dist" depends="maven.build"/>
+
+    <target name="maven.build" description="Build Maven repository cache from P2 artifacts">
+        <exec dir="." executable="mvn" failifexecutionfails="true" failonerror="true">
+            <arg value="-f" />
+            <arg value="src/pom.xml"/>
+            <arg value="clean" />
+            <arg value="install" />
+        </exec>
+    </target>
+
+</project>

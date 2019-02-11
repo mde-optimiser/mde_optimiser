@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aggregator:Aggregation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:aggregator="http://www.eclipse.org/cbi/p2repo/2011/aggregator/1.1.0" label="Eclipse Dependencies" buildRoot="../../../../output/p2/p2.eclipse.repository/" packedStrategy="UNPACK" type="M" mavenResult="true" versionFormat="MavenRelease">
+  <validationSets label="Eclipse">
+    <contributions label="Eclipse">
+      <repositories location="http://download.eclipse.org/modeling/emft/mwe/updates/releases/2.9.1/">
+        <features name="org.eclipse.emf.mwe2.launcher.feature.group"/>
+      </repositories>
+      <repositories location="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.15.0/">
+        <features name="org.eclipse.xtext.sdk.feature.group"/>
+      </repositories>
+      <repositories location="http://download.eclipse.org/modeling/emft/henshin/updates/nightly">
+        <bundles name="org.eclipse.emf.henshin.interpreter"/>
+        <bundles name="org.eclipse.emf.henshin.model"/>
+        <bundles name="org.eclipse.emf.henshin.trace"/>
+      </repositories>
+      <repositories location="http://blog.onboot.org/org.sidiff.serge/deploy/serge-p2-repo/target/repository/"/>
+      <repositories location="http://download.eclipse.org/releases/2018-09">
+        <bundles name="org.eclipse.emf.ecore.xmi"/>
+        <bundles name="org.eclipse.equinox.common"/>
+        <bundles name="org.eclipse.osgi"/>
+        <bundles name="org.eclipse.emf.ecore"/>
+        <bundles name="org.eclipse.emf.common"/>
+        <bundles name="org.eclipse.emf.ecore.change"/>
+        <bundles name="org.eclipse.debug.core"/>
+        <bundles name="org.eclipse.core.variables"/>
+        <bundles name="lpg.runtime.java"/>
+        <bundles name="org.eclipse.ocl.common"/>
+        <bundles name="org.eclipse.ocl.ecore"/>
+        <bundles name="org.eclipse.core.expressions"/>
+        <bundles name="org.eclipse.core.filesystem"/>
+        <bundles name="org.eclipse.core.runtime"/>
+        <bundles name="org.eclipse.core.jobs"/>
+        <bundles name="org.eclipse.equinox.registry"/>
+        <bundles name="org.eclipse.equinox.preferences"/>
+        <bundles name="org.eclipse.core.contenttype"/>
+        <bundles name="org.eclipse.equinox.app"/>
+      </repositories>
+      <repositories location="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.15.0/"/>
+    </contributions>
+  </validationSets>
+  <configurations architecture="x86_64"/>
+</aggregator:Aggregation>

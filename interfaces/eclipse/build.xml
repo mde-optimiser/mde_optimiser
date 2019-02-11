@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="mopt.xtext" default="default">
+    <import file="../../build/ant/build-common.xml"/>
+
+
+
+    <target name="dist" depends="maven.build"/>
+
+    <target name="maven.build" depends="render.target.template">
+        <exec dir="." executable="mvn" failifexecutionfails="true" failonerror="true">
+            <arg value="-f" />
+            <arg value="src/pom.xml"/>
+            <arg value="clean" />
+            <arg value="install" />
+        </exec>
+    </target>
+
+    <!-- Render target file from a template to point to the local maven repository -->
+
+    <target name="render.target.template">
+
+        <!-- Copy task that replaces values and copies the files -->
+        <copy todir="src/uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.target/" verbose="true" overwrite="true" failonerror="true">
+
+            <!-- List of files to be processed -->
+            <fileset dir="src/uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.target/template/">
+                <!-- Filter files to be processed by file name pattern -->
+                <include name="*.template" />
+            </fileset>
+
+            <!-- Mapper to transform filename. Removes '.template' from the file
+                name when copying the file to output directory -->
+
+            <mapper type="regexp" from="(.*).template(.*)" to="\1\2" />
+            <!-- Filter chain that replaces the template values with actual values
+                fetched from properties file -->
+            <filterchain>
+                <expandproperties />
+            </filterchain>
+        </copy>
+    </target>
+
+</project>
