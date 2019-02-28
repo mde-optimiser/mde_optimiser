@@ -1,15 +1,9 @@
 package uk.ac.kcl.inf.mdeoptimiser.languages.validation
 
-import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ObjectiveInterpreterSpec
-import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.validation.Check
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.emf.common.util.URI
-//import org.eclipse.core.resources.ResourcesPlugin
-//import org.eclipse.core.runtime.Path
-//import org.eclipse.jdt.core.JavaCore
-//import org.eclipse.core.runtime.Platform
-import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ConstraintInterpreterSpec
+import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmSpec
+import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.TerminationConditionSpec
+import uk.ac.kcl.inf.mdeoptimiser.languages.validation.algorithm.AlgorithmParametersConfiguration
 
 /**
  * This class contains custom validation rules. 
@@ -18,69 +12,66 @@ import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ConstraintInterpreterSpec
  */
 class MoptValidator extends AbstractMoptValidator {
 
-	public static val MDEO_PREFIX = "uk.ac.kcl.mdeoptimiser.";
-	public static val MDEO_LIB_NOT_ON_CLASSPATH = MDEO_PREFIX + 'mdeo_lib_not_on_classpath'
-
-	@Check
-	def void checkClasspathContainsMdeoLibraryForJavaObjectives(ObjectiveInterpreterSpec objectiveSpec) {
-		//if (objectiveSpec.objectiveType.equals("java") && workspaceAccessible) {
-		if (objectiveSpec.objectiveType.equals("java")) {
-	
-			var resourceURI = EcoreUtil2.getPlatformResourceOrNormalizedURI(objectiveSpec.eContainer);
-			checkMDEOClasspath(objectiveSpec, resourceURI);
-
-		}
-	}
-
-	@Check
-	def void checkClasspathContainsMdeoLibraryForJavaConstraints(ConstraintInterpreterSpec objectiveSpec) {
-		
-		//if (objectiveSpec.constraintType.equals("java") && workspaceAccessible) {
-		if (objectiveSpec.constraintType.equals("java")) {
-
-			var resourceURI = EcoreUtil2.getPlatformResourceOrNormalizedURI(objectiveSpec.eContainer);
-			checkMDEOClasspath(objectiveSpec, resourceURI);
-		}
-
-	}
-	
-	//TODO This might be a heavy check
 	/**
-	 * Check if eclipse is running in GUI mode or headless
+	 * Check that there are no duplicate parameter in the algorithm specification
 	 */
-//	def boolean workspaceAccessible(){
-//		//return Platform.isRunning
-//	}
-
-	def void checkMDEOClasspath(EObject contextObject, URI resourceURI) {
-		
-		
-//		var platformStringUri = resourceURI.toPlatformString(true)
-//		
-//		//Is the resource uri valid?
-//		if(resourceURI.empty || platformStringUri === null){
-//			return
-//		}
-//		
-//		var path = new Path(platformStringUri)
-//		
-//		var mdeoOnClasspath = false;
-//		
-//		var project = ResourcesPlugin.getWorkspace().root.getFile(path)
-//
-//		var javaProject = JavaCore.create(project.project);
-//		var classpath = javaProject.rawClasspath
-//
-//		for (var i = 0; i < classpath.length; i++) {
-//			if (classpath.get(i).getPath().toString().indexOf("uk.ac.kcl.mdeoptimise.MDEO_CONTAINER/dsl") != -1) {
-//				mdeoOnClasspath = true;
-//			}
-//		}
-//
-//		if (!mdeoOnClasspath) {
-//			error("Couldn't find the mandatory library 'uk.ac.kcl.mdeoptimise' on the classpath.", contextObject, null,
-//				MoptValidatorIssues.MDEO_LIB_NOT_ON_CLASSPATH);
-//		}
-	}
+    @Check
+    def void checkAlgorithmSpecHasNoDuplicateParameters(AlgorithmSpec algorithm) {
+    	
+    	val dupParameters = algorithm.parameters.groupBy[parameter  | parameter.name].filter[key, value | value.length > 1];
+    	
+    	dupParameters.forEach[p1, p2| 
+    		error(String.format("Duplicate parameter found. Expecting '%s' to be specified only once. Specified %s times instead", p1, p2.length), algorithm, null,
+				MoptValidatorIssues.DUPLICATE_PARAMETER_ENCOUNTERED);
+    	]
+    }
+	
+	/**
+	 * Check that there are no duplicate parameters in the termination condition.
+	 */
+	@Check
+    def void checkTerminationSpecHasNoDuplicateParameters(TerminationConditionSpec terminationCondition) {
+    	
+    	val dupParameters = terminationCondition.parameters.groupBy[parameter  | parameter.name].filter[key, value | value.length > 1];
+    	
+    	dupParameters.forEach[p1, p2| 
+    		error(String.format("Duplicate parameter found. Expecting '%s' to be specified only once. Specified '%s' times instead", p1, p2.length), 
+    			terminationCondition, null, MoptValidatorIssues.DUPLICATE_PARAMETER_ENCOUNTERED);
+    	]
+    }
+    
+    /**
+     * Check that all the configured required algorithm parameters are specified.
+     */
+    @Check
+    def void checkAlgorithmHasAllRequiredParameters(AlgorithmSpec algorithm){
+    	
+    	val requiredParameters = AlgorithmParametersConfiguration.getInstance().get(algorithm).filter[parameter | parameter.required == true]
+    	
+    	requiredParameters.forEach[ requiredParameter |
+    		
+    		if(algorithm.parameters.filter[ algorithmParameter | algorithmParameter.name.equals(requiredParameter.name)].empty){
+    			error(String.format("Required parameter '%s' must be specified.", requiredParameter.name),
+    				null, MoptValidatorIssues.REQUIRED_PARAMETER_NOT_FOUND)
+    		}	
+    	]
+    }
+    
+    /**
+     * Check that no unexpected algorithm parameters are specified.
+     */
+    @Check
+    def void checkAlgorithmHasNoRedundantParameters(AlgorithmSpec algorithm) {
+    	
+    	val expectedParameters = AlgorithmParametersConfiguration.getInstance().get(algorithm);
+    	
+    	expectedParameters.forEach[ expectedParameter |
+    		
+    		if(algorithm.parameters.filter[ algorithmParameter | algorithmParameter.name.equals(expectedParameter)].empty){
+    			warning(String.format("Unexpected parameter '%s' will be ignored.", expectedParameter.name),
+    				null, MoptValidatorIssues.UNEXPECTED_PARAMETER_FOUND)
+    		}
+    	]	
+    }
 
 }

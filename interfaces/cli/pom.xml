@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>uk.ac.kcl.inf.mdeoptimiser</groupId>
-	  <artifactId>uk.ac.kcl.inf.mdeoptimiser.parent</artifactId>
+		<artifactId>uk.ac.kcl.inf.mdeoptimiser.parent</artifactId>
 		<version>${global.version}</version>
 		<relativePath>../../build/maven/pom.xml</relativePath>
 	</parent>
@@ -46,19 +46,46 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
+			
+			          <plugin>
+              <artifactId>maven-assembly-plugin</artifactId>
+              <configuration>
+                  <archive>
+                      <manifest>
+                          <addClasspath>true</addClasspath>
+                          <mainClass>uk.ac.kcl.inf.mdeoptimiser.interfaces.cli.Run</mainClass>
+                      </manifest>
+                  </archive>
+                  <descriptorRefs>
+                      <descriptorRef>jar-with-dependencies</descriptorRef>
+                  </descriptorRefs>
+              </configuration>
+              <executions>
+                  <execution>
+                      <id>make-my-jar-with-dependencies</id>
+                      <phase>package</phase>
+                      <goals>
+                          <goal>single</goal>
+                      </goals>
+                  </execution>
+              </executions>
+          </plugin>
+
+			
+			
 			<plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-source-plugin</artifactId>
-    <executions>
-        <execution>
-            <id>attach-sources</id>
-            <goals>
-                <goal>test-jar</goal>
-                <goal>jar</goal>
-            </goals>
-        </execution>
-    </executions>
-</plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>test-jar</goal>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 	<dependencies>
@@ -100,10 +127,10 @@
 			</artifactId>
 			<version>${global.version}</version>
 		</dependency>
-		    <dependency>
-      <groupId>org.eclipse.platform</groupId>
-      <artifactId>org.eclipse.core.runtime</artifactId>
-      <version>[3.13.0,4.0.0)</version>
-    </dependency>
+		<dependency>
+			<groupId>org.eclipse.platform</groupId>
+			<artifactId>org.eclipse.core.runtime</artifactId>
+			<version>[3.13.0,4.0.0)</version>
+		</dependency>
 	</dependencies>
 </project>

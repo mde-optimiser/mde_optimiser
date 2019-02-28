@@ -17,7 +17,7 @@ class DeltaTerminationCondition implements TerminationCondition {
 	int unchangedDeltaSteps;
 	
 	new(Parameter deltaParameter, Parameter deltaStepsParameter){
-		this.delta = Double.parseDouble(deltaParameter.value)
+		this.delta = Double.parseDouble(deltaParameter.value.numeric)
 		setDeltaSteps(deltaStepsParameter)
 	}
 	
@@ -27,7 +27,7 @@ class DeltaTerminationCondition implements TerminationCondition {
 			//Default to three iterations
 			this.deltaSteps = 3
 		} else {
-			this.deltaSteps = Double.parseDouble(iterationsParameter.value)
+			this.deltaSteps = Double.parseDouble(iterationsParameter.value.numeric)
 		}
 	}
 	

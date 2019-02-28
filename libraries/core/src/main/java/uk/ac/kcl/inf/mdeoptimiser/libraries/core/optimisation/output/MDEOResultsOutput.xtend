@@ -32,12 +32,8 @@ class MDEOResultsOutput {
 	Optimisation moptConfiguration;
 	List<ResultsDescriptor> resultsDescriptors;
 	boolean classicRuleMatchingEnabled;
-	
+		
 	new(Date startTime, Path projectRoot, Path moptFile, Optimisation moptConfiguration){
-		this(startTime, projectRoot, moptFile, moptConfiguration, false)
-	}
-	
-	new(Date startTime, Path projectRoot, Path moptFile, Optimisation moptConfiguration, boolean classicRuleMatchingEnabled){
 		experimentStartTime = startTime
 		//Store output of a batch experiment id, solutions set
 		batches = new LinkedList<MDEOBatch>();
@@ -145,7 +141,7 @@ class MDEOResultsOutput {
 		
 		infoWriter.close
 		
-		if(!moptFile.empty){
+		if(java.nio.file.Files.exists(moptFile)){
 			Files.copy(new File(moptFile.toAbsolutePath.toString), 
 				new File(Paths.get(outcomePath.toString, moptFile.last.toString).toString))
 		}

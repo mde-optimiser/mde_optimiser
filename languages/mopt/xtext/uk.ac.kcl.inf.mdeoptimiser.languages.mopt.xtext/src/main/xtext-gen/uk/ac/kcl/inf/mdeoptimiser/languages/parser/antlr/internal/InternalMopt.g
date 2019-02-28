@@ -463,28 +463,105 @@ ruleSolverSpec returns [EObject current=null]
 		{
 			newLeafNode(otherlv_1, grammarAccess.getSolverSpecAccess().getLeftCurlyBracketKeyword_1());
 		}
+		otherlv_2='optimisation'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getSolverSpecAccess().getOptimisationKeyword_2());
+		}
+		otherlv_3='provider'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getSolverSpecAccess().getProviderKeyword_3());
+		}
+		(
+			(
+				lv_algorithmFactory_4_0=RULE_ALGORITHM_FACTORY
+				{
+					newLeafNode(lv_algorithmFactory_4_0, grammarAccess.getSolverSpecAccess().getAlgorithmFactoryALGORITHM_FACTORYTerminalRuleCall_4_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getSolverSpecRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"algorithmFactory",
+						lv_algorithmFactory_4_0,
+						"uk.ac.kcl.inf.mdeoptimiser.languages.Mopt.ALGORITHM_FACTORY");
+				}
+			)
+		)
+		otherlv_5='algorithm'
+		{
+			newLeafNode(otherlv_5, grammarAccess.getSolverSpecAccess().getAlgorithmKeyword_5());
+		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getSolverSpecAccess().getOptimisationOptimisationSpecParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getSolverSpecAccess().getAlgorithmAlgorithmSpecParserRuleCall_6_0());
 				}
-				lv_optimisation_2_0=ruleOptimisationSpec
+				lv_algorithm_6_0=ruleAlgorithmSpec
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getSolverSpecRule());
 					}
 					set(
 						$current,
-						"optimisation",
-						lv_optimisation_2_0,
-						"uk.ac.kcl.inf.mdeoptimiser.languages.Mopt.OptimisationSpec");
+						"algorithm",
+						lv_algorithm_6_0,
+						"uk.ac.kcl.inf.mdeoptimiser.languages.Mopt.AlgorithmSpec");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_3='}'
+		otherlv_7='termination'
 		{
-			newLeafNode(otherlv_3, grammarAccess.getSolverSpecAccess().getRightCurlyBracketKeyword_3());
+			newLeafNode(otherlv_7, grammarAccess.getSolverSpecAccess().getTerminationKeyword_7());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getSolverSpecAccess().getTerminationConditionTerminationConditionSpecParserRuleCall_8_0());
+				}
+				lv_terminationCondition_8_0=ruleTerminationConditionSpec
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getSolverSpecRule());
+					}
+					set(
+						$current,
+						"terminationCondition",
+						lv_terminationCondition_8_0,
+						"uk.ac.kcl.inf.mdeoptimiser.languages.Mopt.TerminationConditionSpec");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			otherlv_9='batches'
+			{
+				newLeafNode(otherlv_9, grammarAccess.getSolverSpecAccess().getBatchesKeyword_9_0());
+			}
+			(
+				(
+					lv_algorithmBatches_10_0=RULE_INT
+					{
+						newLeafNode(lv_algorithmBatches_10_0, grammarAccess.getSolverSpecAccess().getAlgorithmBatchesINTTerminalRuleCall_9_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getSolverSpecRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"algorithmBatches",
+							lv_algorithmBatches_10_0,
+							"org.eclipse.xtext.xbase.Xbase.INT");
+					}
+				)
+			)
+		)?
+		otherlv_11='}'
+		{
+			newLeafNode(otherlv_11, grammarAccess.getSolverSpecAccess().getRightCurlyBracketKeyword_10());
 		}
 	)
 ;
@@ -1579,329 +1656,6 @@ ruleParameterFunction returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRuleOptimisationSpec
-entryRuleOptimisationSpec returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getOptimisationSpecRule()); }
-	iv_ruleOptimisationSpec=ruleOptimisationSpec
-	{ $current=$iv_ruleOptimisationSpec.current; }
-	EOF;
-
-// Rule OptimisationSpec
-ruleOptimisationSpec returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		otherlv_0='optimisation'
-		{
-			newLeafNode(otherlv_0, grammarAccess.getOptimisationSpecAccess().getOptimisationKeyword_0());
-		}
-		otherlv_1='provider'
-		{
-			newLeafNode(otherlv_1, grammarAccess.getOptimisationSpecAccess().getProviderKeyword_1());
-		}
-		(
-			(
-				lv_algorithmFactory_2_0=RULE_ALGORITHM_FACTORY
-				{
-					newLeafNode(lv_algorithmFactory_2_0, grammarAccess.getOptimisationSpecAccess().getAlgorithmFactoryALGORITHM_FACTORYTerminalRuleCall_2_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getOptimisationSpecRule());
-					}
-					setWithLastConsumed(
-						$current,
-						"algorithmFactory",
-						lv_algorithmFactory_2_0,
-						"uk.ac.kcl.inf.mdeoptimiser.languages.Mopt.ALGORITHM_FACTORY");
-				}
-			)
-		)
-		otherlv_3='algorithm'
-		{
-			newLeafNode(otherlv_3, grammarAccess.getOptimisationSpecAccess().getAlgorithmKeyword_3());
-		}
-		(
-			(
-				lv_algorithmName_4_0=RULE_ALGORITHM_NAME
-				{
-					newLeafNode(lv_algorithmName_4_0, grammarAccess.getOptimisationSpecAccess().getAlgorithmNameALGORITHM_NAMETerminalRuleCall_4_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getOptimisationSpecRule());
-					}
-					setWithLastConsumed(
-						$current,
-						"algorithmName",
-						lv_algorithmName_4_0,
-						"uk.ac.kcl.inf.mdeoptimiser.languages.Mopt.ALGORITHM_NAME");
-				}
-			)
-		)
-		otherlv_5='variation'
-		{
-			newLeafNode(otherlv_5, grammarAccess.getOptimisationSpecAccess().getVariationKeyword_5());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getOptimisationSpecAccess().getAlgorithmVariationAlgorithmVariationParserRuleCall_6_0());
-				}
-				lv_algorithmVariation_6_0=ruleAlgorithmVariation
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getOptimisationSpecRule());
-					}
-					set(
-						$current,
-						"algorithmVariation",
-						lv_algorithmVariation_6_0,
-						"uk.ac.kcl.inf.mdeoptimiser.languages.Mopt.AlgorithmVariation");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		otherlv_7='parameters'
-		{
-			newLeafNode(otherlv_7, grammarAccess.getOptimisationSpecAccess().getParametersKeyword_7());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getOptimisationSpecAccess().getAlgorithmParametersAlgorithmParametersParserRuleCall_8_0());
-				}
-				lv_algorithmParameters_8_0=ruleAlgorithmParameters
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getOptimisationSpecRule());
-					}
-					set(
-						$current,
-						"algorithmParameters",
-						lv_algorithmParameters_8_0,
-						"uk.ac.kcl.inf.mdeoptimiser.languages.Mopt.AlgorithmParameters");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		otherlv_9='termination'
-		{
-			newLeafNode(otherlv_9, grammarAccess.getOptimisationSpecAccess().getTerminationKeyword_9());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getOptimisationSpecAccess().getTerminationConditionTerminationConditionParametersParserRuleCall_10_0());
-				}
-				lv_terminationCondition_10_0=ruleTerminationConditionParameters
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getOptimisationSpecRule());
-					}
-					set(
-						$current,
-						"terminationCondition",
-						lv_terminationCondition_10_0,
-						"uk.ac.kcl.inf.mdeoptimiser.languages.Mopt.TerminationConditionParameters");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		(
-			otherlv_11='batches'
-			{
-				newLeafNode(otherlv_11, grammarAccess.getOptimisationSpecAccess().getBatchesKeyword_11_0());
-			}
-			(
-				(
-					lv_algorithmBatches_12_0=RULE_INT
-					{
-						newLeafNode(lv_algorithmBatches_12_0, grammarAccess.getOptimisationSpecAccess().getAlgorithmBatchesINTTerminalRuleCall_11_1_0());
-					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getOptimisationSpecRule());
-						}
-						setWithLastConsumed(
-							$current,
-							"algorithmBatches",
-							lv_algorithmBatches_12_0,
-							"org.eclipse.xtext.xbase.Xbase.INT");
-					}
-				)
-			)
-		)?
-	)
-;
-
-// Entry rule entryRuleAlgorithmVariation
-entryRuleAlgorithmVariation returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getAlgorithmVariationRule()); }
-	iv_ruleAlgorithmVariation=ruleAlgorithmVariation
-	{ $current=$iv_ruleAlgorithmVariation.current; }
-	EOF;
-
-// Rule AlgorithmVariation
-ruleAlgorithmVariation returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getAlgorithmVariationAccess().getProbabilityVariationProbabilityVariationParserRuleCall_0_0());
-				}
-				lv_probabilityVariation_0_0=ruleProbabilityVariation
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getAlgorithmVariationRule());
-					}
-					set(
-						$current,
-						"probabilityVariation",
-						lv_probabilityVariation_0_0,
-						"uk.ac.kcl.inf.mdeoptimiser.languages.Mopt.ProbabilityVariation");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		    |
-		(
-			(
-				(
-					lv_simpleVariation_1_1=RULE_MUTATION_VARIATION
-					{
-						newLeafNode(lv_simpleVariation_1_1, grammarAccess.getAlgorithmVariationAccess().getSimpleVariationMUTATION_VARIATIONTerminalRuleCall_1_0_0());
-					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getAlgorithmVariationRule());
-						}
-						setWithLastConsumed(
-							$current,
-							"simpleVariation",
-							lv_simpleVariation_1_1,
-							"uk.ac.kcl.inf.mdeoptimiser.languages.Mopt.MUTATION_VARIATION");
-					}
-					    |
-					lv_simpleVariation_1_2=RULE_CROSSOVER_VARIATION
-					{
-						newLeafNode(lv_simpleVariation_1_2, grammarAccess.getAlgorithmVariationAccess().getSimpleVariationCROSSOVER_VARIATIONTerminalRuleCall_1_0_1());
-					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getAlgorithmVariationRule());
-						}
-						setWithLastConsumed(
-							$current,
-							"simpleVariation",
-							lv_simpleVariation_1_2,
-							"uk.ac.kcl.inf.mdeoptimiser.languages.Mopt.CROSSOVER_VARIATION");
-					}
-				)
-			)
-		)
-	)
-;
-
-// Entry rule entryRuleProbabilityVariation
-entryRuleProbabilityVariation returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getProbabilityVariationRule()); }
-	iv_ruleProbabilityVariation=ruleProbabilityVariation
-	{ $current=$iv_ruleProbabilityVariation.current; }
-	EOF;
-
-// Rule ProbabilityVariation
-ruleProbabilityVariation returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		(
-			(
-				lv_type_0_0=RULE_GENETIC_VARIATION
-				{
-					newLeafNode(lv_type_0_0, grammarAccess.getProbabilityVariationAccess().getTypeGENETIC_VARIATIONTerminalRuleCall_0_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getProbabilityVariationRule());
-					}
-					setWithLastConsumed(
-						$current,
-						"type",
-						lv_type_0_0,
-						"uk.ac.kcl.inf.mdeoptimiser.languages.Mopt.GENETIC_VARIATION");
-				}
-			)
-		)
-		(
-			otherlv_1='('
-			{
-				newLeafNode(otherlv_1, grammarAccess.getProbabilityVariationAccess().getLeftParenthesisKeyword_1_0());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getProbabilityVariationAccess().getCrossover_rateNumberParserRuleCall_1_1_0());
-					}
-					lv_crossover_rate_2_0=ruleNumber
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getProbabilityVariationRule());
-						}
-						set(
-							$current,
-							"crossover_rate",
-							lv_crossover_rate_2_0,
-							"org.eclipse.xtext.xbase.Xbase.Number");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			otherlv_3=','
-			{
-				newLeafNode(otherlv_3, grammarAccess.getProbabilityVariationAccess().getCommaKeyword_1_2());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getProbabilityVariationAccess().getMutation_rateNumberParserRuleCall_1_3_0());
-					}
-					lv_mutation_rate_4_0=ruleNumber
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getProbabilityVariationRule());
-						}
-						set(
-							$current,
-							"mutation_rate",
-							lv_mutation_rate_4_0,
-							"org.eclipse.xtext.xbase.Xbase.Number");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			otherlv_5=')'
-			{
-				newLeafNode(otherlv_5, grammarAccess.getProbabilityVariationAccess().getRightParenthesisKeyword_1_4());
-			}
-		)?
-	)
-;
-
 // Entry rule entryRuleSignedInteger
 entryRuleSignedInteger returns [String current=null]:
 	{ newCompositeNode(grammarAccess.getSignedIntegerRule()); }
@@ -1935,15 +1689,15 @@ ruleSignedInteger returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleT
 	)
 ;
 
-// Entry rule entryRuleAlgorithmParameters
-entryRuleAlgorithmParameters returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getAlgorithmParametersRule()); }
-	iv_ruleAlgorithmParameters=ruleAlgorithmParameters
-	{ $current=$iv_ruleAlgorithmParameters.current; }
+// Entry rule entryRuleAlgorithmSpec
+entryRuleAlgorithmSpec returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getAlgorithmSpecRule()); }
+	iv_ruleAlgorithmSpec=ruleAlgorithmSpec
+	{ $current=$iv_ruleAlgorithmSpec.current; }
 	EOF;
 
-// Rule AlgorithmParameters
-ruleAlgorithmParameters returns [EObject current=null]
+// Rule AlgorithmSpec
+ruleAlgorithmSpec returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -1951,45 +1705,63 @@ ruleAlgorithmParameters returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='{'
+		(
+			(
+				lv_name_0_0=RULE_ALGORITHM_NAME
+				{
+					newLeafNode(lv_name_0_0, grammarAccess.getAlgorithmSpecAccess().getNameALGORITHM_NAMETerminalRuleCall_0_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getAlgorithmSpecRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_0_0,
+						"uk.ac.kcl.inf.mdeoptimiser.languages.Mopt.ALGORITHM_NAME");
+				}
+			)
+		)
+		otherlv_1='{'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getAlgorithmParametersAccess().getLeftCurlyBracketKeyword_0());
+			newLeafNode(otherlv_1, grammarAccess.getAlgorithmSpecAccess().getLeftCurlyBracketKeyword_1());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getAlgorithmParametersAccess().getParametersParameterParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getAlgorithmSpecAccess().getParametersParameterParserRuleCall_2_0());
 				}
-				lv_parameters_1_0=ruleParameter
+				lv_parameters_2_0=ruleParameter
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getAlgorithmParametersRule());
+						$current = createModelElementForParent(grammarAccess.getAlgorithmSpecRule());
 					}
 					add(
 						$current,
 						"parameters",
-						lv_parameters_1_0,
+						lv_parameters_2_0,
 						"uk.ac.kcl.inf.mdeoptimiser.languages.Mopt.Parameter");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)+
-		otherlv_2='}'
+		otherlv_3='}'
 		{
-			newLeafNode(otherlv_2, grammarAccess.getAlgorithmParametersAccess().getRightCurlyBracketKeyword_2());
+			newLeafNode(otherlv_3, grammarAccess.getAlgorithmSpecAccess().getRightCurlyBracketKeyword_3());
 		}
 	)
 ;
 
-// Entry rule entryRuleTerminationConditionParameters
-entryRuleTerminationConditionParameters returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getTerminationConditionParametersRule()); }
-	iv_ruleTerminationConditionParameters=ruleTerminationConditionParameters
-	{ $current=$iv_ruleTerminationConditionParameters.current; }
+// Entry rule entryRuleTerminationConditionSpec
+entryRuleTerminationConditionSpec returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getTerminationConditionSpecRule()); }
+	iv_ruleTerminationConditionSpec=ruleTerminationConditionSpec
+	{ $current=$iv_ruleTerminationConditionSpec.current; }
 	EOF;
 
-// Rule TerminationConditionParameters
-ruleTerminationConditionParameters returns [EObject current=null]
+// Rule TerminationConditionSpec
+ruleTerminationConditionSpec returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -1997,32 +1769,39 @@ ruleTerminationConditionParameters returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='{'
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getTerminationConditionSpecAccess().getTerminationConditionSpecAction_0(),
+					$current);
+			}
+		)
+		otherlv_1='{'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getTerminationConditionParametersAccess().getLeftCurlyBracketKeyword_0());
+			newLeafNode(otherlv_1, grammarAccess.getTerminationConditionSpecAccess().getLeftCurlyBracketKeyword_1());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getTerminationConditionParametersAccess().getParametersParameterParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getTerminationConditionSpecAccess().getParametersParameterParserRuleCall_2_0());
 				}
-				lv_parameters_1_0=ruleParameter
+				lv_parameters_2_0=ruleParameter
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getTerminationConditionParametersRule());
+						$current = createModelElementForParent(grammarAccess.getTerminationConditionSpecRule());
 					}
 					add(
 						$current,
 						"parameters",
-						lv_parameters_1_0,
+						lv_parameters_2_0,
 						"uk.ac.kcl.inf.mdeoptimiser.languages.Mopt.Parameter");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)+
-		otherlv_2='}'
+		otherlv_3='}'
 		{
-			newLeafNode(otherlv_2, grammarAccess.getTerminationConditionParametersAccess().getRightCurlyBracketKeyword_2());
+			newLeafNode(otherlv_3, grammarAccess.getTerminationConditionSpecAccess().getRightCurlyBracketKeyword_3());
 		}
 	)
 ;
@@ -2045,35 +1824,33 @@ ruleParameter returns [EObject current=null]
 	(
 		(
 			(
-				lv_name_0_0=RULE_ID
 				{
-					newLeafNode(lv_name_0_0, grammarAccess.getParameterAccess().getNameIDTerminalRuleCall_0_0());
+					newCompositeNode(grammarAccess.getParameterAccess().getNameQualifiedNameParserRuleCall_0_0());
 				}
+				lv_name_0_0=ruleQualifiedName
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getParameterRule());
+						$current = createModelElementForParent(grammarAccess.getParameterRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"name",
 						lv_name_0_0,
-						"org.eclipse.xtext.xbase.Xtype.ID");
+						"org.eclipse.xtext.xbase.Xbase.QualifiedName");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
+		otherlv_1=':'
 		{
-			newCompositeNode(grammarAccess.getParameterAccess().getParameterAssignmentParserRuleCall_1());
-		}
-		ruleParameterAssignment
-		{
-			afterParserOrEnumRuleCall();
+			newLeafNode(otherlv_1, grammarAccess.getParameterAccess().getColonKeyword_1());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getParameterAccess().getValueNumberParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getParameterAccess().getValueParameterValueParserRuleCall_2_0());
 				}
-				lv_value_2_0=ruleNumber
+				lv_value_2_0=ruleParameterValue
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getParameterRule());
@@ -2082,7 +1859,7 @@ ruleParameter returns [EObject current=null]
 						$current,
 						"value",
 						lv_value_2_0,
-						"org.eclipse.xtext.xbase.Xbase.Number");
+						"uk.ac.kcl.inf.mdeoptimiser.languages.Mopt.ParameterValue");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -2090,26 +1867,172 @@ ruleParameter returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRuleParameterAssignment
-entryRuleParameterAssignment returns [String current=null]:
-	{ newCompositeNode(grammarAccess.getParameterAssignmentRule()); }
-	iv_ruleParameterAssignment=ruleParameterAssignment
-	{ $current=$iv_ruleParameterAssignment.current.getText(); }
+// Entry rule entryRuleParameterValue
+entryRuleParameterValue returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getParameterValueRule()); }
+	iv_ruleParameterValue=ruleParameterValue
+	{ $current=$iv_ruleParameterValue.current; }
 	EOF;
 
-// Rule ParameterAssignment
-ruleParameterAssignment returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+// Rule ParameterValue
+ruleParameterValue returns [EObject current=null]
 @init {
 	enterRule();
 }
 @after {
 	leaveRule();
 }:
-	kw=':'
-	{
-		$current.merge(kw);
-		newLeafNode(kw, grammarAccess.getParameterAssignmentAccess().getColonKeyword());
-	}
+	(
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getParameterValueAccess().getNumericNumberParserRuleCall_0_0());
+				}
+				lv_numeric_0_0=ruleNumber
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getParameterValueRule());
+					}
+					set(
+						$current,
+						"numeric",
+						lv_numeric_0_0,
+						"org.eclipse.xtext.xbase.Xbase.Number");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		    |
+		(
+			(
+				lv_functional_1_0=RULE_ID
+				{
+					newLeafNode(lv_functional_1_0, grammarAccess.getParameterValueAccess().getFunctionalIDTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getParameterValueRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"functional",
+						lv_functional_1_0,
+						"org.eclipse.xtext.xbase.Xtype.ID");
+				}
+			)
+		)
+		    |
+		(
+			(
+				(
+					lv_parametric_2_0=RULE_ID
+					{
+						newLeafNode(lv_parametric_2_0, grammarAccess.getParameterValueAccess().getParametricIDTerminalRuleCall_2_0_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getParameterValueRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"parametric",
+							lv_parametric_2_0,
+							"org.eclipse.xtext.xbase.Xtype.ID");
+					}
+				)
+			)
+			otherlv_3='('
+			{
+				newLeafNode(otherlv_3, grammarAccess.getParameterValueAccess().getLeftParenthesisKeyword_2_1());
+			}
+			(
+				(
+					(
+						(
+							{
+								newCompositeNode(grammarAccess.getParameterValueAccess().getParamsXNumberLiteralParserRuleCall_2_2_0_0_0());
+							}
+							lv_params_4_1=ruleXNumberLiteral
+							{
+								if ($current==null) {
+									$current = createModelElementForParent(grammarAccess.getParameterValueRule());
+								}
+								add(
+									$current,
+									"params",
+									lv_params_4_1,
+									"org.eclipse.xtext.xbase.Xbase.XNumberLiteral");
+								afterParserOrEnumRuleCall();
+							}
+							    |
+							{
+								newCompositeNode(grammarAccess.getParameterValueAccess().getParamsXStringLiteralParserRuleCall_2_2_0_0_1());
+							}
+							lv_params_4_2=ruleXStringLiteral
+							{
+								if ($current==null) {
+									$current = createModelElementForParent(grammarAccess.getParameterValueRule());
+								}
+								add(
+									$current,
+									"params",
+									lv_params_4_2,
+									"org.eclipse.xtext.xbase.Xbase.XStringLiteral");
+								afterParserOrEnumRuleCall();
+							}
+						)
+					)
+				)
+				(
+					otherlv_5=','
+					{
+						newLeafNode(otherlv_5, grammarAccess.getParameterValueAccess().getCommaKeyword_2_2_1_0());
+					}
+					(
+						(
+							(
+								{
+									newCompositeNode(grammarAccess.getParameterValueAccess().getParamsXNumberLiteralParserRuleCall_2_2_1_1_0_0());
+								}
+								lv_params_6_1=ruleXNumberLiteral
+								{
+									if ($current==null) {
+										$current = createModelElementForParent(grammarAccess.getParameterValueRule());
+									}
+									add(
+										$current,
+										"params",
+										lv_params_6_1,
+										"org.eclipse.xtext.xbase.Xbase.XNumberLiteral");
+									afterParserOrEnumRuleCall();
+								}
+								    |
+								{
+									newCompositeNode(grammarAccess.getParameterValueAccess().getParamsXStringLiteralParserRuleCall_2_2_1_1_0_1());
+								}
+								lv_params_6_2=ruleXStringLiteral
+								{
+									if ($current==null) {
+										$current = createModelElementForParent(grammarAccess.getParameterValueRule());
+									}
+									add(
+										$current,
+										"params",
+										lv_params_6_2,
+										"org.eclipse.xtext.xbase.Xbase.XStringLiteral");
+									afterParserOrEnumRuleCall();
+								}
+							)
+						)
+					)
+				)*
+			)+
+			otherlv_7=')'
+			{
+				newLeafNode(otherlv_7, grammarAccess.getParameterValueAccess().getRightParenthesisKeyword_2_3());
+			}
+		)
+	)
 ;
 
 // Entry rule entryRuleXExpression
@@ -8428,12 +8351,6 @@ RULE_DELETE_NODE : 'DELETE';
 RULE_ADD_EDGE : 'ADD';
 
 RULE_REMOVE_EDGE : 'REMOVE';
-
-RULE_GENETIC_VARIATION : 'genetic';
-
-RULE_CROSSOVER_VARIATION : 'crossover';
-
-RULE_MUTATION_VARIATION : 'mutation';
 
 RULE_ALGORITHM_FACTORY : ('moea'|'ecj');
 

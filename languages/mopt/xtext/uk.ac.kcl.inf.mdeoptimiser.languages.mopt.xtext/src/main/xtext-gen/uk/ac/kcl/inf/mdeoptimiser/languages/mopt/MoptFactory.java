@@ -195,49 +195,22 @@ public interface MoptFactory extends EFactory
   ParameterFunction createParameterFunction();
 
   /**
-   * Returns a new object of class '<em>Optimisation Spec</em>'.
+   * Returns a new object of class '<em>Algorithm Spec</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Optimisation Spec</em>'.
+   * @return a new object of class '<em>Algorithm Spec</em>'.
    * @generated
    */
-  OptimisationSpec createOptimisationSpec();
+  AlgorithmSpec createAlgorithmSpec();
 
   /**
-   * Returns a new object of class '<em>Algorithm Variation</em>'.
+   * Returns a new object of class '<em>Termination Condition Spec</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Algorithm Variation</em>'.
+   * @return a new object of class '<em>Termination Condition Spec</em>'.
    * @generated
    */
-  AlgorithmVariation createAlgorithmVariation();
-
-  /**
-   * Returns a new object of class '<em>Probability Variation</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Probability Variation</em>'.
-   * @generated
-   */
-  ProbabilityVariation createProbabilityVariation();
-
-  /**
-   * Returns a new object of class '<em>Algorithm Parameters</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Algorithm Parameters</em>'.
-   * @generated
-   */
-  AlgorithmParameters createAlgorithmParameters();
-
-  /**
-   * Returns a new object of class '<em>Termination Condition Parameters</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Termination Condition Parameters</em>'.
-   * @generated
-   */
-  TerminationConditionParameters createTerminationConditionParameters();
+  TerminationConditionSpec createTerminationConditionSpec();
 
   /**
    * Returns a new object of class '<em>Parameter</em>'.
@@ -247,6 +220,15 @@ public interface MoptFactory extends EFactory
    * @generated
    */
   Parameter createParameter();
+
+  /**
+   * Returns a new object of class '<em>Parameter Value</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Parameter Value</em>'.
+   * @generated
+   */
+  ParameterValue createParameterValue();
 
   /**
    * Returns the package supported by this factory.

@@ -3,43 +3,13 @@ grammar uk.ac.kcl.inf.mdeoptimiser.languages.Mopt with org.eclipse.xtext.xbase.X
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 generate mopt "http://www.ac.uk/kcl/inf/mdeoptimiser/languages/Mopt"
 
+
 Optimisation:
 	problem=ProblemSpec
 	goal=GoalSpec
 	search=SearchSpec
 	solver=SolverSpec
 ;
-
-
-//Rulegen dsl additions
-//problem metamodel <metamodel.ecore>
-//model <input-model.xmi>
-//refine metamodel {Node, edge, lb, ub}
-//...
-//mutation {Sprint} //Implies all actions for this node
-//mutation {Sprint,CREATE} //Implies only creation allowed
-//mutation {Sprint,DELETE} //Implies only deletion allowed
-//mutation {Sprint,isEncapsulatedBy} //Implies only add and remove edge allowed
-//mutation {Sprint,isEncapsulatedBy,ADD} //Implies only add edge allowed
-//mutation {Sprint,isEncapsulatedBy,REMOVE} //Implies only remove edge allowed
-//objective ...
-//constraint ...
-//optimisation ...
-
-
-// Current DSL
-//
-//basepath <src/models/cra/>
-//metamodel <architectureCRA.ecore>
-//model <TTC_InputRDG_C.xmi>
-//objective MaximiseCRA maximise java { "models.moea.MaximiseCRA" }
-//constraint MinimiseClasslessFeatures java { "models.moea.MinimiseClasslessFeatures" }
-//mutate using <craEvolvers.henshin> unit "createClass"
-//mutate using <craEvolvers.henshin> unit "assignFeature"
-//mutate using <craEvolvers.henshin> unit "moveFeature"
-//mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
-//optimisation provider moea algorithm NSGAII variation mutation evolutions 1000 population 30 experiments 2
-
 
 ProblemSpec:
 	"problem" "{"
@@ -68,10 +38,12 @@ SearchSpec:
 
 SolverSpec:
 	"solver" "{"
-		optimisation=OptimisationSpec
+		"optimisation" "provider"  algorithmFactory=ALGORITHM_FACTORY
+		"algorithm" algorithm=AlgorithmSpec
+		"termination" terminationCondition=TerminationConditionSpec
+		("batches" algorithmBatches=INT)?
 	"}"
 ;
-
 
 /**
  * Use this to identify a basepath to be set in the HenshinResourceSet so that Henshin
@@ -154,44 +126,32 @@ ParameterFunction:
 enum EvolverType:
     MUTATE='mutate' | BREED='breed';
 
-OptimisationSpec:
-	"optimisation" "provider" algorithmFactory=ALGORITHM_FACTORY
-				"algorithm" algorithmName=ALGORITHM_NAME
-				"variation" algorithmVariation=AlgorithmVariation
-				"parameters" algorithmParameters=AlgorithmParameters
-				"termination" terminationCondition=TerminationConditionParameters
-				("batches" algorithmBatches=INT)?
-;
-
-AlgorithmVariation:
-	(probabilityVariation=ProbabilityVariation | simpleVariation=(MUTATION_VARIATION | CROSSOVER_VARIATION))
-;
-
-ProbabilityVariation:
-	 type=GENETIC_VARIATION ('(' crossover_rate=Number ',' mutation_rate=Number ')')?
-;
-
 SignedInteger returns ecore::EIntegerObject:
   '-'? INT;
 
-AlgorithmParameters:
-	"{"
+
+AlgorithmSpec:
+	name=ALGORITHM_NAME "{"
 		parameters+=Parameter+
 	"}"
 ;
 
-TerminationConditionParameters:
+
+TerminationConditionSpec:
+	{TerminationConditionSpec}
 	"{"
 		parameters+=Parameter+
+		
 	"}"
 ;
 
 Parameter:
-	name=ID ParameterAssignment value=Number
+	name=QualifiedName ":" value=ParameterValue
 ;
 
-ParameterAssignment:
-	":"
+ParameterValue:
+	(numeric=Number | functional=ID | parametric=ID '(' (params+=(XNumberLiteral | XStringLiteral)
+    (',' params+=(XNumberLiteral | XStringLiteral))*)+')')
 ;
 
 terminal CREATE_NODE returns ecore::EString:
@@ -208,18 +168,6 @@ terminal ADD_EDGE returns ecore::EString:
 
 terminal REMOVE_EDGE returns ecore::EString:
 	'REMOVE'
-;
-
-terminal GENETIC_VARIATION returns ecore::EString:
-	'genetic'
-;
-
-terminal CROSSOVER_VARIATION returns ecore::EString:
-	'crossover'
-;
-
-terminal MUTATION_VARIATION returns ecore::EString:
-	'mutation'
 ;
 
 terminal ALGORITHM_FACTORY returns ecore::EString:

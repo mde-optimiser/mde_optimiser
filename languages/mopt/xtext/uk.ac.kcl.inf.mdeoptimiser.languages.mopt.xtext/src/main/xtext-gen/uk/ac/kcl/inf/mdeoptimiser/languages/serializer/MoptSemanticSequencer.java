@@ -59,8 +59,7 @@ import org.eclipse.xtext.xtype.XFunctionTypeRef;
 import org.eclipse.xtext.xtype.XImportDeclaration;
 import org.eclipse.xtext.xtype.XImportSection;
 import org.eclipse.xtext.xtype.XtypePackage;
-import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmParameters;
-import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmVariation;
+import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.BasePathSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ConstraintInterpreterSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.EvolverParameter;
@@ -73,9 +72,8 @@ import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.MoptPackage;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.MultiplicityRefinementSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ObjectiveInterpreterSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.Optimisation;
-import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.OptimisationSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterFunction;
-import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProbabilityVariation;
+import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterValue;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProblemSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ReportInterpreterSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.RulegenEdge;
@@ -83,7 +81,7 @@ import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.RulegenNode;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.RulegenSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SearchSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SolverSpec;
-import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.TerminationConditionParameters;
+import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.TerminationConditionSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.services.MoptGrammarAccess;
 
 @SuppressWarnings("all")
@@ -100,11 +98,8 @@ public class MoptSemanticSequencer extends XbaseSemanticSequencer {
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == MoptPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case MoptPackage.ALGORITHM_PARAMETERS:
-				sequence_AlgorithmParameters(context, (AlgorithmParameters) semanticObject); 
-				return; 
-			case MoptPackage.ALGORITHM_VARIATION:
-				sequence_AlgorithmVariation(context, (AlgorithmVariation) semanticObject); 
+			case MoptPackage.ALGORITHM_SPEC:
+				sequence_AlgorithmSpec(context, (AlgorithmSpec) semanticObject); 
 				return; 
 			case MoptPackage.BASE_PATH_SPEC:
 				sequence_BasePathSpec(context, (BasePathSpec) semanticObject); 
@@ -139,17 +134,14 @@ public class MoptSemanticSequencer extends XbaseSemanticSequencer {
 			case MoptPackage.OPTIMISATION:
 				sequence_Optimisation(context, (Optimisation) semanticObject); 
 				return; 
-			case MoptPackage.OPTIMISATION_SPEC:
-				sequence_OptimisationSpec(context, (OptimisationSpec) semanticObject); 
-				return; 
 			case MoptPackage.PARAMETER:
 				sequence_Parameter(context, (uk.ac.kcl.inf.mdeoptimiser.languages.mopt.Parameter) semanticObject); 
 				return; 
 			case MoptPackage.PARAMETER_FUNCTION:
 				sequence_ParameterFunction(context, (ParameterFunction) semanticObject); 
 				return; 
-			case MoptPackage.PROBABILITY_VARIATION:
-				sequence_ProbabilityVariation(context, (ProbabilityVariation) semanticObject); 
+			case MoptPackage.PARAMETER_VALUE:
+				sequence_ParameterValue(context, (ParameterValue) semanticObject); 
 				return; 
 			case MoptPackage.PROBLEM_SPEC:
 				sequence_ProblemSpec(context, (ProblemSpec) semanticObject); 
@@ -172,8 +164,8 @@ public class MoptSemanticSequencer extends XbaseSemanticSequencer {
 			case MoptPackage.SOLVER_SPEC:
 				sequence_SolverSpec(context, (SolverSpec) semanticObject); 
 				return; 
-			case MoptPackage.TERMINATION_CONDITION_PARAMETERS:
-				sequence_TerminationConditionParameters(context, (TerminationConditionParameters) semanticObject); 
+			case MoptPackage.TERMINATION_CONDITION_SPEC:
+				sequence_TerminationConditionSpec(context, (TerminationConditionSpec) semanticObject); 
 				return; 
 			}
 		else if (epackage == TypesPackage.eINSTANCE)
@@ -421,24 +413,12 @@ public class MoptSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     AlgorithmParameters returns AlgorithmParameters
+	 *     AlgorithmSpec returns AlgorithmSpec
 	 *
 	 * Constraint:
-	 *     parameters+=Parameter+
+	 *     (name=ALGORITHM_NAME parameters+=Parameter+)
 	 */
-	protected void sequence_AlgorithmParameters(ISerializationContext context, AlgorithmParameters semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     AlgorithmVariation returns AlgorithmVariation
-	 *
-	 * Constraint:
-	 *     (probabilityVariation=ProbabilityVariation | simpleVariation=MUTATION_VARIATION | simpleVariation=CROSSOVER_VARIATION)
-	 */
-	protected void sequence_AlgorithmVariation(ISerializationContext context, AlgorithmVariation semanticObject) {
+	protected void sequence_AlgorithmSpec(ISerializationContext context, AlgorithmSpec semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -631,25 +611,6 @@ public class MoptSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     OptimisationSpec returns OptimisationSpec
-	 *
-	 * Constraint:
-	 *     (
-	 *         algorithmFactory=ALGORITHM_FACTORY 
-	 *         algorithmName=ALGORITHM_NAME 
-	 *         algorithmVariation=AlgorithmVariation 
-	 *         algorithmParameters=AlgorithmParameters 
-	 *         terminationCondition=TerminationConditionParameters 
-	 *         algorithmBatches=INT?
-	 *     )
-	 */
-	protected void sequence_OptimisationSpec(ISerializationContext context, OptimisationSpec semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     Optimisation returns Optimisation
 	 *
 	 * Constraint:
@@ -689,10 +650,22 @@ public class MoptSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     ParameterValue returns ParameterValue
+	 *
+	 * Constraint:
+	 *     <unknown>
+	 */
+	protected void sequence_ParameterValue(ISerializationContext context, ParameterValue semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Parameter returns Parameter
 	 *
 	 * Constraint:
-	 *     (name=ID value=Number)
+	 *     (name=QualifiedName value=ParameterValue)
 	 */
 	protected void sequence_Parameter(ISerializationContext context, uk.ac.kcl.inf.mdeoptimiser.languages.mopt.Parameter semanticObject) {
 		if (errorAcceptor != null) {
@@ -702,21 +675,9 @@ public class MoptSemanticSequencer extends XbaseSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MoptPackage.Literals.PARAMETER__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getParameterAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getParameterAccess().getValueNumberParserRuleCall_2_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getParameterAccess().getNameQualifiedNameParserRuleCall_0_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getParameterAccess().getValueParameterValueParserRuleCall_2_0(), semanticObject.getValue());
 		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     ProbabilityVariation returns ProbabilityVariation
-	 *
-	 * Constraint:
-	 *     (type=GENETIC_VARIATION (crossover_rate=Number mutation_rate=Number)?)
-	 */
-	protected void sequence_ProbabilityVariation(ISerializationContext context, ProbabilityVariation semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -810,27 +771,21 @@ public class MoptSemanticSequencer extends XbaseSemanticSequencer {
 	 *     SolverSpec returns SolverSpec
 	 *
 	 * Constraint:
-	 *     optimisation=OptimisationSpec
+	 *     (algorithmFactory=ALGORITHM_FACTORY algorithm=AlgorithmSpec terminationCondition=TerminationConditionSpec algorithmBatches=INT?)
 	 */
 	protected void sequence_SolverSpec(ISerializationContext context, SolverSpec semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, MoptPackage.Literals.SOLVER_SPEC__OPTIMISATION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MoptPackage.Literals.SOLVER_SPEC__OPTIMISATION));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getSolverSpecAccess().getOptimisationOptimisationSpecParserRuleCall_2_0(), semanticObject.getOptimisation());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Contexts:
-	 *     TerminationConditionParameters returns TerminationConditionParameters
+	 *     TerminationConditionSpec returns TerminationConditionSpec
 	 *
 	 * Constraint:
 	 *     parameters+=Parameter+
 	 */
-	protected void sequence_TerminationConditionParameters(ISerializationContext context, TerminationConditionParameters semanticObject) {
+	protected void sequence_TerminationConditionSpec(ISerializationContext context, TerminationConditionSpec semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

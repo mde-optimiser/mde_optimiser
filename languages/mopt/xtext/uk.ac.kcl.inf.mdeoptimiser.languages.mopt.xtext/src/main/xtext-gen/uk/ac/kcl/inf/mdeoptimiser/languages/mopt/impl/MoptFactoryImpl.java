@@ -85,12 +85,10 @@ public class MoptFactoryImpl extends EFactoryImpl implements MoptFactory
       case MoptPackage.MULTIPLICITY_REFINEMENT_SPEC: return createMultiplicityRefinementSpec();
       case MoptPackage.EVOLVER_PARAMETER: return createEvolverParameter();
       case MoptPackage.PARAMETER_FUNCTION: return createParameterFunction();
-      case MoptPackage.OPTIMISATION_SPEC: return createOptimisationSpec();
-      case MoptPackage.ALGORITHM_VARIATION: return createAlgorithmVariation();
-      case MoptPackage.PROBABILITY_VARIATION: return createProbabilityVariation();
-      case MoptPackage.ALGORITHM_PARAMETERS: return createAlgorithmParameters();
-      case MoptPackage.TERMINATION_CONDITION_PARAMETERS: return createTerminationConditionParameters();
+      case MoptPackage.ALGORITHM_SPEC: return createAlgorithmSpec();
+      case MoptPackage.TERMINATION_CONDITION_SPEC: return createTerminationConditionSpec();
       case MoptPackage.PARAMETER: return createParameter();
+      case MoptPackage.PARAMETER_VALUE: return createParameterValue();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -344,10 +342,10 @@ public class MoptFactoryImpl extends EFactoryImpl implements MoptFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public OptimisationSpec createOptimisationSpec()
+  public AlgorithmSpec createAlgorithmSpec()
   {
-    OptimisationSpecImpl optimisationSpec = new OptimisationSpecImpl();
-    return optimisationSpec;
+    AlgorithmSpecImpl algorithmSpec = new AlgorithmSpecImpl();
+    return algorithmSpec;
   }
 
   /**
@@ -355,43 +353,10 @@ public class MoptFactoryImpl extends EFactoryImpl implements MoptFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public AlgorithmVariation createAlgorithmVariation()
+  public TerminationConditionSpec createTerminationConditionSpec()
   {
-    AlgorithmVariationImpl algorithmVariation = new AlgorithmVariationImpl();
-    return algorithmVariation;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ProbabilityVariation createProbabilityVariation()
-  {
-    ProbabilityVariationImpl probabilityVariation = new ProbabilityVariationImpl();
-    return probabilityVariation;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public AlgorithmParameters createAlgorithmParameters()
-  {
-    AlgorithmParametersImpl algorithmParameters = new AlgorithmParametersImpl();
-    return algorithmParameters;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public TerminationConditionParameters createTerminationConditionParameters()
-  {
-    TerminationConditionParametersImpl terminationConditionParameters = new TerminationConditionParametersImpl();
-    return terminationConditionParameters;
+    TerminationConditionSpecImpl terminationConditionSpec = new TerminationConditionSpecImpl();
+    return terminationConditionSpec;
   }
 
   /**
@@ -403,6 +368,17 @@ public class MoptFactoryImpl extends EFactoryImpl implements MoptFactory
   {
     ParameterImpl parameter = new ParameterImpl();
     return parameter;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ParameterValue createParameterValue()
+  {
+    ParameterValueImpl parameterValue = new ParameterValueImpl();
+    return parameterValue;
   }
 
   /**

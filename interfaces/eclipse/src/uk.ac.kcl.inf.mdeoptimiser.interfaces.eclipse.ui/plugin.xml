@@ -14,7 +14,7 @@
 			contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
 			default="true"
 			extensions="mopt"
-			id="uk.ac.kcl.inf.mdeoptimiser.languages.ui.Mopt"
+			id="uk.ac.kcl.inf.mdeoptimiser.languages.Mopt"
 			name="MDEOptimiser Editor">
 		</editor>
 	</extension>
@@ -65,7 +65,7 @@
 				<reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
 				<with variable="activeEditor">
 					<test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName" 
-						value="uk.ac.kcl.inf.mdeoptimiser.languages.ui.Mopt" 
+						value="uk.ac.kcl.inf.mdeoptimiser.languages.Mopt" 
 						forcePluginActivation="true"/>
 				</with>		
 			</and>
@@ -75,7 +75,7 @@
 				<reference definitionId="isXtextEditorActive"/>
 				<with variable="activeEditor">
 					<test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName" 
-						value="uk.ac.kcl.inf.mdeoptimiser.languages.ui.Mopt" 
+						value="uk.ac.kcl.inf.mdeoptimiser.languages.Mopt" 
 						forcePluginActivation="true"/>
 				</with>		
 			</and>

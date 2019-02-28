@@ -4,16 +4,16 @@ import java.util.List
 import org.moeaframework.core.termination.MaxFunctionEvaluations
 import org.moeaframework.core.termination.MaxElapsedTime
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.Parameter
-import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.OptimisationSpec
+import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SolverSpec
 
 class TerminationConditionFactory {
 	
-	def static getTerminationCondition(Parameter currentParameter, OptimisationSpec optimisationSpec) {
+	def static getTerminationCondition(Parameter currentParameter, SolverSpec optimisationSpec) {
 		
 		switch currentParameter.name {
 			
 			case 'time': {
-				return new MaxElapsedTime(Integer.parseInt(currentParameter.value) * 1000)	
+				return new MaxElapsedTime(Integer.parseInt(currentParameter.value.numeric) * 1000)	
 			}
 			
 			case 'evolutions': {
@@ -21,9 +21,9 @@ class TerminationConditionFactory {
 				val populationSize = getPopulationSize(optimisationSpec)
 				
 				if(populationSize > 0) {
-					return new MaxFunctionEvaluations(Integer.parseInt(currentParameter.value) * populationSize) 
+					return new MaxFunctionEvaluations(Integer.parseInt(currentParameter.value.numeric) * populationSize) 
 				} else {
-					return new MaxFunctionEvaluations(Integer.parseInt(currentParameter.value)
+					return new MaxFunctionEvaluations(Integer.parseInt(currentParameter.value.numeric)
 					) 
 				}
 			}
@@ -53,11 +53,11 @@ class TerminationConditionFactory {
 		return null
 	}
 	
-	private	def static getPopulationSize(OptimisationSpec optimisation){
-			var population = optimisation.algorithmParameters.parameters.filter[parameter | parameter.name.equals("population")]
+	private	def static getPopulationSize(SolverSpec optimisation){
+			var population = optimisation.algorithm.parameters.filter[parameter | parameter.name.equals("population")]
 			
 			if(!population.empty) {
-				return Integer.parseInt(population.head.value)
+				return Integer.parseInt(population.head.value.numeric)
 			}
 			
 		return 0

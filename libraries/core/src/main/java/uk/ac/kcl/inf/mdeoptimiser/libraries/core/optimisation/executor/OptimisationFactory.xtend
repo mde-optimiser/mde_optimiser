@@ -2,12 +2,12 @@ package uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.executor
 
 import java.io.InvalidObjectException
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.IOptimisationExecutor
-import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.OptimisationSpec
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.MoeaOptimisation
+import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SolverSpec
 
 class OptimisationFactory implements IOptimisationExecutor {
 	
-	override execute(OptimisationSpec optimisationSpec, SolutionGenerator solutionGenerator) {
+	override execute(SolverSpec optimisationSpec, SolutionGenerator solutionGenerator) {
 		initializeOptimisation(optimisationSpec.algorithmFactory).execute(optimisationSpec, solutionGenerator);
 	}
 	

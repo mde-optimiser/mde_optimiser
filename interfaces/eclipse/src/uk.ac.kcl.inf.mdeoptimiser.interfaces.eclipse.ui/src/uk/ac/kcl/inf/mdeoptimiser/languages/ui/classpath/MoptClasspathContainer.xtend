@@ -23,6 +23,8 @@ class MoptClasspathContainer implements IClasspathContainer {
 	static final String UK_AC_KCL_MDEO_ECLIPSE_UI_BUNDLE_ID = "uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui";
 	static final String UK_AC_KCL_MDEO_INTERFACE_CLI_BUNDLE_ID = "uk.ac.kcl.inf.mdeoptimiser.interfaces.cli";
 	static final String UK_AC_KCL_MDEO_LIBRARY_CORE_BUNDLE_ID = "uk.ac.kcl.inf.mdeoptimiser.libraries.core";
+	public static final IPath CONTAINER_PATH = MoptClasspathContainerInitializer.MDEO_LIBRARY_PATH.append("/dsl");
+	
 	
 	public static final String[] BUNDLE_IDS_TO_INCLUDE = #["org.eclipse.emf.ecore", 
 															"org.eclipse.emf.common", 
@@ -52,7 +54,7 @@ class MoptClasspathContainer implements IClasspathContainer {
 	}
 	
 	override getPath() { 
-		MoptClasspathContainerInitializer.MDEO_LIBRARY_PATH.append("/dsl")
+		return CONTAINER_PATH
 	}
 	
 	private def void addEntry(List<IClasspathEntry> classpathEntries, String bundleId){
@@ -111,4 +113,5 @@ class MoptClasspathContainer implements IClasspathContainer {
 		
 		return null
 	}
+	
 }

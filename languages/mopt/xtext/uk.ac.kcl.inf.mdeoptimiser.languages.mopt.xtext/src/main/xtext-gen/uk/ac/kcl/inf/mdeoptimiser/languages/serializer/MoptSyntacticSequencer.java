@@ -45,8 +45,6 @@ public class MoptSyntacticSequencer extends AbstractSyntacticSequencer {
 			return getArrayBracketsToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getOpSingleAssignRule())
 			return getOpSingleAssignToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getParameterAssignmentRule())
-			return getParameterAssignmentToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
@@ -70,17 +68,6 @@ public class MoptSyntacticSequencer extends AbstractSyntacticSequencer {
 		if (node != null)
 			return getTokenText(node);
 		return "=";
-	}
-	
-	/**
-	 * ParameterAssignment:
-	 * 	":"
-	 * ;
-	 */
-	protected String getParameterAssignmentToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return ":";
 	}
 	
 	@Override

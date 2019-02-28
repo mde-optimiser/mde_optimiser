@@ -21,6 +21,8 @@ import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.IModelInitialiser
 import uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.metamodel.Multiplicity
 import uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.metamodel.RuleSpec
 import uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.RulesGenerator
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.executor.UserModelProvider
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.executor.SolutionGenerator
 
 class OptimisationInterpreter {
 	
@@ -32,7 +34,7 @@ class OptimisationInterpreter {
 	List<Unit> breedingOperators
 	List<Unit> mutationOperators
 	IPath projectRootPath;
-	boolean enableManualRandomMatching = false;
+	
 	Map<EPackage, List<Module>> generatedOperators;
 	
 	new (String projectPath, Optimisation model){
@@ -43,18 +45,13 @@ class OptimisationInterpreter {
 	def Instrumenter start() {
 		
 		//This model provider loads the model given by the user in the DSL
-		var solutionGenerator = new uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.executor.SolutionGenerator(model, 
+		var solutionGenerator = new SolutionGenerator(model, 
 											getBreedingOperators, 
 											getMutationOperators, 
 											getModelProvider, 
 											getMetamodel);
-
-		//TODO Find a better way to do this stuff
-		if(this.enableManualRandomMatching){
-			solutionGenerator.setEnableManualRandomMatching(this.enableManualRandomMatching);
-		}
-		
-		return new MoeaOptimisation().execute(model.solver.optimisation, solutionGenerator)
+											
+		return new MoeaOptimisation().execute(model.solver, solutionGenerator)
 	}
 	
 	def IModelProvider getModelProvider(){
@@ -63,10 +60,10 @@ class OptimisationInterpreter {
     "nrp", new XMIResourceFactoryImpl());
 		
 		if(model.problem.modelInitialiser !== null){
-			return new uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.executor.UserModelProvider(getModelInitialiser(), getResourceSet(projectRootPath.append(model.problem.basepath.location).toPortableString), model.problem.model.location)
+			return new UserModelProvider(getModelInitialiser(), getResourceSet(projectRootPath.append(model.problem.basepath.location).toPortableString), model.problem.model.location)
 		}
 		
-		return new uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.executor.UserModelProvider(getResourceSet(projectRootPath.append(model.problem.basepath.location).toPortableString), model.problem.model.location)
+		return new UserModelProvider(getResourceSet(projectRootPath.append(model.problem.basepath.location).toPortableString), model.problem.model.location)
 	}
 	
 	def IModelInitialiser getModelInitialiser(){
@@ -201,10 +198,5 @@ class OptimisationInterpreter {
  		}
  		
  		return this.generatedOperators
-    }
-	
-	def setEnableManualRandomMatching(boolean enableRandomMatching) {
-		this.enableManualRandomMatching = enableRandomMatching;
-	}
-	
+    }	
 }

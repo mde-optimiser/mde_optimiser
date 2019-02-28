@@ -26,7 +26,7 @@ class MoeaOptimisationCrossoverVariation implements Variation {
 			parentModels.add(solution.model)
 		}
 		
-		val children = solutionGenerator.crossover(parentModels)
+		val children = solutionGenerator.breed(parentModels)
 	
 		for(var i = 0; i < 2; i++){
 			solutions.get(i).model = children.get(i);

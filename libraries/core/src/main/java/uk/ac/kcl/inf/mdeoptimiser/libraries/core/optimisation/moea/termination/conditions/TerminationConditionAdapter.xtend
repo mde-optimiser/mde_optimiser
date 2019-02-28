@@ -4,30 +4,30 @@ import org.moeaframework.core.TerminationCondition
 import java.security.InvalidParameterException
 import java.util.ArrayList
 import org.moeaframework.core.termination.CompoundTerminationCondition
-import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.OptimisationSpec
+import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SolverSpec
 
 class TerminationConditionAdapter {
 
 	TerminationCondition terminationCondition;
-	OptimisationSpec optimisationSpec
+	SolverSpec solverSpec
 
-	new(OptimisationSpec optimisationSpec){
-		this.optimisationSpec = optimisationSpec
+	new(SolverSpec solverSpec){
+		this.solverSpec = solverSpec
 	}
 	
 	def TerminationCondition getCondition(){
 		
 		if(this.terminationCondition === null){
 
-			if(optimisationSpec.terminationCondition.parameters.empty ){
+			if(solverSpec.terminationCondition.parameters.empty ){
 				throw new InvalidParameterException("No termination condition parameters found.")
 			}
 
 			val terminationConditions = new ArrayList<TerminationCondition>();
 
-			this.optimisationSpec.terminationCondition.parameters.forEach[parameter |
+			this.solverSpec.terminationCondition.parameters.forEach[parameter |
 				
-				val terminationCondition = TerminationConditionFactory.getTerminationCondition(parameter, optimisationSpec)
+				val terminationCondition = TerminationConditionFactory.getTerminationCondition(parameter, solverSpec)
 				
 				if(terminationCondition !== null)
 					terminationConditions.add(terminationCondition)

@@ -4,10 +4,22 @@
 package uk.ac.kcl.inf.mdeoptimiser.languages.ui
 
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
+import org.eclipse.xtext.service.SingletonBinding
+import uk.ac.kcl.inf.mdeoptimiser.languages.ui.validation.MoptClasspathValidator
 
 /**
  * Use this class to register components to be used within the Eclipse IDE.
  */
 @FinalFieldsConstructor
 class MoptUiModule extends AbstractMoptUiModule {
+	
+	
+		/**
+	 * Register Eclipse Specific classpath validator
+	 */
+	@SingletonBinding(eager=true)
+	def Class<? extends MoptClasspathValidator> bindMoptClasspathValidator() {
+		return MoptClasspathValidator;
+	}
+	
 }

@@ -12,9 +12,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.MoptPackage;
-import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.OptimisationSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SolverSpec;
+import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.TerminationConditionSpec;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,7 +25,10 @@ import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SolverSpec;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.SolverSpecImpl#getOptimisation <em>Optimisation</em>}</li>
+ *   <li>{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.SolverSpecImpl#getAlgorithmFactory <em>Algorithm Factory</em>}</li>
+ *   <li>{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.SolverSpecImpl#getAlgorithm <em>Algorithm</em>}</li>
+ *   <li>{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.SolverSpecImpl#getTerminationCondition <em>Termination Condition</em>}</li>
+ *   <li>{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.SolverSpecImpl#getAlgorithmBatches <em>Algorithm Batches</em>}</li>
  * </ul>
  *
  * @generated
@@ -32,14 +36,64 @@ import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SolverSpec;
 public class SolverSpecImpl extends MinimalEObjectImpl.Container implements SolverSpec
 {
   /**
-   * The cached value of the '{@link #getOptimisation() <em>Optimisation</em>}' containment reference.
+   * The default value of the '{@link #getAlgorithmFactory() <em>Algorithm Factory</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getOptimisation()
+   * @see #getAlgorithmFactory()
    * @generated
    * @ordered
    */
-  protected OptimisationSpec optimisation;
+  protected static final String ALGORITHM_FACTORY_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getAlgorithmFactory() <em>Algorithm Factory</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAlgorithmFactory()
+   * @generated
+   * @ordered
+   */
+  protected String algorithmFactory = ALGORITHM_FACTORY_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getAlgorithm() <em>Algorithm</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAlgorithm()
+   * @generated
+   * @ordered
+   */
+  protected AlgorithmSpec algorithm;
+
+  /**
+   * The cached value of the '{@link #getTerminationCondition() <em>Termination Condition</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTerminationCondition()
+   * @generated
+   * @ordered
+   */
+  protected TerminationConditionSpec terminationCondition;
+
+  /**
+   * The default value of the '{@link #getAlgorithmBatches() <em>Algorithm Batches</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAlgorithmBatches()
+   * @generated
+   * @ordered
+   */
+  protected static final int ALGORITHM_BATCHES_EDEFAULT = 0;
+
+  /**
+   * The cached value of the '{@link #getAlgorithmBatches() <em>Algorithm Batches</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAlgorithmBatches()
+   * @generated
+   * @ordered
+   */
+  protected int algorithmBatches = ALGORITHM_BATCHES_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -67,9 +121,9 @@ public class SolverSpecImpl extends MinimalEObjectImpl.Container implements Solv
    * <!-- end-user-doc -->
    * @generated
    */
-  public OptimisationSpec getOptimisation()
+  public String getAlgorithmFactory()
   {
-    return optimisation;
+    return algorithmFactory;
   }
 
   /**
@@ -77,13 +131,36 @@ public class SolverSpecImpl extends MinimalEObjectImpl.Container implements Solv
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetOptimisation(OptimisationSpec newOptimisation, NotificationChain msgs)
+  public void setAlgorithmFactory(String newAlgorithmFactory)
   {
-    OptimisationSpec oldOptimisation = optimisation;
-    optimisation = newOptimisation;
+    String oldAlgorithmFactory = algorithmFactory;
+    algorithmFactory = newAlgorithmFactory;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MoptPackage.SOLVER_SPEC__ALGORITHM_FACTORY, oldAlgorithmFactory, algorithmFactory));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AlgorithmSpec getAlgorithm()
+  {
+    return algorithm;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetAlgorithm(AlgorithmSpec newAlgorithm, NotificationChain msgs)
+  {
+    AlgorithmSpec oldAlgorithm = algorithm;
+    algorithm = newAlgorithm;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MoptPackage.SOLVER_SPEC__OPTIMISATION, oldOptimisation, newOptimisation);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MoptPackage.SOLVER_SPEC__ALGORITHM, oldAlgorithm, newAlgorithm);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -94,20 +171,91 @@ public class SolverSpecImpl extends MinimalEObjectImpl.Container implements Solv
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setOptimisation(OptimisationSpec newOptimisation)
+  public void setAlgorithm(AlgorithmSpec newAlgorithm)
   {
-    if (newOptimisation != optimisation)
+    if (newAlgorithm != algorithm)
     {
       NotificationChain msgs = null;
-      if (optimisation != null)
-        msgs = ((InternalEObject)optimisation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MoptPackage.SOLVER_SPEC__OPTIMISATION, null, msgs);
-      if (newOptimisation != null)
-        msgs = ((InternalEObject)newOptimisation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MoptPackage.SOLVER_SPEC__OPTIMISATION, null, msgs);
-      msgs = basicSetOptimisation(newOptimisation, msgs);
+      if (algorithm != null)
+        msgs = ((InternalEObject)algorithm).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MoptPackage.SOLVER_SPEC__ALGORITHM, null, msgs);
+      if (newAlgorithm != null)
+        msgs = ((InternalEObject)newAlgorithm).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MoptPackage.SOLVER_SPEC__ALGORITHM, null, msgs);
+      msgs = basicSetAlgorithm(newAlgorithm, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MoptPackage.SOLVER_SPEC__OPTIMISATION, newOptimisation, newOptimisation));
+      eNotify(new ENotificationImpl(this, Notification.SET, MoptPackage.SOLVER_SPEC__ALGORITHM, newAlgorithm, newAlgorithm));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TerminationConditionSpec getTerminationCondition()
+  {
+    return terminationCondition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetTerminationCondition(TerminationConditionSpec newTerminationCondition, NotificationChain msgs)
+  {
+    TerminationConditionSpec oldTerminationCondition = terminationCondition;
+    terminationCondition = newTerminationCondition;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MoptPackage.SOLVER_SPEC__TERMINATION_CONDITION, oldTerminationCondition, newTerminationCondition);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setTerminationCondition(TerminationConditionSpec newTerminationCondition)
+  {
+    if (newTerminationCondition != terminationCondition)
+    {
+      NotificationChain msgs = null;
+      if (terminationCondition != null)
+        msgs = ((InternalEObject)terminationCondition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MoptPackage.SOLVER_SPEC__TERMINATION_CONDITION, null, msgs);
+      if (newTerminationCondition != null)
+        msgs = ((InternalEObject)newTerminationCondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MoptPackage.SOLVER_SPEC__TERMINATION_CONDITION, null, msgs);
+      msgs = basicSetTerminationCondition(newTerminationCondition, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MoptPackage.SOLVER_SPEC__TERMINATION_CONDITION, newTerminationCondition, newTerminationCondition));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public int getAlgorithmBatches()
+  {
+    return algorithmBatches;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setAlgorithmBatches(int newAlgorithmBatches)
+  {
+    int oldAlgorithmBatches = algorithmBatches;
+    algorithmBatches = newAlgorithmBatches;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MoptPackage.SOLVER_SPEC__ALGORITHM_BATCHES, oldAlgorithmBatches, algorithmBatches));
   }
 
   /**
@@ -120,8 +268,10 @@ public class SolverSpecImpl extends MinimalEObjectImpl.Container implements Solv
   {
     switch (featureID)
     {
-      case MoptPackage.SOLVER_SPEC__OPTIMISATION:
-        return basicSetOptimisation(null, msgs);
+      case MoptPackage.SOLVER_SPEC__ALGORITHM:
+        return basicSetAlgorithm(null, msgs);
+      case MoptPackage.SOLVER_SPEC__TERMINATION_CONDITION:
+        return basicSetTerminationCondition(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -136,8 +286,14 @@ public class SolverSpecImpl extends MinimalEObjectImpl.Container implements Solv
   {
     switch (featureID)
     {
-      case MoptPackage.SOLVER_SPEC__OPTIMISATION:
-        return getOptimisation();
+      case MoptPackage.SOLVER_SPEC__ALGORITHM_FACTORY:
+        return getAlgorithmFactory();
+      case MoptPackage.SOLVER_SPEC__ALGORITHM:
+        return getAlgorithm();
+      case MoptPackage.SOLVER_SPEC__TERMINATION_CONDITION:
+        return getTerminationCondition();
+      case MoptPackage.SOLVER_SPEC__ALGORITHM_BATCHES:
+        return getAlgorithmBatches();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -152,8 +308,17 @@ public class SolverSpecImpl extends MinimalEObjectImpl.Container implements Solv
   {
     switch (featureID)
     {
-      case MoptPackage.SOLVER_SPEC__OPTIMISATION:
-        setOptimisation((OptimisationSpec)newValue);
+      case MoptPackage.SOLVER_SPEC__ALGORITHM_FACTORY:
+        setAlgorithmFactory((String)newValue);
+        return;
+      case MoptPackage.SOLVER_SPEC__ALGORITHM:
+        setAlgorithm((AlgorithmSpec)newValue);
+        return;
+      case MoptPackage.SOLVER_SPEC__TERMINATION_CONDITION:
+        setTerminationCondition((TerminationConditionSpec)newValue);
+        return;
+      case MoptPackage.SOLVER_SPEC__ALGORITHM_BATCHES:
+        setAlgorithmBatches((Integer)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -169,8 +334,17 @@ public class SolverSpecImpl extends MinimalEObjectImpl.Container implements Solv
   {
     switch (featureID)
     {
-      case MoptPackage.SOLVER_SPEC__OPTIMISATION:
-        setOptimisation((OptimisationSpec)null);
+      case MoptPackage.SOLVER_SPEC__ALGORITHM_FACTORY:
+        setAlgorithmFactory(ALGORITHM_FACTORY_EDEFAULT);
+        return;
+      case MoptPackage.SOLVER_SPEC__ALGORITHM:
+        setAlgorithm((AlgorithmSpec)null);
+        return;
+      case MoptPackage.SOLVER_SPEC__TERMINATION_CONDITION:
+        setTerminationCondition((TerminationConditionSpec)null);
+        return;
+      case MoptPackage.SOLVER_SPEC__ALGORITHM_BATCHES:
+        setAlgorithmBatches(ALGORITHM_BATCHES_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -186,10 +360,35 @@ public class SolverSpecImpl extends MinimalEObjectImpl.Container implements Solv
   {
     switch (featureID)
     {
-      case MoptPackage.SOLVER_SPEC__OPTIMISATION:
-        return optimisation != null;
+      case MoptPackage.SOLVER_SPEC__ALGORITHM_FACTORY:
+        return ALGORITHM_FACTORY_EDEFAULT == null ? algorithmFactory != null : !ALGORITHM_FACTORY_EDEFAULT.equals(algorithmFactory);
+      case MoptPackage.SOLVER_SPEC__ALGORITHM:
+        return algorithm != null;
+      case MoptPackage.SOLVER_SPEC__TERMINATION_CONDITION:
+        return terminationCondition != null;
+      case MoptPackage.SOLVER_SPEC__ALGORITHM_BATCHES:
+        return algorithmBatches != ALGORITHM_BATCHES_EDEFAULT;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (algorithmFactory: ");
+    result.append(algorithmFactory);
+    result.append(", algorithmBatches: ");
+    result.append(algorithmBatches);
+    result.append(')');
+    return result.toString();
   }
 
 } //SolverSpecImpl

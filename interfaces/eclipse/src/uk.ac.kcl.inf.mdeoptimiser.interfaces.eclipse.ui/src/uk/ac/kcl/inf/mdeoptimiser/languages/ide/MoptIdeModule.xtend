@@ -3,9 +3,10 @@
  */
 package uk.ac.kcl.inf.mdeoptimiser.languages.ide
 
-
 /**
  * Use this class to register ide components.
  */
 class MoptIdeModule extends AbstractMoptIdeModule {
+	
+	
 }

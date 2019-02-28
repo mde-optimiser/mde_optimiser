@@ -39,8 +39,12 @@
         eType="#//RulegenSpec" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SolverSpec">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="optimisation" eType="#//OptimisationSpec"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="algorithmFactory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="algorithm" eType="#//AlgorithmSpec"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="terminationCondition" eType="#//TerminationConditionSpec"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="algorithmBatches" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BasePathSpec">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -113,37 +117,26 @@
     <eLiterals name="MUTATE" literal="mutate"/>
     <eLiterals name="BREED" value="1" literal="breed"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OptimisationSpec">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="algorithmFactory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="algorithmName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="algorithmVariation" eType="#//AlgorithmVariation"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="algorithmParameters" eType="#//AlgorithmParameters"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="terminationCondition" eType="#//TerminationConditionParameters"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="algorithmBatches" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AlgorithmVariation">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="probabilityVariation" eType="#//ProbabilityVariation"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="simpleVariation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ProbabilityVariation">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="crossover_rate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mutation_rate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AlgorithmParameters">
+  <eClassifiers xsi:type="ecore:EClass" name="AlgorithmSpec">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
         eType="#//Parameter" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TerminationConditionParameters">
+  <eClassifiers xsi:type="ecore:EClass" name="TerminationConditionSpec">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
         eType="#//Parameter" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Parameter">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//ParameterValue"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParameterValue">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numeric" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="functional" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parametric" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
+        eType="ecore:EClass platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
+        containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

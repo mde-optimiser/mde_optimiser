@@ -19,7 +19,7 @@ class MoeaOptimisationMutationVariation implements Variation {
 		var parentSolution = parents.head as MoeaOptimisationSolution;
 		var newSolution = parentSolution.copy
 			
-		newSolution.setModel(solutionGenerator.evolveModel(newSolution.model));
+		newSolution.setModel(solutionGenerator.mutate(newSolution.model));
 		//System.out.println("Evolved solution " + newSolution.evolutionsCounter)
 		#[newSolution]
 

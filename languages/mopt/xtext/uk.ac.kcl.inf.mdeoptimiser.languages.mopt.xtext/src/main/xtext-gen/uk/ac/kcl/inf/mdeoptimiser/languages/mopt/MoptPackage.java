@@ -271,13 +271,40 @@ public interface MoptPackage extends EPackage
   int SOLVER_SPEC = 4;
 
   /**
-   * The feature id for the '<em><b>Optimisation</b></em>' containment reference.
+   * The feature id for the '<em><b>Algorithm Factory</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SOLVER_SPEC__OPTIMISATION = 0;
+  int SOLVER_SPEC__ALGORITHM_FACTORY = 0;
+
+  /**
+   * The feature id for the '<em><b>Algorithm</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SOLVER_SPEC__ALGORITHM = 1;
+
+  /**
+   * The feature id for the '<em><b>Termination Condition</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SOLVER_SPEC__TERMINATION_CONDITION = 2;
+
+  /**
+   * The feature id for the '<em><b>Algorithm Batches</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SOLVER_SPEC__ALGORITHM_BATCHES = 3;
 
   /**
    * The number of structural features of the '<em>Solver Spec</em>' class.
@@ -286,7 +313,7 @@ public interface MoptPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SOLVER_SPEC_FEATURE_COUNT = 1;
+  int SOLVER_SPEC_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.BasePathSpecImpl <em>Base Path Spec</em>}' class.
@@ -852,170 +879,23 @@ public interface MoptPackage extends EPackage
   int PARAMETER_FUNCTION_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.OptimisationSpecImpl <em>Optimisation Spec</em>}' class.
+   * The meta object id for the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.AlgorithmSpecImpl <em>Algorithm Spec</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.OptimisationSpecImpl
-   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getOptimisationSpec()
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.AlgorithmSpecImpl
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getAlgorithmSpec()
    * @generated
    */
-  int OPTIMISATION_SPEC = 19;
+  int ALGORITHM_SPEC = 19;
 
   /**
-   * The feature id for the '<em><b>Algorithm Factory</b></em>' attribute.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OPTIMISATION_SPEC__ALGORITHM_FACTORY = 0;
-
-  /**
-   * The feature id for the '<em><b>Algorithm Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OPTIMISATION_SPEC__ALGORITHM_NAME = 1;
-
-  /**
-   * The feature id for the '<em><b>Algorithm Variation</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OPTIMISATION_SPEC__ALGORITHM_VARIATION = 2;
-
-  /**
-   * The feature id for the '<em><b>Algorithm Parameters</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OPTIMISATION_SPEC__ALGORITHM_PARAMETERS = 3;
-
-  /**
-   * The feature id for the '<em><b>Termination Condition</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OPTIMISATION_SPEC__TERMINATION_CONDITION = 4;
-
-  /**
-   * The feature id for the '<em><b>Algorithm Batches</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OPTIMISATION_SPEC__ALGORITHM_BATCHES = 5;
-
-  /**
-   * The number of structural features of the '<em>Optimisation Spec</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OPTIMISATION_SPEC_FEATURE_COUNT = 6;
-
-  /**
-   * The meta object id for the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.AlgorithmVariationImpl <em>Algorithm Variation</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.AlgorithmVariationImpl
-   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getAlgorithmVariation()
-   * @generated
-   */
-  int ALGORITHM_VARIATION = 20;
-
-  /**
-   * The feature id for the '<em><b>Probability Variation</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ALGORITHM_VARIATION__PROBABILITY_VARIATION = 0;
-
-  /**
-   * The feature id for the '<em><b>Simple Variation</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ALGORITHM_VARIATION__SIMPLE_VARIATION = 1;
-
-  /**
-   * The number of structural features of the '<em>Algorithm Variation</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ALGORITHM_VARIATION_FEATURE_COUNT = 2;
-
-  /**
-   * The meta object id for the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.ProbabilityVariationImpl <em>Probability Variation</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.ProbabilityVariationImpl
-   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getProbabilityVariation()
-   * @generated
-   */
-  int PROBABILITY_VARIATION = 21;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PROBABILITY_VARIATION__TYPE = 0;
-
-  /**
-   * The feature id for the '<em><b>Crossover rate</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PROBABILITY_VARIATION__CROSSOVER_RATE = 1;
-
-  /**
-   * The feature id for the '<em><b>Mutation rate</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PROBABILITY_VARIATION__MUTATION_RATE = 2;
-
-  /**
-   * The number of structural features of the '<em>Probability Variation</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PROBABILITY_VARIATION_FEATURE_COUNT = 3;
-
-  /**
-   * The meta object id for the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.AlgorithmParametersImpl <em>Algorithm Parameters</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.AlgorithmParametersImpl
-   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getAlgorithmParameters()
-   * @generated
-   */
-  int ALGORITHM_PARAMETERS = 22;
+  int ALGORITHM_SPEC__NAME = 0;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -1024,26 +904,26 @@ public interface MoptPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ALGORITHM_PARAMETERS__PARAMETERS = 0;
+  int ALGORITHM_SPEC__PARAMETERS = 1;
 
   /**
-   * The number of structural features of the '<em>Algorithm Parameters</em>' class.
+   * The number of structural features of the '<em>Algorithm Spec</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ALGORITHM_PARAMETERS_FEATURE_COUNT = 1;
+  int ALGORITHM_SPEC_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.TerminationConditionParametersImpl <em>Termination Condition Parameters</em>}' class.
+   * The meta object id for the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.TerminationConditionSpecImpl <em>Termination Condition Spec</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.TerminationConditionParametersImpl
-   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getTerminationConditionParameters()
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.TerminationConditionSpecImpl
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getTerminationConditionSpec()
    * @generated
    */
-  int TERMINATION_CONDITION_PARAMETERS = 23;
+  int TERMINATION_CONDITION_SPEC = 20;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -1052,16 +932,16 @@ public interface MoptPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TERMINATION_CONDITION_PARAMETERS__PARAMETERS = 0;
+  int TERMINATION_CONDITION_SPEC__PARAMETERS = 0;
 
   /**
-   * The number of structural features of the '<em>Termination Condition Parameters</em>' class.
+   * The number of structural features of the '<em>Termination Condition Spec</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TERMINATION_CONDITION_PARAMETERS_FEATURE_COUNT = 1;
+  int TERMINATION_CONDITION_SPEC_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.ParameterImpl <em>Parameter</em>}' class.
@@ -1071,7 +951,7 @@ public interface MoptPackage extends EPackage
    * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getParameter()
    * @generated
    */
-  int PARAMETER = 24;
+  int PARAMETER = 21;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1083,7 +963,7 @@ public interface MoptPackage extends EPackage
   int PARAMETER__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * The feature id for the '<em><b>Value</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1101,6 +981,61 @@ public interface MoptPackage extends EPackage
   int PARAMETER_FEATURE_COUNT = 2;
 
   /**
+   * The meta object id for the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.ParameterValueImpl <em>Parameter Value</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.ParameterValueImpl
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getParameterValue()
+   * @generated
+   */
+  int PARAMETER_VALUE = 22;
+
+  /**
+   * The feature id for the '<em><b>Numeric</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER_VALUE__NUMERIC = 0;
+
+  /**
+   * The feature id for the '<em><b>Functional</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER_VALUE__FUNCTIONAL = 1;
+
+  /**
+   * The feature id for the '<em><b>Parametric</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER_VALUE__PARAMETRIC = 2;
+
+  /**
+   * The feature id for the '<em><b>Params</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER_VALUE__PARAMS = 3;
+
+  /**
+   * The number of structural features of the '<em>Parameter Value</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER_VALUE_FEATURE_COUNT = 4;
+
+  /**
    * The meta object id for the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.EvolverType <em>Evolver Type</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1108,7 +1043,7 @@ public interface MoptPackage extends EPackage
    * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getEvolverType()
    * @generated
    */
-  int EVOLVER_TYPE = 25;
+  int EVOLVER_TYPE = 23;
 
 
   /**
@@ -1316,15 +1251,48 @@ public interface MoptPackage extends EPackage
   EClass getSolverSpec();
 
   /**
-   * Returns the meta object for the containment reference '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SolverSpec#getOptimisation <em>Optimisation</em>}'.
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SolverSpec#getAlgorithmFactory <em>Algorithm Factory</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Optimisation</em>'.
-   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SolverSpec#getOptimisation()
+   * @return the meta object for the attribute '<em>Algorithm Factory</em>'.
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SolverSpec#getAlgorithmFactory()
    * @see #getSolverSpec()
    * @generated
    */
-  EReference getSolverSpec_Optimisation();
+  EAttribute getSolverSpec_AlgorithmFactory();
+
+  /**
+   * Returns the meta object for the containment reference '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SolverSpec#getAlgorithm <em>Algorithm</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Algorithm</em>'.
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SolverSpec#getAlgorithm()
+   * @see #getSolverSpec()
+   * @generated
+   */
+  EReference getSolverSpec_Algorithm();
+
+  /**
+   * Returns the meta object for the containment reference '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SolverSpec#getTerminationCondition <em>Termination Condition</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Termination Condition</em>'.
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SolverSpec#getTerminationCondition()
+   * @see #getSolverSpec()
+   * @generated
+   */
+  EReference getSolverSpec_TerminationCondition();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SolverSpec#getAlgorithmBatches <em>Algorithm Batches</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Algorithm Batches</em>'.
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SolverSpec#getAlgorithmBatches()
+   * @see #getSolverSpec()
+   * @generated
+   */
+  EAttribute getSolverSpec_AlgorithmBatches();
 
   /**
    * Returns the meta object for class '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.BasePathSpec <em>Base Path Spec</em>}'.
@@ -1830,197 +1798,57 @@ public interface MoptPackage extends EPackage
   EAttribute getParameterFunction_Parameter();
 
   /**
-   * Returns the meta object for class '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.OptimisationSpec <em>Optimisation Spec</em>}'.
+   * Returns the meta object for class '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmSpec <em>Algorithm Spec</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Optimisation Spec</em>'.
-   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.OptimisationSpec
+   * @return the meta object for class '<em>Algorithm Spec</em>'.
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmSpec
    * @generated
    */
-  EClass getOptimisationSpec();
+  EClass getAlgorithmSpec();
 
   /**
-   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.OptimisationSpec#getAlgorithmFactory <em>Algorithm Factory</em>}'.
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmSpec#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Algorithm Factory</em>'.
-   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.OptimisationSpec#getAlgorithmFactory()
-   * @see #getOptimisationSpec()
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmSpec#getName()
+   * @see #getAlgorithmSpec()
    * @generated
    */
-  EAttribute getOptimisationSpec_AlgorithmFactory();
+  EAttribute getAlgorithmSpec_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.OptimisationSpec#getAlgorithmName <em>Algorithm Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Algorithm Name</em>'.
-   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.OptimisationSpec#getAlgorithmName()
-   * @see #getOptimisationSpec()
-   * @generated
-   */
-  EAttribute getOptimisationSpec_AlgorithmName();
-
-  /**
-   * Returns the meta object for the containment reference '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.OptimisationSpec#getAlgorithmVariation <em>Algorithm Variation</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Algorithm Variation</em>'.
-   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.OptimisationSpec#getAlgorithmVariation()
-   * @see #getOptimisationSpec()
-   * @generated
-   */
-  EReference getOptimisationSpec_AlgorithmVariation();
-
-  /**
-   * Returns the meta object for the containment reference '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.OptimisationSpec#getAlgorithmParameters <em>Algorithm Parameters</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Algorithm Parameters</em>'.
-   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.OptimisationSpec#getAlgorithmParameters()
-   * @see #getOptimisationSpec()
-   * @generated
-   */
-  EReference getOptimisationSpec_AlgorithmParameters();
-
-  /**
-   * Returns the meta object for the containment reference '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.OptimisationSpec#getTerminationCondition <em>Termination Condition</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Termination Condition</em>'.
-   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.OptimisationSpec#getTerminationCondition()
-   * @see #getOptimisationSpec()
-   * @generated
-   */
-  EReference getOptimisationSpec_TerminationCondition();
-
-  /**
-   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.OptimisationSpec#getAlgorithmBatches <em>Algorithm Batches</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Algorithm Batches</em>'.
-   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.OptimisationSpec#getAlgorithmBatches()
-   * @see #getOptimisationSpec()
-   * @generated
-   */
-  EAttribute getOptimisationSpec_AlgorithmBatches();
-
-  /**
-   * Returns the meta object for class '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmVariation <em>Algorithm Variation</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Algorithm Variation</em>'.
-   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmVariation
-   * @generated
-   */
-  EClass getAlgorithmVariation();
-
-  /**
-   * Returns the meta object for the containment reference '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmVariation#getProbabilityVariation <em>Probability Variation</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Probability Variation</em>'.
-   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmVariation#getProbabilityVariation()
-   * @see #getAlgorithmVariation()
-   * @generated
-   */
-  EReference getAlgorithmVariation_ProbabilityVariation();
-
-  /**
-   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmVariation#getSimpleVariation <em>Simple Variation</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Simple Variation</em>'.
-   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmVariation#getSimpleVariation()
-   * @see #getAlgorithmVariation()
-   * @generated
-   */
-  EAttribute getAlgorithmVariation_SimpleVariation();
-
-  /**
-   * Returns the meta object for class '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProbabilityVariation <em>Probability Variation</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Probability Variation</em>'.
-   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProbabilityVariation
-   * @generated
-   */
-  EClass getProbabilityVariation();
-
-  /**
-   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProbabilityVariation#getType <em>Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Type</em>'.
-   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProbabilityVariation#getType()
-   * @see #getProbabilityVariation()
-   * @generated
-   */
-  EAttribute getProbabilityVariation_Type();
-
-  /**
-   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProbabilityVariation#getCrossover_rate <em>Crossover rate</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Crossover rate</em>'.
-   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProbabilityVariation#getCrossover_rate()
-   * @see #getProbabilityVariation()
-   * @generated
-   */
-  EAttribute getProbabilityVariation_Crossover_rate();
-
-  /**
-   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProbabilityVariation#getMutation_rate <em>Mutation rate</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Mutation rate</em>'.
-   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProbabilityVariation#getMutation_rate()
-   * @see #getProbabilityVariation()
-   * @generated
-   */
-  EAttribute getProbabilityVariation_Mutation_rate();
-
-  /**
-   * Returns the meta object for class '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmParameters <em>Algorithm Parameters</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Algorithm Parameters</em>'.
-   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmParameters
-   * @generated
-   */
-  EClass getAlgorithmParameters();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmParameters#getParameters <em>Parameters</em>}'.
+   * Returns the meta object for the containment reference list '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmSpec#getParameters <em>Parameters</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Parameters</em>'.
-   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmParameters#getParameters()
-   * @see #getAlgorithmParameters()
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmSpec#getParameters()
+   * @see #getAlgorithmSpec()
    * @generated
    */
-  EReference getAlgorithmParameters_Parameters();
+  EReference getAlgorithmSpec_Parameters();
 
   /**
-   * Returns the meta object for class '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.TerminationConditionParameters <em>Termination Condition Parameters</em>}'.
+   * Returns the meta object for class '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.TerminationConditionSpec <em>Termination Condition Spec</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Termination Condition Parameters</em>'.
-   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.TerminationConditionParameters
+   * @return the meta object for class '<em>Termination Condition Spec</em>'.
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.TerminationConditionSpec
    * @generated
    */
-  EClass getTerminationConditionParameters();
+  EClass getTerminationConditionSpec();
 
   /**
-   * Returns the meta object for the containment reference list '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.TerminationConditionParameters#getParameters <em>Parameters</em>}'.
+   * Returns the meta object for the containment reference list '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.TerminationConditionSpec#getParameters <em>Parameters</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Parameters</em>'.
-   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.TerminationConditionParameters#getParameters()
-   * @see #getTerminationConditionParameters()
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.TerminationConditionSpec#getParameters()
+   * @see #getTerminationConditionSpec()
    * @generated
    */
-  EReference getTerminationConditionParameters_Parameters();
+  EReference getTerminationConditionSpec_Parameters();
 
   /**
    * Returns the meta object for class '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.Parameter <em>Parameter</em>}'.
@@ -2044,15 +1872,69 @@ public interface MoptPackage extends EPackage
   EAttribute getParameter_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.Parameter#getValue <em>Value</em>}'.
+   * Returns the meta object for the containment reference '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.Parameter#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
+   * @return the meta object for the containment reference '<em>Value</em>'.
    * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.Parameter#getValue()
    * @see #getParameter()
    * @generated
    */
-  EAttribute getParameter_Value();
+  EReference getParameter_Value();
+
+  /**
+   * Returns the meta object for class '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterValue <em>Parameter Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Parameter Value</em>'.
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterValue
+   * @generated
+   */
+  EClass getParameterValue();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterValue#getNumeric <em>Numeric</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Numeric</em>'.
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterValue#getNumeric()
+   * @see #getParameterValue()
+   * @generated
+   */
+  EAttribute getParameterValue_Numeric();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterValue#getFunctional <em>Functional</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Functional</em>'.
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterValue#getFunctional()
+   * @see #getParameterValue()
+   * @generated
+   */
+  EAttribute getParameterValue_Functional();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterValue#getParametric <em>Parametric</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Parametric</em>'.
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterValue#getParametric()
+   * @see #getParameterValue()
+   * @generated
+   */
+  EAttribute getParameterValue_Parametric();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterValue#getParams <em>Params</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Params</em>'.
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterValue#getParams()
+   * @see #getParameterValue()
+   * @generated
+   */
+  EReference getParameterValue_Params();
 
   /**
    * Returns the meta object for enum '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.EvolverType <em>Evolver Type</em>}'.
@@ -2250,12 +2132,36 @@ public interface MoptPackage extends EPackage
     EClass SOLVER_SPEC = eINSTANCE.getSolverSpec();
 
     /**
-     * The meta object literal for the '<em><b>Optimisation</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Algorithm Factory</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference SOLVER_SPEC__OPTIMISATION = eINSTANCE.getSolverSpec_Optimisation();
+    EAttribute SOLVER_SPEC__ALGORITHM_FACTORY = eINSTANCE.getSolverSpec_AlgorithmFactory();
+
+    /**
+     * The meta object literal for the '<em><b>Algorithm</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SOLVER_SPEC__ALGORITHM = eINSTANCE.getSolverSpec_Algorithm();
+
+    /**
+     * The meta object literal for the '<em><b>Termination Condition</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SOLVER_SPEC__TERMINATION_CONDITION = eINSTANCE.getSolverSpec_TerminationCondition();
+
+    /**
+     * The meta object literal for the '<em><b>Algorithm Batches</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SOLVER_SPEC__ALGORITHM_BATCHES = eINSTANCE.getSolverSpec_AlgorithmBatches();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.BasePathSpecImpl <em>Base Path Spec</em>}' class.
@@ -2662,132 +2568,22 @@ public interface MoptPackage extends EPackage
     EAttribute PARAMETER_FUNCTION__PARAMETER = eINSTANCE.getParameterFunction_Parameter();
 
     /**
-     * The meta object literal for the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.OptimisationSpecImpl <em>Optimisation Spec</em>}' class.
+     * The meta object literal for the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.AlgorithmSpecImpl <em>Algorithm Spec</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.OptimisationSpecImpl
-     * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getOptimisationSpec()
+     * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.AlgorithmSpecImpl
+     * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getAlgorithmSpec()
      * @generated
      */
-    EClass OPTIMISATION_SPEC = eINSTANCE.getOptimisationSpec();
+    EClass ALGORITHM_SPEC = eINSTANCE.getAlgorithmSpec();
 
     /**
-     * The meta object literal for the '<em><b>Algorithm Factory</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute OPTIMISATION_SPEC__ALGORITHM_FACTORY = eINSTANCE.getOptimisationSpec_AlgorithmFactory();
-
-    /**
-     * The meta object literal for the '<em><b>Algorithm Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute OPTIMISATION_SPEC__ALGORITHM_NAME = eINSTANCE.getOptimisationSpec_AlgorithmName();
-
-    /**
-     * The meta object literal for the '<em><b>Algorithm Variation</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference OPTIMISATION_SPEC__ALGORITHM_VARIATION = eINSTANCE.getOptimisationSpec_AlgorithmVariation();
-
-    /**
-     * The meta object literal for the '<em><b>Algorithm Parameters</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference OPTIMISATION_SPEC__ALGORITHM_PARAMETERS = eINSTANCE.getOptimisationSpec_AlgorithmParameters();
-
-    /**
-     * The meta object literal for the '<em><b>Termination Condition</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference OPTIMISATION_SPEC__TERMINATION_CONDITION = eINSTANCE.getOptimisationSpec_TerminationCondition();
-
-    /**
-     * The meta object literal for the '<em><b>Algorithm Batches</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute OPTIMISATION_SPEC__ALGORITHM_BATCHES = eINSTANCE.getOptimisationSpec_AlgorithmBatches();
-
-    /**
-     * The meta object literal for the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.AlgorithmVariationImpl <em>Algorithm Variation</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.AlgorithmVariationImpl
-     * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getAlgorithmVariation()
-     * @generated
-     */
-    EClass ALGORITHM_VARIATION = eINSTANCE.getAlgorithmVariation();
-
-    /**
-     * The meta object literal for the '<em><b>Probability Variation</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference ALGORITHM_VARIATION__PROBABILITY_VARIATION = eINSTANCE.getAlgorithmVariation_ProbabilityVariation();
-
-    /**
-     * The meta object literal for the '<em><b>Simple Variation</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ALGORITHM_VARIATION__SIMPLE_VARIATION = eINSTANCE.getAlgorithmVariation_SimpleVariation();
-
-    /**
-     * The meta object literal for the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.ProbabilityVariationImpl <em>Probability Variation</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.ProbabilityVariationImpl
-     * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getProbabilityVariation()
-     * @generated
-     */
-    EClass PROBABILITY_VARIATION = eINSTANCE.getProbabilityVariation();
-
-    /**
-     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute PROBABILITY_VARIATION__TYPE = eINSTANCE.getProbabilityVariation_Type();
-
-    /**
-     * The meta object literal for the '<em><b>Crossover rate</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute PROBABILITY_VARIATION__CROSSOVER_RATE = eINSTANCE.getProbabilityVariation_Crossover_rate();
-
-    /**
-     * The meta object literal for the '<em><b>Mutation rate</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute PROBABILITY_VARIATION__MUTATION_RATE = eINSTANCE.getProbabilityVariation_Mutation_rate();
-
-    /**
-     * The meta object literal for the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.AlgorithmParametersImpl <em>Algorithm Parameters</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.AlgorithmParametersImpl
-     * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getAlgorithmParameters()
-     * @generated
-     */
-    EClass ALGORITHM_PARAMETERS = eINSTANCE.getAlgorithmParameters();
+    EAttribute ALGORITHM_SPEC__NAME = eINSTANCE.getAlgorithmSpec_Name();
 
     /**
      * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
@@ -2795,17 +2591,17 @@ public interface MoptPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ALGORITHM_PARAMETERS__PARAMETERS = eINSTANCE.getAlgorithmParameters_Parameters();
+    EReference ALGORITHM_SPEC__PARAMETERS = eINSTANCE.getAlgorithmSpec_Parameters();
 
     /**
-     * The meta object literal for the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.TerminationConditionParametersImpl <em>Termination Condition Parameters</em>}' class.
+     * The meta object literal for the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.TerminationConditionSpecImpl <em>Termination Condition Spec</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.TerminationConditionParametersImpl
-     * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getTerminationConditionParameters()
+     * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.TerminationConditionSpecImpl
+     * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getTerminationConditionSpec()
      * @generated
      */
-    EClass TERMINATION_CONDITION_PARAMETERS = eINSTANCE.getTerminationConditionParameters();
+    EClass TERMINATION_CONDITION_SPEC = eINSTANCE.getTerminationConditionSpec();
 
     /**
      * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
@@ -2813,7 +2609,7 @@ public interface MoptPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference TERMINATION_CONDITION_PARAMETERS__PARAMETERS = eINSTANCE.getTerminationConditionParameters_Parameters();
+    EReference TERMINATION_CONDITION_SPEC__PARAMETERS = eINSTANCE.getTerminationConditionSpec_Parameters();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.ParameterImpl <em>Parameter</em>}' class.
@@ -2834,12 +2630,54 @@ public interface MoptPackage extends EPackage
     EAttribute PARAMETER__NAME = eINSTANCE.getParameter_Name();
 
     /**
-     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PARAMETER__VALUE = eINSTANCE.getParameter_Value();
+    EReference PARAMETER__VALUE = eINSTANCE.getParameter_Value();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.ParameterValueImpl <em>Parameter Value</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.ParameterValueImpl
+     * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getParameterValue()
+     * @generated
+     */
+    EClass PARAMETER_VALUE = eINSTANCE.getParameterValue();
+
+    /**
+     * The meta object literal for the '<em><b>Numeric</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PARAMETER_VALUE__NUMERIC = eINSTANCE.getParameterValue_Numeric();
+
+    /**
+     * The meta object literal for the '<em><b>Functional</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PARAMETER_VALUE__FUNCTIONAL = eINSTANCE.getParameterValue_Functional();
+
+    /**
+     * The meta object literal for the '<em><b>Parametric</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PARAMETER_VALUE__PARAMETRIC = eINSTANCE.getParameterValue_Parametric();
+
+    /**
+     * The meta object literal for the '<em><b>Params</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PARAMETER_VALUE__PARAMS = eINSTANCE.getParameterValue_Params();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.EvolverType <em>Evolver Type</em>}' enum.

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ASCII"?>
+<zoo:Zoo xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:zoo="http://inf.kcl.ac.uk/zoo/2016" xsi:schemaLocation="http://inf.kcl.ac.uk/zoo/2016 zoo.ecore">
+  <animals name="Swan" spaceRequired="1" quantity="2"/>
+  <animals name="Duck" spaceRequired="1" quantity="3"/>
+  <cages spaceAvailable="5" animals="//@animals.1 //@animals.0"/>
+  <cages spaceAvailable="3" spaceRemaining="3"/>
+</zoo:Zoo>

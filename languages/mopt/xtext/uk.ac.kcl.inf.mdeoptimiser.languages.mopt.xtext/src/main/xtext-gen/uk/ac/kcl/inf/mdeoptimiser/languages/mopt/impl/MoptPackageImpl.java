@@ -11,8 +11,9 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmParameters;
-import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmVariation;
+import org.eclipse.xtext.xbase.XbasePackage;
+
+import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.BasePathSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ConstraintInterpreterSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.EvolverParameter;
@@ -27,10 +28,9 @@ import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.MoptPackage;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.MultiplicityRefinementSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ObjectiveInterpreterSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.Optimisation;
-import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.OptimisationSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.Parameter;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterFunction;
-import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProbabilityVariation;
+import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterValue;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProblemSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ReportInterpreterSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.RulegenEdge;
@@ -38,7 +38,7 @@ import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.RulegenNode;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.RulegenSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SearchSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SolverSpec;
-import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.TerminationConditionParameters;
+import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.TerminationConditionSpec;
 
 /**
  * <!-- begin-user-doc -->
@@ -186,35 +186,14 @@ public class MoptPackageImpl extends EPackageImpl implements MoptPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass optimisationSpecEClass = null;
+  private EClass algorithmSpecEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass algorithmVariationEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass probabilityVariationEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass algorithmParametersEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass terminationConditionParametersEClass = null;
+  private EClass terminationConditionSpecEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -222,6 +201,13 @@ public class MoptPackageImpl extends EPackageImpl implements MoptPackage
    * @generated
    */
   private EClass parameterEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass parameterValueEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -277,6 +263,9 @@ public class MoptPackageImpl extends EPackageImpl implements MoptPackage
     MoptPackageImpl theMoptPackage = (MoptPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof MoptPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new MoptPackageImpl());
 
     isInited = true;
+
+    // Initialize simple dependencies
+    XbasePackage.eINSTANCE.eClass();
 
     // Create package meta-data objects
     theMoptPackage.createPackageContents();
@@ -488,9 +477,39 @@ public class MoptPackageImpl extends EPackageImpl implements MoptPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getSolverSpec_Optimisation()
+  public EAttribute getSolverSpec_AlgorithmFactory()
   {
-    return (EReference)solverSpecEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)solverSpecEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSolverSpec_Algorithm()
+  {
+    return (EReference)solverSpecEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSolverSpec_TerminationCondition()
+  {
+    return (EReference)solverSpecEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getSolverSpec_AlgorithmBatches()
+  {
+    return (EAttribute)solverSpecEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -968,9 +987,9 @@ public class MoptPackageImpl extends EPackageImpl implements MoptPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getOptimisationSpec()
+  public EClass getAlgorithmSpec()
   {
-    return optimisationSpecEClass;
+    return algorithmSpecEClass;
   }
 
   /**
@@ -978,9 +997,9 @@ public class MoptPackageImpl extends EPackageImpl implements MoptPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getOptimisationSpec_AlgorithmFactory()
+  public EAttribute getAlgorithmSpec_Name()
   {
-    return (EAttribute)optimisationSpecEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)algorithmSpecEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -988,9 +1007,9 @@ public class MoptPackageImpl extends EPackageImpl implements MoptPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getOptimisationSpec_AlgorithmName()
+  public EReference getAlgorithmSpec_Parameters()
   {
-    return (EAttribute)optimisationSpecEClass.getEStructuralFeatures().get(1);
+    return (EReference)algorithmSpecEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -998,9 +1017,9 @@ public class MoptPackageImpl extends EPackageImpl implements MoptPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOptimisationSpec_AlgorithmVariation()
+  public EClass getTerminationConditionSpec()
   {
-    return (EReference)optimisationSpecEClass.getEStructuralFeatures().get(2);
+    return terminationConditionSpecEClass;
   }
 
   /**
@@ -1008,139 +1027,9 @@ public class MoptPackageImpl extends EPackageImpl implements MoptPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOptimisationSpec_AlgorithmParameters()
+  public EReference getTerminationConditionSpec_Parameters()
   {
-    return (EReference)optimisationSpecEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getOptimisationSpec_TerminationCondition()
-  {
-    return (EReference)optimisationSpecEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getOptimisationSpec_AlgorithmBatches()
-  {
-    return (EAttribute)optimisationSpecEClass.getEStructuralFeatures().get(5);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getAlgorithmVariation()
-  {
-    return algorithmVariationEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getAlgorithmVariation_ProbabilityVariation()
-  {
-    return (EReference)algorithmVariationEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getAlgorithmVariation_SimpleVariation()
-  {
-    return (EAttribute)algorithmVariationEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getProbabilityVariation()
-  {
-    return probabilityVariationEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getProbabilityVariation_Type()
-  {
-    return (EAttribute)probabilityVariationEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getProbabilityVariation_Crossover_rate()
-  {
-    return (EAttribute)probabilityVariationEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getProbabilityVariation_Mutation_rate()
-  {
-    return (EAttribute)probabilityVariationEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getAlgorithmParameters()
-  {
-    return algorithmParametersEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getAlgorithmParameters_Parameters()
-  {
-    return (EReference)algorithmParametersEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getTerminationConditionParameters()
-  {
-    return terminationConditionParametersEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getTerminationConditionParameters_Parameters()
-  {
-    return (EReference)terminationConditionParametersEClass.getEStructuralFeatures().get(0);
+    return (EReference)terminationConditionSpecEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1168,9 +1057,59 @@ public class MoptPackageImpl extends EPackageImpl implements MoptPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getParameter_Value()
+  public EReference getParameter_Value()
   {
-    return (EAttribute)parameterEClass.getEStructuralFeatures().get(1);
+    return (EReference)parameterEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getParameterValue()
+  {
+    return parameterValueEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getParameterValue_Numeric()
+  {
+    return (EAttribute)parameterValueEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getParameterValue_Functional()
+  {
+    return (EAttribute)parameterValueEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getParameterValue_Parametric()
+  {
+    return (EAttribute)parameterValueEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getParameterValue_Params()
+  {
+    return (EReference)parameterValueEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -1236,7 +1175,10 @@ public class MoptPackageImpl extends EPackageImpl implements MoptPackage
     createEReference(searchSpecEClass, SEARCH_SPEC__RULEGEN);
 
     solverSpecEClass = createEClass(SOLVER_SPEC);
-    createEReference(solverSpecEClass, SOLVER_SPEC__OPTIMISATION);
+    createEAttribute(solverSpecEClass, SOLVER_SPEC__ALGORITHM_FACTORY);
+    createEReference(solverSpecEClass, SOLVER_SPEC__ALGORITHM);
+    createEReference(solverSpecEClass, SOLVER_SPEC__TERMINATION_CONDITION);
+    createEAttribute(solverSpecEClass, SOLVER_SPEC__ALGORITHM_BATCHES);
 
     basePathSpecEClass = createEClass(BASE_PATH_SPEC);
     createEAttribute(basePathSpecEClass, BASE_PATH_SPEC__LOCATION);
@@ -1299,32 +1241,22 @@ public class MoptPackageImpl extends EPackageImpl implements MoptPackage
     createEAttribute(parameterFunctionEClass, PARAMETER_FUNCTION__NAME);
     createEAttribute(parameterFunctionEClass, PARAMETER_FUNCTION__PARAMETER);
 
-    optimisationSpecEClass = createEClass(OPTIMISATION_SPEC);
-    createEAttribute(optimisationSpecEClass, OPTIMISATION_SPEC__ALGORITHM_FACTORY);
-    createEAttribute(optimisationSpecEClass, OPTIMISATION_SPEC__ALGORITHM_NAME);
-    createEReference(optimisationSpecEClass, OPTIMISATION_SPEC__ALGORITHM_VARIATION);
-    createEReference(optimisationSpecEClass, OPTIMISATION_SPEC__ALGORITHM_PARAMETERS);
-    createEReference(optimisationSpecEClass, OPTIMISATION_SPEC__TERMINATION_CONDITION);
-    createEAttribute(optimisationSpecEClass, OPTIMISATION_SPEC__ALGORITHM_BATCHES);
+    algorithmSpecEClass = createEClass(ALGORITHM_SPEC);
+    createEAttribute(algorithmSpecEClass, ALGORITHM_SPEC__NAME);
+    createEReference(algorithmSpecEClass, ALGORITHM_SPEC__PARAMETERS);
 
-    algorithmVariationEClass = createEClass(ALGORITHM_VARIATION);
-    createEReference(algorithmVariationEClass, ALGORITHM_VARIATION__PROBABILITY_VARIATION);
-    createEAttribute(algorithmVariationEClass, ALGORITHM_VARIATION__SIMPLE_VARIATION);
-
-    probabilityVariationEClass = createEClass(PROBABILITY_VARIATION);
-    createEAttribute(probabilityVariationEClass, PROBABILITY_VARIATION__TYPE);
-    createEAttribute(probabilityVariationEClass, PROBABILITY_VARIATION__CROSSOVER_RATE);
-    createEAttribute(probabilityVariationEClass, PROBABILITY_VARIATION__MUTATION_RATE);
-
-    algorithmParametersEClass = createEClass(ALGORITHM_PARAMETERS);
-    createEReference(algorithmParametersEClass, ALGORITHM_PARAMETERS__PARAMETERS);
-
-    terminationConditionParametersEClass = createEClass(TERMINATION_CONDITION_PARAMETERS);
-    createEReference(terminationConditionParametersEClass, TERMINATION_CONDITION_PARAMETERS__PARAMETERS);
+    terminationConditionSpecEClass = createEClass(TERMINATION_CONDITION_SPEC);
+    createEReference(terminationConditionSpecEClass, TERMINATION_CONDITION_SPEC__PARAMETERS);
 
     parameterEClass = createEClass(PARAMETER);
     createEAttribute(parameterEClass, PARAMETER__NAME);
-    createEAttribute(parameterEClass, PARAMETER__VALUE);
+    createEReference(parameterEClass, PARAMETER__VALUE);
+
+    parameterValueEClass = createEClass(PARAMETER_VALUE);
+    createEAttribute(parameterValueEClass, PARAMETER_VALUE__NUMERIC);
+    createEAttribute(parameterValueEClass, PARAMETER_VALUE__FUNCTIONAL);
+    createEAttribute(parameterValueEClass, PARAMETER_VALUE__PARAMETRIC);
+    createEReference(parameterValueEClass, PARAMETER_VALUE__PARAMS);
 
     // Create enums
     evolverTypeEEnum = createEEnum(EVOLVER_TYPE);
@@ -1353,6 +1285,9 @@ public class MoptPackageImpl extends EPackageImpl implements MoptPackage
     setName(eNAME);
     setNsPrefix(eNS_PREFIX);
     setNsURI(eNS_URI);
+
+    // Obtain other dependent packages
+    XbasePackage theXbasePackage = (XbasePackage)EPackage.Registry.INSTANCE.getEPackage(XbasePackage.eNS_URI);
 
     // Create type parameters
 
@@ -1384,7 +1319,10 @@ public class MoptPackageImpl extends EPackageImpl implements MoptPackage
     initEReference(getSearchSpec_Rulegen(), this.getRulegenSpec(), null, "rulegen", null, 0, -1, SearchSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(solverSpecEClass, SolverSpec.class, "SolverSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getSolverSpec_Optimisation(), this.getOptimisationSpec(), null, "optimisation", null, 0, 1, SolverSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSolverSpec_AlgorithmFactory(), ecorePackage.getEString(), "algorithmFactory", null, 0, 1, SolverSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSolverSpec_Algorithm(), this.getAlgorithmSpec(), null, "algorithm", null, 0, 1, SolverSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSolverSpec_TerminationCondition(), this.getTerminationConditionSpec(), null, "terminationCondition", null, 0, 1, SolverSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSolverSpec_AlgorithmBatches(), ecorePackage.getEInt(), "algorithmBatches", null, 0, 1, SolverSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(basePathSpecEClass, BasePathSpec.class, "BasePathSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getBasePathSpec_Location(), ecorePackage.getEString(), "location", null, 0, 1, BasePathSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1447,32 +1385,22 @@ public class MoptPackageImpl extends EPackageImpl implements MoptPackage
     initEAttribute(getParameterFunction_Name(), ecorePackage.getEString(), "name", null, 0, 1, ParameterFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getParameterFunction_Parameter(), ecorePackage.getEString(), "parameter", null, 0, 1, ParameterFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(optimisationSpecEClass, OptimisationSpec.class, "OptimisationSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getOptimisationSpec_AlgorithmFactory(), ecorePackage.getEString(), "algorithmFactory", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getOptimisationSpec_AlgorithmName(), ecorePackage.getEString(), "algorithmName", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getOptimisationSpec_AlgorithmVariation(), this.getAlgorithmVariation(), null, "algorithmVariation", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getOptimisationSpec_AlgorithmParameters(), this.getAlgorithmParameters(), null, "algorithmParameters", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getOptimisationSpec_TerminationCondition(), this.getTerminationConditionParameters(), null, "terminationCondition", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getOptimisationSpec_AlgorithmBatches(), ecorePackage.getEInt(), "algorithmBatches", null, 0, 1, OptimisationSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(algorithmSpecEClass, AlgorithmSpec.class, "AlgorithmSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getAlgorithmSpec_Name(), ecorePackage.getEString(), "name", null, 0, 1, AlgorithmSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAlgorithmSpec_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, AlgorithmSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(algorithmVariationEClass, AlgorithmVariation.class, "AlgorithmVariation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAlgorithmVariation_ProbabilityVariation(), this.getProbabilityVariation(), null, "probabilityVariation", null, 0, 1, AlgorithmVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAlgorithmVariation_SimpleVariation(), ecorePackage.getEString(), "simpleVariation", null, 0, 1, AlgorithmVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(probabilityVariationEClass, ProbabilityVariation.class, "ProbabilityVariation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getProbabilityVariation_Type(), ecorePackage.getEString(), "type", null, 0, 1, ProbabilityVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getProbabilityVariation_Crossover_rate(), ecorePackage.getEString(), "crossover_rate", null, 0, 1, ProbabilityVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getProbabilityVariation_Mutation_rate(), ecorePackage.getEString(), "mutation_rate", null, 0, 1, ProbabilityVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(algorithmParametersEClass, AlgorithmParameters.class, "AlgorithmParameters", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAlgorithmParameters_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, AlgorithmParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(terminationConditionParametersEClass, TerminationConditionParameters.class, "TerminationConditionParameters", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getTerminationConditionParameters_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, TerminationConditionParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(terminationConditionSpecEClass, TerminationConditionSpec.class, "TerminationConditionSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getTerminationConditionSpec_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, TerminationConditionSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getParameter_Name(), ecorePackage.getEString(), "name", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getParameter_Value(), ecorePackage.getEString(), "value", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getParameter_Value(), this.getParameterValue(), null, "value", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(parameterValueEClass, ParameterValue.class, "ParameterValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getParameterValue_Numeric(), ecorePackage.getEString(), "numeric", null, 0, 1, ParameterValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getParameterValue_Functional(), ecorePackage.getEString(), "functional", null, 0, 1, ParameterValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getParameterValue_Parametric(), ecorePackage.getEString(), "parametric", null, 0, 1, ParameterValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getParameterValue_Params(), theXbasePackage.getXExpression(), null, "params", null, 0, -1, ParameterValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
     initEEnum(evolverTypeEEnum, EvolverType.class, "EvolverType");

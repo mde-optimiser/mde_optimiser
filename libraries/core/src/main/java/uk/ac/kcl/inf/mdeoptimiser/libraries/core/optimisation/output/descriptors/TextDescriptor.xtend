@@ -1,23 +1,20 @@
 package uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output.descriptors
 
-import org.eclipse.core.runtime.IPath
-import java.util.Date
-import java.io.PrintWriter
-import java.text.SimpleDateFormat
-import java.util.TimeZone
 import com.google.common.io.Files
-import java.io.File
-import org.eclipse.emf.ecore.EObject
-import java.util.Collections
-import org.eclipse.emf.ecore.resource.ResourceSet
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
-import org.eclipse.emf.common.util.URI
+import java.io.PrintWriter
 import java.nio.charset.Charset
-import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output.descriptors.ResultsDescriptor
-import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output.MDEOBatch
-import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.problem.MoeaOptimisationSolution
 import java.nio.file.Path
 import java.nio.file.Paths
+import java.text.SimpleDateFormat
+import java.util.Collections
+import java.util.Date
+import java.util.TimeZone
+import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.resource.ResourceSet
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.problem.MoeaOptimisationSolution
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output.MDEOBatch
 
 class TextDescriptor implements ResultsDescriptor {
 	

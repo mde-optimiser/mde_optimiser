@@ -15,7 +15,10 @@ Export-Package: uk.ac.kcl.inf.mdeoptimiser.languages,
  uk.ac.kcl.inf.mdeoptimiser.languages.scoping,
  uk.ac.kcl.inf.mdeoptimiser.languages.serializer,
  uk.ac.kcl.inf.mdeoptimiser.languages.services,
- uk.ac.kcl.inf.mdeoptimiser.languages.validation
+ uk.ac.kcl.inf.mdeoptimiser.languages.validation,
+ uk.ac.kcl.inf.mdeoptimiser.languages.mosc.impl,
+ uk.ac.kcl.inf.mdeoptimiser.languages.mosc.util,
+ uk.ac.kcl.inf.mdeoptimiser.languages.mosc
 Require-Bundle: org.antlr.runtime;bundle-version="[3.2.0,3.2.1)",
  org.eclipse.emf.common,
  org.eclipse.emf.ecore,

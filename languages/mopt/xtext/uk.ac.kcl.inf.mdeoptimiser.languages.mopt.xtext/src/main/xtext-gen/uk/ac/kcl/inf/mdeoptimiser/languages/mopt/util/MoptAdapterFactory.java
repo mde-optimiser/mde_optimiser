@@ -171,34 +171,24 @@ public class MoptAdapterFactory extends AdapterFactoryImpl
         return createParameterFunctionAdapter();
       }
       @Override
-      public Adapter caseOptimisationSpec(OptimisationSpec object)
+      public Adapter caseAlgorithmSpec(AlgorithmSpec object)
       {
-        return createOptimisationSpecAdapter();
+        return createAlgorithmSpecAdapter();
       }
       @Override
-      public Adapter caseAlgorithmVariation(AlgorithmVariation object)
+      public Adapter caseTerminationConditionSpec(TerminationConditionSpec object)
       {
-        return createAlgorithmVariationAdapter();
-      }
-      @Override
-      public Adapter caseProbabilityVariation(ProbabilityVariation object)
-      {
-        return createProbabilityVariationAdapter();
-      }
-      @Override
-      public Adapter caseAlgorithmParameters(AlgorithmParameters object)
-      {
-        return createAlgorithmParametersAdapter();
-      }
-      @Override
-      public Adapter caseTerminationConditionParameters(TerminationConditionParameters object)
-      {
-        return createTerminationConditionParametersAdapter();
+        return createTerminationConditionSpecAdapter();
       }
       @Override
       public Adapter caseParameter(Parameter object)
       {
         return createParameterAdapter();
+      }
+      @Override
+      public Adapter caseParameterValue(ParameterValue object)
+      {
+        return createParameterValueAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -508,76 +498,31 @@ public class MoptAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.OptimisationSpec <em>Optimisation Spec</em>}'.
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmSpec <em>Algorithm Spec</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.OptimisationSpec
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmSpec
    * @generated
    */
-  public Adapter createOptimisationSpecAdapter()
+  public Adapter createAlgorithmSpecAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmVariation <em>Algorithm Variation</em>}'.
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.TerminationConditionSpec <em>Termination Condition Spec</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmVariation
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.TerminationConditionSpec
    * @generated
    */
-  public Adapter createAlgorithmVariationAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProbabilityVariation <em>Probability Variation</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProbabilityVariation
-   * @generated
-   */
-  public Adapter createProbabilityVariationAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmParameters <em>Algorithm Parameters</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmParameters
-   * @generated
-   */
-  public Adapter createAlgorithmParametersAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.TerminationConditionParameters <em>Termination Condition Parameters</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.TerminationConditionParameters
-   * @generated
-   */
-  public Adapter createTerminationConditionParametersAdapter()
+  public Adapter createTerminationConditionSpecAdapter()
   {
     return null;
   }
@@ -593,6 +538,21 @@ public class MoptAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createParameterAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterValue <em>Parameter Value</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterValue
+   * @generated
+   */
+  public Adapter createParameterValueAdapter()
   {
     return null;
   }

@@ -206,38 +206,17 @@ public class MoptSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case MoptPackage.OPTIMISATION_SPEC:
+      case MoptPackage.ALGORITHM_SPEC:
       {
-        OptimisationSpec optimisationSpec = (OptimisationSpec)theEObject;
-        T result = caseOptimisationSpec(optimisationSpec);
+        AlgorithmSpec algorithmSpec = (AlgorithmSpec)theEObject;
+        T result = caseAlgorithmSpec(algorithmSpec);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case MoptPackage.ALGORITHM_VARIATION:
+      case MoptPackage.TERMINATION_CONDITION_SPEC:
       {
-        AlgorithmVariation algorithmVariation = (AlgorithmVariation)theEObject;
-        T result = caseAlgorithmVariation(algorithmVariation);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case MoptPackage.PROBABILITY_VARIATION:
-      {
-        ProbabilityVariation probabilityVariation = (ProbabilityVariation)theEObject;
-        T result = caseProbabilityVariation(probabilityVariation);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case MoptPackage.ALGORITHM_PARAMETERS:
-      {
-        AlgorithmParameters algorithmParameters = (AlgorithmParameters)theEObject;
-        T result = caseAlgorithmParameters(algorithmParameters);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case MoptPackage.TERMINATION_CONDITION_PARAMETERS:
-      {
-        TerminationConditionParameters terminationConditionParameters = (TerminationConditionParameters)theEObject;
-        T result = caseTerminationConditionParameters(terminationConditionParameters);
+        TerminationConditionSpec terminationConditionSpec = (TerminationConditionSpec)theEObject;
+        T result = caseTerminationConditionSpec(terminationConditionSpec);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -245,6 +224,13 @@ public class MoptSwitch<T> extends Switch<T>
       {
         Parameter parameter = (Parameter)theEObject;
         T result = caseParameter(parameter);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MoptPackage.PARAMETER_VALUE:
+      {
+        ParameterValue parameterValue = (ParameterValue)theEObject;
+        T result = caseParameterValue(parameterValue);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -557,81 +543,33 @@ public class MoptSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Optimisation Spec</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Algorithm Spec</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Optimisation Spec</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Algorithm Spec</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseOptimisationSpec(OptimisationSpec object)
+  public T caseAlgorithmSpec(AlgorithmSpec object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Algorithm Variation</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Termination Condition Spec</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Algorithm Variation</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Termination Condition Spec</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseAlgorithmVariation(AlgorithmVariation object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Probability Variation</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Probability Variation</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseProbabilityVariation(ProbabilityVariation object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Algorithm Parameters</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Algorithm Parameters</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseAlgorithmParameters(AlgorithmParameters object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Termination Condition Parameters</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Termination Condition Parameters</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseTerminationConditionParameters(TerminationConditionParameters object)
+  public T caseTerminationConditionSpec(TerminationConditionSpec object)
   {
     return null;
   }
@@ -648,6 +586,22 @@ public class MoptSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseParameter(Parameter object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Parameter Value</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Parameter Value</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseParameterValue(ParameterValue object)
   {
     return null;
   }

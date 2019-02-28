@@ -14,7 +14,7 @@ class MoeaMdeoProblemProvider extends ProblemProvider {
 
 	new(SolutionGenerator solutionGenerator, MoeaOptimisationAlgorithmProvider referenceSet){
 		this.solutionGenerator = solutionGenerator;
-		this.algo = (referenceSet.algo as EvolutionaryAlgorithm);
+		this.algo = (referenceSet.algorithm as EvolutionaryAlgorithm);
 	}
 
 	override getProblem(String name) {
