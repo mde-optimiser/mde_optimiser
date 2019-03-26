@@ -80,7 +80,7 @@ class CaseStudyTestsRandomMutationStrategy {
 			problem {
 				basepath <src/test/resources/models/cra/>
 				metamodel <architectureCRA.ecore>
-				model <TTC_InputRDG_A.xmi>
+				model <TTC_InputRDG_D.xmi>
 			}
 			goal {
 				objective CRA maximise java { "models.moea.MaximiseCRA" }
@@ -96,7 +96,7 @@ class CaseStudyTestsRandomMutationStrategy {
 				optimisation provider moea algorithm NSGAII {
 					population: 40
 					variation: mutation
-					mutation.step: 5
+					mutation.step: 3
 					mutation.strategy: random
 				}
 				termination {
@@ -117,7 +117,7 @@ class CaseStudyTestsRandomMutationStrategy {
 			problem {
 				basepath <src/test/resources/models/cra/>
 				metamodel <architectureCRA.ecore>
-				model <TTC_InputRDG_A.xmi>
+				model <TTC_InputRDG_D.xmi>
 			}
 			goal {
 				refine metamodel {"Feature", "isEncapsulatedBy", 1, 1}
@@ -131,7 +131,7 @@ class CaseStudyTestsRandomMutationStrategy {
 				optimisation provider moea algorithm NSGAII {
 					population: 40
 					variation: mutation
-					mutation.step: 5
+					mutation.step: 3
 					mutation.strategy: random
 				}
 				termination {
@@ -853,16 +853,11 @@ class CaseStudyTestsRandomMutationStrategy {
 		runTestSearch(model, testInfo)
 	}
 	
-	
-	
 	/////////////////////////////////
 	////////////////////////////////
 	//NRP
 	///////////////////////////////
 	//////////////////////////////
-	
-	
-	
 	
 	//NRP MODEL A
 	

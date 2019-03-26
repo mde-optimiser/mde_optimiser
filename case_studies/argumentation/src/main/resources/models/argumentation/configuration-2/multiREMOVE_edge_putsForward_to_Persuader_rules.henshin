@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_w9fBIDscEeiTGdjXEQrLYA" name="REMOVE_edge_putsForward_to_Persuader_rules" description="Removes Persuader edge of type putsForward">
+  <imports href="argumentation.ecore#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_w9fBITscEeiTGdjXEQrLYA" name="multiRemoveFromPersuader_putsForward_Argument" description="Removes from Persuader's reference putsForward the target Argument">
+    <lhs xmi:id="_w9fBIjscEeiTGdjXEQrLYA" name="LHS">
+      <nodes xmi:id="_w9fBIzscEeiTGdjXEQrLYA" name="Selected" outgoing="_w9fBJTscEeiTGdjXEQrLYA _Ak1oED5gEeiT3Nw02sUsPg _Aw-moD5gEeiT3Nw02sUsPg _A_fjwD5gEeiT3Nw02sUsPg _BMqdED5gEeiT3Nw02sUsPg _BaXh4D5gEeiT3Nw02sUsPg _EtfYID5jEeiT3Nw02sUsPg _E-4DED5jEeiT3Nw02sUsPg _FQORwD5jEeiT3Nw02sUsPg _FicDID5jEeiT3Nw02sUsPg _FzrkID5jEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Persuader"/>
+      </nodes>
+      <nodes xmi:id="_w9fBJDscEeiTGdjXEQrLYA" name="OldTarget" incoming="_w9fBJTscEeiTGdjXEQrLYA">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_8_wXwD5fEeiT3Nw02sUsPg" incoming="_Ak1oED5gEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_9dA7gD5fEeiT3Nw02sUsPg" incoming="_Aw-moD5gEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_97j4sD5fEeiT3Nw02sUsPg" incoming="_A_fjwD5gEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_-R8YYD5fEeiT3Nw02sUsPg" incoming="_BMqdED5gEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_-z85QD5fEeiT3Nw02sUsPg" incoming="_BaXh4D5gEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_C5NXED5jEeiT3Nw02sUsPg" incoming="_FzrkID5jEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_DOSPMD5jEeiT3Nw02sUsPg" incoming="_FicDID5jEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_DhEoUD5jEeiT3Nw02sUsPg" incoming="_FQORwD5jEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_D0QDAD5jEeiT3Nw02sUsPg" incoming="_E-4DED5jEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_EVK-wD5jEeiT3Nw02sUsPg" incoming="_EtfYID5jEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <edges xmi:id="_w9fBJTscEeiTGdjXEQrLYA" source="_w9fBIzscEeiTGdjXEQrLYA" target="_w9fBJDscEeiTGdjXEQrLYA">
+        <type href="argumentation.ecore#//Persuader/putsForward"/>
+      </edges>
+      <edges xmi:id="_Ak1oED5gEeiT3Nw02sUsPg" source="_w9fBIzscEeiTGdjXEQrLYA" target="_8_wXwD5fEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Persuader/putsForward"/>
+      </edges>
+      <edges xmi:id="_Aw-moD5gEeiT3Nw02sUsPg" source="_w9fBIzscEeiTGdjXEQrLYA" target="_9dA7gD5fEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Persuader/putsForward"/>
+      </edges>
+      <edges xmi:id="_A_fjwD5gEeiT3Nw02sUsPg" source="_w9fBIzscEeiTGdjXEQrLYA" target="_97j4sD5fEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Persuader/putsForward"/>
+      </edges>
+      <edges xmi:id="_BMqdED5gEeiT3Nw02sUsPg" source="_w9fBIzscEeiTGdjXEQrLYA" target="_-R8YYD5fEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Persuader/putsForward"/>
+      </edges>
+      <edges xmi:id="_BaXh4D5gEeiT3Nw02sUsPg" source="_w9fBIzscEeiTGdjXEQrLYA" target="_-z85QD5fEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Persuader/putsForward"/>
+      </edges>
+      <edges xmi:id="_EtfYID5jEeiT3Nw02sUsPg" source="_w9fBIzscEeiTGdjXEQrLYA" target="_EVK-wD5jEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Persuader/putsForward"/>
+      </edges>
+      <edges xmi:id="_E-4DED5jEeiT3Nw02sUsPg" source="_w9fBIzscEeiTGdjXEQrLYA" target="_D0QDAD5jEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Persuader/putsForward"/>
+      </edges>
+      <edges xmi:id="_FQORwD5jEeiT3Nw02sUsPg" source="_w9fBIzscEeiTGdjXEQrLYA" target="_DhEoUD5jEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Persuader/putsForward"/>
+      </edges>
+      <edges xmi:id="_FicDID5jEeiT3Nw02sUsPg" source="_w9fBIzscEeiTGdjXEQrLYA" target="_DOSPMD5jEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Persuader/putsForward"/>
+      </edges>
+      <edges xmi:id="_FzrkID5jEeiT3Nw02sUsPg" source="_w9fBIzscEeiTGdjXEQrLYA" target="_C5NXED5jEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Persuader/putsForward"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_w9fBJjscEeiTGdjXEQrLYA" name="RHS">
+      <nodes xmi:id="_w9fBJzscEeiTGdjXEQrLYA" name="Selected">
+        <type href="argumentation.ecore#//Persuader"/>
+      </nodes>
+      <nodes xmi:id="_w9fBKDscEeiTGdjXEQrLYA" name="OldTarget">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_8_xl4D5fEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_9dBikD5fEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_97kfwD5fEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_-R8YYT5fEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_-z85QT5fEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_C5NXET5jEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_DOS2QD5jEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_DhEoUT5jEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_D0QqED5jEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_EVLl0D5jEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+    </rhs>
+    <mappings xmi:id="_w9fBKTscEeiTGdjXEQrLYA" origin="_w9fBIzscEeiTGdjXEQrLYA" image="_w9fBJzscEeiTGdjXEQrLYA"/>
+    <mappings xmi:id="_w9fBKjscEeiTGdjXEQrLYA" origin="_w9fBJDscEeiTGdjXEQrLYA" image="_w9fBKDscEeiTGdjXEQrLYA"/>
+    <mappings xmi:id="_8_xl4T5fEeiT3Nw02sUsPg" origin="_8_wXwD5fEeiT3Nw02sUsPg" image="_8_xl4D5fEeiT3Nw02sUsPg"/>
+    <mappings xmi:id="_9dBikT5fEeiT3Nw02sUsPg" origin="_9dA7gD5fEeiT3Nw02sUsPg" image="_9dBikD5fEeiT3Nw02sUsPg"/>
+    <mappings xmi:id="_97kfwT5fEeiT3Nw02sUsPg" origin="_97j4sD5fEeiT3Nw02sUsPg" image="_97kfwD5fEeiT3Nw02sUsPg"/>
+    <mappings xmi:id="_-R8YYj5fEeiT3Nw02sUsPg" origin="_-R8YYD5fEeiT3Nw02sUsPg" image="_-R8YYT5fEeiT3Nw02sUsPg"/>
+    <mappings xmi:id="_-z85Qj5fEeiT3Nw02sUsPg" origin="_-z85QD5fEeiT3Nw02sUsPg" image="_-z85QT5fEeiT3Nw02sUsPg"/>
+    <mappings xmi:id="_C5N-ID5jEeiT3Nw02sUsPg" origin="_C5NXED5jEeiT3Nw02sUsPg" image="_C5NXET5jEeiT3Nw02sUsPg"/>
+    <mappings xmi:id="_DOS2QT5jEeiT3Nw02sUsPg" origin="_DOSPMD5jEeiT3Nw02sUsPg" image="_DOS2QD5jEeiT3Nw02sUsPg"/>
+    <mappings xmi:id="_DhFPYD5jEeiT3Nw02sUsPg" origin="_DhEoUD5jEeiT3Nw02sUsPg" image="_DhEoUT5jEeiT3Nw02sUsPg"/>
+    <mappings xmi:id="_D0QqET5jEeiT3Nw02sUsPg" origin="_D0QDAD5jEeiT3Nw02sUsPg" image="_D0QqED5jEeiT3Nw02sUsPg"/>
+    <mappings xmi:id="_EVLl0T5jEeiT3Nw02sUsPg" origin="_EVK-wD5jEeiT3Nw02sUsPg" image="_EVLl0D5jEeiT3Nw02sUsPg"/>
+  </units>
+</henshin:Module>

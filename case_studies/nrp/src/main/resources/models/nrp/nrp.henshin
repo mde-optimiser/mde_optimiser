@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_tgficCa7Eeivyqmv5t-lPQ">
+  <imports href="nextReleaseProblem.ecore#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_y6iJQCa7Eeivyqmv5t-lPQ" name="addArtifactToSolution">
+    <lhs xmi:id="_y6nBwCa7Eeivyqmv5t-lPQ" name="Lhs">
+      <nodes xmi:id="_1KLQoCa7Eeivyqmv5t-lPQ">
+        <type href="nextReleaseProblem.ecore#//Solution"/>
+      </nodes>
+      <nodes xmi:id="_2QCFcCa7Eeivyqmv5t-lPQ">
+        <type href="nextReleaseProblem.ecore#//SoftwareArtifact"/>
+      </nodes>
+    </lhs>
+    <rhs xmi:id="_y6nBwSa7Eeivyqmv5t-lPQ" name="Rhs">
+      <nodes xmi:id="_1KL3sCa7Eeivyqmv5t-lPQ" incoming="_TvOuYCa8Eeivyqmv5t-lPQ" outgoing="_NgD2YCa8Eeivyqmv5t-lPQ">
+        <type href="nextReleaseProblem.ecore#//Solution"/>
+      </nodes>
+      <nodes xmi:id="_2QCFcSa7Eeivyqmv5t-lPQ" incoming="_NgD2YCa8Eeivyqmv5t-lPQ" outgoing="_TvOuYCa8Eeivyqmv5t-lPQ">
+        <type href="nextReleaseProblem.ecore#//SoftwareArtifact"/>
+      </nodes>
+      <edges xmi:id="_NgD2YCa8Eeivyqmv5t-lPQ" source="_1KL3sCa7Eeivyqmv5t-lPQ" target="_2QCFcSa7Eeivyqmv5t-lPQ">
+        <type href="nextReleaseProblem.ecore#//Solution/selectedArtifacts"/>
+      </edges>
+      <edges xmi:id="_TvOuYCa8Eeivyqmv5t-lPQ" source="_2QCFcSa7Eeivyqmv5t-lPQ" target="_1KL3sCa7Eeivyqmv5t-lPQ">
+        <type href="nextReleaseProblem.ecore#//SoftwareArtifact/solutions"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_1KL3sSa7Eeivyqmv5t-lPQ" origin="_1KLQoCa7Eeivyqmv5t-lPQ" image="_1KL3sCa7Eeivyqmv5t-lPQ"/>
+    <mappings xmi:id="_2QCFcia7Eeivyqmv5t-lPQ" origin="_2QCFcCa7Eeivyqmv5t-lPQ" image="_2QCFcSa7Eeivyqmv5t-lPQ"/>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_ZjUz8Ca8Eeivyqmv5t-lPQ" name="removeArtifactFromSolution">
+    <lhs xmi:id="_ZjUz8Sa8Eeivyqmv5t-lPQ" name="Lhs">
+      <nodes xmi:id="_ZjUz8ia8Eeivyqmv5t-lPQ" incoming="_ZjUz-Ca8Eeivyqmv5t-lPQ" outgoing="_ZjUz9ya8Eeivyqmv5t-lPQ">
+        <type href="nextReleaseProblem.ecore#//Solution"/>
+      </nodes>
+      <nodes xmi:id="_ZjUz8ya8Eeivyqmv5t-lPQ" incoming="_ZjUz9ya8Eeivyqmv5t-lPQ" outgoing="_ZjUz-Ca8Eeivyqmv5t-lPQ">
+        <type href="nextReleaseProblem.ecore#//SoftwareArtifact"/>
+      </nodes>
+      <edges xmi:id="_ZjUz-Ca8Eeivyqmv5t-lPQ" source="_ZjUz8ya8Eeivyqmv5t-lPQ" target="_ZjUz8ia8Eeivyqmv5t-lPQ">
+        <type href="nextReleaseProblem.ecore#//SoftwareArtifact/solutions"/>
+      </edges>
+      <edges xmi:id="_ZjUz9ya8Eeivyqmv5t-lPQ" source="_ZjUz8ia8Eeivyqmv5t-lPQ" target="_ZjUz8ya8Eeivyqmv5t-lPQ">
+        <type href="nextReleaseProblem.ecore#//Solution/selectedArtifacts"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_ZjUz9Ca8Eeivyqmv5t-lPQ" name="Rhs">
+      <nodes xmi:id="_ZjUz9Sa8Eeivyqmv5t-lPQ">
+        <type href="nextReleaseProblem.ecore#//Solution"/>
+      </nodes>
+      <nodes xmi:id="_ZjUz9ia8Eeivyqmv5t-lPQ">
+        <type href="nextReleaseProblem.ecore#//SoftwareArtifact"/>
+      </nodes>
+    </rhs>
+    <mappings xmi:id="_ZjUz-Sa8Eeivyqmv5t-lPQ" origin="_ZjUz8ia8Eeivyqmv5t-lPQ" image="_ZjUz9Sa8Eeivyqmv5t-lPQ"/>
+    <mappings xmi:id="_ZjUz-ia8Eeivyqmv5t-lPQ" origin="_ZjUz8ya8Eeivyqmv5t-lPQ" image="_ZjUz9ia8Eeivyqmv5t-lPQ"/>
+  </units>
+</henshin:Module>

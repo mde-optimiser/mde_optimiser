@@ -81,7 +81,6 @@ class DeltaTerminationCondition implements TerminationCondition {
 				
 				return distance + currentDistance
 			]
-			
 		]
 		
 		if(totalDistance === 0d){

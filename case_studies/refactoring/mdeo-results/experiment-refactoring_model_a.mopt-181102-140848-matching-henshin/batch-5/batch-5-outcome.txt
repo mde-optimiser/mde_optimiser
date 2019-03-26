@@ -1,0 +1,69 @@
+
+============================================
+
+Batch 5 duration: 00:00:28.588
+
+--------------------------------------------
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-5/1A15C3B9.xmi
+
+Objective values:
+ContentSize: 34.3
+Transformations: 2.0
+
+
+Transformations chain:
+Length: 2
+Sequence: pullUpAttribute -> createRootClass
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-5/44D31033.xmi
+
+Objective values:
+ContentSize: 25.5
+Transformations: 7.0
+
+
+Transformations chain:
+Length: 7
+Sequence: pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-5/3B910811.xmi
+
+Objective values:
+ContentSize: 29.9
+Transformations: 4.0
+
+
+Transformations chain:
+Length: 4
+Sequence: pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> createRootClass
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-5/7D9EBE71.xmi
+
+Objective values:
+ContentSize: 32.1
+Transformations: 3.0
+
+
+Transformations chain:
+Length: 3
+Sequence: pullUpAttribute -> createRootClass -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-5/4922B270.xmi
+
+Objective values:
+ContentSize: 27.700000000000003
+Transformations: 5.0
+
+
+Transformations chain:
+Length: 5
+Sequence: pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-5/15AC71EF.xmi
+
+Objective values:
+ContentSize: 26.6
+Transformations: 6.0
+
+
+Transformations chain:
+Length: 6
+Sequence: pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute -> pullUpAttribute
+
+============================================
+

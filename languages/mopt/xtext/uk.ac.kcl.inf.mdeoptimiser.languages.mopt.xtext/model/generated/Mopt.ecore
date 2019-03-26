@@ -39,6 +39,7 @@
         eType="#//RulegenSpec" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SolverSpec">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="solverEngine" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="algorithmFactory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="algorithm" eType="#//AlgorithmSpec"
         containment="true"/>

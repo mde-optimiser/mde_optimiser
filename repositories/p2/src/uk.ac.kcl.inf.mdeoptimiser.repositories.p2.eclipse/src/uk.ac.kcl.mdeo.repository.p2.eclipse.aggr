@@ -5,7 +5,7 @@
       <repositories location="http://download.eclipse.org/modeling/emft/mwe/updates/releases/2.9.1/">
         <features name="org.eclipse.emf.mwe2.launcher.feature.group"/>
       </repositories>
-      <repositories location="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.15.0/">
+      <repositories location="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.16.0/">
         <features name="org.eclipse.xtext.sdk.feature.group"/>
       </repositories>
       <repositories location="http://download.eclipse.org/modeling/emft/henshin/updates/nightly">
@@ -35,7 +35,7 @@
         <bundles name="org.eclipse.core.contenttype"/>
         <bundles name="org.eclipse.equinox.app"/>
       </repositories>
-      <repositories location="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.15.0/"/>
+      <repositories location="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.16.0/"/>
     </contributions>
   </validationSets>
   <configurations architecture="x86_64"/>

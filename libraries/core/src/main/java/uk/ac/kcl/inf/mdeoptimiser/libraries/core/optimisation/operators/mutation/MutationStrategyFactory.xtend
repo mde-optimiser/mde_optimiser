@@ -4,6 +4,7 @@ import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.henshi
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.adaptation.MutationStepSizeStrategy
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.Parameter
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmSpec
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.mutation.selection.RandomOperatorSelector
 
 class MutationStrategyFactory {
 
@@ -38,11 +39,11 @@ class MutationStrategyFactory {
 			switch strategyType {
 				
 				case "random": {
-					return new RandomOperatorMutationStrategy(this.henshinExecutor, this.mutationStepSizeStrategy)
+					return new RandomOperatorMutationStrategy(this.henshinExecutor, this.mutationStepSizeStrategy, new RandomOperatorSelector(this.henshinExecutor))
 				}
 				
 				case "repetitive": {
-					return new RepetitiveOperatorMutationStrategy(this.henshinExecutor, this.mutationStepSizeStrategy)
+					return new RepetitiveOperatorMutationStrategy(this.henshinExecutor, this.mutationStepSizeStrategy, new RandomOperatorSelector(this.henshinExecutor))
 				}
 				
 				//Manual Henshin Matching Strategy

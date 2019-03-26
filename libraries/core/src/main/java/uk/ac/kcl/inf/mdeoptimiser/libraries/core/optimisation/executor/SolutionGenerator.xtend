@@ -38,7 +38,8 @@ class SolutionGenerator {
 		this.henshinExecutor = new HenshinExecutor(
 			new EvolverParametersFactory(model.search.evolvers),
 			mutationOperators,
-			breedingOperators
+			breedingOperators,
+			model.solver
 		)
 	}
 

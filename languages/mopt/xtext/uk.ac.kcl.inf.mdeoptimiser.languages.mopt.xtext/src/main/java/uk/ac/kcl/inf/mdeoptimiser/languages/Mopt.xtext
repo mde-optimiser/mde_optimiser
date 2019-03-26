@@ -38,6 +38,7 @@ SearchSpec:
 
 SolverSpec:
 	"solver" "{"
+		("engine" solverEngine=SOLVER_ENGINE)?
 		"optimisation" "provider"  algorithmFactory=ALGORITHM_FACTORY
 		"algorithm" algorithm=AlgorithmSpec
 		"termination" terminationCondition=TerminationConditionSpec
@@ -168,6 +169,10 @@ terminal ADD_EDGE returns ecore::EString:
 
 terminal REMOVE_EDGE returns ecore::EString:
 	'REMOVE'
+;
+
+terminal SOLVER_ENGINE returns ecore::EString:
+	('henshin'|'momot')
 ;
 
 terminal ALGORITHM_FACTORY returns ecore::EString:

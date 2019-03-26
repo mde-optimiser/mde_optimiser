@@ -1,0 +1,2353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_F3RDgGlsEei_uaYprx8P1A">
+  <imports href="http://www.xtext.org/example/mydsl/MyDsl#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_vvb0QGlsEeiueMpOTL7yfQ" name="createResourceMap">
+    <parameters xmi:id="_5A-4IGlsEeiueMpOTL7yfQ" name="a" kind="VAR">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+    </parameters>
+    <lhs xmi:id="_vvxygGlsEeiueMpOTL7yfQ" name="Lhs">
+      <nodes xmi:id="_C3ylMGltEeiueMpOTL7yfQ" name="a" outgoing="_onLisGltEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <nodes xmi:id="_Hfcs0GltEeiueMpOTL7yfQ" incoming="_onLisGltEeiueMpOTL7yfQ" outgoing="_pBC0MGltEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+      </nodes>
+      <nodes xmi:id="_JIoRIGltEeiueMpOTL7yfQ" incoming="_pBC0MGltEeiueMpOTL7yfQ" outgoing="_xkk7gGltEeiueMpOTL7yfQ _zuyJQGltEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement"/>
+      </nodes>
+      <nodes xmi:id="_Kjz1sGltEeiueMpOTL7yfQ" incoming="_ywPdYGltEeiueMpOTL7yfQ _zuyJQGltEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceType"/>
+      </nodes>
+      <nodes xmi:id="_LUsgEGltEeiueMpOTL7yfQ" outgoing="_ywPdYGltEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+      </nodes>
+      <nodes xmi:id="_L9flcGltEeiueMpOTL7yfQ" incoming="_xkk7gGltEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Instance"/>
+      </nodes>
+      <edges xmi:id="_onLisGltEeiueMpOTL7yfQ" source="_C3ylMGltEeiueMpOTL7yfQ" target="_Hfcs0GltEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/implementation"/>
+      </edges>
+      <edges xmi:id="_pBC0MGltEeiueMpOTL7yfQ" source="_Hfcs0GltEeiueMpOTL7yfQ" target="_JIoRIGltEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation/resourceRequirements"/>
+      </edges>
+      <edges xmi:id="_xkk7gGltEeiueMpOTL7yfQ" source="_JIoRIGltEeiueMpOTL7yfQ" target="_L9flcGltEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement/instance"/>
+      </edges>
+      <edges xmi:id="_ywPdYGltEeiueMpOTL7yfQ" source="_LUsgEGltEeiueMpOTL7yfQ" target="_Kjz1sGltEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+      </edges>
+      <edges xmi:id="_zuyJQGltEeiueMpOTL7yfQ" source="_JIoRIGltEeiueMpOTL7yfQ" target="_Kjz1sGltEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement/type"/>
+      </edges>
+      <formula xsi:type="henshin:And" xmi:id="_33WiQGpLEeixvo48Yp-OWg">
+        <left xsi:type="henshin:Not" xmi:id="_2bQXsWpLEeixvo48Yp-OWg">
+          <child xsi:type="henshin:NestedCondition" xmi:id="_2bQXsmpLEeixvo48Yp-OWg">
+            <conclusion xmi:id="_2bQXs2pLEeixvo48Yp-OWg" name="1">
+              <nodes xmi:id="_2bQXtGpLEeixvo48Yp-OWg" name="a" outgoing="_2bQXuGpLEeixvo48Yp-OWg _JYG2IGnyEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+              </nodes>
+              <nodes xmi:id="_2bQXtmpLEeixvo48Yp-OWg" incoming="_2bQXuGpLEeixvo48Yp-OWg" outgoing="_2bQ-w2pLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+              </nodes>
+              <nodes xmi:id="_HY4JUGnyEeixvo48Yp-OWg" incoming="_JYG2IGnyEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+              </nodes>
+              <nodes xmi:id="_2bQ-wWpLEeixvo48Yp-OWg" incoming="_2bQ-w2pLEeixvo48Yp-OWg" outgoing="_2bQ-xmpLEeixvo48Yp-OWg _2bQ-yWpLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement"/>
+              </nodes>
+              <nodes xmi:id="_2bQ-xGpLEeixvo48Yp-OWg" incoming="_2bQ-xmpLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Instance"/>
+              </nodes>
+              <nodes xmi:id="_2bQ-x2pLEeixvo48Yp-OWg" incoming="_2bQ-yWpLEeixvo48Yp-OWg _2bQ-zGpLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceType"/>
+              </nodes>
+              <nodes xmi:id="_2bQ-ympLEeixvo48Yp-OWg" outgoing="_2bQ-zGpLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+              </nodes>
+              <edges xmi:id="_2bQXuGpLEeixvo48Yp-OWg" source="_2bQXtGpLEeixvo48Yp-OWg" target="_2bQXtmpLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/implementation"/>
+              </edges>
+              <edges xmi:id="_2bQ-w2pLEeixvo48Yp-OWg" source="_2bQXtmpLEeixvo48Yp-OWg" target="_2bQ-wWpLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation/resourceRequirements"/>
+              </edges>
+              <edges xmi:id="_2bQ-xmpLEeixvo48Yp-OWg" source="_2bQ-wWpLEeixvo48Yp-OWg" target="_2bQ-xGpLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement/instance"/>
+              </edges>
+              <edges xmi:id="_2bQ-yWpLEeixvo48Yp-OWg" source="_2bQ-wWpLEeixvo48Yp-OWg" target="_2bQ-x2pLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement/type"/>
+              </edges>
+              <edges xmi:id="_2bQ-zGpLEeixvo48Yp-OWg" source="_2bQ-ympLEeixvo48Yp-OWg" target="_2bQ-x2pLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+              </edges>
+              <edges xmi:id="_JYG2IGnyEeixvo48Yp-OWg" source="_2bQXtGpLEeixvo48Yp-OWg" target="_HY4JUGnyEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/resourceMappings"/>
+              </edges>
+            </conclusion>
+            <mappings xmi:id="_2bQXtWpLEeixvo48Yp-OWg" origin="_C3ylMGltEeiueMpOTL7yfQ" image="_2bQXtGpLEeixvo48Yp-OWg"/>
+            <mappings xmi:id="_2bQXt2pLEeixvo48Yp-OWg" origin="_Hfcs0GltEeiueMpOTL7yfQ" image="_2bQXtmpLEeixvo48Yp-OWg"/>
+            <mappings xmi:id="_2bQ-wmpLEeixvo48Yp-OWg" origin="_JIoRIGltEeiueMpOTL7yfQ" image="_2bQ-wWpLEeixvo48Yp-OWg"/>
+            <mappings xmi:id="_2bQ-xWpLEeixvo48Yp-OWg" origin="_L9flcGltEeiueMpOTL7yfQ" image="_2bQ-xGpLEeixvo48Yp-OWg"/>
+            <mappings xmi:id="_2bQ-yGpLEeixvo48Yp-OWg" origin="_Kjz1sGltEeiueMpOTL7yfQ" image="_2bQ-x2pLEeixvo48Yp-OWg"/>
+            <mappings xmi:id="_2bQ-y2pLEeixvo48Yp-OWg" origin="_LUsgEGltEeiueMpOTL7yfQ" image="_2bQ-ympLEeixvo48Yp-OWg"/>
+          </child>
+        </left>
+        <right xsi:type="henshin:Not" xmi:id="_33WiQWpLEeixvo48Yp-OWg">
+          <child xsi:type="henshin:NestedCondition" xmi:id="_33WiQmpLEeixvo48Yp-OWg">
+            <conclusion xmi:id="_33WiQ2pLEeixvo48Yp-OWg" name="2">
+              <nodes xmi:id="_33WiRGpLEeixvo48Yp-OWg" name="a" outgoing="_33WiSGpLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+              </nodes>
+              <nodes xmi:id="_33WiRmpLEeixvo48Yp-OWg" incoming="_33WiSGpLEeixvo48Yp-OWg" outgoing="_33WiS2pLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+              </nodes>
+              <nodes xmi:id="_33WiSWpLEeixvo48Yp-OWg" incoming="_33WiS2pLEeixvo48Yp-OWg" outgoing="_33WiTmpLEeixvo48Yp-OWg _33WiUWpLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement"/>
+              </nodes>
+              <nodes xmi:id="_33WiTGpLEeixvo48Yp-OWg" incoming="_33WiTmpLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Instance"/>
+              </nodes>
+              <nodes xmi:id="_33WiT2pLEeixvo48Yp-OWg" incoming="_33WiUWpLEeixvo48Yp-OWg _33WiVGpLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceType"/>
+              </nodes>
+              <nodes xmi:id="_33WiUmpLEeixvo48Yp-OWg" incoming="_ySvCAGltEeiueMpOTL7yfQ" outgoing="_33WiVGpLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+              </nodes>
+              <nodes xmi:id="_mJKoIGltEeiueMpOTL7yfQ" outgoing="_ySvCAGltEeiueMpOTL7yfQ">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+              </nodes>
+              <edges xmi:id="_33WiSGpLEeixvo48Yp-OWg" source="_33WiRGpLEeixvo48Yp-OWg" target="_33WiRmpLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/implementation"/>
+              </edges>
+              <edges xmi:id="_33WiS2pLEeixvo48Yp-OWg" source="_33WiRmpLEeixvo48Yp-OWg" target="_33WiSWpLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation/resourceRequirements"/>
+              </edges>
+              <edges xmi:id="_33WiTmpLEeixvo48Yp-OWg" source="_33WiSWpLEeixvo48Yp-OWg" target="_33WiTGpLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement/instance"/>
+              </edges>
+              <edges xmi:id="_33WiUWpLEeixvo48Yp-OWg" source="_33WiSWpLEeixvo48Yp-OWg" target="_33WiT2pLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement/type"/>
+              </edges>
+              <edges xmi:id="_33WiVGpLEeixvo48Yp-OWg" source="_33WiUmpLEeixvo48Yp-OWg" target="_33WiT2pLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+              </edges>
+              <edges xmi:id="_ySvCAGltEeiueMpOTL7yfQ" source="_mJKoIGltEeiueMpOTL7yfQ" target="_33WiUmpLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/usedResource"/>
+              </edges>
+            </conclusion>
+            <mappings xmi:id="_33WiRWpLEeixvo48Yp-OWg" origin="_C3ylMGltEeiueMpOTL7yfQ" image="_33WiRGpLEeixvo48Yp-OWg"/>
+            <mappings xmi:id="_33WiR2pLEeixvo48Yp-OWg" origin="_Hfcs0GltEeiueMpOTL7yfQ" image="_33WiRmpLEeixvo48Yp-OWg"/>
+            <mappings xmi:id="_33WiSmpLEeixvo48Yp-OWg" origin="_JIoRIGltEeiueMpOTL7yfQ" image="_33WiSWpLEeixvo48Yp-OWg"/>
+            <mappings xmi:id="_33WiTWpLEeixvo48Yp-OWg" origin="_L9flcGltEeiueMpOTL7yfQ" image="_33WiTGpLEeixvo48Yp-OWg"/>
+            <mappings xmi:id="_33WiUGpLEeixvo48Yp-OWg" origin="_Kjz1sGltEeiueMpOTL7yfQ" image="_33WiT2pLEeixvo48Yp-OWg"/>
+            <mappings xmi:id="_33WiU2pLEeixvo48Yp-OWg" origin="_LUsgEGltEeiueMpOTL7yfQ" image="_33WiUmpLEeixvo48Yp-OWg"/>
+          </child>
+        </right>
+      </formula>
+    </lhs>
+    <rhs xmi:id="_vvxygWlsEeiueMpOTL7yfQ" name="Rhs">
+      <nodes xmi:id="_C3zMQGltEeiueMpOTL7yfQ" name="a" outgoing="_onLisWltEeiueMpOTL7yfQ _P6z6IGluEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <nodes xmi:id="_Hfd68GltEeiueMpOTL7yfQ" incoming="_onLisWltEeiueMpOTL7yfQ" outgoing="_pBC0MWltEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+      </nodes>
+      <nodes xmi:id="_JIo4MGltEeiueMpOTL7yfQ" incoming="_pBC0MWltEeiueMpOTL7yfQ" outgoing="_xkk7gWltEeiueMpOTL7yfQ _zuyJQWltEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement"/>
+      </nodes>
+      <nodes xmi:id="_Kj0cwGltEeiueMpOTL7yfQ" incoming="_ywPdYWltEeiueMpOTL7yfQ _zuyJQWltEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceType"/>
+      </nodes>
+      <nodes xmi:id="_LUtHIGltEeiueMpOTL7yfQ" incoming="_RAAnoGluEeiueMpOTL7yfQ" outgoing="_ywPdYWltEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+      </nodes>
+      <nodes xmi:id="_L9flcWltEeiueMpOTL7yfQ" incoming="_xkk7gWltEeiueMpOTL7yfQ _QqHQIGluEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Instance"/>
+      </nodes>
+      <nodes xmi:id="_gCJmkGltEeiueMpOTL7yfQ" incoming="_P6z6IGluEeiueMpOTL7yfQ" outgoing="_QqHQIGluEeiueMpOTL7yfQ _RAAnoGluEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+      </nodes>
+      <edges xmi:id="_onLisWltEeiueMpOTL7yfQ" source="_C3zMQGltEeiueMpOTL7yfQ" target="_Hfd68GltEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/implementation"/>
+      </edges>
+      <edges xmi:id="_pBC0MWltEeiueMpOTL7yfQ" source="_Hfd68GltEeiueMpOTL7yfQ" target="_JIo4MGltEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation/resourceRequirements"/>
+      </edges>
+      <edges xmi:id="_xkk7gWltEeiueMpOTL7yfQ" source="_JIo4MGltEeiueMpOTL7yfQ" target="_L9flcWltEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement/instance"/>
+      </edges>
+      <edges xmi:id="_ywPdYWltEeiueMpOTL7yfQ" source="_LUtHIGltEeiueMpOTL7yfQ" target="_Kj0cwGltEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+      </edges>
+      <edges xmi:id="_zuyJQWltEeiueMpOTL7yfQ" source="_JIo4MGltEeiueMpOTL7yfQ" target="_Kj0cwGltEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement/type"/>
+      </edges>
+      <edges xmi:id="_P6z6IGluEeiueMpOTL7yfQ" source="_C3zMQGltEeiueMpOTL7yfQ" target="_gCJmkGltEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/resourceMappings"/>
+      </edges>
+      <edges xmi:id="_QqHQIGluEeiueMpOTL7yfQ" source="_gCJmkGltEeiueMpOTL7yfQ" target="_L9flcWltEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/requiredResource"/>
+      </edges>
+      <edges xmi:id="_RAAnoGluEeiueMpOTL7yfQ" source="_gCJmkGltEeiueMpOTL7yfQ" target="_LUtHIGltEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/usedResource"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_C3zMQWltEeiueMpOTL7yfQ" origin="_C3ylMGltEeiueMpOTL7yfQ" image="_C3zMQGltEeiueMpOTL7yfQ"/>
+    <mappings xmi:id="_Hfd68WltEeiueMpOTL7yfQ" origin="_Hfcs0GltEeiueMpOTL7yfQ" image="_Hfd68GltEeiueMpOTL7yfQ"/>
+    <mappings xmi:id="_JIpfQGltEeiueMpOTL7yfQ" origin="_JIoRIGltEeiueMpOTL7yfQ" image="_JIo4MGltEeiueMpOTL7yfQ"/>
+    <mappings xmi:id="_Kj0cwWltEeiueMpOTL7yfQ" origin="_Kjz1sGltEeiueMpOTL7yfQ" image="_Kj0cwGltEeiueMpOTL7yfQ"/>
+    <mappings xmi:id="_LUtHIWltEeiueMpOTL7yfQ" origin="_LUsgEGltEeiueMpOTL7yfQ" image="_LUtHIGltEeiueMpOTL7yfQ"/>
+    <mappings xmi:id="_L9flcmltEeiueMpOTL7yfQ" origin="_L9flcGltEeiueMpOTL7yfQ" image="_L9flcWltEeiueMpOTL7yfQ"/>
+    <multiRules xmi:id="_NiUOMmltEeiueMpOTL7yfQ">
+      <parameters xmi:id="_NiemQGltEeiueMpOTL7yfQ" name="a" kind="VAR">
+        <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </parameters>
+      <lhs xmi:id="_NiVcUGltEeiueMpOTL7yfQ" name="Lhs">
+        <nodes xmi:id="_NiWqcmltEeiueMpOTL7yfQ" name="a" outgoing="_onLis2ltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+        </nodes>
+        <nodes xmi:id="_NiXRhGltEeiueMpOTL7yfQ" incoming="_onLis2ltEeiueMpOTL7yfQ" outgoing="_pBC0M2ltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+        </nodes>
+        <nodes xmi:id="_NiXRiWltEeiueMpOTL7yfQ" incoming="_pBC0M2ltEeiueMpOTL7yfQ" outgoing="_paFmUGltEeiueMpOTL7yfQ _xklikWltEeiueMpOTL7yfQ _zuyJQ2ltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement"/>
+        </nodes>
+        <nodes xmi:id="_NiXRjmltEeiueMpOTL7yfQ" incoming="_ywPdY2ltEeiueMpOTL7yfQ _zuyJQ2ltEeiueMpOTL7yfQ" outgoing="_FNgC4GluEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceType"/>
+        </nodes>
+        <nodes xmi:id="_NiX4lGltEeiueMpOTL7yfQ" outgoing="_ywPdY2ltEeiueMpOTL7yfQ _SaCVoGluEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+        </nodes>
+        <nodes xmi:id="_NiX4mWltEeiueMpOTL7yfQ" incoming="_xklikWltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Instance"/>
+        </nodes>
+        <nodes xmi:id="_NiTnIGltEeiueMpOTL7yfQ" incoming="_paFmUGltEeiueMpOTL7yfQ" outgoing="_psu1gGltEeiueMpOTL7yfQ _rD75AGltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement"/>
+        </nodes>
+        <nodes xmi:id="_OhyuMGltEeiueMpOTL7yfQ" incoming="_psu1gGltEeiueMpOTL7yfQ _trLBAGltEeiueMpOTL7yfQ _FNgC4GluEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceType"/>
+        </nodes>
+        <nodes xmi:id="_SiC3kGltEeiueMpOTL7yfQ" incoming="_SaCVoGluEeiueMpOTL7yfQ" outgoing="_trLBAGltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+        </nodes>
+        <nodes xmi:id="_TT2vAGltEeiueMpOTL7yfQ" incoming="_rD75AGltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Instance"/>
+        </nodes>
+        <edges xmi:id="_onLis2ltEeiueMpOTL7yfQ" source="_NiWqcmltEeiueMpOTL7yfQ" target="_NiXRhGltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/implementation"/>
+        </edges>
+        <edges xmi:id="_pBC0M2ltEeiueMpOTL7yfQ" source="_NiXRhGltEeiueMpOTL7yfQ" target="_NiXRiWltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation/resourceRequirements"/>
+        </edges>
+        <edges xmi:id="_paFmUGltEeiueMpOTL7yfQ" source="_NiXRiWltEeiueMpOTL7yfQ" target="_NiTnIGltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement/resourceRequirements"/>
+        </edges>
+        <edges xmi:id="_psu1gGltEeiueMpOTL7yfQ" source="_NiTnIGltEeiueMpOTL7yfQ" target="_OhyuMGltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement/type"/>
+        </edges>
+        <edges xmi:id="_rD75AGltEeiueMpOTL7yfQ" source="_NiTnIGltEeiueMpOTL7yfQ" target="_TT2vAGltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement/instance"/>
+        </edges>
+        <edges xmi:id="_trLBAGltEeiueMpOTL7yfQ" source="_SiC3kGltEeiueMpOTL7yfQ" target="_OhyuMGltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+        </edges>
+        <edges xmi:id="_xklikWltEeiueMpOTL7yfQ" source="_NiXRiWltEeiueMpOTL7yfQ" target="_NiX4mWltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement/instance"/>
+        </edges>
+        <edges xmi:id="_ywPdY2ltEeiueMpOTL7yfQ" source="_NiX4lGltEeiueMpOTL7yfQ" target="_NiXRjmltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+        </edges>
+        <edges xmi:id="_zuyJQ2ltEeiueMpOTL7yfQ" source="_NiXRiWltEeiueMpOTL7yfQ" target="_NiXRjmltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement/type"/>
+        </edges>
+        <edges xmi:id="_FNgC4GluEeiueMpOTL7yfQ" source="_NiXRjmltEeiueMpOTL7yfQ" target="_OhyuMGltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceType/resourceTypes"/>
+        </edges>
+        <edges xmi:id="_SaCVoGluEeiueMpOTL7yfQ" source="_NiX4lGltEeiueMpOTL7yfQ" target="_SiC3kGltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/resources"/>
+        </edges>
+        <formula xsi:type="henshin:Not" xmi:id="_5M5Y4WpLEeixvo48Yp-OWg">
+          <child xsi:type="henshin:NestedCondition" xmi:id="_5M5Y4mpLEeixvo48Yp-OWg">
+            <conclusion xmi:id="_5M5Y42pLEeixvo48Yp-OWg" name="3">
+              <nodes xmi:id="_5M5Y5GpLEeixvo48Yp-OWg" name="a" outgoing="_5M5Y6GpLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+              </nodes>
+              <nodes xmi:id="_5M5Y5mpLEeixvo48Yp-OWg" incoming="_5M5Y6GpLEeixvo48Yp-OWg" outgoing="_5M5Y62pLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+              </nodes>
+              <nodes xmi:id="_5M5Y6WpLEeixvo48Yp-OWg" incoming="_5M5Y62pLEeixvo48Yp-OWg" outgoing="_5M5Y7mpLEeixvo48Yp-OWg _5M5Y8WpLEeixvo48Yp-OWg _5M5Y9GpLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement"/>
+              </nodes>
+              <nodes xmi:id="_5M5Y7GpLEeixvo48Yp-OWg" incoming="_5M5Y7mpLEeixvo48Yp-OWg" outgoing="_5M5_9mpLEeixvo48Yp-OWg _5M5_-WpLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement"/>
+              </nodes>
+              <nodes xmi:id="_5M5Y72pLEeixvo48Yp-OWg" incoming="_5M5Y8WpLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Instance"/>
+              </nodes>
+              <nodes xmi:id="_5M5Y8mpLEeixvo48Yp-OWg" incoming="_5M5Y9GpLEeixvo48Yp-OWg _5M5Y92pLEeixvo48Yp-OWg" outgoing="_5M5_8mpLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceType"/>
+              </nodes>
+              <nodes xmi:id="_5M5Y9WpLEeixvo48Yp-OWg" outgoing="_5M5Y92pLEeixvo48Yp-OWg _5M5_9WpLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+              </nodes>
+              <nodes xmi:id="_5M5_8GpLEeixvo48Yp-OWg" incoming="_5M5_8mpLEeixvo48Yp-OWg _5M5_9mpLEeixvo48Yp-OWg _5M5_-mpLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceType"/>
+              </nodes>
+              <nodes xmi:id="_5M5_82pLEeixvo48Yp-OWg" incoming="_5M5_9WpLEeixvo48Yp-OWg _wz00AGltEeiueMpOTL7yfQ" outgoing="_5M5_-mpLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+              </nodes>
+              <nodes xmi:id="_5M5_92pLEeixvo48Yp-OWg" incoming="_5M5_-WpLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Instance"/>
+              </nodes>
+              <nodes xmi:id="_nnzwYGltEeiueMpOTL7yfQ" outgoing="_wz00AGltEeiueMpOTL7yfQ">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+              </nodes>
+              <edges xmi:id="_5M5Y6GpLEeixvo48Yp-OWg" source="_5M5Y5GpLEeixvo48Yp-OWg" target="_5M5Y5mpLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/implementation"/>
+              </edges>
+              <edges xmi:id="_5M5Y62pLEeixvo48Yp-OWg" source="_5M5Y5mpLEeixvo48Yp-OWg" target="_5M5Y6WpLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation/resourceRequirements"/>
+              </edges>
+              <edges xmi:id="_5M5Y7mpLEeixvo48Yp-OWg" source="_5M5Y6WpLEeixvo48Yp-OWg" target="_5M5Y7GpLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement/resourceRequirements"/>
+              </edges>
+              <edges xmi:id="_5M5Y8WpLEeixvo48Yp-OWg" source="_5M5Y6WpLEeixvo48Yp-OWg" target="_5M5Y72pLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement/instance"/>
+              </edges>
+              <edges xmi:id="_5M5Y9GpLEeixvo48Yp-OWg" source="_5M5Y6WpLEeixvo48Yp-OWg" target="_5M5Y8mpLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement/type"/>
+              </edges>
+              <edges xmi:id="_5M5Y92pLEeixvo48Yp-OWg" source="_5M5Y9WpLEeixvo48Yp-OWg" target="_5M5Y8mpLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+              </edges>
+              <edges xmi:id="_5M5_8mpLEeixvo48Yp-OWg" source="_5M5Y8mpLEeixvo48Yp-OWg" target="_5M5_8GpLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceType/resourceTypes"/>
+              </edges>
+              <edges xmi:id="_5M5_9WpLEeixvo48Yp-OWg" source="_5M5Y9WpLEeixvo48Yp-OWg" target="_5M5_82pLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/resources"/>
+              </edges>
+              <edges xmi:id="_5M5_9mpLEeixvo48Yp-OWg" source="_5M5Y7GpLEeixvo48Yp-OWg" target="_5M5_8GpLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement/type"/>
+              </edges>
+              <edges xmi:id="_5M5_-WpLEeixvo48Yp-OWg" source="_5M5Y7GpLEeixvo48Yp-OWg" target="_5M5_92pLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement/instance"/>
+              </edges>
+              <edges xmi:id="_5M5_-mpLEeixvo48Yp-OWg" source="_5M5_82pLEeixvo48Yp-OWg" target="_5M5_8GpLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+              </edges>
+              <edges xmi:id="_wz00AGltEeiueMpOTL7yfQ" source="_nnzwYGltEeiueMpOTL7yfQ" target="_5M5_82pLEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/usedResource"/>
+              </edges>
+            </conclusion>
+            <mappings xmi:id="_5M5Y5WpLEeixvo48Yp-OWg" origin="_NiWqcmltEeiueMpOTL7yfQ" image="_5M5Y5GpLEeixvo48Yp-OWg"/>
+            <mappings xmi:id="_5M5Y52pLEeixvo48Yp-OWg" origin="_NiXRhGltEeiueMpOTL7yfQ" image="_5M5Y5mpLEeixvo48Yp-OWg"/>
+            <mappings xmi:id="_5M5Y6mpLEeixvo48Yp-OWg" origin="_NiXRiWltEeiueMpOTL7yfQ" image="_5M5Y6WpLEeixvo48Yp-OWg"/>
+            <mappings xmi:id="_5M5Y7WpLEeixvo48Yp-OWg" origin="_NiTnIGltEeiueMpOTL7yfQ" image="_5M5Y7GpLEeixvo48Yp-OWg"/>
+            <mappings xmi:id="_5M5Y8GpLEeixvo48Yp-OWg" origin="_NiX4mWltEeiueMpOTL7yfQ" image="_5M5Y72pLEeixvo48Yp-OWg"/>
+            <mappings xmi:id="_5M5Y82pLEeixvo48Yp-OWg" origin="_NiXRjmltEeiueMpOTL7yfQ" image="_5M5Y8mpLEeixvo48Yp-OWg"/>
+            <mappings xmi:id="_5M5Y9mpLEeixvo48Yp-OWg" origin="_NiX4lGltEeiueMpOTL7yfQ" image="_5M5Y9WpLEeixvo48Yp-OWg"/>
+            <mappings xmi:id="_5M5_8WpLEeixvo48Yp-OWg" origin="_OhyuMGltEeiueMpOTL7yfQ" image="_5M5_8GpLEeixvo48Yp-OWg"/>
+            <mappings xmi:id="_5M5_9GpLEeixvo48Yp-OWg" origin="_SiC3kGltEeiueMpOTL7yfQ" image="_5M5_82pLEeixvo48Yp-OWg"/>
+            <mappings xmi:id="_5M5_-GpLEeixvo48Yp-OWg" origin="_TT2vAGltEeiueMpOTL7yfQ" image="_5M5_92pLEeixvo48Yp-OWg"/>
+          </child>
+        </formula>
+      </lhs>
+      <rhs xmi:id="_NiWDYGltEeiueMpOTL7yfQ" name="Rhs">
+        <nodes xmi:id="_NiWqcGltEeiueMpOTL7yfQ" name="a" outgoing="_onLismltEeiueMpOTL7yfQ _P60hMmluEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+        </nodes>
+        <nodes xmi:id="_NiXRgmltEeiueMpOTL7yfQ" incoming="_onLismltEeiueMpOTL7yfQ" outgoing="_pBC0MmltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+        </nodes>
+        <nodes xmi:id="_NiXRh2ltEeiueMpOTL7yfQ" incoming="_pBC0MmltEeiueMpOTL7yfQ" outgoing="_paGNYGltEeiueMpOTL7yfQ _xklikGltEeiueMpOTL7yfQ _zuyJQmltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement"/>
+        </nodes>
+        <nodes xmi:id="_NiXRjGltEeiueMpOTL7yfQ" incoming="_ywPdYmltEeiueMpOTL7yfQ _zuyJQmltEeiueMpOTL7yfQ" outgoing="_FNgp8GluEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceType"/>
+        </nodes>
+        <nodes xmi:id="_NiX4kmltEeiueMpOTL7yfQ" incoming="_RAAnoWluEeiueMpOTL7yfQ" outgoing="_ywPdYmltEeiueMpOTL7yfQ _SaCVoWluEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+        </nodes>
+        <nodes xmi:id="_NiX4l2ltEeiueMpOTL7yfQ" incoming="_xklikGltEeiueMpOTL7yfQ _QqHQIWluEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Instance"/>
+        </nodes>
+        <nodes xmi:id="_NiUOMGltEeiueMpOTL7yfQ" incoming="_paGNYGltEeiueMpOTL7yfQ" outgoing="_psu1gWltEeiueMpOTL7yfQ _rD75AWltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement"/>
+        </nodes>
+        <nodes xmi:id="_OhyuMWltEeiueMpOTL7yfQ" incoming="_psu1gWltEeiueMpOTL7yfQ _trLBAWltEeiueMpOTL7yfQ _FNgp8GluEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceType"/>
+        </nodes>
+        <nodes xmi:id="_SiC3kWltEeiueMpOTL7yfQ" incoming="_u1jJcGltEeiueMpOTL7yfQ _SaCVoWluEeiueMpOTL7yfQ" outgoing="_trLBAWltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+        </nodes>
+        <nodes xmi:id="_TT2vAWltEeiueMpOTL7yfQ" incoming="_rD75AWltEeiueMpOTL7yfQ _wHHfAGltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Instance"/>
+        </nodes>
+        <nodes xmi:id="_fB64oGltEeiueMpOTL7yfQ" incoming="_XQSJgGmHEeiueMpOTL7yfQ" outgoing="_u1jJcGltEeiueMpOTL7yfQ _wHHfAGltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+        </nodes>
+        <nodes xmi:id="_P60hMGluEeiueMpOTL7yfQ" incoming="_P60hMmluEeiueMpOTL7yfQ" outgoing="_QqHQIWluEeiueMpOTL7yfQ _RAAnoWluEeiueMpOTL7yfQ _XQSJgGmHEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+        </nodes>
+        <edges xmi:id="_onLismltEeiueMpOTL7yfQ" source="_NiWqcGltEeiueMpOTL7yfQ" target="_NiXRgmltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/implementation"/>
+        </edges>
+        <edges xmi:id="_pBC0MmltEeiueMpOTL7yfQ" source="_NiXRgmltEeiueMpOTL7yfQ" target="_NiXRh2ltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation/resourceRequirements"/>
+        </edges>
+        <edges xmi:id="_paGNYGltEeiueMpOTL7yfQ" source="_NiXRh2ltEeiueMpOTL7yfQ" target="_NiUOMGltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement/resourceRequirements"/>
+        </edges>
+        <edges xmi:id="_psu1gWltEeiueMpOTL7yfQ" source="_NiUOMGltEeiueMpOTL7yfQ" target="_OhyuMWltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement/type"/>
+        </edges>
+        <edges xmi:id="_rD75AWltEeiueMpOTL7yfQ" source="_NiUOMGltEeiueMpOTL7yfQ" target="_TT2vAWltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement/instance"/>
+        </edges>
+        <edges xmi:id="_trLBAWltEeiueMpOTL7yfQ" source="_SiC3kWltEeiueMpOTL7yfQ" target="_OhyuMWltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+        </edges>
+        <edges xmi:id="_u1jJcGltEeiueMpOTL7yfQ" source="_fB64oGltEeiueMpOTL7yfQ" target="_SiC3kWltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/usedResource"/>
+        </edges>
+        <edges xmi:id="_wHHfAGltEeiueMpOTL7yfQ" source="_fB64oGltEeiueMpOTL7yfQ" target="_TT2vAWltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/requiredResource"/>
+        </edges>
+        <edges xmi:id="_xklikGltEeiueMpOTL7yfQ" source="_NiXRh2ltEeiueMpOTL7yfQ" target="_NiX4l2ltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement/instance"/>
+        </edges>
+        <edges xmi:id="_ywPdYmltEeiueMpOTL7yfQ" source="_NiX4kmltEeiueMpOTL7yfQ" target="_NiXRjGltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+        </edges>
+        <edges xmi:id="_zuyJQmltEeiueMpOTL7yfQ" source="_NiXRh2ltEeiueMpOTL7yfQ" target="_NiXRjGltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement/type"/>
+        </edges>
+        <edges xmi:id="_FNgp8GluEeiueMpOTL7yfQ" source="_NiXRjGltEeiueMpOTL7yfQ" target="_OhyuMWltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceType/resourceTypes"/>
+        </edges>
+        <edges xmi:id="_P60hMmluEeiueMpOTL7yfQ" source="_NiWqcGltEeiueMpOTL7yfQ" target="_P60hMGluEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/resourceMappings"/>
+        </edges>
+        <edges xmi:id="_QqHQIWluEeiueMpOTL7yfQ" source="_P60hMGluEeiueMpOTL7yfQ" target="_NiX4l2ltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/requiredResource"/>
+        </edges>
+        <edges xmi:id="_RAAnoWluEeiueMpOTL7yfQ" source="_P60hMGluEeiueMpOTL7yfQ" target="_NiX4kmltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/usedResource"/>
+        </edges>
+        <edges xmi:id="_SaCVoWluEeiueMpOTL7yfQ" source="_NiX4kmltEeiueMpOTL7yfQ" target="_SiC3kWltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/resources"/>
+        </edges>
+        <edges xmi:id="_XQSJgGmHEeiueMpOTL7yfQ" source="_P60hMGluEeiueMpOTL7yfQ" target="_fB64oGltEeiueMpOTL7yfQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/subMappings"/>
+        </edges>
+      </rhs>
+      <mappings xmi:id="_NiXRgWltEeiueMpOTL7yfQ" origin="_NiWqcmltEeiueMpOTL7yfQ" image="_NiWqcGltEeiueMpOTL7yfQ"/>
+      <mappings xmi:id="_NiXRhmltEeiueMpOTL7yfQ" origin="_NiXRhGltEeiueMpOTL7yfQ" image="_NiXRgmltEeiueMpOTL7yfQ"/>
+      <mappings xmi:id="_NiXRi2ltEeiueMpOTL7yfQ" origin="_NiXRiWltEeiueMpOTL7yfQ" image="_NiXRh2ltEeiueMpOTL7yfQ"/>
+      <mappings xmi:id="_NiX4kWltEeiueMpOTL7yfQ" origin="_NiXRjmltEeiueMpOTL7yfQ" image="_NiXRjGltEeiueMpOTL7yfQ"/>
+      <mappings xmi:id="_NiX4lmltEeiueMpOTL7yfQ" origin="_NiX4lGltEeiueMpOTL7yfQ" image="_NiX4kmltEeiueMpOTL7yfQ"/>
+      <mappings xmi:id="_NiX4m2ltEeiueMpOTL7yfQ" origin="_NiX4mWltEeiueMpOTL7yfQ" image="_NiX4l2ltEeiueMpOTL7yfQ"/>
+      <mappings xmi:id="_NiUOMWltEeiueMpOTL7yfQ" origin="_NiTnIGltEeiueMpOTL7yfQ" image="_NiUOMGltEeiueMpOTL7yfQ"/>
+      <mappings xmi:id="_OhyuMmltEeiueMpOTL7yfQ" origin="_OhyuMGltEeiueMpOTL7yfQ" image="_OhyuMWltEeiueMpOTL7yfQ"/>
+      <mappings xmi:id="_SiC3kmltEeiueMpOTL7yfQ" origin="_SiC3kGltEeiueMpOTL7yfQ" image="_SiC3kWltEeiueMpOTL7yfQ"/>
+      <mappings xmi:id="_TT2vAmltEeiueMpOTL7yfQ" origin="_TT2vAGltEeiueMpOTL7yfQ" image="_TT2vAWltEeiueMpOTL7yfQ"/>
+      <multiMappings xmi:id="_NiWqcWltEeiueMpOTL7yfQ" origin="_C3zMQGltEeiueMpOTL7yfQ" image="_NiWqcGltEeiueMpOTL7yfQ"/>
+      <multiMappings xmi:id="_NiXRgGltEeiueMpOTL7yfQ" origin="_C3ylMGltEeiueMpOTL7yfQ" image="_NiWqcmltEeiueMpOTL7yfQ"/>
+      <multiMappings xmi:id="_NiXRg2ltEeiueMpOTL7yfQ" origin="_Hfd68GltEeiueMpOTL7yfQ" image="_NiXRgmltEeiueMpOTL7yfQ"/>
+      <multiMappings xmi:id="_NiXRhWltEeiueMpOTL7yfQ" origin="_Hfcs0GltEeiueMpOTL7yfQ" image="_NiXRhGltEeiueMpOTL7yfQ"/>
+      <multiMappings xmi:id="_NiXRiGltEeiueMpOTL7yfQ" origin="_JIo4MGltEeiueMpOTL7yfQ" image="_NiXRh2ltEeiueMpOTL7yfQ"/>
+      <multiMappings xmi:id="_NiXRimltEeiueMpOTL7yfQ" origin="_JIoRIGltEeiueMpOTL7yfQ" image="_NiXRiWltEeiueMpOTL7yfQ"/>
+      <multiMappings xmi:id="_NiXRjWltEeiueMpOTL7yfQ" origin="_Kj0cwGltEeiueMpOTL7yfQ" image="_NiXRjGltEeiueMpOTL7yfQ"/>
+      <multiMappings xmi:id="_NiX4kGltEeiueMpOTL7yfQ" origin="_Kjz1sGltEeiueMpOTL7yfQ" image="_NiXRjmltEeiueMpOTL7yfQ"/>
+      <multiMappings xmi:id="_NiX4k2ltEeiueMpOTL7yfQ" origin="_LUtHIGltEeiueMpOTL7yfQ" image="_NiX4kmltEeiueMpOTL7yfQ"/>
+      <multiMappings xmi:id="_NiX4lWltEeiueMpOTL7yfQ" origin="_LUsgEGltEeiueMpOTL7yfQ" image="_NiX4lGltEeiueMpOTL7yfQ"/>
+      <multiMappings xmi:id="_NiX4mGltEeiueMpOTL7yfQ" origin="_L9flcWltEeiueMpOTL7yfQ" image="_NiX4l2ltEeiueMpOTL7yfQ"/>
+      <multiMappings xmi:id="_NiX4mmltEeiueMpOTL7yfQ" origin="_L9flcGltEeiueMpOTL7yfQ" image="_NiX4mWltEeiueMpOTL7yfQ"/>
+      <multiMappings xmi:id="_P60hMWluEeiueMpOTL7yfQ" origin="_gCJmkGltEeiueMpOTL7yfQ" image="_P60hMGluEeiueMpOTL7yfQ"/>
+    </multiRules>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_uakWQGlwEeiueMpOTL7yfQ" name="createComponentMap">
+    <parameters xmi:id="_xfjKMGlwEeiueMpOTL7yfQ" name="a" kind="IN">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+    </parameters>
+    <parameters xmi:id="_qCTxAGl6EeiueMpOTL7yfQ" name="i" kind="IN">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Instance"/>
+    </parameters>
+    <parameters xmi:id="_wkXIwGl6EeiueMpOTL7yfQ" name="a2" kind="OUT">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+    </parameters>
+    <lhs xmi:id="_uap10GlwEeiueMpOTL7yfQ" name="Lhs">
+      <nodes xmi:id="_6uxS0GlwEeiueMpOTL7yfQ" name="a">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <nodes xmi:id="_-g6HsGlwEeiueMpOTL7yfQ" outgoing="_QlVWcGlxEeiueMpOTL7yfQ _qdXrcGlxEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentRequirement"/>
+      </nodes>
+      <nodes xmi:id="__ltzoGlwEeiueMpOTL7yfQ" incoming="_QlVWcGlxEeiueMpOTL7yfQ" outgoing="_RXi2gGlxEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component"/>
+      </nodes>
+      <nodes xmi:id="_EuCYUGlxEeiueMpOTL7yfQ" incoming="_RXi2gGlxEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+      </nodes>
+      <nodes xmi:id="_F0NWMGlxEeiueMpOTL7yfQ" name="i" incoming="_qdXrcGlxEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Instance"/>
+      </nodes>
+      <edges xmi:id="_QlVWcGlxEeiueMpOTL7yfQ" source="_-g6HsGlwEeiueMpOTL7yfQ" target="__ltzoGlwEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentRequirement/type"/>
+      </edges>
+      <edges xmi:id="_RXi2gGlxEeiueMpOTL7yfQ" source="__ltzoGlwEeiueMpOTL7yfQ" target="_EuCYUGlxEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component/implementations"/>
+      </edges>
+      <edges xmi:id="_qdXrcGlxEeiueMpOTL7yfQ" source="_-g6HsGlwEeiueMpOTL7yfQ" target="_F0NWMGlxEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentRequirement/instance"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_uap10WlwEeiueMpOTL7yfQ" name="Rhs">
+      <nodes xmi:id="_6uzIAGlwEeiueMpOTL7yfQ" name="a" outgoing="_Yj8LwGlxEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <nodes xmi:id="_-g6HsWlwEeiueMpOTL7yfQ" outgoing="_QlVWcWlxEeiueMpOTL7yfQ _qdXrcWlxEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentRequirement"/>
+      </nodes>
+      <nodes xmi:id="__ltzoWlwEeiueMpOTL7yfQ" incoming="_QlVWcWlxEeiueMpOTL7yfQ" outgoing="_RXi2gWlxEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component"/>
+      </nodes>
+      <nodes xmi:id="_EuCYUWlxEeiueMpOTL7yfQ" incoming="_RXi2gWlxEeiueMpOTL7yfQ _SMloIGlxEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+      </nodes>
+      <nodes xmi:id="_F0NWMWlxEeiueMpOTL7yfQ" name="i" incoming="_YG5DYGlxEeiueMpOTL7yfQ _qdXrcWlxEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Instance"/>
+      </nodes>
+      <nodes xmi:id="_HAxP8GlxEeiueMpOTL7yfQ" incoming="_Yj8LwGlxEeiueMpOTL7yfQ" outgoing="_YG5DYGlxEeiueMpOTL7yfQ _nuJsIGlxEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentMapping"/>
+      </nodes>
+      <nodes xmi:id="_HtS-wGlxEeiueMpOTL7yfQ" name="a2" incoming="_nuJsIGlxEeiueMpOTL7yfQ" outgoing="_SMloIGlxEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <edges xmi:id="_QlVWcWlxEeiueMpOTL7yfQ" source="_-g6HsWlwEeiueMpOTL7yfQ" target="__ltzoWlwEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentRequirement/type"/>
+      </edges>
+      <edges xmi:id="_RXi2gWlxEeiueMpOTL7yfQ" source="__ltzoWlwEeiueMpOTL7yfQ" target="_EuCYUWlxEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component/implementations"/>
+      </edges>
+      <edges xmi:id="_SMloIGlxEeiueMpOTL7yfQ" source="_HtS-wGlxEeiueMpOTL7yfQ" target="_EuCYUWlxEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/implementation"/>
+      </edges>
+      <edges xmi:id="_YG5DYGlxEeiueMpOTL7yfQ" source="_HAxP8GlxEeiueMpOTL7yfQ" target="_F0NWMWlxEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentMapping/component"/>
+      </edges>
+      <edges xmi:id="_Yj8LwGlxEeiueMpOTL7yfQ" source="_6uzIAGlwEeiueMpOTL7yfQ" target="_HAxP8GlxEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/componentMappings"/>
+      </edges>
+      <edges xmi:id="_nuJsIGlxEeiueMpOTL7yfQ" source="_HAxP8GlxEeiueMpOTL7yfQ" target="_HtS-wGlxEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentMapping/assignment"/>
+      </edges>
+      <edges xmi:id="_qdXrcWlxEeiueMpOTL7yfQ" source="_-g6HsWlwEeiueMpOTL7yfQ" target="_F0NWMWlxEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentRequirement/instance"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_6uzIAWlwEeiueMpOTL7yfQ" origin="_6uxS0GlwEeiueMpOTL7yfQ" image="_6uzIAGlwEeiueMpOTL7yfQ"/>
+    <mappings xmi:id="_-g6HsmlwEeiueMpOTL7yfQ" origin="_-g6HsGlwEeiueMpOTL7yfQ" image="_-g6HsWlwEeiueMpOTL7yfQ"/>
+    <mappings xmi:id="__ltzomlwEeiueMpOTL7yfQ" origin="__ltzoGlwEeiueMpOTL7yfQ" image="__ltzoWlwEeiueMpOTL7yfQ"/>
+    <mappings xmi:id="_EuCYUmlxEeiueMpOTL7yfQ" origin="_EuCYUGlxEeiueMpOTL7yfQ" image="_EuCYUWlxEeiueMpOTL7yfQ"/>
+    <mappings xmi:id="_F0NWMmlxEeiueMpOTL7yfQ" origin="_F0NWMGlxEeiueMpOTL7yfQ" image="_F0NWMWlxEeiueMpOTL7yfQ"/>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_2UhtYGl2EeiueMpOTL7yfQ" name="pickChildImplementation">
+    <parameters xmi:id="_Q3tbsGl4EeiueMpOTL7yfQ" name="a" kind="IN">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+    </parameters>
+    <parameters xmi:id="_Q3tbsWl4EeiueMpOTL7yfQ" name="i" kind="OUT">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Instance"/>
+    </parameters>
+    <lhs xmi:id="_2UkJoGl2EeiueMpOTL7yfQ" name="Lhs">
+      <nodes xmi:id="_ST8JIGl4EeiueMpOTL7yfQ" name="a" outgoing="_u6vxgGl4EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <nodes xmi:id="_YAy-QGl4EeiueMpOTL7yfQ" incoming="_xmMrIGl4EeiueMpOTL7yfQ" outgoing="_ffEtsGl4EeiueMpOTL7yfQ _zEeP4GmMEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentRequirement"/>
+      </nodes>
+      <nodes xmi:id="_ZfqI8Gl4EeiueMpOTL7yfQ" name="i" incoming="_ffEtsGl4EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Instance"/>
+      </nodes>
+      <nodes xmi:id="_otwDwGl4EeiueMpOTL7yfQ" incoming="_u6vxgGl4EeiueMpOTL7yfQ" outgoing="_xmMrIGl4EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+      </nodes>
+      <nodes xmi:id="_yrw08GmMEeiueMpOTL7yfQ" incoming="_zEeP4GmMEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component"/>
+      </nodes>
+      <edges xmi:id="_ffEtsGl4EeiueMpOTL7yfQ" source="_YAy-QGl4EeiueMpOTL7yfQ" target="_ZfqI8Gl4EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentRequirement/instance"/>
+      </edges>
+      <edges xmi:id="_u6vxgGl4EeiueMpOTL7yfQ" source="_ST8JIGl4EeiueMpOTL7yfQ" target="_otwDwGl4EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/implementation"/>
+      </edges>
+      <edges xmi:id="_xmMrIGl4EeiueMpOTL7yfQ" source="_otwDwGl4EeiueMpOTL7yfQ" target="_YAy-QGl4EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation/componentRequirements"/>
+      </edges>
+      <edges xmi:id="_zEeP4GmMEeiueMpOTL7yfQ" source="_YAy-QGl4EeiueMpOTL7yfQ" target="_yrw08GmMEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentRequirement/type"/>
+      </edges>
+      <formula xsi:type="henshin:Not" xmi:id="_iYgo4mmMEeiueMpOTL7yfQ">
+        <child xsi:type="henshin:NestedCondition" xmi:id="_iYgo42mMEeiueMpOTL7yfQ">
+          <conclusion xmi:id="_iYgo5GmMEeiueMpOTL7yfQ">
+            <nodes xmi:id="_iYgo5WmMEeiueMpOTL7yfQ" name="a" outgoing="_iYgo6WmMEeiueMpOTL7yfQ">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+            </nodes>
+            <nodes xmi:id="_iYgo52mMEeiueMpOTL7yfQ" incoming="_iYgo6WmMEeiueMpOTL7yfQ" outgoing="_iYhP8mmMEeiueMpOTL7yfQ">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+            </nodes>
+            <nodes xmi:id="_iYhP8GmMEeiueMpOTL7yfQ" incoming="_iYhP8mmMEeiueMpOTL7yfQ" outgoing="_iYhP9WmMEeiueMpOTL7yfQ">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentRequirement"/>
+            </nodes>
+            <nodes xmi:id="_iYhP82mMEeiueMpOTL7yfQ" name="i" incoming="_iYhP9WmMEeiueMpOTL7yfQ _i_eiQGmMEeiueMpOTL7yfQ">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//Instance"/>
+            </nodes>
+            <nodes xmi:id="_iYfawGmMEeiueMpOTL7yfQ" outgoing="_i_eiQGmMEeiueMpOTL7yfQ">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentMapping"/>
+            </nodes>
+            <edges xmi:id="_iYgo6WmMEeiueMpOTL7yfQ" source="_iYgo5WmMEeiueMpOTL7yfQ" target="_iYgo52mMEeiueMpOTL7yfQ">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/implementation"/>
+            </edges>
+            <edges xmi:id="_iYhP8mmMEeiueMpOTL7yfQ" source="_iYgo52mMEeiueMpOTL7yfQ" target="_iYhP8GmMEeiueMpOTL7yfQ">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation/componentRequirements"/>
+            </edges>
+            <edges xmi:id="_iYhP9WmMEeiueMpOTL7yfQ" source="_iYhP8GmMEeiueMpOTL7yfQ" target="_iYhP82mMEeiueMpOTL7yfQ">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentRequirement/instance"/>
+            </edges>
+            <edges xmi:id="_i_eiQGmMEeiueMpOTL7yfQ" source="_iYfawGmMEeiueMpOTL7yfQ" target="_iYhP82mMEeiueMpOTL7yfQ">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentMapping/component"/>
+            </edges>
+          </conclusion>
+          <mappings xmi:id="_iYgo5mmMEeiueMpOTL7yfQ" origin="_ST8JIGl4EeiueMpOTL7yfQ" image="_iYgo5WmMEeiueMpOTL7yfQ"/>
+          <mappings xmi:id="_iYgo6GmMEeiueMpOTL7yfQ" origin="_otwDwGl4EeiueMpOTL7yfQ" image="_iYgo52mMEeiueMpOTL7yfQ"/>
+          <mappings xmi:id="_iYhP8WmMEeiueMpOTL7yfQ" origin="_YAy-QGl4EeiueMpOTL7yfQ" image="_iYhP8GmMEeiueMpOTL7yfQ"/>
+          <mappings xmi:id="_iYhP9GmMEeiueMpOTL7yfQ" origin="_ZfqI8Gl4EeiueMpOTL7yfQ" image="_iYhP82mMEeiueMpOTL7yfQ"/>
+        </child>
+      </formula>
+    </lhs>
+    <rhs xmi:id="_2UkJoWl2EeiueMpOTL7yfQ" name="Rhs">
+      <nodes xmi:id="_ST8JIWl4EeiueMpOTL7yfQ" name="a" outgoing="_u6vxgWl4EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <nodes xmi:id="_YAzlUGl4EeiueMpOTL7yfQ" incoming="_xmNSMGl4EeiueMpOTL7yfQ" outgoing="_ffFUwGl4EeiueMpOTL7yfQ _zEeP4WmMEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentRequirement"/>
+      </nodes>
+      <nodes xmi:id="_ZfqI8Wl4EeiueMpOTL7yfQ" name="i" incoming="_ffFUwGl4EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Instance"/>
+      </nodes>
+      <nodes xmi:id="_otwDwWl4EeiueMpOTL7yfQ" incoming="_u6vxgWl4EeiueMpOTL7yfQ" outgoing="_xmNSMGl4EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+      </nodes>
+      <nodes xmi:id="_yrw08WmMEeiueMpOTL7yfQ" incoming="_zEeP4WmMEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component"/>
+      </nodes>
+      <edges xmi:id="_ffFUwGl4EeiueMpOTL7yfQ" source="_YAzlUGl4EeiueMpOTL7yfQ" target="_ZfqI8Wl4EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentRequirement/instance"/>
+      </edges>
+      <edges xmi:id="_u6vxgWl4EeiueMpOTL7yfQ" source="_ST8JIWl4EeiueMpOTL7yfQ" target="_otwDwWl4EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/implementation"/>
+      </edges>
+      <edges xmi:id="_xmNSMGl4EeiueMpOTL7yfQ" source="_otwDwWl4EeiueMpOTL7yfQ" target="_YAzlUGl4EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation/componentRequirements"/>
+      </edges>
+      <edges xmi:id="_zEeP4WmMEeiueMpOTL7yfQ" source="_YAzlUGl4EeiueMpOTL7yfQ" target="_yrw08WmMEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentRequirement/type"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_ST8wMGl4EeiueMpOTL7yfQ" origin="_ST8JIGl4EeiueMpOTL7yfQ" image="_ST8JIWl4EeiueMpOTL7yfQ"/>
+    <mappings xmi:id="_YAzlUWl4EeiueMpOTL7yfQ" origin="_YAy-QGl4EeiueMpOTL7yfQ" image="_YAzlUGl4EeiueMpOTL7yfQ"/>
+    <mappings xmi:id="_ZfqI8ml4EeiueMpOTL7yfQ" origin="_ZfqI8Gl4EeiueMpOTL7yfQ" image="_ZfqI8Wl4EeiueMpOTL7yfQ"/>
+    <mappings xmi:id="_otwDwml4EeiueMpOTL7yfQ" origin="_otwDwGl4EeiueMpOTL7yfQ" image="_otwDwWl4EeiueMpOTL7yfQ"/>
+    <mappings xmi:id="_yrw08mmMEeiueMpOTL7yfQ" origin="_yrw08GmMEeiueMpOTL7yfQ" image="_yrw08WmMEeiueMpOTL7yfQ"/>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_oRqdUGl7EeiueMpOTL7yfQ" name="createRequestMap">
+    <parameters xmi:id="_rnzSsGl7EeiueMpOTL7yfQ" name="a" kind="OUT">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+    </parameters>
+    <lhs xmi:id="_oRtgoGl7EeiueMpOTL7yfQ" name="Lhs">
+      <nodes xmi:id="_ulCf4Gl7EeiueMpOTL7yfQ" outgoing="_2DKeUGl7EeiueMpOTL7yfQ _59CS4Gl7EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Model"/>
+      </nodes>
+      <nodes xmi:id="_vRGUoGl7EeiueMpOTL7yfQ" incoming="_59CS4Gl7EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Solution"/>
+      </nodes>
+      <nodes xmi:id="_wB7UoGl7EeiueMpOTL7yfQ" outgoing="_VhYTgGmOEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Request"/>
+      </nodes>
+      <nodes xmi:id="_xPlakGl7EeiueMpOTL7yfQ" incoming="_2fE-QGl7EeiueMpOTL7yfQ _VhYTgGmOEeiueMpOTL7yfQ" outgoing="_28U68Gl7EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component"/>
+      </nodes>
+      <nodes xmi:id="_x1VzAGl7EeiueMpOTL7yfQ" incoming="_2DKeUGl7EeiueMpOTL7yfQ" outgoing="_2fE-QGl7EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//SoftwareModel"/>
+      </nodes>
+      <nodes xmi:id="_y5VmoGl7EeiueMpOTL7yfQ" incoming="_28U68Gl7EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+      </nodes>
+      <edges xmi:id="_2DKeUGl7EeiueMpOTL7yfQ" source="_ulCf4Gl7EeiueMpOTL7yfQ" target="_x1VzAGl7EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Model/softwareModel"/>
+      </edges>
+      <edges xmi:id="_2fE-QGl7EeiueMpOTL7yfQ" source="_x1VzAGl7EeiueMpOTL7yfQ" target="_xPlakGl7EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//SoftwareModel/components"/>
+      </edges>
+      <edges xmi:id="_28U68Gl7EeiueMpOTL7yfQ" source="_xPlakGl7EeiueMpOTL7yfQ" target="_y5VmoGl7EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component/implementations"/>
+      </edges>
+      <edges xmi:id="_59CS4Gl7EeiueMpOTL7yfQ" source="_ulCf4Gl7EeiueMpOTL7yfQ" target="_vRGUoGl7EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Model/solution"/>
+      </edges>
+      <edges xmi:id="_VhYTgGmOEeiueMpOTL7yfQ" source="_wB7UoGl7EeiueMpOTL7yfQ" target="_xPlakGl7EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Request/component"/>
+      </edges>
+      <formula xsi:type="henshin:Not" xmi:id="_8Rm9kWl7EeiueMpOTL7yfQ">
+        <child xsi:type="henshin:NestedCondition" xmi:id="_8Rm9kml7EeiueMpOTL7yfQ">
+          <conclusion xmi:id="_8Rm9k2l7EeiueMpOTL7yfQ">
+            <nodes xmi:id="_8Rm9lGl7EeiueMpOTL7yfQ" outgoing="_8RnkoGl7EeiueMpOTL7yfQ _8Rnko2l7EeiueMpOTL7yfQ">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//Model"/>
+            </nodes>
+            <nodes xmi:id="_8Rm9lml7EeiueMpOTL7yfQ" incoming="_8RnkoGl7EeiueMpOTL7yfQ" outgoing="_8RnkqGl7EeiueMpOTL7yfQ">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//SoftwareModel"/>
+            </nodes>
+            <nodes xmi:id="_8RnkoWl7EeiueMpOTL7yfQ" incoming="_8Rnko2l7EeiueMpOTL7yfQ">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//Solution"/>
+            </nodes>
+            <nodes xmi:id="_8RnkpGl7EeiueMpOTL7yfQ" incoming="_80_XcGl7EeiueMpOTL7yfQ">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//Request"/>
+            </nodes>
+            <nodes xmi:id="_8Rnkpml7EeiueMpOTL7yfQ" incoming="_8RnkqGl7EeiueMpOTL7yfQ" outgoing="_8Rnkq2l7EeiueMpOTL7yfQ">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component"/>
+            </nodes>
+            <nodes xmi:id="_8RnkqWl7EeiueMpOTL7yfQ" incoming="_8Rnkq2l7EeiueMpOTL7yfQ">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+            </nodes>
+            <nodes xmi:id="_8RlvcGl7EeiueMpOTL7yfQ" outgoing="_80_XcGl7EeiueMpOTL7yfQ">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+            </nodes>
+            <edges xmi:id="_8RnkoGl7EeiueMpOTL7yfQ" source="_8Rm9lGl7EeiueMpOTL7yfQ" target="_8Rm9lml7EeiueMpOTL7yfQ">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//Model/softwareModel"/>
+            </edges>
+            <edges xmi:id="_8Rnko2l7EeiueMpOTL7yfQ" source="_8Rm9lGl7EeiueMpOTL7yfQ" target="_8RnkoWl7EeiueMpOTL7yfQ">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//Model/solution"/>
+            </edges>
+            <edges xmi:id="_8RnkqGl7EeiueMpOTL7yfQ" source="_8Rm9lml7EeiueMpOTL7yfQ" target="_8Rnkpml7EeiueMpOTL7yfQ">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//SoftwareModel/components"/>
+            </edges>
+            <edges xmi:id="_8Rnkq2l7EeiueMpOTL7yfQ" source="_8Rnkpml7EeiueMpOTL7yfQ" target="_8RnkqWl7EeiueMpOTL7yfQ">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component/implementations"/>
+            </edges>
+            <edges xmi:id="_80_XcGl7EeiueMpOTL7yfQ" source="_8RlvcGl7EeiueMpOTL7yfQ" target="_8RnkpGl7EeiueMpOTL7yfQ">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/request"/>
+            </edges>
+          </conclusion>
+          <mappings xmi:id="_8Rm9lWl7EeiueMpOTL7yfQ" origin="_ulCf4Gl7EeiueMpOTL7yfQ" image="_8Rm9lGl7EeiueMpOTL7yfQ"/>
+          <mappings xmi:id="_8Rm9l2l7EeiueMpOTL7yfQ" origin="_x1VzAGl7EeiueMpOTL7yfQ" image="_8Rm9lml7EeiueMpOTL7yfQ"/>
+          <mappings xmi:id="_8Rnkoml7EeiueMpOTL7yfQ" origin="_vRGUoGl7EeiueMpOTL7yfQ" image="_8RnkoWl7EeiueMpOTL7yfQ"/>
+          <mappings xmi:id="_8RnkpWl7EeiueMpOTL7yfQ" origin="_wB7UoGl7EeiueMpOTL7yfQ" image="_8RnkpGl7EeiueMpOTL7yfQ"/>
+          <mappings xmi:id="_8Rnkp2l7EeiueMpOTL7yfQ" origin="_xPlakGl7EeiueMpOTL7yfQ" image="_8Rnkpml7EeiueMpOTL7yfQ"/>
+          <mappings xmi:id="_8Rnkqml7EeiueMpOTL7yfQ" origin="_y5VmoGl7EeiueMpOTL7yfQ" image="_8RnkqWl7EeiueMpOTL7yfQ"/>
+        </child>
+      </formula>
+    </lhs>
+    <rhs xmi:id="_oRuHsGl7EeiueMpOTL7yfQ" name="Rhs">
+      <nodes xmi:id="_ulCf4Wl7EeiueMpOTL7yfQ" outgoing="_2DKeUWl7EeiueMpOTL7yfQ _59CS4Wl7EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Model"/>
+      </nodes>
+      <nodes xmi:id="_vRGUoWl7EeiueMpOTL7yfQ" incoming="_59CS4Wl7EeiueMpOTL7yfQ" outgoing="_5cCeoGl7EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Solution"/>
+      </nodes>
+      <nodes xmi:id="_wB7UoWl7EeiueMpOTL7yfQ" incoming="_40QF4Gl7EeiueMpOTL7yfQ" outgoing="_VhYTgWmOEeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Request"/>
+      </nodes>
+      <nodes xmi:id="_xPlakWl7EeiueMpOTL7yfQ" incoming="_2fE-QWl7EeiueMpOTL7yfQ _VhYTgWmOEeiueMpOTL7yfQ" outgoing="_28U68Wl7EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component"/>
+      </nodes>
+      <nodes xmi:id="_x1VzAWl7EeiueMpOTL7yfQ" incoming="_2DKeUWl7EeiueMpOTL7yfQ" outgoing="_2fE-QWl7EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//SoftwareModel"/>
+      </nodes>
+      <nodes xmi:id="_y5WNsGl7EeiueMpOTL7yfQ" incoming="_28U68Wl7EeiueMpOTL7yfQ _4YO4QGl7EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+      </nodes>
+      <nodes xmi:id="_0tMw8Gl7EeiueMpOTL7yfQ" name="a" incoming="_5cCeoGl7EeiueMpOTL7yfQ" outgoing="_4YO4QGl7EeiueMpOTL7yfQ _40QF4Gl7EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <edges xmi:id="_2DKeUWl7EeiueMpOTL7yfQ" source="_ulCf4Wl7EeiueMpOTL7yfQ" target="_x1VzAWl7EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Model/softwareModel"/>
+      </edges>
+      <edges xmi:id="_2fE-QWl7EeiueMpOTL7yfQ" source="_x1VzAWl7EeiueMpOTL7yfQ" target="_xPlakWl7EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//SoftwareModel/components"/>
+      </edges>
+      <edges xmi:id="_28U68Wl7EeiueMpOTL7yfQ" source="_xPlakWl7EeiueMpOTL7yfQ" target="_y5WNsGl7EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component/implementations"/>
+      </edges>
+      <edges xmi:id="_4YO4QGl7EeiueMpOTL7yfQ" source="_0tMw8Gl7EeiueMpOTL7yfQ" target="_y5WNsGl7EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/implementation"/>
+      </edges>
+      <edges xmi:id="_40QF4Gl7EeiueMpOTL7yfQ" source="_0tMw8Gl7EeiueMpOTL7yfQ" target="_wB7UoWl7EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/request"/>
+      </edges>
+      <edges xmi:id="_5cCeoGl7EeiueMpOTL7yfQ" source="_vRGUoWl7EeiueMpOTL7yfQ" target="_0tMw8Gl7EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Solution/assignments"/>
+      </edges>
+      <edges xmi:id="_59CS4Wl7EeiueMpOTL7yfQ" source="_ulCf4Wl7EeiueMpOTL7yfQ" target="_vRGUoWl7EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Model/solution"/>
+      </edges>
+      <edges xmi:id="_VhYTgWmOEeiueMpOTL7yfQ" source="_wB7UoWl7EeiueMpOTL7yfQ" target="_xPlakWl7EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Request/component"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_ulCf4ml7EeiueMpOTL7yfQ" origin="_ulCf4Gl7EeiueMpOTL7yfQ" image="_ulCf4Wl7EeiueMpOTL7yfQ"/>
+    <mappings xmi:id="_vRGUoml7EeiueMpOTL7yfQ" origin="_vRGUoGl7EeiueMpOTL7yfQ" image="_vRGUoWl7EeiueMpOTL7yfQ"/>
+    <mappings xmi:id="_wB7Uoml7EeiueMpOTL7yfQ" origin="_wB7UoGl7EeiueMpOTL7yfQ" image="_wB7UoWl7EeiueMpOTL7yfQ"/>
+    <mappings xmi:id="_xPlakml7EeiueMpOTL7yfQ" origin="_xPlakGl7EeiueMpOTL7yfQ" image="_xPlakWl7EeiueMpOTL7yfQ"/>
+    <mappings xmi:id="_x1VzAml7EeiueMpOTL7yfQ" origin="_x1VzAGl7EeiueMpOTL7yfQ" image="_x1VzAWl7EeiueMpOTL7yfQ"/>
+    <mappings xmi:id="_y5WNsWl7EeiueMpOTL7yfQ" origin="_y5VmoGl7EeiueMpOTL7yfQ" image="_y5WNsGl7EeiueMpOTL7yfQ"/>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_B9sWoGl8EeiueMpOTL7yfQ" name="createSolution">
+    <lhs xmi:id="_B9uy4Gl8EeiueMpOTL7yfQ" name="Lhs">
+      <nodes xmi:id="_FUIuAGl8EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Model"/>
+      </nodes>
+      <formula xsi:type="henshin:Not" xmi:id="_wugMgmnYEeiJNMWjbUwnQQ">
+        <child xsi:type="henshin:NestedCondition" xmi:id="_wugMg2nYEeiJNMWjbUwnQQ">
+          <conclusion xmi:id="_wugMhGnYEeiJNMWjbUwnQQ">
+            <nodes xmi:id="_wugzkGnYEeiJNMWjbUwnQQ" outgoing="_xblU8GnYEeiJNMWjbUwnQQ">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//Model"/>
+            </nodes>
+            <nodes xmi:id="_wue-YGnYEeiJNMWjbUwnQQ" incoming="_xblU8GnYEeiJNMWjbUwnQQ">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//Solution"/>
+            </nodes>
+            <edges xmi:id="_xblU8GnYEeiJNMWjbUwnQQ" source="_wugzkGnYEeiJNMWjbUwnQQ" target="_wue-YGnYEeiJNMWjbUwnQQ">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//Model/solution"/>
+            </edges>
+          </conclusion>
+          <mappings xmi:id="_wugzkWnYEeiJNMWjbUwnQQ" origin="_FUIuAGl8EeiueMpOTL7yfQ" image="_wugzkGnYEeiJNMWjbUwnQQ"/>
+        </child>
+      </formula>
+    </lhs>
+    <rhs xmi:id="_B9vZ8Gl8EeiueMpOTL7yfQ" name="Rhs">
+      <nodes xmi:id="_FUJVEGl8EeiueMpOTL7yfQ" outgoing="_HWUBIGl8EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Model"/>
+      </nodes>
+      <nodes xmi:id="_F52qMGl8EeiueMpOTL7yfQ" incoming="_HWUBIGl8EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Solution"/>
+      </nodes>
+      <edges xmi:id="_HWUBIGl8EeiueMpOTL7yfQ" source="_FUJVEGl8EeiueMpOTL7yfQ" target="_F52qMGl8EeiueMpOTL7yfQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Model/solution"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_FUJVEWl8EeiueMpOTL7yfQ" origin="_FUIuAGl8EeiueMpOTL7yfQ" image="_FUJVEGl8EeiueMpOTL7yfQ"/>
+  </units>
+  <units xsi:type="henshin:SequentialUnit" xmi:id="_KCbvgGmEEeiueMpOTL7yfQ" name="initializationLoopSequence" subUnits="_2UhtYGl2EeiueMpOTL7yfQ _uakWQGlwEeiueMpOTL7yfQ _DFTI0GmFEeiueMpOTL7yfQ">
+    <parameters xmi:id="_N9Ws8GmEEeiueMpOTL7yfQ" name="a" kind="IN">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+    </parameters>
+    <parameters xmi:id="_N9Ws8WmEEeiueMpOTL7yfQ" name="i" kind="VAR">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Instance"/>
+    </parameters>
+    <parameters xmi:id="_-_PAcGmGEeiueMpOTL7yfQ" name="aout" kind="VAR">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+    </parameters>
+    <parameterMappings xmi:id="_QBFfQGmEEeiueMpOTL7yfQ" source="_N9Ws8GmEEeiueMpOTL7yfQ" target="_Q3tbsGl4EeiueMpOTL7yfQ"/>
+    <parameterMappings xmi:id="_QBFfQWmEEeiueMpOTL7yfQ" source="_Q3tbsGl4EeiueMpOTL7yfQ" target="_N9Ws8GmEEeiueMpOTL7yfQ"/>
+    <parameterMappings xmi:id="_QBFfQmmEEeiueMpOTL7yfQ" source="_N9Ws8WmEEeiueMpOTL7yfQ" target="_Q3tbsWl4EeiueMpOTL7yfQ"/>
+    <parameterMappings xmi:id="_QBFfQ2mEEeiueMpOTL7yfQ" source="_Q3tbsWl4EeiueMpOTL7yfQ" target="_N9Ws8WmEEeiueMpOTL7yfQ"/>
+    <parameterMappings xmi:id="_Al9tsGmHEeiueMpOTL7yfQ" source="_N9Ws8GmEEeiueMpOTL7yfQ" target="_xfjKMGlwEeiueMpOTL7yfQ"/>
+    <parameterMappings xmi:id="_Al9tsWmHEeiueMpOTL7yfQ" source="_xfjKMGlwEeiueMpOTL7yfQ" target="_N9Ws8GmEEeiueMpOTL7yfQ"/>
+    <parameterMappings xmi:id="_Al9tsmmHEeiueMpOTL7yfQ" source="_N9Ws8WmEEeiueMpOTL7yfQ" target="_qCTxAGl6EeiueMpOTL7yfQ"/>
+    <parameterMappings xmi:id="_Al9ts2mHEeiueMpOTL7yfQ" source="_qCTxAGl6EeiueMpOTL7yfQ" target="_N9Ws8WmEEeiueMpOTL7yfQ"/>
+    <parameterMappings xmi:id="_Al9ttGmHEeiueMpOTL7yfQ" source="_-_PAcGmGEeiueMpOTL7yfQ" target="_wkXIwGl6EeiueMpOTL7yfQ"/>
+    <parameterMappings xmi:id="_Al9ttWmHEeiueMpOTL7yfQ" source="_wkXIwGl6EeiueMpOTL7yfQ" target="_-_PAcGmGEeiueMpOTL7yfQ"/>
+    <parameterMappings xmi:id="_D50YMGmUEeiJNMWjbUwnQQ" source="_-_PAcGmGEeiueMpOTL7yfQ" target="_EanV8GmFEeiueMpOTL7yfQ"/>
+    <parameterMappings xmi:id="_D50YMWmUEeiJNMWjbUwnQQ" source="_EanV8GmFEeiueMpOTL7yfQ" target="_-_PAcGmGEeiueMpOTL7yfQ"/>
+  </units>
+  <units xsi:type="henshin:LoopUnit" xmi:id="_kUr7UGmEEeiueMpOTL7yfQ" name="initializationLoop" subUnit="_KCbvgGmEEeiueMpOTL7yfQ">
+    <parameters xmi:id="_rKTIQGmEEeiueMpOTL7yfQ" name="a" kind="IN">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+    </parameters>
+    <parameterMappings xmi:id="_st63IGmEEeiueMpOTL7yfQ" source="_rKTIQGmEEeiueMpOTL7yfQ" target="_N9Ws8GmEEeiueMpOTL7yfQ"/>
+    <parameterMappings xmi:id="_st7eMGmEEeiueMpOTL7yfQ" source="_N9Ws8GmEEeiueMpOTL7yfQ" target="_rKTIQGmEEeiueMpOTL7yfQ"/>
+  </units>
+  <units xsi:type="henshin:SequentialUnit" xmi:id="_DFTI0GmFEeiueMpOTL7yfQ" name="initialize" subUnits="_vvb0QGlsEeiueMpOTL7yfQ _kUr7UGmEEeiueMpOTL7yfQ">
+    <parameters xmi:id="_EanV8GmFEeiueMpOTL7yfQ" name="a" kind="IN">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+    </parameters>
+    <parameterMappings xmi:id="_mUNQIGmREeiueMpOTL7yfQ" source="_EanV8GmFEeiueMpOTL7yfQ" target="_rKTIQGmEEeiueMpOTL7yfQ"/>
+    <parameterMappings xmi:id="_mUNQIWmREeiueMpOTL7yfQ" source="_rKTIQGmEEeiueMpOTL7yfQ" target="_EanV8GmFEeiueMpOTL7yfQ"/>
+    <parameterMappings xmi:id="_6e95QGmREeiueMpOTL7yfQ" source="_EanV8GmFEeiueMpOTL7yfQ" target="_5A-4IGlsEeiueMpOTL7yfQ"/>
+    <parameterMappings xmi:id="_6e_HYGmREeiueMpOTL7yfQ" source="_5A-4IGlsEeiueMpOTL7yfQ" target="_EanV8GmFEeiueMpOTL7yfQ"/>
+  </units>
+  <units xsi:type="henshin:SequentialUnit" xmi:id="_bG14cGmUEeiJNMWjbUwnQQ" name="requestInitialisation" subUnits="_oRqdUGl7EeiueMpOTL7yfQ _DFTI0GmFEeiueMpOTL7yfQ">
+    <parameters xmi:id="_kvXR4GmUEeiJNMWjbUwnQQ" name="a" kind="VAR">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+    </parameters>
+    <parameterMappings xmi:id="_n9VpwGmUEeiJNMWjbUwnQQ" source="_kvXR4GmUEeiJNMWjbUwnQQ" target="_rnzSsGl7EeiueMpOTL7yfQ"/>
+    <parameterMappings xmi:id="_n9VpwWmUEeiJNMWjbUwnQQ" source="_rnzSsGl7EeiueMpOTL7yfQ" target="_kvXR4GmUEeiJNMWjbUwnQQ"/>
+    <parameterMappings xmi:id="_qLXAgGmUEeiJNMWjbUwnQQ" source="_kvXR4GmUEeiJNMWjbUwnQQ" target="_EanV8GmFEeiueMpOTL7yfQ"/>
+    <parameterMappings xmi:id="_qLXAgWmUEeiJNMWjbUwnQQ" source="_EanV8GmFEeiueMpOTL7yfQ" target="_kvXR4GmUEeiJNMWjbUwnQQ"/>
+  </units>
+  <units xsi:type="henshin:SequentialUnit" xmi:id="_BPPZkGmaEeiJNMWjbUwnQQ" name="modelInitialisation" subUnits="_B9sWoGl8EeiueMpOTL7yfQ _HTc-wGmaEeiJNMWjbUwnQQ"/>
+  <units xsi:type="henshin:LoopUnit" xmi:id="_HTc-wGmaEeiJNMWjbUwnQQ" name="initialiseRequests" subUnit="_bG14cGmUEeiJNMWjbUwnQQ"/>
+  <units xsi:type="henshin:Rule" xmi:id="_q1bCcGmaEeiJNMWjbUwnQQ" name="canvas">
+    <lhs xmi:id="_q1eFwGmaEeiJNMWjbUwnQQ" name="Lhs"/>
+    <rhs xmi:id="_q1eFwWmaEeiJNMWjbUwnQQ" name="Rhs"/>
+  </units>
+  <units xsi:type="henshin:SequentialUnit" xmi:id="__EI-gGmaEeiJNMWjbUwnQQ" name="cleanup" subUnits="_bIT3QGnEEeiJNMWjbUwnQQ _B7MEIGmbEeiJNMWjbUwnQQ">
+    <parameters xmi:id="_YqVjgGnFEeiJNMWjbUwnQQ" name="a" kind="IN">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+    </parameters>
+    <parameterMappings xmi:id="_agcwkGnFEeiJNMWjbUwnQQ" source="_YqVjgGnFEeiJNMWjbUwnQQ" target="_eGuwMGnEEeiJNMWjbUwnQQ"/>
+    <parameterMappings xmi:id="_agdXoGnFEeiJNMWjbUwnQQ" source="_eGuwMGnEEeiJNMWjbUwnQQ" target="_YqVjgGnFEeiJNMWjbUwnQQ"/>
+    <parameterMappings xmi:id="_9KcqcGnFEeiJNMWjbUwnQQ" source="_YqVjgGnFEeiJNMWjbUwnQQ" target="_7-B6oGnFEeiJNMWjbUwnQQ"/>
+    <parameterMappings xmi:id="_9KcqcWnFEeiJNMWjbUwnQQ" source="_7-B6oGnFEeiJNMWjbUwnQQ" target="_YqVjgGnFEeiJNMWjbUwnQQ"/>
+  </units>
+  <units xsi:type="henshin:LoopUnit" xmi:id="_B7MEIGmbEeiJNMWjbUwnQQ" name="cleanupLoop" subUnit="_FnBcsGmbEeiJNMWjbUwnQQ">
+    <parameters xmi:id="_7-B6oGnFEeiJNMWjbUwnQQ" name="a" kind="IN">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+    </parameters>
+    <parameterMappings xmi:id="_--I1oGnFEeiJNMWjbUwnQQ" source="_7-B6oGnFEeiJNMWjbUwnQQ" target="_xGTfwGmcEeiJNMWjbUwnQQ"/>
+    <parameterMappings xmi:id="_--JcsGnFEeiJNMWjbUwnQQ" source="_xGTfwGmcEeiJNMWjbUwnQQ" target="_7-B6oGnFEeiJNMWjbUwnQQ"/>
+  </units>
+  <units xsi:type="henshin:SequentialUnit" xmi:id="_FnBcsGmbEeiJNMWjbUwnQQ" name="cleanupLoopSequence" subUnits="_tBajcGmbEeiJNMWjbUwnQQ __EI-gGmaEeiJNMWjbUwnQQ _lQbosGnCEeiJNMWjbUwnQQ">
+    <parameters xmi:id="_xGTfwGmcEeiJNMWjbUwnQQ" name="a" kind="IN">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+    </parameters>
+    <parameters xmi:id="_ygJAgGmcEeiJNMWjbUwnQQ" name="cmout" kind="VAR">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentMapping"/>
+    </parameters>
+    <parameters xmi:id="_0Y0ZYGmcEeiJNMWjbUwnQQ" name="aout" kind="VAR">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+    </parameters>
+    <parameterMappings xmi:id="_aResAGm7EeiJNMWjbUwnQQ" source="_xGTfwGmcEeiJNMWjbUwnQQ" target="_tBajcWmbEeiJNMWjbUwnQQ"/>
+    <parameterMappings xmi:id="_aResAWm7EeiJNMWjbUwnQQ" source="_tBajcWmbEeiJNMWjbUwnQQ" target="_xGTfwGmcEeiJNMWjbUwnQQ"/>
+    <parameterMappings xmi:id="_aResAmm7EeiJNMWjbUwnQQ" source="_ygJAgGmcEeiJNMWjbUwnQQ" target="_N9JzoGm7EeiJNMWjbUwnQQ"/>
+    <parameterMappings xmi:id="_aResA2m7EeiJNMWjbUwnQQ" source="_N9JzoGm7EeiJNMWjbUwnQQ" target="_ygJAgGmcEeiJNMWjbUwnQQ"/>
+    <parameterMappings xmi:id="_aResBGm7EeiJNMWjbUwnQQ" source="_0Y0ZYGmcEeiJNMWjbUwnQQ" target="_BDfxsWmcEeiJNMWjbUwnQQ"/>
+    <parameterMappings xmi:id="_aResBWm7EeiJNMWjbUwnQQ" source="_BDfxsWmcEeiJNMWjbUwnQQ" target="_0Y0ZYGmcEeiJNMWjbUwnQQ"/>
+    <parameterMappings xmi:id="_ahhZgGnDEeiJNMWjbUwnQQ" source="_ygJAgGmcEeiJNMWjbUwnQQ" target="_UIBg0GnDEeiJNMWjbUwnQQ"/>
+    <parameterMappings xmi:id="_ahiAkGnDEeiJNMWjbUwnQQ" source="_UIBg0GnDEeiJNMWjbUwnQQ" target="_ygJAgGmcEeiJNMWjbUwnQQ"/>
+    <parameterMappings xmi:id="_CGREMGnGEeiJNMWjbUwnQQ" source="_0Y0ZYGmcEeiJNMWjbUwnQQ" target="_YqVjgGnFEeiJNMWjbUwnQQ"/>
+    <parameterMappings xmi:id="_CGRrQGnGEeiJNMWjbUwnQQ" source="_YqVjgGnFEeiJNMWjbUwnQQ" target="_0Y0ZYGmcEeiJNMWjbUwnQQ"/>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_tBajcGmbEeiJNMWjbUwnQQ" name="pickChildren">
+    <parameters xmi:id="_tBajcWmbEeiJNMWjbUwnQQ" name="a" kind="IN">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+    </parameters>
+    <parameters xmi:id="_N9JzoGm7EeiJNMWjbUwnQQ" name="cm" kind="OUT">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentMapping"/>
+    </parameters>
+    <parameters xmi:id="_BDfxsWmcEeiJNMWjbUwnQQ" name="aout" kind="OUT">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+    </parameters>
+    <lhs xmi:id="_tBajc2mbEeiJNMWjbUwnQQ" name="Lhs">
+      <nodes xmi:id="_tBajdGmbEeiJNMWjbUwnQQ" name="a" outgoing="_HXpQUGmcEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <nodes xmi:id="_Fpu9AGmcEeiJNMWjbUwnQQ" name="cm" incoming="_HXpQUGmcEeiJNMWjbUwnQQ" outgoing="_HFxdMGmcEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentMapping"/>
+      </nodes>
+      <nodes xmi:id="_GaXvwGmcEeiJNMWjbUwnQQ" name="aout" incoming="_HFxdMGmcEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <edges xmi:id="_HFxdMGmcEeiJNMWjbUwnQQ" source="_Fpu9AGmcEeiJNMWjbUwnQQ" target="_GaXvwGmcEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentMapping/assignment"/>
+      </edges>
+      <edges xmi:id="_HXpQUGmcEeiJNMWjbUwnQQ" source="_tBajdGmbEeiJNMWjbUwnQQ" target="_Fpu9AGmcEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/componentMappings"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_tBajjWmbEeiJNMWjbUwnQQ" name="Rhs">
+      <nodes xmi:id="_tBajjmmbEeiJNMWjbUwnQQ" name="a" outgoing="_HXpQUWmcEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <nodes xmi:id="_Fpu9AWmcEeiJNMWjbUwnQQ" name="cm" incoming="_HXpQUWmcEeiJNMWjbUwnQQ" outgoing="_HFxdMWmcEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentMapping"/>
+      </nodes>
+      <nodes xmi:id="_GaYW0GmcEeiJNMWjbUwnQQ" name="aout" incoming="_HFxdMWmcEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <edges xmi:id="_HFxdMWmcEeiJNMWjbUwnQQ" source="_Fpu9AWmcEeiJNMWjbUwnQQ" target="_GaYW0GmcEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentMapping/assignment"/>
+      </edges>
+      <edges xmi:id="_HXpQUWmcEeiJNMWjbUwnQQ" source="_tBajjmmbEeiJNMWjbUwnQQ" target="_Fpu9AWmcEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/componentMappings"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_tBajl2mbEeiJNMWjbUwnQQ" origin="_tBajdGmbEeiJNMWjbUwnQQ" image="_tBajjmmbEeiJNMWjbUwnQQ"/>
+    <mappings xmi:id="_Fpu9AmmcEeiJNMWjbUwnQQ" origin="_Fpu9AGmcEeiJNMWjbUwnQQ" image="_Fpu9AWmcEeiJNMWjbUwnQQ"/>
+    <mappings xmi:id="_GaYW0WmcEeiJNMWjbUwnQQ" origin="_GaXvwGmcEeiJNMWjbUwnQQ" image="_GaYW0GmcEeiJNMWjbUwnQQ"/>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_MYFO4GmdEeiJNMWjbUwnQQ" name="pickAssignmentForCleanupTest">
+    <parameters xmi:id="_YcGaYGmdEeiJNMWjbUwnQQ" name="a" kind="OUT">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+    </parameters>
+    <lhs xmi:id="_MYLVgGmdEeiJNMWjbUwnQQ" name="Lhs">
+      <nodes xmi:id="_OybKYGmdEeiJNMWjbUwnQQ" outgoing="_Wr_HoGmdEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Solution"/>
+      </nodes>
+      <nodes xmi:id="_QNlg0GmdEeiJNMWjbUwnQQ" name="a" incoming="_Wr_HoGmdEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <edges xmi:id="_Wr_HoGmdEeiJNMWjbUwnQQ" source="_OybKYGmdEeiJNMWjbUwnQQ" target="_QNlg0GmdEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Solution/assignments"/>
+      </edges>
+      <formula xsi:type="henshin:NestedCondition" xmi:id="_vMYNo2o0Eeixvo48Yp-OWg">
+        <conclusion xmi:id="_vMYNpGo0Eeixvo48Yp-OWg">
+          <nodes xmi:id="_vMYNpWo0Eeixvo48Yp-OWg" outgoing="_vMYNqWo0Eeixvo48Yp-OWg">
+            <type href="http://www.xtext.org/example/mydsl/MyDsl#//Solution"/>
+          </nodes>
+          <nodes xmi:id="_vMYNp2o0Eeixvo48Yp-OWg" name="a" incoming="_vMYNqWo0Eeixvo48Yp-OWg" outgoing="_wpxYsGo0Eeixvo48Yp-OWg">
+            <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+          </nodes>
+          <nodes xmi:id="_vMYNoGo0Eeixvo48Yp-OWg" incoming="_wpxYsGo0Eeixvo48Yp-OWg">
+            <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+          </nodes>
+          <edges xmi:id="_vMYNqWo0Eeixvo48Yp-OWg" source="_vMYNpWo0Eeixvo48Yp-OWg" target="_vMYNp2o0Eeixvo48Yp-OWg">
+            <type href="http://www.xtext.org/example/mydsl/MyDsl#//Solution/assignments"/>
+          </edges>
+          <edges xmi:id="_wpxYsGo0Eeixvo48Yp-OWg" source="_vMYNp2o0Eeixvo48Yp-OWg" target="_vMYNoGo0Eeixvo48Yp-OWg">
+            <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/resourceMappings"/>
+          </edges>
+        </conclusion>
+        <mappings xmi:id="_vMYNpmo0Eeixvo48Yp-OWg" origin="_OybKYGmdEeiJNMWjbUwnQQ" image="_vMYNpWo0Eeixvo48Yp-OWg"/>
+        <mappings xmi:id="_vMYNqGo0Eeixvo48Yp-OWg" origin="_QNlg0GmdEeiJNMWjbUwnQQ" image="_vMYNp2o0Eeixvo48Yp-OWg"/>
+      </formula>
+    </lhs>
+    <rhs xmi:id="_MYL8kGmdEeiJNMWjbUwnQQ" name="Rhs">
+      <nodes xmi:id="_OybKYWmdEeiJNMWjbUwnQQ" outgoing="_Wr_HoWmdEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Solution"/>
+      </nodes>
+      <nodes xmi:id="_QNlg0WmdEeiJNMWjbUwnQQ" name="a" incoming="_Wr_HoWmdEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <edges xmi:id="_Wr_HoWmdEeiJNMWjbUwnQQ" source="_OybKYWmdEeiJNMWjbUwnQQ" target="_QNlg0WmdEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Solution/assignments"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_OybKYmmdEeiJNMWjbUwnQQ" origin="_OybKYGmdEeiJNMWjbUwnQQ" image="_OybKYWmdEeiJNMWjbUwnQQ"/>
+    <mappings xmi:id="_QNlg0mmdEeiJNMWjbUwnQQ" origin="_QNlg0GmdEeiJNMWjbUwnQQ" image="_QNlg0WmdEeiJNMWjbUwnQQ"/>
+  </units>
+  <units xsi:type="henshin:SequentialUnit" xmi:id="_bMeQQGmdEeiJNMWjbUwnQQ" name="cleanupTestSequence" subUnits="_MYFO4GmdEeiJNMWjbUwnQQ __EI-gGmaEeiJNMWjbUwnQQ">
+    <parameters xmi:id="_h4D-gGmdEeiJNMWjbUwnQQ" name="a" kind="VAR">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+    </parameters>
+    <parameterMappings xmi:id="_iu9xUWmdEeiJNMWjbUwnQQ" source="_YcGaYGmdEeiJNMWjbUwnQQ" target="_h4D-gGmdEeiJNMWjbUwnQQ"/>
+    <parameterMappings xmi:id="_hSazoGnFEeiJNMWjbUwnQQ" source="_h4D-gGmdEeiJNMWjbUwnQQ" target="_YqVjgGnFEeiJNMWjbUwnQQ"/>
+  </units>
+  <units xsi:type="henshin:LoopUnit" xmi:id="_zShbgGmjEeiJNMWjbUwnQQ" name="cleanupTestLoop" subUnit="_bMeQQGmdEeiJNMWjbUwnQQ">
+    <parameters xmi:id="_5YGSoGmjEeiJNMWjbUwnQQ" name="a" kind="VAR">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+    </parameters>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_ZZ9YsGm8EeiJNMWjbUwnQQ" name="deleteResourceMapUsedResources">
+    <parameters xmi:id="_wbx80GowEeixvo48Yp-OWg" name="a" kind="IN">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+    </parameters>
+    <lhs xmi:id="_ZZ9Ysmm8EeiJNMWjbUwnQQ" name="Lhs">
+      <nodes xmi:id="_qfTJAGm8EeiJNMWjbUwnQQ" incoming="_4U6RsGovEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+      </nodes>
+      <nodes xmi:id="_07qd8GovEeixvo48Yp-OWg" name="a" outgoing="_4U6RsGovEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <edges xmi:id="_4U6RsGovEeixvo48Yp-OWg" source="_07qd8GovEeixvo48Yp-OWg" target="_qfTJAGm8EeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/resourceMappings"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_ZZ9Yz2m8EeiJNMWjbUwnQQ" name="Rhs">
+      <nodes xmi:id="_m3QxsGnEEeiJNMWjbUwnQQ" incoming="_4U64wGovEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+      </nodes>
+      <nodes xmi:id="_3Z4z4GovEeixvo48Yp-OWg" name="a" outgoing="_4U64wGovEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <edges xmi:id="_4U64wGovEeixvo48Yp-OWg" source="_3Z4z4GovEeixvo48Yp-OWg" target="_m3QxsGnEEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/resourceMappings"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_m3RYwGnEEeiJNMWjbUwnQQ" origin="_qfTJAGm8EeiJNMWjbUwnQQ" image="_m3QxsGnEEeiJNMWjbUwnQQ"/>
+    <mappings xmi:id="_3Z4z4WovEeixvo48Yp-OWg" origin="_07qd8GovEeixvo48Yp-OWg" image="_3Z4z4GovEeixvo48Yp-OWg"/>
+    <multiRules xmi:id="_ZZ9Y5Wm8EeiJNMWjbUwnQQ">
+      <parameters xmi:id="_wbx80WowEeixvo48Yp-OWg" name="a" kind="IN">
+        <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </parameters>
+      <lhs xmi:id="_ZZ9Y52m8EeiJNMWjbUwnQQ" name="Lhs">
+        <nodes xmi:id="_ZZ9ZIWm8EeiJNMWjbUwnQQ" incoming="_t2o4QGm8EeiJNMWjbUwnQQ" outgoing="_RcmAcGozEeixvo48Yp-OWg _RxYksGozEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+        </nodes>
+        <nodes xmi:id="_qfTwEGm8EeiJNMWjbUwnQQ" incoming="_4U64xmovEeixvo48Yp-OWg" outgoing="_t2o4QGm8EeiJNMWjbUwnQQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+        </nodes>
+        <nodes xmi:id="_4U64xGovEeixvo48Yp-OWg" name="a" outgoing="_4U64xmovEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+        </nodes>
+        <nodes xmi:id="_PPWs0GozEeixvo48Yp-OWg" incoming="_RcmAcGozEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Instance"/>
+        </nodes>
+        <nodes xmi:id="_QtZYIGozEeixvo48Yp-OWg" incoming="_RxYksGozEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+        </nodes>
+        <edges xmi:id="_t2o4QGm8EeiJNMWjbUwnQQ" source="_qfTwEGm8EeiJNMWjbUwnQQ" target="_ZZ9ZIWm8EeiJNMWjbUwnQQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/subMappings"/>
+        </edges>
+        <edges xmi:id="_4U64xmovEeixvo48Yp-OWg" source="_4U64xGovEeixvo48Yp-OWg" target="_qfTwEGm8EeiJNMWjbUwnQQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/resourceMappings"/>
+        </edges>
+        <edges xmi:id="_RcmAcGozEeixvo48Yp-OWg" source="_ZZ9ZIWm8EeiJNMWjbUwnQQ" target="_PPWs0GozEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/requiredResource"/>
+        </edges>
+        <edges xmi:id="_RxYksGozEeixvo48Yp-OWg" source="_ZZ9ZIWm8EeiJNMWjbUwnQQ" target="_QtZYIGozEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/usedResource"/>
+        </edges>
+      </lhs>
+      <rhs xmi:id="_ZZ9ZFmm8EeiJNMWjbUwnQQ" name="Rhs">
+        <nodes xmi:id="_m3RYwmnEEeiJNMWjbUwnQQ" incoming="_4U64w2ovEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+        </nodes>
+        <nodes xmi:id="_4U64wWovEeixvo48Yp-OWg" name="a" outgoing="_4U64w2ovEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+        </nodes>
+        <nodes xmi:id="_PPX68GozEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Instance"/>
+        </nodes>
+        <nodes xmi:id="_QtZYIWozEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+        </nodes>
+        <edges xmi:id="_4U64w2ovEeixvo48Yp-OWg" source="_4U64wWovEeixvo48Yp-OWg" target="_m3RYwmnEEeiJNMWjbUwnQQ">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/resourceMappings"/>
+        </edges>
+      </rhs>
+      <mappings xmi:id="_m3RYw2nEEeiJNMWjbUwnQQ" origin="_qfTwEGm8EeiJNMWjbUwnQQ" image="_m3RYwmnEEeiJNMWjbUwnQQ"/>
+      <mappings xmi:id="_4U64x2ovEeixvo48Yp-OWg" origin="_4U64xGovEeixvo48Yp-OWg" image="_4U64wWovEeixvo48Yp-OWg"/>
+      <mappings xmi:id="_PPX68WozEeixvo48Yp-OWg" origin="_PPWs0GozEeixvo48Yp-OWg" image="_PPX68GozEeixvo48Yp-OWg"/>
+      <mappings xmi:id="_QtZYImozEeixvo48Yp-OWg" origin="_QtZYIGozEeixvo48Yp-OWg" image="_QtZYIWozEeixvo48Yp-OWg"/>
+      <multiMappings xmi:id="_qfTwEWm8EeiJNMWjbUwnQQ" origin="_qfTJAGm8EeiJNMWjbUwnQQ" image="_qfTwEGm8EeiJNMWjbUwnQQ"/>
+      <multiMappings xmi:id="_m3RYxWnEEeiJNMWjbUwnQQ" origin="_m3QxsGnEEeiJNMWjbUwnQQ" image="_m3RYwmnEEeiJNMWjbUwnQQ"/>
+      <multiMappings xmi:id="_4U64wmovEeixvo48Yp-OWg" origin="_3Z4z4GovEeixvo48Yp-OWg" image="_4U64wWovEeixvo48Yp-OWg"/>
+      <multiMappings xmi:id="_4U64xWovEeixvo48Yp-OWg" origin="_07qd8GovEeixvo48Yp-OWg" image="_4U64xGovEeixvo48Yp-OWg"/>
+    </multiRules>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_lQbosGnCEeiJNMWjbUwnQQ" name="deleteComponentMap">
+    <parameters xmi:id="_UIBg0GnDEeiJNMWjbUwnQQ" name="cm" kind="IN">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentMapping"/>
+    </parameters>
+    <lhs xmi:id="_lQbotGnCEeiJNMWjbUwnQQ" name="Lhs">
+      <nodes xmi:id="_lQbotWnCEeiJNMWjbUwnQQ" outgoing="_lQboyWnCEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <nodes xmi:id="_lQbouGnCEeiJNMWjbUwnQQ" incoming="_r-SAwGnCEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+      </nodes>
+      <nodes xmi:id="_lQbouWnCEeiJNMWjbUwnQQ" name="i" incoming="_lQboyGnCEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Instance"/>
+      </nodes>
+      <nodes xmi:id="_p4cVoGnCEeiJNMWjbUwnQQ" incoming="_lQboymnCEeiJNMWjbUwnQQ" outgoing="_r-SAwGnCEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <nodes xmi:id="_lQbow2nCEeiJNMWjbUwnQQ" name="cm" incoming="_lQboyWnCEeiJNMWjbUwnQQ" outgoing="_lQboyGnCEeiJNMWjbUwnQQ _lQboymnCEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentMapping"/>
+      </nodes>
+      <edges xmi:id="_lQboyWnCEeiJNMWjbUwnQQ" source="_lQbotWnCEeiJNMWjbUwnQQ" target="_lQbow2nCEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/componentMappings"/>
+      </edges>
+      <edges xmi:id="_lQboyGnCEeiJNMWjbUwnQQ" source="_lQbow2nCEeiJNMWjbUwnQQ" target="_lQbouWnCEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentMapping/component"/>
+      </edges>
+      <edges xmi:id="_lQboymnCEeiJNMWjbUwnQQ" source="_lQbow2nCEeiJNMWjbUwnQQ" target="_p4cVoGnCEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentMapping/assignment"/>
+      </edges>
+      <edges xmi:id="_r-SAwGnCEeiJNMWjbUwnQQ" source="_p4cVoGnCEeiJNMWjbUwnQQ" target="_lQbouGnCEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/implementation"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_lQbovWnCEeiJNMWjbUwnQQ" name="Rhs">
+      <nodes xmi:id="_lQbovmnCEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <nodes xmi:id="_lQbowWnCEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+      </nodes>
+      <nodes xmi:id="_lQbowmnCEeiJNMWjbUwnQQ" name="i">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Instance"/>
+      </nodes>
+    </rhs>
+    <mappings xmi:id="_lQbozGnCEeiJNMWjbUwnQQ" origin="_lQbotWnCEeiJNMWjbUwnQQ" image="_lQbovmnCEeiJNMWjbUwnQQ"/>
+    <mappings xmi:id="_lQboz2nCEeiJNMWjbUwnQQ" origin="_lQbouGnCEeiJNMWjbUwnQQ" image="_lQbowWnCEeiJNMWjbUwnQQ"/>
+    <mappings xmi:id="_lQbo0GnCEeiJNMWjbUwnQQ" origin="_lQbouWnCEeiJNMWjbUwnQQ" image="_lQbowmnCEeiJNMWjbUwnQQ"/>
+  </units>
+  <units xsi:type="henshin:SequentialUnit" xmi:id="_bIT3QGnEEeiJNMWjbUwnQQ" name="deleteResourceMap" subUnits="_ZZ9YsGm8EeiJNMWjbUwnQQ _fDYlsGnEEeiJNMWjbUwnQQ">
+    <parameters xmi:id="_eGuwMGnEEeiJNMWjbUwnQQ" name="a" kind="IN">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+    </parameters>
+    <parameterMappings xmi:id="_g2zrsGozEeixvo48Yp-OWg" source="_eGuwMGnEEeiJNMWjbUwnQQ" target="_wbx80GowEeixvo48Yp-OWg"/>
+    <parameterMappings xmi:id="_g2zrsWozEeixvo48Yp-OWg" source="_wbx80GowEeixvo48Yp-OWg" target="_eGuwMGnEEeiJNMWjbUwnQQ"/>
+    <parameterMappings xmi:id="_i73TsGozEeixvo48Yp-OWg" source="_eGuwMGnEEeiJNMWjbUwnQQ" target="_I9-1YGozEeixvo48Yp-OWg"/>
+    <parameterMappings xmi:id="_i73TsWozEeixvo48Yp-OWg" source="_I9-1YGozEeixvo48Yp-OWg" target="_eGuwMGnEEeiJNMWjbUwnQQ"/>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_fDYlsGnEEeiJNMWjbUwnQQ" name="deleteResourceMapContainer">
+    <parameters xmi:id="_I9-1YGozEeixvo48Yp-OWg" name="a" kind="IN">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+    </parameters>
+    <lhs xmi:id="_fDYlsmnEEeiJNMWjbUwnQQ" name="Lhs">
+      <nodes xmi:id="_fDZMwGnEEeiJNMWjbUwnQQ" name="a" outgoing="_fDZMzGnEEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <nodes xmi:id="_fDZMxmnEEeiJNMWjbUwnQQ" incoming="_fDZMzGnEEeiJNMWjbUwnQQ" outgoing="_5VGcAGoyEeixvo48Yp-OWg _5vMXAGoyEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+      </nodes>
+      <nodes xmi:id="_1nRfYGoyEeixvo48Yp-OWg" incoming="_5VGcAGoyEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Instance"/>
+      </nodes>
+      <nodes xmi:id="_2adP0GoyEeixvo48Yp-OWg" incoming="_5vMXAGoyEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+      </nodes>
+      <edges xmi:id="_fDZMzGnEEeiJNMWjbUwnQQ" source="_fDZMwGnEEeiJNMWjbUwnQQ" target="_fDZMxmnEEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/resourceMappings"/>
+      </edges>
+      <edges xmi:id="_5VGcAGoyEeixvo48Yp-OWg" source="_fDZMxmnEEeiJNMWjbUwnQQ" target="_1nRfYGoyEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/requiredResource"/>
+      </edges>
+      <edges xmi:id="_5vMXAGoyEeixvo48Yp-OWg" source="_fDZMxmnEEeiJNMWjbUwnQQ" target="_2adP0GoyEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/usedResource"/>
+      </edges>
+      <formula xsi:type="henshin:Not" xmi:id="_znicQGoyEeixvo48Yp-OWg">
+        <child xsi:type="henshin:NestedCondition" xmi:id="_znicQWoyEeixvo48Yp-OWg">
+          <conclusion xmi:id="_znicQmoyEeixvo48Yp-OWg">
+            <nodes xmi:id="_znicQ2oyEeixvo48Yp-OWg" name="a" outgoing="_znicR2oyEeixvo48Yp-OWg">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+            </nodes>
+            <nodes xmi:id="_znicRWoyEeixvo48Yp-OWg" incoming="_znicR2oyEeixvo48Yp-OWg" outgoing="_0UGnUGoyEeixvo48Yp-OWg">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+            </nodes>
+            <nodes xmi:id="_ylFgwGoyEeixvo48Yp-OWg" incoming="_0UGnUGoyEeixvo48Yp-OWg">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+            </nodes>
+            <edges xmi:id="_znicR2oyEeixvo48Yp-OWg" source="_znicQ2oyEeixvo48Yp-OWg" target="_znicRWoyEeixvo48Yp-OWg">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/resourceMappings"/>
+            </edges>
+            <edges xmi:id="_0UGnUGoyEeixvo48Yp-OWg" source="_znicRWoyEeixvo48Yp-OWg" target="_ylFgwGoyEeixvo48Yp-OWg">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/subMappings"/>
+            </edges>
+          </conclusion>
+          <mappings xmi:id="_znicRGoyEeixvo48Yp-OWg" origin="_fDZMwGnEEeiJNMWjbUwnQQ" image="_znicQ2oyEeixvo48Yp-OWg"/>
+          <mappings xmi:id="_znicRmoyEeixvo48Yp-OWg" origin="_fDZMxmnEEeiJNMWjbUwnQQ" image="_znicRWoyEeixvo48Yp-OWg"/>
+        </child>
+      </formula>
+    </lhs>
+    <rhs xmi:id="_fDZMz2nEEeiJNMWjbUwnQQ" name="Rhs">
+      <nodes xmi:id="_fDZM0GnEEeiJNMWjbUwnQQ" name="a">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <nodes xmi:id="_3qtWwGoyEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Instance"/>
+      </nodes>
+      <nodes xmi:id="_4p5i4GoyEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+      </nodes>
+    </rhs>
+    <mappings xmi:id="_fDZM22nEEeiJNMWjbUwnQQ" origin="_fDZMwGnEEeiJNMWjbUwnQQ" image="_fDZM0GnEEeiJNMWjbUwnQQ"/>
+    <mappings xmi:id="_3qtWwWoyEeixvo48Yp-OWg" origin="_1nRfYGoyEeixvo48Yp-OWg" image="_3qtWwGoyEeixvo48Yp-OWg"/>
+    <mappings xmi:id="_4p5i4WoyEeixvo48Yp-OWg" origin="_2adP0GoyEeixvo48Yp-OWg" image="_4p5i4GoyEeixvo48Yp-OWg"/>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_SgzAIGnKEeiJNMWjbUwnQQ" name="pickRequest">
+    <parameters xmi:id="_VqCpAWnKEeiJNMWjbUwnQQ" name="a" kind="OUT">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+    </parameters>
+    <lhs xmi:id="_Sg1cYGnKEeiJNMWjbUwnQQ" name="Lhs">
+      <nodes xmi:id="_Z6vCIGnKEeiJNMWjbUwnQQ" name="a" outgoing="_k0eL0GnKEeiJNMWjbUwnQQ _5BsTEGnKEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <nodes xmi:id="_b5KdsGnKEeiJNMWjbUwnQQ" name="r" incoming="_k0eL0GnKEeiJNMWjbUwnQQ" outgoing="_8-mNgGnKEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Request"/>
+      </nodes>
+      <nodes xmi:id="_4b6FcGnKEeiJNMWjbUwnQQ" incoming="_5BsTEGnKEeiJNMWjbUwnQQ _9QiSEGnKEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+      </nodes>
+      <nodes xmi:id="_7M1U8GnKEeiJNMWjbUwnQQ" incoming="_8-mNgGnKEeiJNMWjbUwnQQ" outgoing="_9QiSEGnKEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component"/>
+      </nodes>
+      <edges xmi:id="_k0eL0GnKEeiJNMWjbUwnQQ" source="_Z6vCIGnKEeiJNMWjbUwnQQ" target="_b5KdsGnKEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/request"/>
+      </edges>
+      <edges xmi:id="_5BsTEGnKEeiJNMWjbUwnQQ" source="_Z6vCIGnKEeiJNMWjbUwnQQ" target="_4b6FcGnKEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/implementation"/>
+      </edges>
+      <edges xmi:id="_8-mNgGnKEeiJNMWjbUwnQQ" source="_b5KdsGnKEeiJNMWjbUwnQQ" target="_7M1U8GnKEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Request/component"/>
+      </edges>
+      <edges xmi:id="_9QiSEGnKEeiJNMWjbUwnQQ" source="_7M1U8GnKEeiJNMWjbUwnQQ" target="_4b6FcGnKEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component/implementations"/>
+      </edges>
+      <formula xsi:type="henshin:NestedCondition" xmi:id="_EOydo2nLEeiJNMWjbUwnQQ">
+        <conclusion xmi:id="_EOydpGnLEeiJNMWjbUwnQQ">
+          <nodes xmi:id="_EOydqmnLEeiJNMWjbUwnQQ" outgoing="_EOzEsWnLEeiJNMWjbUwnQQ _EOzEtGnLEeiJNMWjbUwnQQ">
+            <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+          </nodes>
+          <nodes xmi:id="_EOydrWnLEeiJNMWjbUwnQQ" incoming="_EOzEsWnLEeiJNMWjbUwnQQ" outgoing="_EOzEuGnLEeiJNMWjbUwnQQ">
+            <type href="http://www.xtext.org/example/mydsl/MyDsl#//Request"/>
+          </nodes>
+          <nodes xmi:id="_EOzEsmnLEeiJNMWjbUwnQQ" incoming="_EOzEtGnLEeiJNMWjbUwnQQ _EOzEuWnLEeiJNMWjbUwnQQ">
+            <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+          </nodes>
+          <nodes xmi:id="_EOzEtmnLEeiJNMWjbUwnQQ" incoming="_EOzEuGnLEeiJNMWjbUwnQQ" outgoing="_EOzEuWnLEeiJNMWjbUwnQQ _EymVUGnLEeiJNMWjbUwnQQ">
+            <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component"/>
+          </nodes>
+          <nodes xmi:id="_EOydoGnLEeiJNMWjbUwnQQ" incoming="_EymVUGnLEeiJNMWjbUwnQQ">
+            <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+          </nodes>
+          <edges xmi:id="_EOzEsWnLEeiJNMWjbUwnQQ" source="_EOydqmnLEeiJNMWjbUwnQQ" target="_EOydrWnLEeiJNMWjbUwnQQ">
+            <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/request"/>
+          </edges>
+          <edges xmi:id="_EOzEtGnLEeiJNMWjbUwnQQ" source="_EOydqmnLEeiJNMWjbUwnQQ" target="_EOzEsmnLEeiJNMWjbUwnQQ">
+            <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/implementation"/>
+          </edges>
+          <edges xmi:id="_EOzEuGnLEeiJNMWjbUwnQQ" source="_EOydrWnLEeiJNMWjbUwnQQ" target="_EOzEtmnLEeiJNMWjbUwnQQ">
+            <type href="http://www.xtext.org/example/mydsl/MyDsl#//Request/component"/>
+          </edges>
+          <edges xmi:id="_EOzEuWnLEeiJNMWjbUwnQQ" source="_EOzEtmnLEeiJNMWjbUwnQQ" target="_EOzEsmnLEeiJNMWjbUwnQQ">
+            <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component/implementations"/>
+          </edges>
+          <edges xmi:id="_EymVUGnLEeiJNMWjbUwnQQ" source="_EOzEtmnLEeiJNMWjbUwnQQ" target="_EOydoGnLEeiJNMWjbUwnQQ">
+            <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component/implementations"/>
+          </edges>
+        </conclusion>
+        <mappings xmi:id="_EOydq2nLEeiJNMWjbUwnQQ" origin="_Z6vCIGnKEeiJNMWjbUwnQQ" image="_EOydqmnLEeiJNMWjbUwnQQ"/>
+        <mappings xmi:id="_EOzEsGnLEeiJNMWjbUwnQQ" origin="_b5KdsGnKEeiJNMWjbUwnQQ" image="_EOydrWnLEeiJNMWjbUwnQQ"/>
+        <mappings xmi:id="_EOzEs2nLEeiJNMWjbUwnQQ" origin="_4b6FcGnKEeiJNMWjbUwnQQ" image="_EOzEsmnLEeiJNMWjbUwnQQ"/>
+        <mappings xmi:id="_EOzEt2nLEeiJNMWjbUwnQQ" origin="_7M1U8GnKEeiJNMWjbUwnQQ" image="_EOzEtmnLEeiJNMWjbUwnQQ"/>
+      </formula>
+    </lhs>
+    <rhs xmi:id="_Sg1cYWnKEeiJNMWjbUwnQQ" name="Rhs">
+      <nodes xmi:id="_Z6vCIWnKEeiJNMWjbUwnQQ" name="a" outgoing="_k0eL0WnKEeiJNMWjbUwnQQ _5BsTEWnKEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <nodes xmi:id="_b5KdsWnKEeiJNMWjbUwnQQ" name="r" incoming="_k0eL0WnKEeiJNMWjbUwnQQ" outgoing="_8-m0kGnKEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Request"/>
+      </nodes>
+      <nodes xmi:id="_4b6FcWnKEeiJNMWjbUwnQQ" incoming="_5BsTEWnKEeiJNMWjbUwnQQ _9QiSEWnKEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+      </nodes>
+      <nodes xmi:id="_7M1U8WnKEeiJNMWjbUwnQQ" incoming="_8-m0kGnKEeiJNMWjbUwnQQ" outgoing="_9QiSEWnKEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component"/>
+      </nodes>
+      <edges xmi:id="_k0eL0WnKEeiJNMWjbUwnQQ" source="_Z6vCIWnKEeiJNMWjbUwnQQ" target="_b5KdsWnKEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/request"/>
+      </edges>
+      <edges xmi:id="_5BsTEWnKEeiJNMWjbUwnQQ" source="_Z6vCIWnKEeiJNMWjbUwnQQ" target="_4b6FcWnKEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/implementation"/>
+      </edges>
+      <edges xmi:id="_8-m0kGnKEeiJNMWjbUwnQQ" source="_b5KdsWnKEeiJNMWjbUwnQQ" target="_7M1U8WnKEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Request/component"/>
+      </edges>
+      <edges xmi:id="_9QiSEWnKEeiJNMWjbUwnQQ" source="_7M1U8WnKEeiJNMWjbUwnQQ" target="_4b6FcWnKEeiJNMWjbUwnQQ">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component/implementations"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_Z6vCImnKEeiJNMWjbUwnQQ" origin="_Z6vCIGnKEeiJNMWjbUwnQQ" image="_Z6vCIWnKEeiJNMWjbUwnQQ"/>
+    <mappings xmi:id="_b5KdsmnKEeiJNMWjbUwnQQ" origin="_b5KdsGnKEeiJNMWjbUwnQQ" image="_b5KdsWnKEeiJNMWjbUwnQQ"/>
+    <mappings xmi:id="_4b6FcmnKEeiJNMWjbUwnQQ" origin="_4b6FcGnKEeiJNMWjbUwnQQ" image="_4b6FcWnKEeiJNMWjbUwnQQ"/>
+    <mappings xmi:id="_7M18AGnKEeiJNMWjbUwnQQ" origin="_7M1U8GnKEeiJNMWjbUwnQQ" image="_7M1U8WnKEeiJNMWjbUwnQQ"/>
+  </units>
+  <units xsi:type="henshin:SequentialUnit" xmi:id="_lT42QGnLEeiJNMWjbUwnQQ" name="changeRequestImplementation" subUnits="_SgzAIGnKEeiJNMWjbUwnQQ __EI-gGmaEeiJNMWjbUwnQQ _Xnw6IGnvEeixvo48Yp-OWg _DFTI0GmFEeiueMpOTL7yfQ">
+    <parameters xmi:id="_SKSpkGpXEeixvo48Yp-OWg" name="a" kind="VAR">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+    </parameters>
+    <parameterMappings xmi:id="_TXmKMGpXEeixvo48Yp-OWg" source="_SKSpkGpXEeixvo48Yp-OWg" target="_VqCpAWnKEeiJNMWjbUwnQQ"/>
+    <parameterMappings xmi:id="_TXmKMWpXEeixvo48Yp-OWg" source="_VqCpAWnKEeiJNMWjbUwnQQ" target="_SKSpkGpXEeixvo48Yp-OWg"/>
+    <parameterMappings xmi:id="_VAL4oGpXEeixvo48Yp-OWg" source="_SKSpkGpXEeixvo48Yp-OWg" target="_YqVjgGnFEeiJNMWjbUwnQQ"/>
+    <parameterMappings xmi:id="_VAL4oWpXEeixvo48Yp-OWg" source="_YqVjgGnFEeiJNMWjbUwnQQ" target="_SKSpkGpXEeixvo48Yp-OWg"/>
+    <parameterMappings xmi:id="_W-af4GpXEeixvo48Yp-OWg" source="_SKSpkGpXEeixvo48Yp-OWg" target="_qkpa4GnvEeixvo48Yp-OWg"/>
+    <parameterMappings xmi:id="_W-bG8GpXEeixvo48Yp-OWg" source="_qkpa4GnvEeixvo48Yp-OWg" target="_SKSpkGpXEeixvo48Yp-OWg"/>
+    <parameterMappings xmi:id="_YuWzgGpXEeixvo48Yp-OWg" source="_SKSpkGpXEeixvo48Yp-OWg" target="_EanV8GmFEeiueMpOTL7yfQ"/>
+    <parameterMappings xmi:id="_YuWzgWpXEeixvo48Yp-OWg" source="_EanV8GmFEeiueMpOTL7yfQ" target="_SKSpkGpXEeixvo48Yp-OWg"/>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_CpiCIGnuEeixvo48Yp-OWg" name="pickComponentMapping">
+    <parameters xmi:id="_sCu28GpGEeixvo48Yp-OWg" name="a" kind="OUT">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+    </parameters>
+    <lhs xmi:id="_Cpov0GnuEeixvo48Yp-OWg" name="Lhs">
+      <nodes xmi:id="_WpESsGnuEeixvo48Yp-OWg" name="a" incoming="_XDNKAGo7Eeixvo48Yp-OWg" outgoing="_fobyEGpJEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <nodes xmi:id="_pMpioGnuEeixvo48Yp-OWg" name="cm" outgoing="_XDNKAGo7Eeixvo48Yp-OWg _aKzEsGpJEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentMapping"/>
+      </nodes>
+      <nodes xmi:id="_S0-GoGpJEeixvo48Yp-OWg" incoming="_cZXOAGpJEeixvo48Yp-OWg _fobyEGpJEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+      </nodes>
+      <nodes xmi:id="_U21QsGpJEeixvo48Yp-OWg" incoming="_czTYAGpJEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+      </nodes>
+      <nodes xmi:id="_WMomAGpJEeixvo48Yp-OWg" incoming="_aKzEsGpJEeixvo48Yp-OWg _bVYogGpJEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Instance"/>
+      </nodes>
+      <nodes xmi:id="_XWo7AGpJEeixvo48Yp-OWg" outgoing="_bVYogGpJEeixvo48Yp-OWg _cAy9AGpJEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentRequirement"/>
+      </nodes>
+      <nodes xmi:id="_Yc70sGpJEeixvo48Yp-OWg" incoming="_cAy9AGpJEeixvo48Yp-OWg" outgoing="_cZXOAGpJEeixvo48Yp-OWg _czTYAGpJEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component"/>
+      </nodes>
+      <edges xmi:id="_XDNKAGo7Eeixvo48Yp-OWg" source="_pMpioGnuEeixvo48Yp-OWg" target="_WpESsGnuEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentMapping/assignment"/>
+      </edges>
+      <edges xmi:id="_aKzEsGpJEeixvo48Yp-OWg" source="_pMpioGnuEeixvo48Yp-OWg" target="_WMomAGpJEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentMapping/component"/>
+      </edges>
+      <edges xmi:id="_bVYogGpJEeixvo48Yp-OWg" source="_XWo7AGpJEeixvo48Yp-OWg" target="_WMomAGpJEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentRequirement/instance"/>
+      </edges>
+      <edges xmi:id="_cAy9AGpJEeixvo48Yp-OWg" source="_XWo7AGpJEeixvo48Yp-OWg" target="_Yc70sGpJEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentRequirement/type"/>
+      </edges>
+      <edges xmi:id="_cZXOAGpJEeixvo48Yp-OWg" source="_Yc70sGpJEeixvo48Yp-OWg" target="_S0-GoGpJEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component/implementations"/>
+      </edges>
+      <edges xmi:id="_czTYAGpJEeixvo48Yp-OWg" source="_Yc70sGpJEeixvo48Yp-OWg" target="_U21QsGpJEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component/implementations"/>
+      </edges>
+      <edges xmi:id="_fobyEGpJEeixvo48Yp-OWg" source="_WpESsGnuEeixvo48Yp-OWg" target="_S0-GoGpJEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/implementation"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_Cpov0WnuEeixvo48Yp-OWg" name="Rhs">
+      <nodes xmi:id="_WpE5wGnuEeixvo48Yp-OWg" name="a" incoming="_XDNKAWo7Eeixvo48Yp-OWg" outgoing="_fobyEWpJEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <nodes xmi:id="_pMpioWnuEeixvo48Yp-OWg" name="cm" outgoing="_XDNKAWo7Eeixvo48Yp-OWg _aKzEsWpJEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentMapping"/>
+      </nodes>
+      <nodes xmi:id="_S0-GoWpJEeixvo48Yp-OWg" incoming="_cZXOAWpJEeixvo48Yp-OWg _fobyEWpJEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+      </nodes>
+      <nodes xmi:id="_U21QsWpJEeixvo48Yp-OWg" incoming="_czTYAWpJEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+      </nodes>
+      <nodes xmi:id="_WMomAWpJEeixvo48Yp-OWg" incoming="_aKzEsWpJEeixvo48Yp-OWg _bVYogWpJEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Instance"/>
+      </nodes>
+      <nodes xmi:id="_XWo7AWpJEeixvo48Yp-OWg" outgoing="_bVYogWpJEeixvo48Yp-OWg _cAy9AWpJEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentRequirement"/>
+      </nodes>
+      <nodes xmi:id="_Yc8bwGpJEeixvo48Yp-OWg" incoming="_cAy9AWpJEeixvo48Yp-OWg" outgoing="_cZXOAWpJEeixvo48Yp-OWg _czTYAWpJEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component"/>
+      </nodes>
+      <edges xmi:id="_XDNKAWo7Eeixvo48Yp-OWg" source="_pMpioWnuEeixvo48Yp-OWg" target="_WpE5wGnuEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentMapping/assignment"/>
+      </edges>
+      <edges xmi:id="_aKzEsWpJEeixvo48Yp-OWg" source="_pMpioWnuEeixvo48Yp-OWg" target="_WMomAWpJEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentMapping/component"/>
+      </edges>
+      <edges xmi:id="_bVYogWpJEeixvo48Yp-OWg" source="_XWo7AWpJEeixvo48Yp-OWg" target="_WMomAWpJEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentRequirement/instance"/>
+      </edges>
+      <edges xmi:id="_cAy9AWpJEeixvo48Yp-OWg" source="_XWo7AWpJEeixvo48Yp-OWg" target="_Yc8bwGpJEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentRequirement/type"/>
+      </edges>
+      <edges xmi:id="_cZXOAWpJEeixvo48Yp-OWg" source="_Yc8bwGpJEeixvo48Yp-OWg" target="_S0-GoWpJEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component/implementations"/>
+      </edges>
+      <edges xmi:id="_czTYAWpJEeixvo48Yp-OWg" source="_Yc8bwGpJEeixvo48Yp-OWg" target="_U21QsWpJEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component/implementations"/>
+      </edges>
+      <edges xmi:id="_fobyEWpJEeixvo48Yp-OWg" source="_WpE5wGnuEeixvo48Yp-OWg" target="_S0-GoWpJEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/implementation"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_WpE5wWnuEeixvo48Yp-OWg" origin="_WpESsGnuEeixvo48Yp-OWg" image="_WpE5wGnuEeixvo48Yp-OWg"/>
+    <mappings xmi:id="_pMpiomnuEeixvo48Yp-OWg" origin="_pMpioGnuEeixvo48Yp-OWg" image="_pMpioWnuEeixvo48Yp-OWg"/>
+    <mappings xmi:id="_S0-GompJEeixvo48Yp-OWg" origin="_S0-GoGpJEeixvo48Yp-OWg" image="_S0-GoWpJEeixvo48Yp-OWg"/>
+    <mappings xmi:id="_U21QsmpJEeixvo48Yp-OWg" origin="_U21QsGpJEeixvo48Yp-OWg" image="_U21QsWpJEeixvo48Yp-OWg"/>
+    <mappings xmi:id="_WMomAmpJEeixvo48Yp-OWg" origin="_WMomAGpJEeixvo48Yp-OWg" image="_WMomAWpJEeixvo48Yp-OWg"/>
+    <mappings xmi:id="_XWo7AmpJEeixvo48Yp-OWg" origin="_XWo7AGpJEeixvo48Yp-OWg" image="_XWo7AWpJEeixvo48Yp-OWg"/>
+    <mappings xmi:id="_Yc8bwWpJEeixvo48Yp-OWg" origin="_Yc70sGpJEeixvo48Yp-OWg" image="_Yc8bwGpJEeixvo48Yp-OWg"/>
+  </units>
+  <units xsi:type="henshin:SequentialUnit" xmi:id="_9PcikGnuEeixvo48Yp-OWg" name="changeComponentMapping" subUnits="_CpiCIGnuEeixvo48Yp-OWg __EI-gGmaEeiJNMWjbUwnQQ _B60zIGocEeixvo48Yp-OWg _DFTI0GmFEeiueMpOTL7yfQ">
+    <parameters xmi:id="_kiryoGpWEeixvo48Yp-OWg" name="a" kind="VAR">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+    </parameters>
+    <parameterMappings xmi:id="_qKehkGpWEeixvo48Yp-OWg" source="_kiryoGpWEeixvo48Yp-OWg" target="_sCu28GpGEeixvo48Yp-OWg"/>
+    <parameterMappings xmi:id="_qKfIoGpWEeixvo48Yp-OWg" source="_sCu28GpGEeixvo48Yp-OWg" target="_kiryoGpWEeixvo48Yp-OWg"/>
+    <parameterMappings xmi:id="_tki0sGpWEeixvo48Yp-OWg" source="_kiryoGpWEeixvo48Yp-OWg" target="_YqVjgGnFEeiJNMWjbUwnQQ"/>
+    <parameterMappings xmi:id="_tki0sWpWEeixvo48Yp-OWg" source="_YqVjgGnFEeiJNMWjbUwnQQ" target="_kiryoGpWEeixvo48Yp-OWg"/>
+    <parameterMappings xmi:id="_vqMSkGpWEeixvo48Yp-OWg" source="_kiryoGpWEeixvo48Yp-OWg" target="_SAm8YGpHEeixvo48Yp-OWg"/>
+    <parameterMappings xmi:id="_vqMSkWpWEeixvo48Yp-OWg" source="_SAm8YGpHEeixvo48Yp-OWg" target="_kiryoGpWEeixvo48Yp-OWg"/>
+    <parameterMappings xmi:id="_xH7b4GpWEeixvo48Yp-OWg" source="_kiryoGpWEeixvo48Yp-OWg" target="_EanV8GmFEeiueMpOTL7yfQ"/>
+    <parameterMappings xmi:id="_xH7b4WpWEeixvo48Yp-OWg" source="_EanV8GmFEeiueMpOTL7yfQ" target="_kiryoGpWEeixvo48Yp-OWg"/>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_Xnw6IGnvEeixvo48Yp-OWg" name="changeRequestImplementationOperator">
+    <parameters xmi:id="_qkpa4GnvEeixvo48Yp-OWg" name="a" kind="IN">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+    </parameters>
+    <lhs xmi:id="_XnyvUGnvEeixvo48Yp-OWg" name="Lhs">
+      <nodes xmi:id="_r08lIGnvEeixvo48Yp-OWg" incoming="__NUvEGnvEeixvo48Yp-OWg" outgoing="_OW4N4GpNEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Request"/>
+      </nodes>
+      <nodes xmi:id="_ssvIwGnvEeixvo48Yp-OWg" name="a" outgoing="__NUvEGnvEeixvo48Yp-OWg _DBFUkGnwEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <nodes xmi:id="_tzt-8GnvEeixvo48Yp-OWg" incoming="_OtPfcGpNEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+      </nodes>
+      <nodes xmi:id="_CCryoGnwEeixvo48Yp-OWg" incoming="_DBFUkGnwEeixvo48Yp-OWg _PLC1wGpNEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+      </nodes>
+      <nodes xmi:id="_Nd8awGpNEeixvo48Yp-OWg" incoming="_OW4N4GpNEeixvo48Yp-OWg" outgoing="_OtPfcGpNEeixvo48Yp-OWg _PLC1wGpNEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component"/>
+      </nodes>
+      <edges xmi:id="__NUvEGnvEeixvo48Yp-OWg" source="_ssvIwGnvEeixvo48Yp-OWg" target="_r08lIGnvEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/request"/>
+      </edges>
+      <edges xmi:id="_DBFUkGnwEeixvo48Yp-OWg" source="_ssvIwGnvEeixvo48Yp-OWg" target="_CCryoGnwEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/implementation"/>
+      </edges>
+      <edges xmi:id="_OW4N4GpNEeixvo48Yp-OWg" source="_r08lIGnvEeixvo48Yp-OWg" target="_Nd8awGpNEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Request/component"/>
+      </edges>
+      <edges xmi:id="_OtPfcGpNEeixvo48Yp-OWg" source="_Nd8awGpNEeixvo48Yp-OWg" target="_tzt-8GnvEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component/implementations"/>
+      </edges>
+      <edges xmi:id="_PLC1wGpNEeixvo48Yp-OWg" source="_Nd8awGpNEeixvo48Yp-OWg" target="_CCryoGnwEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component/implementations"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_XnyvUWnvEeixvo48Yp-OWg" name="Rhs">
+      <nodes xmi:id="_r08lIWnvEeixvo48Yp-OWg" incoming="__NUvEWnvEeixvo48Yp-OWg" outgoing="_OW4N4WpNEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Request"/>
+      </nodes>
+      <nodes xmi:id="_ssvv0GnvEeixvo48Yp-OWg" name="a" outgoing="__NUvEWnvEeixvo48Yp-OWg __kX9IGnvEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <nodes xmi:id="_tzt-8WnvEeixvo48Yp-OWg" incoming="__kX9IGnvEeixvo48Yp-OWg _OtPfcWpNEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+      </nodes>
+      <nodes xmi:id="_CCryoWnwEeixvo48Yp-OWg" incoming="_PLC1wWpNEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+      </nodes>
+      <nodes xmi:id="_Nd8awWpNEeixvo48Yp-OWg" incoming="_OW4N4WpNEeixvo48Yp-OWg" outgoing="_OtPfcWpNEeixvo48Yp-OWg _PLC1wWpNEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component"/>
+      </nodes>
+      <edges xmi:id="__NUvEWnvEeixvo48Yp-OWg" source="_ssvv0GnvEeixvo48Yp-OWg" target="_r08lIWnvEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/request"/>
+      </edges>
+      <edges xmi:id="__kX9IGnvEeixvo48Yp-OWg" source="_ssvv0GnvEeixvo48Yp-OWg" target="_tzt-8WnvEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/implementation"/>
+      </edges>
+      <edges xmi:id="_OW4N4WpNEeixvo48Yp-OWg" source="_r08lIWnvEeixvo48Yp-OWg" target="_Nd8awWpNEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Request/component"/>
+      </edges>
+      <edges xmi:id="_OtPfcWpNEeixvo48Yp-OWg" source="_Nd8awWpNEeixvo48Yp-OWg" target="_tzt-8WnvEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component/implementations"/>
+      </edges>
+      <edges xmi:id="_PLC1wWpNEeixvo48Yp-OWg" source="_Nd8awWpNEeixvo48Yp-OWg" target="_CCryoWnwEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component/implementations"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_r08lImnvEeixvo48Yp-OWg" origin="_r08lIGnvEeixvo48Yp-OWg" image="_r08lIWnvEeixvo48Yp-OWg"/>
+    <mappings xmi:id="_ssvv0WnvEeixvo48Yp-OWg" origin="_ssvIwGnvEeixvo48Yp-OWg" image="_ssvv0GnvEeixvo48Yp-OWg"/>
+    <mappings xmi:id="_tzt-8mnvEeixvo48Yp-OWg" origin="_tzt-8GnvEeixvo48Yp-OWg" image="_tzt-8WnvEeixvo48Yp-OWg"/>
+    <mappings xmi:id="_CCryomnwEeixvo48Yp-OWg" origin="_CCryoGnwEeixvo48Yp-OWg" image="_CCryoWnwEeixvo48Yp-OWg"/>
+    <mappings xmi:id="_Nd8awmpNEeixvo48Yp-OWg" origin="_Nd8awGpNEeixvo48Yp-OWg" image="_Nd8awWpNEeixvo48Yp-OWg"/>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_B60zIGocEeixvo48Yp-OWg" name="changeComponentMappingOperator">
+    <parameters xmi:id="_SAm8YGpHEeixvo48Yp-OWg" name="a" kind="IN">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+    </parameters>
+    <lhs xmi:id="_B60zImocEeixvo48Yp-OWg" name="Lhs">
+      <nodes xmi:id="_Nqs6oGocEeixvo48Yp-OWg" name="a" outgoing="_Ee3OoGpHEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <nodes xmi:id="_DpiwMGpHEeixvo48Yp-OWg" incoming="_xs6rMGpJEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+      </nodes>
+      <nodes xmi:id="_DxaSwGpHEeixvo48Yp-OWg" incoming="_Ee3OoGpHEeixvo48Yp-OWg _xTqdsGpJEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+      </nodes>
+      <nodes xmi:id="_wiXjoGpJEeixvo48Yp-OWg" outgoing="_xTqdsGpJEeixvo48Yp-OWg _xs6rMGpJEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component"/>
+      </nodes>
+      <edges xmi:id="_Ee3OoGpHEeixvo48Yp-OWg" source="_Nqs6oGocEeixvo48Yp-OWg" target="_DxaSwGpHEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/implementation"/>
+      </edges>
+      <edges xmi:id="_xTqdsGpJEeixvo48Yp-OWg" source="_wiXjoGpJEeixvo48Yp-OWg" target="_DxaSwGpHEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component/implementations"/>
+      </edges>
+      <edges xmi:id="_xs6rMGpJEeixvo48Yp-OWg" source="_wiXjoGpJEeixvo48Yp-OWg" target="_DpiwMGpHEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component/implementations"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_B60zKWocEeixvo48Yp-OWg" name="Rhs">
+      <nodes xmi:id="_Nqs6oWocEeixvo48Yp-OWg" name="a" outgoing="_ETV7IGpHEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <nodes xmi:id="_DpiwMWpHEeixvo48Yp-OWg" incoming="_ETV7IGpHEeixvo48Yp-OWg _xs6rMWpJEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+      </nodes>
+      <nodes xmi:id="_Dxa50GpHEeixvo48Yp-OWg" incoming="_xTqdsWpJEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+      </nodes>
+      <nodes xmi:id="_wiXjoWpJEeixvo48Yp-OWg" outgoing="_xTqdsWpJEeixvo48Yp-OWg _xs6rMWpJEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component"/>
+      </nodes>
+      <edges xmi:id="_ETV7IGpHEeixvo48Yp-OWg" source="_Nqs6oWocEeixvo48Yp-OWg" target="_DpiwMWpHEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/implementation"/>
+      </edges>
+      <edges xmi:id="_xTqdsWpJEeixvo48Yp-OWg" source="_wiXjoWpJEeixvo48Yp-OWg" target="_Dxa50GpHEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component/implementations"/>
+      </edges>
+      <edges xmi:id="_xs6rMWpJEeixvo48Yp-OWg" source="_wiXjoWpJEeixvo48Yp-OWg" target="_DpiwMWpHEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Component/implementations"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_Nqs6omocEeixvo48Yp-OWg" origin="_Nqs6oGocEeixvo48Yp-OWg" image="_Nqs6oWocEeixvo48Yp-OWg"/>
+    <mappings xmi:id="_DpiwMmpHEeixvo48Yp-OWg" origin="_DpiwMGpHEeixvo48Yp-OWg" image="_DpiwMWpHEeixvo48Yp-OWg"/>
+    <mappings xmi:id="_Dxa50WpHEeixvo48Yp-OWg" origin="_DxaSwGpHEeixvo48Yp-OWg" image="_Dxa50GpHEeixvo48Yp-OWg"/>
+    <mappings xmi:id="_wiXjompJEeixvo48Yp-OWg" origin="_wiXjoGpJEeixvo48Yp-OWg" image="_wiXjoWpJEeixvo48Yp-OWg"/>
+  </units>
+  <units xsi:type="henshin:SequentialUnit" xmi:id="_BAQUYGo0Eeixvo48Yp-OWg" name="cleanupResourceMapTest" subUnits="_MYFO4GmdEeiJNMWjbUwnQQ _bIT3QGnEEeiJNMWjbUwnQQ">
+    <parameters xmi:id="_DdX3EGo0Eeixvo48Yp-OWg" name="a" kind="VAR">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+    </parameters>
+    <parameterMappings xmi:id="_FgYQoGo0Eeixvo48Yp-OWg" source="_DdX3EGo0Eeixvo48Yp-OWg" target="_YcGaYGmdEeiJNMWjbUwnQQ"/>
+    <parameterMappings xmi:id="_FgYQoWo0Eeixvo48Yp-OWg" source="_YcGaYGmdEeiJNMWjbUwnQQ" target="_DdX3EGo0Eeixvo48Yp-OWg"/>
+    <parameterMappings xmi:id="_Kn8nYGo0Eeixvo48Yp-OWg" source="_DdX3EGo0Eeixvo48Yp-OWg" target="_eGuwMGnEEeiJNMWjbUwnQQ"/>
+    <parameterMappings xmi:id="_Kn8nYWo0Eeixvo48Yp-OWg" source="_eGuwMGnEEeiJNMWjbUwnQQ" target="_DdX3EGo0Eeixvo48Yp-OWg"/>
+  </units>
+  <units xsi:type="henshin:SequentialUnit" xmi:id="_VNGWQGo2Eeixvo48Yp-OWg" name="deleteOneComponentMapTest" subUnits="_MYFO4GmdEeiJNMWjbUwnQQ _tBajcGmbEeiJNMWjbUwnQQ _bIT3QGnEEeiJNMWjbUwnQQ _lQbosGnCEeiJNMWjbUwnQQ">
+    <parameters xmi:id="_ae_tsGo2Eeixvo48Yp-OWg" name="a" kind="VAR">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+    </parameters>
+    <parameters xmi:id="_ae_tsWo2Eeixvo48Yp-OWg" name="cm" kind="VAR">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentMapping"/>
+    </parameters>
+    <parameters xmi:id="_gnIJkGo2Eeixvo48Yp-OWg" name="a2" kind="VAR">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+    </parameters>
+    <parameterMappings xmi:id="_d0u6cGo2Eeixvo48Yp-OWg" source="_ae_tsGo2Eeixvo48Yp-OWg" target="_YcGaYGmdEeiJNMWjbUwnQQ"/>
+    <parameterMappings xmi:id="_d0u6cWo2Eeixvo48Yp-OWg" source="_YcGaYGmdEeiJNMWjbUwnQQ" target="_ae_tsGo2Eeixvo48Yp-OWg"/>
+    <parameterMappings xmi:id="_jM__oGo2Eeixvo48Yp-OWg" source="_ae_tsGo2Eeixvo48Yp-OWg" target="_tBajcWmbEeiJNMWjbUwnQQ"/>
+    <parameterMappings xmi:id="_jM__oWo2Eeixvo48Yp-OWg" source="_tBajcWmbEeiJNMWjbUwnQQ" target="_ae_tsGo2Eeixvo48Yp-OWg"/>
+    <parameterMappings xmi:id="_jM__omo2Eeixvo48Yp-OWg" source="_ae_tsWo2Eeixvo48Yp-OWg" target="_N9JzoGm7EeiJNMWjbUwnQQ"/>
+    <parameterMappings xmi:id="_jM__o2o2Eeixvo48Yp-OWg" source="_N9JzoGm7EeiJNMWjbUwnQQ" target="_ae_tsWo2Eeixvo48Yp-OWg"/>
+    <parameterMappings xmi:id="_jM__pGo2Eeixvo48Yp-OWg" source="_gnIJkGo2Eeixvo48Yp-OWg" target="_BDfxsWmcEeiJNMWjbUwnQQ"/>
+    <parameterMappings xmi:id="_jM__pWo2Eeixvo48Yp-OWg" source="_BDfxsWmcEeiJNMWjbUwnQQ" target="_gnIJkGo2Eeixvo48Yp-OWg"/>
+    <parameterMappings xmi:id="_K7DCMGo3Eeixvo48Yp-OWg" source="_gnIJkGo2Eeixvo48Yp-OWg" target="_eGuwMGnEEeiJNMWjbUwnQQ"/>
+    <parameterMappings xmi:id="_K7DCMWo3Eeixvo48Yp-OWg" source="_eGuwMGnEEeiJNMWjbUwnQQ" target="_gnIJkGo2Eeixvo48Yp-OWg"/>
+    <parameterMappings xmi:id="_Os_p0Go3Eeixvo48Yp-OWg" source="_ae_tsWo2Eeixvo48Yp-OWg" target="_UIBg0GnDEeiJNMWjbUwnQQ"/>
+    <parameterMappings xmi:id="_Os_p0Wo3Eeixvo48Yp-OWg" source="_UIBg0GnDEeiJNMWjbUwnQQ" target="_ae_tsWo2Eeixvo48Yp-OWg"/>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_7WgWQGo2Eeixvo48Yp-OWg" name="pickAssignmentForDeleteOneCMTest">
+    <parameters xmi:id="_93-0gGo2Eeixvo48Yp-OWg" name="a" kind="OUT">
+      <type xsi:type="ecore:EClass" href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+    </parameters>
+    <lhs xmi:id="_7Wg9UGo2Eeixvo48Yp-OWg" name="Lhs">
+      <nodes xmi:id="__KdJAGo2Eeixvo48Yp-OWg" name="a" outgoing="_FF4loGo3Eeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <nodes xmi:id="_Dpcc0Go3Eeixvo48Yp-OWg" name="cm" incoming="_FF4loGo3Eeixvo48Yp-OWg" outgoing="_VbVxIGo3Eeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentMapping"/>
+      </nodes>
+      <nodes xmi:id="_S5EBoGo3Eeixvo48Yp-OWg" incoming="_VbVxIGo3Eeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <edges xmi:id="_FF4loGo3Eeixvo48Yp-OWg" source="__KdJAGo2Eeixvo48Yp-OWg" target="_Dpcc0Go3Eeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/componentMappings"/>
+      </edges>
+      <edges xmi:id="_VbVxIGo3Eeixvo48Yp-OWg" source="_Dpcc0Go3Eeixvo48Yp-OWg" target="_S5EBoGo3Eeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentMapping/assignment"/>
+      </edges>
+      <formula xsi:type="henshin:Not" xmi:id="_W_RCAGo3Eeixvo48Yp-OWg">
+        <child xsi:type="henshin:NestedCondition" xmi:id="_W_RCAWo3Eeixvo48Yp-OWg">
+          <conclusion xmi:id="_W_RCAmo3Eeixvo48Yp-OWg">
+            <nodes xmi:id="_W_RCA2o3Eeixvo48Yp-OWg" name="a" outgoing="_W_RCB2o3Eeixvo48Yp-OWg">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+            </nodes>
+            <nodes xmi:id="_W_RCBWo3Eeixvo48Yp-OWg" name="cm" incoming="_W_RCB2o3Eeixvo48Yp-OWg" outgoing="_W_RCCmo3Eeixvo48Yp-OWg">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentMapping"/>
+            </nodes>
+            <nodes xmi:id="_W_RCCGo3Eeixvo48Yp-OWg" incoming="_W_RCCmo3Eeixvo48Yp-OWg" outgoing="_WA25AGo3Eeixvo48Yp-OWg">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+            </nodes>
+            <nodes xmi:id="_USaaMGo3Eeixvo48Yp-OWg" incoming="_WA25AGo3Eeixvo48Yp-OWg">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentMapping"/>
+            </nodes>
+            <edges xmi:id="_W_RCB2o3Eeixvo48Yp-OWg" source="_W_RCA2o3Eeixvo48Yp-OWg" target="_W_RCBWo3Eeixvo48Yp-OWg">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/componentMappings"/>
+            </edges>
+            <edges xmi:id="_W_RCCmo3Eeixvo48Yp-OWg" source="_W_RCBWo3Eeixvo48Yp-OWg" target="_W_RCCGo3Eeixvo48Yp-OWg">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentMapping/assignment"/>
+            </edges>
+            <edges xmi:id="_WA25AGo3Eeixvo48Yp-OWg" source="_W_RCCGo3Eeixvo48Yp-OWg" target="_USaaMGo3Eeixvo48Yp-OWg">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/componentMappings"/>
+            </edges>
+          </conclusion>
+          <mappings xmi:id="_W_RCBGo3Eeixvo48Yp-OWg" origin="__KdJAGo2Eeixvo48Yp-OWg" image="_W_RCA2o3Eeixvo48Yp-OWg"/>
+          <mappings xmi:id="_W_RCBmo3Eeixvo48Yp-OWg" origin="_Dpcc0Go3Eeixvo48Yp-OWg" image="_W_RCBWo3Eeixvo48Yp-OWg"/>
+          <mappings xmi:id="_W_RCCWo3Eeixvo48Yp-OWg" origin="_S5EBoGo3Eeixvo48Yp-OWg" image="_W_RCCGo3Eeixvo48Yp-OWg"/>
+        </child>
+      </formula>
+    </lhs>
+    <rhs xmi:id="_7Wg9UWo2Eeixvo48Yp-OWg" name="Rhs">
+      <nodes xmi:id="__KdwEGo2Eeixvo48Yp-OWg" name="a" outgoing="_FF4loWo3Eeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <nodes xmi:id="_Dpcc0Wo3Eeixvo48Yp-OWg" name="cm" incoming="_FF4loWo3Eeixvo48Yp-OWg" outgoing="_VbVxIWo3Eeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentMapping"/>
+      </nodes>
+      <nodes xmi:id="_S5EBoWo3Eeixvo48Yp-OWg" incoming="_VbVxIWo3Eeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <edges xmi:id="_FF4loWo3Eeixvo48Yp-OWg" source="__KdwEGo2Eeixvo48Yp-OWg" target="_Dpcc0Wo3Eeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/componentMappings"/>
+      </edges>
+      <edges xmi:id="_VbVxIWo3Eeixvo48Yp-OWg" source="_Dpcc0Wo3Eeixvo48Yp-OWg" target="_S5EBoWo3Eeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ComponentMapping/assignment"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="__KdwEWo2Eeixvo48Yp-OWg" origin="__KdJAGo2Eeixvo48Yp-OWg" image="__KdwEGo2Eeixvo48Yp-OWg"/>
+    <mappings xmi:id="_Dpcc0mo3Eeixvo48Yp-OWg" origin="_Dpcc0Go3Eeixvo48Yp-OWg" image="_Dpcc0Wo3Eeixvo48Yp-OWg"/>
+    <mappings xmi:id="_S5EBomo3Eeixvo48Yp-OWg" origin="_S5EBoGo3Eeixvo48Yp-OWg" image="_S5EBoWo3Eeixvo48Yp-OWg"/>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_QNTHgGpOEeixvo48Yp-OWg" name="changeResourceMapping">
+    <lhs xmi:id="_QNUVoGpOEeixvo48Yp-OWg" name="Lhs">
+      <nodes xmi:id="_UUXDgGpOEeixvo48Yp-OWg" incoming="_djqEoGpOEeixvo48Yp-OWg" outgoing="_fcAtYGpOEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+      </nodes>
+      <nodes xmi:id="_Vf_JIGpOEeixvo48Yp-OWg" outgoing="_djqEoGpOEeixvo48Yp-OWg _3SNUkGqdEei3mIFfwXPmIw">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <nodes xmi:id="_YY5P8GpOEeixvo48Yp-OWg" incoming="_fcAtYGpOEeixvo48Yp-OWg" outgoing="_eVkCsGpOEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+      </nodes>
+      <nodes xmi:id="_ZmqqoGpOEeixvo48Yp-OWg" incoming="_eVkCsGpOEeixvo48Yp-OWg _esdfwGpOEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceType"/>
+      </nodes>
+      <nodes xmi:id="_aTsIsGpOEeixvo48Yp-OWg" outgoing="_esdfwGpOEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+      </nodes>
+      <nodes xmi:id="_1kzXkGqdEei3mIFfwXPmIw" incoming="_3SNUkGqdEei3mIFfwXPmIw" outgoing="_6D6AIGqdEei3mIFfwXPmIw">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+      </nodes>
+      <nodes xmi:id="_5QKPAGqdEei3mIFfwXPmIw" incoming="_6D6AIGqdEei3mIFfwXPmIw">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement"/>
+      </nodes>
+      <edges xmi:id="_djqEoGpOEeixvo48Yp-OWg" source="_Vf_JIGpOEeixvo48Yp-OWg" target="_UUXDgGpOEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/resourceMappings"/>
+      </edges>
+      <edges xmi:id="_eVkCsGpOEeixvo48Yp-OWg" source="_YY5P8GpOEeixvo48Yp-OWg" target="_ZmqqoGpOEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+      </edges>
+      <edges xmi:id="_esdfwGpOEeixvo48Yp-OWg" source="_aTsIsGpOEeixvo48Yp-OWg" target="_ZmqqoGpOEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+      </edges>
+      <edges xmi:id="_fcAtYGpOEeixvo48Yp-OWg" source="_UUXDgGpOEeixvo48Yp-OWg" target="_YY5P8GpOEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/usedResource"/>
+      </edges>
+      <edges xmi:id="_3SNUkGqdEei3mIFfwXPmIw" source="_Vf_JIGpOEeixvo48Yp-OWg" target="_1kzXkGqdEei3mIFfwXPmIw">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/implementation"/>
+      </edges>
+      <edges xmi:id="_6D6AIGqdEei3mIFfwXPmIw" source="_1kzXkGqdEei3mIFfwXPmIw" target="_5QKPAGqdEei3mIFfwXPmIw">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation/resourceRequirements"/>
+      </edges>
+      <formula xsi:type="henshin:Not" xmi:id="_c3hXYGpOEeixvo48Yp-OWg">
+        <child xsi:type="henshin:NestedCondition" xmi:id="_c3hXYWpOEeixvo48Yp-OWg">
+          <conclusion xmi:id="_c3hXYmpOEeixvo48Yp-OWg" name="1">
+            <nodes xmi:id="_c3hXY2pOEeixvo48Yp-OWg">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+            </nodes>
+            <nodes xmi:id="_c3hXZWpOEeixvo48Yp-OWg">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+            </nodes>
+            <nodes xmi:id="_c3hXaWpOEeixvo48Yp-OWg">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+            </nodes>
+            <nodes xmi:id="_c3hXa2pOEeixvo48Yp-OWg">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceType"/>
+            </nodes>
+            <nodes xmi:id="_c3hXbWpOEeixvo48Yp-OWg" incoming="_e7BgMGpOEeixvo48Yp-OWg">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+            </nodes>
+            <nodes xmi:id="_b2QHoGpOEeixvo48Yp-OWg" outgoing="_e7BgMGpOEeixvo48Yp-OWg">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+            </nodes>
+            <edges xmi:id="_e7BgMGpOEeixvo48Yp-OWg" source="_b2QHoGpOEeixvo48Yp-OWg" target="_c3hXbWpOEeixvo48Yp-OWg">
+              <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/usedResource"/>
+            </edges>
+          </conclusion>
+          <mappings xmi:id="_c3hXZGpOEeixvo48Yp-OWg" origin="_UUXDgGpOEeixvo48Yp-OWg" image="_c3hXY2pOEeixvo48Yp-OWg"/>
+          <mappings xmi:id="_c3hXZmpOEeixvo48Yp-OWg" origin="_Vf_JIGpOEeixvo48Yp-OWg" image="_c3hXZWpOEeixvo48Yp-OWg"/>
+          <mappings xmi:id="_c3hXampOEeixvo48Yp-OWg" origin="_YY5P8GpOEeixvo48Yp-OWg" image="_c3hXaWpOEeixvo48Yp-OWg"/>
+          <mappings xmi:id="_c3hXbGpOEeixvo48Yp-OWg" origin="_ZmqqoGpOEeixvo48Yp-OWg" image="_c3hXa2pOEeixvo48Yp-OWg"/>
+          <mappings xmi:id="_c3hXbmpOEeixvo48Yp-OWg" origin="_aTsIsGpOEeixvo48Yp-OWg" image="_c3hXbWpOEeixvo48Yp-OWg"/>
+        </child>
+      </formula>
+    </lhs>
+    <rhs xmi:id="_QNUVoWpOEeixvo48Yp-OWg" name="Rhs">
+      <nodes xmi:id="_UUXqkGpOEeixvo48Yp-OWg" incoming="_djqEoWpOEeixvo48Yp-OWg" outgoing="_ftmMoGpOEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+      </nodes>
+      <nodes xmi:id="_Vf_JIWpOEeixvo48Yp-OWg" outgoing="_djqEoWpOEeixvo48Yp-OWg _3SNUkWqdEei3mIFfwXPmIw">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <nodes xmi:id="_YY53AGpOEeixvo48Yp-OWg" outgoing="_eVkCsWpOEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+      </nodes>
+      <nodes xmi:id="_ZmqqoWpOEeixvo48Yp-OWg" incoming="_eVkCsWpOEeixvo48Yp-OWg _esdfwWpOEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceType"/>
+      </nodes>
+      <nodes xmi:id="_aTsIsWpOEeixvo48Yp-OWg" incoming="_ftmMoGpOEeixvo48Yp-OWg" outgoing="_esdfwWpOEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+      </nodes>
+      <nodes xmi:id="_2fgFQGqdEei3mIFfwXPmIw" incoming="_3SNUkWqdEei3mIFfwXPmIw" outgoing="_6D6AIWqdEei3mIFfwXPmIw">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+      </nodes>
+      <nodes xmi:id="_5QKPAWqdEei3mIFfwXPmIw" incoming="_6D6AIWqdEei3mIFfwXPmIw">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement"/>
+      </nodes>
+      <edges xmi:id="_djqEoWpOEeixvo48Yp-OWg" source="_Vf_JIWpOEeixvo48Yp-OWg" target="_UUXqkGpOEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/resourceMappings"/>
+      </edges>
+      <edges xmi:id="_eVkCsWpOEeixvo48Yp-OWg" source="_YY53AGpOEeixvo48Yp-OWg" target="_ZmqqoWpOEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+      </edges>
+      <edges xmi:id="_esdfwWpOEeixvo48Yp-OWg" source="_aTsIsWpOEeixvo48Yp-OWg" target="_ZmqqoWpOEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+      </edges>
+      <edges xmi:id="_ftmMoGpOEeixvo48Yp-OWg" source="_UUXqkGpOEeixvo48Yp-OWg" target="_aTsIsWpOEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/usedResource"/>
+      </edges>
+      <edges xmi:id="_3SNUkWqdEei3mIFfwXPmIw" source="_Vf_JIWpOEeixvo48Yp-OWg" target="_2fgFQGqdEei3mIFfwXPmIw">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/implementation"/>
+      </edges>
+      <edges xmi:id="_6D6AIWqdEei3mIFfwXPmIw" source="_2fgFQGqdEei3mIFfwXPmIw" target="_5QKPAWqdEei3mIFfwXPmIw">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation/resourceRequirements"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_UUXqkWpOEeixvo48Yp-OWg" origin="_UUXDgGpOEeixvo48Yp-OWg" image="_UUXqkGpOEeixvo48Yp-OWg"/>
+    <mappings xmi:id="_Vf_JImpOEeixvo48Yp-OWg" origin="_Vf_JIGpOEeixvo48Yp-OWg" image="_Vf_JIWpOEeixvo48Yp-OWg"/>
+    <mappings xmi:id="_YY53AWpOEeixvo48Yp-OWg" origin="_YY5P8GpOEeixvo48Yp-OWg" image="_YY53AGpOEeixvo48Yp-OWg"/>
+    <mappings xmi:id="_ZmqqompOEeixvo48Yp-OWg" origin="_ZmqqoGpOEeixvo48Yp-OWg" image="_ZmqqoWpOEeixvo48Yp-OWg"/>
+    <mappings xmi:id="_aTsIsmpOEeixvo48Yp-OWg" origin="_aTsIsGpOEeixvo48Yp-OWg" image="_aTsIsWpOEeixvo48Yp-OWg"/>
+    <mappings xmi:id="_2fgFQWqdEei3mIFfwXPmIw" origin="_1kzXkGqdEei3mIFfwXPmIw" image="_2fgFQGqdEei3mIFfwXPmIw"/>
+    <mappings xmi:id="_5QKPAmqdEei3mIFfwXPmIw" origin="_5QKPAGqdEei3mIFfwXPmIw" image="_5QKPAWqdEei3mIFfwXPmIw"/>
+    <multiRules xmi:id="_5IhH0GpOEeixvo48Yp-OWg">
+      <lhs xmi:id="_5IhH0WpOEeixvo48Yp-OWg" name="Lhs">
+        <nodes xmi:id="_5Ihu6WpOEeixvo48Yp-OWg" incoming="_5Ihu7WpOEeixvo48Yp-OWg" outgoing="_5Ihu8GpOEeixvo48Yp-OWg _6rad8GpOEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+        </nodes>
+        <nodes xmi:id="_5Ihu62pOEeixvo48Yp-OWg" outgoing="_5Ihu7WpOEeixvo48Yp-OWg _3SN7pGqdEei3mIFfwXPmIw">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+        </nodes>
+        <nodes xmi:id="_5Ihu7mpOEeixvo48Yp-OWg" incoming="_5Ihu8GpOEeixvo48Yp-OWg" outgoing="_5Ihu_2pOEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+        </nodes>
+        <nodes xmi:id="_WcyvoGpOEeixvo48Yp-OWg" incoming="_6rad8GpOEeixvo48Yp-OWg" outgoing="_F6QU8GpPEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+        </nodes>
+        <nodes xmi:id="_5Ihu_WpOEeixvo48Yp-OWg" incoming="_5Ihu_2pOEeixvo48Yp-OWg _5IhvBGpOEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceType"/>
+        </nodes>
+        <nodes xmi:id="_5IhvAmpOEeixvo48Yp-OWg" outgoing="_5IhvBGpOEeixvo48Yp-OWg _JDmEcGpPEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+        </nodes>
+        <nodes xmi:id="_-jjNIGpOEeixvo48Yp-OWg" incoming="_F6QU8GpPEeixvo48Yp-OWg" outgoing="_Gg8hgGpPEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+        </nodes>
+        <nodes xmi:id="__3EDcGpOEeixvo48Yp-OWg" incoming="_JDmEcGpPEeixvo48Yp-OWg" outgoing="_G_HEMGpPEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+        </nodes>
+        <nodes xmi:id="_BIiSYGpPEeixvo48Yp-OWg" incoming="_Gg8hgGpPEeixvo48Yp-OWg _G_HEMGpPEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceType"/>
+        </nodes>
+        <nodes xmi:id="_3SN7omqdEei3mIFfwXPmIw" incoming="_3SN7pGqdEei3mIFfwXPmIw" outgoing="_6D6AI2qdEei3mIFfwXPmIw">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+        </nodes>
+        <nodes xmi:id="_5QK2EWqdEei3mIFfwXPmIw" incoming="_6D6AI2qdEei3mIFfwXPmIw">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement"/>
+        </nodes>
+        <edges xmi:id="_5Ihu7WpOEeixvo48Yp-OWg" source="_5Ihu62pOEeixvo48Yp-OWg" target="_5Ihu6WpOEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/resourceMappings"/>
+        </edges>
+        <edges xmi:id="_5Ihu8GpOEeixvo48Yp-OWg" source="_5Ihu6WpOEeixvo48Yp-OWg" target="_5Ihu7mpOEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/usedResource"/>
+        </edges>
+        <edges xmi:id="_5Ihu_2pOEeixvo48Yp-OWg" source="_5Ihu7mpOEeixvo48Yp-OWg" target="_5Ihu_WpOEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+        </edges>
+        <edges xmi:id="_5IhvBGpOEeixvo48Yp-OWg" source="_5IhvAmpOEeixvo48Yp-OWg" target="_5Ihu_WpOEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+        </edges>
+        <edges xmi:id="_6rad8GpOEeixvo48Yp-OWg" source="_5Ihu6WpOEeixvo48Yp-OWg" target="_WcyvoGpOEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/subMappings"/>
+        </edges>
+        <edges xmi:id="_F6QU8GpPEeixvo48Yp-OWg" source="_WcyvoGpOEeixvo48Yp-OWg" target="_-jjNIGpOEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/usedResource"/>
+        </edges>
+        <edges xmi:id="_Gg8hgGpPEeixvo48Yp-OWg" source="_-jjNIGpOEeixvo48Yp-OWg" target="_BIiSYGpPEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+        </edges>
+        <edges xmi:id="_G_HEMGpPEeixvo48Yp-OWg" source="__3EDcGpOEeixvo48Yp-OWg" target="_BIiSYGpPEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+        </edges>
+        <edges xmi:id="_JDmEcGpPEeixvo48Yp-OWg" source="_5IhvAmpOEeixvo48Yp-OWg" target="__3EDcGpOEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/resources"/>
+        </edges>
+        <edges xmi:id="_3SN7pGqdEei3mIFfwXPmIw" source="_5Ihu62pOEeixvo48Yp-OWg" target="_3SN7omqdEei3mIFfwXPmIw">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/implementation"/>
+        </edges>
+        <edges xmi:id="_6D6AI2qdEei3mIFfwXPmIw" source="_3SN7omqdEei3mIFfwXPmIw" target="_5QK2EWqdEei3mIFfwXPmIw">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation/resourceRequirements"/>
+        </edges>
+        <formula xsi:type="henshin:Not" xmi:id="_EJdswGpPEeixvo48Yp-OWg">
+          <child xsi:type="henshin:NestedCondition" xmi:id="_EJdswWpPEeixvo48Yp-OWg">
+            <conclusion xmi:id="_EJdswmpPEeixvo48Yp-OWg" name="2">
+              <nodes xmi:id="_EJdsw2pPEeixvo48Yp-OWg" incoming="_EJdsx2pPEeixvo48Yp-OWg" outgoing="_EJdsympPEeixvo48Yp-OWg _EJdszWpPEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+              </nodes>
+              <nodes xmi:id="_EJdsxWpPEeixvo48Yp-OWg" outgoing="_EJdsx2pPEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+              </nodes>
+              <nodes xmi:id="_EJdsyGpPEeixvo48Yp-OWg" incoming="_EJdsympPEeixvo48Yp-OWg" outgoing="_EJeT0WpPEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+              </nodes>
+              <nodes xmi:id="_EJdsy2pPEeixvo48Yp-OWg" incoming="_EJdszWpPEeixvo48Yp-OWg" outgoing="_1k9voGqdEei3mIFfwXPmIw">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+              </nodes>
+              <nodes xmi:id="_EJdszmpPEeixvo48Yp-OWg" incoming="_EJeT0WpPEeixvo48Yp-OWg _EJeT1GpPEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceType"/>
+              </nodes>
+              <nodes xmi:id="_EJeT0mpPEeixvo48Yp-OWg" outgoing="_EJeT1GpPEeixvo48Yp-OWg _1k-WsWqdEei3mIFfwXPmIw">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+              </nodes>
+              <nodes xmi:id="_EJeT1WpPEeixvo48Yp-OWg" incoming="_1k9voGqdEei3mIFfwXPmIw" outgoing="_1k9voWqdEei3mIFfwXPmIw">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+              </nodes>
+              <nodes xmi:id="_EJeT12pPEeixvo48Yp-OWg" incoming="_HjVyoGpPEeixvo48Yp-OWg _1k-WsWqdEei3mIFfwXPmIw" outgoing="_1k-WsGqdEei3mIFfwXPmIw">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+              </nodes>
+              <nodes xmi:id="_EJeT2WpPEeixvo48Yp-OWg" incoming="_1k9voWqdEei3mIFfwXPmIw _1k-WsGqdEei3mIFfwXPmIw">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceType"/>
+              </nodes>
+              <nodes xmi:id="_C5IGQGpPEeixvo48Yp-OWg" outgoing="_HjVyoGpPEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+              </nodes>
+              <edges xmi:id="_EJdsx2pPEeixvo48Yp-OWg" source="_EJdsxWpPEeixvo48Yp-OWg" target="_EJdsw2pPEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/resourceMappings"/>
+              </edges>
+              <edges xmi:id="_EJdsympPEeixvo48Yp-OWg" source="_EJdsw2pPEeixvo48Yp-OWg" target="_EJdsyGpPEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/usedResource"/>
+              </edges>
+              <edges xmi:id="_EJdszWpPEeixvo48Yp-OWg" source="_EJdsw2pPEeixvo48Yp-OWg" target="_EJdsy2pPEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/subMappings"/>
+              </edges>
+              <edges xmi:id="_EJeT0WpPEeixvo48Yp-OWg" source="_EJdsyGpPEeixvo48Yp-OWg" target="_EJdszmpPEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+              </edges>
+              <edges xmi:id="_EJeT1GpPEeixvo48Yp-OWg" source="_EJeT0mpPEeixvo48Yp-OWg" target="_EJdszmpPEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+              </edges>
+              <edges xmi:id="_HjVyoGpPEeixvo48Yp-OWg" source="_C5IGQGpPEeixvo48Yp-OWg" target="_EJeT12pPEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/usedResource"/>
+              </edges>
+              <edges xmi:id="_1k9voGqdEei3mIFfwXPmIw" source="_EJdsy2pPEeixvo48Yp-OWg" target="_EJeT1WpPEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/usedResource"/>
+              </edges>
+              <edges xmi:id="_1k9voWqdEei3mIFfwXPmIw" source="_EJeT1WpPEeixvo48Yp-OWg" target="_EJeT2WpPEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+              </edges>
+              <edges xmi:id="_1k-WsGqdEei3mIFfwXPmIw" source="_EJeT12pPEeixvo48Yp-OWg" target="_EJeT2WpPEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+              </edges>
+              <edges xmi:id="_1k-WsWqdEei3mIFfwXPmIw" source="_EJeT0mpPEeixvo48Yp-OWg" target="_EJeT12pPEeixvo48Yp-OWg">
+                <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/resources"/>
+              </edges>
+            </conclusion>
+            <mappings xmi:id="_EJdsxGpPEeixvo48Yp-OWg" origin="_5Ihu6WpOEeixvo48Yp-OWg" image="_EJdsw2pPEeixvo48Yp-OWg"/>
+            <mappings xmi:id="_EJdsxmpPEeixvo48Yp-OWg" origin="_5Ihu62pOEeixvo48Yp-OWg" image="_EJdsxWpPEeixvo48Yp-OWg"/>
+            <mappings xmi:id="_EJdsyWpPEeixvo48Yp-OWg" origin="_5Ihu7mpOEeixvo48Yp-OWg" image="_EJdsyGpPEeixvo48Yp-OWg"/>
+            <mappings xmi:id="_EJdszGpPEeixvo48Yp-OWg" origin="_WcyvoGpOEeixvo48Yp-OWg" image="_EJdsy2pPEeixvo48Yp-OWg"/>
+            <mappings xmi:id="_EJeT0GpPEeixvo48Yp-OWg" origin="_5Ihu_WpOEeixvo48Yp-OWg" image="_EJdszmpPEeixvo48Yp-OWg"/>
+            <mappings xmi:id="_EJeT02pPEeixvo48Yp-OWg" origin="_5IhvAmpOEeixvo48Yp-OWg" image="_EJeT0mpPEeixvo48Yp-OWg"/>
+            <mappings xmi:id="_EJeT1mpPEeixvo48Yp-OWg" origin="_-jjNIGpOEeixvo48Yp-OWg" image="_EJeT1WpPEeixvo48Yp-OWg"/>
+            <mappings xmi:id="_EJeT2GpPEeixvo48Yp-OWg" origin="__3EDcGpOEeixvo48Yp-OWg" image="_EJeT12pPEeixvo48Yp-OWg"/>
+            <mappings xmi:id="_EJeT2mpPEeixvo48Yp-OWg" origin="_BIiSYGpPEeixvo48Yp-OWg" image="_EJeT2WpPEeixvo48Yp-OWg"/>
+          </child>
+        </formula>
+      </lhs>
+      <rhs xmi:id="_5Ihu4GpOEeixvo48Yp-OWg" name="Rhs">
+        <nodes xmi:id="_5Ihu4WpOEeixvo48Yp-OWg" incoming="_5Ihu5WpOEeixvo48Yp-OWg" outgoing="_5Ihu6GpOEeixvo48Yp-OWg _6rad8WpOEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+        </nodes>
+        <nodes xmi:id="_5Ihu42pOEeixvo48Yp-OWg" outgoing="_5Ihu5WpOEeixvo48Yp-OWg _3SN7oWqdEei3mIFfwXPmIw">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+        </nodes>
+        <nodes xmi:id="_5Ihu5mpOEeixvo48Yp-OWg" incoming="_5Ihu6GpOEeixvo48Yp-OWg" outgoing="_5IhvAWpOEeixvo48Yp-OWg _JDmEcWpPEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+        </nodes>
+        <nodes xmi:id="_WcyvoWpOEeixvo48Yp-OWg" incoming="_6rad8WpOEeixvo48Yp-OWg" outgoing="_HUbM4GpPEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+        </nodes>
+        <nodes xmi:id="_5Ihu-GpOEeixvo48Yp-OWg" outgoing="_5Ihu_GpOEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+        </nodes>
+        <nodes xmi:id="_5Ihu-mpOEeixvo48Yp-OWg" incoming="_5Ihu_GpOEeixvo48Yp-OWg _5IhvAWpOEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceType"/>
+        </nodes>
+        <nodes xmi:id="_-jjNIWpOEeixvo48Yp-OWg" outgoing="_Gg8hgWpPEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+        </nodes>
+        <nodes xmi:id="__3EDcWpOEeixvo48Yp-OWg" incoming="_JDmEcWpPEeixvo48Yp-OWg _HUbM4GpPEeixvo48Yp-OWg" outgoing="_G_HEMWpPEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+        </nodes>
+        <nodes xmi:id="_BIiSYWpPEeixvo48Yp-OWg" incoming="_Gg8hgWpPEeixvo48Yp-OWg _G_HEMWpPEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceType"/>
+        </nodes>
+        <nodes xmi:id="_3SNUkmqdEei3mIFfwXPmIw" incoming="_3SN7oWqdEei3mIFfwXPmIw" outgoing="_6D6AImqdEei3mIFfwXPmIw">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation"/>
+        </nodes>
+        <nodes xmi:id="_5QKPA2qdEei3mIFfwXPmIw" incoming="_6D6AImqdEei3mIFfwXPmIw">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceRequirement"/>
+        </nodes>
+        <edges xmi:id="_5Ihu5WpOEeixvo48Yp-OWg" source="_5Ihu42pOEeixvo48Yp-OWg" target="_5Ihu4WpOEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/resourceMappings"/>
+        </edges>
+        <edges xmi:id="_5Ihu6GpOEeixvo48Yp-OWg" source="_5Ihu4WpOEeixvo48Yp-OWg" target="_5Ihu5mpOEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/usedResource"/>
+        </edges>
+        <edges xmi:id="_5Ihu_GpOEeixvo48Yp-OWg" source="_5Ihu-GpOEeixvo48Yp-OWg" target="_5Ihu-mpOEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+        </edges>
+        <edges xmi:id="_5IhvAWpOEeixvo48Yp-OWg" source="_5Ihu5mpOEeixvo48Yp-OWg" target="_5Ihu-mpOEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+        </edges>
+        <edges xmi:id="_6rad8WpOEeixvo48Yp-OWg" source="_5Ihu4WpOEeixvo48Yp-OWg" target="_WcyvoWpOEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/subMappings"/>
+        </edges>
+        <edges xmi:id="_Gg8hgWpPEeixvo48Yp-OWg" source="_-jjNIWpOEeixvo48Yp-OWg" target="_BIiSYWpPEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+        </edges>
+        <edges xmi:id="_G_HEMWpPEeixvo48Yp-OWg" source="__3EDcWpOEeixvo48Yp-OWg" target="_BIiSYWpPEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+        </edges>
+        <edges xmi:id="_JDmEcWpPEeixvo48Yp-OWg" source="_5Ihu5mpOEeixvo48Yp-OWg" target="__3EDcWpOEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/resources"/>
+        </edges>
+        <edges xmi:id="_HUbM4GpPEeixvo48Yp-OWg" source="_WcyvoWpOEeixvo48Yp-OWg" target="__3EDcWpOEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/usedResource"/>
+        </edges>
+        <edges xmi:id="_3SN7oWqdEei3mIFfwXPmIw" source="_5Ihu42pOEeixvo48Yp-OWg" target="_3SNUkmqdEei3mIFfwXPmIw">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/implementation"/>
+        </edges>
+        <edges xmi:id="_6D6AImqdEei3mIFfwXPmIw" source="_3SNUkmqdEei3mIFfwXPmIw" target="_5QKPA2qdEei3mIFfwXPmIw">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Implementation/resourceRequirements"/>
+        </edges>
+      </rhs>
+      <mappings xmi:id="_5Ihu8WpOEeixvo48Yp-OWg" origin="_5Ihu6WpOEeixvo48Yp-OWg" image="_5Ihu4WpOEeixvo48Yp-OWg"/>
+      <mappings xmi:id="_5Ihu8mpOEeixvo48Yp-OWg" origin="_5Ihu62pOEeixvo48Yp-OWg" image="_5Ihu42pOEeixvo48Yp-OWg"/>
+      <mappings xmi:id="_5IhvAGpOEeixvo48Yp-OWg" origin="_5Ihu7mpOEeixvo48Yp-OWg" image="_5Ihu-GpOEeixvo48Yp-OWg"/>
+      <mappings xmi:id="_5IhvBWpOEeixvo48Yp-OWg" origin="_5Ihu_WpOEeixvo48Yp-OWg" image="_5Ihu-mpOEeixvo48Yp-OWg"/>
+      <mappings xmi:id="_5IhvBmpOEeixvo48Yp-OWg" origin="_5IhvAmpOEeixvo48Yp-OWg" image="_5Ihu5mpOEeixvo48Yp-OWg"/>
+      <mappings xmi:id="_WcyvompOEeixvo48Yp-OWg" origin="_WcyvoGpOEeixvo48Yp-OWg" image="_WcyvoWpOEeixvo48Yp-OWg"/>
+      <mappings xmi:id="_-jjNImpOEeixvo48Yp-OWg" origin="_-jjNIGpOEeixvo48Yp-OWg" image="_-jjNIWpOEeixvo48Yp-OWg"/>
+      <mappings xmi:id="__3EDcmpOEeixvo48Yp-OWg" origin="__3EDcGpOEeixvo48Yp-OWg" image="__3EDcWpOEeixvo48Yp-OWg"/>
+      <mappings xmi:id="_BIiSYmpPEeixvo48Yp-OWg" origin="_BIiSYGpPEeixvo48Yp-OWg" image="_BIiSYWpPEeixvo48Yp-OWg"/>
+      <mappings xmi:id="_3SN7pWqdEei3mIFfwXPmIw" origin="_3SN7omqdEei3mIFfwXPmIw" image="_3SNUkmqdEei3mIFfwXPmIw"/>
+      <mappings xmi:id="_5QK2E2qdEei3mIFfwXPmIw" origin="_5QK2EWqdEei3mIFfwXPmIw" image="_5QKPA2qdEei3mIFfwXPmIw"/>
+      <multiMappings xmi:id="_5Ihu4mpOEeixvo48Yp-OWg" origin="_UUXqkGpOEeixvo48Yp-OWg" image="_5Ihu4WpOEeixvo48Yp-OWg"/>
+      <multiMappings xmi:id="_5Ihu5GpOEeixvo48Yp-OWg" origin="_Vf_JIWpOEeixvo48Yp-OWg" image="_5Ihu42pOEeixvo48Yp-OWg"/>
+      <multiMappings xmi:id="_5Ihu52pOEeixvo48Yp-OWg" origin="_aTsIsWpOEeixvo48Yp-OWg" image="_5Ihu5mpOEeixvo48Yp-OWg"/>
+      <multiMappings xmi:id="_5Ihu6mpOEeixvo48Yp-OWg" origin="_UUXDgGpOEeixvo48Yp-OWg" image="_5Ihu6WpOEeixvo48Yp-OWg"/>
+      <multiMappings xmi:id="_5Ihu7GpOEeixvo48Yp-OWg" origin="_Vf_JIGpOEeixvo48Yp-OWg" image="_5Ihu62pOEeixvo48Yp-OWg"/>
+      <multiMappings xmi:id="_5Ihu72pOEeixvo48Yp-OWg" origin="_YY5P8GpOEeixvo48Yp-OWg" image="_5Ihu7mpOEeixvo48Yp-OWg"/>
+      <multiMappings xmi:id="_5Ihu-WpOEeixvo48Yp-OWg" origin="_YY53AGpOEeixvo48Yp-OWg" image="_5Ihu-GpOEeixvo48Yp-OWg"/>
+      <multiMappings xmi:id="_5Ihu-2pOEeixvo48Yp-OWg" origin="_ZmqqoWpOEeixvo48Yp-OWg" image="_5Ihu-mpOEeixvo48Yp-OWg"/>
+      <multiMappings xmi:id="_5Ihu_mpOEeixvo48Yp-OWg" origin="_ZmqqoGpOEeixvo48Yp-OWg" image="_5Ihu_WpOEeixvo48Yp-OWg"/>
+      <multiMappings xmi:id="_5IhvA2pOEeixvo48Yp-OWg" origin="_aTsIsGpOEeixvo48Yp-OWg" image="_5IhvAmpOEeixvo48Yp-OWg"/>
+      <multiMappings xmi:id="_3SN7oGqdEei3mIFfwXPmIw" origin="_2fgFQGqdEei3mIFfwXPmIw" image="_3SNUkmqdEei3mIFfwXPmIw"/>
+      <multiMappings xmi:id="_3SN7o2qdEei3mIFfwXPmIw" origin="_1kzXkGqdEei3mIFfwXPmIw" image="_3SN7omqdEei3mIFfwXPmIw"/>
+      <multiMappings xmi:id="_5QK2EGqdEei3mIFfwXPmIw" origin="_5QKPAWqdEei3mIFfwXPmIw" image="_5QKPA2qdEei3mIFfwXPmIw"/>
+      <multiMappings xmi:id="_5QK2EmqdEei3mIFfwXPmIw" origin="_5QKPAGqdEei3mIFfwXPmIw" image="_5QK2EWqdEei3mIFfwXPmIw"/>
+    </multiRules>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_u4MnMGpREeixvo48Yp-OWg" name="swapResourceMappings">
+    <lhs xmi:id="_u4NOQGpREeixvo48Yp-OWg" name="Lhs">
+      <nodes xmi:id="_zGvEMGpREeixvo48Yp-OWg" incoming="_jYRqcGpVEeixvo48Yp-OWg" outgoing="_47cNwGpREeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+      </nodes>
+      <nodes xmi:id="_0YaHcGpREeixvo48Yp-OWg" incoming="_47cNwGpREeixvo48Yp-OWg" outgoing="_5TgIcGpREeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+      </nodes>
+      <nodes xmi:id="_1xbI0GpREeixvo48Yp-OWg" incoming="_5TgIcGpREeixvo48Yp-OWg _55GI0GpREeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceType"/>
+      </nodes>
+      <nodes xmi:id="_3AY2UGpREeixvo48Yp-OWg" incoming="_5rACcGpREeixvo48Yp-OWg" outgoing="_55GI0GpREeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+      </nodes>
+      <nodes xmi:id="_4BK94GpREeixvo48Yp-OWg" incoming="_j4MgoGpVEeixvo48Yp-OWg" outgoing="_5rACcGpREeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+      </nodes>
+      <nodes xmi:id="_fnI7IGpVEeixvo48Yp-OWg" outgoing="_jYRqcGpVEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <nodes xmi:id="_ge_wMGpVEeixvo48Yp-OWg" outgoing="_j4MgoGpVEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <edges xmi:id="_47cNwGpREeixvo48Yp-OWg" source="_zGvEMGpREeixvo48Yp-OWg" target="_0YaHcGpREeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/usedResource"/>
+      </edges>
+      <edges xmi:id="_5TgIcGpREeixvo48Yp-OWg" source="_0YaHcGpREeixvo48Yp-OWg" target="_1xbI0GpREeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+      </edges>
+      <edges xmi:id="_5rACcGpREeixvo48Yp-OWg" source="_4BK94GpREeixvo48Yp-OWg" target="_3AY2UGpREeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/usedResource"/>
+      </edges>
+      <edges xmi:id="_55GI0GpREeixvo48Yp-OWg" source="_3AY2UGpREeixvo48Yp-OWg" target="_1xbI0GpREeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+      </edges>
+      <edges xmi:id="_jYRqcGpVEeixvo48Yp-OWg" source="_fnI7IGpVEeixvo48Yp-OWg" target="_zGvEMGpREeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/resourceMappings"/>
+      </edges>
+      <edges xmi:id="_j4MgoGpVEeixvo48Yp-OWg" source="_ge_wMGpVEeixvo48Yp-OWg" target="_4BK94GpREeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/resourceMappings"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_u4NOQWpREeixvo48Yp-OWg" name="Rhs">
+      <nodes xmi:id="_zGvEMWpREeixvo48Yp-OWg" incoming="_jYRqcWpVEeixvo48Yp-OWg" outgoing="_7qhDIGpREeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+      </nodes>
+      <nodes xmi:id="_0YaHcWpREeixvo48Yp-OWg" incoming="_7GK_8GpREeixvo48Yp-OWg" outgoing="_5TgIcWpREeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+      </nodes>
+      <nodes xmi:id="_1xbI0WpREeixvo48Yp-OWg" incoming="_5TgIcWpREeixvo48Yp-OWg _55GI0WpREeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceType"/>
+      </nodes>
+      <nodes xmi:id="_3AZdYGpREeixvo48Yp-OWg" incoming="_7qhDIGpREeixvo48Yp-OWg" outgoing="_55GI0WpREeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+      </nodes>
+      <nodes xmi:id="_4BK94WpREeixvo48Yp-OWg" incoming="_j4MgoWpVEeixvo48Yp-OWg" outgoing="_7GK_8GpREeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+      </nodes>
+      <nodes xmi:id="_fnI7IWpVEeixvo48Yp-OWg" outgoing="_jYRqcWpVEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <nodes xmi:id="_ge_wMWpVEeixvo48Yp-OWg" outgoing="_j4MgoWpVEeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+      </nodes>
+      <edges xmi:id="_5TgIcWpREeixvo48Yp-OWg" source="_0YaHcWpREeixvo48Yp-OWg" target="_1xbI0WpREeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+      </edges>
+      <edges xmi:id="_55GI0WpREeixvo48Yp-OWg" source="_3AZdYGpREeixvo48Yp-OWg" target="_1xbI0WpREeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+      </edges>
+      <edges xmi:id="_7GK_8GpREeixvo48Yp-OWg" source="_4BK94WpREeixvo48Yp-OWg" target="_0YaHcWpREeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/usedResource"/>
+      </edges>
+      <edges xmi:id="_7qhDIGpREeixvo48Yp-OWg" source="_zGvEMWpREeixvo48Yp-OWg" target="_3AZdYGpREeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/usedResource"/>
+      </edges>
+      <edges xmi:id="_jYRqcWpVEeixvo48Yp-OWg" source="_fnI7IWpVEeixvo48Yp-OWg" target="_zGvEMWpREeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/resourceMappings"/>
+      </edges>
+      <edges xmi:id="_j4MgoWpVEeixvo48Yp-OWg" source="_ge_wMWpVEeixvo48Yp-OWg" target="_4BK94WpREeixvo48Yp-OWg">
+        <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/resourceMappings"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_zGvEMmpREeixvo48Yp-OWg" origin="_zGvEMGpREeixvo48Yp-OWg" image="_zGvEMWpREeixvo48Yp-OWg"/>
+    <mappings xmi:id="_0YaHcmpREeixvo48Yp-OWg" origin="_0YaHcGpREeixvo48Yp-OWg" image="_0YaHcWpREeixvo48Yp-OWg"/>
+    <mappings xmi:id="_1xbI0mpREeixvo48Yp-OWg" origin="_1xbI0GpREeixvo48Yp-OWg" image="_1xbI0WpREeixvo48Yp-OWg"/>
+    <mappings xmi:id="_3AZdYWpREeixvo48Yp-OWg" origin="_3AY2UGpREeixvo48Yp-OWg" image="_3AZdYGpREeixvo48Yp-OWg"/>
+    <mappings xmi:id="_4BK94mpREeixvo48Yp-OWg" origin="_4BK94GpREeixvo48Yp-OWg" image="_4BK94WpREeixvo48Yp-OWg"/>
+    <mappings xmi:id="_fnI7ImpVEeixvo48Yp-OWg" origin="_fnI7IGpVEeixvo48Yp-OWg" image="_fnI7IWpVEeixvo48Yp-OWg"/>
+    <mappings xmi:id="_ge_wMmpVEeixvo48Yp-OWg" origin="_ge_wMGpVEeixvo48Yp-OWg" image="_ge_wMWpVEeixvo48Yp-OWg"/>
+    <multiRules xmi:id="_M6c54mpSEeixvo48Yp-OWg">
+      <lhs xmi:id="_M6c542pSEeixvo48Yp-OWg" name="Lhs">
+        <nodes xmi:id="_M6c56mpSEeixvo48Yp-OWg" incoming="_jYRqd2pVEeixvo48Yp-OWg" outgoing="_M6c57mpSEeixvo48Yp-OWg _WgSywGpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+        </nodes>
+        <nodes xmi:id="_M6c57GpSEeixvo48Yp-OWg" incoming="_M6c57mpSEeixvo48Yp-OWg" outgoing="_M6c5-mpSEeixvo48Yp-OWg _cR1eIGpTEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+        </nodes>
+        <nodes xmi:id="_M6c5-GpSEeixvo48Yp-OWg" incoming="_M6c5-mpSEeixvo48Yp-OWg _M6c5_2pSEeixvo48Yp-OWg" outgoing="_c_GMwGpTEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceType"/>
+        </nodes>
+        <nodes xmi:id="_M6c5_WpSEeixvo48Yp-OWg" incoming="_M6c6A2pSEeixvo48Yp-OWg" outgoing="_M6c5_2pSEeixvo48Yp-OWg _drWOwGpTEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+        </nodes>
+        <nodes xmi:id="_M6c6AWpSEeixvo48Yp-OWg" incoming="_j4Mgo2pVEeixvo48Yp-OWg" outgoing="_M6c6A2pSEeixvo48Yp-OWg _W4f3YGpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+        </nodes>
+        <nodes xmi:id="_M6brwGpSEeixvo48Yp-OWg" incoming="_WgSywGpSEeixvo48Yp-OWg" outgoing="_S7aWwGpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+        </nodes>
+        <nodes xmi:id="_OaB2QGpSEeixvo48Yp-OWg" incoming="_W4f3YGpSEeixvo48Yp-OWg" outgoing="_TdODUGpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+        </nodes>
+        <nodes xmi:id="_QLa7YGpSEeixvo48Yp-OWg" incoming="_S7aWwGpSEeixvo48Yp-OWg _cR1eIGpTEeixvo48Yp-OWg" outgoing="_TM1d8GpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+        </nodes>
+        <nodes xmi:id="_Q_qbwGpSEeixvo48Yp-OWg" incoming="_TdODUGpSEeixvo48Yp-OWg _drWOwGpTEeixvo48Yp-OWg" outgoing="_TqoNMGpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+        </nodes>
+        <nodes xmi:id="_R8RN8GpSEeixvo48Yp-OWg" incoming="_TM1d8GpSEeixvo48Yp-OWg _TqoNMGpSEeixvo48Yp-OWg _c_GMwGpTEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceType"/>
+        </nodes>
+        <nodes xmi:id="_jYRqdWpVEeixvo48Yp-OWg" outgoing="_jYRqd2pVEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+        </nodes>
+        <nodes xmi:id="_jYSRgGpVEeixvo48Yp-OWg" outgoing="_j4Mgo2pVEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+        </nodes>
+        <edges xmi:id="_M6c57mpSEeixvo48Yp-OWg" source="_M6c56mpSEeixvo48Yp-OWg" target="_M6c57GpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/usedResource"/>
+        </edges>
+        <edges xmi:id="_M6c5-mpSEeixvo48Yp-OWg" source="_M6c57GpSEeixvo48Yp-OWg" target="_M6c5-GpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+        </edges>
+        <edges xmi:id="_M6c5_2pSEeixvo48Yp-OWg" source="_M6c5_WpSEeixvo48Yp-OWg" target="_M6c5-GpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+        </edges>
+        <edges xmi:id="_M6c6A2pSEeixvo48Yp-OWg" source="_M6c6AWpSEeixvo48Yp-OWg" target="_M6c5_WpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/usedResource"/>
+        </edges>
+        <edges xmi:id="_S7aWwGpSEeixvo48Yp-OWg" source="_M6brwGpSEeixvo48Yp-OWg" target="_QLa7YGpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/usedResource"/>
+        </edges>
+        <edges xmi:id="_TM1d8GpSEeixvo48Yp-OWg" source="_QLa7YGpSEeixvo48Yp-OWg" target="_R8RN8GpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+        </edges>
+        <edges xmi:id="_TdODUGpSEeixvo48Yp-OWg" source="_OaB2QGpSEeixvo48Yp-OWg" target="_Q_qbwGpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/usedResource"/>
+        </edges>
+        <edges xmi:id="_TqoNMGpSEeixvo48Yp-OWg" source="_Q_qbwGpSEeixvo48Yp-OWg" target="_R8RN8GpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+        </edges>
+        <edges xmi:id="_WgSywGpSEeixvo48Yp-OWg" source="_M6c56mpSEeixvo48Yp-OWg" target="_M6brwGpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/subMappings"/>
+        </edges>
+        <edges xmi:id="_W4f3YGpSEeixvo48Yp-OWg" source="_M6c6AWpSEeixvo48Yp-OWg" target="_OaB2QGpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/subMappings"/>
+        </edges>
+        <edges xmi:id="_cR1eIGpTEeixvo48Yp-OWg" source="_M6c57GpSEeixvo48Yp-OWg" target="_QLa7YGpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/resources"/>
+        </edges>
+        <edges xmi:id="_c_GMwGpTEeixvo48Yp-OWg" source="_M6c5-GpSEeixvo48Yp-OWg" target="_R8RN8GpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceType/resourceTypes"/>
+        </edges>
+        <edges xmi:id="_drWOwGpTEeixvo48Yp-OWg" source="_M6c5_WpSEeixvo48Yp-OWg" target="_Q_qbwGpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/resources"/>
+        </edges>
+        <edges xmi:id="_jYRqd2pVEeixvo48Yp-OWg" source="_jYRqdWpVEeixvo48Yp-OWg" target="_M6c56mpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/resourceMappings"/>
+        </edges>
+        <edges xmi:id="_j4Mgo2pVEeixvo48Yp-OWg" source="_jYSRgGpVEeixvo48Yp-OWg" target="_M6c6AWpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/resourceMappings"/>
+        </edges>
+      </lhs>
+      <rhs xmi:id="_M6c55GpSEeixvo48Yp-OWg" name="Rhs">
+        <nodes xmi:id="_M6c55WpSEeixvo48Yp-OWg" incoming="_jYRqdGpVEeixvo48Yp-OWg" outgoing="_M6c56WpSEeixvo48Yp-OWg _WgSywWpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+        </nodes>
+        <nodes xmi:id="_M6c552pSEeixvo48Yp-OWg" incoming="_M6c56WpSEeixvo48Yp-OWg" outgoing="_M6c5_GpSEeixvo48Yp-OWg _drWOwWpTEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+        </nodes>
+        <nodes xmi:id="_M6c58GpSEeixvo48Yp-OWg" incoming="_M6c59GpSEeixvo48Yp-OWg" outgoing="_M6c592pSEeixvo48Yp-OWg _cR1eIWpTEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+        </nodes>
+        <nodes xmi:id="_M6c58mpSEeixvo48Yp-OWg" incoming="_j4MgompVEeixvo48Yp-OWg" outgoing="_M6c59GpSEeixvo48Yp-OWg _W4f3YWpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+        </nodes>
+        <nodes xmi:id="_M6c59WpSEeixvo48Yp-OWg" incoming="_M6c592pSEeixvo48Yp-OWg _M6c5_GpSEeixvo48Yp-OWg" outgoing="_c_GMwWpTEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceType"/>
+        </nodes>
+        <nodes xmi:id="_M6c54GpSEeixvo48Yp-OWg" incoming="_WgSywWpSEeixvo48Yp-OWg" outgoing="_UR5BgGpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+        </nodes>
+        <nodes xmi:id="_OaB2QWpSEeixvo48Yp-OWg" incoming="_W4f3YWpSEeixvo48Yp-OWg" outgoing="_UC3uEGpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping"/>
+        </nodes>
+        <nodes xmi:id="_QLa7YWpSEeixvo48Yp-OWg" incoming="_UC3uEGpSEeixvo48Yp-OWg _cR1eIWpTEeixvo48Yp-OWg" outgoing="_TM1d8WpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+        </nodes>
+        <nodes xmi:id="_Q_rC0GpSEeixvo48Yp-OWg" incoming="_UR5BgGpSEeixvo48Yp-OWg _drWOwWpTEeixvo48Yp-OWg" outgoing="_TqoNMWpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource"/>
+        </nodes>
+        <nodes xmi:id="_R8RN8WpSEeixvo48Yp-OWg" incoming="_TM1d8WpSEeixvo48Yp-OWg _TqoNMWpSEeixvo48Yp-OWg _c_GMwWpTEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceType"/>
+        </nodes>
+        <nodes xmi:id="_jYRqcmpVEeixvo48Yp-OWg" outgoing="_jYRqdGpVEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+        </nodes>
+        <nodes xmi:id="_jYRqeWpVEeixvo48Yp-OWg" outgoing="_j4MgompVEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment"/>
+        </nodes>
+        <edges xmi:id="_M6c56WpSEeixvo48Yp-OWg" source="_M6c55WpSEeixvo48Yp-OWg" target="_M6c552pSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/usedResource"/>
+        </edges>
+        <edges xmi:id="_M6c59GpSEeixvo48Yp-OWg" source="_M6c58mpSEeixvo48Yp-OWg" target="_M6c58GpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/usedResource"/>
+        </edges>
+        <edges xmi:id="_M6c592pSEeixvo48Yp-OWg" source="_M6c58GpSEeixvo48Yp-OWg" target="_M6c59WpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+        </edges>
+        <edges xmi:id="_M6c5_GpSEeixvo48Yp-OWg" source="_M6c552pSEeixvo48Yp-OWg" target="_M6c59WpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+        </edges>
+        <edges xmi:id="_TM1d8WpSEeixvo48Yp-OWg" source="_QLa7YWpSEeixvo48Yp-OWg" target="_R8RN8WpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+        </edges>
+        <edges xmi:id="_TqoNMWpSEeixvo48Yp-OWg" source="_Q_rC0GpSEeixvo48Yp-OWg" target="_R8RN8WpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/type"/>
+        </edges>
+        <edges xmi:id="_WgSywWpSEeixvo48Yp-OWg" source="_M6c55WpSEeixvo48Yp-OWg" target="_M6c54GpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/subMappings"/>
+        </edges>
+        <edges xmi:id="_W4f3YWpSEeixvo48Yp-OWg" source="_M6c58mpSEeixvo48Yp-OWg" target="_OaB2QWpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/subMappings"/>
+        </edges>
+        <edges xmi:id="_UR5BgGpSEeixvo48Yp-OWg" source="_M6c54GpSEeixvo48Yp-OWg" target="_Q_rC0GpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/usedResource"/>
+        </edges>
+        <edges xmi:id="_UC3uEGpSEeixvo48Yp-OWg" source="_OaB2QWpSEeixvo48Yp-OWg" target="_QLa7YWpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceMapping/usedResource"/>
+        </edges>
+        <edges xmi:id="_cR1eIWpTEeixvo48Yp-OWg" source="_M6c58GpSEeixvo48Yp-OWg" target="_QLa7YWpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/resources"/>
+        </edges>
+        <edges xmi:id="_c_GMwWpTEeixvo48Yp-OWg" source="_M6c59WpSEeixvo48Yp-OWg" target="_R8RN8WpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//ResourceType/resourceTypes"/>
+        </edges>
+        <edges xmi:id="_drWOwWpTEeixvo48Yp-OWg" source="_M6c552pSEeixvo48Yp-OWg" target="_Q_rC0GpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Resource/resources"/>
+        </edges>
+        <edges xmi:id="_jYRqdGpVEeixvo48Yp-OWg" source="_jYRqcmpVEeixvo48Yp-OWg" target="_M6c55WpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/resourceMappings"/>
+        </edges>
+        <edges xmi:id="_j4MgompVEeixvo48Yp-OWg" source="_jYRqeWpVEeixvo48Yp-OWg" target="_M6c58mpSEeixvo48Yp-OWg">
+          <type href="http://www.xtext.org/example/mydsl/MyDsl#//Assignment/resourceMappings"/>
+        </edges>
+      </rhs>
+      <mappings xmi:id="_M6c572pSEeixvo48Yp-OWg" origin="_M6c56mpSEeixvo48Yp-OWg" image="_M6c55WpSEeixvo48Yp-OWg"/>
+      <mappings xmi:id="_M6c5-2pSEeixvo48Yp-OWg" origin="_M6c57GpSEeixvo48Yp-OWg" image="_M6c58GpSEeixvo48Yp-OWg"/>
+      <mappings xmi:id="_M6c6AGpSEeixvo48Yp-OWg" origin="_M6c5-GpSEeixvo48Yp-OWg" image="_M6c59WpSEeixvo48Yp-OWg"/>
+      <mappings xmi:id="_M6c6BGpSEeixvo48Yp-OWg" origin="_M6c5_WpSEeixvo48Yp-OWg" image="_M6c552pSEeixvo48Yp-OWg"/>
+      <mappings xmi:id="_M6c6BWpSEeixvo48Yp-OWg" origin="_M6c6AWpSEeixvo48Yp-OWg" image="_M6c58mpSEeixvo48Yp-OWg"/>
+      <mappings xmi:id="_M6c54WpSEeixvo48Yp-OWg" origin="_M6brwGpSEeixvo48Yp-OWg" image="_M6c54GpSEeixvo48Yp-OWg"/>
+      <mappings xmi:id="_OaB2QmpSEeixvo48Yp-OWg" origin="_OaB2QGpSEeixvo48Yp-OWg" image="_OaB2QWpSEeixvo48Yp-OWg"/>
+      <mappings xmi:id="_QLa7YmpSEeixvo48Yp-OWg" origin="_QLa7YGpSEeixvo48Yp-OWg" image="_QLa7YWpSEeixvo48Yp-OWg"/>
+      <mappings xmi:id="_Q_rC0WpSEeixvo48Yp-OWg" origin="_Q_qbwGpSEeixvo48Yp-OWg" image="_Q_rC0GpSEeixvo48Yp-OWg"/>
+      <mappings xmi:id="_R8R1AGpSEeixvo48Yp-OWg" origin="_R8RN8GpSEeixvo48Yp-OWg" image="_R8RN8WpSEeixvo48Yp-OWg"/>
+      <mappings xmi:id="_jYRqeGpVEeixvo48Yp-OWg" origin="_jYRqdWpVEeixvo48Yp-OWg" image="_jYRqcmpVEeixvo48Yp-OWg"/>
+      <mappings xmi:id="_jYSRgmpVEeixvo48Yp-OWg" origin="_jYSRgGpVEeixvo48Yp-OWg" image="_jYRqeWpVEeixvo48Yp-OWg"/>
+      <multiMappings xmi:id="_M6c55mpSEeixvo48Yp-OWg" origin="_zGvEMWpREeixvo48Yp-OWg" image="_M6c55WpSEeixvo48Yp-OWg"/>
+      <multiMappings xmi:id="_M6c56GpSEeixvo48Yp-OWg" origin="_3AZdYGpREeixvo48Yp-OWg" image="_M6c552pSEeixvo48Yp-OWg"/>
+      <multiMappings xmi:id="_M6c562pSEeixvo48Yp-OWg" origin="_zGvEMGpREeixvo48Yp-OWg" image="_M6c56mpSEeixvo48Yp-OWg"/>
+      <multiMappings xmi:id="_M6c57WpSEeixvo48Yp-OWg" origin="_0YaHcGpREeixvo48Yp-OWg" image="_M6c57GpSEeixvo48Yp-OWg"/>
+      <multiMappings xmi:id="_M6c58WpSEeixvo48Yp-OWg" origin="_0YaHcWpREeixvo48Yp-OWg" image="_M6c58GpSEeixvo48Yp-OWg"/>
+      <multiMappings xmi:id="_M6c582pSEeixvo48Yp-OWg" origin="_4BK94WpREeixvo48Yp-OWg" image="_M6c58mpSEeixvo48Yp-OWg"/>
+      <multiMappings xmi:id="_M6c59mpSEeixvo48Yp-OWg" origin="_1xbI0WpREeixvo48Yp-OWg" image="_M6c59WpSEeixvo48Yp-OWg"/>
+      <multiMappings xmi:id="_M6c5-WpSEeixvo48Yp-OWg" origin="_1xbI0GpREeixvo48Yp-OWg" image="_M6c5-GpSEeixvo48Yp-OWg"/>
+      <multiMappings xmi:id="_M6c5_mpSEeixvo48Yp-OWg" origin="_3AY2UGpREeixvo48Yp-OWg" image="_M6c5_WpSEeixvo48Yp-OWg"/>
+      <multiMappings xmi:id="_M6c6AmpSEeixvo48Yp-OWg" origin="_4BK94GpREeixvo48Yp-OWg" image="_M6c6AWpSEeixvo48Yp-OWg"/>
+      <multiMappings xmi:id="_jYRqc2pVEeixvo48Yp-OWg" origin="_fnI7IWpVEeixvo48Yp-OWg" image="_jYRqcmpVEeixvo48Yp-OWg"/>
+      <multiMappings xmi:id="_jYRqdmpVEeixvo48Yp-OWg" origin="_fnI7IGpVEeixvo48Yp-OWg" image="_jYRqdWpVEeixvo48Yp-OWg"/>
+      <multiMappings xmi:id="_jYRqempVEeixvo48Yp-OWg" origin="_ge_wMWpVEeixvo48Yp-OWg" image="_jYRqeWpVEeixvo48Yp-OWg"/>
+      <multiMappings xmi:id="_jYSRgWpVEeixvo48Yp-OWg" origin="_ge_wMGpVEeixvo48Yp-OWg" image="_jYSRgGpVEeixvo48Yp-OWg"/>
+    </multiRules>
+  </units>
+</henshin:Module>

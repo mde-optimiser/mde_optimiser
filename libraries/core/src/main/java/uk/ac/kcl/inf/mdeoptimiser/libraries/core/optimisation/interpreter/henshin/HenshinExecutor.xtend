@@ -13,6 +13,9 @@ import org.eclipse.emf.henshin.model.ParameterKind
 import org.eclipse.emf.henshin.interpreter.impl.EGraphImpl
 import org.eclipse.emf.henshin.model.HenshinPackage
 import java.util.Arrays
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.evolvers.parameters.EvolverParametersFactory
+import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SolverSpec
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.henshin.engine.HenshinEngineFactory
 
 class HenshinExecutor {
 	
@@ -30,9 +33,9 @@ class HenshinExecutor {
 	List<Unit> mutationOperators;
 	List<Unit> crossoverOperators;
 	
-	new(IEvolverParametersFactory evolverParametersFactory, List<Unit> mutationOperators, List<Unit> crossoverOperators) {
+	new(IEvolverParametersFactory evolverParametersFactory, List<Unit> mutationOperators, List<Unit> crossoverOperators, SolverSpec solverSpec) {
 		
-		this.engine = new EngineImpl
+		this.engine = new HenshinEngineFactory(solverSpec).create
 
 		engine.getOptions().put(Engine.OPTION_DETERMINISTIC, false);
 
@@ -42,6 +45,7 @@ class HenshinExecutor {
 		this.mutationOperators = mutationOperators;
 		this.crossoverOperators = crossoverOperators;
 	}
+
 	
 	def boolean runRuleOperator(Unit operator, EGraph graph, List<Solution> object) {
 

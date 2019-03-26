@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="ASCII"?>
+<myDsl:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:myDsl="http://www.xtext.org/example/mydsl/MyDsl">
+  <hardwareModel>
+    <resourceTypes container="true" name="ComputeNode">
+      <resourceTypes name="CPU">
+        <properties name="frequency" unit="[Hz]"/>
+        <properties name="load" unit="[%]"/>
+      </resourceTypes>
+      <resourceTypes name="RAM" propertyReferences="//@softwareModel/@properties.0 //@softwareModel/@properties.1"/>
+      <resourceTypes name="DISK" propertyReferences="//@softwareModel/@properties.0 //@softwareModel/@properties.1"/>
+      <resourceTypes name="NETWORK">
+        <properties name="latency" unit="[ms]"/>
+        <properties name="throughput" unit="[kB/s]"/>
+      </resourceTypes>
+    </resourceTypes>
+    <resources name="resource0" type="//@hardwareModel/@resourceTypes.0">
+      <resources name="cpu0_0" type="//@hardwareModel/@resourceTypes.0/@resourceTypes.0">
+        <values property="//@hardwareModel/@resourceTypes.0/@resourceTypes.0/@properties.0">
+          <value value="1716.0"/>
+        </values>
+        <values property="//@hardwareModel/@resourceTypes.0/@resourceTypes.0/@properties.1">
+          <value/>
+        </values>
+      </resources>
+      <resources name="ram0" type="//@hardwareModel/@resourceTypes.0/@resourceTypes.1">
+        <values property="//@softwareModel/@properties.0">
+          <value value="8263.0"/>
+        </values>
+        <values property="//@softwareModel/@properties.1">
+          <value value="8263.0"/>
+        </values>
+      </resources>
+      <resources name="disk0" type="//@hardwareModel/@resourceTypes.0/@resourceTypes.2">
+        <values property="//@softwareModel/@properties.0">
+          <value value="8707.0"/>
+        </values>
+        <values property="//@softwareModel/@properties.1">
+          <value value="8707.0"/>
+        </values>
+      </resources>
+      <resources name="network0" type="//@hardwareModel/@resourceTypes.0/@resourceTypes.3">
+        <values property="//@hardwareModel/@resourceTypes.0/@resourceTypes.3/@properties.0">
+          <value value="85.0"/>
+        </values>
+        <values property="//@hardwareModel/@resourceTypes.0/@resourceTypes.3/@properties.1">
+          <value value="33656.0"/>
+        </values>
+      </resources>
+    </resources>
+  </hardwareModel>
+  <softwareModel>
+    <properties name="total" unit="[MB]"/>
+    <properties name="free" unit="[MB]"/>
+    <properties name="energy" unit="[J]"/>
+    <properties name="quality" unit="[%]"/>
+    <parameters name="size"/>
+    <components name="component_0" usedProperties="//@softwareModel/@properties.3 //@softwareModel/@properties.2">
+      <implementations name="implementation_0i0">
+        <resourceRequirements type="//@hardwareModel/@resourceTypes.0">
+          <instance name="compute_resource_0"/>
+          <resourceRequirements type="//@hardwareModel/@resourceTypes.0/@resourceTypes.0">
+            <instance name="cpu_0"/>
+          </resourceRequirements>
+          <resourceRequirements type="//@hardwareModel/@resourceTypes.0/@resourceTypes.1">
+            <instance name="ram_1"/>
+          </resourceRequirements>
+          <resourceRequirements type="//@hardwareModel/@resourceTypes.0/@resourceTypes.2">
+            <instance name="disk_1"/>
+          </resourceRequirements>
+          <resourceRequirements type="//@hardwareModel/@resourceTypes.0/@resourceTypes.3">
+            <instance name="network_1"/>
+          </resourceRequirements>
+        </resourceRequirements>
+        <clauses comp=">=">
+          <LHS instance="//@softwareModel/@components.0/@implementations.0/@resourceRequirements.0/@resourceRequirements.0/@instance" property="//@hardwareModel/@resourceTypes.0/@resourceTypes.0/@properties.0"/>
+          <RHS xsi:type="myDsl:LiteralExpression" value="1715.0"/>
+        </clauses>
+        <clauses comp=">=">
+          <LHS instance="//@softwareModel/@components.0/@implementations.0/@resourceRequirements.0/@resourceRequirements.1/@instance" property="//@softwareModel/@properties.0"/>
+          <RHS xsi:type="myDsl:LiteralExpression" value="8262.0"/>
+        </clauses>
+        <clauses comp=">=">
+          <LHS instance="//@softwareModel/@components.0/@implementations.0/@resourceRequirements.0/@resourceRequirements.2/@instance" property="//@softwareModel/@properties.0"/>
+          <RHS xsi:type="myDsl:LiteralExpression" value="8706.0"/>
+        </clauses>
+        <clauses comp=">=">
+          <LHS instance="//@softwareModel/@components.0/@implementations.0/@resourceRequirements.0/@resourceRequirements.3/@instance" property="//@hardwareModel/@resourceTypes.0/@resourceTypes.3/@properties.1"/>
+          <RHS xsi:type="myDsl:LiteralExpression" value="33655.0"/>
+        </clauses>
+        <clauses type="providing" comp="=">
+          <LHS property="//@softwareModel/@properties.3"/>
+          <RHS xsi:type="myDsl:LiteralExpression" value="16.0"/>
+        </clauses>
+        <clauses type="providing" comp="=">
+          <LHS property="//@softwareModel/@properties.2"/>
+          <RHS xsi:type="myDsl:AddExpression">
+            <left xsi:type="myDsl:MultExpression">
+              <left xsi:type="myDsl:LiteralExpression" value="0.31"/>
+              <right xsi:type="myDsl:PowExpression">
+                <left xsi:type="myDsl:MetaParameterDesignator" metaParameter="//@softwareModel/@parameters.0"/>
+                <right xsi:type="myDsl:LiteralExpression" value="2.0"/>
+              </right>
+            </left>
+            <right xsi:type="myDsl:MultExpression">
+              <left xsi:type="myDsl:LiteralExpression" value="0.12"/>
+              <right xsi:type="myDsl:PropertyDesignator" instance="//@softwareModel/@components.0/@implementations.0/@resourceRequirements.0/@resourceRequirements.0/@instance" property="//@hardwareModel/@resourceTypes.0/@resourceTypes.0/@properties.0"/>
+            </right>
+          </RHS>
+        </clauses>
+      </implementations>
+    </components>
+  </softwareModel>
+  <requests name="request0" component="//@softwareModel/@components.0">
+    <parameterAssignments parameter="//@softwareModel/@parameters.0">
+      <value value="855.0"/>
+    </parameterAssignments>
+    <requirements comp=">=">
+      <LHS property="//@softwareModel/@properties.3"/>
+      <RHS xsi:type="myDsl:LiteralExpression" value="16.0"/>
+    </requirements>
+  </requests>
+  <objective property="//@softwareModel/@properties.2"/>
+</myDsl:Model>

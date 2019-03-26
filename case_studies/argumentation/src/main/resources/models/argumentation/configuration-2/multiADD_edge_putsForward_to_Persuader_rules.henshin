@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_w9dL8TscEeiTGdjXEQrLYA" name="ADD_edge_putsForward_to_Persuader_rules" description="Adds to Persuader edge of type putsForward">
+  <imports href="argumentation.ecore#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_w9dL8jscEeiTGdjXEQrLYA" name="multiAddToPersuader_putsForward_Argument" description="Adds to Persuader's reference putsForward the target Argument">
+    <lhs xmi:id="_w9dzADscEeiTGdjXEQrLYA" name="Lhs">
+      <nodes xmi:id="_w9dzATscEeiTGdjXEQrLYA" name="Selected">
+        <type href="argumentation.ecore#//Persuader"/>
+      </nodes>
+      <nodes xmi:id="_w9dzAjscEeiTGdjXEQrLYA" name="NewTarget">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_yV9ukD5fEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_zSK4ID5fEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_zzL6gD5fEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_0hZEUD5fEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_3jHokD5iEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_37HR0D5iEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_4PcjED5iEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_4jF30D5iEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_5AvdID5iEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+    </lhs>
+    <rhs xmi:id="_w9dzAzscEeiTGdjXEQrLYA" name="Rhs">
+      <nodes xmi:id="_w9dzBDscEeiTGdjXEQrLYA" name="Selected" outgoing="_w9dzBjscEeiTGdjXEQrLYA _1le-kD5fEeiT3Nw02sUsPg _12jgcD5fEeiT3Nw02sUsPg _2F5kAD5fEeiT3Nw02sUsPg _2Uic8D5fEeiT3Nw02sUsPg _6cgQgD5iEeiT3Nw02sUsPg _6uUZQD5iEeiT3Nw02sUsPg _7EkWED5iEeiT3Nw02sUsPg _5vRXED5iEeiT3Nw02sUsPg _5euZoD5iEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Persuader"/>
+      </nodes>
+      <nodes xmi:id="_w9dzBTscEeiTGdjXEQrLYA" name="NewTarget" incoming="_w9dzBjscEeiTGdjXEQrLYA">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_yV9ukT5fEeiT3Nw02sUsPg" incoming="_1le-kD5fEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_zSK4IT5fEeiT3Nw02sUsPg" incoming="_12jgcD5fEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_zzQzAD5fEeiT3Nw02sUsPg" incoming="_2F5kAD5fEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_0hZrYD5fEeiT3Nw02sUsPg" incoming="_2Uic8D5fEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_3jHokT5iEeiT3Nw02sUsPg" incoming="_6cgQgD5iEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_37HR0T5iEeiT3Nw02sUsPg" incoming="_6uUZQD5iEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_4PcjET5iEeiT3Nw02sUsPg" incoming="_7EkWED5iEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_4jF30T5iEeiT3Nw02sUsPg" incoming="_5vRXED5iEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <nodes xmi:id="_5AvdIT5iEeiT3Nw02sUsPg" incoming="_5euZoD5iEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Argument"/>
+      </nodes>
+      <edges xmi:id="_w9dzBjscEeiTGdjXEQrLYA" source="_w9dzBDscEeiTGdjXEQrLYA" target="_w9dzBTscEeiTGdjXEQrLYA">
+        <type href="argumentation.ecore#//Persuader/putsForward"/>
+      </edges>
+      <edges xmi:id="_1le-kD5fEeiT3Nw02sUsPg" source="_w9dzBDscEeiTGdjXEQrLYA" target="_yV9ukT5fEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Persuader/putsForward"/>
+      </edges>
+      <edges xmi:id="_12jgcD5fEeiT3Nw02sUsPg" source="_w9dzBDscEeiTGdjXEQrLYA" target="_zSK4IT5fEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Persuader/putsForward"/>
+      </edges>
+      <edges xmi:id="_2F5kAD5fEeiT3Nw02sUsPg" source="_w9dzBDscEeiTGdjXEQrLYA" target="_zzQzAD5fEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Persuader/putsForward"/>
+      </edges>
+      <edges xmi:id="_2Uic8D5fEeiT3Nw02sUsPg" source="_w9dzBDscEeiTGdjXEQrLYA" target="_0hZrYD5fEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Persuader/putsForward"/>
+      </edges>
+      <edges xmi:id="_6cgQgD5iEeiT3Nw02sUsPg" source="_w9dzBDscEeiTGdjXEQrLYA" target="_3jHokT5iEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Persuader/putsForward"/>
+      </edges>
+      <edges xmi:id="_6uUZQD5iEeiT3Nw02sUsPg" source="_w9dzBDscEeiTGdjXEQrLYA" target="_37HR0T5iEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Persuader/putsForward"/>
+      </edges>
+      <edges xmi:id="_7EkWED5iEeiT3Nw02sUsPg" source="_w9dzBDscEeiTGdjXEQrLYA" target="_4PcjET5iEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Persuader/putsForward"/>
+      </edges>
+      <edges xmi:id="_5vRXED5iEeiT3Nw02sUsPg" source="_w9dzBDscEeiTGdjXEQrLYA" target="_4jF30T5iEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Persuader/putsForward"/>
+      </edges>
+      <edges xmi:id="_5euZoD5iEeiT3Nw02sUsPg" source="_w9dzBDscEeiTGdjXEQrLYA" target="_5AvdIT5iEeiT3Nw02sUsPg">
+        <type href="argumentation.ecore#//Persuader/putsForward"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_w9dzBzscEeiTGdjXEQrLYA" origin="_w9dzATscEeiTGdjXEQrLYA" image="_w9dzBDscEeiTGdjXEQrLYA"/>
+    <mappings xmi:id="_w9dzCDscEeiTGdjXEQrLYA" origin="_w9dzAjscEeiTGdjXEQrLYA" image="_w9dzBTscEeiTGdjXEQrLYA"/>
+    <mappings xmi:id="_yV9ukj5fEeiT3Nw02sUsPg" origin="_yV9ukD5fEeiT3Nw02sUsPg" image="_yV9ukT5fEeiT3Nw02sUsPg"/>
+    <mappings xmi:id="_zSK4Ij5fEeiT3Nw02sUsPg" origin="_zSK4ID5fEeiT3Nw02sUsPg" image="_zSK4IT5fEeiT3Nw02sUsPg"/>
+    <mappings xmi:id="_zzRaED5fEeiT3Nw02sUsPg" origin="_zzL6gD5fEeiT3Nw02sUsPg" image="_zzQzAD5fEeiT3Nw02sUsPg"/>
+    <mappings xmi:id="_0hZrYT5fEeiT3Nw02sUsPg" origin="_0hZEUD5fEeiT3Nw02sUsPg" image="_0hZrYD5fEeiT3Nw02sUsPg"/>
+    <mappings xmi:id="_3jHokj5iEeiT3Nw02sUsPg" origin="_3jHokD5iEeiT3Nw02sUsPg" image="_3jHokT5iEeiT3Nw02sUsPg"/>
+    <mappings xmi:id="_37HR0j5iEeiT3Nw02sUsPg" origin="_37HR0D5iEeiT3Nw02sUsPg" image="_37HR0T5iEeiT3Nw02sUsPg"/>
+    <mappings xmi:id="_4PcjEj5iEeiT3Nw02sUsPg" origin="_4PcjED5iEeiT3Nw02sUsPg" image="_4PcjET5iEeiT3Nw02sUsPg"/>
+    <mappings xmi:id="_4jF30j5iEeiT3Nw02sUsPg" origin="_4jF30D5iEeiT3Nw02sUsPg" image="_4jF30T5iEeiT3Nw02sUsPg"/>
+    <mappings xmi:id="_5AvdIj5iEeiT3Nw02sUsPg" origin="_5AvdID5iEeiT3Nw02sUsPg" image="_5AvdIT5iEeiT3Nw02sUsPg"/>
+  </units>
+</henshin:Module>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ASCII"?>
+<argumentation:ArgumentationFramework xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:argumentation="http://www.kcl.ac.uk/mdeo/argumentation/1.0" xsi:schemaLocation="http://www.kcl.ac.uk/mdeo/argumentation/1.0 argumentation.ecore" hasTopic="//@hasArgument.0">
+  <persuadeeArgumentationFramework hasArgument="//@hasArgument.1 //@hasArgument.2 //@hasArgument.0 //@hasArgument.3 //@hasArgument.4 //@hasArgument.6 //@hasArgument.8">
+    <hasPersuadee/>
+  </persuadeeArgumentationFramework>
+  <persuadeeArgumentationFramework hasArgument="//@hasArgument.1 //@hasArgument.2 //@hasArgument.0 //@hasArgument.4 //@hasArgument.7 //@hasArgument.8 //@hasArgument.11">
+    <hasPersuadee/>
+  </persuadeeArgumentationFramework>
+  <persuadeeArgumentationFramework hasArgument="//@hasArgument.1 //@hasArgument.0 //@hasArgument.4 //@hasArgument.5 //@hasArgument.6 //@hasArgument.8 //@hasArgument.10">
+    <hasPersuadee/>
+  </persuadeeArgumentationFramework>
+  <persuadeeArgumentationFramework hasArgument="//@hasArgument.1 //@hasArgument.2 //@hasArgument.0 //@hasArgument.4 //@hasArgument.5 //@hasArgument.8 //@hasArgument.10">
+    <hasPersuadee/>
+  </persuadeeArgumentationFramework>
+  <persuadeeArgumentationFramework hasArgument="//@hasArgument.1 //@hasArgument.2 //@hasArgument.0 //@hasArgument.5 //@hasArgument.6 //@hasArgument.9 //@hasArgument.10">
+    <hasPersuadee/>
+  </persuadeeArgumentationFramework>
+  <hasPersuader/>
+  <hasArgument name="a"/>
+  <hasArgument attacks="//@hasArgument.0" name="a1"/>
+  <hasArgument attacks="//@hasArgument.8" name="a11"/>
+  <hasArgument attacks="//@hasArgument.1" name="a2"/>
+  <hasArgument attacks="//@hasArgument.0" name="a10"/>
+  <hasArgument attacks="//@hasArgument.3" name="a3"/>
+  <hasArgument attacks="//@hasArgument.3" name="a4"/>
+  <hasArgument attacks="//@hasArgument.1" name="a5"/>
+  <hasArgument attacks="//@hasArgument.1" name="a6"/>
+  <hasArgument attacks="//@hasArgument.7" name="a7"/>
+  <hasArgument attacks="//@hasArgument.1" name="a8"/>
+  <hasArgument attacks="//@hasArgument.7" name="a9"/>
+</argumentation:ArgumentationFramework>

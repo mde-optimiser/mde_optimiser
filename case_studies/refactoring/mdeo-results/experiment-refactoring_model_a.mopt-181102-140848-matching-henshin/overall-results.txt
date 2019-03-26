@@ -1,0 +1,815 @@
+Average experiment time: 00:00:25.907
+
+Average value for Transformations objective: 7.9
+Average value for ContentSize objective: 46.98952380952382
+============================================
+
+============================================
+
+Batch 0 duration: 00:01:07.354
+
+--------------------------------------------
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-0/1269A694.xmi
+
+Objective values:
+ContentSize: 35.5
+Transformations: 2.0
+
+
+Transformations chain:
+Length: 2
+Sequence: pullUpAttribute -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-0/75272F89.xmi
+
+Objective values:
+ContentSize: 25.4
+Transformations: 8.0
+
+
+Transformations chain:
+Length: 8
+Sequence: pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute -> pullUpAttribute -> createRootClass
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-0/675BC34D.xmi
+
+Objective values:
+ContentSize: 32.2
+Transformations: 3.0
+
+
+Transformations chain:
+Length: 3
+Sequence: pullUpAttribute -> pullUpAttribute -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-0/5FFB505D.xmi
+
+Objective values:
+ContentSize: 31.0
+Transformations: 4.0
+
+
+Transformations chain:
+Length: 4
+Sequence: pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> createRootClass
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-0/7D9AB82E.xmi
+
+Objective values:
+ContentSize: 27.700000000000003
+Transformations: 6.0
+
+
+Transformations chain:
+Length: 6
+Sequence: pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-0/310D9B73.xmi
+
+Objective values:
+ContentSize: 28.8
+Transformations: 5.0
+
+
+Transformations chain:
+Length: 5
+Sequence: pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-0/08F577B4.xmi
+
+Objective values:
+ContentSize: 25.5
+Transformations: 7.0
+
+
+Transformations chain:
+Length: 7
+Sequence: pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute -> pullUpAttribute
+
+============================================
+
+Serialized objectives saved to: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-0/batch-0-serialized-objectives.pf
+Serialized objectives saved to: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-0/batch-0-pareto-front.jpeg
+============================================
+============================================
+
+============================================
+
+Batch 1 duration: 00:00:32.205
+
+--------------------------------------------
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-1/5FC02DAD.xmi
+
+Objective values:
+ContentSize: 36.5
+Transformations: 2.0
+
+
+Transformations chain:
+Length: 2
+Sequence: createRootClass -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-1/00F1DB5B.xmi
+
+Objective values:
+ContentSize: 25.4
+Transformations: 9.0
+
+
+Transformations chain:
+Length: 9
+Sequence: createRootClass -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-1/0F1E6816.xmi
+
+Objective values:
+ContentSize: 33.2
+Transformations: 3.0
+
+
+Transformations chain:
+Length: 3
+Sequence: createRootClass -> pullUpAttribute -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-1/606F8AEC.xmi
+
+Objective values:
+ContentSize: 31.0
+Transformations: 5.0
+
+
+Transformations chain:
+Length: 5
+Sequence: createRootClass -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-1/3E1C6E09.xmi
+
+Objective values:
+ContentSize: 28.8
+Transformations: 6.0
+
+
+Transformations chain:
+Length: 6
+Sequence: createRootClass -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-1/30B95192.xmi
+
+Objective values:
+ContentSize: 26.5
+Transformations: 8.0
+
+
+Transformations chain:
+Length: 8
+Sequence: createRootClass -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> createRootClass
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-1/4C1BD14B.xmi
+
+Objective values:
+ContentSize: 27.700000000000003
+Transformations: 7.0
+
+
+Transformations chain:
+Length: 7
+Sequence: createRootClass -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-1/503F1ACE.xmi
+
+Objective values:
+ContentSize: 32.1
+Transformations: 4.0
+
+
+Transformations chain:
+Length: 4
+Sequence: createRootClass -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute
+
+============================================
+
+Serialized objectives saved to: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-1/batch-1-serialized-objectives.pf
+Serialized objectives saved to: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-1/batch-1-pareto-front.jpeg
+============================================
+============================================
+
+============================================
+
+Batch 2 duration: 00:00:29.208
+
+--------------------------------------------
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-2/4D833622.xmi
+
+Objective values:
+ContentSize: 34.400000000000006
+Transformations: 2.0
+
+
+Transformations chain:
+Length: 2
+Sequence: pullUpAttribute -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-2/32251C0E.xmi
+
+Objective values:
+ContentSize: 25.5
+Transformations: 7.0
+
+
+Transformations chain:
+Length: 7
+Sequence: pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-2/48E6BC51.xmi
+
+Objective values:
+ContentSize: 32.1
+Transformations: 3.0
+
+
+Transformations chain:
+Length: 3
+Sequence: pullUpAttribute -> pullUpAttribute -> createRootClass
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-2/381DE7AA.xmi
+
+Objective values:
+ContentSize: 29.9
+Transformations: 4.0
+
+
+Transformations chain:
+Length: 4
+Sequence: pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-2/6C7BE4AD.xmi
+
+Objective values:
+ContentSize: 27.700000000000003
+Transformations: 5.0
+
+
+Transformations chain:
+Length: 5
+Sequence: pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-2/76245040.xmi
+
+Objective values:
+ContentSize: 26.6
+Transformations: 6.0
+
+
+Transformations chain:
+Length: 6
+Sequence: pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute
+
+============================================
+
+Serialized objectives saved to: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-2/batch-2-serialized-objectives.pf
+Serialized objectives saved to: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-2/batch-2-pareto-front.jpeg
+============================================
+============================================
+
+============================================
+
+Batch 3 duration: 00:00:19.665
+
+--------------------------------------------
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-3/3B35CADB.xmi
+
+Objective values:
+ContentSize: 33.3
+Transformations: 2.0
+
+
+Transformations chain:
+Length: 2
+Sequence: pullUpAttribute -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-3/5BFF113A.xmi
+
+Objective values:
+ContentSize: 24.4
+Transformations: 7.0
+
+
+Transformations chain:
+Length: 7
+Sequence: pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-3/509A3412.xmi
+
+Objective values:
+ContentSize: 29.9
+Transformations: 4.0
+
+
+Transformations chain:
+Length: 4
+Sequence: pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> createRootClass
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-3/0682498B.xmi
+
+Objective values:
+ContentSize: 27.700000000000003
+Transformations: 5.0
+
+
+Transformations chain:
+Length: 5
+Sequence: pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-3/13F42892.xmi
+
+Objective values:
+ContentSize: 32.1
+Transformations: 3.0
+
+
+Transformations chain:
+Length: 3
+Sequence: pullUpAttribute -> pullUpAttribute -> createRootClass
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-3/30A18D17.xmi
+
+Objective values:
+ContentSize: 25.5
+Transformations: 6.0
+
+
+Transformations chain:
+Length: 6
+Sequence: pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute -> pullUpAttribute
+
+============================================
+
+Serialized objectives saved to: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-3/batch-3-serialized-objectives.pf
+Serialized objectives saved to: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-3/batch-3-pareto-front.jpeg
+============================================
+============================================
+
+============================================
+
+Batch 4 duration: 00:00:25.900
+
+--------------------------------------------
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-4/4A61B13A.xmi
+
+Objective values:
+ContentSize: 34.3
+Transformations: 2.0
+
+
+Transformations chain:
+Length: 2
+Sequence: pullUpAttribute -> createRootClass
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-4/6962B4C6.xmi
+
+Objective values:
+ContentSize: 26.4
+Transformations: 9.0
+
+
+Transformations chain:
+Length: 9
+Sequence: pullUpAttribute -> extractSuperClass -> pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> createRootClass
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-4/6825CFD4.xmi
+
+Objective values:
+ContentSize: 32.1
+Transformations: 3.0
+
+
+Transformations chain:
+Length: 3
+Sequence: pullUpAttribute -> createRootClass -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-4/7A72990A.xmi
+
+Objective values:
+ContentSize: 29.9
+Transformations: 4.0
+
+
+Transformations chain:
+Length: 4
+Sequence: pullUpAttribute -> createRootClass -> pullUpAttribute -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-4/3D5D1F1F.xmi
+
+Objective values:
+ContentSize: 27.700000000000003
+Transformations: 6.0
+
+
+Transformations chain:
+Length: 6
+Sequence: pullUpAttribute -> createRootClass -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-4/41E548F6.xmi
+
+Objective values:
+ContentSize: 28.8
+Transformations: 5.0
+
+
+Transformations chain:
+Length: 5
+Sequence: pullUpAttribute -> createRootClass -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-4/07786471.xmi
+
+Objective values:
+ContentSize: 26.6
+Transformations: 7.0
+
+
+Transformations chain:
+Length: 7
+Sequence: pullUpAttribute -> createRootClass -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-4/692C175D.xmi
+
+Objective values:
+ContentSize: 26.5
+Transformations: 8.0
+
+
+Transformations chain:
+Length: 8
+Sequence: pullUpAttribute -> extractSuperClass -> pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute
+
+============================================
+
+Serialized objectives saved to: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-4/batch-4-serialized-objectives.pf
+Serialized objectives saved to: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-4/batch-4-pareto-front.jpeg
+============================================
+============================================
+
+============================================
+
+Batch 5 duration: 00:00:28.588
+
+--------------------------------------------
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-5/1A15C3B9.xmi
+
+Objective values:
+ContentSize: 34.3
+Transformations: 2.0
+
+
+Transformations chain:
+Length: 2
+Sequence: pullUpAttribute -> createRootClass
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-5/44D31033.xmi
+
+Objective values:
+ContentSize: 25.5
+Transformations: 7.0
+
+
+Transformations chain:
+Length: 7
+Sequence: pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-5/3B910811.xmi
+
+Objective values:
+ContentSize: 29.9
+Transformations: 4.0
+
+
+Transformations chain:
+Length: 4
+Sequence: pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> createRootClass
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-5/7D9EBE71.xmi
+
+Objective values:
+ContentSize: 32.1
+Transformations: 3.0
+
+
+Transformations chain:
+Length: 3
+Sequence: pullUpAttribute -> createRootClass -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-5/4922B270.xmi
+
+Objective values:
+ContentSize: 27.700000000000003
+Transformations: 5.0
+
+
+Transformations chain:
+Length: 5
+Sequence: pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-5/15AC71EF.xmi
+
+Objective values:
+ContentSize: 26.6
+Transformations: 6.0
+
+
+Transformations chain:
+Length: 6
+Sequence: pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute -> pullUpAttribute
+
+============================================
+
+Serialized objectives saved to: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-5/batch-5-serialized-objectives.pf
+Serialized objectives saved to: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-5/batch-5-pareto-front.jpeg
+============================================
+============================================
+
+============================================
+
+Batch 6 duration: 00:00:19.069
+
+--------------------------------------------
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-6/0493CF6C.xmi
+
+Objective values:
+ContentSize: 33.3
+Transformations: 2.0
+
+
+Transformations chain:
+Length: 2
+Sequence: pullUpAttribute -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-6/539CED4F.xmi
+
+Objective values:
+ContentSize: 26.4
+Transformations: 9.0
+
+
+Transformations chain:
+Length: 9
+Sequence: pullUpAttribute -> pullUpAttribute -> createRootClass -> extractSuperClass -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> createRootClass
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-6/2628F32C.xmi
+
+Objective values:
+ContentSize: 32.1
+Transformations: 3.0
+
+
+Transformations chain:
+Length: 3
+Sequence: pullUpAttribute -> pullUpAttribute -> createRootClass
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-6/63F50440.xmi
+
+Objective values:
+ContentSize: 29.9
+Transformations: 4.0
+
+
+Transformations chain:
+Length: 4
+Sequence: pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-6/79875FFD.xmi
+
+Objective values:
+ContentSize: 27.700000000000003
+Transformations: 6.0
+
+
+Transformations chain:
+Length: 6
+Sequence: pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-6/4DC53317.xmi
+
+Objective values:
+ContentSize: 28.8
+Transformations: 5.0
+
+
+Transformations chain:
+Length: 5
+Sequence: pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-6/2C950810.xmi
+
+Objective values:
+ContentSize: 26.6
+Transformations: 7.0
+
+
+Transformations chain:
+Length: 7
+Sequence: pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-6/6709DEC6.xmi
+
+Objective values:
+ContentSize: 26.5
+Transformations: 8.0
+
+
+Transformations chain:
+Length: 8
+Sequence: pullUpAttribute -> pullUpAttribute -> createRootClass -> extractSuperClass -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute
+
+============================================
+
+Serialized objectives saved to: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-6/batch-6-serialized-objectives.pf
+Serialized objectives saved to: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-6/batch-6-pareto-front.jpeg
+============================================
+============================================
+
+============================================
+
+Batch 7 duration: 00:00:24.006
+
+--------------------------------------------
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-7/6D0C934D.xmi
+
+Objective values:
+ContentSize: 34.400000000000006
+Transformations: 2.0
+
+
+Transformations chain:
+Length: 2
+Sequence: pullUpAttribute -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-7/596132F4.xmi
+
+Objective values:
+ContentSize: 25.5
+Transformations: 7.0
+
+
+Transformations chain:
+Length: 7
+Sequence: pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-7/470FAED8.xmi
+
+Objective values:
+ContentSize: 32.1
+Transformations: 3.0
+
+
+Transformations chain:
+Length: 3
+Sequence: pullUpAttribute -> pullUpAttribute -> createRootClass
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-7/571251BD.xmi
+
+Objective values:
+ContentSize: 29.9
+Transformations: 4.0
+
+
+Transformations chain:
+Length: 4
+Sequence: pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-7/5E8D26E9.xmi
+
+Objective values:
+ContentSize: 27.700000000000003
+Transformations: 5.0
+
+
+Transformations chain:
+Length: 5
+Sequence: pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-7/0EAB595E.xmi
+
+Objective values:
+ContentSize: 26.6
+Transformations: 6.0
+
+
+Transformations chain:
+Length: 6
+Sequence: pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute
+
+============================================
+
+Serialized objectives saved to: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-7/batch-7-serialized-objectives.pf
+Serialized objectives saved to: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-7/batch-7-pareto-front.jpeg
+============================================
+============================================
+
+============================================
+
+Batch 8 duration: 00:00:05.924
+
+--------------------------------------------
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-8/120A6535.xmi
+
+Objective values:
+ContentSize: 34.400000000000006
+Transformations: 2.0
+
+
+Transformations chain:
+Length: 2
+Sequence: pullUpAttribute -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-8/64ED41EE.xmi
+
+Objective values:
+ContentSize: 25.5
+Transformations: 7.0
+
+
+Transformations chain:
+Length: 7
+Sequence: pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-8/06405D98.xmi
+
+Objective values:
+ContentSize: 32.1
+Transformations: 3.0
+
+
+Transformations chain:
+Length: 3
+Sequence: pullUpAttribute -> pullUpAttribute -> createRootClass
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-8/3DEC57C8.xmi
+
+Objective values:
+ContentSize: 29.9
+Transformations: 4.0
+
+
+Transformations chain:
+Length: 4
+Sequence: pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-8/7C0EBE8D.xmi
+
+Objective values:
+ContentSize: 27.700000000000003
+Transformations: 5.0
+
+
+Transformations chain:
+Length: 5
+Sequence: pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-8/726272D3.xmi
+
+Objective values:
+ContentSize: 26.6
+Transformations: 6.0
+
+
+Transformations chain:
+Length: 6
+Sequence: pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute
+
+============================================
+
+Serialized objectives saved to: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-8/batch-8-serialized-objectives.pf
+Serialized objectives saved to: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-8/batch-8-pareto-front.jpeg
+============================================
+============================================
+
+============================================
+
+Batch 9 duration: 00:00:07.155
+
+--------------------------------------------
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-9/412125D0.xmi
+
+Objective values:
+ContentSize: 35.400000000000006
+Transformations: 2.0
+
+
+Transformations chain:
+Length: 2
+Sequence: pullUpAttribute -> createRootClass
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-9/65A306F3.xmi
+
+Objective values:
+ContentSize: 25.4
+Transformations: 8.0
+
+
+Transformations chain:
+Length: 8
+Sequence: pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> createRootClass
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-9/74410F3D.xmi
+
+Objective values:
+ContentSize: 32.2
+Transformations: 3.0
+
+
+Transformations chain:
+Length: 3
+Sequence: pullUpAttribute -> pullUpAttribute -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-9/758B0D9D.xmi
+
+Objective values:
+ContentSize: 31.0
+Transformations: 4.0
+
+
+Transformations chain:
+Length: 4
+Sequence: pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> createRootClass
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-9/3D4CB959.xmi
+
+Objective values:
+ContentSize: 27.700000000000003
+Transformations: 6.0
+
+
+Transformations chain:
+Length: 6
+Sequence: pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-9/4025B49D.xmi
+
+Objective values:
+ContentSize: 28.8
+Transformations: 5.0
+
+
+Transformations chain:
+Length: 5
+Sequence: pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-9/3CE17343.xmi
+
+Objective values:
+ContentSize: 25.5
+Transformations: 7.0
+
+
+Transformations chain:
+Length: 7
+Sequence: pullUpAttribute -> pullUpAttribute -> pullUpAttribute -> createRootClass -> pullUpAttribute -> pullUpAttribute -> pullUpAttribute
+
+============================================
+
+Serialized objectives saved to: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-9/batch-9-serialized-objectives.pf
+Serialized objectives saved to: /home/alxbrd/projects/alxbrd/github/case_studies/refactoring/mdeo/refactoring/mdeo-results/experiment-refactoring_model_a.mopt-181102-140848-matching-henshin/batch-9/batch-9-pareto-front.jpeg
+============================================
+

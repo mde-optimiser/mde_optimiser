@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NRP:NRP xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:NRP="http://model.nrp"
+    xsi:schemaLocation="http://model.nrp ../../models/nrp/nextReleaseProblem.ecore">
+  <customers
+      name="C1"
+      importance="4.0"
+      assigns="//@requirements.0/@valuations.0 //@requirements.1/@valuations.0"/>
+  <availableArtifacts
+      name="SA1"
+      requires="//@availableArtifacts.1"
+      contributesTo="//@requirements.0/@realisations.0"
+      solutions="//@solutions.0">
+    <costs/>
+  </availableArtifacts>
+  <availableArtifacts
+      name="SA2"
+      contributesTo="//@requirements.1/@realisations.0">
+    <costs/>
+  </availableArtifacts>
+  <requirements
+      name="R1">
+    <valuations
+        value="1.0"
+        assignedBy="//@customers.0"/>
+    <realisations
+        dependsOn="//@availableArtifacts.0"/>
+  </requirements>
+  <requirements>
+    <valuations
+        value="1.0"
+        assignedBy="//@customers.0"/>
+    <realisations
+        dependsOn="//@availableArtifacts.1"/>
+  </requirements>
+  <solutions
+      selectedArtifacts="//@availableArtifacts.0"/>
+</NRP:NRP>

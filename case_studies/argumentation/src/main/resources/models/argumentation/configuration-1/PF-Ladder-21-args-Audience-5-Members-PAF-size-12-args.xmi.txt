@@ -1,0 +1,10 @@
+PERSUADER: <{ a, c0, b0, c1, b1, c2, b2, c3, b3, c4, b4, c5, b5, c6, b6, c7, b7, c8, b8, c9, b9 },[(b0,a), (b3,b2), (c4,c3), (b7,c7), (b0,c0), (b4,b3), (c5,c4), (b8,c8), (b1,c1), (b5,b4), (c6,c5), (b9,c9), (c0,a), (b2,c2), (b6,b5), (c7,c6), (b3,c3), (b7,b6), (c8,c7), (c1,c0), (b4,c4), (b8,b7), (c9,c8), (b1,b0), (c2,c1), (b5,c5), (b9,b8), (b2,b1), (c3,c2), (b6,c6)]>
+AUDIENCE:
+	 @<{ c3, a, b4, c5, c6, c7, c8, c0, c1, b0, b1, c2 },[(b0,a), (c6,c5), (c8,c7), (b1,c1), (b1,b0), (c2,c1), (c0,a), (c3,c2), (c7,c6), (c1,c0), (b0,c0)]>
+	 @<{ c3, a, b4, c6, b5, b6, b7, c8, c9, b8, b9, c0 },[(b5,b4), (b7,b6), (b9,c9), (b9,b8), (c0,a), (b6,b5), (b6,c6), (c9,c8), (b8,c8), (b8,b7)]>
+	 @<{ b2, c3, a, c4, b3, c5, b5, c8, b8, b9, c0, b1 },[(c4,c3), (b3,b2), (b3,c3), (b5,c5), (b9,b8), (c0,a), (b2,b1), (c5,c4), (b8,c8)]>
+	 @<{ b2, a, b5, c7, b6, c8, b8, b9, c1, b0, b1, c2 },[(b0,a), (c8,c7), (b9,b8), (b1,c1), (b1,b0), (c2,c1), (b2,c2), (b2,b1), (b6,b5), (b8,c8)]>
+	 @<{ c3, a, c5, b5, c7, b6, c9, b9, c1, b0, c2, b1 },[(b0,a), (b5,c5), (b9,c9), (c2,c1), (b1,c1), (b1,b0), (c3,c2), (b6,b5)]>
+TOPIC: a
+Acceptable topics with the Ground Reasoner: -1.0
+Acceptable topics with the ArgMatSat: -1.0
