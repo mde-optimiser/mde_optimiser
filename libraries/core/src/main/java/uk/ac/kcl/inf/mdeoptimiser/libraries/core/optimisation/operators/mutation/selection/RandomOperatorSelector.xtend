@@ -5,11 +5,16 @@ import java.util.List
 import org.eclipse.emf.henshin.model.Unit
 import java.util.ArrayList
 import java.util.Random
+import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmSpec
+import org.moeaframework.Instrumenter
 
-class RandomOperatorSelector {
+class RandomOperatorSelector implements OperatorSelectionStrategy {
 	
 	HenshinExecutor henshinExecutor;
 	List<Unit> triedOperators;
+	
+	AlgorithmSpec algorithmSpec
+	Instrumenter algorithmStepInstrumenter
 		
 	new(HenshinExecutor henshinExecutor) {
 		this.henshinExecutor = henshinExecutor
@@ -17,25 +22,36 @@ class RandomOperatorSelector {
 	}
 	
 	/**
+	 * Invoked when the search starts.
+	 * 
+	 * @param algorithmSpec configured algorithm spec
+	 * @param algorithmStepInstrumenter algorithm step size instrumenter
+	 */
+	override initialize(AlgorithmSpec algorithmSpec, Instrumenter algorithmStepInstrumenter) {
+		this.algorithmSpec = algorithmSpec;
+		this.algorithmStepInstrumenter = algorithmStepInstrumenter;
+	}
+	
+	/**
 	 * Register a tried operator in the current step.
 	 */
-	def void addTriedOperator(Unit operator) {
+	override void addTriedOperator(Unit operator) {
 		triedOperators.add(operator)
 	}
 	
 	/**
-	 * Check to see if there are any operators that have not yet been tried in this step.
+	 * Check if there are any operators that have not yet been tried in this step.
 	 * 
 	 * @return boolean
 	 */
-	def boolean hasUntriedOperators(){
+	override boolean hasUntriedOperators(){
 		return triedOperators.size < this.henshinExecutor.mutationOperators.size 
 	}
 	
 	/**
 	 * Flush the list of tried operators to start a new step.
 	 */
-	def void flushTriedOperators() {
+	override void flushTriedOperators() {
 		triedOperators.clear()
 	}
 	
@@ -45,7 +61,7 @@ class RandomOperatorSelector {
 	 * 
 	 * @return next untried operator to be applied
 	 */
-	def Unit getNextOperator(){
+	override Unit getNextOperator(){
 		
 		if (this.hasUntriedOperators()) {
 			val remainingOperators = henshinExecutor.mutationOperators.filter[o|!this.triedOperators.contains(o)].toList

@@ -6,6 +6,10 @@ import java.util.Map
 import java.util.HashMap
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmSpec
 
+/**
+ * This class configures the parameters required by each algorithm.
+ * The required and optional parameter are also configured here.
+ */
 class AlgorithmParametersConfiguration {
 
 	Map<String, List<AlgorithmParameter>> cachedAlgorithmParameters 
@@ -33,7 +37,6 @@ class AlgorithmParametersConfiguration {
 			default:
 				throw new UnexpectedAlgorithmException(algorithm.name)
 		}
-
 	}
 
 	private def List<AlgorithmParameter> getNSGAIIParameters(AlgorithmSpec algorithm) {
@@ -43,7 +46,7 @@ class AlgorithmParametersConfiguration {
 		}
 
 		var parameters = getEvolutionaryParameters()
-		parameters.add(new AlgorithmParameter("selection", ""))
+		parameters.add(new AlgorithmParameter("mutation.selection", ""))
 
 		this.cachedAlgorithmParameters.put(algorithm.name, parameters)
 
@@ -52,6 +55,20 @@ class AlgorithmParametersConfiguration {
 
 	/**
 	 * Evolutionary search parameters required by all the evolutionary algorithms.
+	 * The configuration of the algorithm parameters is as follows:
+	 * 
+	 * variation: the type of solution variation, namely mutation only or 
+	 * genetic, consisting of crossover followed by mutation.
+	 * 
+	 * population: the population size of the algorithm
+	 * 
+	 * mutation: the mutation prefix, identifies parameters that are specific only to 
+	 * the mutation parameters
+	 * 
+	 * 	mutation.step: defines the mutation step size strategy (fixed, numeric, strategy based)
+	 * 	mutation.strategy: defines the strategy for applying mutations in a single step (randomly, repetitively)
+	 * 
+	 * The default parameter values are set here, for usage in cases where they are not specified in the DSL.
 	 */
 	private def List<AlgorithmParameter> getEvolutionaryParameters() {
 

@@ -46,7 +46,6 @@ class AdaptiveMutationStepSizeStrategy extends AbstractMutationStepSizeStrategy 
 		return this.maxGenerationsNumber
 	}
 
-
 	def int getAlgorithmPopulation() {
 
 		if (this.populationSize === null) {

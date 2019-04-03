@@ -59,6 +59,8 @@ class RefactoringCaseStudy {
 						variation: mutation
 						mutation.step: 3
 						mutation.strategy: repetitive
+						//Add this in the language
+						mutation.selection: random
 					}
 					termination {
 						delta: 5

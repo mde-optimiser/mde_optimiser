@@ -20,6 +20,9 @@ interface MutationStepSizeStrategy {
 	/**
 	 * Invoked during each step evaluation, when a new mutation needs to be applied and 
 	 * returns a mutation step size.
+	 * 
+	 * @return the next mutation step size
 	 */
 	def int getNextStepSize();
+		 
 }
