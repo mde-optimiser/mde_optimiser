@@ -23,6 +23,7 @@ import uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.metamodel.RuleSpec
 import uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.RulesGenerator
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.executor.UserModelProvider
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.executor.SolutionGenerator
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.MoeaFrameworkAlgorithmConfiguration
 
 class OptimisationInterpreter {
 
@@ -37,167 +38,185 @@ class OptimisationInterpreter {
 
 	Map<EPackage, List<Module>> generatedOperators;
 
-	new (String projectPath, Optimisation model){
+	new(String projectPath, Optimisation model) {
 		this.model = model;
 		this.projectRootPath = new Path(projectPath);
 	}
 
 	def Instrumenter start() {
 
-		//This model provider loads the model given by the user in the DSL
-		var solutionGenerator = new SolutionGenerator(model,
-											getBreedingOperators,
-											getMutationOperators,
-											getModelProvider,
-											getMetamodel);
+		// This model provider loads the model given by the user in the DSL
+		var algorithmConfiguration = new MoeaFrameworkAlgorithmConfiguration(model.solver, this.solutionGenerator)
 
-		return new MoeaOptimisation().execute(model.solver, solutionGenerator)
-		
+		var moeaOptimisation = new MoeaOptimisation();
+
+		return moeaOptimisation.execute(algorithmConfiguration)
+
 	}
 
-	def IModelProvider getModelProvider(){
+	def SolutionGenerator getSolutionGenerator() {
+		return new SolutionGenerator(model, getBreedingOperators, getMutationOperators,
+			getModelProvider, getMetamodel);
+	}
 
-		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(
-    "nrp", new XMIResourceFactoryImpl());
+	def IModelProvider getModelProvider() {
 
-		if(model.problem.modelInitialiser !== null){
-			return new UserModelProvider(getModelInitialiser(), getResourceSet(projectRootPath.append(model.problem.basepath.location).toPortableString), model.problem.model.location)
+		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("nrp", new XMIResourceFactoryImpl());
+
+		if (model.problem.modelInitialiser !== null) {
+			return new UserModelProvider(getModelInitialiser(),
+				getResourceSet(projectRootPath.append(model.problem.basepath.location).toPortableString),
+				model.problem.model.location)
 		}
 
-		return new UserModelProvider(getResourceSet(projectRootPath.append(model.problem.basepath.location).toPortableString), model.problem.model.location)
+		return new UserModelProvider(
+			getResourceSet(projectRootPath.append(model.problem.basepath.location).toPortableString),
+			model.problem.model.location)
 	}
 
-	def IModelInitialiser getModelInitialiser(){
+	def IModelInitialiser getModelInitialiser() {
 
-		if(model.problem.modelInitialiser !== null){
+		if (model.problem.modelInitialiser !== null) {
 			return Class.forName(model.problem.modelInitialiser.initialiser).newInstance() as IModelInitialiser
 		}
 
 	}
 
 	def getResourceSet(String basePath) {
-        if (henshinResourceSet === null) {
+		if (henshinResourceSet === null) {
 
-            henshinResourceSet = new HenshinResourceSet(basePath);
-        }
+			henshinResourceSet = new HenshinResourceSet(basePath);
+		}
 
-        henshinResourceSet
-    }
+		henshinResourceSet
+	}
 
-    def getMetamodel() {
-        if (theMetamodel === null) {
-        	if (!model.problem.metamodel.location.endsWith(".ecore")) {
-        		// The location is not an ecore file, assume it's a class name
-        		val packageInterface = (Class.forName(model.problem.metamodel.location) as Class<EPackage>)
-        		theMetamodel = packageInterface.getDeclaredField("eINSTANCE").get(null) as EPackage
-        	} else {
- 				theMetamodel = getResourceSet(projectRootPath.append(model.problem.basepath.location).toPortableString).registerDynamicEPackages(model.problem.metamodel.location).head
-        	}
-        }
+	def getMetamodel() {
+		if (theMetamodel === null) {
+			if (!model.problem.metamodel.location.endsWith(".ecore")) {
+				// The location is not an ecore file, assume it's a class name
+				val packageInterface = (Class.forName(model.problem.metamodel.location) as Class<EPackage>)
+				theMetamodel = packageInterface.getDeclaredField("eINSTANCE").get(null) as EPackage
+			} else {
+				theMetamodel = getResourceSet(projectRootPath.append(model.problem.basepath.location).toPortableString).
+					registerDynamicEPackages(model.problem.metamodel.location).head
+			}
+		}
 
-        theMetamodel
-    }
+		theMetamodel
+	}
 
-    def getBreedingOperators() {
-    	if(breedingOperators === null){
+	def getBreedingOperators() {
+		if (breedingOperators === null) {
 
 			breedingOperators = new LinkedList
 
-			breedingOperators.addAll(model.search.evolvers.filter[ operator | operator.evolverType.getName.equals("BREED")]
-				.map[ operator | getResourceSet(projectRootPath.append(model.problem.basepath.location).toPortableString).getModule(URI.createURI(operator.rule_location), false).getUnit(operator.unit)]
+			breedingOperators.addAll(
+				model.search.evolvers.filter[operator|operator.evolverType.getName.equals("BREED")].map [ operator |
+					getResourceSet(projectRootPath.append(model.problem.basepath.location).toPortableString).getModule(
+						URI.createURI(operator.rule_location), false).getUnit(operator.unit)
+				]
 			)
 
-    	}
+		}
 
-    	breedingOperators
-    }
+		breedingOperators
+	}
 
-    def getMutationOperators() {
+	def getMutationOperators() {
 
-    	//TODO: Doesn't make sense?
-    	if(mutationOperators === null){
+		// TODO: Doesn't make sense?
+		if (mutationOperators === null) {
 
 			mutationOperators = new LinkedList
 
-			mutationOperators.addAll(model.search.evolvers.filter[ operator | operator.evolverType.getName.equals("MUTATE")]
-				.map[ operator | getResourceSet(projectRootPath.append(model.problem.basepath.location).toPortableString).getModule(URI.createURI(operator.rule_location), false).getUnit(operator.unit)]
+			mutationOperators.addAll(
+				model.search.evolvers.filter[operator|operator.evolverType.getName.equals("MUTATE")].map [ operator |
+					getResourceSet(projectRootPath.append(model.problem.basepath.location).toPortableString).getModule(
+						URI.createURI(operator.rule_location), false).getUnit(operator.unit)
+				]
 			)
 
-    	}
+		}
 
-    	//Automatically generate mutations operators
-    	var generatedMutations = getRulegenOperators();
+		// Automatically generate mutations operators
+		var generatedMutations = getRulegenOperators();
 
-    	if(!generatedMutations.empty){
+		if (!generatedMutations.empty) {
 
-    		//For each of the automatically generated modules, add the generated mutations to the list of evolvers
-    		//Are we ever going to have more than one metamodel? Perhaps this should be a pair instead
+			// For each of the automatically generated modules, add the generated mutations to the list of evolvers
+			// Are we ever going to have more than one metamodel? Perhaps this should be a pair instead
+			var metamodel = generatedMutations.keySet.head;
+			var mutations = generatedMutations.get(metamodel);
 
-    		var metamodel = generatedMutations.keySet.head;
-    		var mutations = generatedMutations.get(metamodel);
+			mutations.forEach [ mutation |
+				mutationOperators.addAll(mutation.allRules)
+			]
+		}
 
-    		mutations.forEach[mutation |
-    			mutationOperators.addAll(mutation.allRules)
-    		]
-    	}
+		mutationOperators
+	}
 
-    	mutationOperators
-    }
+	def List<Multiplicity> getMultiplicityRefinements() {
+		// A list of multiplicity refinements specified by the user in the DSL.
+		// This is optional.
+		var refinements = model.goal.refinements;
 
-    def List<Multiplicity> getMultiplicityRefinements(){
-    	 //A list of multiplicity refinements specified by the user in the DSL.
-    	//This is optional.
-    	var refinements = model.goal.refinements;
+		val multiplicityRefinements = new ArrayList<Multiplicity>();
 
- 		val multiplicityRefinements = new ArrayList<Multiplicity>();
+		if (!refinements.empty) {
+			refinements.forEach [ refinement |
+				multiplicityRefinements.add(
+					new Multiplicity(refinement.node, refinement.edge, refinement.lowerBound, refinement.upperBound,
+						getMetamodel));
+			]
+		}
 
- 		if(!refinements.empty){
- 			refinements.forEach[refinement |
- 				multiplicityRefinements.add(new Multiplicity(refinement.node, refinement.edge, refinement.lowerBound, refinement.upperBound, getMetamodel));
- 			]
- 		}
+		return multiplicityRefinements;
+	}
 
- 		return multiplicityRefinements;
-    }
+	def List<RuleSpec> getRulegenSpecs() {
 
-    def List<RuleSpec> getRulegenSpecs(){
+		var rulegenSpecs = model.search.rulegen;
 
-    	var rulegenSpecs = model.search.rulegen;
+		val ruleSpecs = new ArrayList<RuleSpec>();
 
-    	val ruleSpecs = new ArrayList<RuleSpec>();
+		if (!rulegenSpecs.empty) {
 
- 		if(!rulegenSpecs.empty) {
+			rulegenSpecs.forEach [ rulegenSpec |
 
- 			rulegenSpecs.forEach[rulegenSpec |
+				// Crete the spec for a node or an edge generation
+				if (rulegenSpec.nodeSpec !== null) {
+					ruleSpecs.add(new RuleSpec(rulegenSpec.nodeSpec.node, rulegenSpec.nodeSpec.generationRestriction))
+				} else {
+					ruleSpecs.add(
+						new RuleSpec(rulegenSpec.edgeSpec.node, rulegenSpec.edgeSpec.edge,
+							rulegenSpec.edgeSpec.generationRestriction))
+				}
+			]
+		}
 
- 				//Crete the spec for a node or an edge generation
- 				if(rulegenSpec.nodeSpec !== null){
- 					ruleSpecs.add(new RuleSpec(rulegenSpec.nodeSpec.node, rulegenSpec.nodeSpec.generationRestriction))
- 				} else {
- 					ruleSpecs.add(new RuleSpec(rulegenSpec.edgeSpec.node, rulegenSpec.edgeSpec.edge, rulegenSpec.edgeSpec.generationRestriction))
- 				}
- 			]
- 		}
+		return ruleSpecs;
+	}
 
-    	return ruleSpecs;
-    }
+	/**
+	 * If there are any rule generation instructions present, then generate the corresponding rules.
+	 * @return list of generated mutation operators
+	 */
+	def Map<EPackage, List<Module>> getRulegenOperators() {
 
-    /**
-     * If there are any rule generation instructions present, then generate the corresponding rules.
-     * @return list of generated mutation operators
-     */
-    def Map<EPackage, List<Module>> getRulegenOperators(){
+		if (this.generatedOperators === null) {
+			var multiplicityRefinements = getMultiplicityRefinements();
+			var rulegenSpecs = getRulegenSpecs();
 
- 		if(this.generatedOperators === null){
- 			var multiplicityRefinements = getMultiplicityRefinements();
-	    	var rulegenSpecs = getRulegenSpecs();
+			// Generate the list of modules that are automatically generated
+			var mutations = new RulesGenerator(getMetamodel, multiplicityRefinements, rulegenSpecs);
 
-	  		//Generate the list of modules that are automatically generated
-	    	var mutations = new RulesGenerator(getMetamodel, multiplicityRefinements, rulegenSpecs);
+			this.generatedOperators = mutations.generateRules;
+		}
 
-	    	this.generatedOperators = mutations.generateRules;
- 		}
+		return this.generatedOperators
+	}
 
- 		return this.generatedOperators
-    }
+	
 }
