@@ -4,7 +4,7 @@
 
 
 
-    <target name="dist" depends="render.maven.properties.template, maven.build"/>
+    <target name="dist" depends="maven.build"/>
 
     <target name="maven.build">
         <exec dir="." executable="mvn" failifexecutionfails="true" failonerror="true">
@@ -57,5 +57,4 @@
             </filterchain>
         </copy>
     </target>
-
 </project>
