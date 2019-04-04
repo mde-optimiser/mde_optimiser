@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>uk.ac.kcl.inf.mdeoptimiser</groupId>
 		<artifactId>uk.ac.kcl.inf.mdeoptimiser.parent</artifactId>
-		<version>${global.version}</version>
+		<version>1.0.0-SNAPSHOT</version>
 		<relativePath>../../build/maven/pom.xml</relativePath>
 	</parent>
 	<properties>
@@ -58,19 +58,19 @@
 								<!-- specify your depencies here -->
 								<!-- groupId:artifactId:version -->
 								<artifact>
-									<id>uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext:uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext:${global.version}</id>
+									<id>uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext:uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext:${project.version}</id>
 									<source>true</source>
 								</artifact>
 								<artifact>
-									<id>uk.ac.kcl.inf.mdeoptimiser.interfaces:uk.ac.kcl.inf.mdeoptimiser.interfaces.cli:${global.version}</id>
+									<id>uk.ac.kcl.inf.mdeoptimiser.interfaces:uk.ac.kcl.inf.mdeoptimiser.interfaces.cli:${project.version}</id>
 									<source>true</source>
 								</artifact>
 								<artifact>
-									<id>uk.ac.kcl.inf.mdeoptimiser.libraries:uk.ac.kcl.inf.mdeoptimiser.libraries.core:${global.version}</id>
+									<id>uk.ac.kcl.inf.mdeoptimiser.libraries:uk.ac.kcl.inf.mdeoptimiser.libraries.core:${project.version}</id>
 									<source>true</source>
 								</artifact>
 								<artifact>
-									<id>uk.ac.kcl.inf.mdeoptimiser.libraries:uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen:${global.version}</id>
+									<id>uk.ac.kcl.inf.mdeoptimiser.libraries:uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen:${project.version}</id>
 									<source>true</source>
 								</artifact>
 								<artifact>
@@ -94,17 +94,17 @@
 		<dependency>
 			<groupId>uk.ac.kcl.inf.mdeoptimiser.interfaces</groupId>
 			<artifactId>uk.ac.kcl.inf.mdeoptimiser.interfaces.cli</artifactId>
-			<version>${global.version}</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>uk.ac.kcl.inf.mdeoptimiser.libraries</groupId>
 			<artifactId>uk.ac.kcl.inf.mdeoptimiser.libraries.core</artifactId>
-			<version>${global.version}</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>uk.ac.kcl.inf.mdeoptimiser.libraries</groupId>
 			<artifactId>uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen</artifactId>
-			<version>${global.version}</version>
+			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
 

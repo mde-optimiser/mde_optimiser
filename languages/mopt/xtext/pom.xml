@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>uk.ac.kcl.inf.mdeoptimiser</groupId>
 	  <artifactId>uk.ac.kcl.inf.mdeoptimiser.parent</artifactId>
-		<version>${global.version}</version>
+		<version>1.0.0-SNAPSHOT</version>
 		<relativePath>../../../build/maven/pom.xml</relativePath>
 	</parent>
 
@@ -17,8 +17,18 @@
 	<modules>
 		<module>uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext</module>
 	</modules>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.eclipse.xtext</groupId>
+				<artifactId>xtext-dev-bom</artifactId>
+				<version>${xtextVersion}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<build>
-
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -199,6 +209,7 @@
 			</extension>
 		</extensions>
 	</build>
+
 	<repositories>
 		<repository>
 			<id>codehaus-snapshots</id>

@@ -1,70 +1,38 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext</groupId>
 		<artifactId>uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext.parent</artifactId>
-		<version>${global.version}</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext</artifactId>
 	<packaging>jar</packaging>
 
 	<build>
 		<plugins>
-			
+			<!-- TODO I think this can be removed and the generation is generated 
+				only from eclipse, manually -->
 			<plugin>
 				<groupId>org.eclipse.xtend</groupId>
 				<artifactId>xtend-maven-plugin</artifactId>
 			</plugin>
-			<!-- TODO I think this can be removed and the generation is generated only from eclipse, manually -->
-			<!-- <plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.4.0</version>
-				<executions>
-					<execution>
-						<id>mwe2Launcher</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>java</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<mainClass>org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher</mainClass>
-					<arguments>
-						<argument>/${project.basedir}/src/main/java/uk/ac/kcl/inf/mdeoptimiser/languages/GenerateMopt.mwe2</argument>
-						<argument>-p</argument>
-						<argument>rootPath=/${project.basedir}/..</argument>
-					</arguments>
-					<classpathScope>compile</classpathScope>
-					<includePluginDependencies>false</includePluginDependencies>
-					<cleanupDaemonThreads>false</cleanupDaemonThreads>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-clean-plugin</artifactId>
-				<configuration>
-					<filesets combine.children="append">
-						<fileset>
-							<directory>${basedir}/../uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext/src/main/xtext-gen/</directory>
-							<includes>
-								<include>**/*</include>
-							</includes>
-						</fileset>
-						<fileset>
-							<directory>${basedir}/../uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext/src/test/xtext-gen/</directory>
-							<includes>
-								<include>**/*</include>
-							</includes>
-						</fileset>
-						<fileset>
-							<directory>${basedir}/model/generated/</directory>
-						</fileset>
-					</filesets>
-				</configuration>
-			</plugin>-->
+			<!-- TODO I think this can be removed and the generation is generated 
+				only from eclipse, manually -->
+			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>exec-maven-plugin</artifactId> 
+				<version>1.4.0</version> <executions> <execution> <id>mwe2Launcher</id> <phase>generate-sources</phase> 
+				<goals> <goal>java</goal> </goals> </execution> </executions> <configuration> 
+				<mainClass>org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher</mainClass> <arguments> 
+				<argument>/${project.basedir}/src/main/java/uk/ac/kcl/inf/mdeoptimiser/languages/GenerateMopt.mwe2</argument> 
+				<argument>-p</argument> <argument>rootPath=/${project.basedir}/..</argument> 
+				</arguments> <classpathScope>compile</classpathScope> <includePluginDependencies>false</includePluginDependencies> 
+				<cleanupDaemonThreads>false</cleanupDaemonThreads> </configuration> </plugin> 
+				<plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-clean-plugin</artifactId> 
+				<configuration> <filesets combine.children="append"> <fileset> <directory>${basedir}/../uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext/src/main/xtext-gen/</directory> 
+				<includes> <include>**/*</include> </includes> </fileset> <fileset> <directory>${basedir}/../uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext/src/test/xtext-gen/</directory> 
+				<includes> <include>**/*</include> </includes> </fileset> <fileset> <directory>${basedir}/model/generated/</directory> 
+				</fileset> </filesets> </configuration> </plugin> -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
@@ -174,7 +142,11 @@
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
-			<version>5.1.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -208,7 +180,11 @@
 		<dependency>
 			<groupId>org.eclipse.emf</groupId>
 			<artifactId>org.eclipse.emf.mwe2.launch</artifactId>
-			<version>2.9.1.201705291010</version>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>xtext-antlr-generator</artifactId>
 			<optional>true</optional>
 		</dependency>
 	</dependencies>
