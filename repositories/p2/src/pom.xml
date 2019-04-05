@@ -6,7 +6,7 @@
     <parent>
   		<groupId>uk.ac.kcl.inf.mdeoptimiser</groupId>
   	  <artifactId>uk.ac.kcl.inf.mdeoptimiser.parent</artifactId>
-  		<version>${global.version}</version>
+  		<version>1.0.0-SNAPSHOT</version>
   		<relativePath>../../../build/maven/pom.xml</relativePath>
   	</parent>
 
@@ -59,7 +59,7 @@
             <workingDirectory>${project.basedir}/../../../build/cbiaggr</workingDirectory>
             <arguments>
               <argument>-jar</argument>
-              <argument>${project.basedir}/../../../build/cbiaggr/linux/plugins/org.eclipse.equinox.launcher_1.5.0.v20180207-1446.jar</argument>
+              <argument>${project.basedir}/../../../build/cbiaggr/tool/plugins/org.eclipse.equinox.launcher_1.5.0.v20180207-1446.jar</argument>
               <argument>aggregate</argument>
               <argument>--buildModel</argument>
               <argument>${project.basedir}/uk.ac.kcl.inf.mdeoptimiser.repositories.p2.eclipse/src/uk.ac.kcl.mdeo.repository.p2.eclipse.aggr</argument>
