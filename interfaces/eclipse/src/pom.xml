@@ -27,17 +27,17 @@
 		<module>uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature</module>
 		<module>uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.repository</module>
 	</modules>
-
-
-	<!-- Publish all build artifacts to this repository -->
-  <!--<distributionManagement>
-      <repository>
-        <id>release-repository</id>
-        <url>file:../../../../../repositories/output/p2/p2.mdeoptimiser.repository/</url>
-				<layout>p2</layout>
-      </repository>
-  </distributionManagement>-->
-
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.eclipse.xtext</groupId>
+				<artifactId>xtext-dev-bom</artifactId>
+				<version>${xtextVersion}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<build>
 		<plugins>
 			<plugin>
