@@ -25,7 +25,7 @@
 
     <!-- Maven Builds -->
     <!-- ================================================================== -->
-    <target name="depend.maven">
+    <target name="depend.maven" depends="depend.maven.dependencies">
             <ant dir="${dependencies.basedir}/build/maven" inheritAll="true"/>
     </target>
 
