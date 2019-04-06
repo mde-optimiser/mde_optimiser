@@ -17,14 +17,11 @@ MASTER Build
 
 ## Notes for new build structure
 
+The MDEOptimiser parent pom file is located in the build/maven directory.
+
+The Eclipse plugin parent pom file is dependent on a successfull MDEOptimiser maven build. The pom file for the Eclipse UI is located in the interfaces/eclipse/src directory.
+
 All Maven projects are organised in a single pom file. ANT is used to build these projects first, then the Eclipse interface is built by using the published artifacts from this build.
-
-We separate local and pipeline builds by using a different build number for local builds.
-
-Local builds: YYYY.mm.dd.hhmmss
-
-CI builds: YYYY.mm.dd.build-no
-
 
 Build order:
 

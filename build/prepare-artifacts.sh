@@ -7,7 +7,11 @@ fi
 
 cd ../
 
+echo "Navigating to repository root"
+
 pwd
+
+echo "Remove old website build"
 
 cd website/src/
 

@@ -46,16 +46,16 @@
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 	<unit id="uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext" version="0.0.0"/>
 	<unit id="uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext.source" version="0.0.0"/>
-	<unit id="uk.ac.kcl.inf.mdeoptimiser.interfaces.cli" version="0.0.0" />
-	<unit id="uk.ac.kcl.inf.mdeoptimiser.interfaces.cli.source" version="0.0.0" />
-	<unit id="uk.ac.kcl.inf.mdeoptimiser.libraries.core" version="0.0.0" />
-	<unit id="uk.ac.kcl.inf.mdeoptimiser.libraries.core.source" version="0.0.0" />
-	<unit id="uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen" version="0.0.0" />
-	<unit id="uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.source" version="0.0.0" />
-	<unit id="org.moeaframework" version="0.0.0" />
-	<unit id="org.moeaframework.source" version="0.0.0" />
-	<unit id="com.github.mifmif.generex" version="0.0.0" />
-	<unit id="com.github.mifmif.generex.source" version="0.0.0" />
+	<unit id="uk.ac.kcl.inf.mdeoptimiser.interfaces.cli" version="0.0.0"/>
+	<unit id="uk.ac.kcl.inf.mdeoptimiser.interfaces.cli.source" version="0.0.0"/>
+	<unit id="uk.ac.kcl.inf.mdeoptimiser.libraries.core" version="0.0.0"/>
+	<unit id="uk.ac.kcl.inf.mdeoptimiser.libraries.core.source" version="0.0.0"/>
+	<unit id="uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen" version="0.0.0"/>
+	<unit id="uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.source" version="0.0.0"/>
+	<unit id="org.moeaframework" version="0.0.0"/>
+	<unit id="org.moeaframework.source" version="0.0.0"/>
+	<unit id="com.github.mifmif.generex" version="0.0.0"/>
+	<unit id="com.github.mifmif.generex.source" version="0.0.0"/>
 	<unit id="dk.brics.automaton" version="1.11.0.8"/>
 	<unit id="org.apache.commons.cli" version="1.2.0"/>
 	<unit id="org.apache.commons.codec" version="1.8.0"/>
@@ -64,7 +64,7 @@
 	<unit id="org.jfree.chart" version="1.0.15"/>
 	<unit id="org.jfree.jcommon" version="1.0.21"/>
 	<unit id="org.hamcrest.java-hamcrest" version="2.0.0.0"/>
-	<unit id="org.sidiff.serge" version="0.0.0" />
+	<unit id="org.sidiff.serge" version="0.0.0"/>
 	<repository location="file://home/alxbrd/projects/alxbrd/github/mde_optimiser/repositories/output/p2/p2.mdeoptimiser.repository"/>
 </location>
 </locations>
