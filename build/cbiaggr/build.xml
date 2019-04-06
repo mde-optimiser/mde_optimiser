@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="mopt.xtext" default="default">
+    <import file="../ant/build-common.xml"/>
+
+    <target name="dist" depends="cbiaggr.download"/>
+
+    <target name="cbiaggr.exists" description="Check if CBIAggregator already exists">
+      <!-- Set jar.symlink.notexist to true if ${WORKDIR}/jar symlink does not exist -->
+      <condition property="cbiaggr.file.not.exists">
+        <not>
+            <available file="${dependencies.basedir}/build/cbiaggr/cbiaggr.tar.gz" property="cbiaggr.file.exists" />
+          </not>
+      </condition>
+    </target>
+
+    <target name="cbiaggr.download" depends="cbiaggr.exists" description="Download CBIAggregator" if="cbiaggr.file.not.exists">
+
+      <delete file="${dependencies.basedir}/build/cbiaggr/tool"/>
+
+      <get src="http://download.eclipse.org/cbi/updates/aggregator/headless/4.8/I20180518-0759/headless_I20180518-0759_linux.gtk.x86_64.tar.gz"
+        dest="${dependencies.basedir}/build/cbiaggr/cbiaggr.tar.gz"/>
+
+        <gunzip src="${dependencies.basedir}/build/cbiaggr/cbiaggr.tar.gz"/>
+
+        <untar src="${dependencies.basedir}/build/cbiaggr/cbiaggr.tar"
+          dest="${dependencies.basedir}/build/cbiaggr/"/>
+
+        <move file="cbiAggr" tofile="tool" />
+
+        <delete file="${dependencies.basedir}/build/cbiaggr/cbiaggr.tar"/>
+    </target>
+</project>

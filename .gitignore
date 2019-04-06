@@ -60,5 +60,6 @@ website/src/
 node_modules/
 
 #Ignore CBIAGGR configuration
-build/cbiaggr/
-!build/cbiaggr/build.xml
+build/cbiaggr/tool/
+build/cbiaggr/workspace/
+build/cbiaggr/cbiaggr.tar.gz
