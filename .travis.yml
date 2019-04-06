@@ -25,7 +25,7 @@ before_script:
 script:
     # This bypasses an issue on the travis CI platform where a connection is made through a proxy and
     # the mirror redirection is not handled correctly by one of the parties.
-    - ant build
+    - ant
 
 after_success:
     - bash ../build/publish-artifacts.sh
