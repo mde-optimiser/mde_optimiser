@@ -6,6 +6,6 @@
 	<feature id="uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature.source" version="0.0.0">
 		<category name="main.source"/>
 	</feature>
-	<category-def name="main" label="Mopt"/>
-	<category-def name="main.source" label="Mopt (Sources)"/>
+	<category-def name="main" label="MDEOptimiser"/>
+	<category-def name="main.source" label="MDEOptimiser (Sources)"/>
 </site>

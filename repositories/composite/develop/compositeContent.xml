@@ -6,7 +6,7 @@
     <property name="p2.timestamp" value="1243822502499"/>
   </properties>
  <children size="1">
-    <child location="https://mde-optimiser.github.io/mde_optimiser/downloads/develop/p2/artifacts/eclipse/"/>
+    <child location="https://mde-optimiser.github.io/mde_optimiser/downloads/develop/p2/artifacts/eclipse/repository/"/>
     <child location="https://mde-optimiser.github.io/mde_optimiser/downloads/develop/p2/artifacts/libraries/"/>
   </children>
 </repository>
