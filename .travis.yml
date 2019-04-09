@@ -23,5 +23,5 @@ script:
 
 after_success:
     - cd ../ # Move back to the build directory
-    - bash ../publish-artifacts.sh
+    - bash publish-artifacts.sh
 #    - bash ../publish-website.sh
