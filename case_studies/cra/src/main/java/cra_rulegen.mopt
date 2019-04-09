@@ -13,13 +13,14 @@ search {
 	mutate {"Class"}
 }
 solver {
-	optimisation provider moea algorithm NSGAII variation mutation
-	parameters {
-		population: 100
+	optimisation provider moea algorithm NSGAII {
+		population: 40
+		variation: mutation
+		mutation.step: 3
+		mutation.strategy: random
 	}
 	termination {
-		delta: 5
-		iterations: 100
+		evolutions: 500
 	}
-	batches 10
+	batches 1
 }
