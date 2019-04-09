@@ -7,7 +7,8 @@ fi
 
 echo "Deployment branch detected as $TRAVIS_BRANCH. Deploying code to repositories"
 
-cd ../deploy/
+echo "Setting up ssh keys in directory: "
+pwd
 
 ENCRYPTED_KEY_VAR="encrypted_${ENCRYPTION_LABEL}_key"
 ENCRYPTED_IV_VAR="encrypted_${ENCRYPTION_LABEL}_iv"
@@ -21,7 +22,11 @@ eval `ssh-agent -s`
 chmod 600 deploy_key
 ssh-add deploy_key
 
+
 cd $TRAVIS_BUILD_DIR/..
+
+echo "Preparing to publish to repository: "
+pwd
 
 rm -rf gh-pages
 
@@ -45,13 +50,6 @@ REPO_OUTPUT_MAVEN="$REPO_OUTPUT/maven"
 
 mkdir -p $REPO_OUTPUT_MAVEN
 mv ../mde_optimiser/repositories/output/m2/m2.mdeoptimiser.repository/* $REPO_OUTPUT_MAVEN/
-
-echo "Cleanup cbiaggr files"
-
-rm -rf ../mde_optimiser/repositories/output/p2/p2.eclipse.repository/final/p2.index
-rm -rf ../mde_optimiser/repositories/output/p2/p2.eclipse.repository/final/content.jar
-rm -rf ../mde_optimiser/repositories/output/p2/p2.eclipse.repository/final/artifacts.jar
-mv ../mde_optimiser/repositories/output/p2/p2.eclipse.repository/final/* $REPO_OUTPUT_MAVEN/
 
 echo "Preparing P2 repository for MDEO Libs"
 

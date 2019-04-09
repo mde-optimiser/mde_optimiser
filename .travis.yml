@@ -28,5 +28,5 @@ script:
     - ant
 
 after_success:
-    - bash ../build/publish-artifacts.sh
-    - bash ../build/publish-website.sh
+    - bash ../publish-artifacts.sh
+    - bash ../publish-website.sh
