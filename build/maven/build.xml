@@ -10,6 +10,7 @@
         <exec dir="." executable="mvn" failifexecutionfails="true" failonerror="true">
             <arg value="clean" />
             <arg value="deploy" />
+            <arg value="--quiet" />
         </exec>
     </target>
 
