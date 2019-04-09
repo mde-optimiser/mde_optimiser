@@ -50,7 +50,7 @@
   <repositories>
       <repository>
           <id>p2.eclipse.repository</id>
-          <url>file:${repositories.output.p2.eclipse}/final/</url>
+          <url>https://mde-optimiser.github.io/mdeo_repo/repository/m2/eclipse/2019-03/final/</url>
       </repository>
   </repositories>
   <!-- Load JUnit 5 Bom -->

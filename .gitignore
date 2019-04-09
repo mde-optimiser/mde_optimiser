@@ -58,8 +58,3 @@ languages/mopt/xtext/.antlr-generator-3.2.0-patch.jar
 repositories/output/
 website/src/
 node_modules/
-
-#Ignore CBIAGGR configuration
-build/cbiaggr/tool/
-build/cbiaggr/workspace/
-build/cbiaggr/cbiaggr.tar.gz

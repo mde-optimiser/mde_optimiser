@@ -21,8 +21,8 @@
 
   <properties>
     <maven.build.timestamp.format>yyyy.MM.dd.HHmmss</maven.build.timestamp.format>
-    <build.timestamp>2019.04.06.173113</build.timestamp>
-    <build.branch>ffa74ba</build.branch>
+    <build.timestamp>2019.04.08.205646</build.timestamp>
+    <build.branch>1bc47fb</build.branch>
 	<global.version>1.0.0-SNAPSHOT</global.version>
     <!-- Generate a property with the root path of this project -->
     <!-- This is used as a reference for resolving local repositories -->
@@ -50,7 +50,7 @@
   <repositories>
       <repository>
           <id>p2.eclipse.repository</id>
-          <url>file:${repositories.output.p2.eclipse}/final/</url>
+          <url>https://mde-optimiser.github.io/mdeo_repo/repository/m2/eclipse/2019-03/final/</url>
       </repository>
   </repositories>
   <!-- Load JUnit 5 Bom -->

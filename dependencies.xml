@@ -6,26 +6,9 @@
     <target name="depend.all" depends="depend.maven, depend.eclipse">
     </target>
 
-    <!-- Maven Dependencies Repository Builds -->
-
-    <!-- Download CBI Aggregator CLI -->
-    <target name="depend.maven.cbiaggr">
-      <ant dir="${dependencies.basedir}/build/cbiaggr" inheritAll="true"/>
-    </target>
-    <!--
-    This will download Eclipse Bundles and convert them to maven artifacts.
-
-    These are then deployed to a cached local maven repository.
-
-    The repository is then used by the main maven build.
-   -->
-    <target name="depend.maven.dependencies" depends="depend.maven.cbiaggr">
-            <ant dir="${dependencies.basedir}/repositories/p2" inheritAll="true"/>
-    </target>
-
     <!-- Maven Builds -->
     <!-- ================================================================== -->
-    <target name="depend.maven" depends="depend.maven.dependencies">
+    <target name="depend.maven">
             <ant dir="${dependencies.basedir}/build/maven" inheritAll="true"/>
     </target>
 
