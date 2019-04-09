@@ -23,6 +23,13 @@ var eclipseSrc = "${eclipseProjectPath}/src/"
 var eclipseSrcGen = "${eclipseProjectPath}/src-gen/"
 var eclipseMetaInf = "${eclipseProjectPath}/META-INF"
 
+var eclipseUiTestsProjectName = "uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui.tests"
+var eclipseUiTestsProjectPath = "${rootPath}/../../../interfaces/eclipse/src/${eclipseUiTestsProjectName}"
+var eclipseUiTestsSrc = "${eclipseUiTestsProjectPath}/src/"
+var eclipseUiTestsSrcGen = "${eclipseUiTestsProjectPath}/src-gen/"
+var eclipseUiTestsMetaInf = "${eclipseUiTestsProjectPath}/META-INF"
+
+
 Workflow {
 
 	component = XtextGenerator {
@@ -43,6 +50,15 @@ Workflow {
 					src = eclipseSrc
 					srcGen = eclipseSrcGen
 					metaInf = eclipseMetaInf
+				}
+				
+				eclipsePluginTest = {
+					enabled = true
+					name = eclipseUiTestsProjectName
+					root = eclipseUiTestsProjectPath
+					src = eclipseUiTestsSrc
+					srcGen = eclipseUiTestsSrcGen
+					metaInf = eclipseUiTestsMetaInf
 				}
 
 				// Merge the Generic IDE and UI projects

@@ -25,8 +25,8 @@ Require-Bundle: uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext,
  org.eclipse.jdt.ui,
  org.eclipse.jdt.launching,
  uk.ac.kcl.inf.mdeoptimiser.interfaces.cli,
- uk.ac.kcl.inf.mdeoptimiser.libraries.core;bundle-version="1.0.0",
- uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen;bundle-version="1.0.0",
+ uk.ac.kcl.inf.mdeoptimiser.libraries.core,
+ uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen,
  org.eclipse.emf.common,
  org.eclipse.emf.henshin.interpreter;bundle-version="1.5.0",
  org.eclipse.emf.henshin.model;bundle-version="1.5.0",
@@ -40,7 +40,7 @@ Require-Bundle: uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext,
  org.eclipse.core.resources,
  org.eclipse.core.runtime
 Import-Package: org.apache.log4j
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: uk.ac.kcl.inf.mdeoptimiser.languages.ui.contentassist,
  uk.ac.kcl.inf.mdeoptimiser.languages.ui.quickfix,
  uk.ac.kcl.inf.mdeoptimiser.languages.ui.editor,

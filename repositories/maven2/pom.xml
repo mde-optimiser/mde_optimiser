@@ -18,10 +18,6 @@
 	<artifactId>uk.ac.kcl.inf.mdeoptimiser.repositories.maven</artifactId>
 	<packaging>pom</packaging>
 
-	<!-- <dependencyManagement> <dependencies> <dependency> <groupId>uk.ac.kcl.inf.mdeoptimiser.languages</groupId>
-		<artifactId>uk.ac.kcl.inf.mdeoptimiser.languages.parent</artifactId> <type>pom</type>
-		<version>${revision}</version> <scope>import</scope> </dependency> </dependencies>
-		</dependencyManagement> -->
 	<build>
 		<plugins>
 			<plugin>
@@ -60,26 +56,57 @@
 								<artifact>
 									<id>uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext:uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext:${project.version}</id>
 									<source>true</source>
+									    <instructions>
+										<Import-Package>*;resolution:=optional</Import-Package>
+										<Export-Package>*</Export-Package>
+										<!-- TODO check if the PR has been merged in reficio to fix this properly -->
+										<Require-Capability>osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version=1.8))</Require-Capability>
+									    </instructions>
 								</artifact>
 								<artifact>
 									<id>uk.ac.kcl.inf.mdeoptimiser.interfaces:uk.ac.kcl.inf.mdeoptimiser.interfaces.cli:${project.version}</id>
 									<source>true</source>
+																		    <instructions>
+										<Import-Package>*;resolution:=optional</Import-Package>
+										<Export-Package>*</Export-Package>
+										<Require-Capability>osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version=1.8))</Require-Capability>
+									    </instructions>
 								</artifact>
 								<artifact>
 									<id>uk.ac.kcl.inf.mdeoptimiser.libraries:uk.ac.kcl.inf.mdeoptimiser.libraries.core:${project.version}</id>
 									<source>true</source>
+																		    <instructions>
+										<Import-Package>*;resolution:=optional</Import-Package>
+										<Export-Package>*</Export-Package>
+										<Require-Capability>osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version=1.8))</Require-Capability>
+									    </instructions>
 								</artifact>
 								<artifact>
 									<id>uk.ac.kcl.inf.mdeoptimiser.libraries:uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen:${project.version}</id>
 									<source>true</source>
+																		    <instructions>
+										<Import-Package>*;resolution:=optional</Import-Package>
+										<Export-Package>*</Export-Package>
+										<Require-Capability>osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version=1.8))</Require-Capability>
+									    </instructions>
 								</artifact>
 								<artifact>
 									<id>org.moeaframework:moeaframework:2.12</id>
 									<source>true</source>
+																		    <instructions>
+										<Import-Package>*;resolution:=optional</Import-Package>
+										<Export-Package>*</Export-Package>
+										<Require-Capability>osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version=1.8))</Require-Capability>
+									    </instructions>
 								</artifact>
 								<artifact>
 									<id>org.hamcrest:java-hamcrest:2.0.0.0</id>
 									<source>true</source>
+																		    <instructions>
+										<Import-Package>*;resolution:=optional</Import-Package>
+										<Export-Package>*</Export-Package>
+										<Require-Capability>osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version=1.8))</Require-Capability>
+									    </instructions>
 								</artifact>
 							</artifacts>
 						</configuration>

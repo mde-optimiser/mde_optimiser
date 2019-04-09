@@ -12,26 +12,20 @@ MASTER Build
 
 ![MASTER branch build status](https://travis-ci.org/mde-optimiser/mde_optimiser.svg?branch=master)
 
-
-
-
 ## Notes for new build structure
+
+The MDEOptimiser parent pom file is located in the build/maven directory. Navigate to this directory to import the code into eclipse.
+
+The Eclipse plugin parent pom file is dependent on a successfull MDEOptimiser maven build. The pom file for the Eclipse UI is located in the interfaces/eclipse/src directory.
 
 All Maven projects are organised in a single pom file. ANT is used to build these projects first, then the Eclipse interface is built by using the published artifacts from this build.
 
-We separate local and pipeline builds by using a different build number for local builds.
-
-Local builds: YYYY.mm.dd.hhmmss
-
-CI builds: YYYY.mm.dd.build-no
-
-
 Build order:
 
-1. Eclipse bundles are converted to a maven repository stored in the repositories/output directory
-2. Maven projects are compiled and deployed to a maven repository. Eclipse bundles are loaded as a maven repository from the repositories/output directory
-3. The maven repository is converted to a P2 repository and the output is stored in repositories/output
-4. The Eclipse projects are built. Maven artifacts are loaded as Eclipse bundles from the P2 repository.
+1. Maven projects are compiled and deployed to a maven repository. Eclipse bundles are loaded as a maven repository from the repositories/output directory
+2. The maven repository is converted to a P2 repository and the output is stored in repositories/output
+3. The Eclipse projects are built. Maven artifacts are loaded as Eclipse bundles from the P2 repository.
+
 
 ## To create a new project
 
