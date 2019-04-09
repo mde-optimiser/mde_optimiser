@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>uk.ac.kcl.inf.mdeoptimiser.libraries</groupId>
+  <artifactId>uk.ac.kcl.inf.mdeoptimiser.libraries.core</artifactId>
+  <versioning>
+    <versions>
+      <version>1.0.0-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20190409191630</lastUpdated>
+  </versioning>
+</metadata>
