@@ -58,9 +58,11 @@ class ParameterSearchTests {
 				optimisation provider moea algorithm NSGAII {
 					population: 40
 					variation: mutation
+					mutation.step: 3
+					mutation.strategy: random
 				}
 				termination {
-					evolutions: 100
+					evolutions: 500
 				}
 				batches 1
 			}
@@ -85,7 +87,7 @@ class ParameterSearchTests {
 
 			var parameterSearch = new ParameterSearch();
 
-			parameterSearch.search(moeaOptimisationConfiguration)
+			parameterSearch.search(model, optimisationInterpreter.solutionGenerator)
 
 			val optimisationOutcome = optimisationInterpreter.start
 

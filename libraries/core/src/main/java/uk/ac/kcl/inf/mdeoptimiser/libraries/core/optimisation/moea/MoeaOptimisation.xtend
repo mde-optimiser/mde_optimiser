@@ -37,13 +37,12 @@ class MoeaOptimisation implements IOptimisationExecutor {
 			.withProblemClass(MoeaOptimisationProblem, moeaFrameworkAlgorithmConfiguration.solutionGenerator)
 			.withProperties(moeaFrameworkAlgorithmConfiguration.properties)
 			.withInstrumenter(algorithmStepInstrumenter)// .distributeOnAllCores() //Leave this on for now. Should perhaps be configurable
-		    .withTerminationCondition(moeaFrameworkAlgorithmConfiguration.terminationCondition)
+		    .withTerminationCondition(moeaFrameworkAlgorithmConfiguration.getTerminationCondition)
 		    .run()
 
 		return algorithmStepInstrumenter;
 
 	}
-
 
 	def Instrumenter getAlgorithmStepInstrumenter(SolutionGenerator solutionGenerator) {
 		return new Instrumenter()
@@ -53,6 +52,7 @@ class MoeaOptimisation implements IOptimisationExecutor {
 			.attachPopulationSizeCollector
 			.attach(new PopulationCollector())
 			.withFrequency(1)
+			.addExcludedPackage("jdk")
 			.withFrequencyType(PeriodicAction.FrequencyType.STEPS)
 	}	
 }
