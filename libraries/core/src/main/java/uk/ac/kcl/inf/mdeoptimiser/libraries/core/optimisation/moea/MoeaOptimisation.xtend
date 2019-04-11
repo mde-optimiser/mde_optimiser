@@ -72,6 +72,10 @@ class MoeaOptimisation implements IOptimisationExecutor {
 		
 		this.solutionGenerator.setMutationStepSizeStrategy(stepSizeStrategy)
 		
+		//TODO: Place this in a better location. 
+		//Exclude JDK packages from Instrumenter
+		this.algorithmStepSizeInstrumenter.addExcludedPackage("jdk")
+		
 		new Executor()
 		   .usingAlgorithmFactory(algorithmFactory)
 	       .withAlgorithm(solverSpec.algorithm.name)

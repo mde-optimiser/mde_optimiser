@@ -91,7 +91,7 @@
 									    </instructions>
 								</artifact>
 								<artifact>
-									<id>org.moeaframework:moeaframework:2.12</id>
+									<id>org.moeaframework:moeaframework:2.13.beta</id>
 									<source>true</source>
 																		    <instructions>
 										<Import-Package>*;resolution:=optional</Import-Package>
