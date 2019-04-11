@@ -12,6 +12,15 @@ MASTER Build
 
 ![MASTER branch build status](https://travis-ci.org/mde-optimiser/mde_optimiser.svg?branch=master)
 
+### Installation URLs
+
+Use Eclipse Version 2019-03
+
+Eclipse Development Version:
+http://mde-optimiser.github.io/mde_optimiser/downloads/p2/develop/
+
+
+
 ## Notes for new build structure
 
 The MDEOptimiser parent pom file is located in the build/maven directory. Navigate to this directory to import the code into eclipse.

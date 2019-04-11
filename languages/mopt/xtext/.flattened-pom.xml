@@ -22,5 +22,9 @@
       <id>p2.eclipse.repository</id>
       <url>https://mde-optimiser.github.io/mdeo_repo/repository/m2/eclipse/2019-03/final/</url>
     </repository>
+    <repository>
+      <id>m2.moeaframework</id>
+      <url>https://mde-optimiser.github.io/mdeo_repo/repository/m2/moeaframework/</url>
+    </repository>
   </repositories>
 </project>
