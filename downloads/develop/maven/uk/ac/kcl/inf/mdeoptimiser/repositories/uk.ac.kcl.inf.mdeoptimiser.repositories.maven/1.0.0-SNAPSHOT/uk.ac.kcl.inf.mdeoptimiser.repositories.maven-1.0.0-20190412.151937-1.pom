@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001 XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>uk.ac.kcl.inf.mdeoptimiser</groupId>
+		<artifactId>uk.ac.kcl.inf.mdeoptimiser.parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../../build/maven/pom.xml</relativePath>
+	</parent>
+	<properties>
+		<destinationDirectory>${repositories.output.p2.mdeoptimiser}</destinationDirectory>
+	</properties>
+
+	<groupId>uk.ac.kcl.inf.mdeoptimiser.repositories</groupId>
+	<artifactId>uk.ac.kcl.inf.mdeoptimiser.repositories.maven</artifactId>
+	<packaging>pom</packaging>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>3.1.0</version>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>${destinationDirectory}</directory>
+							<includes>
+								<include>**/*</include>
+							</includes>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.reficio</groupId>
+				<artifactId>p2-maven-plugin</artifactId>
+				<version>1.3.0</version>
+				<executions>
+					<execution>
+						<id>default-cli</id>
+						<phase>package</phase>
+						<goals>
+							<goal>site</goal>
+						</goals>
+						<configuration>
+							<destinationDirectory>${destinationDirectory}</destinationDirectory>
+							<!-- Make sure this is on the same line. Autoformatting the xml file breaks the repo path -->
+							<additionalArgs>-artifactRepository file:${destinationDirectory} -metadataRepository file:${destinationDirectory}</additionalArgs>
+							<generateSourceFeature>true</generateSourceFeature>
+
+							<artifacts>
+								<!-- specify your depencies here -->
+								<!-- groupId:artifactId:version -->
+								<artifact>
+									<id>uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext:uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext:${project.version}</id>
+									<source>true</source>
+									<instructions>
+										<Import-Package>*;resolution:=optional</Import-Package>
+										<Export-Package>*</Export-Package>
+										<!-- TODO check if the PR has been merged in reficio to fix this 
+											properly -->
+										<Require-Capability>osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version=1.8))</Require-Capability>
+									</instructions>
+								</artifact>
+								<artifact>
+									<id>uk.ac.kcl.inf.mdeoptimiser.interfaces:uk.ac.kcl.inf.mdeoptimiser.interfaces.cli:${project.version}</id>
+									<source>true</source>
+									<instructions>
+										<Import-Package>*;resolution:=optional</Import-Package>
+										<Export-Package>*</Export-Package>
+										<Require-Capability>osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version=1.8))</Require-Capability>
+									</instructions>
+								</artifact>
+								<artifact>
+									<id>uk.ac.kcl.inf.mdeoptimiser.libraries:uk.ac.kcl.inf.mdeoptimiser.libraries.core:${project.version}</id>
+									<source>true</source>
+									<instructions>
+										<Import-Package>*;resolution:=optional</Import-Package>
+										<Export-Package>*</Export-Package>
+										<Require-Capability>osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version=1.8))</Require-Capability>
+									</instructions>
+								</artifact>
+								<artifact>
+									<id>uk.ac.kcl.inf.mdeoptimiser.libraries:uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen:${project.version}</id>
+									<source>true</source>
+									<instructions>
+										<Import-Package>*;resolution:=optional</Import-Package>
+										<Export-Package>*</Export-Package>
+										<Require-Capability>osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version=1.8))</Require-Capability>
+									</instructions>
+								</artifact>
+								<artifact>
+									<id>org.moeaframework:moeaframework:2.13.beta</id>
+									<source>true</source>
+									<instructions>
+										<Import-Package>*;resolution:=optional</Import-Package>
+										<Export-Package>*</Export-Package>
+										<Require-Capability>osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version=1.8))</Require-Capability>
+									</instructions>
+								</artifact>
+								<artifact>
+									<id>org.hamcrest:java-hamcrest:2.0.0.0</id>
+									<source>true</source>
+									<instructions>
+										<Import-Package>*;resolution:=optional</Import-Package>
+										<Export-Package>*</Export-Package>
+										<Require-Capability>osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version=1.8))</Require-Capability>
+									</instructions>
+								</artifact>
+							</artifacts>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	<!-- Add deps here to avoid this build being executed before the required 
+		jars are available -->
+	<dependencies>
+		<dependency>
+			<groupId>uk.ac.kcl.inf.mdeoptimiser.interfaces</groupId>
+			<artifactId>uk.ac.kcl.inf.mdeoptimiser.interfaces.cli</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>uk.ac.kcl.inf.mdeoptimiser.libraries</groupId>
+			<artifactId>uk.ac.kcl.inf.mdeoptimiser.libraries.core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>uk.ac.kcl.inf.mdeoptimiser.libraries</groupId>
+			<artifactId>uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+
+</project>
