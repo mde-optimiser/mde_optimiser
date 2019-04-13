@@ -174,5 +174,7 @@ class MoptParsingTest {
 		''')
 		Assertions.assertNotNull(result)
 		result.assertNoErrors() 
+		result.assertNoIssues
 	}
+	
 }

@@ -46,7 +46,6 @@ class AlgorithmParametersConfiguration {
 		}
 
 		var parameters = getEvolutionaryParameters()
-		parameters.add(new AlgorithmParameter("mutation.selection", ""))
 
 		this.cachedAlgorithmParameters.put(algorithm.name, parameters)
 
@@ -78,6 +77,8 @@ class AlgorithmParametersConfiguration {
 		parameters.add(new AlgorithmParameter("population"))
 		parameters.add(new AlgorithmParameter("mutation.step", "fixed"))
 		parameters.add(new AlgorithmParameter("mutation.strategy", "random"))
+		
+		parameters.add(new AlgorithmParameter("mutation.selection", ""))
 		return parameters
 	}
 }
