@@ -10,7 +10,6 @@ import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.algorithms.Mo
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.instrumentation.PopulationCollector
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.problem.MoeaOptimisationProblem
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.adaptation.MutationStepSizeStrategyFactory
-import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SolverSpec
 
 class MoeaOptimisation implements IOptimisationExecutor {
 
@@ -19,11 +18,9 @@ class MoeaOptimisation implements IOptimisationExecutor {
 	 * 
 	 * @return instrumenter containing 
 	 */
-	override Instrumenter execute(MoeaFrameworkAlgorithmConfiguration moeaFrameworkAlgorithmConfiguration){
+	override SearchResult execute(MoeaFrameworkAlgorithmConfiguration moeaFrameworkAlgorithmConfiguration){
 
-		val algorithmFactory = new AlgorithmFactory();
-		algorithmFactory.addProvider(new MoeaOptimisationAlgorithmProvider)
-
+		val algorithmFactory = getAlgorithmFactory()
 		var algorithmStepInstrumenter = getAlgorithmStepInstrumenter(moeaFrameworkAlgorithmConfiguration.solutionGenerator)
 
 		var stepSizeStrategy = new MutationStepSizeStrategyFactory(
@@ -38,12 +35,29 @@ class MoeaOptimisation implements IOptimisationExecutor {
 			.withProperties(moeaFrameworkAlgorithmConfiguration.properties)
 			.withInstrumenter(algorithmStepInstrumenter)// .distributeOnAllCores() //Leave this on for now. Should perhaps be configurable
 		    .withTerminationCondition(moeaFrameworkAlgorithmConfiguration.getTerminationCondition)
-		    .run()
-
-		return algorithmStepInstrumenter;
-
+		    .run();
+		
+		return new SearchResult(moeaFrameworkAlgorithmConfiguration, algorithmStepInstrumenter)
+	}
+	
+	/**
+	 * Initialise the algorithm factory and register the MDEO algorithm provider in MOEAFramework.
+	 * 
+	 * @return algorithmFactory object containing the MDEO algorithm provider
+	 */
+	def AlgorithmFactory getAlgorithmFactory() {
+		
+		val algorithmFactory = new AlgorithmFactory();
+		algorithmFactory.addProvider(new MoeaOptimisationAlgorithmProvider)
+		
+		return algorithmFactory;
 	}
 
+	/**
+	 * Initialise an algorithm instrumenter with step frequency to log each algorithm operation.
+	 * 
+	 * @return instrumenter instance used to collect run information
+	 */
 	def Instrumenter getAlgorithmStepInstrumenter(SolutionGenerator solutionGenerator) {
 		return new Instrumenter()
 			.withProblemClass(MoeaOptimisationProblem, solutionGenerator)
@@ -53,6 +67,8 @@ class MoeaOptimisation implements IOptimisationExecutor {
 			.attach(new PopulationCollector())
 			.withFrequency(1)
 			.addExcludedPackage("jdk")
+			//TODO Leaving this out throws a concurrent modification error.
+			.addExcludedPackage("org.eclipse.emf.common.util")
 			.withFrequencyType(PeriodicAction.FrequencyType.STEPS)
 	}	
 }

@@ -181,6 +181,11 @@ public class MoptAdapterFactory extends AdapterFactoryImpl
         return createTerminationConditionSpecAdapter();
       }
       @Override
+      public Adapter caseParameterSearchSpec(ParameterSearchSpec object)
+      {
+        return createParameterSearchSpecAdapter();
+      }
+      @Override
       public Adapter caseParameter(Parameter object)
       {
         return createParameterAdapter();
@@ -523,6 +528,21 @@ public class MoptAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createTerminationConditionSpecAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterSearchSpec <em>Parameter Search Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterSearchSpec
+   * @generated
+   */
+  public Adapter createParameterSearchSpecAdapter()
   {
     return null;
   }

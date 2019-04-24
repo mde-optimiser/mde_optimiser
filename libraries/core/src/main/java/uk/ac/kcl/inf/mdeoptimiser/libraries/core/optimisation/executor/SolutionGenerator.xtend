@@ -62,7 +62,6 @@ class SolutionGenerator {
 		}
 
 		return this.mutationStrategy
-
 	}
 
 	def getCrossoverStrategy() {

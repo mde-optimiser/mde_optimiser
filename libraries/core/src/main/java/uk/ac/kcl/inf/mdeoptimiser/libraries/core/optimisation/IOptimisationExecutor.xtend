@@ -1,7 +1,7 @@
 package uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation
 
-import org.moeaframework.Instrumenter
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.MoeaFrameworkAlgorithmConfiguration
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.SearchResult
 
 interface IOptimisationExecutor {
 	
@@ -10,5 +10,5 @@ interface IOptimisationExecutor {
 	 * Maybe this should also include population information, such as objective values.
 	 * TODO Look at MOEA Instrumentation?
 	 */
-	def Instrumenter execute(MoeaFrameworkAlgorithmConfiguration moeaFrameworkAlgorithmConfiguration);
+	def SearchResult execute(MoeaFrameworkAlgorithmConfiguration moeaFrameworkAlgorithmConfiguration);
 }

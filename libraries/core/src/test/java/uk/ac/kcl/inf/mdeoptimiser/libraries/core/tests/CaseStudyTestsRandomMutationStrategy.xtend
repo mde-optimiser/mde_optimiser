@@ -109,7 +109,6 @@ class CaseStudyTestsRandomMutationStrategy {
 		runTestSearch(model, testInfo)
 	}
 	
-	
 	@Test
 	def void craRulegenMutationStepSizeFixedStrategyA(TestInfo testInfo) {
 

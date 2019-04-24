@@ -22,6 +22,13 @@ import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output.descriptors
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output.descriptors.AccumulatorSerialiser
 import java.nio.file.Path
 import java.nio.file.Paths
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output.descriptors.SystemInformationDescriptor
+import uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter.saver.MDEOParameterSearchResult
+import uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter.MDEOHyperparametersConfiguration
+import org.deeplearning4j.arbiter.optimize.api.OptimizationResult
+import org.moeaframework.analysis.collector.Accumulator
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.SearchResult
+import java.util.Map
 
 class MDEOResultsOutput {
 	
@@ -55,16 +62,14 @@ class MDEOResultsOutput {
 	def void saveOutcome(Integer customBatch){
 		
 		//When running custom batches no date is needed
-
-		
-		var outcomePath = Paths.get(projectRoot.toString, String.format("mdeo-results/experiment-%s-matching-%s/", 
-			moptFile.last, this.matchingType
+		var outcomePath = Paths.get(projectRoot.toString, String.format("mdeo-results/experiment-%s/", 
+			moptFile.last
 		));
 		
 		if(customBatch === null) {
 			val experimentDate = new SimpleDateFormat("yyMMdd-HHmmss").format(experimentStartTime);
-			outcomePath = Paths.get(projectRoot.toString, String.format("mdeo-results/experiment-%s-%s-matching-%s/", 
-				moptFile.last, experimentDate, this.matchingType
+			outcomePath = Paths.get(projectRoot.toString, String.format("mdeo-results/experiment-%s-%s/", 
+				moptFile.last, experimentDate
 			));
 		}
 		
@@ -90,7 +95,7 @@ class MDEOResultsOutput {
 	
 		if(customBatch === null) {
 			outputExperimentSummary(batches, outcomePath, moptFile, batchesOutput)
-		}	
+		}
 	}
 	
 	def void outputExperimentSummary(List<MDEOBatch> batches, Path outcomePath, Path moptFile, StringBuilder batchesOutput){
@@ -130,13 +135,11 @@ class MDEOResultsOutput {
 		infoWriter.println(String.format("Average experiment time: %s", formatter.format(averageTime)))
 		infoWriter.println()
 		
-		//If configuration has one objective only then show an average
-		//if(batches.head.solutions.head.objectives.length == 1){
-			averageObjectiveValues.forEach[p1, p2|
-				infoWriter.println(String.format("Average value for %s objective: %s", p1, averageObjectiveValues.get(p1)/batches.size))
-			]
-		//}
-		
+		//TODO Remove or replace this with something more telling about the overall results	
+		averageObjectiveValues.forEach[p1, p2|
+			infoWriter.println(String.format("Average value for %s objective: %s", p1, averageObjectiveValues.get(p1)/batches.size))
+		]
+	
 		infoWriter.println(batchesOutput.toString)
 		
 		infoWriter.close
@@ -145,13 +148,6 @@ class MDEOResultsOutput {
 			Files.copy(new File(moptFile.toAbsolutePath.toString), 
 				new File(Paths.get(outcomePath.toString, moptFile.last.toString).toString))
 		}
-	}
-	
-	def String getMatchingType(){
-		if(this.classicRuleMatchingEnabled){
-			return "classic"
-		}
-		return "henshin"
 	}
 	
 	/**
@@ -171,8 +167,53 @@ class MDEOResultsOutput {
 		//descriptors.add(new HypervolumeDescriptor())
 		descriptors.add(new ExperimentCSVSerializer())
 		descriptors.add(new AccumulatorSerialiser())
-		
+		descriptors.add(new SystemInformationDescriptor())
 		return descriptors;
+	}
+	
+	//TODO Split this from the normal run results
+	def saveParameterSearchOutcome(MDEOParameterSearchResult outcome) {
+		
+		val infoWriter = new PrintWriter(Paths.get(outcome.parameterSearchOutputPath, "overall-results.txt").toFile)
+		
+		infoWriter.println("Parameter search results")
+		infoWriter.println()
+		infoWriter.println("Number of configurations evaluated: " + outcome.numberOfCandidatesCompleted)
+		
+		infoWriter.println("Best candidate")
+		infoWriter.println("============================================")
+		describeResult(infoWriter, outcome.bestResultReference.result)
+		infoWriter.println
+		
+		infoWriter.println("All candidates")
+		infoWriter.println("============================================")
+		outcome.resultReferences.forEach[ resultReference | 
+			describeResult(infoWriter, resultReference.result)
+		]
+		
+		infoWriter.close()
+	}
+	
+	def void describeResult(PrintWriter printWriter, OptimizationResult result) {
+		
+		var mdeoCandidate = result.resultReference.resultModel as MDEOHyperparametersConfiguration
+		var mdeoBatchResults = result.modelSpecificResults as Map<Integer, SearchResult>
+		
+		printWriter.println(String.format("Candidate id: %s", result.index))
+		printWriter.println(String.format("Candidate score: %s", result.score))
+		printWriter.println(String.format("Evolutions parameter: %s", mdeoCandidate.evolutions))
+		printWriter.println(String.format("Populations parameter: %s", mdeoCandidate.populationSize))
+		printWriter.println(String.format("Total runtime: %s", getCandidateRuntime(result)))
+		printWriter.println(String.format("Total batches: %s", mdeoBatchResults.size))
+		printWriter.println
+		//TODO Add more score statistics best, worst, std-dev
+	}
+	
+	def String getCandidateRuntime(OptimizationResult result){
+		
+		var formatter = new SimpleDateFormat("HH:mm:ss.SSS");
+		formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
+		return formatter.format(result.candidateInfo.endTime - result.candidateInfo.startTime)
 		
 	}
 }

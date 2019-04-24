@@ -307,13 +307,22 @@ public interface MoptPackage extends EPackage
   int SOLVER_SPEC__TERMINATION_CONDITION = 3;
 
   /**
+   * The feature id for the '<em><b>Parameter Search</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SOLVER_SPEC__PARAMETER_SEARCH = 4;
+
+  /**
    * The feature id for the '<em><b>Algorithm Batches</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SOLVER_SPEC__ALGORITHM_BATCHES = 4;
+  int SOLVER_SPEC__ALGORITHM_BATCHES = 5;
 
   /**
    * The number of structural features of the '<em>Solver Spec</em>' class.
@@ -322,7 +331,7 @@ public interface MoptPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SOLVER_SPEC_FEATURE_COUNT = 5;
+  int SOLVER_SPEC_FEATURE_COUNT = 6;
 
   /**
    * The meta object id for the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.BasePathSpecImpl <em>Base Path Spec</em>}' class.
@@ -953,6 +962,34 @@ public interface MoptPackage extends EPackage
   int TERMINATION_CONDITION_SPEC_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.ParameterSearchSpecImpl <em>Parameter Search Spec</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.ParameterSearchSpecImpl
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getParameterSearchSpec()
+   * @generated
+   */
+  int PARAMETER_SEARCH_SPEC = 21;
+
+  /**
+   * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER_SEARCH_SPEC__PARAMETERS = 0;
+
+  /**
+   * The number of structural features of the '<em>Parameter Search Spec</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER_SEARCH_SPEC_FEATURE_COUNT = 1;
+
+  /**
    * The meta object id for the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.ParameterImpl <em>Parameter</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -960,7 +997,7 @@ public interface MoptPackage extends EPackage
    * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getParameter()
    * @generated
    */
-  int PARAMETER = 21;
+  int PARAMETER = 22;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -997,7 +1034,7 @@ public interface MoptPackage extends EPackage
    * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getParameterValue()
    * @generated
    */
-  int PARAMETER_VALUE = 22;
+  int PARAMETER_VALUE = 23;
 
   /**
    * The feature id for the '<em><b>Numeric</b></em>' attribute.
@@ -1052,7 +1089,7 @@ public interface MoptPackage extends EPackage
    * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getEvolverType()
    * @generated
    */
-  int EVOLVER_TYPE = 23;
+  int EVOLVER_TYPE = 24;
 
 
   /**
@@ -1302,6 +1339,17 @@ public interface MoptPackage extends EPackage
    * @generated
    */
   EReference getSolverSpec_TerminationCondition();
+
+  /**
+   * Returns the meta object for the containment reference '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SolverSpec#getParameterSearch <em>Parameter Search</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Parameter Search</em>'.
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SolverSpec#getParameterSearch()
+   * @see #getSolverSpec()
+   * @generated
+   */
+  EReference getSolverSpec_ParameterSearch();
 
   /**
    * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SolverSpec#getAlgorithmBatches <em>Algorithm Batches</em>}'.
@@ -1871,6 +1919,27 @@ public interface MoptPackage extends EPackage
   EReference getTerminationConditionSpec_Parameters();
 
   /**
+   * Returns the meta object for class '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterSearchSpec <em>Parameter Search Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Parameter Search Spec</em>'.
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterSearchSpec
+   * @generated
+   */
+  EClass getParameterSearchSpec();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterSearchSpec#getParameters <em>Parameters</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Parameters</em>'.
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterSearchSpec#getParameters()
+   * @see #getParameterSearchSpec()
+   * @generated
+   */
+  EReference getParameterSearchSpec_Parameters();
+
+  /**
    * Returns the meta object for class '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.Parameter <em>Parameter</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2182,6 +2251,14 @@ public interface MoptPackage extends EPackage
      * @generated
      */
     EReference SOLVER_SPEC__TERMINATION_CONDITION = eINSTANCE.getSolverSpec_TerminationCondition();
+
+    /**
+     * The meta object literal for the '<em><b>Parameter Search</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SOLVER_SPEC__PARAMETER_SEARCH = eINSTANCE.getSolverSpec_ParameterSearch();
 
     /**
      * The meta object literal for the '<em><b>Algorithm Batches</b></em>' attribute feature.
@@ -2638,6 +2715,24 @@ public interface MoptPackage extends EPackage
      * @generated
      */
     EReference TERMINATION_CONDITION_SPEC__PARAMETERS = eINSTANCE.getTerminationConditionSpec_Parameters();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.ParameterSearchSpecImpl <em>Parameter Search Spec</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.ParameterSearchSpecImpl
+     * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getParameterSearchSpec()
+     * @generated
+     */
+    EClass PARAMETER_SEARCH_SPEC = eINSTANCE.getParameterSearchSpec();
+
+    /**
+     * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PARAMETER_SEARCH_SPEC__PARAMETERS = eINSTANCE.getParameterSearchSpec_Parameters();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.ParameterImpl <em>Parameter</em>}' class.

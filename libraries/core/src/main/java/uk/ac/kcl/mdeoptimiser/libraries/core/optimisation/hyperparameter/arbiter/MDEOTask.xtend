@@ -1,27 +1,31 @@
 package uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter
 
-import org.deeplearning4j.arbiter.optimize.api.OptimizationResult
+import java.io.IOException
+import java.util.HashMap
+import java.util.List
+import java.util.Map
+import java.util.Properties
 import java.util.concurrent.Callable
 import org.deeplearning4j.arbiter.optimize.api.Candidate
+import org.deeplearning4j.arbiter.optimize.api.OptimizationResult
 import org.deeplearning4j.arbiter.optimize.api.data.DataProvider
-import org.deeplearning4j.arbiter.optimize.api.score.ScoreFunction
-import org.deeplearning4j.arbiter.optimize.api.evaluation.ModelEvaluator
-import org.deeplearning4j.arbiter.optimize.runner.listener.StatusListener
-import java.util.List
-import org.deeplearning4j.arbiter.task.TaskListener
-import org.deeplearning4j.arbiter.optimize.runner.IOptimizationRunner
 import org.deeplearning4j.arbiter.optimize.api.data.DataSource
-import java.util.Properties
-import org.deeplearning4j.arbiter.optimize.runner.CandidateStatus
-import org.deeplearning4j.arbiter.optimize.runner.CandidateInfo
-import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.MoeaOptimisation
-import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.MoeaFrameworkAlgorithmConfiguration
-import com.fasterxml.jackson.annotation.JsonIgnore
-import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.Optimisation
-import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.executor.SolutionGenerator
-import java.io.IOException
-import org.deeplearning4j.arbiter.optimize.api.saving.ResultSaver
+import org.deeplearning4j.arbiter.optimize.api.evaluation.ModelEvaluator
 import org.deeplearning4j.arbiter.optimize.api.saving.ResultReference
+import org.deeplearning4j.arbiter.optimize.api.saving.ResultSaver
+import org.deeplearning4j.arbiter.optimize.api.score.ScoreFunction
+import org.deeplearning4j.arbiter.optimize.runner.CandidateInfo
+import org.deeplearning4j.arbiter.optimize.runner.CandidateStatus
+import org.deeplearning4j.arbiter.optimize.runner.IOptimizationRunner
+import org.deeplearning4j.arbiter.optimize.runner.listener.StatusListener
+import org.deeplearning4j.arbiter.task.TaskListener
+import org.eclipse.xtext.EcoreUtil2
+import org.moeaframework.analysis.collector.Accumulator
+import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.Optimisation
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.OptimisationInterpreter
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.MoeaFrameworkAlgorithmConfiguration
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.MoeaOptimisation
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.SearchResult
 
 class MDEOTask implements Callable<OptimizationResult> {
 
@@ -37,7 +41,6 @@ class MDEOTask implements Callable<OptimizationResult> {
 
 	TaskListener taskListener
 
-	@JsonIgnore
 	IOptimizationRunner runner
 
 	Class<? extends DataSource> dataSource
@@ -46,15 +49,15 @@ class MDEOTask implements Callable<OptimizationResult> {
 
 	long startTime
 
-	SolutionGenerator solutionGenerator
+	String moptProjectPath
 
 	Optimisation optimisationSpec
 
-	new(Optimisation optimisationSpec, SolutionGenerator solutionGenerator, Candidate candidate,
-		DataProvider dataProvider, ScoreFunction scoreFunction, ModelEvaluator modelEvaluator,
-		List<StatusListener> listeners, TaskListener taskListener, IOptimizationRunner runner) {
+	new(Optimisation optimisationSpec, String moptProjectPath, Candidate candidate, DataProvider dataProvider,
+		ScoreFunction scoreFunction, ModelEvaluator modelEvaluator, List<StatusListener> listeners,
+		TaskListener taskListener, IOptimizationRunner runner) {
 		this.optimisationSpec = optimisationSpec;
-		this.solutionGenerator = solutionGenerator;
+		this.moptProjectPath = moptProjectPath;
 		this.candidate = candidate;
 		this.dataProvider = dataProvider;
 		this.scoreFunction = scoreFunction;
@@ -64,12 +67,12 @@ class MDEOTask implements Callable<OptimizationResult> {
 		this.runner = runner;
 	}
 
-	new(Optimisation optimisationSpec, SolutionGenerator solutionGenerator, Candidate candidate,
+	new(Optimisation optimisationSpec, String moptProjectPath, Candidate candidate,
 		Class<? extends DataSource> dataSource, Properties dataSourceProperties, ScoreFunction scoreFunction,
 		ModelEvaluator modelEvaluator, List<StatusListener> listeners, TaskListener taskListener,
 		IOptimizationRunner runner) {
 		this.optimisationSpec = optimisationSpec;
-		this.solutionGenerator = solutionGenerator;
+		this.moptProjectPath = moptProjectPath;
 		this.candidate = candidate;
 		this.dataSource = dataSource;
 		this.dataSourceProperties = dataSourceProperties;
@@ -92,20 +95,21 @@ class MDEOTask implements Callable<OptimizationResult> {
 
 		var currentConfiguration = candidate.getValue() as MDEOHyperparametersConfiguration
 
-		var algorithmConfiguration = new MoeaFrameworkAlgorithmConfiguration(optimisationSpec.solver,
-			this.solutionGenerator)
+		var searchResults = new HashMap<Integer, SearchResult>();
 
-		algorithmConfiguration.updateParameters(currentConfiguration)
-
-		var moeaOptimisation = new MoeaOptimisation();
-
-		var outcome = moeaOptimisation.execute(algorithmConfiguration)
+		for (var batch = 1; batch < 6; batch++) {
+			// This should be one instance per task.
+			searchResults.put(batch,runSingleBatch(moptProjectPath, optimisationSpec, currentConfiguration))
+		}
 
 		// TODO: Here iterate through the data set if provided. Potentially, this could mean a set of models
 		// for a given problem?
 		var Double score = null;
 
-		if (outcome !== null) {
+		// TODO I think we can to be able to configure this from the DSL and fall back to a default value of 5
+		if (searchResults.size === 5) {
+
+			var outcome = new MDEOSearchOutcome(optimisationSpec, searchResults);
 
 			if (this.dataSource !== null) {
 				score = scoreFunction.score(outcome, dataSource, dataSourceProperties);
@@ -114,17 +118,22 @@ class MDEOTask implements Callable<OptimizationResult> {
 			}
 
 			candidateInfo.setScore(score);
+			candidateInfo.setEndTime(System.currentTimeMillis())
 		}
 
-		var result = new OptimizationResult(candidate, score, candidate.getIndex(), null, candidateInfo, null);
+		var result = new OptimizationResult(candidate, score, candidate.getIndex(), searchResults, candidateInfo, null);
 
-		var ResultSaver saver = runner.getConfiguration().getResultSaver();
+		var resultSaver = runner.getConfiguration().getResultSaver();
 		var ResultReference resultReference = null;
 
-		if (saver !== null) {
+		if (resultSaver !== null) {
 			try {
-				resultReference = saver.saveModel(result, currentConfiguration);
+				resultReference = resultSaver.saveModel(result, currentConfiguration);
 			} catch (IOException e) {
+				println(
+					String.format("Parameter search model saver encountered an exception: %s %s", e.message,
+						e.stackTrace))
+						throw e
 			}
 		}
 		result.setResultReference(resultReference);
@@ -132,4 +141,34 @@ class MDEOTask implements Callable<OptimizationResult> {
 		return result;
 	}
 
+	/**
+	 * Extract accumulators from the MDEO search outputs
+	 * 
+	 * @return list of accumulators
+	 */
+	def Map<Integer, Accumulator> getBatchesAccumulators(Map<Integer, SearchResult> results){
+		
+		val accumulators = new HashMap<Integer, Accumulator>();
+		
+		results.keySet.forEach[key | 
+			accumulators.put(key, results.get(key).accumulator)
+		]
+		
+		return accumulators;
+	}
+
+	/**
+	 * Run a single MDEOptimiser run with the current configuration.
+	 * @return an instrumenter reference containing the run results.
+	 */
+	 //TODO Return a ModelSearchResult class containing a reference to the instrumenter, algorithm, problem instance and solution generator
+	def SearchResult runSingleBatch(String moptProjectPath, Optimisation optimisationSpec, MDEOHyperparametersConfiguration currentConfiguration) {
+		var optimisationModel = EcoreUtil2.copy(optimisationSpec);
+		var optimisationInterpreter = new OptimisationInterpreter(moptProjectPath, optimisationModel);
+		var algorithmConfiguration = new MoeaFrameworkAlgorithmConfiguration(optimisationModel.solver,
+			optimisationInterpreter.solutionGenerator)
+		algorithmConfiguration.updateParameters(currentConfiguration)
+		var moeaOptimisation = new MoeaOptimisation();
+		return moeaOptimisation.execute(algorithmConfiguration)
+	}
 }

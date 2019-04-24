@@ -87,6 +87,7 @@ public class MoptFactoryImpl extends EFactoryImpl implements MoptFactory
       case MoptPackage.PARAMETER_FUNCTION: return createParameterFunction();
       case MoptPackage.ALGORITHM_SPEC: return createAlgorithmSpec();
       case MoptPackage.TERMINATION_CONDITION_SPEC: return createTerminationConditionSpec();
+      case MoptPackage.PARAMETER_SEARCH_SPEC: return createParameterSearchSpec();
       case MoptPackage.PARAMETER: return createParameter();
       case MoptPackage.PARAMETER_VALUE: return createParameterValue();
       default:
@@ -357,6 +358,17 @@ public class MoptFactoryImpl extends EFactoryImpl implements MoptFactory
   {
     TerminationConditionSpecImpl terminationConditionSpec = new TerminationConditionSpecImpl();
     return terminationConditionSpec;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ParameterSearchSpec createParameterSearchSpec()
+  {
+    ParameterSearchSpecImpl parameterSearchSpec = new ParameterSearchSpecImpl();
+    return parameterSearchSpec;
   }
 
   /**

@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SolverSpec#getAlgorithmFactory <em>Algorithm Factory</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SolverSpec#getAlgorithm <em>Algorithm</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SolverSpec#getTerminationCondition <em>Termination Condition</em>}</li>
+ *   <li>{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SolverSpec#getParameterSearch <em>Parameter Search</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SolverSpec#getAlgorithmBatches <em>Algorithm Batches</em>}</li>
  * </ul>
  *
@@ -130,6 +131,32 @@ public interface SolverSpec extends EObject
    * @generated
    */
   void setTerminationCondition(TerminationConditionSpec value);
+
+  /**
+   * Returns the value of the '<em><b>Parameter Search</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Parameter Search</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Parameter Search</em>' containment reference.
+   * @see #setParameterSearch(ParameterSearchSpec)
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.MoptPackage#getSolverSpec_ParameterSearch()
+   * @model containment="true"
+   * @generated
+   */
+  ParameterSearchSpec getParameterSearch();
+
+  /**
+   * Sets the value of the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SolverSpec#getParameterSearch <em>Parameter Search</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Parameter Search</em>' containment reference.
+   * @see #getParameterSearch()
+   * @generated
+   */
+  void setParameterSearch(ParameterSearchSpec value);
 
   /**
    * Returns the value of the '<em><b>Algorithm Batches</b></em>' attribute.

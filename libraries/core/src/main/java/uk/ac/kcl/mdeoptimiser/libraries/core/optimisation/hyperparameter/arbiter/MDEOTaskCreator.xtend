@@ -15,21 +15,21 @@ import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.executor.SolutionG
 class MDEOTaskCreator implements TaskCreator {
 
 	Optimisation optimisationSpec
-	SolutionGenerator solutionGenerator
+	String moptProjectPath 
 	
-	new(Optimisation optimisationSpec, SolutionGenerator solutionGenerator) {
+	new(Optimisation optimisationSpec, String moptProjectPath) {
 		this.optimisationSpec = optimisationSpec;
-		this.solutionGenerator = solutionGenerator;
+		this.moptProjectPath = moptProjectPath;
 	}
 
 	override create(Candidate candidate, DataProvider dataProvider, ScoreFunction scoreFunction,
 		List<StatusListener> statusListeners, IOptimizationRunner optimisationRunner) {
-		return new MDEOTask(this.optimisationSpec, this.solutionGenerator, candidate, dataProvider, scoreFunction, null, statusListeners, null, optimisationRunner)
+		return new MDEOTask(this.optimisationSpec, this.moptProjectPath, candidate, dataProvider, scoreFunction, null, statusListeners, null, optimisationRunner)
 	}
 
 	override create(Candidate candidate, Class<? extends DataSource> dataSource, Properties properties, ScoreFunction scoreFunction,
 		List<StatusListener> statusListeners, IOptimizationRunner optimisationRunner) {
-		return new MDEOTask(this.optimisationSpec, this.solutionGenerator, candidate, dataSource, properties, scoreFunction, null, statusListeners, null, optimisationRunner)
+		return new MDEOTask(this.optimisationSpec, this.moptProjectPath, candidate, dataSource, properties, scoreFunction, null, statusListeners, null, optimisationRunner)
 	}
 
 }

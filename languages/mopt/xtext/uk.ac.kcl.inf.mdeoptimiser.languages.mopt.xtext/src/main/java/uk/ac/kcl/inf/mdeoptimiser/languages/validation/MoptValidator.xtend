@@ -73,5 +73,11 @@ class MoptValidator extends AbstractMoptValidator {
     		}
     	]	
     }
+    
+    //TODO Check that all the required hyperparameter spec parameters are specified
+    
+    //TODO Check that there are no duplicate hyperparameter spec parameters specified
+    
+    //TODO Check that there are no unexpected hyperparameter spec parameters specified
 
 }

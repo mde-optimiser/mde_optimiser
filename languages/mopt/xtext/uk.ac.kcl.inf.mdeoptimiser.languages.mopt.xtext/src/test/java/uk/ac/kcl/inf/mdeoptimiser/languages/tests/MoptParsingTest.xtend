@@ -50,9 +50,6 @@ class MoptParsingTest {
 					termination {
 						delta: 5
 						iterations: 100
-						iterations: 1003
-						time: 100
-						other: 4000
 					}
 					batches 10
 				}
@@ -95,7 +92,7 @@ class MoptParsingTest {
 				}
 		''')
 		Assertions.assertNotNull(result)
-		result.assertNoErrors() 
+		result.assertNoErrors()
 	}
 	
 	@Test
@@ -120,23 +117,18 @@ class MoptParsingTest {
 				solver {
 					optimisation provider moea algorithm NSGAII {
 						population: 100
-						variation: 11
-						parameter: name
-						parameter: secondary(1)
+						variation: mutation
 					}
 					termination {
 						delta: 5
 						delta: 5
 						iterations: 100
-						iterations: 1003
-						time: 100
-						other: 4000
 					}
 					batches 10
 				}
 		''')
 		Assertions.assertNotNull(result)
-		result.assertError(MoptPackage.Literals.ALGORITHM_SPEC, MoptValidatorIssues::DUPLICATE_PARAMETER_ENCOUNTERED);
+		result.assertError(MoptPackage.Literals.TERMINATION_CONDITION_SPEC, MoptValidatorIssues::DUPLICATE_PARAMETER_ENCOUNTERED);
 	}
 	
 	@Test

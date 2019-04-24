@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.MoptPackage;
+import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterSearchSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SolverSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.TerminationConditionSpec;
 
@@ -29,6 +30,7 @@ import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.TerminationConditionSpec;
  *   <li>{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.SolverSpecImpl#getAlgorithmFactory <em>Algorithm Factory</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.SolverSpecImpl#getAlgorithm <em>Algorithm</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.SolverSpecImpl#getTerminationCondition <em>Termination Condition</em>}</li>
+ *   <li>{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.SolverSpecImpl#getParameterSearch <em>Parameter Search</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.SolverSpecImpl#getAlgorithmBatches <em>Algorithm Batches</em>}</li>
  * </ul>
  *
@@ -95,6 +97,16 @@ public class SolverSpecImpl extends MinimalEObjectImpl.Container implements Solv
    * @ordered
    */
   protected TerminationConditionSpec terminationCondition;
+
+  /**
+   * The cached value of the '{@link #getParameterSearch() <em>Parameter Search</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getParameterSearch()
+   * @generated
+   * @ordered
+   */
+  protected ParameterSearchSpec parameterSearch;
 
   /**
    * The default value of the '{@link #getAlgorithmBatches() <em>Algorithm Batches</em>}' attribute.
@@ -284,6 +296,54 @@ public class SolverSpecImpl extends MinimalEObjectImpl.Container implements Solv
    * <!-- end-user-doc -->
    * @generated
    */
+  public ParameterSearchSpec getParameterSearch()
+  {
+    return parameterSearch;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetParameterSearch(ParameterSearchSpec newParameterSearch, NotificationChain msgs)
+  {
+    ParameterSearchSpec oldParameterSearch = parameterSearch;
+    parameterSearch = newParameterSearch;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MoptPackage.SOLVER_SPEC__PARAMETER_SEARCH, oldParameterSearch, newParameterSearch);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setParameterSearch(ParameterSearchSpec newParameterSearch)
+  {
+    if (newParameterSearch != parameterSearch)
+    {
+      NotificationChain msgs = null;
+      if (parameterSearch != null)
+        msgs = ((InternalEObject)parameterSearch).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MoptPackage.SOLVER_SPEC__PARAMETER_SEARCH, null, msgs);
+      if (newParameterSearch != null)
+        msgs = ((InternalEObject)newParameterSearch).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MoptPackage.SOLVER_SPEC__PARAMETER_SEARCH, null, msgs);
+      msgs = basicSetParameterSearch(newParameterSearch, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MoptPackage.SOLVER_SPEC__PARAMETER_SEARCH, newParameterSearch, newParameterSearch));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public int getAlgorithmBatches()
   {
     return algorithmBatches;
@@ -316,6 +376,8 @@ public class SolverSpecImpl extends MinimalEObjectImpl.Container implements Solv
         return basicSetAlgorithm(null, msgs);
       case MoptPackage.SOLVER_SPEC__TERMINATION_CONDITION:
         return basicSetTerminationCondition(null, msgs);
+      case MoptPackage.SOLVER_SPEC__PARAMETER_SEARCH:
+        return basicSetParameterSearch(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -338,6 +400,8 @@ public class SolverSpecImpl extends MinimalEObjectImpl.Container implements Solv
         return getAlgorithm();
       case MoptPackage.SOLVER_SPEC__TERMINATION_CONDITION:
         return getTerminationCondition();
+      case MoptPackage.SOLVER_SPEC__PARAMETER_SEARCH:
+        return getParameterSearch();
       case MoptPackage.SOLVER_SPEC__ALGORITHM_BATCHES:
         return getAlgorithmBatches();
     }
@@ -365,6 +429,9 @@ public class SolverSpecImpl extends MinimalEObjectImpl.Container implements Solv
         return;
       case MoptPackage.SOLVER_SPEC__TERMINATION_CONDITION:
         setTerminationCondition((TerminationConditionSpec)newValue);
+        return;
+      case MoptPackage.SOLVER_SPEC__PARAMETER_SEARCH:
+        setParameterSearch((ParameterSearchSpec)newValue);
         return;
       case MoptPackage.SOLVER_SPEC__ALGORITHM_BATCHES:
         setAlgorithmBatches((Integer)newValue);
@@ -395,6 +462,9 @@ public class SolverSpecImpl extends MinimalEObjectImpl.Container implements Solv
       case MoptPackage.SOLVER_SPEC__TERMINATION_CONDITION:
         setTerminationCondition((TerminationConditionSpec)null);
         return;
+      case MoptPackage.SOLVER_SPEC__PARAMETER_SEARCH:
+        setParameterSearch((ParameterSearchSpec)null);
+        return;
       case MoptPackage.SOLVER_SPEC__ALGORITHM_BATCHES:
         setAlgorithmBatches(ALGORITHM_BATCHES_EDEFAULT);
         return;
@@ -420,6 +490,8 @@ public class SolverSpecImpl extends MinimalEObjectImpl.Container implements Solv
         return algorithm != null;
       case MoptPackage.SOLVER_SPEC__TERMINATION_CONDITION:
         return terminationCondition != null;
+      case MoptPackage.SOLVER_SPEC__PARAMETER_SEARCH:
+        return parameterSearch != null;
       case MoptPackage.SOLVER_SPEC__ALGORITHM_BATCHES:
         return algorithmBatches != ALGORITHM_BATCHES_EDEFAULT;
     }

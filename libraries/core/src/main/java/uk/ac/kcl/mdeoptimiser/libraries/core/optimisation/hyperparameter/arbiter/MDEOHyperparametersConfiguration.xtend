@@ -16,4 +16,5 @@ class MDEOHyperparametersConfiguration implements Serializable {
 	def TerminationCondition getEvolutionsTerminationCondition(){
 		return new MaxFunctionEvaluations(populationSize * evolutions)
 	}
+	
 }

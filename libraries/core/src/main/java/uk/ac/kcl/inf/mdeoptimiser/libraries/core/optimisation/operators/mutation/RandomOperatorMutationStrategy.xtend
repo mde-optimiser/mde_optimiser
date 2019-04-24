@@ -34,7 +34,8 @@ class RandomOperatorMutationStrategy implements MutationStrategy {
 		return candidateSolution;
 	}
 
-	/* Apply transformations according to the configured step size.
+	/**
+	 * Apply transformations according to the configured step size.
 	 * @return a map of the ordered transformations applied in this step
 	 */
 	def Map<Integer, String> applyOperators(Solution candidateSolution, EGraphImpl egraph) {

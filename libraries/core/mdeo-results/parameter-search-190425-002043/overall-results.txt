@@ -1,0 +1,29 @@
+Parameter search results
+
+Number of configurations evaluated: 2
+Best candidate
+============================================
+Candidate id: 0
+Candidate score: 0.7844713399115848
+Evolutions parameter: 59
+Populations parameter: 72
+Total runtime: 00:01:59.712
+Total batches: 5
+
+
+All candidates
+============================================
+Candidate id: 0
+Candidate score: 0.7844713399115848
+Evolutions parameter: 59
+Populations parameter: 72
+Total runtime: 00:01:59.712
+Total batches: 5
+
+Candidate id: 1
+Candidate score: 0.756061028044708
+Evolutions parameter: 63
+Populations parameter: 57
+Total runtime: 00:01:30.504
+Total batches: 5
+

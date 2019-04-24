@@ -213,6 +213,15 @@ public interface MoptFactory extends EFactory
   TerminationConditionSpec createTerminationConditionSpec();
 
   /**
+   * Returns a new object of class '<em>Parameter Search Spec</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Parameter Search Spec</em>'.
+   * @generated
+   */
+  ParameterSearchSpec createParameterSearchSpec();
+
+  /**
    * Returns a new object of class '<em>Parameter</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

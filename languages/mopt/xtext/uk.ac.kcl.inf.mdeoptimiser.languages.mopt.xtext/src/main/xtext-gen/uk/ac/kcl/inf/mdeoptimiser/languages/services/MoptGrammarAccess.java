@@ -257,22 +257,28 @@ public class MoptGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cTerminationConditionAssignment_9 = (Assignment)cGroup.eContents().get(9);
 		private final RuleCall cTerminationConditionTerminationConditionSpecParserRuleCall_9_0 = (RuleCall)cTerminationConditionAssignment_9.eContents().get(0);
 		private final Group cGroup_10 = (Group)cGroup.eContents().get(10);
-		private final Keyword cBatchesKeyword_10_0 = (Keyword)cGroup_10.eContents().get(0);
-		private final Assignment cAlgorithmBatchesAssignment_10_1 = (Assignment)cGroup_10.eContents().get(1);
-		private final RuleCall cAlgorithmBatchesINTTerminalRuleCall_10_1_0 = (RuleCall)cAlgorithmBatchesAssignment_10_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_11 = (Keyword)cGroup.eContents().get(11);
+		private final Keyword cParameterKeyword_10_0 = (Keyword)cGroup_10.eContents().get(0);
+		private final Keyword cSearchKeyword_10_1 = (Keyword)cGroup_10.eContents().get(1);
+		private final Assignment cParameterSearchAssignment_10_2 = (Assignment)cGroup_10.eContents().get(2);
+		private final RuleCall cParameterSearchParameterSearchSpecParserRuleCall_10_2_0 = (RuleCall)cParameterSearchAssignment_10_2.eContents().get(0);
+		private final Group cGroup_11 = (Group)cGroup.eContents().get(11);
+		private final Keyword cBatchesKeyword_11_0 = (Keyword)cGroup_11.eContents().get(0);
+		private final Assignment cAlgorithmBatchesAssignment_11_1 = (Assignment)cGroup_11.eContents().get(1);
+		private final RuleCall cAlgorithmBatchesINTTerminalRuleCall_11_1_0 = (RuleCall)cAlgorithmBatchesAssignment_11_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
 		
 		//SolverSpec:
 		//	"solver" "{" ("engine" solverEngine=SOLVER_ENGINE)?
 		//	"optimisation" "provider" algorithmFactory=ALGORITHM_FACTORY
 		//	"algorithm" algorithm=AlgorithmSpec
-		//	"termination" terminationCondition=TerminationConditionSpec ("batches" algorithmBatches=INT)?
+		//	"termination" terminationCondition=TerminationConditionSpec ("parameter" "search"
+		//	parameterSearch=ParameterSearchSpec)? ("batches" algorithmBatches=INT)?
 		//	"}";
 		@Override public ParserRule getRule() { return rule; }
 		
 		//"solver" "{" ("engine" solverEngine=SOLVER_ENGINE)? "optimisation" "provider" algorithmFactory=ALGORITHM_FACTORY
-		//"algorithm" algorithm=AlgorithmSpec "termination" terminationCondition=TerminationConditionSpec ("batches"
-		//algorithmBatches=INT)? "}"
+		//"algorithm" algorithm=AlgorithmSpec "termination" terminationCondition=TerminationConditionSpec ("parameter" "search"
+		//parameterSearch=ParameterSearchSpec)? ("batches" algorithmBatches=INT)? "}"
 		public Group getGroup() { return cGroup; }
 		
 		//"solver"
@@ -323,20 +329,35 @@ public class MoptGrammarAccess extends AbstractGrammarElementFinder {
 		//TerminationConditionSpec
 		public RuleCall getTerminationConditionTerminationConditionSpecParserRuleCall_9_0() { return cTerminationConditionTerminationConditionSpecParserRuleCall_9_0; }
 		
-		//("batches" algorithmBatches=INT)?
+		//("parameter" "search" parameterSearch=ParameterSearchSpec)?
 		public Group getGroup_10() { return cGroup_10; }
 		
+		//"parameter"
+		public Keyword getParameterKeyword_10_0() { return cParameterKeyword_10_0; }
+		
+		//"search"
+		public Keyword getSearchKeyword_10_1() { return cSearchKeyword_10_1; }
+		
+		//parameterSearch=ParameterSearchSpec
+		public Assignment getParameterSearchAssignment_10_2() { return cParameterSearchAssignment_10_2; }
+		
+		//ParameterSearchSpec
+		public RuleCall getParameterSearchParameterSearchSpecParserRuleCall_10_2_0() { return cParameterSearchParameterSearchSpecParserRuleCall_10_2_0; }
+		
+		//("batches" algorithmBatches=INT)?
+		public Group getGroup_11() { return cGroup_11; }
+		
 		//"batches"
-		public Keyword getBatchesKeyword_10_0() { return cBatchesKeyword_10_0; }
+		public Keyword getBatchesKeyword_11_0() { return cBatchesKeyword_11_0; }
 		
 		//algorithmBatches=INT
-		public Assignment getAlgorithmBatchesAssignment_10_1() { return cAlgorithmBatchesAssignment_10_1; }
+		public Assignment getAlgorithmBatchesAssignment_11_1() { return cAlgorithmBatchesAssignment_11_1; }
 		
 		//INT
-		public RuleCall getAlgorithmBatchesINTTerminalRuleCall_10_1_0() { return cAlgorithmBatchesINTTerminalRuleCall_10_1_0; }
+		public RuleCall getAlgorithmBatchesINTTerminalRuleCall_11_1_0() { return cAlgorithmBatchesINTTerminalRuleCall_11_1_0; }
 		
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_11() { return cRightCurlyBracketKeyword_11; }
+		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
 	}
 	public class BasePathSpecElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.inf.mdeoptimiser.languages.Mopt.BasePathSpec");
@@ -1070,6 +1091,42 @@ public class MoptGrammarAccess extends AbstractGrammarElementFinder {
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
 	}
+	public class ParameterSearchSpecElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.inf.mdeoptimiser.languages.Mopt.ParameterSearchSpec");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cParameterSearchSpecAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cParametersAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cParametersParameterParserRuleCall_2_0 = (RuleCall)cParametersAssignment_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		
+		///**
+		// * Hyperparameter search spec configuration
+		// */ ParameterSearchSpec:
+		//	{ParameterSearchSpec}
+		//	"{"
+		//	parameters+=Parameter+
+		//	"}";
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{ParameterSearchSpec} "{" parameters+=Parameter+ "}"
+		public Group getGroup() { return cGroup; }
+		
+		//{ParameterSearchSpec}
+		public Action getParameterSearchSpecAction_0() { return cParameterSearchSpecAction_0; }
+		
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
+		
+		//parameters+=Parameter+
+		public Assignment getParametersAssignment_2() { return cParametersAssignment_2; }
+		
+		//Parameter
+		public RuleCall getParametersParameterParserRuleCall_2_0() { return cParametersParameterParserRuleCall_2_0; }
+		
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
+	}
 	public class ParameterElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.inf.mdeoptimiser.languages.Mopt.Parameter");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -1246,6 +1303,7 @@ public class MoptGrammarAccess extends AbstractGrammarElementFinder {
 	private final SignedIntegerElements pSignedInteger;
 	private final AlgorithmSpecElements pAlgorithmSpec;
 	private final TerminationConditionSpecElements pTerminationConditionSpec;
+	private final ParameterSearchSpecElements pParameterSearchSpec;
 	private final ParameterElements pParameter;
 	private final ParameterValueElements pParameterValue;
 	private final TerminalRule tCREATE_NODE;
@@ -1295,6 +1353,7 @@ public class MoptGrammarAccess extends AbstractGrammarElementFinder {
 		this.pSignedInteger = new SignedIntegerElements();
 		this.pAlgorithmSpec = new AlgorithmSpecElements();
 		this.pTerminationConditionSpec = new TerminationConditionSpecElements();
+		this.pParameterSearchSpec = new ParameterSearchSpecElements();
 		this.pParameter = new ParameterElements();
 		this.pParameterValue = new ParameterValueElements();
 		this.tCREATE_NODE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.inf.mdeoptimiser.languages.Mopt.CREATE_NODE");
@@ -1400,7 +1459,8 @@ public class MoptGrammarAccess extends AbstractGrammarElementFinder {
 	//	"solver" "{" ("engine" solverEngine=SOLVER_ENGINE)?
 	//	"optimisation" "provider" algorithmFactory=ALGORITHM_FACTORY
 	//	"algorithm" algorithm=AlgorithmSpec
-	//	"termination" terminationCondition=TerminationConditionSpec ("batches" algorithmBatches=INT)?
+	//	"termination" terminationCondition=TerminationConditionSpec ("parameter" "search"
+	//	parameterSearch=ParameterSearchSpec)? ("batches" algorithmBatches=INT)?
 	//	"}";
 	public SolverSpecElements getSolverSpecAccess() {
 		return pSolverSpec;
@@ -1611,6 +1671,21 @@ public class MoptGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getTerminationConditionSpecRule() {
 		return getTerminationConditionSpecAccess().getRule();
+	}
+	
+	///**
+	// * Hyperparameter search spec configuration
+	// */ ParameterSearchSpec:
+	//	{ParameterSearchSpec}
+	//	"{"
+	//	parameters+=Parameter+
+	//	"}";
+	public ParameterSearchSpecElements getParameterSearchSpecAccess() {
+		return pParameterSearchSpec;
+	}
+	
+	public ParserRule getParameterSearchSpecRule() {
+		return getParameterSearchSpecAccess().getRule();
 	}
 	
 	//Parameter:

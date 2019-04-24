@@ -8,22 +8,20 @@ import org.eclipse.core.runtime.IPath
 import org.eclipse.core.runtime.Path
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.EPackage
+import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
 import org.eclipse.emf.henshin.model.Module
 import org.eclipse.emf.henshin.model.Unit
 import org.eclipse.emf.henshin.model.resource.HenshinResourceSet
-import org.moeaframework.Instrumenter
-import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.Optimisation
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.executor.SolutionGenerator
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.executor.UserModelProvider
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.MoeaFrameworkAlgorithmConfiguration
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.MoeaOptimisation
-import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.IModelProvider
-import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.IModelInitialiser
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.SearchResult
+import uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.RulesGenerator
 import uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.metamodel.Multiplicity
 import uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.metamodel.RuleSpec
-import uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.RulesGenerator
-import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.executor.UserModelProvider
-import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.executor.SolutionGenerator
-import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.MoeaFrameworkAlgorithmConfiguration
 
 class OptimisationInterpreter {
 
@@ -43,15 +41,12 @@ class OptimisationInterpreter {
 		this.projectRootPath = new Path(projectPath);
 	}
 
-	def Instrumenter start() {
+	def SearchResult start() {
 
 		// This model provider loads the model given by the user in the DSL
 		var algorithmConfiguration = new MoeaFrameworkAlgorithmConfiguration(model.solver, this.solutionGenerator)
-
 		var moeaOptimisation = new MoeaOptimisation();
-
 		return moeaOptimisation.execute(algorithmConfiguration)
-
 	}
 
 	def SolutionGenerator getSolutionGenerator() {
@@ -117,7 +112,6 @@ class OptimisationInterpreter {
 						URI.createURI(operator.rule_location), false).getUnit(operator.unit)
 				]
 			)
-
 		}
 
 		breedingOperators
@@ -136,7 +130,6 @@ class OptimisationInterpreter {
 						URI.createURI(operator.rule_location), false).getUnit(operator.unit)
 				]
 			)
-
 		}
 
 		// Automatically generate mutations operators

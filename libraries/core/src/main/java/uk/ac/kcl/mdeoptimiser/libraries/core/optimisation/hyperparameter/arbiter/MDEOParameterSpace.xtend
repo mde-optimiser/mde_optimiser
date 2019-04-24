@@ -14,11 +14,6 @@ class MDEOParameterSpace implements ParameterSpace {
 
 	Map<String, ParameterSpace> leaves = new HashMap<String, ParameterSpace>();
 
-
-	new() {
-
-	}
-
 	/**
 	 * Returns a list of all the parameter spaces to be optimised.
 	 * 
@@ -38,7 +33,6 @@ class MDEOParameterSpace implements ParameterSpace {
 		return Collections.EMPTY_MAP
 	}
 
-	// Is this were
 	override MDEOHyperparametersConfiguration getValue(double[] parameters) {
 
 

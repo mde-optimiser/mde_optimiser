@@ -58,11 +58,17 @@ class ParameterSearchTests {
 				optimisation provider moea algorithm NSGAII {
 					population: 40
 					variation: mutation
-					mutation.step: 3
+					mutation.step: 1
 					mutation.strategy: random
 				}
 				termination {
 					evolutions: 500
+				}
+				parameter search {
+					strategy: random
+					candidates: 2
+					population: range(10,20)
+					evolutions: range(10,100)
 				}
 				batches 1
 			}
@@ -80,18 +86,123 @@ class ParameterSearchTests {
 				model
 			);
 
-			var OptimisationInterpreter optimisationInterpreter = new OptimisationInterpreter("", model);
+			var parameterSearch = new ParameterSearch();
+			var parameterSearchResult = parameterSearch.search("", model);
 
-			var algorithmConfiguration = new MoeaFrameworkAlgorithmConfiguration(model.solver, optimisationInterpreter.getSolutionGenerator())
-			var moeaOptimisationConfiguration = new MoeaOptimisation();
+			mdeoResultsOutput.saveParameterSearchOutcome(parameterSearchResult)
+		}
+	}
+	
+	@Test
+	def void assertThatHyperparameterSearchingWorksRulegen(TestInfo testInfo) {
+
+		val model = parseHelper.parse('''
+			problem {
+				basepath <src/test/resources/models/cra/>
+				metamodel <architectureCRA.ecore>
+				model <TTC_InputRDG_A.xmi>
+			}
+			goal {
+				refine metamodel {"Feature", "isEncapsulatedBy", 1, 1}
+				objective CRA maximise java { "models.moea.MaximiseCRA" }
+				constraint MinimiseClasslessFeatures java { "models.moea.MinimiseClasslessFeatures" }
+			}
+			search { 
+				mutate {"Class"}
+			}
+			solver {
+				optimisation provider moea algorithm NSGAII {
+					population: 40
+					variation: mutation
+					mutation.step: 1
+					mutation.strategy: random
+				}
+				termination {
+					evolutions: 500
+				}
+				parameter search {
+					strategy: random
+					candidates: 50
+					population: range(10,100)
+					evolutions: range(10,1000)
+				}
+				batches 1
+			}
+		''')
+
+		Assertions.assertNotNull(model)
+		validationHelper.assertNoErrors(model)
+
+		if (model !== null) {
+
+			val mdeoResultsOutput = new MDEOResultsOutput(
+				new Date(),
+				Paths.get(pathPrefix),
+				Paths.get(testInfo.testMethod.get.name),
+				model
+			);
 
 			var parameterSearch = new ParameterSearch();
+			var parameterSearchResult = parameterSearch.search("", model);
 
-			parameterSearch.search(model, optimisationInterpreter.solutionGenerator)
-
-			val optimisationOutcome = optimisationInterpreter.start
-
-			mdeoResultsOutput.saveOutcome();
+			mdeoResultsOutput.saveParameterSearchOutcome(parameterSearchResult)
 		}
+	}
+	
+	@Test
+	def void nrpRulegenMutationStepSizeFixedStrategyA(TestInfo testInfo) {
+
+		val model = parseHelper.parse('''
+			problem {
+				basepath <src/test/resources/models/nrp/>
+				metamodel <nextReleaseProblem.ecore>
+				model <nrp-model-5-cus-25-req-63-sa.xmi>
+			}
+			goal {
+				refine metamodel {"Solution", "selectedArtifacts", 1, -1}
+				objective MinimiseCost minimise java { "models.nrp.fitness.MinimiseCost" }
+				objective MaximiseSatisfaction maximise java { "models.nrp.fitness.MaximiseSatisfaction" }
+			}
+			search {
+				mutate {"Solution","selectedArtifacts"}
+			}
+			solver {
+				optimisation provider moea algorithm NSGAII {
+					population: 40
+					variation: mutation
+					mutation.step: 5
+					mutation.strategy: random
+				}
+				termination {
+					evolutions: 500
+				}
+				parameter search {
+					strategy: random
+					candidates: 2
+					population: range(10,100)
+					evolutions: range(10,100)
+				}
+				batches 1
+			}
+		''')
+		
+		Assertions.assertNotNull(model)
+		validationHelper.assertNoErrors(model)
+
+		if (model !== null) {
+
+			val mdeoResultsOutput = new MDEOResultsOutput(
+				new Date(),
+				Paths.get(pathPrefix),
+				Paths.get(testInfo.testMethod.get.name),
+				model
+			);
+
+			var parameterSearch = new ParameterSearch();
+			var parameterSearchResult = parameterSearch.search("", model);
+
+			mdeoResultsOutput.saveParameterSearchOutcome(parameterSearchResult)
+		}
+		
 	}
 }

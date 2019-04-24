@@ -85,6 +85,7 @@ public class MoptParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getSolverSpecAccess().getGroup(), "rule__SolverSpec__Group__0");
 			builder.put(grammarAccess.getSolverSpecAccess().getGroup_2(), "rule__SolverSpec__Group_2__0");
 			builder.put(grammarAccess.getSolverSpecAccess().getGroup_10(), "rule__SolverSpec__Group_10__0");
+			builder.put(grammarAccess.getSolverSpecAccess().getGroup_11(), "rule__SolverSpec__Group_11__0");
 			builder.put(grammarAccess.getBasePathSpecAccess().getGroup(), "rule__BasePathSpec__Group__0");
 			builder.put(grammarAccess.getMetaModelSpecAccess().getGroup(), "rule__MetaModelSpec__Group__0");
 			builder.put(grammarAccess.getModelPathSpecAccess().getGroup(), "rule__ModelPathSpec__Group__0");
@@ -108,6 +109,7 @@ public class MoptParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getSignedIntegerAccess().getGroup(), "rule__SignedInteger__Group__0");
 			builder.put(grammarAccess.getAlgorithmSpecAccess().getGroup(), "rule__AlgorithmSpec__Group__0");
 			builder.put(grammarAccess.getTerminationConditionSpecAccess().getGroup(), "rule__TerminationConditionSpec__Group__0");
+			builder.put(grammarAccess.getParameterSearchSpecAccess().getGroup(), "rule__ParameterSearchSpec__Group__0");
 			builder.put(grammarAccess.getParameterAccess().getGroup(), "rule__Parameter__Group__0");
 			builder.put(grammarAccess.getParameterValueAccess().getGroup_2(), "rule__ParameterValue__Group_2__0");
 			builder.put(grammarAccess.getParameterValueAccess().getGroup_2_2(), "rule__ParameterValue__Group_2_2__0");
@@ -309,7 +311,8 @@ public class MoptParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getSolverSpecAccess().getAlgorithmFactoryAssignment_5(), "rule__SolverSpec__AlgorithmFactoryAssignment_5");
 			builder.put(grammarAccess.getSolverSpecAccess().getAlgorithmAssignment_7(), "rule__SolverSpec__AlgorithmAssignment_7");
 			builder.put(grammarAccess.getSolverSpecAccess().getTerminationConditionAssignment_9(), "rule__SolverSpec__TerminationConditionAssignment_9");
-			builder.put(grammarAccess.getSolverSpecAccess().getAlgorithmBatchesAssignment_10_1(), "rule__SolverSpec__AlgorithmBatchesAssignment_10_1");
+			builder.put(grammarAccess.getSolverSpecAccess().getParameterSearchAssignment_10_2(), "rule__SolverSpec__ParameterSearchAssignment_10_2");
+			builder.put(grammarAccess.getSolverSpecAccess().getAlgorithmBatchesAssignment_11_1(), "rule__SolverSpec__AlgorithmBatchesAssignment_11_1");
 			builder.put(grammarAccess.getBasePathSpecAccess().getLocationAssignment_1(), "rule__BasePathSpec__LocationAssignment_1");
 			builder.put(grammarAccess.getMetaModelSpecAccess().getLocationAssignment_1(), "rule__MetaModelSpec__LocationAssignment_1");
 			builder.put(grammarAccess.getModelPathSpecAccess().getLocationAssignment_1(), "rule__ModelPathSpec__LocationAssignment_1");
@@ -347,6 +350,7 @@ public class MoptParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getAlgorithmSpecAccess().getNameAssignment_0(), "rule__AlgorithmSpec__NameAssignment_0");
 			builder.put(grammarAccess.getAlgorithmSpecAccess().getParametersAssignment_2(), "rule__AlgorithmSpec__ParametersAssignment_2");
 			builder.put(grammarAccess.getTerminationConditionSpecAccess().getParametersAssignment_2(), "rule__TerminationConditionSpec__ParametersAssignment_2");
+			builder.put(grammarAccess.getParameterSearchSpecAccess().getParametersAssignment_2(), "rule__ParameterSearchSpec__ParametersAssignment_2");
 			builder.put(grammarAccess.getParameterAccess().getNameAssignment_0(), "rule__Parameter__NameAssignment_0");
 			builder.put(grammarAccess.getParameterAccess().getValueAssignment_2(), "rule__Parameter__ValueAssignment_2");
 			builder.put(grammarAccess.getParameterValueAccess().getNumericAssignment_0(), "rule__ParameterValue__NumericAssignment_0");

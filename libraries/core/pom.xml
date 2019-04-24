@@ -70,11 +70,6 @@
 			<artifactId>arbiter-deeplearning4j</artifactId>
 			<version>1.0.0-beta3</version>
 		</dependency>
-		<dependency>
-			<groupId>org.deeplearning4j</groupId>
-			<artifactId>arbiter-ui_2.11</artifactId>
-			<version>1.0.0-beta3</version>
-		</dependency>
 		<!-- Fix for java.lang.NoClassDefFoundError: sun/reflect/ConstantPool -->
 		<dependency>
 			<groupId>net.jodah</groupId>
@@ -118,7 +113,13 @@
 			<artifactId>org.eclipse.xtend.lib</artifactId>
 			<version>${xtend.version}</version>
 		</dependency>
-
+		
+		<!-- System information -->
+		<dependency>
+		  <groupId>com.github.oshi</groupId>
+		  <artifactId>oshi-core</artifactId>
+		  <version>3.13.1</version>
+		</dependency>
 		<!-- Own dependencies -->
 		<dependency>
 			<groupId>
