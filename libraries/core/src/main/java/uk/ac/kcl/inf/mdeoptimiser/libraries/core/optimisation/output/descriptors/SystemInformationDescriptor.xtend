@@ -27,6 +27,8 @@ class SystemInformationDescriptor implements ResultsDescriptor {
 	
 		batchWriter.write(getOperatingSystem)
 		batchWriter.println()
+		batchWriter.write(getJavaVersion)
+		batchWriter.println()
 		batchWriter.write(getHardwareInfo)
 		batchWriter.close
 	}
@@ -42,6 +44,16 @@ class SystemInformationDescriptor implements ResultsDescriptor {
 	}
 	
 	/**
+	 * Get information about the JDK used to run the current search batch.
+	 */
+	def String getJavaVersion(){
+		var javaRuntime = System.getProperty("java.runtime.name");
+		var javaVersion = System.getProperty("java.runtime.version")
+		
+		return String.format("Java Runtime: %s Version: %s", javaRuntime, javaVersion);
+	}
+	
+	/**
 	 * Get some basic hardware info to help identify the machine type on which the current batch has been executed.
 	 * 
 	 * @return string containing hardware information
@@ -50,9 +62,9 @@ class SystemInformationDescriptor implements ResultsDescriptor {
 		var hardwareAbstractionLayer = systemInfo.getHardware();
 		var centralProcessor = hardwareAbstractionLayer.getProcessor();
 		return String.join("\n", 
-			String.format("Processor: %s %s Model: %s Arch: %s", centralProcessor.vendor, centralProcessor.family, centralProcessor.model),
+			String.format("Processor: %s", centralProcessor.name),
 			String.format("Processor Cores: %s physical %s logical", centralProcessor.physicalProcessorCount, centralProcessor.logicalProcessorCount),
-			String.format("Memory: %s", hardwareAbstractionLayer.memory.total)
+			String.format("Memory: %s GB", hardwareAbstractionLayer.memory.total / 1073741824d)
 		);
 	}
 }

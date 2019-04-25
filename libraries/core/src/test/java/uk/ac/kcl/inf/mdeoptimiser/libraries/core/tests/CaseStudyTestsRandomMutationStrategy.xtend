@@ -80,7 +80,7 @@ class CaseStudyTestsRandomMutationStrategy {
 			problem {
 				basepath <src/test/resources/models/cra/>
 				metamodel <architectureCRA.ecore>
-				model <TTC_InputRDG_D.xmi>
+				model <TTC_InputRDG_A.xmi>
 			}
 			goal {
 				objective CRA maximise java { "models.moea.MaximiseCRA" }
@@ -100,7 +100,7 @@ class CaseStudyTestsRandomMutationStrategy {
 					mutation.strategy: random
 				}
 				termination {
-					evolutions: 500
+					evolutions: 100
 				}
 				batches 1
 			}

@@ -37,4 +37,13 @@ class SearchResult {
 	def getAccumulator(){
 		return this.instrumenter.lastAccumulator
 	}
+	
+	/**
+	 * Get an instance of the Optimisation instance used to run the current batch.
+	 * 
+	 * @return optimisation instance
+	 */
+	def getOptimisationSpec(){
+		return this.moeaFrameworkAlgorithmConfiguration.solutionGenerator.optimisationModel;
+	}
 }

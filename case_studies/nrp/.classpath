@@ -48,5 +48,6 @@
 			<attribute name="test" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="con" path="uk.ac.kcl.inf.mdeoptimiser.languages.ui.Mopt.MDEO_CONTAINER/dsl"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

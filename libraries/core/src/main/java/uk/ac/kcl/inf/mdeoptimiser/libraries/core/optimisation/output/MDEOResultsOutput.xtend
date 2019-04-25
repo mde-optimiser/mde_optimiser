@@ -27,6 +27,7 @@ import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output.descriptors
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output.descriptors.TextDescriptor
 import uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter.MDEOHyperparametersConfiguration
 import uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter.saver.MDEOParameterSearchResult
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output.descriptors.MoptSpecSerialiser
 
 class MDEOResultsOutput {
 	
@@ -141,11 +142,6 @@ class MDEOResultsOutput {
 		infoWriter.println(batchesOutput.toString)
 		
 		infoWriter.close
-		
-		if(java.nio.file.Files.exists(moptFile)){
-			Files.copy(new File(moptFile.toAbsolutePath.toString), 
-				new File(Paths.get(outcomePath.toString, moptFile.last.toString).toString))
-		}
 	}
 	
 	/**
@@ -166,6 +162,7 @@ class MDEOResultsOutput {
 		descriptors.add(new ExperimentCSVSerializer())
 		descriptors.add(new AccumulatorSerialiser())
 		descriptors.add(new SystemInformationDescriptor())
+		descriptors.add(new MoptSpecSerialiser(this.moptFile))
 		return descriptors;
 	}
 	
