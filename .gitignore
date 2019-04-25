@@ -58,3 +58,6 @@ languages/mopt/xtext/.antlr-generator-3.2.0-patch.jar
 repositories/output/
 website/src/
 node_modules/
+
+# Ignore results folders
+mdeo-results/
