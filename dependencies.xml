@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="dependencies" default="depend.all">
+    <dirname property="dependencies.basedir" file="${ant.file.dependencies}"/>
+
+    <!-- ================================================================== -->
+    <target name="depend.all" depends="depend.maven, depend.eclipse">
+    </target>
+
+    <!-- Maven Builds -->
+    <!-- ================================================================== -->
+    <target name="depend.maven">
+            <ant dir="${dependencies.basedir}/build/maven" inheritAll="true"/>
+    </target>
+
+    <!-- Eclipse Builds -->
+    <target name="depend.eclipse" depends="depend.maven">
+            <ant dir="${dependencies.basedir}/interfaces/eclipse" inheritAll="true"/>
+    </target>
+
+</project>

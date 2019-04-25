@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ASCII"?>
+<argumentation:ArgumentationFramework xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:argumentation="http://www.kcl.ac.uk/mdeo/argumentation/1.0" xsi:schemaLocation="http://www.kcl.ac.uk/mdeo/argumentation/1.0 argumentation.ecore" hasTopic="//@hasArgument.0">
+  <persuadeeArgumentationFramework hasArgument="//@hasArgument.1 //@hasArgument.2 //@hasArgument.37 //@hasArgument.39 //@hasArgument.40 //@hasArgument.41 //@hasArgument.7 //@hasArgument.8 //@hasArgument.42 //@hasArgument.9 //@hasArgument.43 //@hasArgument.45 //@hasArgument.11 //@hasArgument.12 //@hasArgument.18 //@hasArgument.46 //@hasArgument.0 //@hasArgument.22 //@hasArgument.48 //@hasArgument.24 //@hasArgument.25 //@hasArgument.26 //@hasArgument.27 //@hasArgument.28 //@hasArgument.29 //@hasArgument.33 //@hasArgument.34">
+    <hasPersuadee/>
+  </persuadeeArgumentationFramework>
+  <hasPersuader/>
+  <hasArgument name="a"/>
+  <hasArgument attacks="//@hasArgument.3 //@hasArgument.0" name="b10"/>
+  <hasArgument attacks="//@hasArgument.5 //@hasArgument.0" name="b12"/>
+  <hasArgument attacks="//@hasArgument.2 //@hasArgument.0" name="b11"/>
+  <hasArgument attacks="//@hasArgument.7 //@hasArgument.0" name="b14"/>
+  <hasArgument attacks="//@hasArgument.4 //@hasArgument.0" name="b13"/>
+  <hasArgument attacks="//@hasArgument.9 //@hasArgument.0" name="b16"/>
+  <hasArgument attacks="//@hasArgument.6 //@hasArgument.0" name="b15"/>
+  <hasArgument attacks="//@hasArgument.10 //@hasArgument.0" name="b18"/>
+  <hasArgument attacks="//@hasArgument.8 //@hasArgument.0" name="b17"/>
+  <hasArgument attacks="//@hasArgument.22 //@hasArgument.0" name="b19"/>
+  <hasArgument attacks="//@hasArgument.12 //@hasArgument.0" name="b0"/>
+  <hasArgument attacks="//@hasArgument.13 //@hasArgument.0" name="b1"/>
+  <hasArgument attacks="//@hasArgument.14 //@hasArgument.0" name="b2"/>
+  <hasArgument attacks="//@hasArgument.15 //@hasArgument.0" name="b3"/>
+  <hasArgument attacks="//@hasArgument.16 //@hasArgument.0" name="b4"/>
+  <hasArgument attacks="//@hasArgument.17 //@hasArgument.0" name="b5"/>
+  <hasArgument attacks="//@hasArgument.18 //@hasArgument.0" name="b6"/>
+  <hasArgument attacks="//@hasArgument.19 //@hasArgument.0" name="b7"/>
+  <hasArgument attacks="//@hasArgument.20 //@hasArgument.0" name="b8"/>
+  <hasArgument attacks="//@hasArgument.0 //@hasArgument.1" name="b9"/>
+  <hasArgument attacks="//@hasArgument.24 //@hasArgument.0" name="b21"/>
+  <hasArgument attacks="//@hasArgument.21 //@hasArgument.0" name="b20"/>
+  <hasArgument attacks="//@hasArgument.25 //@hasArgument.0" name="b23"/>
+  <hasArgument attacks="//@hasArgument.23 //@hasArgument.0" name="b22"/>
+  <hasArgument attacks="//@hasArgument.11 //@hasArgument.0" name="b24"/>
+  <hasArgument attacks="//@hasArgument.11 //@hasArgument.27" name="c0"/>
+  <hasArgument attacks="//@hasArgument.12 //@hasArgument.28" name="c1"/>
+  <hasArgument attacks="//@hasArgument.13 //@hasArgument.29" name="c2"/>
+  <hasArgument attacks="//@hasArgument.14 //@hasArgument.30" name="c3"/>
+  <hasArgument attacks="//@hasArgument.15 //@hasArgument.31" name="c4"/>
+  <hasArgument attacks="//@hasArgument.16 //@hasArgument.32" name="c5"/>
+  <hasArgument attacks="//@hasArgument.17 //@hasArgument.33" name="c6"/>
+  <hasArgument attacks="//@hasArgument.18 //@hasArgument.34" name="c7"/>
+  <hasArgument attacks="//@hasArgument.19 //@hasArgument.35" name="c8"/>
+  <hasArgument attacks="//@hasArgument.37 //@hasArgument.20" name="c9"/>
+  <hasArgument attacks="//@hasArgument.39 //@hasArgument.3" name="c11"/>
+  <hasArgument attacks="//@hasArgument.36 //@hasArgument.1" name="c10"/>
+  <hasArgument attacks="//@hasArgument.41 //@hasArgument.5" name="c13"/>
+  <hasArgument attacks="//@hasArgument.38 //@hasArgument.2" name="c12"/>
+  <hasArgument attacks="//@hasArgument.43 //@hasArgument.7" name="c15"/>
+  <hasArgument attacks="//@hasArgument.40 //@hasArgument.4" name="c14"/>
+  <hasArgument attacks="//@hasArgument.45 //@hasArgument.9" name="c17"/>
+  <hasArgument attacks="//@hasArgument.42 //@hasArgument.6" name="c16"/>
+  <hasArgument attacks="//@hasArgument.46 //@hasArgument.10" name="c19"/>
+  <hasArgument attacks="//@hasArgument.44 //@hasArgument.8" name="c18"/>
+  <hasArgument attacks="//@hasArgument.48 //@hasArgument.22" name="c20"/>
+  <hasArgument attacks="//@hasArgument.50 //@hasArgument.24" name="c22"/>
+  <hasArgument attacks="//@hasArgument.47 //@hasArgument.21" name="c21"/>
+  <hasArgument attacks="//@hasArgument.25 //@hasArgument.26" name="c24"/>
+  <hasArgument attacks="//@hasArgument.49 //@hasArgument.23" name="c23"/>
+</argumentation:ArgumentationFramework>

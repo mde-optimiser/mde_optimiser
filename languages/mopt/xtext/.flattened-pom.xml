@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext</groupId>
+  <artifactId>uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext.parent</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <repositories>
+    <repository>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <id>codehaus-snapshots</id>
+      <name>disable dead 'Codehaus Snapshots' repository, see https://bugs.eclipse.org/bugs/show_bug.cgi?id=481478</name>
+      <url>http://nexus.codehaus.org/snapshots/</url>
+    </repository>
+    <repository>
+      <id>p2.eclipse.repository</id>
+      <url>https://mde-optimiser.github.io/mdeo_repo/repository/m2/eclipse/2019-03/final/</url>
+    </repository>
+    <repository>
+      <id>m2.moeaframework</id>
+      <url>https://mde-optimiser.github.io/mdeo_repo/repository/m2/moeaframework/</url>
+    </repository>
+  </repositories>
+</project>

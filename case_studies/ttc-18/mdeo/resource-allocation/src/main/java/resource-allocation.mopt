@@ -1,0 +1,16 @@
+basepath <src/main/resources/models/resource/allocation/>
+metamodel <org.xtext.example.mydsl.myDsl.MyDslPackage>
+model <0_trivial.xmi>
+initialise models using <models.resource.allocation.fitness.HenshinModelInitialiser>
+objective ResourceAllocationObjective minimise java { "models.resource.allocation.fitness.ResourceAllocationObjective" }
+objective NCNonFuncRequirementsAreMetByDependingImplementations minimise java { "models.resource.allocation.fitness.NCNonFuncRequirementsAreMetByDependingImplementations" }
+constraint ACEachRequestIsFulfilled java { "models.resource.allocation.fitness.ACEachRequestIsFulfilled" }
+constraint ACOneImplementationPerComponent java { "models.resource.allocation.fitness.ACOneImplementationPerComponent" }
+constraint ACOneImplementationPerResource java { "models.resource.allocation.fitness.ACOneImplementationPerResource" }
+constraint RCRequestNonFuncPropertiesProvidedBySelectedComponents java { "models.resource.allocation.fitness.RCRequestNonFuncPropertiesProvidedBySelectedComponents" }
+constraint ACAllRequestRequiredComponentsAreImplemented java { "models.resource.allocation.fitness.ACAllRequestRequiredComponentsAreImplemented" }
+mutate using <iterative-resource-allocation.henshin> unit "changeRequestImplementation"
+mutate using <iterative-resource-allocation.henshin> unit "changeComponentMapping"
+mutate using <iterative-resource-allocation.henshin> unit "changeResourceMapping"
+mutate using <iterative-resource-allocation.henshin> unit "swapResourceMappings"
+optimisation provider moea algorithm NSGAII variation mutation evolutions 2000 population 30 batches 1

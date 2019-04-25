@@ -1,0 +1,6 @@
+PERSUADER: <{ a33, a32, a35, a34, a37, a36, a39, a38, a40, a42, a41, a44, a43, a46, a45, a48, a47, a49, a51, a50, a11, a10, a13, a12, a15, a14, a17, a16, a19, a18, a20, a22, a, a21, a24, a23, a26, a25, a28, a27, a29, a1, a2, a3, a4, a5, a6, a7, a8, a9, a31, a30 },[(a36,a3), (a38,a26), (a27,a15), (a34,a32), (a20,a7), (a45,a41), (a37,a21), (a3,a1), (a26,a11), (a29,a16), (a4,a2), (a22,a7), (a39,a21), (a21,a2), (a5,a2), (a16,a14), (a6,a4), (a51,a33), (a9,a), (a7,a5), (a11,a4), (a46,a18), (a18,a15), (a8,a6), (a25,a7), (a10,a7), (a17,a16), (a48,a18), (a32,a18), (a43,a29), (a50,a47), (a28,a9), (a49,a13), (a12,a6), (a13,a3), (a31,a22), (a15,a1), (a40,a37), (a41,a30), (a44,a1), (a14,a9), (a23,a11), (a33,a20), (a30,a3), (a1,a), (a2,a), (a47,a6), (a42,a41), (a24,a12), (a19,a6), (a35,a20)]>
+AUDIENCE:
+	 @<{ a22, a44, a, a21, a23, a34, a48, a14, a25, a1, a2, a51, a50, a42 },[(a1,a), (a2,a), (a21,a2), (a44,a1)]>
+TOPIC: a
+Acceptable topics with the Ground Reasoner: -1.0
+Acceptable topics with the ArgMatSat: -1.0

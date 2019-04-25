@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="architectureCRA" nsURI="http://momot.big.tuwien.ac.at/architectureCRA/1.0"
+    nsPrefix="architectureCRA">
+  <eClassifiers xsi:type="ecore:EClass" name="ClassModel" eSuperTypes="architectureCRA.ecore#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="classes" ordered="false"
+        upperBound="-1" eType="ecore:EClass architectureCRA.ecore#//Class" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="features" ordered="false"
+        upperBound="-1" eType="ecore:EClass architectureCRA.ecore#//Feature" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Class" eSuperTypes="architectureCRA.ecore#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="encapsulates" lowerBound="1"
+        upperBound="-1" eType="ecore:EClass architectureCRA.ecore#//Feature" eOpposite="architectureCRA.ecore#//Feature/isEncapsulatedBy"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Attribute" eSuperTypes="architectureCRA.ecore#//Feature"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Method" eSuperTypes="architectureCRA.ecore#//Feature">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataDependency" upperBound="-1"
+        eType="ecore:EClass architectureCRA.ecore#//Attribute"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="functionalDependency" upperBound="-1"
+        eType="ecore:EClass architectureCRA.ecore#//Method"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Feature" abstract="true" eSuperTypes="architectureCRA.ecore#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="isEncapsulatedBy" lowerBound="1"
+        eType="ecore:EClass architectureCRA.ecore#//Class" eOpposite="architectureCRA.ecore#//Class/encapsulates"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>

@@ -1,0 +1,33 @@
+
+Found 0 sprints
+Backlog items: 119
+Backlog effort points size: 455
+
+
+Found 5 stakeholders
+
+	Stakeholder-0 stats:
+		Items: 14
+		Total Effort: 59
+		Total Importance: 79
+
+	Stakeholder-1 stats:
+		Items: 29
+		Total Effort: 88
+		Total Importance: 129
+
+	Stakeholder-2 stats:
+		Items: 30
+		Total Effort: 145
+		Total Importance: 121
+
+	Stakeholder-3 stats:
+		Items: 44
+		Total Effort: 154
+		Total Importance: 199
+
+	Stakeholder-4 stats:
+		Items: 2
+		Total Effort: 9
+		Total Importance: 6
+

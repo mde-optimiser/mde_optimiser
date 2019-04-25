@@ -1,0 +1,9 @@
+version: '2'
+services:
+  solvers:
+    build:
+      context: ./solvers
+      dockerfile: Dockerfile
+    volumes:
+        - ../:/var/app/current
+    command: /usr/sbin/crond -n && /bin/sh -c "sleep infinity"

@@ -1,0 +1,30 @@
+problem {
+	basepath <src/main/resources/models/cra/>
+	metamodel <architectureCRA.ecore>
+	model <TTC_InputRDG_C.xmi>
+}
+goal {
+	objective CRA maximise java { "models.cra.fitness.MaximiseCRA" }
+	constraint MinimiseClasslessFeatures java { "models.cra.fitness.MinimiseClasslessFeatures" }
+	constraint MinimiseEmptyClasses java { "models.cra.fitness.MinimiseEmptyClasses" }
+}
+search { 
+	mutate using <craEvolvers.henshin> unit "createClass"
+	mutate using <craEvolvers.henshin> unit "assignFeature"
+	mutate using <craEvolvers.henshin> unit "moveFeature"
+	mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
+}
+solver {
+	optimisation provider moea algorithm NSGAII {
+		population: 100
+		variation: mutation
+	}
+	termination {
+		delta: 5
+		iterations: 100
+		iterations: 1003
+		time: 100
+		other: 4000
+	}
+	batches 10
+}

@@ -1,0 +1,225 @@
+
+============================================
+
+Batch 0 duration: 00:00:31.965
+
+--------------------------------------------
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/scrum-planning/mdeo/scrum-planning/mdeo-results/experiment-scrum-planning.mopt-180801-184145-matching-henshin/batch-0/4D7AD9EB.xmi
+
+Objective values:
+MinimiseCustomerSatisfactionIndex: 1.602253912864405
+MinimiseSprintEffortDeviation: 0.4608885989624768
+
+Constraint values:
+HasNoUnassignedWorkItems: 0.0
+HasTheAllowedMaximalNumberOfSprints: 0.0
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/scrum-planning/mdeo/scrum-planning/mdeo-results/experiment-scrum-planning.mopt-180801-184145-matching-henshin/batch-0/25B9AF4F.xmi
+
+Objective values:
+MinimiseCustomerSatisfactionIndex: 0.8661615203419474
+MinimiseSprintEffortDeviation: 4.991823379647438
+
+Constraint values:
+HasNoUnassignedWorkItems: 0.0
+HasTheAllowedMaximalNumberOfSprints: 0.0
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/scrum-planning/mdeo/scrum-planning/mdeo-results/experiment-scrum-planning.mopt-180801-184145-matching-henshin/batch-0/0D71174D.xmi
+
+Objective values:
+MinimiseCustomerSatisfactionIndex: 1.4938960665281458
+MinimiseSprintEffortDeviation: 0.6691131580686882
+
+Constraint values:
+HasNoUnassignedWorkItems: 0.0
+HasTheAllowedMaximalNumberOfSprints: 0.0
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/scrum-planning/mdeo/scrum-planning/mdeo-results/experiment-scrum-planning.mopt-180801-184145-matching-henshin/batch-0/10853475.xmi
+
+Objective values:
+MinimiseCustomerSatisfactionIndex: 1.009822183050529
+MinimiseSprintEffortDeviation: 1.9037287113808905
+
+Constraint values:
+HasNoUnassignedWorkItems: 0.0
+HasTheAllowedMaximalNumberOfSprints: 0.0
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/scrum-planning/mdeo/scrum-planning/mdeo-results/experiment-scrum-planning.mopt-180801-184145-matching-henshin/batch-0/592D8949.xmi
+
+Objective values:
+MinimiseCustomerSatisfactionIndex: 1.3328036748633172
+MinimiseSprintEffortDeviation: 0.751903901522118
+
+Constraint values:
+HasNoUnassignedWorkItems: 0.0
+HasTheAllowedMaximalNumberOfSprints: 0.0
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/scrum-planning/mdeo/scrum-planning/mdeo-results/experiment-scrum-planning.mopt-180801-184145-matching-henshin/batch-0/7F57E330.xmi
+
+Objective values:
+MinimiseCustomerSatisfactionIndex: 0.9766825130640322
+MinimiseSprintEffortDeviation: 2.652536090691002
+
+Constraint values:
+HasNoUnassignedWorkItems: 0.0
+HasTheAllowedMaximalNumberOfSprints: 0.0
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/scrum-planning/mdeo/scrum-planning/mdeo-results/experiment-scrum-planning.mopt-180801-184145-matching-henshin/batch-0/1EFBE7EC.xmi
+
+Objective values:
+MinimiseCustomerSatisfactionIndex: 1.2124401360614139
+MinimiseSprintEffortDeviation: 1.227410260553666
+
+Constraint values:
+HasNoUnassignedWorkItems: 0.0
+HasTheAllowedMaximalNumberOfSprints: 0.0
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/scrum-planning/mdeo/scrum-planning/mdeo-results/experiment-scrum-planning.mopt-180801-184145-matching-henshin/batch-0/43B95A04.xmi
+
+Objective values:
+MinimiseCustomerSatisfactionIndex: 1.582864090025577
+MinimiseSprintEffortDeviation: 0.5745131499601417
+
+Constraint values:
+HasNoUnassignedWorkItems: 0.0
+HasTheAllowedMaximalNumberOfSprints: 0.0
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/scrum-planning/mdeo/scrum-planning/mdeo-results/experiment-scrum-planning.mopt-180801-184145-matching-henshin/batch-0/3804637D.xmi
+
+Objective values:
+MinimiseCustomerSatisfactionIndex: 1.2744952757058465
+MinimiseSprintEffortDeviation: 0.9582800496696003
+
+Constraint values:
+HasNoUnassignedWorkItems: 0.0
+HasTheAllowedMaximalNumberOfSprints: 0.0
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/scrum-planning/mdeo/scrum-planning/mdeo-results/experiment-scrum-planning.mopt-180801-184145-matching-henshin/batch-0/66D443B0.xmi
+
+Objective values:
+MinimiseCustomerSatisfactionIndex: 0.8751486706422626
+MinimiseSprintEffortDeviation: 4.521914684986953
+
+Constraint values:
+HasNoUnassignedWorkItems: 0.0
+HasTheAllowedMaximalNumberOfSprints: 0.0
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/scrum-planning/mdeo/scrum-planning/mdeo-results/experiment-scrum-planning.mopt-180801-184145-matching-henshin/batch-0/613F83E9.xmi
+
+Objective values:
+MinimiseCustomerSatisfactionIndex: 0.9354013919927143
+MinimiseSprintEffortDeviation: 3.4437591559490635
+
+Constraint values:
+HasNoUnassignedWorkItems: 0.0
+HasTheAllowedMaximalNumberOfSprints: 0.0
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/scrum-planning/mdeo/scrum-planning/mdeo-results/experiment-scrum-planning.mopt-180801-184145-matching-henshin/batch-0/17D0DAEB.xmi
+
+Objective values:
+MinimiseCustomerSatisfactionIndex: 0.9277994629134808
+MinimiseSprintEffortDeviation: 3.7543003664904147
+
+Constraint values:
+HasNoUnassignedWorkItems: 0.0
+HasTheAllowedMaximalNumberOfSprints: 0.0
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/scrum-planning/mdeo/scrum-planning/mdeo-results/experiment-scrum-planning.mopt-180801-184145-matching-henshin/batch-0/05640A24.xmi
+
+Objective values:
+MinimiseCustomerSatisfactionIndex: 1.1027021722739743
+MinimiseSprintEffortDeviation: 1.274434386908933
+
+Constraint values:
+HasNoUnassignedWorkItems: 0.0
+HasTheAllowedMaximalNumberOfSprints: 0.0
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/scrum-planning/mdeo/scrum-planning/mdeo-results/experiment-scrum-planning.mopt-180801-184145-matching-henshin/batch-0/5EC4F60A.xmi
+
+Objective values:
+MinimiseCustomerSatisfactionIndex: 1.0800760620200425
+MinimiseSprintEffortDeviation: 1.6379885640466822
+
+Constraint values:
+HasNoUnassignedWorkItems: 0.0
+HasTheAllowedMaximalNumberOfSprints: 0.0
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/scrum-planning/mdeo/scrum-planning/mdeo-results/experiment-scrum-planning.mopt-180801-184145-matching-henshin/batch-0/662B7DFD.xmi
+
+Objective values:
+MinimiseCustomerSatisfactionIndex: 1.2622303881537382
+MinimiseSprintEffortDeviation: 1.1274936053323583
+
+Constraint values:
+HasNoUnassignedWorkItems: 0.0
+HasTheAllowedMaximalNumberOfSprints: 0.0
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/scrum-planning/mdeo/scrum-planning/mdeo-results/experiment-scrum-planning.mopt-180801-184145-matching-henshin/batch-0/5E70DD0A.xmi
+
+Objective values:
+MinimiseCustomerSatisfactionIndex: 0.9646896197199186
+MinimiseSprintEffortDeviation: 3.0254908314588937
+
+Constraint values:
+HasNoUnassignedWorkItems: 0.0
+HasTheAllowedMaximalNumberOfSprints: 0.0
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/scrum-planning/mdeo/scrum-planning/mdeo-results/experiment-scrum-planning.mopt-180801-184145-matching-henshin/batch-0/18BDABCA.xmi
+
+Objective values:
+MinimiseCustomerSatisfactionIndex: 0.9425645539622054
+MinimiseSprintEffortDeviation: 3.0448713979518676
+
+Constraint values:
+HasNoUnassignedWorkItems: 0.0
+HasTheAllowedMaximalNumberOfSprints: 0.0
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/scrum-planning/mdeo/scrum-planning/mdeo-results/experiment-scrum-planning.mopt-180801-184145-matching-henshin/batch-0/654DAE98.xmi
+
+Objective values:
+MinimiseCustomerSatisfactionIndex: 0.9156690852063432
+MinimiseSprintEffortDeviation: 4.098860036006505
+
+Constraint values:
+HasNoUnassignedWorkItems: 0.0
+HasTheAllowedMaximalNumberOfSprints: 0.0
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/scrum-planning/mdeo/scrum-planning/mdeo-results/experiment-scrum-planning.mopt-180801-184145-matching-henshin/batch-0/336B6007.xmi
+
+Objective values:
+MinimiseCustomerSatisfactionIndex: 1.0989335495255999
+MinimiseSprintEffortDeviation: 1.487420014875958
+
+Constraint values:
+HasNoUnassignedWorkItems: 0.0
+HasTheAllowedMaximalNumberOfSprints: 0.0
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/scrum-planning/mdeo/scrum-planning/mdeo-results/experiment-scrum-planning.mopt-180801-184145-matching-henshin/batch-0/3078CC09.xmi
+
+Objective values:
+MinimiseCustomerSatisfactionIndex: 0.8951464840389141
+MinimiseSprintEffortDeviation: 4.363020480403261
+
+Constraint values:
+HasNoUnassignedWorkItems: 0.0
+HasTheAllowedMaximalNumberOfSprints: 0.0
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/scrum-planning/mdeo/scrum-planning/mdeo-results/experiment-scrum-planning.mopt-180801-184145-matching-henshin/batch-0/3EBE5EA5.xmi
+
+Objective values:
+MinimiseCustomerSatisfactionIndex: 0.9058405702633607
+MinimiseSprintEffortDeviation: 4.212105182133926
+
+Constraint values:
+HasNoUnassignedWorkItems: 0.0
+HasTheAllowedMaximalNumberOfSprints: 0.0
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/scrum-planning/mdeo/scrum-planning/mdeo-results/experiment-scrum-planning.mopt-180801-184145-matching-henshin/batch-0/27159484.xmi
+
+Objective values:
+MinimiseCustomerSatisfactionIndex: 1.0849339878360504
+MinimiseSprintEffortDeviation: 1.6379885640466818
+
+Constraint values:
+HasNoUnassignedWorkItems: 0.0
+HasTheAllowedMaximalNumberOfSprints: 0.0
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/scrum-planning/mdeo/scrum-planning/mdeo-results/experiment-scrum-planning.mopt-180801-184145-matching-henshin/batch-0/745EE705.xmi
+
+Objective values:
+MinimiseCustomerSatisfactionIndex: 1.0990697056160394
+MinimiseSprintEffortDeviation: 1.2744343869089332
+
+Constraint values:
+HasNoUnassignedWorkItems: 0.0
+HasTheAllowedMaximalNumberOfSprints: 0.0
+Evaluation data for solution: /home/alxbrd/projects/alxbrd/github/case_studies/scrum-planning/mdeo/scrum-planning/mdeo-results/experiment-scrum-planning.mopt-180801-184145-matching-henshin/batch-0/116375E5.xmi
+
+Objective values:
+MinimiseCustomerSatisfactionIndex: 0.8982560931567054
+MinimiseSprintEffortDeviation: 4.295080024667835
+
+Constraint values:
+HasNoUnassignedWorkItems: 0.0
+HasTheAllowedMaximalNumberOfSprints: 0.0
+
+============================================
+

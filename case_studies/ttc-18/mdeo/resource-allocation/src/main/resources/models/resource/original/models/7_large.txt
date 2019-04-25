@@ -1,0 +1,2719 @@
+container resource type ComputeNode {
+ resource type CPU {
+  property frequency [Hz]
+  property load [%]
+ }
+ resource type RAM {
+  using property total
+  using property free
+ }
+ resource type DISK {
+  using property total
+  using property free
+ }
+ resource type NETWORK {
+  property latency [ms]
+  property throughput [kB/s]
+ }
+}
+resource resource8:ComputeNode {
+ resource cpu8_0:CPU {
+  frequency = 533.0
+  load = 0.0
+ }
+ resource ram8:RAM {
+  total = 5753.0
+  free = 5753.0
+ }
+ resource disk8:DISK {
+  total = 10728.0
+  free = 10728.0
+ }
+ resource network8:NETWORK {
+  latency = 880.0
+  throughput = 56047.0
+ }
+}
+resource resource55:ComputeNode {
+ resource cpu55_0:CPU {
+  frequency = 1519.0
+  load = 0.0
+ }
+ resource ram55:RAM {
+  total = 1912.0
+  free = 1912.0
+ }
+ resource disk55:DISK {
+  total = 2829.0
+  free = 2829.0
+ }
+ resource network55:NETWORK {
+  latency = 293.0
+  throughput = 3697.0
+ }
+}
+resource resource38:ComputeNode {
+ resource cpu38_0:CPU {
+  frequency = 533.0
+  load = 0.0
+ }
+ resource ram38:RAM {
+  total = 5753.0
+  free = 5753.0
+ }
+ resource disk38:DISK {
+  total = 10728.0
+  free = 10728.0
+ }
+ resource network38:NETWORK {
+  latency = 134.0
+  throughput = 56047.0
+ }
+}
+resource resource33:ComputeNode {
+ resource cpu33_0:CPU {
+  frequency = 930.0
+  load = 0.0
+ }
+ resource ram33:RAM {
+  total = 6050.0
+  free = 6050.0
+ }
+ resource disk33:DISK {
+  total = 8652.0
+  free = 8652.0
+ }
+ resource network33:NETWORK {
+  latency = 603.0
+  throughput = 25114.0
+ }
+}
+resource resource76:ComputeNode {
+ resource cpu76_0:CPU {
+  frequency = 1630.0
+  load = 0.0
+ }
+ resource ram76:RAM {
+  total = 12624.0
+  free = 12624.0
+ }
+ resource disk76:DISK {
+  total = 5809.0
+  free = 5809.0
+ }
+ resource network76:NETWORK {
+  latency = 185.0
+  throughput = 72775.0
+ }
+}
+resource resource78:ComputeNode {
+ resource cpu78_0:CPU {
+  frequency = 567.0
+  load = 0.0
+ }
+ resource ram78:RAM {
+  total = 12459.0
+  free = 12459.0
+ }
+ resource disk78:DISK {
+  total = 6142.0
+  free = 6142.0
+ }
+ resource network78:NETWORK {
+  latency = 127.0
+  throughput = 27592.0
+ }
+}
+resource resource37:ComputeNode {
+ resource cpu37_0:CPU {
+  frequency = 2651.0
+  load = 0.0
+ }
+ resource ram37:RAM {
+  total = 12779.0
+  free = 12779.0
+ }
+ resource disk37:DISK {
+  total = 11193.0
+  free = 11193.0
+ }
+ resource network37:NETWORK {
+  latency = 300.0
+  throughput = 96780.0
+ }
+}
+resource resource0:ComputeNode {
+ resource cpu0_0:CPU {
+  frequency = 1790.0
+  load = 0.0
+ }
+ resource ram0:RAM {
+  total = 4485.0
+  free = 4485.0
+ }
+ resource disk0:DISK {
+  total = 15589.0
+  free = 15589.0
+ }
+ resource network0:NETWORK {
+  latency = 721.0
+  throughput = 73029.0
+ }
+}
+resource resource69:ComputeNode {
+ resource cpu69_0:CPU {
+  frequency = 1817.0
+  load = 0.0
+ }
+ resource ram69:RAM {
+  total = 10175.0
+  free = 10175.0
+ }
+ resource disk69:DISK {
+  total = 13811.0
+  free = 13811.0
+ }
+ resource network69:NETWORK {
+  latency = 504.0
+  throughput = 38879.0
+ }
+}
+resource resource29:ComputeNode {
+ resource cpu29_0:CPU {
+  frequency = 1920.0
+  load = 0.0
+ }
+ resource ram29:RAM {
+  total = 15746.0
+  free = 15746.0
+ }
+ resource disk29:DISK {
+  total = 12108.0
+  free = 12108.0
+ }
+ resource network29:NETWORK {
+  latency = 481.0
+  throughput = 43600.0
+ }
+}
+resource resource42:ComputeNode {
+ resource cpu42_0:CPU {
+  frequency = 683.0
+  load = 0.0
+ }
+ resource ram42:RAM {
+  total = 12763.0
+  free = 12763.0
+ }
+ resource disk42:DISK {
+  total = 14016.0
+  free = 14016.0
+ }
+ resource network42:NETWORK {
+  latency = 774.0
+  throughput = 71329.0
+ }
+}
+resource resource77:ComputeNode {
+ resource cpu77_0:CPU {
+  frequency = 2390.0
+  load = 0.0
+ }
+ resource ram77:RAM {
+  total = 6269.0
+  free = 6269.0
+ }
+ resource disk77:DISK {
+  total = 3420.0
+  free = 3420.0
+ }
+ resource network77:NETWORK {
+  latency = 202.0
+  throughput = 62589.0
+ }
+}
+resource resource18:ComputeNode {
+ resource cpu18_0:CPU {
+  frequency = 2780.0
+  load = 0.0
+ }
+ resource ram18:RAM {
+  total = 6390.0
+  free = 6390.0
+ }
+ resource disk18:DISK {
+  total = 13216.0
+  free = 13216.0
+ }
+ resource network18:NETWORK {
+  latency = 864.0
+  throughput = 17039.0
+ }
+}
+resource resource58:ComputeNode {
+ resource cpu58_0:CPU {
+  frequency = 2040.0
+  load = 0.0
+ }
+ resource ram58:RAM {
+  total = 4350.0
+  free = 4350.0
+ }
+ resource disk58:DISK {
+  total = 6114.0
+  free = 6114.0
+ }
+ resource network58:NETWORK {
+  latency = 753.0
+  throughput = 91137.0
+ }
+}
+resource resource51:ComputeNode {
+ resource cpu51_0:CPU {
+  frequency = 1839.0
+  load = 0.0
+ }
+ resource ram51:RAM {
+  total = 8598.0
+  free = 8598.0
+ }
+ resource disk51:DISK {
+  total = 4557.0
+  free = 4557.0
+ }
+ resource network51:NETWORK {
+  latency = 198.0
+  throughput = 48577.0
+ }
+}
+resource resource85:ComputeNode {
+ resource cpu85_0:CPU {
+  frequency = 1085.0
+  load = 0.0
+ }
+ resource ram85:RAM {
+  total = 1170.0
+  free = 1170.0
+ }
+ resource disk85:DISK {
+  total = 13126.0
+  free = 13126.0
+ }
+ resource network85:NETWORK {
+  latency = 331.0
+  throughput = 4536.0
+ }
+}
+resource resource67:ComputeNode {
+ resource cpu67_0:CPU {
+  frequency = 582.0
+  load = 0.0
+ }
+ resource ram67:RAM {
+  total = 15709.0
+  free = 15709.0
+ }
+ resource disk67:DISK {
+  total = 1419.0
+  free = 1419.0
+ }
+ resource network67:NETWORK {
+  latency = 652.0
+  throughput = 61562.0
+ }
+}
+resource resource71:ComputeNode {
+ resource cpu71_0:CPU {
+  frequency = 2483.0
+  load = 0.0
+ }
+ resource ram71:RAM {
+  total = 876.0
+  free = 876.0
+ }
+ resource disk71:DISK {
+  total = 9380.0
+  free = 9380.0
+ }
+ resource network71:NETWORK {
+  latency = 90.0
+  throughput = 85923.0
+ }
+}
+resource resource7:ComputeNode {
+ resource cpu7_0:CPU {
+  frequency = 2511.0
+  load = 0.0
+ }
+ resource ram7:RAM {
+  total = 14700.0
+  free = 14700.0
+ }
+ resource disk7:DISK {
+  total = 3738.0
+  free = 3738.0
+ }
+ resource network7:NETWORK {
+  latency = 419.0
+  throughput = 13240.0
+ }
+}
+resource resource34:ComputeNode {
+ resource cpu34_0:CPU {
+  frequency = 2040.0
+  load = 0.0
+ }
+ resource ram34:RAM {
+  total = 4350.0
+  free = 4350.0
+ }
+ resource disk34:DISK {
+  total = 6114.0
+  free = 6114.0
+ }
+ resource network34:NETWORK {
+  latency = 292.0
+  throughput = 91137.0
+ }
+}
+resource resource5:ComputeNode {
+ resource cpu5_0:CPU {
+  frequency = 1040.0
+  load = 0.0
+ }
+ resource ram5:RAM {
+  total = 14990.0
+  free = 14990.0
+ }
+ resource disk5:DISK {
+  total = 7302.0
+  free = 7302.0
+ }
+ resource network5:NETWORK {
+  latency = 101.0
+  throughput = 15857.0
+ }
+}
+resource resource54:ComputeNode {
+ resource cpu54_0:CPU {
+  frequency = 2238.0
+  load = 0.0
+ }
+ resource ram54:RAM {
+  total = 14665.0
+  free = 14665.0
+ }
+ resource disk54:DISK {
+  total = 4902.0
+  free = 4902.0
+ }
+ resource network54:NETWORK {
+  latency = 276.0
+  throughput = 82490.0
+ }
+}
+resource resource59:ComputeNode {
+ resource cpu59_0:CPU {
+  frequency = 533.0
+  load = 0.0
+ }
+ resource ram59:RAM {
+  total = 5753.0
+  free = 5753.0
+ }
+ resource disk59:DISK {
+  total = 10728.0
+  free = 10728.0
+ }
+ resource network59:NETWORK {
+  latency = 156.0
+  throughput = 56047.0
+ }
+}
+resource resource75:ComputeNode {
+ resource cpu75_0:CPU {
+  frequency = 2081.0
+  load = 0.0
+ }
+ resource ram75:RAM {
+  total = 12614.0
+  free = 12614.0
+ }
+ resource disk75:DISK {
+  total = 12938.0
+  free = 12938.0
+ }
+ resource network75:NETWORK {
+  latency = 862.0
+  throughput = 17471.0
+ }
+}
+resource resource47:ComputeNode {
+ resource cpu47_0:CPU {
+  frequency = 2503.0
+  load = 0.0
+ }
+ resource ram47:RAM {
+  total = 15600.0
+  free = 15600.0
+ }
+ resource disk47:DISK {
+  total = 2568.0
+  free = 2568.0
+ }
+ resource network47:NETWORK {
+  latency = 6.0
+  throughput = 5905.0
+ }
+}
+resource resource60:ComputeNode {
+ resource cpu60_0:CPU {
+  frequency = 1956.0
+  load = 0.0
+ }
+ resource ram60:RAM {
+  total = 11266.0
+  free = 11266.0
+ }
+ resource disk60:DISK {
+  total = 9735.0
+  free = 9735.0
+ }
+ resource network60:NETWORK {
+  latency = 746.0
+  throughput = 72853.0
+ }
+}
+resource resource1:ComputeNode {
+ resource cpu1_0:CPU {
+  frequency = 1904.0
+  load = 0.0
+ }
+ resource ram1:RAM {
+  total = 11506.0
+  free = 11506.0
+ }
+ resource disk1:DISK {
+  total = 10366.0
+  free = 10366.0
+ }
+ resource network1:NETWORK {
+  latency = 87.0
+  throughput = 90091.0
+ }
+}
+resource resource20:ComputeNode {
+ resource cpu20_0:CPU {
+  frequency = 2543.0
+  load = 0.0
+ }
+ resource ram20:RAM {
+  total = 4606.0
+  free = 4606.0
+ }
+ resource disk20:DISK {
+  total = 13218.0
+  free = 13218.0
+ }
+ resource network20:NETWORK {
+  latency = 214.0
+  throughput = 50730.0
+ }
+}
+resource resource44:ComputeNode {
+ resource cpu44_0:CPU {
+  frequency = 1920.0
+  load = 0.0
+ }
+ resource ram44:RAM {
+  total = 15746.0
+  free = 15746.0
+ }
+ resource disk44:DISK {
+  total = 12108.0
+  free = 12108.0
+ }
+ resource network44:NETWORK {
+  latency = 204.0
+  throughput = 43600.0
+ }
+}
+resource resource53:ComputeNode {
+ resource cpu53_0:CPU {
+  frequency = 2503.0
+  load = 0.0
+ }
+ resource ram53:RAM {
+  total = 15600.0
+  free = 15600.0
+ }
+ resource disk53:DISK {
+  total = 2568.0
+  free = 2568.0
+ }
+ resource network53:NETWORK {
+  latency = 372.0
+  throughput = 5905.0
+ }
+}
+resource resource26:ComputeNode {
+ resource cpu26_0:CPU {
+  frequency = 687.0
+  load = 0.0
+ }
+ resource ram26:RAM {
+  total = 2663.0
+  free = 2663.0
+ }
+ resource disk26:DISK {
+  total = 986.0
+  free = 986.0
+ }
+ resource network26:NETWORK {
+  latency = 332.0
+  throughput = 27631.0
+ }
+}
+resource resource32:ComputeNode {
+ resource cpu32_0:CPU {
+  frequency = 2503.0
+  load = 0.0
+ }
+ resource ram32:RAM {
+  total = 15600.0
+  free = 15600.0
+ }
+ resource disk32:DISK {
+  total = 2568.0
+  free = 2568.0
+ }
+ resource network32:NETWORK {
+  latency = 243.0
+  throughput = 5905.0
+ }
+}
+resource resource87:ComputeNode {
+ resource cpu87_0:CPU {
+  frequency = 2497.0
+  load = 0.0
+ }
+ resource ram87:RAM {
+  total = 13095.0
+  free = 13095.0
+ }
+ resource disk87:DISK {
+  total = 12635.0
+  free = 12635.0
+ }
+ resource network87:NETWORK {
+  latency = 638.0
+  throughput = 89456.0
+ }
+}
+resource resource49:ComputeNode {
+ resource cpu49_0:CPU {
+  frequency = 2707.0
+  load = 0.0
+ }
+ resource ram49:RAM {
+  total = 2227.0
+  free = 2227.0
+ }
+ resource disk49:DISK {
+  total = 12949.0
+  free = 12949.0
+ }
+ resource network49:NETWORK {
+  latency = 259.0
+  throughput = 41488.0
+ }
+}
+resource resource11:ComputeNode {
+ resource cpu11_0:CPU {
+  frequency = 2598.0
+  load = 0.0
+ }
+ resource ram11:RAM {
+  total = 4254.0
+  free = 4254.0
+ }
+ resource disk11:DISK {
+  total = 9831.0
+  free = 9831.0
+ }
+ resource network11:NETWORK {
+  latency = 545.0
+  throughput = 87853.0
+ }
+}
+resource resource50:ComputeNode {
+ resource cpu50_0:CPU {
+  frequency = 687.0
+  load = 0.0
+ }
+ resource ram50:RAM {
+  total = 2663.0
+  free = 2663.0
+ }
+ resource disk50:DISK {
+  total = 986.0
+  free = 986.0
+ }
+ resource network50:NETWORK {
+  latency = 147.0
+  throughput = 27631.0
+ }
+}
+resource resource27:ComputeNode {
+ resource cpu27_0:CPU {
+  frequency = 2642.0
+  load = 0.0
+ }
+ resource ram27:RAM {
+  total = 10725.0
+  free = 10725.0
+ }
+ resource disk27:DISK {
+  total = 10922.0
+  free = 10922.0
+ }
+ resource network27:NETWORK {
+  latency = 792.0
+  throughput = 30933.0
+ }
+}
+resource resource36:ComputeNode {
+ resource cpu36_0:CPU {
+  frequency = 2388.0
+  load = 0.0
+ }
+ resource ram36:RAM {
+  total = 10598.0
+  free = 10598.0
+ }
+ resource disk36:DISK {
+  total = 12137.0
+  free = 12137.0
+ }
+ resource network36:NETWORK {
+  latency = 532.0
+  throughput = 91364.0
+ }
+}
+resource resource24:ComputeNode {
+ resource cpu24_0:CPU {
+  frequency = 1877.0
+  load = 0.0
+ }
+ resource ram24:RAM {
+  total = 8568.0
+  free = 8568.0
+ }
+ resource disk24:DISK {
+  total = 7209.0
+  free = 7209.0
+ }
+ resource network24:NETWORK {
+  latency = 877.0
+  throughput = 35378.0
+ }
+}
+resource resource82:ComputeNode {
+ resource cpu82_0:CPU {
+  frequency = 1216.0
+  load = 0.0
+ }
+ resource ram82:RAM {
+  total = 6163.0
+  free = 6163.0
+ }
+ resource disk82:DISK {
+  total = 15260.0
+  free = 15260.0
+ }
+ resource network82:NETWORK {
+  latency = 234.0
+  throughput = 70846.0
+ }
+}
+resource resource68:ComputeNode {
+ resource cpu68_0:CPU {
+  frequency = 521.0
+  load = 0.0
+ }
+ resource ram68:RAM {
+  total = 13852.0
+  free = 13852.0
+ }
+ resource disk68:DISK {
+  total = 6111.0
+  free = 6111.0
+ }
+ resource network68:NETWORK {
+  latency = 815.0
+  throughput = 98449.0
+ }
+}
+resource resource62:ComputeNode {
+ resource cpu62_0:CPU {
+  frequency = 2344.0
+  load = 0.0
+ }
+ resource ram62:RAM {
+  total = 3709.0
+  free = 3709.0
+ }
+ resource disk62:DISK {
+  total = 14226.0
+  free = 14226.0
+ }
+ resource network62:NETWORK {
+  latency = 362.0
+  throughput = 37958.0
+ }
+}
+resource resource17:ComputeNode {
+ resource cpu17_0:CPU {
+  frequency = 2808.0
+  load = 0.0
+ }
+ resource ram17:RAM {
+  total = 8722.0
+  free = 8722.0
+ }
+ resource disk17:DISK {
+  total = 6979.0
+  free = 6979.0
+ }
+ resource network17:NETWORK {
+  latency = 101.0
+  throughput = 17906.0
+ }
+}
+resource resource28:ComputeNode {
+ resource cpu28_0:CPU {
+  frequency = 2040.0
+  load = 0.0
+ }
+ resource ram28:RAM {
+  total = 4350.0
+  free = 4350.0
+ }
+ resource disk28:DISK {
+  total = 6114.0
+  free = 6114.0
+ }
+ resource network28:NETWORK {
+  latency = 32.0
+  throughput = 91137.0
+ }
+}
+resource resource84:ComputeNode {
+ resource cpu84_0:CPU {
+  frequency = 1469.0
+  load = 0.0
+ }
+ resource ram84:RAM {
+  total = 2925.0
+  free = 2925.0
+ }
+ resource disk84:DISK {
+  total = 3848.0
+  free = 3848.0
+ }
+ resource network84:NETWORK {
+  latency = 589.0
+  throughput = 91473.0
+ }
+}
+resource resource4:ComputeNode {
+ resource cpu4_0:CPU {
+  frequency = 2511.0
+  load = 0.0
+ }
+ resource ram4:RAM {
+  total = 14700.0
+  free = 14700.0
+ }
+ resource disk4:DISK {
+  total = 3738.0
+  free = 3738.0
+ }
+ resource network4:NETWORK {
+  latency = 984.0
+  throughput = 13240.0
+ }
+}
+resource resource45:ComputeNode {
+ resource cpu45_0:CPU {
+  frequency = 666.0
+  load = 0.0
+ }
+ resource ram45:RAM {
+  total = 7164.0
+  free = 7164.0
+ }
+ resource disk45:DISK {
+  total = 15826.0
+  free = 15826.0
+ }
+ resource network45:NETWORK {
+  latency = 757.0
+  throughput = 82395.0
+ }
+}
+resource resource13:ComputeNode {
+ resource cpu13_0:CPU {
+  frequency = 2040.0
+  load = 0.0
+ }
+ resource ram13:RAM {
+  total = 4350.0
+  free = 4350.0
+ }
+ resource disk13:DISK {
+  total = 6114.0
+  free = 6114.0
+ }
+ resource network13:NETWORK {
+  latency = 9.0
+  throughput = 91137.0
+ }
+}
+resource resource39:ComputeNode {
+ resource cpu39_0:CPU {
+  frequency = 2568.0
+  load = 0.0
+ }
+ resource ram39:RAM {
+  total = 6692.0
+  free = 6692.0
+ }
+ resource disk39:DISK {
+  total = 731.0
+  free = 731.0
+ }
+ resource network39:NETWORK {
+  latency = 453.0
+  throughput = 93715.0
+ }
+}
+resource resource80:ComputeNode {
+ resource cpu80_0:CPU {
+  frequency = 2598.0
+  load = 0.0
+ }
+ resource ram80:RAM {
+  total = 7991.0
+  free = 7991.0
+ }
+ resource disk80:DISK {
+  total = 8153.0
+  free = 8153.0
+ }
+ resource network80:NETWORK {
+  latency = 159.0
+  throughput = 91638.0
+ }
+}
+resource resource10:ComputeNode {
+ resource cpu10_0:CPU {
+  frequency = 2995.0
+  load = 0.0
+ }
+ resource ram10:RAM {
+  total = 3202.0
+  free = 3202.0
+ }
+ resource disk10:DISK {
+  total = 13054.0
+  free = 13054.0
+ }
+ resource network10:NETWORK {
+  latency = 567.0
+  throughput = 5309.0
+ }
+}
+resource resource83:ComputeNode {
+ resource cpu83_0:CPU {
+  frequency = 2442.0
+  load = 0.0
+ }
+ resource ram83:RAM {
+  total = 2156.0
+  free = 2156.0
+ }
+ resource disk83:DISK {
+  total = 8029.0
+  free = 8029.0
+ }
+ resource network83:NETWORK {
+  latency = 135.0
+  throughput = 39265.0
+ }
+}
+resource resource79:ComputeNode {
+ resource cpu79_0:CPU {
+  frequency = 1051.0
+  load = 0.0
+ }
+ resource ram79:RAM {
+  total = 4472.0
+  free = 4472.0
+ }
+ resource disk79:DISK {
+  total = 2747.0
+  free = 2747.0
+ }
+ resource network79:NETWORK {
+  latency = 925.0
+  throughput = 8681.0
+ }
+}
+resource resource57:ComputeNode {
+ resource cpu57_0:CPU {
+  frequency = 2568.0
+  load = 0.0
+ }
+ resource ram57:RAM {
+  total = 6692.0
+  free = 6692.0
+ }
+ resource disk57:DISK {
+  total = 731.0
+  free = 731.0
+ }
+ resource network57:NETWORK {
+  latency = 884.0
+  throughput = 93715.0
+ }
+}
+resource resource15:ComputeNode {
+ resource cpu15_0:CPU {
+  frequency = 1534.0
+  load = 0.0
+ }
+ resource ram15:RAM {
+  total = 7914.0
+  free = 7914.0
+ }
+ resource disk15:DISK {
+  total = 10846.0
+  free = 10846.0
+ }
+ resource network15:NETWORK {
+  latency = 180.0
+  throughput = 85678.0
+ }
+}
+resource resource70:ComputeNode {
+ resource cpu70_0:CPU {
+  frequency = 1542.0
+  load = 0.0
+ }
+ resource ram70:RAM {
+  total = 2238.0
+  free = 2238.0
+ }
+ resource disk70:DISK {
+  total = 536.0
+  free = 536.0
+ }
+ resource network70:NETWORK {
+  latency = 570.0
+  throughput = 48840.0
+ }
+}
+resource resource2:ComputeNode {
+ resource cpu2_0:CPU {
+  frequency = 2928.0
+  load = 0.0
+ }
+ resource ram2:RAM {
+  total = 4478.0
+  free = 4478.0
+ }
+ resource disk2:DISK {
+  total = 12458.0
+  free = 12458.0
+ }
+ resource network2:NETWORK {
+  latency = 364.0
+  throughput = 81969.0
+ }
+}
+resource resource73:ComputeNode {
+ resource cpu73_0:CPU {
+  frequency = 1210.0
+  load = 0.0
+ }
+ resource ram73:RAM {
+  total = 5391.0
+  free = 5391.0
+ }
+ resource disk73:DISK {
+  total = 2321.0
+  free = 2321.0
+ }
+ resource network73:NETWORK {
+  latency = 560.0
+  throughput = 29268.0
+ }
+}
+resource resource41:ComputeNode {
+ resource cpu41_0:CPU {
+  frequency = 687.0
+  load = 0.0
+ }
+ resource ram41:RAM {
+  total = 2663.0
+  free = 2663.0
+ }
+ resource disk41:DISK {
+  total = 986.0
+  free = 986.0
+ }
+ resource network41:NETWORK {
+  latency = 840.0
+  throughput = 27631.0
+ }
+}
+resource resource31:ComputeNode {
+ resource cpu31_0:CPU {
+  frequency = 566.0
+  load = 0.0
+ }
+ resource ram31:RAM {
+  total = 12530.0
+  free = 12530.0
+ }
+ resource disk31:DISK {
+  total = 9458.0
+  free = 9458.0
+ }
+ resource network31:NETWORK {
+  latency = 273.0
+  throughput = 70298.0
+ }
+}
+resource resource21:ComputeNode {
+ resource cpu21_0:CPU {
+  frequency = 1790.0
+  load = 0.0
+ }
+ resource ram21:RAM {
+  total = 4485.0
+  free = 4485.0
+ }
+ resource disk21:DISK {
+  total = 15589.0
+  free = 15589.0
+ }
+ resource network21:NETWORK {
+  latency = 677.0
+  throughput = 73029.0
+ }
+}
+resource resource43:ComputeNode {
+ resource cpu43_0:CPU {
+  frequency = 1716.0
+  load = 0.0
+ }
+ resource ram43:RAM {
+  total = 8263.0
+  free = 8263.0
+ }
+ resource disk43:DISK {
+  total = 8707.0
+  free = 8707.0
+ }
+ resource network43:NETWORK {
+  latency = 880.0
+  throughput = 33656.0
+ }
+}
+resource resource16:ComputeNode {
+ resource cpu16_0:CPU {
+  frequency = 2995.0
+  load = 0.0
+ }
+ resource ram16:RAM {
+  total = 3202.0
+  free = 3202.0
+ }
+ resource disk16:DISK {
+  total = 13054.0
+  free = 13054.0
+ }
+ resource network16:NETWORK {
+  latency = 378.0
+  throughput = 5309.0
+ }
+}
+resource resource56:ComputeNode {
+ resource cpu56_0:CPU {
+  frequency = 2342.0
+  load = 0.0
+ }
+ resource ram56:RAM {
+  total = 5068.0
+  free = 5068.0
+ }
+ resource disk56:DISK {
+  total = 5127.0
+  free = 5127.0
+ }
+ resource network56:NETWORK {
+  latency = 167.0
+  throughput = 31965.0
+ }
+}
+resource resource64:ComputeNode {
+ resource cpu64_0:CPU {
+  frequency = 2146.0
+  load = 0.0
+ }
+ resource ram64:RAM {
+  total = 1473.0
+  free = 1473.0
+ }
+ resource disk64:DISK {
+  total = 4871.0
+  free = 4871.0
+ }
+ resource network64:NETWORK {
+  latency = 377.0
+  throughput = 94778.0
+ }
+}
+resource resource89:ComputeNode {
+ resource cpu89_0:CPU {
+  frequency = 2678.0
+  load = 0.0
+ }
+ resource ram89:RAM {
+  total = 13271.0
+  free = 13271.0
+ }
+ resource disk89:DISK {
+  total = 9027.0
+  free = 9027.0
+ }
+ resource network89:NETWORK {
+  latency = 287.0
+  throughput = 60697.0
+ }
+}
+resource resource22:ComputeNode {
+ resource cpu22_0:CPU {
+  frequency = 2511.0
+  load = 0.0
+ }
+ resource ram22:RAM {
+  total = 14700.0
+  free = 14700.0
+ }
+ resource disk22:DISK {
+  total = 3738.0
+  free = 3738.0
+ }
+ resource network22:NETWORK {
+  latency = 138.0
+  throughput = 13240.0
+ }
+}
+resource resource30:ComputeNode {
+ resource cpu30_0:CPU {
+  frequency = 1790.0
+  load = 0.0
+ }
+ resource ram30:RAM {
+  total = 4485.0
+  free = 4485.0
+ }
+ resource disk30:DISK {
+  total = 15589.0
+  free = 15589.0
+ }
+ resource network30:NETWORK {
+  latency = 948.0
+  throughput = 73029.0
+ }
+}
+resource resource23:ComputeNode {
+ resource cpu23_0:CPU {
+  frequency = 1920.0
+  load = 0.0
+ }
+ resource ram23:RAM {
+  total = 15746.0
+  free = 15746.0
+ }
+ resource disk23:DISK {
+  total = 12108.0
+  free = 12108.0
+ }
+ resource network23:NETWORK {
+  latency = 595.0
+  throughput = 43600.0
+ }
+}
+resource resource9:ComputeNode {
+ resource cpu9_0:CPU {
+  frequency = 2993.0
+  load = 0.0
+ }
+ resource ram9:RAM {
+  total = 13041.0
+  free = 13041.0
+ }
+ resource disk9:DISK {
+  total = 1545.0
+  free = 1545.0
+ }
+ resource network9:NETWORK {
+  latency = 718.0
+  throughput = 5532.0
+ }
+}
+resource resource81:ComputeNode {
+ resource cpu81_0:CPU {
+  frequency = 727.0
+  load = 0.0
+ }
+ resource ram81:RAM {
+  total = 7755.0
+  free = 7755.0
+ }
+ resource disk81:DISK {
+  total = 14047.0
+  free = 14047.0
+ }
+ resource network81:NETWORK {
+  latency = 362.0
+  throughput = 63295.0
+ }
+}
+resource resource6:ComputeNode {
+ resource cpu6_0:CPU {
+  frequency = 2947.0
+  load = 0.0
+ }
+ resource ram6:RAM {
+  total = 15275.0
+  free = 15275.0
+ }
+ resource disk6:DISK {
+  total = 1851.0
+  free = 1851.0
+ }
+ resource network6:NETWORK {
+  latency = 381.0
+  throughput = 987.0
+ }
+}
+resource resource61:ComputeNode {
+ resource cpu61_0:CPU {
+  frequency = 2634.0
+  load = 0.0
+ }
+ resource ram61:RAM {
+  total = 13192.0
+  free = 13192.0
+ }
+ resource disk61:DISK {
+  total = 12121.0
+  free = 12121.0
+ }
+ resource network61:NETWORK {
+  latency = 605.0
+  throughput = 84674.0
+ }
+}
+resource resource88:ComputeNode {
+ resource cpu88_0:CPU {
+  frequency = 1207.0
+  load = 0.0
+ }
+ resource ram88:RAM {
+  total = 2546.0
+  free = 2546.0
+ }
+ resource disk88:DISK {
+  total = 14552.0
+  free = 14552.0
+ }
+ resource network88:NETWORK {
+  latency = 569.0
+  throughput = 94664.0
+ }
+}
+resource resource14:ComputeNode {
+ resource cpu14_0:CPU {
+  frequency = 2598.0
+  load = 0.0
+ }
+ resource ram14:RAM {
+  total = 4254.0
+  free = 4254.0
+ }
+ resource disk14:DISK {
+  total = 9831.0
+  free = 9831.0
+ }
+ resource network14:NETWORK {
+  latency = 667.0
+  throughput = 87853.0
+ }
+}
+resource resource25:ComputeNode {
+ resource cpu25_0:CPU {
+  frequency = 2291.0
+  load = 0.0
+ }
+ resource ram25:RAM {
+  total = 8915.0
+  free = 8915.0
+ }
+ resource disk25:DISK {
+  total = 3659.0
+  free = 3659.0
+ }
+ resource network25:NETWORK {
+  latency = 164.0
+  throughput = 61932.0
+ }
+}
+resource resource65:ComputeNode {
+ resource cpu65_0:CPU {
+  frequency = 531.0
+  load = 0.0
+ }
+ resource ram65:RAM {
+  total = 12538.0
+  free = 12538.0
+ }
+ resource disk65:DISK {
+  total = 10190.0
+  free = 10190.0
+ }
+ resource network65:NETWORK {
+  latency = 774.0
+  throughput = 64051.0
+ }
+}
+resource resource19:ComputeNode {
+ resource cpu19_0:CPU {
+  frequency = 896.0
+  load = 0.0
+ }
+ resource ram19:RAM {
+  total = 15587.0
+  free = 15587.0
+ }
+ resource disk19:DISK {
+  total = 1390.0
+  free = 1390.0
+ }
+ resource network19:NETWORK {
+  latency = 247.0
+  throughput = 31430.0
+ }
+}
+resource resource3:ComputeNode {
+ resource cpu3_0:CPU {
+  frequency = 2642.0
+  load = 0.0
+ }
+ resource ram3:RAM {
+  total = 10725.0
+  free = 10725.0
+ }
+ resource disk3:DISK {
+  total = 10922.0
+  free = 10922.0
+ }
+ resource network3:NETWORK {
+  latency = 774.0
+  throughput = 30933.0
+ }
+}
+resource resource63:ComputeNode {
+ resource cpu63_0:CPU {
+  frequency = 2106.0
+  load = 0.0
+ }
+ resource ram63:RAM {
+  total = 11267.0
+  free = 11267.0
+ }
+ resource disk63:DISK {
+  total = 8481.0
+  free = 8481.0
+ }
+ resource network63:NETWORK {
+  latency = 527.0
+  throughput = 17059.0
+ }
+}
+resource resource46:ComputeNode {
+ resource cpu46_0:CPU {
+  frequency = 2995.0
+  load = 0.0
+ }
+ resource ram46:RAM {
+  total = 3202.0
+  free = 3202.0
+ }
+ resource disk46:DISK {
+  total = 13054.0
+  free = 13054.0
+ }
+ resource network46:NETWORK {
+  latency = 626.0
+  throughput = 5309.0
+ }
+}
+resource resource72:ComputeNode {
+ resource cpu72_0:CPU {
+  frequency = 1479.0
+  load = 0.0
+ }
+ resource ram72:RAM {
+  total = 15906.0
+  free = 15906.0
+ }
+ resource disk72:DISK {
+  total = 3121.0
+  free = 3121.0
+ }
+ resource network72:NETWORK {
+  latency = 366.0
+  throughput = 9096.0
+ }
+}
+resource resource74:ComputeNode {
+ resource cpu74_0:CPU {
+  frequency = 2997.0
+  load = 0.0
+ }
+ resource ram74:RAM {
+  total = 7751.0
+  free = 7751.0
+ }
+ resource disk74:DISK {
+  total = 2962.0
+  free = 2962.0
+ }
+ resource network74:NETWORK {
+  latency = 379.0
+  throughput = 33088.0
+ }
+}
+resource resource12:ComputeNode {
+ resource cpu12_0:CPU {
+  frequency = 1790.0
+  load = 0.0
+ }
+ resource ram12:RAM {
+  total = 4485.0
+  free = 4485.0
+ }
+ resource disk12:DISK {
+  total = 15589.0
+  free = 15589.0
+ }
+ resource network12:NETWORK {
+  latency = 146.0
+  throughput = 73029.0
+ }
+}
+resource resource66:ComputeNode {
+ resource cpu66_0:CPU {
+  frequency = 700.0
+  load = 0.0
+ }
+ resource ram66:RAM {
+  total = 2051.0
+  free = 2051.0
+ }
+ resource disk66:DISK {
+  total = 9518.0
+  free = 9518.0
+ }
+ resource network66:NETWORK {
+  latency = 82.0
+  throughput = 75085.0
+ }
+}
+resource resource48:ComputeNode {
+ resource cpu48_0:CPU {
+  frequency = 1877.0
+  load = 0.0
+ }
+ resource ram48:RAM {
+  total = 8568.0
+  free = 8568.0
+ }
+ resource disk48:DISK {
+  total = 7209.0
+  free = 7209.0
+ }
+ resource network48:NETWORK {
+  latency = 953.0
+  throughput = 35378.0
+ }
+}
+resource resource35:ComputeNode {
+ resource cpu35_0:CPU {
+  frequency = 2543.0
+  load = 0.0
+ }
+ resource ram35:RAM {
+  total = 4606.0
+  free = 4606.0
+ }
+ resource disk35:DISK {
+  total = 13218.0
+  free = 13218.0
+ }
+ resource network35:NETWORK {
+  latency = 139.0
+  throughput = 50730.0
+ }
+}
+resource resource52:ComputeNode {
+ resource cpu52_0:CPU {
+  frequency = 633.0
+  load = 0.0
+ }
+ resource ram52:RAM {
+  total = 15365.0
+  free = 15365.0
+ }
+ resource disk52:DISK {
+  total = 11501.0
+  free = 11501.0
+ }
+ resource network52:NETWORK {
+  latency = 149.0
+  throughput = 25781.0
+ }
+}
+resource resource86:ComputeNode {
+ resource cpu86_0:CPU {
+  frequency = 1508.0
+  load = 0.0
+ }
+ resource ram86:RAM {
+  total = 13566.0
+  free = 13566.0
+ }
+ resource disk86:DISK {
+  total = 11940.0
+  free = 11940.0
+ }
+ resource network86:NETWORK {
+  latency = 618.0
+  throughput = 91995.0
+ }
+}
+resource resource40:ComputeNode {
+ resource cpu40_0:CPU {
+  frequency = 2079.0
+  load = 0.0
+ }
+ resource ram40:RAM {
+  total = 15346.0
+  free = 15346.0
+ }
+ resource disk40:DISK {
+  total = 8385.0
+  free = 8385.0
+ }
+ resource network40:NETWORK {
+  latency = 193.0
+  throughput = 59644.0
+ }
+}
+property total [MB]
+property free [MB]
+meta size
+property energy [J]
+property quality [%]
+component component_0 {
+ contract implementation_0i0 {
+  requires component the_component_0c0 of type component_0c0
+  requires component the_component_0c1 of type component_0c1
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring the_component_0c0.quality >= 96.0
+  requiring the_component_0c1.quality >= 5.0
+  requiring cpu_0.frequency >= 665.0
+  requiring ram_1.total >= 7163.0
+  requiring disk_1.total >= 15825.0
+  requiring network_1.throughput >= 82394.0
+  providing quality = 76.0
+  providing energy = ((0.85*(size^2.0))+(0.68*cpu_0.frequency))
+  
+ }
+ contract implementation_0i1 {
+  requires component the_component_0c0 of type component_0c0
+  requires component the_component_0c1 of type component_0c1
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring the_component_0c0.quality >= 50.0
+  requiring the_component_0c1.quality >= 10.0
+  requiring cpu_0.frequency >= 682.0
+  requiring ram_1.total >= 12762.0
+  requiring disk_1.total >= 14015.0
+  requiring network_1.throughput >= 71328.0
+  providing quality = 63.0
+  providing energy = ((0.48*(size^2.0))+(0.09*cpu_0.frequency))
+  
+ }
+ contract implementation_0i2 {
+  requires component the_component_0c0 of type component_0c0
+  requires component the_component_0c1 of type component_0c1
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring the_component_0c0.quality >= 4.0
+  requiring the_component_0c1.quality >= 44.0
+  requiring cpu_0.frequency >= 2946.0
+  requiring ram_1.total >= 15274.0
+  requiring disk_1.total >= 1850.0
+  requiring network_1.throughput >= 986.0
+  providing quality = 93.0
+  providing energy = ((0.83*(size^2.0))+(0.35*cpu_0.frequency))
+  
+ }
+ contract implementation_0i3 {
+  requires component the_component_0c0 of type component_0c0
+  requires component the_component_0c1 of type component_0c1
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring the_component_0c0.quality >= 50.0
+  requiring the_component_0c1.quality >= 4.0
+  requiring cpu_0.frequency >= 1876.0
+  requiring ram_1.total >= 8567.0
+  requiring disk_1.total >= 7208.0
+  requiring network_1.throughput >= 35377.0
+  providing quality = 36.0
+  providing energy = ((0.21*(size^2.0))+(0.15*cpu_0.frequency))
+  
+ }
+ contract implementation_0i4 {
+  requires component the_component_0c0 of type component_0c0
+  requires component the_component_0c1 of type component_0c1
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring the_component_0c0.quality >= 26.0
+  requiring the_component_0c1.quality >= 94.0
+  requiring cpu_0.frequency >= 929.0
+  requiring ram_1.total >= 6049.0
+  requiring disk_1.total >= 8651.0
+  requiring network_1.throughput >= 25113.0
+  providing quality = 54.0
+  providing energy = ((0.2*(size^2.0))+(0.24*cpu_0.frequency))
+  
+ }
+ contract implementation_0i5 {
+  requires component the_component_0c0 of type component_0c0
+  requires component the_component_0c1 of type component_0c1
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring the_component_0c0.quality >= 44.0
+  requiring the_component_0c1.quality >= 65.0
+  requiring cpu_0.frequency >= 2567.0
+  requiring ram_1.total >= 6691.0
+  requiring disk_1.total >= 730.0
+  requiring network_1.throughput >= 93714.0
+  providing quality = 68.0
+  providing energy = ((0.1*(size^2.0))+(0.82*cpu_0.frequency))
+  
+ }
+ contract implementation_0i6 {
+  requires component the_component_0c0 of type component_0c0
+  requires component the_component_0c1 of type component_0c1
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring the_component_0c0.quality >= 88.0
+  requiring the_component_0c1.quality >= 1.0
+  requiring cpu_0.frequency >= 1789.0
+  requiring ram_1.total >= 4484.0
+  requiring disk_1.total >= 15588.0
+  requiring network_1.throughput >= 73028.0
+  providing quality = 99.0
+  providing energy = ((0.19*(size^2.0))+(0.6*cpu_0.frequency))
+  
+ }
+ contract implementation_0i7 {
+  requires component the_component_0c0 of type component_0c0
+  requires component the_component_0c1 of type component_0c1
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring the_component_0c0.quality >= 88.0
+  requiring the_component_0c1.quality >= 26.0
+  requiring cpu_0.frequency >= 1670.0
+  requiring ram_1.total >= 7266.0
+  requiring disk_1.total >= 4324.0
+  requiring network_1.throughput >= 23554.0
+  providing quality = 8.0
+  providing energy = ((0.69*(size^2.0))+(0.71*cpu_0.frequency))
+  
+ }
+ contract implementation_0i8 {
+  requires component the_component_0c0 of type component_0c0
+  requires component the_component_0c1 of type component_0c1
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring the_component_0c0.quality >= 65.0
+  requiring the_component_0c1.quality >= 22.0
+  requiring cpu_0.frequency >= 2119.0
+  requiring ram_1.total >= 12250.0
+  requiring disk_1.total >= 12962.0
+  requiring network_1.throughput >= 79808.0
+  providing quality = 89.0
+  providing energy = ((0.96*(size^2.0))+(0.55*cpu_0.frequency))
+  
+ }
+ contract implementation_0i9 {
+  requires component the_component_0c0 of type component_0c0
+  requires component the_component_0c1 of type component_0c1
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring the_component_0c0.quality >= 48.0
+  requiring the_component_0c1.quality >= 65.0
+  requiring cpu_0.frequency >= 2779.0
+  requiring ram_1.total >= 6389.0
+  requiring disk_1.total >= 13215.0
+  requiring network_1.throughput >= 17038.0
+  providing quality = 39.0
+  providing energy = ((0.96*(size^2.0))+(0.69*cpu_0.frequency))
+  
+ }
+ contract implementation_0i10 {
+  requires component the_component_0c0 of type component_0c0
+  requires component the_component_0c1 of type component_0c1
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring the_component_0c0.quality >= 28.0
+  requiring the_component_0c1.quality >= 2.0
+  requiring cpu_0.frequency >= 1083.0
+  requiring ram_1.total >= 3707.0
+  requiring disk_1.total >= 13234.0
+  requiring network_1.throughput >= 81140.0
+  providing quality = 68.0
+  providing energy = ((0.21*(size^2.0))+(0.59*cpu_0.frequency))
+  
+ }
+ contract implementation_0i11 {
+  requires component the_component_0c0 of type component_0c0
+  requires component the_component_0c1 of type component_0c1
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring the_component_0c0.quality >= 40.0
+  requiring the_component_0c1.quality >= 64.0
+  requiring cpu_0.frequency >= 2992.0
+  requiring ram_1.total >= 13040.0
+  requiring disk_1.total >= 1544.0
+  requiring network_1.throughput >= 5531.0
+  providing quality = 73.0
+  providing energy = ((0.41*(size^2.0))+(0.19*cpu_0.frequency))
+  
+ }
+ contract implementation_0i12 {
+  requires component the_component_0c0 of type component_0c0
+  requires component the_component_0c1 of type component_0c1
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring the_component_0c0.quality >= 41.0
+  requiring the_component_0c1.quality >= 55.0
+  requiring cpu_0.frequency >= 1838.0
+  requiring ram_1.total >= 8597.0
+  requiring disk_1.total >= 4556.0
+  requiring network_1.throughput >= 48576.0
+  providing quality = 59.0
+  providing energy = ((0.9*(size^2.0))+(0.82*cpu_0.frequency))
+  
+ }
+ contract implementation_0i13 {
+  requires component the_component_0c0 of type component_0c0
+  requires component the_component_0c1 of type component_0c1
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring the_component_0c0.quality >= 86.0
+  requiring the_component_0c1.quality >= 71.0
+  requiring cpu_0.frequency >= 2237.0
+  requiring ram_1.total >= 14664.0
+  requiring disk_1.total >= 4901.0
+  requiring network_1.throughput >= 82489.0
+  providing quality = 36.0
+  providing energy = ((0.67*(size^2.0))+(0.11*cpu_0.frequency))
+  
+ }
+ contract implementation_0i14 {
+  requires component the_component_0c0 of type component_0c0
+  requires component the_component_0c1 of type component_0c1
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring the_component_0c0.quality >= 51.0
+  requiring the_component_0c1.quality >= 2.0
+  requiring cpu_0.frequency >= 2387.0
+  requiring ram_1.total >= 10597.0
+  requiring disk_1.total >= 12136.0
+  requiring network_1.throughput >= 91363.0
+  providing quality = 94.0
+  providing energy = ((0.36*(size^2.0))+(0.78*cpu_0.frequency))
+  
+ }
+ contract implementation_0i15 {
+  requires component the_component_0c0 of type component_0c0
+  requires component the_component_0c1 of type component_0c1
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring the_component_0c0.quality >= 55.0
+  requiring the_component_0c1.quality >= 79.0
+  requiring cpu_0.frequency >= 2606.0
+  requiring ram_1.total >= 5261.0
+  requiring disk_1.total >= 8295.0
+  requiring network_1.throughput >= 62636.0
+  providing quality = 5.0
+  providing energy = ((0.27*(size^2.0))+(0.72*cpu_0.frequency))
+  
+ }
+ contract implementation_0i16 {
+  requires component the_component_0c0 of type component_0c0
+  requires component the_component_0c1 of type component_0c1
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring the_component_0c0.quality >= 99.0
+  requiring the_component_0c1.quality >= 59.0
+  requiring cpu_0.frequency >= 1533.0
+  requiring ram_1.total >= 7913.0
+  requiring disk_1.total >= 10845.0
+  requiring network_1.throughput >= 85677.0
+  providing quality = 78.0
+  providing energy = ((0.9*(size^2.0))+(0.64*cpu_0.frequency))
+  
+ }
+ contract implementation_0i17 {
+  requires component the_component_0c0 of type component_0c0
+  requires component the_component_0c1 of type component_0c1
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring the_component_0c0.quality >= 14.0
+  requiring the_component_0c1.quality >= 76.0
+  requiring cpu_0.frequency >= 2641.0
+  requiring ram_1.total >= 10724.0
+  requiring disk_1.total >= 10921.0
+  requiring network_1.throughput >= 30932.0
+  providing quality = 62.0
+  providing energy = ((0.62*(size^2.0))+(0.49*cpu_0.frequency))
+  
+ }
+ contract implementation_0i18 {
+  requires component the_component_0c0 of type component_0c0
+  requires component the_component_0c1 of type component_0c1
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring the_component_0c0.quality >= 70.0
+  requiring the_component_0c1.quality >= 43.0
+  requiring cpu_0.frequency >= 2014.0
+  requiring ram_1.total >= 1284.0
+  requiring disk_1.total >= 15199.0
+  requiring network_1.throughput >= 56476.0
+  providing quality = 98.0
+  providing energy = ((0.78*(size^2.0))+(0.66*cpu_0.frequency))
+  
+ }
+ contract implementation_0i19 {
+  requires component the_component_0c0 of type component_0c0
+  requires component the_component_0c1 of type component_0c1
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring the_component_0c0.quality >= 9.0
+  requiring the_component_0c1.quality >= 68.0
+  requiring cpu_0.frequency >= 1733.0
+  requiring ram_1.total >= 2123.0
+  requiring disk_1.total >= 12788.0
+  requiring network_1.throughput >= 616.0
+  providing quality = 44.0
+  providing energy = ((0.29*(size^2.0))+(0.98*cpu_0.frequency))
+  
+ }
+ using property quality
+ using property energy
+}
+
+component component_0c0 {
+ contract implementation_0c0i0 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 1715.0
+  requiring ram_1.total >= 8262.0
+  requiring disk_1.total >= 8706.0
+  requiring network_1.throughput >= 33655.0
+  providing quality = 50.0
+  providing energy = ((0.31*(size^2.0))+(0.12*cpu_0.frequency))
+  
+ }
+ contract implementation_0c0i1 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 2290.0
+  requiring ram_1.total >= 8914.0
+  requiring disk_1.total >= 3658.0
+  requiring network_1.throughput >= 61931.0
+  providing quality = 65.0
+  providing energy = ((0.98*(size^2.0))+(0.88*cpu_0.frequency))
+  
+ }
+ contract implementation_0c0i2 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 2038.0
+  requiring ram_1.total >= 8941.0
+  requiring disk_1.total >= 11052.0
+  requiring network_1.throughput >= 85378.0
+  providing quality = 86.0
+  providing energy = ((0.37*(size^2.0))+(0.71*cpu_0.frequency))
+  
+ }
+ contract implementation_0c0i3 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 2192.0
+  requiring ram_1.total >= 7448.0
+  requiring disk_1.total >= 15946.0
+  requiring network_1.throughput >= 6181.0
+  providing quality = 89.0
+  providing energy = ((0.1*(size^2.0))+(0.63*cpu_0.frequency))
+  
+ }
+ contract implementation_0c0i4 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 895.0
+  requiring ram_1.total >= 15586.0
+  requiring disk_1.total >= 1389.0
+  requiring network_1.throughput >= 31429.0
+  providing quality = 48.0
+  providing energy = ((0.69*(size^2.0))+(0.87*cpu_0.frequency))
+  
+ }
+ contract implementation_0c0i5 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 1903.0
+  requiring ram_1.total >= 11505.0
+  requiring disk_1.total >= 10365.0
+  requiring network_1.throughput >= 90090.0
+  providing quality = 88.0
+  providing energy = ((0.84*(size^2.0))+(0.53*cpu_0.frequency))
+  
+ }
+ contract implementation_0c0i6 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 2994.0
+  requiring ram_1.total >= 3201.0
+  requiring disk_1.total >= 13053.0
+  requiring network_1.throughput >= 5308.0
+  providing quality = 99.0
+  providing energy = ((0.19*(size^2.0))+(0.31*cpu_0.frequency))
+  
+ }
+ contract implementation_0c0i7 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 2039.0
+  requiring ram_1.total >= 4349.0
+  requiring disk_1.total >= 6113.0
+  requiring network_1.throughput >= 91136.0
+  providing quality = 88.0
+  providing energy = ((0.46*(size^2.0))+(0.0*cpu_0.frequency))
+  
+ }
+ contract implementation_0c0i8 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 565.0
+  requiring ram_1.total >= 12529.0
+  requiring disk_1.total >= 9457.0
+  requiring network_1.throughput >= 70297.0
+  providing quality = 88.0
+  providing energy = ((0.61*(size^2.0))+(0.93*cpu_0.frequency))
+  
+ }
+ contract implementation_0c0i9 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 2544.0
+  requiring ram_1.total >= 1178.0
+  requiring disk_1.total >= 14712.0
+  requiring network_1.throughput >= 26319.0
+  providing quality = 37.0
+  providing energy = ((0.18*(size^2.0))+(0.22*cpu_0.frequency))
+  
+ }
+ contract implementation_0c0i10 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 1518.0
+  requiring ram_1.total >= 1911.0
+  requiring disk_1.total >= 2828.0
+  requiring network_1.throughput >= 3696.0
+  providing quality = 86.0
+  providing energy = ((0.25*(size^2.0))+(0.95*cpu_0.frequency))
+  
+ }
+ contract implementation_0c0i11 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 2956.0
+  requiring ram_1.total >= 3772.0
+  requiring disk_1.total >= 14894.0
+  requiring network_1.throughput >= 29691.0
+  providing quality = 77.0
+  providing energy = ((0.95*(size^2.0))+(0.01*cpu_0.frequency))
+  
+ }
+ contract implementation_0c0i12 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 2706.0
+  requiring ram_1.total >= 2226.0
+  requiring disk_1.total >= 12948.0
+  requiring network_1.throughput >= 41487.0
+  providing quality = 96.0
+  providing energy = ((0.93*(size^2.0))+(0.32*cpu_0.frequency))
+  
+ }
+ contract implementation_0c0i13 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 2510.0
+  requiring ram_1.total >= 14699.0
+  requiring disk_1.total >= 3737.0
+  requiring network_1.throughput >= 13239.0
+  providing quality = 99.0
+  providing energy = ((0.72*(size^2.0))+(0.68*cpu_0.frequency))
+  
+ }
+ contract implementation_0c0i14 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 790.0
+  requiring ram_1.total >= 4777.0
+  requiring disk_1.total >= 9138.0
+  requiring network_1.throughput >= 75416.0
+  providing quality = 14.0
+  providing energy = ((0.1*(size^2.0))+(0.47*cpu_0.frequency))
+  
+ }
+ contract implementation_0c0i15 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 1064.0
+  requiring ram_1.total >= 3403.0
+  requiring disk_1.total >= 3658.0
+  requiring network_1.throughput >= 78648.0
+  providing quality = 25.0
+  providing energy = ((0.35*(size^2.0))+(0.05*cpu_0.frequency))
+  
+ }
+ contract implementation_0c0i16 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 2078.0
+  requiring ram_1.total >= 15345.0
+  requiring disk_1.total >= 8384.0
+  requiring network_1.throughput >= 59643.0
+  providing quality = 44.0
+  providing energy = ((0.01*(size^2.0))+(0.48*cpu_0.frequency))
+  
+ }
+ contract implementation_0c0i17 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 964.0
+  requiring ram_1.total >= 3538.0
+  requiring disk_1.total >= 9350.0
+  requiring network_1.throughput >= 39538.0
+  providing quality = 53.0
+  providing energy = ((0.26*(size^2.0))+(0.31*cpu_0.frequency))
+  
+ }
+ contract implementation_0c0i18 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 632.0
+  requiring ram_1.total >= 15364.0
+  requiring disk_1.total >= 11500.0
+  requiring network_1.throughput >= 25780.0
+  providing quality = 81.0
+  providing energy = ((0.19*(size^2.0))+(0.82*cpu_0.frequency))
+  
+ }
+ contract implementation_0c0i19 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 2650.0
+  requiring ram_1.total >= 12778.0
+  requiring disk_1.total >= 11192.0
+  requiring network_1.throughput >= 96779.0
+  providing quality = 51.0
+  providing energy = ((0.31*(size^2.0))+(0.53*cpu_0.frequency))
+  
+ }
+ using property quality
+ using property energy
+}
+
+component component_0c1 {
+ contract implementation_0c1i0 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 2538.0
+  requiring ram_1.total >= 12695.0
+  requiring disk_1.total >= 4074.0
+  requiring network_1.throughput >= 14387.0
+  providing quality = 34.0
+  providing energy = ((0.77*(size^2.0))+(0.55*cpu_0.frequency))
+  
+ }
+ contract implementation_0c1i1 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 1273.0
+  requiring ram_1.total >= 10709.0
+  requiring disk_1.total >= 6411.0
+  requiring network_1.throughput >= 54024.0
+  providing quality = 52.0
+  providing energy = ((0.5*(size^2.0))+(0.51*cpu_0.frequency))
+  
+ }
+ contract implementation_0c1i2 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 1645.0
+  requiring ram_1.total >= 3999.0
+  requiring disk_1.total >= 960.0
+  requiring network_1.throughput >= 56953.0
+  providing quality = 51.0
+  providing energy = ((0.55*(size^2.0))+(0.22*cpu_0.frequency))
+  
+ }
+ contract implementation_0c1i3 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 2029.0
+  requiring ram_1.total >= 10459.0
+  requiring disk_1.total >= 7803.0
+  requiring network_1.throughput >= 5168.0
+  providing quality = 65.0
+  providing energy = ((0.75*(size^2.0))+(0.61*cpu_0.frequency))
+  
+ }
+ contract implementation_0c1i4 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 2807.0
+  requiring ram_1.total >= 8721.0
+  requiring disk_1.total >= 6978.0
+  requiring network_1.throughput >= 17905.0
+  providing quality = 59.0
+  providing energy = ((0.34*(size^2.0))+(0.58*cpu_0.frequency))
+  
+ }
+ contract implementation_0c1i5 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 2877.0
+  requiring ram_1.total >= 4272.0
+  requiring disk_1.total >= 12815.0
+  requiring network_1.throughput >= 82390.0
+  providing quality = 59.0
+  providing energy = ((0.3*(size^2.0))+(0.43*cpu_0.frequency))
+  
+ }
+ contract implementation_0c1i6 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 1039.0
+  requiring ram_1.total >= 14989.0
+  requiring disk_1.total >= 7301.0
+  requiring network_1.throughput >= 15856.0
+  providing quality = 100.0
+  providing energy = ((0.17*(size^2.0))+(0.35*cpu_0.frequency))
+  
+ }
+ contract implementation_0c1i7 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 2335.0
+  requiring ram_1.total >= 10106.0
+  requiring disk_1.total >= 10820.0
+  requiring network_1.throughput >= 61977.0
+  providing quality = 52.0
+  providing energy = ((0.51*(size^2.0))+(0.31*cpu_0.frequency))
+  
+ }
+ contract implementation_0c1i8 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 2927.0
+  requiring ram_1.total >= 4477.0
+  requiring disk_1.total >= 12457.0
+  requiring network_1.throughput >= 81968.0
+  providing quality = 34.0
+  providing energy = ((0.41*(size^2.0))+(0.88*cpu_0.frequency))
+  
+ }
+ contract implementation_0c1i9 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 2542.0
+  requiring ram_1.total >= 4605.0
+  requiring disk_1.total >= 13217.0
+  requiring network_1.throughput >= 50729.0
+  providing quality = 94.0
+  providing energy = ((0.74*(size^2.0))+(0.63*cpu_0.frequency))
+  
+ }
+ contract implementation_0c1i10 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 1273.0
+  requiring ram_1.total >= 3598.0
+  requiring disk_1.total >= 8443.0
+  requiring network_1.throughput >= 49702.0
+  providing quality = 79.0
+  providing energy = ((0.41*(size^2.0))+(0.93*cpu_0.frequency))
+  
+ }
+ contract implementation_0c1i11 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 1575.0
+  requiring ram_1.total >= 5117.0
+  requiring disk_1.total >= 5531.0
+  requiring network_1.throughput >= 61139.0
+  providing quality = 66.0
+  providing energy = ((0.53*(size^2.0))+(0.18*cpu_0.frequency))
+  
+ }
+ contract implementation_0c1i12 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 2502.0
+  requiring ram_1.total >= 15599.0
+  requiring disk_1.total >= 2567.0
+  requiring network_1.throughput >= 5904.0
+  providing quality = 55.0
+  providing energy = ((0.82*(size^2.0))+(0.05*cpu_0.frequency))
+  
+ }
+ contract implementation_0c1i13 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 2591.0
+  requiring ram_1.total >= 10824.0
+  requiring disk_1.total >= 5010.0
+  requiring network_1.throughput >= 21025.0
+  providing quality = 65.0
+  providing energy = ((0.33*(size^2.0))+(0.25*cpu_0.frequency))
+  
+ }
+ contract implementation_0c1i14 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 2341.0
+  requiring ram_1.total >= 5067.0
+  requiring disk_1.total >= 5126.0
+  requiring network_1.throughput >= 31964.0
+  providing quality = 71.0
+  providing energy = ((0.45*(size^2.0))+(0.45*cpu_0.frequency))
+  
+ }
+ contract implementation_0c1i15 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 532.0
+  requiring ram_1.total >= 5752.0
+  requiring disk_1.total >= 10727.0
+  requiring network_1.throughput >= 56046.0
+  providing quality = 65.0
+  providing energy = ((0.09*(size^2.0))+(0.89*cpu_0.frequency))
+  
+ }
+ contract implementation_0c1i16 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 1919.0
+  requiring ram_1.total >= 15745.0
+  requiring disk_1.total >= 12107.0
+  requiring network_1.throughput >= 43599.0
+  providing quality = 79.0
+  providing energy = ((0.73*(size^2.0))+(0.18*cpu_0.frequency))
+  
+ }
+ contract implementation_0c1i17 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 1617.0
+  requiring ram_1.total >= 9668.0
+  requiring disk_1.total >= 7079.0
+  requiring network_1.throughput >= 16511.0
+  providing quality = 90.0
+  providing energy = ((0.99*(size^2.0))+(0.58*cpu_0.frequency))
+  
+ }
+ contract implementation_0c1i18 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 686.0
+  requiring ram_1.total >= 2662.0
+  requiring disk_1.total >= 985.0
+  requiring network_1.throughput >= 27630.0
+  providing quality = 92.0
+  providing energy = ((0.36*(size^2.0))+(0.62*cpu_0.frequency))
+  
+ }
+ contract implementation_0c1i19 {
+  requires resource compute_resource_0 of type ComputeNode with {
+   cpu_0 of type CPU
+   ram_1 of type RAM
+   disk_1 of type DISK
+   network_1 of type NETWORK
+  }
+  requiring cpu_0.frequency >= 2597.0
+  requiring ram_1.total >= 4253.0
+  requiring disk_1.total >= 9830.0
+  requiring network_1.throughput >= 87852.0
+  providing quality = 64.0
+  providing energy = ((0.27*(size^2.0))+(0.67*cpu_0.frequency))
+  
+ }
+ using property quality
+ using property energy
+}
+
+request request0 for component_0 {
+ meta size = 834.0
+ requiring quality >= 61.0
+}
+request request1 for component_0 {
+ meta size = 535.0
+ requiring quality >= 37.0
+}
+request request2 for component_0 {
+ meta size = 182.0
+ requiring quality >= 88.0
+}
+request request3 for component_0 {
+ meta size = 470.0
+ requiring quality >= 73.0
+}
+request request4 for component_0 {
+ meta size = 376.0
+ requiring quality >= 19.0
+}
+request request5 for component_0 {
+ meta size = 66.0
+ requiring quality >= 78.0
+}
+request request6 for component_0 {
+ meta size = 13.0
+ requiring quality >= 14.0
+}
+request request7 for component_0 {
+ meta size = 878.0
+ requiring quality >= 99.0
+}
+request request8 for component_0 {
+ meta size = 254.0
+ requiring quality >= 13.0
+}
+request request9 for component_0 {
+ meta size = 892.0
+ requiring quality >= 62.0
+}
+request request10 for component_0 {
+ meta size = 359.0
+ requiring quality >= 80.0
+}
+request request11 for component_0 {
+ meta size = 709.0
+ requiring quality >= 54.0
+}
+request request12 for component_0 {
+ meta size = 779.0
+ requiring quality >= 94.0
+}
+request request13 for component_0 {
+ meta size = 794.0
+ requiring quality >= 68.0
+}
+request request14 for component_0 {
+ meta size = 11.0
+ requiring quality >= 63.0
+}
+request request15 for component_0 {
+ meta size = 884.0
+ requiring quality >= 76.0
+}
+request request16 for component_0 {
+ meta size = 901.0
+ requiring quality >= 0.0
+}
+request request17 for component_0 {
+ meta size = 464.0
+ requiring quality >= 9.0
+}
+request request18 for component_0 {
+ meta size = 713.0
+ requiring quality >= 36.0
+}
+request request19 for component_0 {
+ meta size = 255.0
+ requiring quality >= 68.0
+}
+minimize sum(energy)

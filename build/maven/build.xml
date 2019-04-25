@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="mopt.xtext" default="default">
+    <import file="../ant/build-common.xml"/>
+
+
+
+    <target name="dist" depends="render.maven.properties.template, maven.build"/>
+
+    <target name="maven.build">
+        <exec dir="." executable="mvn" failifexecutionfails="true" failonerror="true">
+            <arg value="clean" />
+            <arg value="deploy" />
+            <arg value="--quiet" />
+        </exec>
+    </target>
+
+
+    <!-- Load current build version http://llbit.se/?p=1876 -->
+
+    <target name="load-build-version">
+
+      <echo message="Updating version string from Git"/>
+      <exec executable="git" outputproperty="ant.build.branch"
+              failifexecutionfails="true">
+              <arg value="rev-parse"/>
+              <arg value="--short"/>
+              <arg value="HEAD" />
+      </exec>
+
+      <echo message="Loading current timestamp"/>
+      <tstamp>
+          <format property="ant.build.timestamp" pattern="yyyy.MM.dd.HHmmss"/>
+      </tstamp>
+
+    </target>
+
+    <!-- Render target file from a template to point to the local maven repository -->
+
+    <target name="render.maven.properties.template" depends="load-build-version">
+
+        <!-- Copy task that replaces values and copies the files -->
+        <copy todir="./" verbose="true" overwrite="true" failonerror="true">
+
+            <!-- List of files to be processed -->
+            <fileset dir="./template/">
+                <!-- Filter files to be processed by file name pattern -->
+                <include name="*.template" />
+            </fileset>
+
+            <!-- Mapper to transform filename. Removes '.template' from the file
+                name when copying the file to output directory -->
+
+            <mapper type="regexp" from="(.*).template(.*)" to="\1\2" />
+            <!-- Filter chain that replaces the template values with actual values
+                fetched from properties file -->
+            <filterchain>
+                <expandproperties />
+            </filterchain>
+        </copy>
+    </target>
+</project>

@@ -1,0 +1,198 @@
+grammar org.xtext.example.mydsl.MyDsl with org.eclipse.xtext.common.Terminals
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+generate myDsl "http://www.xtext.org/example/mydsl/MyDsl"
+
+Model:
+	hardwareModel=HardwareModel
+	softwareModel=SoftwareModel
+	requests+=Request+
+	objective=Objective
+	(solution = Solution)?
+;
+
+// HardwareModel (HW package)
+
+HardwareModel:
+	properties += Property*
+	resourceTypes += ResourceType+
+	resources += Resource+
+;
+
+ResourceType:
+	(container ?= 'container')? 'resource' 'type' name=ID '{'
+		// TODO Would need to add a validation to make sure that only containers contain other resources
+		resourceTypes += ResourceType*
+		// TODO Would need to add a validation to make sure that containers contain no properties
+		properties += Property*
+		('using' 'property' propertyReferences += [Property])* 
+	'}'
+;
+
+Resource:
+	'resource' name=ID ':' type=[ResourceType] '{'
+		resources += Resource*
+		values += CurrentResourceValue*
+	'}'
+;
+
+CurrentResourceValue:
+	property = [Property] '=' value = LiteralExpression
+;
+
+
+// SoftwareModel (SW Package)
+
+SoftwareModel:
+	(properties += Property | parameters += MetaParameter)*
+	components += Component+
+;
+
+MetaParameter:
+	'meta' name=ID
+;
+
+Property:
+	'property' name=ID unit=UNIT
+;
+
+Component:
+	'component' name=ID '{'
+		('using' 'property' usedProperties += [Property])*
+		implementations += Implementation+ 
+		('using' 'property' usedProperties += [Property])*
+	'}'
+;
+
+Implementation:
+	'contract' name=ID '{'
+		componentRequirements += ComponentRequirement*
+		resourceRequirements += ResourceRequirement+
+		clauses += Clause+
+	'}'
+;
+
+Instance:
+	name=ID
+;
+
+ComponentRequirement:
+	'requires component' instance=Instance 'of' 'type' type=[Component]
+;
+
+ResourceRequirement:
+	('requires resource')? instance=Instance 'of' 'type' type=[ResourceType] ('with' '{'
+		resourceRequirements += ResourceRequirement+
+	'}')?
+;
+
+Clause:
+	type=ClauseType LHS=/*Designator*/PropertyDesignatorWithOptionalInstance comp=ClauseComparator RHS=Expression
+;
+
+enum ClauseType:
+	requiring | providing
+;
+
+enum ClauseComparator:
+	LT='<' | LE='<=' | EQ='=' | NE='!=' | GE='>=' | GT='>'
+;
+
+Request:
+	'request' name=ID 'for' component=[Component] '{'
+		parameterAssignments += MetaParameterAssignment*
+		requirements += Clause+
+	'}'
+;
+
+Objective:
+	'minimize' agg=PropertyAggregation '(' property=[Property] ')'
+;
+
+enum PropertyAggregation:
+	sum | max
+;
+
+// Expressions
+Expression:
+	Addition
+;
+
+// TODO: This doesn't seem to do what we want it to...
+BinaryExpression:
+	{AddExpression} | {MultExpression} | {SubExpression} | {DivExpression} | {PowExpression}
+;
+
+Addition returns Expression:
+	Multiplication (({AddExpression.left=current} '+' | {SubExpression.left=current} '-') right=Addition)?
+;
+
+Multiplication returns Expression:
+	Power (({MultExpression.left=current} '*' | {DivExpression.left=current} '/') right=Multiplication)?
+;
+
+Power returns Expression:
+	PrimaryExpression ({PowExpression.left=current} '^' right=PrimaryExpression)?
+;
+
+PrimaryExpression returns Expression:
+	'(' Expression ')' | Designator | LiteralExpression
+;
+
+Designator:
+	PropertyDesignator | MetaParameterDesignator
+;
+
+PropertyDesignator:
+	instance=[Instance] '.' property=[Property]
+;
+
+PropertyDesignatorWithOptionalInstance:
+	(instance=[Instance] '.')? property=[Property]
+;
+
+MetaParameterDesignator:
+	metaParameter=[MetaParameter]
+;
+
+LiteralExpression:
+	value=Double
+;
+
+MetaParameterAssignment:
+	'meta' parameter=[MetaParameter] '=' value = LiteralExpression 
+;
+
+// Solution
+
+Solution:
+	'solution' '{'
+		assignments+=Assignment+
+	'}'
+;
+
+Assignment:
+	(request=[Request] '->')? implementation=[Implementation] '{'
+		resourceMappings += ResourceMapping+ 
+		componentMappings += ComponentMapping*
+	'}'
+;
+
+ResourceMapping:
+	requiredResource=[Instance] '->' usedResource=[Resource] ('{'
+		subMappings += ResourceMapping+
+	'}')?
+;
+
+ComponentMapping:
+	component=[Instance] '-->' assignment=Assignment
+;
+
+terminal UNIT returns ecore::EString:
+	'[' -> ']'
+;
+
+Double returns ecore::EDouble:
+	INT '.' INT	
+;

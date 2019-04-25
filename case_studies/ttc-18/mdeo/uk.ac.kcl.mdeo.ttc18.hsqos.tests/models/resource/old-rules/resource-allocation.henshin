@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_sTO8QGeBEeii_cxC4fAKZw">
+  <imports href="MyDsl.ecore#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_SAvDYGeCEeii_cxC4fAKZw" name="createSolution">
+    <lhs xmi:id="_SBsssGeCEeii_cxC4fAKZw" name="Lhs">
+      <nodes xmi:id="_T76WoGeCEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Model"/>
+      </nodes>
+      <formula xsi:type="henshin:Not" xmi:id="_ZXSaMGeCEeii_cxC4fAKZw">
+        <child xsi:type="henshin:NestedCondition" xmi:id="_ZXSaMWeCEeii_cxC4fAKZw">
+          <conclusion xmi:id="_ZXSaMmeCEeii_cxC4fAKZw">
+            <nodes xmi:id="_ZXSaM2eCEeii_cxC4fAKZw" outgoing="_XdOhQGeCEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//Model"/>
+            </nodes>
+            <nodes xmi:id="_VCY2gGeCEeii_cxC4fAKZw" incoming="_XdOhQGeCEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//Solution"/>
+            </nodes>
+            <edges xmi:id="_XdOhQGeCEeii_cxC4fAKZw" source="_ZXSaM2eCEeii_cxC4fAKZw" target="_VCY2gGeCEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//Model/solution"/>
+            </edges>
+          </conclusion>
+          <mappings xmi:id="_ZXTBQGeCEeii_cxC4fAKZw" origin="_T76WoGeCEeii_cxC4fAKZw" image="_ZXSaM2eCEeii_cxC4fAKZw"/>
+        </child>
+      </formula>
+    </lhs>
+    <rhs xmi:id="_SBtTwGeCEeii_cxC4fAKZw" name="Rhs">
+      <nodes xmi:id="_T769sGeCEeii_cxC4fAKZw" outgoing="_cnXq4GeCEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Model"/>
+      </nodes>
+      <nodes xmi:id="_bjWCEGeCEeii_cxC4fAKZw" incoming="_cnXq4GeCEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Solution"/>
+      </nodes>
+      <edges xmi:id="_cnXq4GeCEeii_cxC4fAKZw" source="_T769sGeCEeii_cxC4fAKZw" target="_bjWCEGeCEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Model/solution"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_T77kwGeCEeii_cxC4fAKZw" origin="_T76WoGeCEeii_cxC4fAKZw" image="_T769sGeCEeii_cxC4fAKZw"/>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_lbrZIGeCEeii_cxC4fAKZw" name="createRequestMap">
+    <lhs xmi:id="_lbw4sGeCEeii_cxC4fAKZw" name="Lhs">
+      <nodes xmi:id="_X2CggGebEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Solution"/>
+      </nodes>
+      <nodes xmi:id="_jdzN0GebEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Request"/>
+      </nodes>
+      <nodes xmi:id="_kLZToGebEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Implementation"/>
+      </nodes>
+      <formula xsi:type="henshin:Not" xmi:id="_oZd2kGebEeii_cxC4fAKZw">
+        <child xsi:type="henshin:NestedCondition" xmi:id="_oZd2kWebEeii_cxC4fAKZw">
+          <conclusion xmi:id="_oZd2kmebEeii_cxC4fAKZw">
+            <nodes xmi:id="_oZd2k2ebEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//Solution"/>
+            </nodes>
+            <nodes xmi:id="_oZd2lWebEeii_cxC4fAKZw" incoming="_pRpbwGebEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//Request"/>
+            </nodes>
+            <nodes xmi:id="_oZedoGebEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//Implementation"/>
+            </nodes>
+            <nodes xmi:id="_nptNkGebEeii_cxC4fAKZw" outgoing="_pRpbwGebEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//Assignment"/>
+            </nodes>
+            <edges xmi:id="_pRpbwGebEeii_cxC4fAKZw" source="_nptNkGebEeii_cxC4fAKZw" target="_oZd2lWebEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//Assignment/request"/>
+            </edges>
+          </conclusion>
+          <mappings xmi:id="_oZd2lGebEeii_cxC4fAKZw" origin="_X2CggGebEeii_cxC4fAKZw" image="_oZd2k2ebEeii_cxC4fAKZw"/>
+          <mappings xmi:id="_oZd2lmebEeii_cxC4fAKZw" origin="_jdzN0GebEeii_cxC4fAKZw" image="_oZd2lWebEeii_cxC4fAKZw"/>
+          <mappings xmi:id="_oZedoWebEeii_cxC4fAKZw" origin="_kLZToGebEeii_cxC4fAKZw" image="_oZedoGebEeii_cxC4fAKZw"/>
+        </child>
+      </formula>
+    </lhs>
+    <rhs xmi:id="_lbxfwGeCEeii_cxC4fAKZw" name="Rhs">
+      <nodes xmi:id="_WhAAMGebEeii_cxC4fAKZw" incoming="_bgSksGebEeii_cxC4fAKZw" outgoing="_k7IHcGebEeii_cxC4fAKZw _lMHJwGebEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Assignment"/>
+      </nodes>
+      <nodes xmi:id="_X2CggWebEeii_cxC4fAKZw" outgoing="_bgSksGebEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Solution"/>
+      </nodes>
+      <nodes xmi:id="_jdzN0WebEeii_cxC4fAKZw" incoming="_lMHJwGebEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Request"/>
+      </nodes>
+      <nodes xmi:id="_kLZToWebEeii_cxC4fAKZw" incoming="_k7IHcGebEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Implementation"/>
+      </nodes>
+      <edges xmi:id="_bgSksGebEeii_cxC4fAKZw" source="_X2CggWebEeii_cxC4fAKZw" target="_WhAAMGebEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Solution/assignments"/>
+      </edges>
+      <edges xmi:id="_k7IHcGebEeii_cxC4fAKZw" source="_WhAAMGebEeii_cxC4fAKZw" target="_kLZToWebEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Assignment/implementation"/>
+      </edges>
+      <edges xmi:id="_lMHJwGebEeii_cxC4fAKZw" source="_WhAAMGebEeii_cxC4fAKZw" target="_jdzN0WebEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Assignment/request"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_X2CggmebEeii_cxC4fAKZw" origin="_X2CggGebEeii_cxC4fAKZw" image="_X2CggWebEeii_cxC4fAKZw"/>
+    <mappings xmi:id="_jdzN0mebEeii_cxC4fAKZw" origin="_jdzN0GebEeii_cxC4fAKZw" image="_jdzN0WebEeii_cxC4fAKZw"/>
+    <mappings xmi:id="_kLZTomebEeii_cxC4fAKZw" origin="_kLZToGebEeii_cxC4fAKZw" image="_kLZToWebEeii_cxC4fAKZw"/>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_nZiM8GeCEeii_cxC4fAKZw" name="changeRequestMap">
+    <lhs xmi:id="_nZlQQGeCEeii_cxC4fAKZw" name="Lhs">
+      <nodes xmi:id="_D4KAUGecEeii_cxC4fAKZw" outgoing="_Ju5xQGecEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Solution"/>
+      </nodes>
+      <nodes xmi:id="_FaadQGecEeii_cxC4fAKZw" incoming="_Ju5xQGecEeii_cxC4fAKZw" outgoing="_Kz_KAGecEeii_cxC4fAKZw _LXT5gGecEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Assignment"/>
+      </nodes>
+      <nodes xmi:id="_GgD2sGecEeii_cxC4fAKZw" incoming="_Kz_KAGecEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Request"/>
+      </nodes>
+      <nodes xmi:id="_HPz4oGecEeii_cxC4fAKZw" incoming="_LXT5gGecEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Implementation"/>
+      </nodes>
+      <nodes xmi:id="_QdOqcGecEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Implementation"/>
+      </nodes>
+      <edges xmi:id="_Ju5xQGecEeii_cxC4fAKZw" source="_D4KAUGecEeii_cxC4fAKZw" target="_FaadQGecEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Solution/assignments"/>
+      </edges>
+      <edges xmi:id="_Kz_KAGecEeii_cxC4fAKZw" source="_FaadQGecEeii_cxC4fAKZw" target="_GgD2sGecEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Assignment/request"/>
+      </edges>
+      <edges xmi:id="_LXT5gGecEeii_cxC4fAKZw" source="_FaadQGecEeii_cxC4fAKZw" target="_HPz4oGecEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Assignment/implementation"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_nZlQQWeCEeii_cxC4fAKZw" name="Rhs">
+      <nodes xmi:id="_D4KnYGecEeii_cxC4fAKZw" outgoing="_Ju5xQWecEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Solution"/>
+      </nodes>
+      <nodes xmi:id="_FaadQWecEeii_cxC4fAKZw" incoming="_Ju5xQWecEeii_cxC4fAKZw" outgoing="_Kz_KAWecEeii_cxC4fAKZw _SyVgoGecEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Assignment"/>
+      </nodes>
+      <nodes xmi:id="_GgD2sWecEeii_cxC4fAKZw" incoming="_Kz_KAWecEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Request"/>
+      </nodes>
+      <nodes xmi:id="_HPz4oWecEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Implementation"/>
+      </nodes>
+      <nodes xmi:id="_QdOqcWecEeii_cxC4fAKZw" incoming="_SyVgoGecEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Implementation"/>
+      </nodes>
+      <edges xmi:id="_Ju5xQWecEeii_cxC4fAKZw" source="_D4KnYGecEeii_cxC4fAKZw" target="_FaadQWecEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Solution/assignments"/>
+      </edges>
+      <edges xmi:id="_Kz_KAWecEeii_cxC4fAKZw" source="_FaadQWecEeii_cxC4fAKZw" target="_GgD2sWecEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Assignment/request"/>
+      </edges>
+      <edges xmi:id="_SyVgoGecEeii_cxC4fAKZw" source="_FaadQWecEeii_cxC4fAKZw" target="_QdOqcWecEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Assignment/implementation"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_D4KnYWecEeii_cxC4fAKZw" origin="_D4KAUGecEeii_cxC4fAKZw" image="_D4KnYGecEeii_cxC4fAKZw"/>
+    <mappings xmi:id="_FaadQmecEeii_cxC4fAKZw" origin="_FaadQGecEeii_cxC4fAKZw" image="_FaadQWecEeii_cxC4fAKZw"/>
+    <mappings xmi:id="_GgD2smecEeii_cxC4fAKZw" origin="_GgD2sGecEeii_cxC4fAKZw" image="_GgD2sWecEeii_cxC4fAKZw"/>
+    <mappings xmi:id="_HPz4omecEeii_cxC4fAKZw" origin="_HPz4oGecEeii_cxC4fAKZw" image="_HPz4oWecEeii_cxC4fAKZw"/>
+    <mappings xmi:id="_QdOqcmecEeii_cxC4fAKZw" origin="_QdOqcGecEeii_cxC4fAKZw" image="_QdOqcWecEeii_cxC4fAKZw"/>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_qlUzgGeCEeii_cxC4fAKZw" name="createComponentImplementationMap">
+    <lhs xmi:id="_qlX20GeCEeii_cxC4fAKZw" name="Lhs"/>
+    <rhs xmi:id="_qlX20WeCEeii_cxC4fAKZw" name="Rhs"/>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_tIjlQGeCEeii_cxC4fAKZw" name="changeComponentImplementationMap">
+    <lhs xmi:id="_tInPoGeCEeii_cxC4fAKZw" name="Lhs"/>
+    <rhs xmi:id="_tInPoWeCEeii_cxC4fAKZw" name="Rhs"/>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_upPU4GeCEeii_cxC4fAKZw" name="createResourceDependencyMap">
+    <lhs xmi:id="_upTmUGeCEeii_cxC4fAKZw" name="Lhs">
+      <nodes xmi:id="_qL0IgGecEeii_cxC4fAKZw" outgoing="_zrGGYGecEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Solution"/>
+      </nodes>
+      <nodes xmi:id="_sTQ9MGecEeii_cxC4fAKZw" incoming="_0S9XoGecEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Request"/>
+      </nodes>
+      <nodes xmi:id="_tKGekGecEeii_cxC4fAKZw" incoming="_zrGGYGecEeii_cxC4fAKZw" outgoing="_0S9XoGecEeii_cxC4fAKZw _0wC8QGecEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Assignment"/>
+      </nodes>
+      <nodes xmi:id="_uWKpEGecEeii_cxC4fAKZw" incoming="_0wC8QGecEeii_cxC4fAKZw" outgoing="_DxUjEGedEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Implementation"/>
+      </nodes>
+      <nodes xmi:id="_DPWecGedEeii_cxC4fAKZw" incoming="_DxUjEGedEeii_cxC4fAKZw" outgoing="_JBQLoGedEeii_cxC4fAKZw _LH_1sGedEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//ResourceRequirement"/>
+      </nodes>
+      <nodes xmi:id="_IVAJoGedEeii_cxC4fAKZw" incoming="_JBQLoGedEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Instance"/>
+      </nodes>
+      <nodes xmi:id="_Kcn9cGedEeii_cxC4fAKZw" incoming="_LH_1sGedEeii_cxC4fAKZw _UJx_QGedEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//ResourceType"/>
+      </nodes>
+      <nodes xmi:id="_SKNUMGedEeii_cxC4fAKZw" outgoing="_UJx_QGedEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Resource"/>
+      </nodes>
+      <edges xmi:id="_zrGGYGecEeii_cxC4fAKZw" source="_qL0IgGecEeii_cxC4fAKZw" target="_tKGekGecEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Solution/assignments"/>
+      </edges>
+      <edges xmi:id="_0S9XoGecEeii_cxC4fAKZw" source="_tKGekGecEeii_cxC4fAKZw" target="_sTQ9MGecEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Assignment/request"/>
+      </edges>
+      <edges xmi:id="_0wC8QGecEeii_cxC4fAKZw" source="_tKGekGecEeii_cxC4fAKZw" target="_uWKpEGecEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Assignment/implementation"/>
+      </edges>
+      <edges xmi:id="_DxUjEGedEeii_cxC4fAKZw" source="_uWKpEGecEeii_cxC4fAKZw" target="_DPWecGedEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Implementation/resourceRequirements"/>
+      </edges>
+      <edges xmi:id="_JBQLoGedEeii_cxC4fAKZw" source="_DPWecGedEeii_cxC4fAKZw" target="_IVAJoGedEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//ResourceRequirement/instance"/>
+      </edges>
+      <edges xmi:id="_LH_1sGedEeii_cxC4fAKZw" source="_DPWecGedEeii_cxC4fAKZw" target="_Kcn9cGedEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//ResourceRequirement/type"/>
+      </edges>
+      <edges xmi:id="_UJx_QGedEeii_cxC4fAKZw" source="_SKNUMGedEeii_cxC4fAKZw" target="_Kcn9cGedEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Resource/type"/>
+      </edges>
+      <formula xsi:type="henshin:Not" xmi:id="_48STMmecEeii_cxC4fAKZw">
+        <child xsi:type="henshin:NestedCondition" xmi:id="_48STM2ecEeii_cxC4fAKZw">
+          <conclusion xmi:id="_48STNGecEeii_cxC4fAKZw">
+            <nodes xmi:id="_48STNWecEeii_cxC4fAKZw" outgoing="_48S6QWecEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//Solution"/>
+            </nodes>
+            <nodes xmi:id="_48STN2ecEeii_cxC4fAKZw" incoming="_48S6QWecEeii_cxC4fAKZw" outgoing="_48S6RGecEeii_cxC4fAKZw _48S6R2ecEeii_cxC4fAKZw _5owXoGecEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//Assignment"/>
+            </nodes>
+            <nodes xmi:id="_48S6QmecEeii_cxC4fAKZw" incoming="_48S6RGecEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//Request"/>
+            </nodes>
+            <nodes xmi:id="_48S6RWecEeii_cxC4fAKZw" incoming="_48S6R2ecEeii_cxC4fAKZw" outgoing="_XiC7kmedEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//Implementation"/>
+            </nodes>
+            <nodes xmi:id="_48RsIGecEeii_cxC4fAKZw" incoming="_5owXoGecEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//ResourceMapping"/>
+            </nodes>
+            <nodes xmi:id="_XiC7kGedEeii_cxC4fAKZw" incoming="_XiC7kmedEeii_cxC4fAKZw" outgoing="_XiDiomedEeii_cxC4fAKZw _XiDipWedEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//ResourceRequirement"/>
+            </nodes>
+            <nodes xmi:id="_XiDioGedEeii_cxC4fAKZw" incoming="_XiDiomedEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//Instance"/>
+            </nodes>
+            <nodes xmi:id="_XiDio2edEeii_cxC4fAKZw" incoming="_XiDipWedEeii_cxC4fAKZw _XiEJsWedEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//ResourceType"/>
+            </nodes>
+            <nodes xmi:id="_XiDipmedEeii_cxC4fAKZw" incoming="_YlofgGedEeii_cxC4fAKZw" outgoing="_XiEJsWedEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//Resource"/>
+            </nodes>
+            <nodes xmi:id="_WuySoGedEeii_cxC4fAKZw" outgoing="_YlofgGedEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//ResourceMapping"/>
+            </nodes>
+            <edges xmi:id="_48S6QWecEeii_cxC4fAKZw" source="_48STNWecEeii_cxC4fAKZw" target="_48STN2ecEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//Solution/assignments"/>
+            </edges>
+            <edges xmi:id="_48S6RGecEeii_cxC4fAKZw" source="_48STN2ecEeii_cxC4fAKZw" target="_48S6QmecEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//Assignment/request"/>
+            </edges>
+            <edges xmi:id="_48S6R2ecEeii_cxC4fAKZw" source="_48STN2ecEeii_cxC4fAKZw" target="_48S6RWecEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//Assignment/implementation"/>
+            </edges>
+            <edges xmi:id="_5owXoGecEeii_cxC4fAKZw" source="_48STN2ecEeii_cxC4fAKZw" target="_48RsIGecEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//Assignment/resourceMappings"/>
+            </edges>
+            <edges xmi:id="_XiC7kmedEeii_cxC4fAKZw" source="_48S6RWecEeii_cxC4fAKZw" target="_XiC7kGedEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//Implementation/resourceRequirements"/>
+            </edges>
+            <edges xmi:id="_XiDiomedEeii_cxC4fAKZw" source="_XiC7kGedEeii_cxC4fAKZw" target="_XiDioGedEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//ResourceRequirement/instance"/>
+            </edges>
+            <edges xmi:id="_XiDipWedEeii_cxC4fAKZw" source="_XiC7kGedEeii_cxC4fAKZw" target="_XiDio2edEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//ResourceRequirement/type"/>
+            </edges>
+            <edges xmi:id="_XiEJsWedEeii_cxC4fAKZw" source="_XiDipmedEeii_cxC4fAKZw" target="_XiDio2edEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//Resource/type"/>
+            </edges>
+            <edges xmi:id="_YlofgGedEeii_cxC4fAKZw" source="_WuySoGedEeii_cxC4fAKZw" target="_XiDipmedEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//ResourceMapping/usedResource"/>
+            </edges>
+          </conclusion>
+          <mappings xmi:id="_48STNmecEeii_cxC4fAKZw" origin="_qL0IgGecEeii_cxC4fAKZw" image="_48STNWecEeii_cxC4fAKZw"/>
+          <mappings xmi:id="_48S6QGecEeii_cxC4fAKZw" origin="_tKGekGecEeii_cxC4fAKZw" image="_48STN2ecEeii_cxC4fAKZw"/>
+          <mappings xmi:id="_48S6Q2ecEeii_cxC4fAKZw" origin="_sTQ9MGecEeii_cxC4fAKZw" image="_48S6QmecEeii_cxC4fAKZw"/>
+          <mappings xmi:id="_48S6RmecEeii_cxC4fAKZw" origin="_uWKpEGecEeii_cxC4fAKZw" image="_48S6RWecEeii_cxC4fAKZw"/>
+          <mappings xmi:id="_XiC7kWedEeii_cxC4fAKZw" origin="_DPWecGedEeii_cxC4fAKZw" image="_XiC7kGedEeii_cxC4fAKZw"/>
+          <mappings xmi:id="_XiDioWedEeii_cxC4fAKZw" origin="_IVAJoGedEeii_cxC4fAKZw" image="_XiDioGedEeii_cxC4fAKZw"/>
+          <mappings xmi:id="_XiDipGedEeii_cxC4fAKZw" origin="_Kcn9cGedEeii_cxC4fAKZw" image="_XiDio2edEeii_cxC4fAKZw"/>
+          <mappings xmi:id="_XiEJsGedEeii_cxC4fAKZw" origin="_SKNUMGedEeii_cxC4fAKZw" image="_XiDipmedEeii_cxC4fAKZw"/>
+        </child>
+      </formula>
+    </lhs>
+    <rhs xmi:id="_upTmUWeCEeii_cxC4fAKZw" name="Rhs">
+      <nodes xmi:id="_qL0IgWecEeii_cxC4fAKZw" outgoing="_zrHUgGecEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Solution"/>
+      </nodes>
+      <nodes xmi:id="_sTQ9MWecEeii_cxC4fAKZw" incoming="_0S9XoWecEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Request"/>
+      </nodes>
+      <nodes xmi:id="_tKGekWecEeii_cxC4fAKZw" incoming="_zrHUgGecEeii_cxC4fAKZw" outgoing="_0S9XoWecEeii_cxC4fAKZw _0wC8QWecEeii_cxC4fAKZw _1-kk4GecEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Assignment"/>
+      </nodes>
+      <nodes xmi:id="_uWKpEWecEeii_cxC4fAKZw" incoming="_0wC8QWecEeii_cxC4fAKZw" outgoing="_DxVKIGedEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Implementation"/>
+      </nodes>
+      <nodes xmi:id="_w6F-YGecEeii_cxC4fAKZw" incoming="_1-kk4GecEeii_cxC4fAKZw" outgoing="_UvU8UGedEeii_cxC4fAKZw __L-LwGegEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//ResourceMapping"/>
+      </nodes>
+      <nodes xmi:id="_DPWecWedEeii_cxC4fAKZw" incoming="_DxVKIGedEeii_cxC4fAKZw" outgoing="_JBQLoWedEeii_cxC4fAKZw _LH_1sWedEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//ResourceRequirement"/>
+      </nodes>
+      <nodes xmi:id="_IVAJoWedEeii_cxC4fAKZw" incoming="_JBQLoWedEeii_cxC4fAKZw __L-LwGegEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Instance"/>
+      </nodes>
+      <nodes xmi:id="_KcokgGedEeii_cxC4fAKZw" incoming="_LH_1sWedEeii_cxC4fAKZw _UJx_QWedEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//ResourceType"/>
+      </nodes>
+      <nodes xmi:id="_SKN7QGedEeii_cxC4fAKZw" incoming="_UvU8UGedEeii_cxC4fAKZw" outgoing="_UJx_QWedEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Resource"/>
+      </nodes>
+      <edges xmi:id="_zrHUgGecEeii_cxC4fAKZw" source="_qL0IgWecEeii_cxC4fAKZw" target="_tKGekWecEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Solution/assignments"/>
+      </edges>
+      <edges xmi:id="_0S9XoWecEeii_cxC4fAKZw" source="_tKGekWecEeii_cxC4fAKZw" target="_sTQ9MWecEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Assignment/request"/>
+      </edges>
+      <edges xmi:id="_0wC8QWecEeii_cxC4fAKZw" source="_tKGekWecEeii_cxC4fAKZw" target="_uWKpEWecEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Assignment/implementation"/>
+      </edges>
+      <edges xmi:id="_1-kk4GecEeii_cxC4fAKZw" source="_tKGekWecEeii_cxC4fAKZw" target="_w6F-YGecEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Assignment/resourceMappings"/>
+      </edges>
+      <edges xmi:id="_DxVKIGedEeii_cxC4fAKZw" source="_uWKpEWecEeii_cxC4fAKZw" target="_DPWecWedEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Implementation/resourceRequirements"/>
+      </edges>
+      <edges xmi:id="_JBQLoWedEeii_cxC4fAKZw" source="_DPWecWedEeii_cxC4fAKZw" target="_IVAJoWedEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//ResourceRequirement/instance"/>
+      </edges>
+      <edges xmi:id="_LH_1sWedEeii_cxC4fAKZw" source="_DPWecWedEeii_cxC4fAKZw" target="_KcokgGedEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//ResourceRequirement/type"/>
+      </edges>
+      <edges xmi:id="_UJx_QWedEeii_cxC4fAKZw" source="_SKN7QGedEeii_cxC4fAKZw" target="_KcokgGedEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Resource/type"/>
+      </edges>
+      <edges xmi:id="_UvU8UGedEeii_cxC4fAKZw" source="_w6F-YGecEeii_cxC4fAKZw" target="_SKN7QGedEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//ResourceMapping/usedResource"/>
+      </edges>
+      <edges xmi:id="__L-LwGegEeii_cxC4fAKZw" source="_w6F-YGecEeii_cxC4fAKZw" target="_IVAJoWedEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//ResourceMapping/requiredResource"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_qL0IgmecEeii_cxC4fAKZw" origin="_qL0IgGecEeii_cxC4fAKZw" image="_qL0IgWecEeii_cxC4fAKZw"/>
+    <mappings xmi:id="_sTRkQGecEeii_cxC4fAKZw" origin="_sTQ9MGecEeii_cxC4fAKZw" image="_sTQ9MWecEeii_cxC4fAKZw"/>
+    <mappings xmi:id="_tKGekmecEeii_cxC4fAKZw" origin="_tKGekGecEeii_cxC4fAKZw" image="_tKGekWecEeii_cxC4fAKZw"/>
+    <mappings xmi:id="_uWKpEmecEeii_cxC4fAKZw" origin="_uWKpEGecEeii_cxC4fAKZw" image="_uWKpEWecEeii_cxC4fAKZw"/>
+    <mappings xmi:id="_DPWecmedEeii_cxC4fAKZw" origin="_DPWecGedEeii_cxC4fAKZw" image="_DPWecWedEeii_cxC4fAKZw"/>
+    <mappings xmi:id="_IVAJomedEeii_cxC4fAKZw" origin="_IVAJoGedEeii_cxC4fAKZw" image="_IVAJoWedEeii_cxC4fAKZw"/>
+    <mappings xmi:id="_KcokgWedEeii_cxC4fAKZw" origin="_Kcn9cGedEeii_cxC4fAKZw" image="_KcokgGedEeii_cxC4fAKZw"/>
+    <mappings xmi:id="_SKN7QWedEeii_cxC4fAKZw" origin="_SKNUMGedEeii_cxC4fAKZw" image="_SKN7QGedEeii_cxC4fAKZw"/>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_wvrc8GeCEeii_cxC4fAKZw" name="changeResourceDependencyMap">
+    <lhs xmi:id="_wvvHUGeCEeii_cxC4fAKZw" name="Lhs"/>
+    <rhs xmi:id="_wvvuYGeCEeii_cxC4fAKZw" name="Rhs"/>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_EKZ_MGeiEeii_cxC4fAKZw" name="changeResourceDependencyMap">
+    <lhs xmi:id="_EKZ_MWeiEeii_cxC4fAKZw" name="Lhs">
+      <nodes xmi:id="_EKZ_MmeiEeii_cxC4fAKZw" outgoing="_EKZ_OmeiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Solution"/>
+      </nodes>
+      <nodes xmi:id="_EKZ_M2eiEeii_cxC4fAKZw" incoming="_EKZ_O2eiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Request"/>
+      </nodes>
+      <nodes xmi:id="_EKZ_NGeiEeii_cxC4fAKZw" incoming="_EKZ_OmeiEeii_cxC4fAKZw" outgoing="_EKZ_O2eiEeii_cxC4fAKZw _EKZ_PGeiEeii_cxC4fAKZw _EKZ_bGeiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Assignment"/>
+      </nodes>
+      <nodes xmi:id="_EKZ_NWeiEeii_cxC4fAKZw" incoming="_EKZ_PGeiEeii_cxC4fAKZw" outgoing="_EKZ_PWeiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Implementation"/>
+      </nodes>
+      <nodes xmi:id="_EKZ_NmeiEeii_cxC4fAKZw" incoming="_EKZ_PWeiEeii_cxC4fAKZw" outgoing="_EKZ_PmeiEeii_cxC4fAKZw _EKZ_P2eiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//ResourceRequirement"/>
+      </nodes>
+      <nodes xmi:id="_EKZ_N2eiEeii_cxC4fAKZw" incoming="_EKZ_PmeiEeii_cxC4fAKZw _EKZ_cmeiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Instance"/>
+      </nodes>
+      <nodes xmi:id="_EKZ_OGeiEeii_cxC4fAKZw" incoming="_EKZ_P2eiEeii_cxC4fAKZw _EKZ_QGeiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//ResourceType"/>
+      </nodes>
+      <nodes xmi:id="_au2cgGeiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Resource"/>
+      </nodes>
+      <nodes xmi:id="_eq40QGeiEeii_cxC4fAKZw" incoming="_EKZ_cWeiEeii_cxC4fAKZw" outgoing="_EKZ_QGeiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Resource"/>
+      </nodes>
+      <nodes xmi:id="_EKZ_ZGeiEeii_cxC4fAKZw" incoming="_EKZ_bGeiEeii_cxC4fAKZw" outgoing="_EKZ_cWeiEeii_cxC4fAKZw _EKZ_cmeiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//ResourceMapping"/>
+      </nodes>
+      <edges xmi:id="_EKZ_OmeiEeii_cxC4fAKZw" source="_EKZ_MmeiEeii_cxC4fAKZw" target="_EKZ_NGeiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Solution/assignments"/>
+      </edges>
+      <edges xmi:id="_EKZ_O2eiEeii_cxC4fAKZw" source="_EKZ_NGeiEeii_cxC4fAKZw" target="_EKZ_M2eiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Assignment/request"/>
+      </edges>
+      <edges xmi:id="_EKZ_PGeiEeii_cxC4fAKZw" source="_EKZ_NGeiEeii_cxC4fAKZw" target="_EKZ_NWeiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Assignment/implementation"/>
+      </edges>
+      <edges xmi:id="_EKZ_PWeiEeii_cxC4fAKZw" source="_EKZ_NWeiEeii_cxC4fAKZw" target="_EKZ_NmeiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Implementation/resourceRequirements"/>
+      </edges>
+      <edges xmi:id="_EKZ_PmeiEeii_cxC4fAKZw" source="_EKZ_NmeiEeii_cxC4fAKZw" target="_EKZ_N2eiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//ResourceRequirement/instance"/>
+      </edges>
+      <edges xmi:id="_EKZ_P2eiEeii_cxC4fAKZw" source="_EKZ_NmeiEeii_cxC4fAKZw" target="_EKZ_OGeiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//ResourceRequirement/type"/>
+      </edges>
+      <edges xmi:id="_EKZ_bGeiEeii_cxC4fAKZw" source="_EKZ_NGeiEeii_cxC4fAKZw" target="_EKZ_ZGeiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Assignment/resourceMappings"/>
+      </edges>
+      <edges xmi:id="_EKZ_cWeiEeii_cxC4fAKZw" source="_EKZ_ZGeiEeii_cxC4fAKZw" target="_eq40QGeiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//ResourceMapping/usedResource"/>
+      </edges>
+      <edges xmi:id="_EKZ_cmeiEeii_cxC4fAKZw" source="_EKZ_ZGeiEeii_cxC4fAKZw" target="_EKZ_N2eiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//ResourceMapping/requiredResource"/>
+      </edges>
+      <edges xmi:id="_EKZ_QGeiEeii_cxC4fAKZw" source="_eq40QGeiEeii_cxC4fAKZw" target="_EKZ_OGeiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Resource/type"/>
+      </edges>
+      <formula xsi:type="henshin:Not" xmi:id="_3nifEGeiEeii_cxC4fAKZw">
+        <child xsi:type="henshin:NestedCondition" xmi:id="_3nifEWeiEeii_cxC4fAKZw">
+          <conclusion xmi:id="_3nifEmeiEeii_cxC4fAKZw">
+            <nodes xmi:id="_3nifE2eiEeii_cxC4fAKZw" outgoing="_3njGImeiEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//Solution"/>
+            </nodes>
+            <nodes xmi:id="_3njGIGeiEeii_cxC4fAKZw" incoming="_3njGImeiEeii_cxC4fAKZw" outgoing="_3njGJWeiEeii_cxC4fAKZw _3njGKGeiEeii_cxC4fAKZw _3njtMmeiEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//Assignment"/>
+            </nodes>
+            <nodes xmi:id="_3njGI2eiEeii_cxC4fAKZw" incoming="_3njGJWeiEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//Request"/>
+            </nodes>
+            <nodes xmi:id="_3njGJmeiEeii_cxC4fAKZw" incoming="_3njGKGeiEeii_cxC4fAKZw" outgoing="_3njtNWeiEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//Implementation"/>
+            </nodes>
+            <nodes xmi:id="_3njtMGeiEeii_cxC4fAKZw" incoming="_3njtMmeiEeii_cxC4fAKZw" outgoing="_3nkURmeiEeii_cxC4fAKZw _3nk7VWeiEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//ResourceMapping"/>
+            </nodes>
+            <nodes xmi:id="_3njtM2eiEeii_cxC4fAKZw" incoming="_3njtNWeiEeii_cxC4fAKZw" outgoing="_3nkUQmeiEeii_cxC4fAKZw _3nkURWeiEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//ResourceRequirement"/>
+            </nodes>
+            <nodes xmi:id="_3nkUQGeiEeii_cxC4fAKZw" incoming="_3nkUQmeiEeii_cxC4fAKZw _3nkURmeiEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//Instance"/>
+            </nodes>
+            <nodes xmi:id="_3nkUQ2eiEeii_cxC4fAKZw" incoming="_3nkURWeiEeii_cxC4fAKZw _3nk7UmeiEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//ResourceType"/>
+            </nodes>
+            <nodes xmi:id="_3nk7UGeiEeii_cxC4fAKZw" incoming="_3nk7VWeiEeii_cxC4fAKZw" outgoing="_3nk7UmeiEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//Resource"/>
+            </nodes>
+            <nodes xmi:id="_3nk7U2eiEeii_cxC4fAKZw" incoming="_4ayg8GeiEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//Resource"/>
+            </nodes>
+            <nodes xmi:id="_2dQdQGeiEeii_cxC4fAKZw" outgoing="_4ayg8GeiEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//ResourceMapping"/>
+            </nodes>
+            <edges xmi:id="_3njGImeiEeii_cxC4fAKZw" source="_3nifE2eiEeii_cxC4fAKZw" target="_3njGIGeiEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//Solution/assignments"/>
+            </edges>
+            <edges xmi:id="_3njGJWeiEeii_cxC4fAKZw" source="_3njGIGeiEeii_cxC4fAKZw" target="_3njGI2eiEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//Assignment/request"/>
+            </edges>
+            <edges xmi:id="_3njGKGeiEeii_cxC4fAKZw" source="_3njGIGeiEeii_cxC4fAKZw" target="_3njGJmeiEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//Assignment/implementation"/>
+            </edges>
+            <edges xmi:id="_3njtMmeiEeii_cxC4fAKZw" source="_3njGIGeiEeii_cxC4fAKZw" target="_3njtMGeiEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//Assignment/resourceMappings"/>
+            </edges>
+            <edges xmi:id="_3njtNWeiEeii_cxC4fAKZw" source="_3njGJmeiEeii_cxC4fAKZw" target="_3njtM2eiEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//Implementation/resourceRequirements"/>
+            </edges>
+            <edges xmi:id="_3nkUQmeiEeii_cxC4fAKZw" source="_3njtM2eiEeii_cxC4fAKZw" target="_3nkUQGeiEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//ResourceRequirement/instance"/>
+            </edges>
+            <edges xmi:id="_3nkURWeiEeii_cxC4fAKZw" source="_3njtM2eiEeii_cxC4fAKZw" target="_3nkUQ2eiEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//ResourceRequirement/type"/>
+            </edges>
+            <edges xmi:id="_3nkURmeiEeii_cxC4fAKZw" source="_3njtMGeiEeii_cxC4fAKZw" target="_3nkUQGeiEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//ResourceMapping/requiredResource"/>
+            </edges>
+            <edges xmi:id="_3nk7UmeiEeii_cxC4fAKZw" source="_3nk7UGeiEeii_cxC4fAKZw" target="_3nkUQ2eiEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//Resource/type"/>
+            </edges>
+            <edges xmi:id="_3nk7VWeiEeii_cxC4fAKZw" source="_3njtMGeiEeii_cxC4fAKZw" target="_3nk7UGeiEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//ResourceMapping/usedResource"/>
+            </edges>
+            <edges xmi:id="_4ayg8GeiEeii_cxC4fAKZw" source="_2dQdQGeiEeii_cxC4fAKZw" target="_3nk7U2eiEeii_cxC4fAKZw">
+              <type href="MyDsl.ecore#//ResourceMapping/usedResource"/>
+            </edges>
+          </conclusion>
+          <mappings xmi:id="_3nifFGeiEeii_cxC4fAKZw" origin="_EKZ_MmeiEeii_cxC4fAKZw" image="_3nifE2eiEeii_cxC4fAKZw"/>
+          <mappings xmi:id="_3njGIWeiEeii_cxC4fAKZw" origin="_EKZ_NGeiEeii_cxC4fAKZw" image="_3njGIGeiEeii_cxC4fAKZw"/>
+          <mappings xmi:id="_3njGJGeiEeii_cxC4fAKZw" origin="_EKZ_M2eiEeii_cxC4fAKZw" image="_3njGI2eiEeii_cxC4fAKZw"/>
+          <mappings xmi:id="_3njGJ2eiEeii_cxC4fAKZw" origin="_EKZ_NWeiEeii_cxC4fAKZw" image="_3njGJmeiEeii_cxC4fAKZw"/>
+          <mappings xmi:id="_3njtMWeiEeii_cxC4fAKZw" origin="_EKZ_ZGeiEeii_cxC4fAKZw" image="_3njtMGeiEeii_cxC4fAKZw"/>
+          <mappings xmi:id="_3njtNGeiEeii_cxC4fAKZw" origin="_EKZ_NmeiEeii_cxC4fAKZw" image="_3njtM2eiEeii_cxC4fAKZw"/>
+          <mappings xmi:id="_3nkUQWeiEeii_cxC4fAKZw" origin="_EKZ_N2eiEeii_cxC4fAKZw" image="_3nkUQGeiEeii_cxC4fAKZw"/>
+          <mappings xmi:id="_3nkURGeiEeii_cxC4fAKZw" origin="_EKZ_OGeiEeii_cxC4fAKZw" image="_3nkUQ2eiEeii_cxC4fAKZw"/>
+          <mappings xmi:id="_3nk7UWeiEeii_cxC4fAKZw" origin="_eq40QGeiEeii_cxC4fAKZw" image="_3nk7UGeiEeii_cxC4fAKZw"/>
+          <mappings xmi:id="_3nk7VGeiEeii_cxC4fAKZw" origin="_au2cgGeiEeii_cxC4fAKZw" image="_3nk7U2eiEeii_cxC4fAKZw"/>
+        </child>
+      </formula>
+    </lhs>
+    <rhs xmi:id="_EKZ_X2eiEeii_cxC4fAKZw" name="Rhs">
+      <nodes xmi:id="_EKZ_YGeiEeii_cxC4fAKZw" outgoing="_EKZ_aWeiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Solution"/>
+      </nodes>
+      <nodes xmi:id="_EKZ_YWeiEeii_cxC4fAKZw" incoming="_EKZ_ameiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Request"/>
+      </nodes>
+      <nodes xmi:id="_EKZ_YmeiEeii_cxC4fAKZw" incoming="_EKZ_aWeiEeii_cxC4fAKZw" outgoing="_EKZ_ameiEeii_cxC4fAKZw _EKZ_a2eiEeii_cxC4fAKZw _eq6CYmeiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Assignment"/>
+      </nodes>
+      <nodes xmi:id="_EKZ_Y2eiEeii_cxC4fAKZw" incoming="_EKZ_a2eiEeii_cxC4fAKZw" outgoing="_EKZ_bWeiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Implementation"/>
+      </nodes>
+      <nodes xmi:id="_EKZ_ZWeiEeii_cxC4fAKZw" incoming="_EKZ_bWeiEeii_cxC4fAKZw" outgoing="_EKZ_bmeiEeii_cxC4fAKZw _EKZ_b2eiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//ResourceRequirement"/>
+      </nodes>
+      <nodes xmi:id="_EKZ_ZmeiEeii_cxC4fAKZw" incoming="_EKZ_bmeiEeii_cxC4fAKZw _eq6pcGeiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Instance"/>
+      </nodes>
+      <nodes xmi:id="_EKZ_Z2eiEeii_cxC4fAKZw" incoming="_EKZ_b2eiEeii_cxC4fAKZw _gePBMGeiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//ResourceType"/>
+      </nodes>
+      <nodes xmi:id="_EKZ_OWeiEeii_cxC4fAKZw" outgoing="_gePBMGeiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Resource"/>
+      </nodes>
+      <nodes xmi:id="_au2cgWeiEeii_cxC4fAKZw" incoming="_c4rPwGeiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Resource"/>
+      </nodes>
+      <nodes xmi:id="_eq6CYGeiEeii_cxC4fAKZw" incoming="_eq6CYmeiEeii_cxC4fAKZw" outgoing="_eq6pcGeiEeii_cxC4fAKZw _c4rPwGeiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//ResourceMapping"/>
+      </nodes>
+      <edges xmi:id="_EKZ_aWeiEeii_cxC4fAKZw" source="_EKZ_YGeiEeii_cxC4fAKZw" target="_EKZ_YmeiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Solution/assignments"/>
+      </edges>
+      <edges xmi:id="_EKZ_ameiEeii_cxC4fAKZw" source="_EKZ_YmeiEeii_cxC4fAKZw" target="_EKZ_YWeiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Assignment/request"/>
+      </edges>
+      <edges xmi:id="_EKZ_a2eiEeii_cxC4fAKZw" source="_EKZ_YmeiEeii_cxC4fAKZw" target="_EKZ_Y2eiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Assignment/implementation"/>
+      </edges>
+      <edges xmi:id="_EKZ_bWeiEeii_cxC4fAKZw" source="_EKZ_Y2eiEeii_cxC4fAKZw" target="_EKZ_ZWeiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Implementation/resourceRequirements"/>
+      </edges>
+      <edges xmi:id="_EKZ_bmeiEeii_cxC4fAKZw" source="_EKZ_ZWeiEeii_cxC4fAKZw" target="_EKZ_ZmeiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//ResourceRequirement/instance"/>
+      </edges>
+      <edges xmi:id="_EKZ_b2eiEeii_cxC4fAKZw" source="_EKZ_ZWeiEeii_cxC4fAKZw" target="_EKZ_Z2eiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//ResourceRequirement/type"/>
+      </edges>
+      <edges xmi:id="_eq6CYmeiEeii_cxC4fAKZw" source="_EKZ_YmeiEeii_cxC4fAKZw" target="_eq6CYGeiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Assignment/resourceMappings"/>
+      </edges>
+      <edges xmi:id="_eq6pcGeiEeii_cxC4fAKZw" source="_eq6CYGeiEeii_cxC4fAKZw" target="_EKZ_ZmeiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//ResourceMapping/requiredResource"/>
+      </edges>
+      <edges xmi:id="_gePBMGeiEeii_cxC4fAKZw" source="_EKZ_OWeiEeii_cxC4fAKZw" target="_EKZ_Z2eiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//Resource/type"/>
+      </edges>
+      <edges xmi:id="_c4rPwGeiEeii_cxC4fAKZw" source="_eq6CYGeiEeii_cxC4fAKZw" target="_au2cgWeiEeii_cxC4fAKZw">
+        <type href="MyDsl.ecore#//ResourceMapping/usedResource"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_EKZ_c2eiEeii_cxC4fAKZw" origin="_EKZ_MmeiEeii_cxC4fAKZw" image="_EKZ_YGeiEeii_cxC4fAKZw"/>
+    <mappings xmi:id="_EKZ_dGeiEeii_cxC4fAKZw" origin="_EKZ_M2eiEeii_cxC4fAKZw" image="_EKZ_YWeiEeii_cxC4fAKZw"/>
+    <mappings xmi:id="_EKZ_dWeiEeii_cxC4fAKZw" origin="_EKZ_NGeiEeii_cxC4fAKZw" image="_EKZ_YmeiEeii_cxC4fAKZw"/>
+    <mappings xmi:id="_EKZ_dmeiEeii_cxC4fAKZw" origin="_EKZ_NWeiEeii_cxC4fAKZw" image="_EKZ_Y2eiEeii_cxC4fAKZw"/>
+    <mappings xmi:id="_EKZ_d2eiEeii_cxC4fAKZw" origin="_EKZ_NmeiEeii_cxC4fAKZw" image="_EKZ_ZWeiEeii_cxC4fAKZw"/>
+    <mappings xmi:id="_EKZ_eGeiEeii_cxC4fAKZw" origin="_EKZ_N2eiEeii_cxC4fAKZw" image="_EKZ_ZmeiEeii_cxC4fAKZw"/>
+    <mappings xmi:id="_EKZ_eWeiEeii_cxC4fAKZw" origin="_EKZ_OGeiEeii_cxC4fAKZw" image="_EKZ_Z2eiEeii_cxC4fAKZw"/>
+    <mappings xmi:id="_au3DkGeiEeii_cxC4fAKZw" origin="_au2cgGeiEeii_cxC4fAKZw" image="_au2cgWeiEeii_cxC4fAKZw"/>
+    <mappings xmi:id="_eq40QWeiEeii_cxC4fAKZw" origin="_eq40QGeiEeii_cxC4fAKZw" image="_EKZ_OWeiEeii_cxC4fAKZw"/>
+    <mappings xmi:id="_eq6CYWeiEeii_cxC4fAKZw" origin="_EKZ_ZGeiEeii_cxC4fAKZw" image="_eq6CYGeiEeii_cxC4fAKZw"/>
+  </units>
+</henshin:Module>

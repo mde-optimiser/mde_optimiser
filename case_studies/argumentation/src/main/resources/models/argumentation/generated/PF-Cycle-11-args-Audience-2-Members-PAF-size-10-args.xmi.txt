@@ -1,0 +1,7 @@
+PERSUADER: <{ c3, b2, a, c4, b3, b4, c0, c1, b0, c2, b1 },[(c3,c4), (c3,b3), (b2,b3), (b0,a), (c4,c0), (c4,b4), (b3,b4), (c0,c1), (c0,b0), (b1,a), (b4,b0), (b2,a), (c1,c2), (c1,b1), (b0,b1), (b3,a), (c2,c3), (c2,b2), (b1,b2), (b4,a)]>
+AUDIENCE:
+	 @<{ c3, b2, a, b3, c4, c0, b0, c1, b1, c2 },[(c3,c4), (c3,b3), (b2,b3), (b0,a), (c4,c0), (c0,c1), (c0,b0), (b1,a), (b2,a), (b0,b1), (c1,c2), (c1,b1), (b3,a), (b1,b2), (c2,c3), (c2,b2)]>
+	 @<{ b2, c3, a, b3, b4, c0, c1, b0, c2, b1 },[(b2,b3), (c3,b3), (b0,a), (b3,b4), (c0,c1), (c0,b0), (b1,a), (b4,b0), (b2,a), (c1,c2), (c1,b1), (b0,b1), (b3,a), (c2,c3), (c2,b2), (b1,b2), (b4,a)]>
+TOPIC: a
+Acceptable topics with the Ground Reasoner: -0.0
+Acceptable topics with the ArgMatSat: -0.0

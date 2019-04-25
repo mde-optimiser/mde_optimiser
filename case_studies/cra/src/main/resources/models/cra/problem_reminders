@@ -1,0 +1,18 @@
+injectPreservingDistribution 
+
+version 225d21
+too slow!
+
+version 1887929
+Before: Doing merge as long as possible, then split or skip and directly do merge again if the split or skip enabled it.
+Now: The pre-selection of the moved feature mixes merge, split and skip arbitrarily. Could this lead to couples of already processed features which do not keep to the desired distribution?
+
+version 235b674
+After skipping a feature it might still be necessary to move it away from its current class before using it as new root. The process just guarantees that the feature did not conflict with the last root. But there might be other conflicting (unprocessed) features in its class.
+
+
+
+injectPreservingDistribution
+
+version 479c431
+Transitivly dependent features might be split apart across multiple classes. If edge features of the transitive dependencies are selected as root too early, the features can not be merged to the same class anymore.  

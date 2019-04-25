@@ -1,0 +1,198 @@
+grammar uk.ac.kcl.inf.mdeoptimiser.languages.Mopt with org.eclipse.xtext.xbase.Xbase
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+generate mopt "http://www.ac.uk/kcl/inf/mdeoptimiser/languages/Mopt"
+
+
+Optimisation:
+	problem=ProblemSpec
+	goal=GoalSpec
+	search=SearchSpec
+	solver=SolverSpec
+;
+
+ProblemSpec:
+	"problem" "{"
+		basepath=BasePathSpec
+		metamodel=MetaModelSpec
+		model=ModelPathSpec
+		modelInitialiser=ModelInitialiserSpec?
+	"}"
+;
+
+GoalSpec:
+	"goal" "{"
+		refinements+=MultiplicityRefinementSpec*
+		objectives+=ObjectiveInterpreterSpec+
+		constraints+=ConstraintInterpreterSpec*
+	"}"
+;
+
+SearchSpec:
+	"search" "{"
+		reports+=ReportInterpreterSpec*
+		evolvers+=EvolverSpec*
+		rulegen+=RulegenSpec*
+	"}"
+;
+
+SolverSpec:
+	"solver" "{"
+		("engine" solverEngine=SOLVER_ENGINE)?
+		"optimisation" "provider"  algorithmFactory=ALGORITHM_FACTORY
+		"algorithm" algorithm=AlgorithmSpec
+		"termination" terminationCondition=TerminationConditionSpec
+		("batches" algorithmBatches=INT)?
+	"}"
+;
+
+/**
+ * Use this to identify a basepath to be set in the HenshinResourceSet so that Henshin
+ * transformations referencing file-based meta-models through relative paths will work
+ * correctly. This will happen mainly when working with dynamic instances rather than
+ * fully generated and registered metamodels. All further URLs should be either absolute
+ * or relative to this basepath.
+ */
+BasePathSpec:
+	"basepath" location=URL
+;
+
+/**
+ * URL might be a file location, relative to basepath, in which case we load the metamodel dynamically.
+ * It may also be a dot-separated fully-qualified class name for a meta-model package, in which case we
+ * register that globally.
+ */
+MetaModelSpec:
+	"metamodel" location=URL
+;
+
+ModelPathSpec:
+	"model" location=URL
+;
+
+ObjectiveInterpreterSpec:
+	"objective" objectiveName=ValidID objectiveTendency=OBJECTIVE_TENDENCY objectiveType=ENTITY_TYPE "{" (objectiveSpec=STRING) "}"
+;
+
+ConstraintInterpreterSpec:
+	"constraint" constraintName=ValidID constraintType=ENTITY_TYPE "{" (constraintSpec=STRING) "}"
+;
+
+ModelInitialiserSpec:
+	"initialise" "models" "using" initialiser=URL
+;
+
+RulegenSpec:
+	"mutate" "{" (nodeSpec=RulegenNode | edgeSpec=RulegenEdge) "}"
+;
+
+RulegenNode:
+	node=STRING ("," generationRestriction=(CREATE_NODE|DELETE_NODE))?
+;
+
+RulegenEdge:
+	node=STRING "," edge=STRING ("," generationRestriction=(ADD_EDGE|REMOVE_EDGE))?
+;
+
+ReportInterpreterSpec:
+	"report" reportName=ValidID "{" (reportSpec=STRING) "}"
+;
+
+EvolverSpec:
+	evolverType=EvolverType "using" rule_location=URL
+	         "unit" unit=STRING
+	         ("parameters" '{'
+					parameters+=EvolverParameter (',' parameters+=EvolverParameter)*
+				'}')?
+;
+
+MultiplicityRefinementSpec:
+	"refine" "metamodel" "{" node=STRING "," edge=STRING "," lowerBound=INT "," upperBound=SignedInteger "}"
+;
+
+/**
+ * TODO The custom function should ideally use a Jvm class parser, but it doesn't seem
+ * to work with QualifiedName
+ */
+EvolverParameter:
+	name=ValidID ('=>' (function=ParameterFunction | customFunction=STRING) )
+;
+
+ParameterFunction:
+	name=ValidID ('('
+		(parameter=STRING)
+	')')?
+;
+
+enum EvolverType:
+    MUTATE='mutate' | BREED='breed';
+
+SignedInteger returns ecore::EIntegerObject:
+  '-'? INT;
+
+
+AlgorithmSpec:
+	name=ALGORITHM_NAME "{"
+		parameters+=Parameter+
+	"}"
+;
+
+
+TerminationConditionSpec:
+	{TerminationConditionSpec}
+	"{"
+		parameters+=Parameter+
+		
+	"}"
+;
+
+Parameter:
+	name=QualifiedName ":" value=ParameterValue
+;
+
+ParameterValue:
+	(numeric=Number | functional=ID | parametric=ID '(' (params+=(XNumberLiteral | XStringLiteral)
+    (',' params+=(XNumberLiteral | XStringLiteral))*)+')')
+;
+
+terminal CREATE_NODE returns ecore::EString:
+	'CREATE'
+;
+
+terminal DELETE_NODE returns ecore::EString:
+	'DELETE'
+;
+
+terminal ADD_EDGE returns ecore::EString:
+	'ADD'
+;
+
+terminal REMOVE_EDGE returns ecore::EString:
+	'REMOVE'
+;
+
+terminal SOLVER_ENGINE returns ecore::EString:
+	('henshin'|'momot')
+;
+
+terminal ALGORITHM_FACTORY returns ecore::EString:
+	('moea'|'ecj')
+;
+
+//One initial algorithm - org.moeaframework.algorithm.StandardAlgorithms
+//These should each require its own properties
+terminal ALGORITHM_NAME returns ecore::EString:
+	('eMOEA' | 'eNSGAII' | 'NSGAII'| 'NSGAIII' | 'SPEA2')
+;
+
+terminal URL returns ecore::EString:
+	'<' -> '>'
+;
+
+terminal OBJECTIVE_TENDENCY returns ecore::EString:
+	('minimise'|'maximise')
+;
+
+terminal ENTITY_TYPE returns ecore::EString:
+	('java'|'ocl')
+;
