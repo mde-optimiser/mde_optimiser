@@ -5,15 +5,14 @@ import java.io.IOException
 import java.nio.file.Path
 import java.util.ArrayList
 import java.util.Collections
+import java.util.HashMap
 import java.util.Map
 import org.deeplearning4j.arbiter.optimize.api.OptimizationResult
 import org.deeplearning4j.arbiter.optimize.api.saving.ResultSaver
-import org.moeaframework.analysis.collector.Accumulator
 import org.nd4j.shade.jackson.annotation.JsonCreator
 import org.nd4j.shade.jackson.annotation.JsonProperty
-import uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter.MDEOHyperparametersConfiguration
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.SearchResult
-import java.util.HashMap
+import uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter.MDEOHyperparametersConfiguration
 
 class MDEOResultSaver implements ResultSaver {
 

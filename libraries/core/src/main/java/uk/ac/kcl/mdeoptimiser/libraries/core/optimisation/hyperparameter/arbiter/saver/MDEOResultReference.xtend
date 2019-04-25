@@ -1,18 +1,16 @@
 package uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter.saver
 
-import org.deeplearning4j.arbiter.optimize.api.saving.ResultReference
-import java.io.IOException
-import java.io.File
-import uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter.MDEOHyperparametersConfiguration
-import org.deeplearning4j.arbiter.optimize.api.Candidate
-import org.apache.commons.io.FileUtils
 import com.google.common.base.Charsets
-import org.deeplearning4j.arbiter.optimize.api.OptimizationResult
-import org.deeplearning4j.arbiter.optimize.runner.CandidateInfo
-import java.util.List
-import org.moeaframework.analysis.collector.Accumulator
+import java.io.File
+import java.io.IOException
 import java.util.Map
+import org.apache.commons.io.FileUtils
+import org.deeplearning4j.arbiter.optimize.api.Candidate
+import org.deeplearning4j.arbiter.optimize.api.OptimizationResult
+import org.deeplearning4j.arbiter.optimize.api.saving.ResultReference
+import org.deeplearning4j.arbiter.optimize.runner.CandidateInfo
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.SearchResult
+import uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter.MDEOHyperparametersConfiguration
 
 class MDEOResultReference implements ResultReference {
 	

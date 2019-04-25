@@ -1,20 +1,18 @@
 package uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.henshin
 
-import org.eclipse.emf.henshin.model.Unit
-import org.eclipse.emf.henshin.interpreter.impl.UnitApplicationImpl
-import org.eclipse.emf.henshin.interpreter.impl.RuleApplicationImpl
-import org.eclipse.emf.henshin.interpreter.Engine
-import org.eclipse.emf.henshin.interpreter.impl.EngineImpl
-import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.evolvers.parameters.IEvolverParametersFactory
-import org.eclipse.emf.henshin.interpreter.EGraph
-import java.util.List
-import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.guidance.Solution
-import org.eclipse.emf.henshin.model.ParameterKind
-import org.eclipse.emf.henshin.interpreter.impl.EGraphImpl
-import org.eclipse.emf.henshin.model.HenshinPackage
 import java.util.Arrays
-import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.evolvers.parameters.EvolverParametersFactory
+import java.util.List
+import org.eclipse.emf.henshin.interpreter.EGraph
+import org.eclipse.emf.henshin.interpreter.Engine
+import org.eclipse.emf.henshin.interpreter.impl.EGraphImpl
+import org.eclipse.emf.henshin.interpreter.impl.RuleApplicationImpl
+import org.eclipse.emf.henshin.interpreter.impl.UnitApplicationImpl
+import org.eclipse.emf.henshin.model.HenshinPackage
+import org.eclipse.emf.henshin.model.ParameterKind
+import org.eclipse.emf.henshin.model.Unit
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SolverSpec
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.evolvers.parameters.IEvolverParametersFactory
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.guidance.Solution
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.henshin.engine.HenshinEngineFactory
 
 class HenshinExecutor {

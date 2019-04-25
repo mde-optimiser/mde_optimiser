@@ -1,14 +1,10 @@
 package uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter
 
-import org.deeplearning4j.arbiter.optimize.api.ParameterSpace
-import java.util.Collections
 import java.util.ArrayList
-import java.util.List
-import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.MoeaFrameworkAlgorithmConfiguration
-import org.nd4j.shade.jackson.annotation.JsonIgnoreProperties
-import org.nd4j.shade.jackson.annotation.JsonIgnore
+import java.util.Collections
 import java.util.HashMap
 import java.util.Map
+import org.deeplearning4j.arbiter.optimize.api.ParameterSpace
 
 class MDEOParameterSpace implements ParameterSpace {
 

@@ -12,7 +12,6 @@ import org.deeplearning4j.arbiter.optimize.api.data.DataProvider
 import org.deeplearning4j.arbiter.optimize.api.data.DataSource
 import org.deeplearning4j.arbiter.optimize.api.evaluation.ModelEvaluator
 import org.deeplearning4j.arbiter.optimize.api.saving.ResultReference
-import org.deeplearning4j.arbiter.optimize.api.saving.ResultSaver
 import org.deeplearning4j.arbiter.optimize.api.score.ScoreFunction
 import org.deeplearning4j.arbiter.optimize.runner.CandidateInfo
 import org.deeplearning4j.arbiter.optimize.runner.CandidateStatus

@@ -3,32 +3,30 @@ package uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output
 import com.google.common.io.Files
 import java.io.File
 import java.io.PrintWriter
+import java.nio.file.Path
+import java.nio.file.Paths
 import java.text.SimpleDateFormat
 import java.util.ArrayList
 import java.util.Date
 import java.util.HashMap
 import java.util.LinkedList
 import java.util.List
+import java.util.Map
 import java.util.TimeZone
-import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output.MDEOBatch
+import org.deeplearning4j.arbiter.optimize.api.OptimizationResult
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.Optimisation
-import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output.descriptors.ResultsDescriptor
-import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output.descriptors.TextDescriptor
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.SearchResult
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output.descriptors.AccumulatorSerialiser
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output.descriptors.BatchReportsDescriptor
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output.descriptors.ExperimentCSVSerializer
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output.descriptors.GeneratedMutationOperatorsDescriptor
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output.descriptors.MOEAObjectivesOutputDescriptor
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output.descriptors.ParetoChartOutputDescriptor
-import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output.descriptors.BatchReportsDescriptor
-import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output.descriptors.GeneratedMutationOperatorsDescriptor
-import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output.descriptors.ExperimentCSVSerializer
-import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output.descriptors.AccumulatorSerialiser
-import java.nio.file.Path
-import java.nio.file.Paths
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output.descriptors.ResultsDescriptor
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output.descriptors.SystemInformationDescriptor
-import uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter.saver.MDEOParameterSearchResult
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output.descriptors.TextDescriptor
 import uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter.MDEOHyperparametersConfiguration
-import org.deeplearning4j.arbiter.optimize.api.OptimizationResult
-import org.moeaframework.analysis.collector.Accumulator
-import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.SearchResult
-import java.util.Map
+import uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter.saver.MDEOParameterSearchResult
 
 class MDEOResultsOutput {
 	
@@ -191,7 +189,7 @@ class MDEOResultsOutput {
 			describeResult(infoWriter, resultReference.result)
 		]
 		
-		infoWriter.close()
+		infoWriter.close();
 	}
 	
 	def void describeResult(PrintWriter printWriter, OptimizationResult result) {
