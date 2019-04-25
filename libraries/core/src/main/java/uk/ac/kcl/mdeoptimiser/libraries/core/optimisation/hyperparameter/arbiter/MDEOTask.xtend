@@ -18,7 +18,6 @@ import org.deeplearning4j.arbiter.optimize.runner.CandidateInfo
 import org.deeplearning4j.arbiter.optimize.runner.CandidateStatus
 import org.deeplearning4j.arbiter.optimize.runner.IOptimizationRunner
 import org.deeplearning4j.arbiter.optimize.runner.listener.StatusListener
-import org.deeplearning4j.arbiter.task.TaskListener
 import org.eclipse.xtext.EcoreUtil2
 import org.moeaframework.analysis.collector.Accumulator
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.Optimisation
@@ -39,7 +38,8 @@ class MDEOTask implements Callable<OptimizationResult> {
 
 	List<StatusListener> listeners
 
-	TaskListener taskListener
+	//TaskListener - not sure if needed
+	Object taskListener
 
 	IOptimizationRunner runner
 
@@ -55,7 +55,7 @@ class MDEOTask implements Callable<OptimizationResult> {
 
 	new(Optimisation optimisationSpec, String moptProjectPath, Candidate candidate, DataProvider dataProvider,
 		ScoreFunction scoreFunction, ModelEvaluator modelEvaluator, List<StatusListener> listeners,
-		TaskListener taskListener, IOptimizationRunner runner) {
+		Object taskListener, IOptimizationRunner runner) {
 		this.optimisationSpec = optimisationSpec;
 		this.moptProjectPath = moptProjectPath;
 		this.candidate = candidate;
@@ -69,7 +69,7 @@ class MDEOTask implements Callable<OptimizationResult> {
 
 	new(Optimisation optimisationSpec, String moptProjectPath, Candidate candidate,
 		Class<? extends DataSource> dataSource, Properties dataSourceProperties, ScoreFunction scoreFunction,
-		ModelEvaluator modelEvaluator, List<StatusListener> listeners, TaskListener taskListener,
+		ModelEvaluator modelEvaluator, List<StatusListener> listeners, Object taskListener,
 		IOptimizationRunner runner) {
 		this.optimisationSpec = optimisationSpec;
 		this.moptProjectPath = moptProjectPath;

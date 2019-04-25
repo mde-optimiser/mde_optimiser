@@ -13,6 +13,10 @@
             <arg value="clean" />
             <arg value="install" />
             <arg value="--quiet" />
+            <arg value="-Dmaven.wagon.http.ssl.insecure=true" />
+            <arg value="-Dmaven.wagon.http.ssl.allowall=true" /> 
+            <arg value="-Dmaven.wagon.http.ssl.ignore.validity.dates=true" />
+            
         </exec>
     </target>
 

@@ -48,65 +48,68 @@
 						</goals>
 						<configuration>
 							<destinationDirectory>${destinationDirectory}</destinationDirectory>
+							<!-- Make sure this is on the same line. Autoformatting the xml file breaks the repo path -->
 							<additionalArgs>-artifactRepository file:${destinationDirectory} -metadataRepository file:${destinationDirectory}</additionalArgs>
 							<generateSourceFeature>true</generateSourceFeature>
+
 							<artifacts>
 								<!-- specify your depencies here -->
 								<!-- groupId:artifactId:version -->
 								<artifact>
 									<id>uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext:uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext:${project.version}</id>
 									<source>true</source>
-									    <instructions>
+									<instructions>
 										<Import-Package>*;resolution:=optional</Import-Package>
 										<Export-Package>*</Export-Package>
-										<!-- TODO check if the PR has been merged in reficio to fix this properly -->
+										<!-- TODO check if the PR has been merged in reficio to fix this 
+											properly -->
 										<Require-Capability>osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version=1.8))</Require-Capability>
-									    </instructions>
+									</instructions>
 								</artifact>
 								<artifact>
 									<id>uk.ac.kcl.inf.mdeoptimiser.interfaces:uk.ac.kcl.inf.mdeoptimiser.interfaces.cli:${project.version}</id>
 									<source>true</source>
-																		    <instructions>
+									<instructions>
 										<Import-Package>*;resolution:=optional</Import-Package>
 										<Export-Package>*</Export-Package>
 										<Require-Capability>osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version=1.8))</Require-Capability>
-									    </instructions>
+									</instructions>
 								</artifact>
 								<artifact>
 									<id>uk.ac.kcl.inf.mdeoptimiser.libraries:uk.ac.kcl.inf.mdeoptimiser.libraries.core:${project.version}</id>
 									<source>true</source>
-																		    <instructions>
+									<instructions>
 										<Import-Package>*;resolution:=optional</Import-Package>
 										<Export-Package>*</Export-Package>
 										<Require-Capability>osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version=1.8))</Require-Capability>
-									    </instructions>
+									</instructions>
 								</artifact>
 								<artifact>
 									<id>uk.ac.kcl.inf.mdeoptimiser.libraries:uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen:${project.version}</id>
 									<source>true</source>
-																		    <instructions>
+									<instructions>
 										<Import-Package>*;resolution:=optional</Import-Package>
 										<Export-Package>*</Export-Package>
 										<Require-Capability>osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version=1.8))</Require-Capability>
-									    </instructions>
+									</instructions>
 								</artifact>
 								<artifact>
-									<id>org.moeaframework:moeaframework:2.12</id>
+									<id>org.moeaframework:moeaframework:2.13.beta</id>
 									<source>true</source>
-																		    <instructions>
+									<instructions>
 										<Import-Package>*;resolution:=optional</Import-Package>
 										<Export-Package>*</Export-Package>
 										<Require-Capability>osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version=1.8))</Require-Capability>
-									    </instructions>
+									</instructions>
 								</artifact>
 								<artifact>
 									<id>org.hamcrest:java-hamcrest:2.0.0.0</id>
 									<source>true</source>
-																		    <instructions>
+									<instructions>
 										<Import-Package>*;resolution:=optional</Import-Package>
 										<Export-Package>*</Export-Package>
 										<Require-Capability>osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version=1.8))</Require-Capability>
-									    </instructions>
+									</instructions>
 								</artifact>
 							</artifacts>
 						</configuration>
@@ -115,8 +118,8 @@
 			</plugin>
 		</plugins>
 	</build>
-	<!-- Add deps here to avoid this build being executed before the required
-	jars are available -->
+	<!-- Add deps here to avoid this build being executed before the required 
+		jars are available -->
 	<dependencies>
 		<dependency>
 			<groupId>uk.ac.kcl.inf.mdeoptimiser.interfaces</groupId>

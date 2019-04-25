@@ -12,11 +12,9 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInfo
 import uk.ac.kcl.inf.mdeoptimiser.languages.MoptStandaloneSetup
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.Optimisation
-import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.OptimisationInterpreter
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output.MDEOResultsOutput
 import uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.ParameterSearch
-import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.MoeaOptimisation
-import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.MoeaFrameworkAlgorithmConfiguration
+import org.junit.Ignore
 
 class ParameterSearchTests {
 
@@ -35,6 +33,7 @@ class ParameterSearchTests {
 	}
 
 	@Test
+	@Ignore
 	def void assertThatHyperparameterSearchingWorks(TestInfo testInfo) {
 
 		val model = parseHelper.parse('''
@@ -66,9 +65,9 @@ class ParameterSearchTests {
 				}
 				parameter search {
 					strategy: random
-					candidates: 2
+					candidates: 10
 					population: range(10,20)
-					evolutions: range(10,100)
+					evolutions: range(10,500)
 				}
 				batches 1
 			}
@@ -94,6 +93,7 @@ class ParameterSearchTests {
 	}
 	
 	@Test
+	@Ignore
 	def void assertThatHyperparameterSearchingWorksRulegen(TestInfo testInfo) {
 
 		val model = parseHelper.parse('''
@@ -150,6 +150,7 @@ class ParameterSearchTests {
 	}
 	
 	@Test
+	@Ignore
 	def void nrpRulegenMutationStepSizeFixedStrategyA(TestInfo testInfo) {
 
 		val model = parseHelper.parse('''

@@ -67,7 +67,7 @@
 		<!-- Arbiter overview: https://deeplearning4j.org/docs/latest/arbiter-overview -->
 		<dependency>
 			<groupId>org.deeplearning4j</groupId>
-			<artifactId>arbiter-deeplearning4j</artifactId>
+			<artifactId>arbiter-core</artifactId>
 			<version>1.0.0-beta3</version>
 		</dependency>
 		<!-- Fix for java.lang.NoClassDefFoundError: sun/reflect/ConstantPool -->
@@ -81,7 +81,17 @@
 		<dependency>
 			<groupId>org.moeaframework</groupId>
 			<artifactId>moeaframework</artifactId>
-			<version>2.12</version>
+			<version>2.13.beta</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-math3</artifactId>
+			<version>3.6.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.8.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.emf</groupId>

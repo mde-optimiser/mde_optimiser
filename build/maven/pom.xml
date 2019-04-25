@@ -21,8 +21,8 @@
 
   <properties>
     <maven.build.timestamp.format>yyyy.MM.dd.HHmmss</maven.build.timestamp.format>
-    <build.timestamp>2019.04.10.000753</build.timestamp>
-    <build.branch>ce76b4d</build.branch>
+    <build.timestamp>2019.04.25.014524</build.timestamp>
+    <build.branch>08797ce</build.branch>
 	<global.version>1.0.0-SNAPSHOT</global.version>
     <!-- Generate a property with the root path of this project -->
     <!-- This is used as a reference for resolving local repositories -->
@@ -52,6 +52,10 @@
           <id>p2.eclipse.repository</id>
           <url>https://mde-optimiser.github.io/mdeo_repo/repository/m2/eclipse/2019-03/final/</url>
       </repository>
+      <repository>
+		<id>m2.moeaframework</id>
+		<url>https://mde-optimiser.github.io/mdeo_repo/repository/m2/moeaframework/</url>
+	  </repository>
   </repositories>
   <!-- Load JUnit 5 Bom -->
   <dependencyManagement>

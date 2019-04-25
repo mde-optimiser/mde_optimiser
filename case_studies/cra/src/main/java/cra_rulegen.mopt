@@ -7,15 +7,14 @@ goal {
 	refine metamodel {"Feature", "isEncapsulatedBy", 1, 1}
 	objective CRA maximise java { "models.cra.fitness.MaximiseCRA" }
 	constraint MinimiseClasslessFeatures java { "models.cra.fitness.MinimiseClasslessFeatures" }
-	constraint MinimiseEmptyClasses java { "models.cra.fitness.MinimiseEmptyClasses" }
 }
 search { 
 	mutate {"Class"}
 }
 solver {
 	optimisation provider moea algorithm NSGAII {
-		population: 40
 		variation: mutation
+		population: 40
 		mutation.step: 3
 		mutation.strategy: random
 	}

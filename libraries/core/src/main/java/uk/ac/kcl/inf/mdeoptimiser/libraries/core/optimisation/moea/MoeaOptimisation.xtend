@@ -49,8 +49,8 @@ class MoeaOptimisation implements IOptimisationExecutor {
 		
 		val algorithmFactory = new AlgorithmFactory();
 		algorithmFactory.addProvider(new MoeaOptimisationAlgorithmProvider)
-		
 		return algorithmFactory;
+
 	}
 
 	/**
