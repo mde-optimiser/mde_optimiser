@@ -12,7 +12,7 @@ class HasNoUnassignedWorkItems implements IGuidanceFunction {
 		var workItems = (solution.model.getFeature("backlog") as EObject).getFeature("workitems") as EList<EObject>
 		var fitness = 0
 		
-		if(workItems != null) {
+		if(workItems !== null) {
 			fitness = workItems.filter[workItem | workItem.getFeature("isPlannedFor") == null].toList.length
 		}
 		

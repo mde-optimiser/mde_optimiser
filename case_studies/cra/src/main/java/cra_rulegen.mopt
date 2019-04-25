@@ -13,9 +13,9 @@ search {
 }
 solver {
 	optimisation provider moea algorithm NSGAII {
-		variation: mutation
 		population: 40
-		mutation.step: 3
+		variation: mutation
+		mutation.step: 1
 		mutation.strategy: random
 	}
 	termination {

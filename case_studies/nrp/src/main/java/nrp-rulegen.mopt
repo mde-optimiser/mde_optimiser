@@ -12,12 +12,14 @@ search {
 	mutate {"Solution","selectedArtifacts"}
 }
 solver {
-	optimisation provider moea algorithm NSGAII variation mutation
-	parameters {
-		population: 100
+	optimisation provider moea algorithm NSGAII {
+		population: 40
+		variation: mutation
+		mutation.step: 1
+		mutation.strategy: random
 	}
 	termination {
-		time: 120
+		evolutions: 500
 	}
 	batches 1
 }

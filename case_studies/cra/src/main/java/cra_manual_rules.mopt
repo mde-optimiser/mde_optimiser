@@ -14,12 +14,14 @@ search {
 	mutate using <craEvolvers.henshin> unit "deleteEmptyClass"
 }
 solver {
-	optimisation provider moea algorithm NSGAII variation mutation
-	parameters {
-		population: 100
+	optimisation provider moea algorithm NSGAII {
+		population: 40
+		variation: mutation
+		mutation.step: 1
+		mutation.strategy: random
 	}
 	termination {
-		evolutions: 100
+		evolutions: 500
 	}
 	batches 1
 }

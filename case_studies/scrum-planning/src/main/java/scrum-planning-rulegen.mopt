@@ -1,17 +1,27 @@
-basepath <src/main/resources/models/scrum/planning/>
-metamodel <SprintPlanning.ecore>
-model <sprint-planning-model-5-stakeholders-119-items.xmi>
-refine metamodel {"WorkItem", "isPlannedFor", 1, 1}
-objective MinimiseCustomerSatisfactionIndex minimise java { "models.scrum.planning.fitness.MinimiseCustomerSatisfactionIndex" }
-objective MinimiseSprintEffortDeviation minimise java { "models.scrum.planning.fitness.MinimiseSprintEffortDeviation" }
-constraint HasNoUnassignedWorkItems java { "models.scrum.planning.fitness.HasNoUnassignedWorkItems" }
-constraint HasTheAllowedMaximalNumberOfSprints java { "models.scrum.planning.fitness.HasTheAllowedMaximalNumberOfSprints" }
-mutate {"Sprint"}
-optimisation provider moea algorithm NSGAII variation mutation
-parameters {
-	population: 40
+problem {
+	basepath <src/main/resources/models/scrum/planning/>
+	metamodel <SprintPlanning.ecore>
+	model <sprint-planning-model-5-stakeholders-119-items.xmi>
 }
-termination {
-	time: 60
+goal {
+	refine metamodel {"WorkItem", "isPlannedFor", 1, 1}
+	objective MinimiseCustomerSatisfactionIndex minimise java { "models.scrum.planning.fitness.MinimiseCustomerSatisfactionIndex" }
+	objective MinimiseSprintEffortDeviation minimise java { "models.scrum.planning.fitness.MinimiseSprintEffortDeviation" }
+	constraint HasNoUnassignedWorkItems java { "models.scrum.planning.fitness.HasNoUnassignedWorkItems" }
+	constraint HasTheAllowedMaximalNumberOfSprints java { "models.scrum.planning.fitness.HasTheAllowedMaximalNumberOfSprints" }
 }
-batches 1
+search {
+	mutate {"Sprint"}
+}
+solver {
+	optimisation provider moea algorithm NSGAII {
+		population: 40
+		variation: mutation
+		mutation.step: 1
+		mutation.strategy: random
+	}
+	termination {
+		evolutions: 500
+	}
+	batches 1
+}

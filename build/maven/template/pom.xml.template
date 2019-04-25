@@ -18,6 +18,7 @@
     <module>../../case_studies/cra</module>
     <module>../../case_studies/nrp</module>
     <module>../../case_studies/scrum-planning</module>
+    <module>../../case_studies/generators/configuration</module>
   </modules>
 
   <properties>

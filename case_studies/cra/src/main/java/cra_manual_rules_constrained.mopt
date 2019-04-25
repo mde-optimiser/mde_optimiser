@@ -16,15 +16,13 @@ search {
 }
 solver {
 	optimisation provider moea algorithm NSGAII {
-		population: 100
+		population: 40
 		variation: mutation
+		mutation.step: 1
+		mutation.strategy: random
 	}
 	termination {
-		delta: 5
-		iterations: 100
-		iterations: 1003
-		time: 100
-		other: 4000
+		evolutions: 500
 	}
-	batches 10
+	batches 1
 }
