@@ -133,7 +133,12 @@
 			<artifactId>org.eclipse.xtend.lib</artifactId>
 			<version>${xtend.version}</version>
 		</dependency>
-
+		<!-- This is required by henshin operators that have trace rules -->
+		<dependency>
+			<groupId>org.eclipse.emf</groupId>
+  			<artifactId>org.eclipse.emf.henshin.trace</artifactId>
+  			<version>1.5.0</version>
+		</dependency>
 		<!-- System information -->
 		<dependency>
 			<groupId>com.github.oshi</groupId>

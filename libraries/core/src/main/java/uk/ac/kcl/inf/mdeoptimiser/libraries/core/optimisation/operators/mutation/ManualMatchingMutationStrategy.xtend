@@ -59,7 +59,6 @@ class ManualMatchingMutationStrategy implements MutationStrategy {
 				return candidateSolution
 			}
 		}
-
 		return model
 	}
 

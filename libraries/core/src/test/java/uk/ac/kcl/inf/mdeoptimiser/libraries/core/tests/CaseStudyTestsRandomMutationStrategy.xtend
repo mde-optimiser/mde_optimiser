@@ -883,11 +883,11 @@ class CaseStudyTestsRandomMutationStrategy {
 				optimisation provider moea algorithm NSGAII {
 					population: 40
 					variation: mutation
-					mutation.step: 5
+					mutation.step: 1
 					mutation.strategy: random
 				}
 				termination {
-					evolutions: 500
+					evolutions: 100
 				}
 				batches 1
 			}
