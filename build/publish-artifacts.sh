@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+#Fail at the first error
+set -e
+
 if [ $TRAVIS_BRANCH != "master" ] && [ $TRAVIS_BRANCH != "develop" ]; then
     echo "$TRAVIS_BRANCH is not a deployment branch so no deployment necessary."
     exit 0
@@ -70,7 +73,7 @@ echo "Preparing Eclipse P2 composite update site"
 REPO_OUTPUT_P2_COMPOSITE="downloads/p2/"
 
 mkdir -p $REPO_OUTPUT_P2_COMPOSITE
-mv ../mde_optimiser/repositories/composite/* $REPO_OUTPUT_P2_COMPOSITE
+cp -r ../mde_optimiser/repositories/composite/* $REPO_OUTPUT_P2_COMPOSITE
 
 echo "Preparation completed."
 
