@@ -75,6 +75,8 @@ class MoeaOptimisation implements IOptimisationExecutor {
 		//TODO: Place this in a better location. 
 		//Exclude JDK packages from Instrumenter
 		this.algorithmStepSizeInstrumenter.addExcludedPackage("jdk")
+		this.algorithmStepSizeInstrumenter.addExcludedPackage("org.eclipse")
+		
 		
 		new Executor()
 		   .usingAlgorithmFactory(algorithmFactory)
