@@ -51,6 +51,7 @@ class MoeaOptimisation implements IOptimisationExecutor {
 		algorithmFactory.addProvider(new MoeaOptimisationAlgorithmProvider)
 		return algorithmFactory;
 
+
 	}
 
 	/**
@@ -67,6 +68,7 @@ class MoeaOptimisation implements IOptimisationExecutor {
 			.attach(new PopulationCollector())
 			.withFrequency(1)
 			.addExcludedPackage("jdk")
+			.addExcludedPackage("org.eclipse")
 			//TODO Leaving this out throws a concurrent modification error.
 			.addExcludedPackage("org.eclipse.emf.common.util")
 			.withFrequencyType(PeriodicAction.FrequencyType.STEPS)
