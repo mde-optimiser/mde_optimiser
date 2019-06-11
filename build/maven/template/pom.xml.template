@@ -14,11 +14,12 @@
     <module>../../interfaces/cli</module>
     <module>../../libraries/rulegen</module>
     <module>../../libraries/core</module>
-    <module>../../case_studies/argumentation</module>
-    <module>../../case_studies/cra</module>
-    <module>../../case_studies/nrp</module>
-    <module>../../case_studies/scrum-planning</module>
-    <module>../../case_studies/generators/configuration</module>
+    <module>../../examples/problems/argumentation</module>
+    <module>../../examples/problems/cra</module>
+    <module>../../examples/problems/nrp</module>
+    <module>../../examples/problems/scrum-planning</module>
+    <module>../../examples/problems/stack</module>
+    <module>../../examples/generators/configuration</module>
   </modules>
 
   <properties>

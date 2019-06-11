@@ -16,8 +16,7 @@ class RandomOperatorMutationStrategy implements MutationStrategy {
 	MutationStepSizeStrategy mutationStepSizeStrategy
 	RandomOperatorSelector operatorSelectionDecorator;
 
-	new(HenshinExecutor henshinExecutor, MutationStepSizeStrategy mutationStepSizeStrategy,
-		RandomOperatorSelector randomOperatorSelector) {
+	new(HenshinExecutor henshinExecutor, MutationStepSizeStrategy mutationStepSizeStrategy, RandomOperatorSelector randomOperatorSelector) {
 		this.henshinExecutor = henshinExecutor
 		this.mutationStepSizeStrategy = mutationStepSizeStrategy
 		this.operatorSelectionDecorator = randomOperatorSelector

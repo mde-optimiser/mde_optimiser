@@ -14,17 +14,18 @@
     <module>../../interfaces/cli</module>
     <module>../../libraries/rulegen</module>
     <module>../../libraries/core</module>
-    <module>../../case_studies/argumentation</module>
-    <module>../../case_studies/cra</module>
-    <module>../../case_studies/nrp</module>
-    <module>../../case_studies/scrum-planning</module>
-    <module>../../case_studies/generators/configuration</module>
+    <module>../../examples/problems/argumentation</module>
+    <module>../../examples/problems/cra</module>
+    <module>../../examples/problems/nrp</module>
+    <module>../../examples/problems/scrum-planning</module>
+    <module>../../examples/problems/stack</module>
+    <module>../../examples/generators/configuration</module>
   </modules>
 
   <properties>
     <maven.build.timestamp.format>yyyy.MM.dd.HHmmss</maven.build.timestamp.format>
-    <build.timestamp>2019.05.28.150325</build.timestamp>
-    <build.branch>976728a</build.branch>
+    <build.timestamp>2019.06.06.194143</build.timestamp>
+    <build.branch>0950dc6</build.branch>
 	<global.version>1.0.0-SNAPSHOT</global.version>
     <!-- Generate a property with the root path of this project -->
     <!-- This is used as a reference for resolving local repositories -->
