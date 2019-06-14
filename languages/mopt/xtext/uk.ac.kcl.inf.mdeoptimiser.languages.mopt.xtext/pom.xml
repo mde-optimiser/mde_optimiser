@@ -14,12 +14,6 @@
 		<plugins>
 			<!-- TODO I think this can be removed and the generation is generated 
 				only from eclipse, manually -->
-			<plugin>
-				<groupId>org.eclipse.xtend</groupId>
-				<artifactId>xtend-maven-plugin</artifactId>
-			</plugin>
-			<!-- TODO I think this can be removed and the generation is generated 
-				only from eclipse, manually -->
 			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>exec-maven-plugin</artifactId> 
 				<version>1.4.0</version> <executions> <execution> <id>mwe2Launcher</id> <phase>generate-sources</phase> 
 				<goals> <goal>java</goal> </goals> </execution> </executions> <configuration> 

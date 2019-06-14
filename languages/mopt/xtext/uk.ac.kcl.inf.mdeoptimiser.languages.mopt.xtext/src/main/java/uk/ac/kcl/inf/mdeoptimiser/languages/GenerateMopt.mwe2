@@ -33,8 +33,13 @@ var eclipseUiTestsMetaInf = "${eclipseUiTestsProjectPath}/META-INF"
 Workflow {
 
 	component = XtextGenerator {
-
+		
 		configuration = {
+			
+			code = {
+				preferXtendStubs = false
+			}
+		
 			project = StandardProjectConfig {
 				baseName = "uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext"
 				rootPath = rootPath
@@ -42,7 +47,8 @@ Workflow {
 				runtimeTest = {
 					enabled = true
 				}
-
+				
+			
 				eclipsePlugin = {
 					enabled = true
 					name = eclipseProjectName
