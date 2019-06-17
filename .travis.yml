@@ -1,7 +1,8 @@
 # Travis CI build file
 
 language: java
-install: ant
+install: 
+        - sudo apt-get install ant
 
 cache:
      directories:
