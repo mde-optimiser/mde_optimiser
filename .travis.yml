@@ -2,14 +2,14 @@
 
 language: java
 install: 
-        - sudo apt-get install ant
+    - sudo apt-get install ant
 
 cache:
      directories:
         - $HOME/.m2
 
 jdk:
-  - oraclejdk11
+    - oraclejdk11
 
 services:
     - xvfb
