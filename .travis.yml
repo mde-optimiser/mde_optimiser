@@ -2,6 +2,8 @@
 
 language: java
 
+install: ant deps
+
 cache:
      directories:
         - $HOME/.m2
