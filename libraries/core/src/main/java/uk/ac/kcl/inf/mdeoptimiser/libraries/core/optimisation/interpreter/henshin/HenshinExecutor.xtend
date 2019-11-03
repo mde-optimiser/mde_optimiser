@@ -44,6 +44,7 @@ class HenshinExecutor {
 		
 		this.mutationOperators = mutationOperators;
 		this.crossoverOperators = crossoverOperators;
+		this.evolverParametersFactory = evolverParametersFactory;
 	}
 
 	
