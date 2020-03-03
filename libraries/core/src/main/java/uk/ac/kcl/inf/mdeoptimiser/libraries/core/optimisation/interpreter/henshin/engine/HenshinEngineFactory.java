@@ -27,7 +27,13 @@ public class HenshinEngineFactory {
 	 */
 	public Engine create() {
 		
-		switch(this.solverSpec.getSolverEngine()) {
+		String solverEngine = this.solverSpec.getSolverEngine();
+		
+		if(solverEngine == null) {
+			solverEngine = "mdeo";
+		}
+		
+		switch(solverEngine) {
 			case "momot":
 				return MOMOT_ENGINE;
 			default:
