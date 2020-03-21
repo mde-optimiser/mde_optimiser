@@ -172,7 +172,7 @@ terminal REMOVE_EDGE returns ecore::EString:
 ;
 
 terminal SOLVER_ENGINE returns ecore::EString:
-	('henshin'|'momot')
+	('henshin'|'momot'|'efmconfig')
 ;
 
 terminal ALGORITHM_FACTORY returns ecore::EString:
