@@ -44,7 +44,6 @@ public class PerformanceTest {
 
 		Engine oldengine = new EngineImpl();
 		Engine newengine = new ConfigurationEngine();
-		ConfigurationEngine.OPTION_STOP_AFTER_FIRST = true;
 
 		System.out.println("Finished setup");
 

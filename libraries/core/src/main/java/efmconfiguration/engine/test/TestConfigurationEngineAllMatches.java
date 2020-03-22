@@ -25,16 +25,16 @@ import org.junit.Test;
 
 import efmconfiguration.engine.ConfigurationEngine;;
 
-/**
- * Tests the engine with the default setting (only one
- * match is found). TestConfigurationEngineAllMatches
- * tests under the setting that all possible matches are to be found.
- * 
- * @author Daniel Strueber
- *
- */
-public class TestConfigurationEngine {
-
+public class TestConfigurationEngineAllMatches {
+	@BeforeClass
+	public static void setup() {
+		ConfigurationEngine.OPTION_STOP_AFTER_FIRST = false;
+	}
+	
+	@AfterClass
+	public static void teardown() {
+		ConfigurationEngine.OPTION_STOP_AFTER_FIRST = true;
+	}
 	
 	@Test
 	public void testActSMSTransfer() {
@@ -97,8 +97,13 @@ public class TestConfigurationEngine {
 		assertTrue(it.hasNext());
 		Match match = it.next();
 		assertTrue(match.getNodeTargets().size() == 3);
+		assertTrue(it.hasNext());
+		match = it.next();
+		assertTrue(match.getNodeTargets().size() == 3);
+		match = it.next();
 		assertFalse(it.hasNext());
-		}
+
+	}
 
 	@Test
 	public void testDeScreen3SimplifiedAdditionalOrGroup() {
@@ -122,7 +127,7 @@ public class TestConfigurationEngine {
 			countMatches++;
 		}
 
-		assertEquals(1, countMatches);
+		assertEquals(6, countMatches);
 	}
 
 	@Test
@@ -147,6 +152,9 @@ public class TestConfigurationEngine {
 		assertEquals(match.getMultiMatches(multiRule1).size(), 1);
 		assertEquals(match.getMultiMatches(multiRule1).get(0).getNodeTargets().size(), 4);
 
+		assertTrue(it.hasNext());
+		match = it.next();
+		assertTrue(match.getNodeTargets().size() == 3);
 		assertFalse(it.hasNext());
 
 		Change change = engine.createChange(ruleDeScreen3, graph, match, new MatchImpl(ruleDeScreen3));
@@ -173,7 +181,7 @@ public class TestConfigurationEngine {
 		List<Match> matches = new ArrayList<Match>();
 		engine.findMatches(ruleDeScreen3, graph, null).forEach(matches::add);
 
-		assertEquals(matches.size(), 1);
+		assertEquals(matches.size(), 2);
 
 		Match match1 = matches.get(0);
 		assertEquals(match1.getNodeTargets().size(), 4);
@@ -203,7 +211,7 @@ public class TestConfigurationEngine {
 		List<Match> matches = new ArrayList<Match>();
 		engine.findMatches(ruleDeScreen3, graph, null).forEach(matches::add);
 
-		assertEquals(matches.size(), 1);
+		assertEquals(matches.size(), 2);
 
 		Match match1 = matches.get(0);
 		assertEquals(match1.getNodeTargets().size(), 4);

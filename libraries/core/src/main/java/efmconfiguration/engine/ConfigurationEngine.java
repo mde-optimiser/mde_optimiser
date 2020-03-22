@@ -40,7 +40,7 @@ public class ConfigurationEngine implements Engine {
 	Map<Rule, MatchingInfo> rule2matchingInfo = new HashMap<Rule, MatchingInfo>();
 
 	public static boolean OPTION_DETERMINISTIC = false;
-	public static boolean OPTION_STOP_AFTER_FIRST = false;
+	public static boolean OPTION_STOP_AFTER_FIRST = true;
 
 	@Override
 	public Iterable<Match> findMatches(Rule rule, EGraph graph, Match partialMatch) {
