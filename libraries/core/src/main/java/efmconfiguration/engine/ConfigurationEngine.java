@@ -205,13 +205,13 @@ public class ConfigurationEngine implements Engine {
 			}
 		}
 
-		while (!done) {
+		do {
 			Map<Node, EObject> assignment = new HashMap<Node, EObject>();
 			boolean matchPossible = populateAssignment(assignment, node2pointer, mappingsConcrete, matchingInfo);
-			done = !getNextCombination(matchingInfo, node2pointer, possibleCombinations, usedCombinations);
 			if (matchPossible)
 				return wrapMappingsIntoMatchList(rule, matchingInfo, assignment, graph);
-		}
+			done = !getNextCombination(matchingInfo, node2pointer, possibleCombinations, usedCombinations);
+		} while (!done); 
 		return null;
 	}
 

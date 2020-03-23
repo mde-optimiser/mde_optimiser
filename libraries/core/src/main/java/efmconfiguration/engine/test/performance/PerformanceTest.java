@@ -23,7 +23,7 @@ public class PerformanceTest {
 
 	public static void main(String[] args) {
 
-		String path = "src/efmconfiguration/engine/test/performance";
+		String path = "src/main/java/efmconfiguration/engine/test/performance";
 		HenshinResourceSet resourceSet = new HenshinResourceSet(path);
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("*", new XMIResourceFactoryImpl());
 		resourceSet.registerDynamicEPackages("WeaFqaConfiguration.ecore");
