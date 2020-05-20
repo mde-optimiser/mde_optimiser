@@ -1659,7 +1659,7 @@ public class MoptGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//terminal SOLVER_ENGINE:
-	//	'henshin' | 'momot';
+	//	'henshin' | 'momot' | 'efmconfig';
 	public TerminalRule getSOLVER_ENGINERule() {
 		return tSOLVER_ENGINE;
 	}

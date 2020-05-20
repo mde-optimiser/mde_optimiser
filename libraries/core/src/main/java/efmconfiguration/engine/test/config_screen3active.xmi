@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testfm:MobileMedia
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:testfm="http://testfm/"
+    xsi:schemaLocation="http://testfm/ SimpleFeatureModel.ecore"
+    selected="true">
+  <mediamanagement
+      selected="true">
+    <smstransfer>
+      <receivephoto/>
+      <sendphoto/>
+    </smstransfer>
+    <copymedia/>
+  </mediamanagement>
+  <screensize
+      selected="true">
+    <screensizealternative
+        xsi:type="testfm:Screen1"/>
+    <screensizealternative
+        xsi:type="testfm:Screen2"/>
+    <screensizealternative
+        xsi:type="testfm:Screen3"
+        selected="true"/>
+  </screensize>
+  <speakertype>
+    <speakeralternative
+        xsi:type="testfm:Speaker1"/>
+    <speakeralternative
+        xsi:type="testfm:Speaker2"/>
+    <speakeralternative
+        xsi:type="testfm:Speaker3"/>
+  </speakertype>
+</testfm:MobileMedia>

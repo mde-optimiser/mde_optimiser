@@ -4,16 +4,19 @@ import org.eclipse.emf.henshin.interpreter.Engine;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SolverSpec;
 import org.eclipse.emf.henshin.interpreter.impl.EngineImpl;
 import at.ac.tuwien.big.momot.search.engine.MomotEngine;
+import efmconfiguration.engine.ConfigurationEngine;
 
 public class HenshinEngineFactory {
 	
 	private SolverSpec solverSpec;
 	private static Engine MOMOT_ENGINE;
 	private static Engine MDEO_ENGINE;
+	private static Engine EFMCONFIG_ENGINE;
 	
 	static {
 		MOMOT_ENGINE = new MomotEngine();
 		MDEO_ENGINE = new EngineImpl();
+		EFMCONFIG_ENGINE = new ConfigurationEngine();
 	}
 
 	
@@ -34,6 +37,8 @@ public class HenshinEngineFactory {
 		}
 		
 		switch(solverEngine) {
+			case "efmconfig":
+				return EFMCONFIG_ENGINE;
 			case "momot":
 				return MOMOT_ENGINE;
 			default:

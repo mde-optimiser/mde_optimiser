@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FeatureModelConfiguration:FQAs xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:FeatureModelConfiguration="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0" selected="true">
+  <FQAsAlternative xsi:type="FeatureModelConfiguration:ContextAwareness" selected="true">
+    <ContextAwarenessAlternative xsi:type="FeatureModelConfiguration:DeviceAware">
+      <DeviceAwareAlternative xsi:type="FeatureModelConfiguration:IRSensor"/>
+      <DeviceAwareAlternative xsi:type="FeatureModelConfiguration:BatteryStatus"/>
+    </ContextAwarenessAlternative>
+    <ContextAwarenessAlternative xsi:type="FeatureModelConfiguration:EnvironmentAware"/>
+    <ContextAwarenessAlternative xsi:type="FeatureModelConfiguration:LocationAware">
+      <LocationAwareAlternative xsi:type="FeatureModelConfiguration:GPS"/>
+      <LocationAwareAlternative xsi:type="FeatureModelConfiguration:WiFiLocation"/>
+    </ContextAwarenessAlternative>
+    <ContextAwarenessAlternative xsi:type="FeatureModelConfiguration:TimeAware"/>
+    <ContextAwarenessAlternative xsi:type="FeatureModelConfiguration:UserAware"/>
+  </FQAsAlternative>
+  <FQAsAlternative xsi:type="FeatureModelConfiguration:Security">
+    <SecurityAlternative xsi:type="FeatureModelConfiguration:Integrity"/>
+    <SecurityAlternative xsi:type="FeatureModelConfiguration:Privacy"/>
+    <SecurityAlternative xsi:type="FeatureModelConfiguration:Confidentiality"/>
+    <SecurityAlternative xsi:type="FeatureModelConfiguration:Hashing">
+      <hashingimplementations>
+        <HashingImplementationsAlternative xsi:type="FeatureModelConfiguration:JavaSecurityMessageDigest"/>
+        <HashingImplementationsAlternative xsi:type="FeatureModelConfiguration:Guava"/>
+      </hashingimplementations>
+      <hashingoperations>
+        <hash/>
+      </hashingoperations>
+      <hashingalgorithms>
+        <HashingAlgorithmsAlternative xsi:type="FeatureModelConfiguration:MD5"/>
+        <HashingAlgorithmsAlternative xsi:type="FeatureModelConfiguration:SHA1"/>
+        <HashingAlgorithmsAlternative xsi:type="FeatureModelConfiguration:SHA256"/>
+        <HashingAlgorithmsAlternative xsi:type="FeatureModelConfiguration:SHA512"/>
+      </hashingalgorithms>
+    </SecurityAlternative>
+    <SecurityAlternative xsi:type="FeatureModelConfiguration:Non_Repudiation"/>
+    <SecurityAlternative xsi:type="FeatureModelConfiguration:Authentication">
+      <authenticationimplementations>
+        <AuthenticationImplementationsAlternative xsi:type="FeatureModelConfiguration:JAAS"/>
+        <AuthenticationImplementationsAlternative xsi:type="FeatureModelConfiguration:SpringSecurity"/>
+      </authenticationimplementations>
+      <authenticationoperations>
+        <authenticate/>
+      </authenticationoperations>
+      <authenticationmechanism>
+        <AuthenticationMechanismAlternative xsi:type="FeatureModelConfiguration:DigitalCertificate">
+          <pseudonymouscertificate/>
+        </AuthenticationMechanismAlternative>
+        <AuthenticationMechanismAlternative xsi:type="FeatureModelConfiguration:UserPassword"/>
+        <AuthenticationMechanismAlternative xsi:type="FeatureModelConfiguration:Biometric"/>
+        <AuthenticationMechanismAlternative xsi:type="FeatureModelConfiguration:SocialID"/>
+        <AuthenticationMechanismAlternative xsi:type="FeatureModelConfiguration:Pin"/>
+        <AuthenticationMechanismAlternative xsi:type="FeatureModelConfiguration:MatrixCode"/>
+      </authenticationmechanism>
+      <passwordlength/>
+      <passwordtype>
+        <PasswordTypeAlternative xsi:type="FeatureModelConfiguration:Numeric"/>
+        <PasswordTypeAlternative xsi:type="FeatureModelConfiguration:Alphanumeric"/>
+        <PasswordTypeAlternative xsi:type="FeatureModelConfiguration:SpecialChars"/>
+      </passwordtype>
+      <limitedsession/>
+      <authenticationlogging/>
+      <anonymoususer/>
+    </SecurityAlternative>
+    <SecurityAlternative xsi:type="FeatureModelConfiguration:Encryption">
+      <encryptionalgorithms>
+        <EncryptionAlgorithmsAlternative xsi:type="FeatureModelConfiguration:Symmetric">
+          <SymmetricAlternative xsi:type="FeatureModelConfiguration:DESede"/>
+          <SymmetricAlternative xsi:type="FeatureModelConfiguration:DES"/>
+          <SymmetricAlternative xsi:type="FeatureModelConfiguration:Blowfish"/>
+          <SymmetricAlternative xsi:type="FeatureModelConfiguration:AES"/>
+        </EncryptionAlgorithmsAlternative>
+        <EncryptionAlgorithmsAlternative xsi:type="FeatureModelConfiguration:Asymmetric">
+          <AsymmetricAlternative xsi:type="FeatureModelConfiguration:RSA"/>
+          <AsymmetricAlternative xsi:type="FeatureModelConfiguration:DSA"/>
+          <AsymmetricAlternative xsi:type="FeatureModelConfiguration:ECDSA"/>
+        </EncryptionAlgorithmsAlternative>
+      </encryptionalgorithms>
+      <keysize/>
+      <encryptionimplementations>
+        <EncryptionImplementationsAlternative xsi:type="FeatureModelConfiguration:BouncyCastle"/>
+        <EncryptionImplementationsAlternative xsi:type="FeatureModelConfiguration:JavaxCrypto"/>
+      </encryptionimplementations>
+      <encryptionoperations>
+        <EncryptionOperationsAlternative xsi:type="FeatureModelConfiguration:Encrypt"/>
+        <EncryptionOperationsAlternative xsi:type="FeatureModelConfiguration:Decrypt"/>
+      </encryptionoperations>
+      <mode>
+        <ModeAlternative xsi:type="FeatureModelConfiguration:CTR"/>
+        <ModeAlternative xsi:type="FeatureModelConfiguration:ECB"/>
+        <ModeAlternative xsi:type="FeatureModelConfiguration:CTS"/>
+        <ModeAlternative xsi:type="FeatureModelConfiguration:CFB"/>
+        <ModeAlternative xsi:type="FeatureModelConfiguration:CBC"/>
+      </mode>
+      <padding>
+        <PaddingAlternative xsi:type="FeatureModelConfiguration:OAEP"/>
+        <PaddingAlternative xsi:type="FeatureModelConfiguration:PKCS5"/>
+        <PaddingAlternative xsi:type="FeatureModelConfiguration:PKCS1"/>
+      </padding>
+    </SecurityAlternative>
+  </FQAsAlternative>
+  <FQAsAlternative xsi:type="FeatureModelConfiguration:Performance">
+    <caching>
+      <cachingoperations>
+        <CachingOperationsAlternative xsi:type="FeatureModelConfiguration:CacheUpdate"/>
+        <CachingOperationsAlternative xsi:type="FeatureModelConfiguration:CacheStore"/>
+        <CachingOperationsAlternative xsi:type="FeatureModelConfiguration:CacheQuery"/>
+      </cachingoperations>
+      <cachingimplementations>
+        <CachingImplementationsAlternative xsi:type="FeatureModelConfiguration:JavaCachingSystem"/>
+        <CachingImplementationsAlternative xsi:type="FeatureModelConfiguration:Caffeine"/>
+      </cachingimplementations>
+      <maxsizecache/>
+      <cachetype>
+        <CacheTypeAlternative xsi:type="FeatureModelConfiguration:LocalCache"/>
+        <CacheTypeAlternative xsi:type="FeatureModelConfiguration:RemoteCache"/>
+      </cachetype>
+      <maxlifeseconds/>
+      <eternalobjects/>
+    </caching>
+  </FQAsAlternative>
+  <FQAsAlternative xsi:type="FeatureModelConfiguration:Persistence">
+    <PersistenceAlternative xsi:type="FeatureModelConfiguration:DatabaseStorage">
+      <databasestorageoperations>
+        <DatabaseStorageOperationsAlternative xsi:type="FeatureModelConfiguration:Query"/>
+        <DatabaseStorageOperationsAlternative xsi:type="FeatureModelConfiguration:Store"/>
+      </databasestorageoperations>
+      <databasestorageimplementations>
+        <DatabaseStorageImplementationsAlternative xsi:type="FeatureModelConfiguration:OracleDB"/>
+        <DatabaseStorageImplementationsAlternative xsi:type="FeatureModelConfiguration:MySQL"/>
+        <DatabaseStorageImplementationsAlternative xsi:type="FeatureModelConfiguration:MongoDB"/>
+      </databasestorageimplementations>
+      <databasetype>
+        <DatabaseTypeAlternative xsi:type="FeatureModelConfiguration:Relational"/>
+        <DatabaseTypeAlternative xsi:type="FeatureModelConfiguration:NoSQL"/>
+      </databasetype>
+      <datatype>
+        <DataTypeAlternative xsi:type="FeatureModelConfiguration:Integers"/>
+        <DataTypeAlternative xsi:type="FeatureModelConfiguration:Strings"/>
+        <DataTypeAlternative xsi:type="FeatureModelConfiguration:Objects"/>
+        <DataTypeAlternative xsi:type="FeatureModelConfiguration:Floats"/>
+      </datatype>
+      <securedatabase/>
+    </PersistenceAlternative>
+    <PersistenceAlternative xsi:type="FeatureModelConfiguration:FileStorage">
+      <filestorageoperations>
+        <FileStorageOperationsAlternative xsi:type="FeatureModelConfiguration:DeleteFile"/>
+        <FileStorageOperationsAlternative xsi:type="FeatureModelConfiguration:ModifyFile"/>
+        <FileStorageOperationsAlternative xsi:type="FeatureModelConfiguration:CreateFile"/>
+      </filestorageoperations>
+      <filetype>
+        <FileTypeAlternative xsi:type="FeatureModelConfiguration:Binary"/>
+        <FileTypeAlternative xsi:type="FeatureModelConfiguration:TXTFile"/>
+        <FileTypeAlternative xsi:type="FeatureModelConfiguration:XMLFile"/>
+        <FileTypeAlternative xsi:type="FeatureModelConfiguration:JSONFile"/>
+      </filetype>
+      <filestorageimplementations>
+        <javaio/>
+      </filestorageimplementations>
+      <temporalfile/>
+    </PersistenceAlternative>
+  </FQAsAlternative>
+  <FQAsAlternative xsi:type="FeatureModelConfiguration:Usability">
+    <UsabilityAlternative xsi:type="FeatureModelConfiguration:ContextualHelp">
+      <contextualhelpoperations>
+        <showhelp/>
+      </contextualhelpoperations>
+      <contextualhelpimplementations>
+        <javawizardapi/>
+      </contextualhelpimplementations>
+      <helptype>
+        <HelpTypeAlternative xsi:type="FeatureModelConfiguration:Wizard"/>
+        <HelpTypeAlternative xsi:type="FeatureModelConfiguration:Tutorial"/>
+      </helptype>
+      <usertype>
+        <UserTypeAlternative xsi:type="FeatureModelConfiguration:Advanced"/>
+        <UserTypeAlternative xsi:type="FeatureModelConfiguration:Intermediate"/>
+        <UserTypeAlternative xsi:type="FeatureModelConfiguration:Expert"/>
+        <UserTypeAlternative xsi:type="FeatureModelConfiguration:Beginner"/>
+      </usertype>
+      <authenticateduser/>
+    </UsabilityAlternative>
+    <UsabilityAlternative xsi:type="FeatureModelConfiguration:Logging">
+      <loggingoperations>
+        <log/>
+      </loggingoperations>
+      <loggingimplementations>
+        <LoggingImplementationsAlternative xsi:type="FeatureModelConfiguration:LogBack"/>
+        <LoggingImplementationsAlternative xsi:type="FeatureModelConfiguration:JavaUtilLogging"/>
+        <LoggingImplementationsAlternative xsi:type="FeatureModelConfiguration:SimpleImplementationSLF4J"/>
+        <LoggingImplementationsAlternative xsi:type="FeatureModelConfiguration:Log4J"/>
+      </loggingimplementations>
+      <handler>
+        <HandlerAlternative xsi:type="FeatureModelConfiguration:ConsoleLog"/>
+        <HandlerAlternative xsi:type="FeatureModelConfiguration:FileLog"/>
+        <HandlerAlternative xsi:type="FeatureModelConfiguration:DatabaseLog"/>
+      </handler>
+      <format>
+        <FormatAlternative xsi:type="FeatureModelConfiguration:XML"/>
+        <FormatAlternative xsi:type="FeatureModelConfiguration:JSON"/>
+        <FormatAlternative xsi:type="FeatureModelConfiguration:TXT"/>
+        <FormatAlternative xsi:type="FeatureModelConfiguration:HTML"/>
+      </format>
+      <level>
+        <LevelAlternative xsi:type="FeatureModelConfiguration:Trace"/>
+        <LevelAlternative xsi:type="FeatureModelConfiguration:Error"/>
+        <LevelAlternative xsi:type="FeatureModelConfiguration:Debug"/>
+        <LevelAlternative xsi:type="FeatureModelConfiguration:Warning"/>
+        <LevelAlternative xsi:type="FeatureModelConfiguration:Info"/>
+      </level>
+      <cypheredmessages/>
+      <historylog/>
+      <errorlog>
+        <tracefile/>
+      </errorlog>
+    </UsabilityAlternative>
+    <UsabilityAlternative xsi:type="FeatureModelConfiguration:Feedback">
+      <FeedbackAlternative xsi:type="FeatureModelConfiguration:InteractionFeedback"/>
+      <FeedbackAlternative xsi:type="FeatureModelConfiguration:ProgressFeedback"/>
+      <FeedbackAlternative xsi:type="FeatureModelConfiguration:Alerts"/>
+      <FeedbackAlternative xsi:type="FeatureModelConfiguration:SystemStatusDisplay"/>
+    </UsabilityAlternative>
+    <UsabilityAlternative xsi:type="FeatureModelConfiguration:ExecutionControl">
+      <executioncontrol_1>
+        <ExecutionControl_1Alternative xsi:type="FeatureModelConfiguration:GoBack"/>
+        <ExecutionControl_1Alternative xsi:type="FeatureModelConfiguration:Redo"/>
+        <ExecutionControl_1Alternative xsi:type="FeatureModelConfiguration:Cancel"/>
+        <ExecutionControl_1Alternative xsi:type="FeatureModelConfiguration:Undo"/>
+      </executioncontrol_1>
+      <shortcuts/>
+    </UsabilityAlternative>
+    <UsabilityAlternative xsi:type="FeatureModelConfiguration:Internationalization">
+      <locale/>
+    </UsabilityAlternative>
+  </FQAsAlternative>
+</FeatureModelConfiguration:FQAs>

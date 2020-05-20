@@ -1,0 +1,1252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_BppEwFFtEequLZ0OGbrLHA" name="Act_Security">
+  <imports href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_Bppr0FFtEequLZ0OGbrLHA" name="Act_Security_r1">
+    <lhs xmi:id="_Bppr0VFtEequLZ0OGbrLHA" name="Lhs">
+      <nodes xmi:id="_Bppr0lFtEequLZ0OGbrLHA" name="" incoming="_Bppr4lFtEequLZ0OGbrLHA" outgoing="_Bppr6VFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionOperations"/>
+      </nodes>
+      <nodes xmi:id="_Bppr01FtEequLZ0OGbrLHA" name="" incoming="_Bppr41FtEequLZ0OGbrLHA" outgoing="_Bppr6lFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Mode"/>
+      </nodes>
+      <nodes xmi:id="_Bppr1FFtEequLZ0OGbrLHA" name="" incoming="_Bppr5FFtEequLZ0OGbrLHA" outgoing="_Bppr61FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionImplementations"/>
+      </nodes>
+      <nodes xmi:id="_Bppr1VFtEequLZ0OGbrLHA" name="" incoming="_Bppr5VFtEequLZ0OGbrLHA" outgoing="_BpqS4FFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Asymmetric"/>
+        <attributes xmi:id="_Bppr1lFtEequLZ0OGbrLHA" value="false">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionAlgorithmsAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bppr11FtEequLZ0OGbrLHA" name="" incoming="_Bppr5lFtEequLZ0OGbrLHA" outgoing="_Bppr4lFtEequLZ0OGbrLHA _Bppr41FtEequLZ0OGbrLHA _Bppr5FFtEequLZ0OGbrLHA _Bppr51FtEequLZ0OGbrLHA _Bppr6FFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Encryption"/>
+        <attributes xmi:id="_Bppr2FFtEequLZ0OGbrLHA" value="false">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SecurityAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bppr2VFtEequLZ0OGbrLHA" name="" outgoing="_Bppr5lFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security"/>
+        <attributes xmi:id="_Bppr2lFtEequLZ0OGbrLHA" value="false">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FQAsAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bppr21FtEequLZ0OGbrLHA" name="" incoming="_Bppr51FtEequLZ0OGbrLHA" outgoing="_Bppr5VFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionAlgorithms"/>
+      </nodes>
+      <nodes xmi:id="_Bppr3FFtEequLZ0OGbrLHA" name="" incoming="_Bppr6FFtEequLZ0OGbrLHA" outgoing="_BpqS4VFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Padding"/>
+      </nodes>
+      <nodes xmi:id="_Bppr3VFtEequLZ0OGbrLHA" name="" incoming="_Bppr6VFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionOperationsAlternative"/>
+      </nodes>
+      <nodes xmi:id="_Bppr3lFtEequLZ0OGbrLHA" name="" incoming="_Bppr6lFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//ModeAlternative"/>
+      </nodes>
+      <nodes xmi:id="_Bppr31FtEequLZ0OGbrLHA" name="" incoming="_Bppr61FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionImplementationsAlternative"/>
+      </nodes>
+      <nodes xmi:id="_Bppr4FFtEequLZ0OGbrLHA" name="" incoming="_BpqS4FFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AsymmetricAlternative"/>
+      </nodes>
+      <nodes xmi:id="_Bppr4VFtEequLZ0OGbrLHA" name="" incoming="_BpqS4VFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//PaddingAlternative"/>
+      </nodes>
+      <edges xmi:id="_Bppr4lFtEequLZ0OGbrLHA" source="_Bppr11FtEequLZ0OGbrLHA" target="_Bppr0lFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Encryption/encryptionoperations"/>
+      </edges>
+      <edges xmi:id="_Bppr41FtEequLZ0OGbrLHA" source="_Bppr11FtEequLZ0OGbrLHA" target="_Bppr01FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Encryption/mode"/>
+      </edges>
+      <edges xmi:id="_Bppr5FFtEequLZ0OGbrLHA" source="_Bppr11FtEequLZ0OGbrLHA" target="_Bppr1FFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Encryption/encryptionimplementations"/>
+      </edges>
+      <edges xmi:id="_Bppr5VFtEequLZ0OGbrLHA" source="_Bppr21FtEequLZ0OGbrLHA" target="_Bppr1VFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionAlgorithms/EncryptionAlgorithmsAlternative"/>
+      </edges>
+      <edges xmi:id="_Bppr5lFtEequLZ0OGbrLHA" source="_Bppr2VFtEequLZ0OGbrLHA" target="_Bppr11FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security/SecurityAlternative"/>
+      </edges>
+      <edges xmi:id="_Bppr51FtEequLZ0OGbrLHA" source="_Bppr11FtEequLZ0OGbrLHA" target="_Bppr21FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Encryption/encryptionalgorithms"/>
+      </edges>
+      <edges xmi:id="_Bppr6FFtEequLZ0OGbrLHA" source="_Bppr11FtEequLZ0OGbrLHA" target="_Bppr3FFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Encryption/padding"/>
+      </edges>
+      <edges xmi:id="_Bppr6VFtEequLZ0OGbrLHA" source="_Bppr0lFtEequLZ0OGbrLHA" target="_Bppr3VFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionOperations/EncryptionOperationsAlternative"/>
+      </edges>
+      <edges xmi:id="_Bppr6lFtEequLZ0OGbrLHA" source="_Bppr01FtEequLZ0OGbrLHA" target="_Bppr3lFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Mode/ModeAlternative"/>
+      </edges>
+      <edges xmi:id="_Bppr61FtEequLZ0OGbrLHA" source="_Bppr1FFtEequLZ0OGbrLHA" target="_Bppr31FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionImplementations/EncryptionImplementationsAlternative"/>
+      </edges>
+      <edges xmi:id="_BpqS4FFtEequLZ0OGbrLHA" source="_Bppr1VFtEequLZ0OGbrLHA" target="_Bppr4FFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Asymmetric/AsymmetricAlternative"/>
+      </edges>
+      <edges xmi:id="_BpqS4VFtEequLZ0OGbrLHA" source="_Bppr3FFtEequLZ0OGbrLHA" target="_Bppr4VFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Padding/PaddingAlternative"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_BpqS4lFtEequLZ0OGbrLHA" name="Rhs">
+      <nodes xmi:id="_BpqS41FtEequLZ0OGbrLHA" name="" incoming="_BpqS_VFtEequLZ0OGbrLHA" outgoing="_BpqTBFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionOperations"/>
+        <attributes xmi:id="_BpqS5FFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionOperations/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BpqS5VFtEequLZ0OGbrLHA" name="" incoming="_BpqS_lFtEequLZ0OGbrLHA" outgoing="_BpqTBVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Mode"/>
+        <attributes xmi:id="_BpqS5lFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Mode/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BpqS51FtEequLZ0OGbrLHA" name="" incoming="_BpqS_1FtEequLZ0OGbrLHA" outgoing="_BpqTBlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionImplementations"/>
+        <attributes xmi:id="_BpqS6FFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionImplementations/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BpqS6VFtEequLZ0OGbrLHA" name="" incoming="_BpqTAFFtEequLZ0OGbrLHA" outgoing="_BpqTB1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Asymmetric"/>
+        <attributes xmi:id="_BpqS6lFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionAlgorithmsAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BpqS61FtEequLZ0OGbrLHA" name="" incoming="_BpqTAVFtEequLZ0OGbrLHA" outgoing="_BpqS_VFtEequLZ0OGbrLHA _BpqS_lFtEequLZ0OGbrLHA _BpqS_1FtEequLZ0OGbrLHA _BpqTAlFtEequLZ0OGbrLHA _BpqTA1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Encryption"/>
+        <attributes xmi:id="_BpqS7FFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SecurityAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BpqS7VFtEequLZ0OGbrLHA" name="" outgoing="_BpqTAVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security"/>
+        <attributes xmi:id="_BpqS7lFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FQAsAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BpqS71FtEequLZ0OGbrLHA" name="" incoming="_BpqTAlFtEequLZ0OGbrLHA" outgoing="_BpqTAFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionAlgorithms"/>
+        <attributes xmi:id="_BpqS8FFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionAlgorithms/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BpqS8VFtEequLZ0OGbrLHA" name="" incoming="_BpqTA1FtEequLZ0OGbrLHA" outgoing="_BpqTCFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Padding"/>
+        <attributes xmi:id="_BpqS8lFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Padding/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BpqS81FtEequLZ0OGbrLHA" name="" incoming="_BpqTBFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionOperationsAlternative"/>
+        <attributes xmi:id="_BpqS9FFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionOperationsAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BpqS9VFtEequLZ0OGbrLHA" name="" incoming="_BpqTBVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//ModeAlternative"/>
+        <attributes xmi:id="_BpqS9lFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//ModeAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BpqS91FtEequLZ0OGbrLHA" name="" incoming="_BpqTBlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionImplementationsAlternative"/>
+        <attributes xmi:id="_BpqS-FFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionImplementationsAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BpqS-VFtEequLZ0OGbrLHA" name="" incoming="_BpqTB1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AsymmetricAlternative"/>
+        <attributes xmi:id="_BpqS-lFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AsymmetricAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BpqS-1FtEequLZ0OGbrLHA" name="" incoming="_BpqTCFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//PaddingAlternative"/>
+        <attributes xmi:id="_BpqS_FFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//PaddingAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <edges xmi:id="_BpqS_VFtEequLZ0OGbrLHA" source="_BpqS61FtEequLZ0OGbrLHA" target="_BpqS41FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Encryption/encryptionoperations"/>
+      </edges>
+      <edges xmi:id="_BpqS_lFtEequLZ0OGbrLHA" source="_BpqS61FtEequLZ0OGbrLHA" target="_BpqS5VFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Encryption/mode"/>
+      </edges>
+      <edges xmi:id="_BpqS_1FtEequLZ0OGbrLHA" source="_BpqS61FtEequLZ0OGbrLHA" target="_BpqS51FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Encryption/encryptionimplementations"/>
+      </edges>
+      <edges xmi:id="_BpqTAFFtEequLZ0OGbrLHA" source="_BpqS71FtEequLZ0OGbrLHA" target="_BpqS6VFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionAlgorithms/EncryptionAlgorithmsAlternative"/>
+      </edges>
+      <edges xmi:id="_BpqTAVFtEequLZ0OGbrLHA" source="_BpqS7VFtEequLZ0OGbrLHA" target="_BpqS61FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security/SecurityAlternative"/>
+      </edges>
+      <edges xmi:id="_BpqTAlFtEequLZ0OGbrLHA" source="_BpqS61FtEequLZ0OGbrLHA" target="_BpqS71FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Encryption/encryptionalgorithms"/>
+      </edges>
+      <edges xmi:id="_BpqTA1FtEequLZ0OGbrLHA" source="_BpqS61FtEequLZ0OGbrLHA" target="_BpqS8VFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Encryption/padding"/>
+      </edges>
+      <edges xmi:id="_BpqTBFFtEequLZ0OGbrLHA" source="_BpqS41FtEequLZ0OGbrLHA" target="_BpqS81FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionOperations/EncryptionOperationsAlternative"/>
+      </edges>
+      <edges xmi:id="_BpqTBVFtEequLZ0OGbrLHA" source="_BpqS5VFtEequLZ0OGbrLHA" target="_BpqS9VFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Mode/ModeAlternative"/>
+      </edges>
+      <edges xmi:id="_BpqTBlFtEequLZ0OGbrLHA" source="_BpqS51FtEequLZ0OGbrLHA" target="_BpqS91FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionImplementations/EncryptionImplementationsAlternative"/>
+      </edges>
+      <edges xmi:id="_BpqTB1FtEequLZ0OGbrLHA" source="_BpqS6VFtEequLZ0OGbrLHA" target="_BpqS-VFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Asymmetric/AsymmetricAlternative"/>
+      </edges>
+      <edges xmi:id="_BpqTCFFtEequLZ0OGbrLHA" source="_BpqS8VFtEequLZ0OGbrLHA" target="_BpqS-1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Padding/PaddingAlternative"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_BpqTCVFtEequLZ0OGbrLHA" origin="_Bppr0lFtEequLZ0OGbrLHA" image="_BpqS41FtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_BpqTClFtEequLZ0OGbrLHA" origin="_Bppr01FtEequLZ0OGbrLHA" image="_BpqS5VFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_BpqTC1FtEequLZ0OGbrLHA" origin="_Bppr1FFtEequLZ0OGbrLHA" image="_BpqS51FtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_BpqTDFFtEequLZ0OGbrLHA" origin="_Bppr1VFtEequLZ0OGbrLHA" image="_BpqS6VFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_BpqTDVFtEequLZ0OGbrLHA" origin="_Bppr11FtEequLZ0OGbrLHA" image="_BpqS61FtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_BpqTDlFtEequLZ0OGbrLHA" origin="_Bppr2VFtEequLZ0OGbrLHA" image="_BpqS7VFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_BpqTD1FtEequLZ0OGbrLHA" origin="_Bppr21FtEequLZ0OGbrLHA" image="_BpqS71FtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_BpqTEFFtEequLZ0OGbrLHA" origin="_Bppr3FFtEequLZ0OGbrLHA" image="_BpqS8VFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_BpqTEVFtEequLZ0OGbrLHA" origin="_Bppr3VFtEequLZ0OGbrLHA" image="_BpqS81FtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_BpqTElFtEequLZ0OGbrLHA" origin="_Bppr3lFtEequLZ0OGbrLHA" image="_BpqS9VFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_BpqTE1FtEequLZ0OGbrLHA" origin="_Bppr31FtEequLZ0OGbrLHA" image="_BpqS91FtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_BpqTFFFtEequLZ0OGbrLHA" origin="_Bppr4FFtEequLZ0OGbrLHA" image="_BpqS-VFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_BpqTFVFtEequLZ0OGbrLHA" origin="_Bppr4VFtEequLZ0OGbrLHA" image="_BpqS-1FtEequLZ0OGbrLHA"/>
+    <multiRules xmi:id="_BpqTFlFtEequLZ0OGbrLHA">
+      <lhs xmi:id="_BpqTF1FtEequLZ0OGbrLHA" name="Lhs">
+        <nodes xmi:id="_BpqTGFFtEequLZ0OGbrLHA" name="" outgoing="_BpqTGlFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security"/>
+        </nodes>
+        <nodes xmi:id="_BpqTGVFtEequLZ0OGbrLHA" name="" incoming="_BpqTGlFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SecurityAlternative"/>
+        </nodes>
+        <edges xmi:id="_BpqTGlFtEequLZ0OGbrLHA" source="_BpqTGFFtEequLZ0OGbrLHA" target="_BpqTGVFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security/SecurityAlternative"/>
+        </edges>
+      </lhs>
+      <rhs xmi:id="_BpqTG1FtEequLZ0OGbrLHA" name="Rhs">
+        <nodes xmi:id="_BpqTHFFtEequLZ0OGbrLHA" name="" outgoing="_BpqTH1FtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security"/>
+        </nodes>
+        <nodes xmi:id="_BpqTHVFtEequLZ0OGbrLHA" name="" incoming="_BpqTH1FtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SecurityAlternative"/>
+          <attributes xmi:id="_BpqTHlFtEequLZ0OGbrLHA" value="false">
+            <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SecurityAlternative/selected"/>
+          </attributes>
+        </nodes>
+        <edges xmi:id="_BpqTH1FtEequLZ0OGbrLHA" source="_BpqTHFFtEequLZ0OGbrLHA" target="_BpqTHVFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security/SecurityAlternative"/>
+        </edges>
+      </rhs>
+      <mappings xmi:id="_BpqTIFFtEequLZ0OGbrLHA" origin="_BpqTGFFtEequLZ0OGbrLHA" image="_BpqTHFFtEequLZ0OGbrLHA"/>
+      <mappings xmi:id="_BpqTIVFtEequLZ0OGbrLHA" origin="_BpqTGVFtEequLZ0OGbrLHA" image="_BpqTHVFtEequLZ0OGbrLHA"/>
+      <multiMappings xmi:id="_BpqTIlFtEequLZ0OGbrLHA" origin="_Bppr2VFtEequLZ0OGbrLHA" image="_BpqTGFFtEequLZ0OGbrLHA"/>
+      <multiMappings xmi:id="_BpqTI1FtEequLZ0OGbrLHA" origin="_BpqS7VFtEequLZ0OGbrLHA" image="_BpqTHFFtEequLZ0OGbrLHA"/>
+    </multiRules>
+    <multiRules xmi:id="_BpqTJFFtEequLZ0OGbrLHA">
+      <lhs xmi:id="_BpqTJVFtEequLZ0OGbrLHA" name="Lhs">
+        <nodes xmi:id="_BpqTJlFtEequLZ0OGbrLHA" name="" outgoing="_BpqTKFFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionAlgorithms"/>
+        </nodes>
+        <nodes xmi:id="_BpqTJ1FtEequLZ0OGbrLHA" name="" incoming="_BpqTKFFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionAlgorithmsAlternative"/>
+        </nodes>
+        <edges xmi:id="_BpqTKFFtEequLZ0OGbrLHA" source="_BpqTJlFtEequLZ0OGbrLHA" target="_BpqTJ1FtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionAlgorithms/EncryptionAlgorithmsAlternative"/>
+        </edges>
+      </lhs>
+      <rhs xmi:id="_BpqTKVFtEequLZ0OGbrLHA" name="Rhs">
+        <nodes xmi:id="_BpqTKlFtEequLZ0OGbrLHA" name="" outgoing="_BpqTLVFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionAlgorithms"/>
+        </nodes>
+        <nodes xmi:id="_BpqTK1FtEequLZ0OGbrLHA" name="" incoming="_BpqTLVFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionAlgorithmsAlternative"/>
+          <attributes xmi:id="_BpqTLFFtEequLZ0OGbrLHA" value="false">
+            <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionAlgorithmsAlternative/selected"/>
+          </attributes>
+        </nodes>
+        <edges xmi:id="_BpqTLVFtEequLZ0OGbrLHA" source="_BpqTKlFtEequLZ0OGbrLHA" target="_BpqTK1FtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionAlgorithms/EncryptionAlgorithmsAlternative"/>
+        </edges>
+      </rhs>
+      <mappings xmi:id="_BpqTLlFtEequLZ0OGbrLHA" origin="_BpqTJlFtEequLZ0OGbrLHA" image="_BpqTKlFtEequLZ0OGbrLHA"/>
+      <mappings xmi:id="_BpqTL1FtEequLZ0OGbrLHA" origin="_BpqTJ1FtEequLZ0OGbrLHA" image="_BpqTK1FtEequLZ0OGbrLHA"/>
+      <multiMappings xmi:id="_BpqTMFFtEequLZ0OGbrLHA" origin="_Bppr21FtEequLZ0OGbrLHA" image="_BpqTJlFtEequLZ0OGbrLHA"/>
+      <multiMappings xmi:id="_BpqTMVFtEequLZ0OGbrLHA" origin="_BpqS71FtEequLZ0OGbrLHA" image="_BpqTKlFtEequLZ0OGbrLHA"/>
+    </multiRules>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_BpqTMlFtEequLZ0OGbrLHA" name="Act_Security_r2">
+    <lhs xmi:id="_BpqTM1FtEequLZ0OGbrLHA" name="Lhs">
+      <nodes xmi:id="_BpqTNFFtEequLZ0OGbrLHA" name="" incoming="_BpqTP1FtEequLZ0OGbrLHA" outgoing="_BpqTRVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationImplementations"/>
+      </nodes>
+      <nodes xmi:id="_BpqTNVFtEequLZ0OGbrLHA" name="" incoming="_BpqTQFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Authenticate"/>
+      </nodes>
+      <nodes xmi:id="_BpqTNlFtEequLZ0OGbrLHA" name="" incoming="_BpqTQVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//DigitalCertificate"/>
+        <attributes xmi:id="_BpqTN1FtEequLZ0OGbrLHA" value="false">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationMechanismAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BpqTOFFtEequLZ0OGbrLHA" name="" incoming="_BpqTQlFtEequLZ0OGbrLHA" outgoing="_BpqTP1FtEequLZ0OGbrLHA _BpqTQ1FtEequLZ0OGbrLHA _BpqTRFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Authentication"/>
+        <attributes xmi:id="_BpqTOVFtEequLZ0OGbrLHA" value="false">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SecurityAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BpqTOlFtEequLZ0OGbrLHA" name="" incoming="_BpqTQ1FtEequLZ0OGbrLHA" outgoing="_BpqTQVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationMechanism"/>
+      </nodes>
+      <nodes xmi:id="_BpqTO1FtEequLZ0OGbrLHA" name="" outgoing="_BpqTQlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security"/>
+        <attributes xmi:id="_BpqTPFFtEequLZ0OGbrLHA" value="false">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FQAsAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BpqTPVFtEequLZ0OGbrLHA" name="" incoming="_BpqTRFFtEequLZ0OGbrLHA" outgoing="_BpqTQFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationOperations"/>
+      </nodes>
+      <nodes xmi:id="_BpqTPlFtEequLZ0OGbrLHA" name="" incoming="_BpqTRVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationImplementationsAlternative"/>
+      </nodes>
+      <edges xmi:id="_BpqTP1FtEequLZ0OGbrLHA" source="_BpqTOFFtEequLZ0OGbrLHA" target="_BpqTNFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Authentication/authenticationimplementations"/>
+      </edges>
+      <edges xmi:id="_BpqTQFFtEequLZ0OGbrLHA" source="_BpqTPVFtEequLZ0OGbrLHA" target="_BpqTNVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationOperations/authenticate"/>
+      </edges>
+      <edges xmi:id="_BpqTQVFtEequLZ0OGbrLHA" source="_BpqTOlFtEequLZ0OGbrLHA" target="_BpqTNlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationMechanism/AuthenticationMechanismAlternative"/>
+      </edges>
+      <edges xmi:id="_BpqTQlFtEequLZ0OGbrLHA" source="_BpqTO1FtEequLZ0OGbrLHA" target="_BpqTOFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security/SecurityAlternative"/>
+      </edges>
+      <edges xmi:id="_BpqTQ1FtEequLZ0OGbrLHA" source="_BpqTOFFtEequLZ0OGbrLHA" target="_BpqTOlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Authentication/authenticationmechanism"/>
+      </edges>
+      <edges xmi:id="_BpqTRFFtEequLZ0OGbrLHA" source="_BpqTOFFtEequLZ0OGbrLHA" target="_BpqTPVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Authentication/authenticationoperations"/>
+      </edges>
+      <edges xmi:id="_BpqTRVFtEequLZ0OGbrLHA" source="_BpqTNFFtEequLZ0OGbrLHA" target="_BpqTPlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationImplementations/AuthenticationImplementationsAlternative"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_Bpq58FFtEequLZ0OGbrLHA" name="Rhs">
+      <nodes xmi:id="_Bpq58VFtEequLZ0OGbrLHA" name="" incoming="_Bpq6AVFtEequLZ0OGbrLHA" outgoing="_Bpq6B1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationImplementations"/>
+        <attributes xmi:id="_Bpq58lFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationImplementations/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bpq581FtEequLZ0OGbrLHA" name="" incoming="_Bpq6AlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Authenticate"/>
+        <attributes xmi:id="_Bpq59FFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Authenticate/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bpq59VFtEequLZ0OGbrLHA" name="" incoming="_Bpq6A1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//DigitalCertificate"/>
+        <attributes xmi:id="_Bpq59lFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationMechanismAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bpq591FtEequLZ0OGbrLHA" name="" incoming="_Bpq6BFFtEequLZ0OGbrLHA" outgoing="_Bpq6AVFtEequLZ0OGbrLHA _Bpq6BVFtEequLZ0OGbrLHA _Bpq6BlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Authentication"/>
+        <attributes xmi:id="_Bpq5-FFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SecurityAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bpq5-VFtEequLZ0OGbrLHA" name="" incoming="_Bpq6BVFtEequLZ0OGbrLHA" outgoing="_Bpq6A1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationMechanism"/>
+        <attributes xmi:id="_Bpq5-lFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationMechanism/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bpq5-1FtEequLZ0OGbrLHA" name="" outgoing="_Bpq6BFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security"/>
+        <attributes xmi:id="_Bpq5_FFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FQAsAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bpq5_VFtEequLZ0OGbrLHA" name="" incoming="_Bpq6BlFtEequLZ0OGbrLHA" outgoing="_Bpq6AlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationOperations"/>
+        <attributes xmi:id="_Bpq5_lFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationOperations/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bpq5_1FtEequLZ0OGbrLHA" name="" incoming="_Bpq6B1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationImplementationsAlternative"/>
+        <attributes xmi:id="_Bpq6AFFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationImplementationsAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <edges xmi:id="_Bpq6AVFtEequLZ0OGbrLHA" source="_Bpq591FtEequLZ0OGbrLHA" target="_Bpq58VFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Authentication/authenticationimplementations"/>
+      </edges>
+      <edges xmi:id="_Bpq6AlFtEequLZ0OGbrLHA" source="_Bpq5_VFtEequLZ0OGbrLHA" target="_Bpq581FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationOperations/authenticate"/>
+      </edges>
+      <edges xmi:id="_Bpq6A1FtEequLZ0OGbrLHA" source="_Bpq5-VFtEequLZ0OGbrLHA" target="_Bpq59VFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationMechanism/AuthenticationMechanismAlternative"/>
+      </edges>
+      <edges xmi:id="_Bpq6BFFtEequLZ0OGbrLHA" source="_Bpq5-1FtEequLZ0OGbrLHA" target="_Bpq591FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security/SecurityAlternative"/>
+      </edges>
+      <edges xmi:id="_Bpq6BVFtEequLZ0OGbrLHA" source="_Bpq591FtEequLZ0OGbrLHA" target="_Bpq5-VFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Authentication/authenticationmechanism"/>
+      </edges>
+      <edges xmi:id="_Bpq6BlFtEequLZ0OGbrLHA" source="_Bpq591FtEequLZ0OGbrLHA" target="_Bpq5_VFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Authentication/authenticationoperations"/>
+      </edges>
+      <edges xmi:id="_Bpq6B1FtEequLZ0OGbrLHA" source="_Bpq58VFtEequLZ0OGbrLHA" target="_Bpq5_1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationImplementations/AuthenticationImplementationsAlternative"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_Bpq6CFFtEequLZ0OGbrLHA" origin="_BpqTNFFtEequLZ0OGbrLHA" image="_Bpq58VFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bpq6CVFtEequLZ0OGbrLHA" origin="_BpqTNVFtEequLZ0OGbrLHA" image="_Bpq581FtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bpq6ClFtEequLZ0OGbrLHA" origin="_BpqTNlFtEequLZ0OGbrLHA" image="_Bpq59VFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bpq6C1FtEequLZ0OGbrLHA" origin="_BpqTOFFtEequLZ0OGbrLHA" image="_Bpq591FtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bpq6DFFtEequLZ0OGbrLHA" origin="_BpqTOlFtEequLZ0OGbrLHA" image="_Bpq5-VFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bpq6DVFtEequLZ0OGbrLHA" origin="_BpqTO1FtEequLZ0OGbrLHA" image="_Bpq5-1FtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bpq6DlFtEequLZ0OGbrLHA" origin="_BpqTPVFtEequLZ0OGbrLHA" image="_Bpq5_VFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bpq6D1FtEequLZ0OGbrLHA" origin="_BpqTPlFtEequLZ0OGbrLHA" image="_Bpq5_1FtEequLZ0OGbrLHA"/>
+    <multiRules xmi:id="_Bpq6EFFtEequLZ0OGbrLHA">
+      <lhs xmi:id="_Bpq6EVFtEequLZ0OGbrLHA" name="Lhs">
+        <nodes xmi:id="_Bpq6ElFtEequLZ0OGbrLHA" name="" outgoing="_Bpq6FFFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationMechanism"/>
+        </nodes>
+        <nodes xmi:id="_Bpq6E1FtEequLZ0OGbrLHA" name="" incoming="_Bpq6FFFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationMechanismAlternative"/>
+        </nodes>
+        <edges xmi:id="_Bpq6FFFtEequLZ0OGbrLHA" source="_Bpq6ElFtEequLZ0OGbrLHA" target="_Bpq6E1FtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationMechanism/AuthenticationMechanismAlternative"/>
+        </edges>
+      </lhs>
+      <rhs xmi:id="_Bpq6FVFtEequLZ0OGbrLHA" name="Rhs">
+        <nodes xmi:id="_Bpq6FlFtEequLZ0OGbrLHA" name="" outgoing="_Bpq6GVFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationMechanism"/>
+        </nodes>
+        <nodes xmi:id="_Bpq6F1FtEequLZ0OGbrLHA" name="" incoming="_Bpq6GVFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationMechanismAlternative"/>
+          <attributes xmi:id="_Bpq6GFFtEequLZ0OGbrLHA" value="false">
+            <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationMechanismAlternative/selected"/>
+          </attributes>
+        </nodes>
+        <edges xmi:id="_Bpq6GVFtEequLZ0OGbrLHA" source="_Bpq6FlFtEequLZ0OGbrLHA" target="_Bpq6F1FtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationMechanism/AuthenticationMechanismAlternative"/>
+        </edges>
+      </rhs>
+      <mappings xmi:id="_Bpq6GlFtEequLZ0OGbrLHA" origin="_Bpq6ElFtEequLZ0OGbrLHA" image="_Bpq6FlFtEequLZ0OGbrLHA"/>
+      <mappings xmi:id="_Bpq6G1FtEequLZ0OGbrLHA" origin="_Bpq6E1FtEequLZ0OGbrLHA" image="_Bpq6F1FtEequLZ0OGbrLHA"/>
+      <multiMappings xmi:id="_Bpq6HFFtEequLZ0OGbrLHA" origin="_BpqTOlFtEequLZ0OGbrLHA" image="_Bpq6ElFtEequLZ0OGbrLHA"/>
+      <multiMappings xmi:id="_Bpq6HVFtEequLZ0OGbrLHA" origin="_Bpq5-VFtEequLZ0OGbrLHA" image="_Bpq6FlFtEequLZ0OGbrLHA"/>
+    </multiRules>
+    <multiRules xmi:id="_Bpq6HlFtEequLZ0OGbrLHA">
+      <lhs xmi:id="_Bpq6H1FtEequLZ0OGbrLHA" name="Lhs">
+        <nodes xmi:id="_Bpq6IFFtEequLZ0OGbrLHA" name="" outgoing="_Bpq6IlFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security"/>
+        </nodes>
+        <nodes xmi:id="_Bpq6IVFtEequLZ0OGbrLHA" name="" incoming="_Bpq6IlFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SecurityAlternative"/>
+        </nodes>
+        <edges xmi:id="_Bpq6IlFtEequLZ0OGbrLHA" source="_Bpq6IFFtEequLZ0OGbrLHA" target="_Bpq6IVFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security/SecurityAlternative"/>
+        </edges>
+      </lhs>
+      <rhs xmi:id="_Bpq6I1FtEequLZ0OGbrLHA" name="Rhs">
+        <nodes xmi:id="_Bpq6JFFtEequLZ0OGbrLHA" name="" outgoing="_Bpq6J1FtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security"/>
+        </nodes>
+        <nodes xmi:id="_Bpq6JVFtEequLZ0OGbrLHA" name="" incoming="_Bpq6J1FtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SecurityAlternative"/>
+          <attributes xmi:id="_Bpq6JlFtEequLZ0OGbrLHA" value="false">
+            <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SecurityAlternative/selected"/>
+          </attributes>
+        </nodes>
+        <edges xmi:id="_Bpq6J1FtEequLZ0OGbrLHA" source="_Bpq6JFFtEequLZ0OGbrLHA" target="_Bpq6JVFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security/SecurityAlternative"/>
+        </edges>
+      </rhs>
+      <mappings xmi:id="_Bpq6KFFtEequLZ0OGbrLHA" origin="_Bpq6IFFtEequLZ0OGbrLHA" image="_Bpq6JFFtEequLZ0OGbrLHA"/>
+      <mappings xmi:id="_Bpq6KVFtEequLZ0OGbrLHA" origin="_Bpq6IVFtEequLZ0OGbrLHA" image="_Bpq6JVFtEequLZ0OGbrLHA"/>
+      <multiMappings xmi:id="_Bpq6KlFtEequLZ0OGbrLHA" origin="_BpqTO1FtEequLZ0OGbrLHA" image="_Bpq6IFFtEequLZ0OGbrLHA"/>
+      <multiMappings xmi:id="_Bpq6K1FtEequLZ0OGbrLHA" origin="_Bpq5-1FtEequLZ0OGbrLHA" image="_Bpq6JFFtEequLZ0OGbrLHA"/>
+    </multiRules>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_Bpq6LFFtEequLZ0OGbrLHA" name="Act_Security_r3">
+    <lhs xmi:id="_Bpq6LVFtEequLZ0OGbrLHA" name="Lhs">
+      <nodes xmi:id="_Bpq6LlFtEequLZ0OGbrLHA" name="" incoming="_Bpq6OFFtEequLZ0OGbrLHA" outgoing="_Bpq6OVFtEequLZ0OGbrLHA _Bpq6O1FtEequLZ0OGbrLHA _Bpq6PFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Hashing"/>
+        <attributes xmi:id="_Bpq6L1FtEequLZ0OGbrLHA" value="false">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SecurityAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bpq6MFFtEequLZ0OGbrLHA" name="" outgoing="_Bpq6OFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security"/>
+        <attributes xmi:id="_Bpq6MVFtEequLZ0OGbrLHA" value="false">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FQAsAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bpq6MlFtEequLZ0OGbrLHA" name="" incoming="_Bpq6OVFtEequLZ0OGbrLHA" outgoing="_Bpq6PVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//HashingAlgorithms"/>
+      </nodes>
+      <nodes xmi:id="_Bpq6M1FtEequLZ0OGbrLHA" name="" incoming="_Bpq6OlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Hash"/>
+      </nodes>
+      <nodes xmi:id="_Bpq6NFFtEequLZ0OGbrLHA" name="" incoming="_Bpq6O1FtEequLZ0OGbrLHA" outgoing="_Bpq6OlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//HashingOperations"/>
+      </nodes>
+      <nodes xmi:id="_Bpq6NVFtEequLZ0OGbrLHA" name="" incoming="_Bpq6PFFtEequLZ0OGbrLHA" outgoing="_Bpq6PlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//HashingImplementations"/>
+      </nodes>
+      <nodes xmi:id="_Bpq6NlFtEequLZ0OGbrLHA" name="" incoming="_Bpq6PVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//HashingAlgorithmsAlternative"/>
+      </nodes>
+      <nodes xmi:id="_Bpq6N1FtEequLZ0OGbrLHA" name="" incoming="_Bpq6PlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//HashingImplementationsAlternative"/>
+      </nodes>
+      <edges xmi:id="_Bpq6OFFtEequLZ0OGbrLHA" source="_Bpq6MFFtEequLZ0OGbrLHA" target="_Bpq6LlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security/SecurityAlternative"/>
+      </edges>
+      <edges xmi:id="_Bpq6OVFtEequLZ0OGbrLHA" source="_Bpq6LlFtEequLZ0OGbrLHA" target="_Bpq6MlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Hashing/hashingalgorithms"/>
+      </edges>
+      <edges xmi:id="_Bpq6OlFtEequLZ0OGbrLHA" source="_Bpq6NFFtEequLZ0OGbrLHA" target="_Bpq6M1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//HashingOperations/hash"/>
+      </edges>
+      <edges xmi:id="_Bpq6O1FtEequLZ0OGbrLHA" source="_Bpq6LlFtEequLZ0OGbrLHA" target="_Bpq6NFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Hashing/hashingoperations"/>
+      </edges>
+      <edges xmi:id="_Bpq6PFFtEequLZ0OGbrLHA" source="_Bpq6LlFtEequLZ0OGbrLHA" target="_Bpq6NVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Hashing/hashingimplementations"/>
+      </edges>
+      <edges xmi:id="_Bpq6PVFtEequLZ0OGbrLHA" source="_Bpq6MlFtEequLZ0OGbrLHA" target="_Bpq6NlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//HashingAlgorithms/HashingAlgorithmsAlternative"/>
+      </edges>
+      <edges xmi:id="_Bpq6PlFtEequLZ0OGbrLHA" source="_Bpq6NVFtEequLZ0OGbrLHA" target="_Bpq6N1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//HashingImplementations/HashingImplementationsAlternative"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_Bpq6P1FtEequLZ0OGbrLHA" name="Rhs">
+      <nodes xmi:id="_Bpq6QFFtEequLZ0OGbrLHA" name="" incoming="_Bpq6UFFtEequLZ0OGbrLHA" outgoing="_Bpq6UVFtEequLZ0OGbrLHA _Bpq6U1FtEequLZ0OGbrLHA _Bpq6VFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Hashing"/>
+        <attributes xmi:id="_Bpq6QVFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SecurityAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bpq6QlFtEequLZ0OGbrLHA" name="" outgoing="_Bpq6UFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security"/>
+        <attributes xmi:id="_Bpq6Q1FtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FQAsAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bpq6RFFtEequLZ0OGbrLHA" name="" incoming="_Bpq6UVFtEequLZ0OGbrLHA" outgoing="_Bpq6VVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//HashingAlgorithms"/>
+        <attributes xmi:id="_Bpq6RVFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//HashingAlgorithms/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bpq6RlFtEequLZ0OGbrLHA" name="" incoming="_Bpq6UlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Hash"/>
+        <attributes xmi:id="_Bpq6R1FtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Hash/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bpq6SFFtEequLZ0OGbrLHA" name="" incoming="_Bpq6U1FtEequLZ0OGbrLHA" outgoing="_Bpq6UlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//HashingOperations"/>
+        <attributes xmi:id="_Bpq6SVFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//HashingOperations/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bpq6SlFtEequLZ0OGbrLHA" name="" incoming="_Bpq6VFFtEequLZ0OGbrLHA" outgoing="_Bpq6VlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//HashingImplementations"/>
+        <attributes xmi:id="_Bpq6S1FtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//HashingImplementations/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bpq6TFFtEequLZ0OGbrLHA" name="" incoming="_Bpq6VVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//HashingAlgorithmsAlternative"/>
+        <attributes xmi:id="_Bpq6TVFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//HashingAlgorithmsAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bpq6TlFtEequLZ0OGbrLHA" name="" incoming="_Bpq6VlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//HashingImplementationsAlternative"/>
+        <attributes xmi:id="_Bpq6T1FtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//HashingImplementationsAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <edges xmi:id="_Bpq6UFFtEequLZ0OGbrLHA" source="_Bpq6QlFtEequLZ0OGbrLHA" target="_Bpq6QFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security/SecurityAlternative"/>
+      </edges>
+      <edges xmi:id="_Bpq6UVFtEequLZ0OGbrLHA" source="_Bpq6QFFtEequLZ0OGbrLHA" target="_Bpq6RFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Hashing/hashingalgorithms"/>
+      </edges>
+      <edges xmi:id="_Bpq6UlFtEequLZ0OGbrLHA" source="_Bpq6SFFtEequLZ0OGbrLHA" target="_Bpq6RlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//HashingOperations/hash"/>
+      </edges>
+      <edges xmi:id="_Bpq6U1FtEequLZ0OGbrLHA" source="_Bpq6QFFtEequLZ0OGbrLHA" target="_Bpq6SFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Hashing/hashingoperations"/>
+      </edges>
+      <edges xmi:id="_Bpq6VFFtEequLZ0OGbrLHA" source="_Bpq6QFFtEequLZ0OGbrLHA" target="_Bpq6SlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Hashing/hashingimplementations"/>
+      </edges>
+      <edges xmi:id="_Bpq6VVFtEequLZ0OGbrLHA" source="_Bpq6RFFtEequLZ0OGbrLHA" target="_Bpq6TFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//HashingAlgorithms/HashingAlgorithmsAlternative"/>
+      </edges>
+      <edges xmi:id="_Bpq6VlFtEequLZ0OGbrLHA" source="_Bpq6SlFtEequLZ0OGbrLHA" target="_Bpq6TlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//HashingImplementations/HashingImplementationsAlternative"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_Bpq6V1FtEequLZ0OGbrLHA" origin="_Bpq6LlFtEequLZ0OGbrLHA" image="_Bpq6QFFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bpq6WFFtEequLZ0OGbrLHA" origin="_Bpq6MFFtEequLZ0OGbrLHA" image="_Bpq6QlFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bpq6WVFtEequLZ0OGbrLHA" origin="_Bpq6MlFtEequLZ0OGbrLHA" image="_Bpq6RFFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bpq6WlFtEequLZ0OGbrLHA" origin="_Bpq6M1FtEequLZ0OGbrLHA" image="_Bpq6RlFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bpq6W1FtEequLZ0OGbrLHA" origin="_Bpq6NFFtEequLZ0OGbrLHA" image="_Bpq6SFFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bpq6XFFtEequLZ0OGbrLHA" origin="_Bpq6NVFtEequLZ0OGbrLHA" image="_Bpq6SlFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bpq6XVFtEequLZ0OGbrLHA" origin="_Bpq6NlFtEequLZ0OGbrLHA" image="_Bpq6TFFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bpq6XlFtEequLZ0OGbrLHA" origin="_Bpq6N1FtEequLZ0OGbrLHA" image="_Bpq6TlFtEequLZ0OGbrLHA"/>
+    <multiRules xmi:id="_Bpq6X1FtEequLZ0OGbrLHA">
+      <lhs xmi:id="_Bpq6YFFtEequLZ0OGbrLHA" name="Lhs">
+        <nodes xmi:id="_Bpq6YVFtEequLZ0OGbrLHA" name="" outgoing="_Bpq6Y1FtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security"/>
+        </nodes>
+        <nodes xmi:id="_Bpq6YlFtEequLZ0OGbrLHA" name="" incoming="_Bpq6Y1FtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SecurityAlternative"/>
+        </nodes>
+        <edges xmi:id="_Bpq6Y1FtEequLZ0OGbrLHA" source="_Bpq6YVFtEequLZ0OGbrLHA" target="_Bpq6YlFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security/SecurityAlternative"/>
+        </edges>
+      </lhs>
+      <rhs xmi:id="_Bpq6ZFFtEequLZ0OGbrLHA" name="Rhs">
+        <nodes xmi:id="_Bpq6ZVFtEequLZ0OGbrLHA" name="" outgoing="_Bpq6aFFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security"/>
+        </nodes>
+        <nodes xmi:id="_Bpq6ZlFtEequLZ0OGbrLHA" name="" incoming="_Bpq6aFFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SecurityAlternative"/>
+          <attributes xmi:id="_Bpq6Z1FtEequLZ0OGbrLHA" value="false">
+            <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SecurityAlternative/selected"/>
+          </attributes>
+        </nodes>
+        <edges xmi:id="_Bpq6aFFtEequLZ0OGbrLHA" source="_Bpq6ZVFtEequLZ0OGbrLHA" target="_Bpq6ZlFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security/SecurityAlternative"/>
+        </edges>
+      </rhs>
+      <mappings xmi:id="_Bpq6aVFtEequLZ0OGbrLHA" origin="_Bpq6YVFtEequLZ0OGbrLHA" image="_Bpq6ZVFtEequLZ0OGbrLHA"/>
+      <mappings xmi:id="_Bpq6alFtEequLZ0OGbrLHA" origin="_Bpq6YlFtEequLZ0OGbrLHA" image="_Bpq6ZlFtEequLZ0OGbrLHA"/>
+      <multiMappings xmi:id="_BprhAFFtEequLZ0OGbrLHA" origin="_Bpq6MFFtEequLZ0OGbrLHA" image="_Bpq6YVFtEequLZ0OGbrLHA"/>
+      <multiMappings xmi:id="_BprhAVFtEequLZ0OGbrLHA" origin="_Bpq6QlFtEequLZ0OGbrLHA" image="_Bpq6ZVFtEequLZ0OGbrLHA"/>
+    </multiRules>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_BprhAlFtEequLZ0OGbrLHA" name="Act_Security_r4">
+    <lhs xmi:id="_BprhA1FtEequLZ0OGbrLHA" name="Lhs">
+      <nodes xmi:id="_BprhBFFtEequLZ0OGbrLHA" name="" incoming="_BprhClFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Hashing"/>
+      </nodes>
+      <nodes xmi:id="_BprhBVFtEequLZ0OGbrLHA" name="" incoming="_BprhC1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Encryption"/>
+      </nodes>
+      <nodes xmi:id="_BprhBlFtEequLZ0OGbrLHA" name="" outgoing="_BprhClFtEequLZ0OGbrLHA _BprhC1FtEequLZ0OGbrLHA _BprhDFFtEequLZ0OGbrLHA _BprhDVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security"/>
+        <attributes xmi:id="_BprhB1FtEequLZ0OGbrLHA" value="false">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FQAsAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BprhCFFtEequLZ0OGbrLHA" name="" incoming="_BprhDFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Authentication"/>
+      </nodes>
+      <nodes xmi:id="_BprhCVFtEequLZ0OGbrLHA" name="" incoming="_BprhDVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SecurityAlternative"/>
+      </nodes>
+      <edges xmi:id="_BprhClFtEequLZ0OGbrLHA" source="_BprhBlFtEequLZ0OGbrLHA" target="_BprhBFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security/SecurityAlternative"/>
+      </edges>
+      <edges xmi:id="_BprhC1FtEequLZ0OGbrLHA" source="_BprhBlFtEequLZ0OGbrLHA" target="_BprhBVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security/SecurityAlternative"/>
+      </edges>
+      <edges xmi:id="_BprhDFFtEequLZ0OGbrLHA" source="_BprhBlFtEequLZ0OGbrLHA" target="_BprhCFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security/SecurityAlternative"/>
+      </edges>
+      <edges xmi:id="_BprhDVFtEequLZ0OGbrLHA" source="_BprhBlFtEequLZ0OGbrLHA" target="_BprhCVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security/SecurityAlternative"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_BprhDlFtEequLZ0OGbrLHA" name="Rhs">
+      <nodes xmi:id="_BprhD1FtEequLZ0OGbrLHA" name="" incoming="_BprhGVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Hashing"/>
+        <attributes xmi:id="_BprhEFFtEequLZ0OGbrLHA" value="false">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SecurityAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BprhEVFtEequLZ0OGbrLHA" name="" incoming="_BprhGlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Encryption"/>
+        <attributes xmi:id="_BprhElFtEequLZ0OGbrLHA" value="false">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SecurityAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BprhE1FtEequLZ0OGbrLHA" name="" outgoing="_BprhGVFtEequLZ0OGbrLHA _BprhGlFtEequLZ0OGbrLHA _BprhG1FtEequLZ0OGbrLHA _BprhHFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security"/>
+        <attributes xmi:id="_BprhFFFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FQAsAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BprhFVFtEequLZ0OGbrLHA" name="" incoming="_BprhG1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Authentication"/>
+        <attributes xmi:id="_BprhFlFtEequLZ0OGbrLHA" value="false">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SecurityAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BprhF1FtEequLZ0OGbrLHA" name="" incoming="_BprhHFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SecurityAlternative"/>
+        <attributes xmi:id="_BprhGFFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SecurityAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <edges xmi:id="_BprhGVFtEequLZ0OGbrLHA" source="_BprhE1FtEequLZ0OGbrLHA" target="_BprhD1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security/SecurityAlternative"/>
+      </edges>
+      <edges xmi:id="_BprhGlFtEequLZ0OGbrLHA" source="_BprhE1FtEequLZ0OGbrLHA" target="_BprhEVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security/SecurityAlternative"/>
+      </edges>
+      <edges xmi:id="_BprhG1FtEequLZ0OGbrLHA" source="_BprhE1FtEequLZ0OGbrLHA" target="_BprhFVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security/SecurityAlternative"/>
+      </edges>
+      <edges xmi:id="_BprhHFFtEequLZ0OGbrLHA" source="_BprhE1FtEequLZ0OGbrLHA" target="_BprhF1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security/SecurityAlternative"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_BprhHVFtEequLZ0OGbrLHA" origin="_BprhBFFtEequLZ0OGbrLHA" image="_BprhD1FtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_BprhHlFtEequLZ0OGbrLHA" origin="_BprhBVFtEequLZ0OGbrLHA" image="_BprhEVFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_BprhH1FtEequLZ0OGbrLHA" origin="_BprhBlFtEequLZ0OGbrLHA" image="_BprhE1FtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_BprhIFFtEequLZ0OGbrLHA" origin="_BprhCFFtEequLZ0OGbrLHA" image="_BprhFVFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_BprhIVFtEequLZ0OGbrLHA" origin="_BprhCVFtEequLZ0OGbrLHA" image="_BprhF1FtEequLZ0OGbrLHA"/>
+    <multiRules xmi:id="_BprhIlFtEequLZ0OGbrLHA">
+      <lhs xmi:id="_BprhI1FtEequLZ0OGbrLHA" name="Lhs">
+        <nodes xmi:id="_BprhJFFtEequLZ0OGbrLHA" name="" outgoing="_BprhJlFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security"/>
+        </nodes>
+        <nodes xmi:id="_BprhJVFtEequLZ0OGbrLHA" name="" incoming="_BprhJlFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SecurityAlternative"/>
+        </nodes>
+        <edges xmi:id="_BprhJlFtEequLZ0OGbrLHA" source="_BprhJFFtEequLZ0OGbrLHA" target="_BprhJVFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security/SecurityAlternative"/>
+        </edges>
+      </lhs>
+      <rhs xmi:id="_BprhJ1FtEequLZ0OGbrLHA" name="Rhs">
+        <nodes xmi:id="_BprhKFFtEequLZ0OGbrLHA" name="" outgoing="_BprhK1FtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security"/>
+        </nodes>
+        <nodes xmi:id="_BprhKVFtEequLZ0OGbrLHA" name="" incoming="_BprhK1FtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SecurityAlternative"/>
+          <attributes xmi:id="_BprhKlFtEequLZ0OGbrLHA" value="false">
+            <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SecurityAlternative/selected"/>
+          </attributes>
+        </nodes>
+        <edges xmi:id="_BprhK1FtEequLZ0OGbrLHA" source="_BprhKFFtEequLZ0OGbrLHA" target="_BprhKVFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security/SecurityAlternative"/>
+        </edges>
+      </rhs>
+      <mappings xmi:id="_BprhLFFtEequLZ0OGbrLHA" origin="_BprhJFFtEequLZ0OGbrLHA" image="_BprhKFFtEequLZ0OGbrLHA"/>
+      <mappings xmi:id="_BprhLVFtEequLZ0OGbrLHA" origin="_BprhJVFtEequLZ0OGbrLHA" image="_BprhKVFtEequLZ0OGbrLHA"/>
+      <multiMappings xmi:id="_BprhLlFtEequLZ0OGbrLHA" origin="_BprhBlFtEequLZ0OGbrLHA" image="_BprhJFFtEequLZ0OGbrLHA"/>
+      <multiMappings xmi:id="_BprhL1FtEequLZ0OGbrLHA" origin="_BprhE1FtEequLZ0OGbrLHA" image="_BprhKFFtEequLZ0OGbrLHA"/>
+    </multiRules>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_BprhMFFtEequLZ0OGbrLHA" name="Act_Security_r5">
+    <lhs xmi:id="_BprhMVFtEequLZ0OGbrLHA" name="Lhs">
+      <nodes xmi:id="_BprhMlFtEequLZ0OGbrLHA" name="" incoming="_BprhQlFtEequLZ0OGbrLHA" outgoing="_BprhSVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionOperations"/>
+      </nodes>
+      <nodes xmi:id="_BprhM1FtEequLZ0OGbrLHA" name="" incoming="_BprhQ1FtEequLZ0OGbrLHA" outgoing="_BprhSlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Mode"/>
+      </nodes>
+      <nodes xmi:id="_BprhNFFtEequLZ0OGbrLHA" name="" incoming="_BprhRFFtEequLZ0OGbrLHA" outgoing="_BprhS1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionImplementations"/>
+      </nodes>
+      <nodes xmi:id="_BprhNVFtEequLZ0OGbrLHA" name="" incoming="_BprhRVFtEequLZ0OGbrLHA" outgoing="_BprhQlFtEequLZ0OGbrLHA _BprhQ1FtEequLZ0OGbrLHA _BprhRFFtEequLZ0OGbrLHA _BprhRlFtEequLZ0OGbrLHA _BprhR1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Encryption"/>
+        <attributes xmi:id="_BprhNlFtEequLZ0OGbrLHA" value="false">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SecurityAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BprhN1FtEequLZ0OGbrLHA" name="" outgoing="_BprhRVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security"/>
+        <attributes xmi:id="_BprhOFFtEequLZ0OGbrLHA" value="false">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FQAsAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BprhOVFtEequLZ0OGbrLHA" name="" incoming="_BprhRlFtEequLZ0OGbrLHA" outgoing="_BprhSFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionAlgorithms"/>
+      </nodes>
+      <nodes xmi:id="_BprhOlFtEequLZ0OGbrLHA" name="" incoming="_BprhR1FtEequLZ0OGbrLHA" outgoing="_BprhTVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Padding"/>
+      </nodes>
+      <nodes xmi:id="_BprhO1FtEequLZ0OGbrLHA" name="" incoming="_BprhSFFtEequLZ0OGbrLHA" outgoing="_BprhTFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Symmetric"/>
+        <attributes xmi:id="_BprhPFFtEequLZ0OGbrLHA" value="false">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionAlgorithmsAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BprhPVFtEequLZ0OGbrLHA" name="" incoming="_BprhSVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionOperationsAlternative"/>
+      </nodes>
+      <nodes xmi:id="_BprhPlFtEequLZ0OGbrLHA" name="" incoming="_BprhSlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//ModeAlternative"/>
+      </nodes>
+      <nodes xmi:id="_BprhP1FtEequLZ0OGbrLHA" name="" incoming="_BprhS1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionImplementationsAlternative"/>
+      </nodes>
+      <nodes xmi:id="_BprhQFFtEequLZ0OGbrLHA" name="" incoming="_BprhTFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SymmetricAlternative"/>
+      </nodes>
+      <nodes xmi:id="_BprhQVFtEequLZ0OGbrLHA" name="" incoming="_BprhTVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//PaddingAlternative"/>
+      </nodes>
+      <edges xmi:id="_BprhQlFtEequLZ0OGbrLHA" source="_BprhNVFtEequLZ0OGbrLHA" target="_BprhMlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Encryption/encryptionoperations"/>
+      </edges>
+      <edges xmi:id="_BprhQ1FtEequLZ0OGbrLHA" source="_BprhNVFtEequLZ0OGbrLHA" target="_BprhM1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Encryption/mode"/>
+      </edges>
+      <edges xmi:id="_BprhRFFtEequLZ0OGbrLHA" source="_BprhNVFtEequLZ0OGbrLHA" target="_BprhNFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Encryption/encryptionimplementations"/>
+      </edges>
+      <edges xmi:id="_BprhRVFtEequLZ0OGbrLHA" source="_BprhN1FtEequLZ0OGbrLHA" target="_BprhNVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security/SecurityAlternative"/>
+      </edges>
+      <edges xmi:id="_BprhRlFtEequLZ0OGbrLHA" source="_BprhNVFtEequLZ0OGbrLHA" target="_BprhOVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Encryption/encryptionalgorithms"/>
+      </edges>
+      <edges xmi:id="_BprhR1FtEequLZ0OGbrLHA" source="_BprhNVFtEequLZ0OGbrLHA" target="_BprhOlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Encryption/padding"/>
+      </edges>
+      <edges xmi:id="_BprhSFFtEequLZ0OGbrLHA" source="_BprhOVFtEequLZ0OGbrLHA" target="_BprhO1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionAlgorithms/EncryptionAlgorithmsAlternative"/>
+      </edges>
+      <edges xmi:id="_BprhSVFtEequLZ0OGbrLHA" source="_BprhMlFtEequLZ0OGbrLHA" target="_BprhPVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionOperations/EncryptionOperationsAlternative"/>
+      </edges>
+      <edges xmi:id="_BprhSlFtEequLZ0OGbrLHA" source="_BprhM1FtEequLZ0OGbrLHA" target="_BprhPlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Mode/ModeAlternative"/>
+      </edges>
+      <edges xmi:id="_BprhS1FtEequLZ0OGbrLHA" source="_BprhNFFtEequLZ0OGbrLHA" target="_BprhP1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionImplementations/EncryptionImplementationsAlternative"/>
+      </edges>
+      <edges xmi:id="_BprhTFFtEequLZ0OGbrLHA" source="_BprhO1FtEequLZ0OGbrLHA" target="_BprhQFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Symmetric/SymmetricAlternative"/>
+      </edges>
+      <edges xmi:id="_BprhTVFtEequLZ0OGbrLHA" source="_BprhOlFtEequLZ0OGbrLHA" target="_BprhQVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Padding/PaddingAlternative"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_BprhTlFtEequLZ0OGbrLHA" name="Rhs">
+      <nodes xmi:id="_BprhT1FtEequLZ0OGbrLHA" name="" incoming="_BprhaVFtEequLZ0OGbrLHA" outgoing="_BprhcFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionOperations"/>
+        <attributes xmi:id="_BprhUFFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionOperations/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BprhUVFtEequLZ0OGbrLHA" name="" incoming="_BprhalFtEequLZ0OGbrLHA" outgoing="_BprhcVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Mode"/>
+        <attributes xmi:id="_BprhUlFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Mode/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BprhU1FtEequLZ0OGbrLHA" name="" incoming="_Bprha1FtEequLZ0OGbrLHA" outgoing="_BprhclFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionImplementations"/>
+        <attributes xmi:id="_BprhVFFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionImplementations/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BprhVVFtEequLZ0OGbrLHA" name="" incoming="_BprhbFFtEequLZ0OGbrLHA" outgoing="_BprhaVFtEequLZ0OGbrLHA _BprhalFtEequLZ0OGbrLHA _Bprha1FtEequLZ0OGbrLHA _BprhbVFtEequLZ0OGbrLHA _BprhblFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Encryption"/>
+        <attributes xmi:id="_BprhVlFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SecurityAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BprhV1FtEequLZ0OGbrLHA" name="" outgoing="_BprhbFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security"/>
+        <attributes xmi:id="_BprhWFFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FQAsAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BprhWVFtEequLZ0OGbrLHA" name="" incoming="_BprhbVFtEequLZ0OGbrLHA" outgoing="_Bprhb1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionAlgorithms"/>
+        <attributes xmi:id="_BprhWlFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionAlgorithms/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BprhW1FtEequLZ0OGbrLHA" name="" incoming="_BprhblFtEequLZ0OGbrLHA" outgoing="_BprhdFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Padding"/>
+        <attributes xmi:id="_BprhXFFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Padding/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BprhXVFtEequLZ0OGbrLHA" name="" incoming="_Bprhb1FtEequLZ0OGbrLHA" outgoing="_Bprhc1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Symmetric"/>
+        <attributes xmi:id="_BprhXlFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionAlgorithmsAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BprhX1FtEequLZ0OGbrLHA" name="" incoming="_BprhcFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionOperationsAlternative"/>
+        <attributes xmi:id="_BprhYFFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionOperationsAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BprhYVFtEequLZ0OGbrLHA" name="" incoming="_BprhcVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//ModeAlternative"/>
+        <attributes xmi:id="_BprhYlFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//ModeAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BprhY1FtEequLZ0OGbrLHA" name="" incoming="_BprhclFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionImplementationsAlternative"/>
+        <attributes xmi:id="_BprhZFFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionImplementationsAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BprhZVFtEequLZ0OGbrLHA" name="" incoming="_Bprhc1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SymmetricAlternative"/>
+        <attributes xmi:id="_BprhZlFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SymmetricAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BprhZ1FtEequLZ0OGbrLHA" name="" incoming="_BprhdFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//PaddingAlternative"/>
+        <attributes xmi:id="_BprhaFFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//PaddingAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <edges xmi:id="_BprhaVFtEequLZ0OGbrLHA" source="_BprhVVFtEequLZ0OGbrLHA" target="_BprhT1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Encryption/encryptionoperations"/>
+      </edges>
+      <edges xmi:id="_BprhalFtEequLZ0OGbrLHA" source="_BprhVVFtEequLZ0OGbrLHA" target="_BprhUVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Encryption/mode"/>
+      </edges>
+      <edges xmi:id="_Bprha1FtEequLZ0OGbrLHA" source="_BprhVVFtEequLZ0OGbrLHA" target="_BprhU1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Encryption/encryptionimplementations"/>
+      </edges>
+      <edges xmi:id="_BprhbFFtEequLZ0OGbrLHA" source="_BprhV1FtEequLZ0OGbrLHA" target="_BprhVVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security/SecurityAlternative"/>
+      </edges>
+      <edges xmi:id="_BprhbVFtEequLZ0OGbrLHA" source="_BprhVVFtEequLZ0OGbrLHA" target="_BprhWVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Encryption/encryptionalgorithms"/>
+      </edges>
+      <edges xmi:id="_BprhblFtEequLZ0OGbrLHA" source="_BprhVVFtEequLZ0OGbrLHA" target="_BprhW1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Encryption/padding"/>
+      </edges>
+      <edges xmi:id="_Bprhb1FtEequLZ0OGbrLHA" source="_BprhWVFtEequLZ0OGbrLHA" target="_BprhXVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionAlgorithms/EncryptionAlgorithmsAlternative"/>
+      </edges>
+      <edges xmi:id="_BprhcFFtEequLZ0OGbrLHA" source="_BprhT1FtEequLZ0OGbrLHA" target="_BprhX1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionOperations/EncryptionOperationsAlternative"/>
+      </edges>
+      <edges xmi:id="_BprhcVFtEequLZ0OGbrLHA" source="_BprhUVFtEequLZ0OGbrLHA" target="_BprhYVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Mode/ModeAlternative"/>
+      </edges>
+      <edges xmi:id="_BprhclFtEequLZ0OGbrLHA" source="_BprhU1FtEequLZ0OGbrLHA" target="_BprhY1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionImplementations/EncryptionImplementationsAlternative"/>
+      </edges>
+      <edges xmi:id="_Bprhc1FtEequLZ0OGbrLHA" source="_BprhXVFtEequLZ0OGbrLHA" target="_BprhZVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Symmetric/SymmetricAlternative"/>
+      </edges>
+      <edges xmi:id="_BprhdFFtEequLZ0OGbrLHA" source="_BprhW1FtEequLZ0OGbrLHA" target="_BprhZ1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Padding/PaddingAlternative"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_BprhdVFtEequLZ0OGbrLHA" origin="_BprhMlFtEequLZ0OGbrLHA" image="_BprhT1FtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_BprhdlFtEequLZ0OGbrLHA" origin="_BprhM1FtEequLZ0OGbrLHA" image="_BprhUVFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bprhd1FtEequLZ0OGbrLHA" origin="_BprhNFFtEequLZ0OGbrLHA" image="_BprhU1FtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_BprheFFtEequLZ0OGbrLHA" origin="_BprhNVFtEequLZ0OGbrLHA" image="_BprhVVFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_BprheVFtEequLZ0OGbrLHA" origin="_BprhN1FtEequLZ0OGbrLHA" image="_BprhV1FtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_BprhelFtEequLZ0OGbrLHA" origin="_BprhOVFtEequLZ0OGbrLHA" image="_BprhWVFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bprhe1FtEequLZ0OGbrLHA" origin="_BprhOlFtEequLZ0OGbrLHA" image="_BprhW1FtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_BprhfFFtEequLZ0OGbrLHA" origin="_BprhO1FtEequLZ0OGbrLHA" image="_BprhXVFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_BprhfVFtEequLZ0OGbrLHA" origin="_BprhPVFtEequLZ0OGbrLHA" image="_BprhX1FtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_BprhflFtEequLZ0OGbrLHA" origin="_BprhPlFtEequLZ0OGbrLHA" image="_BprhYVFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bprhf1FtEequLZ0OGbrLHA" origin="_BprhP1FtEequLZ0OGbrLHA" image="_BprhY1FtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_BprhgFFtEequLZ0OGbrLHA" origin="_BprhQFFtEequLZ0OGbrLHA" image="_BprhZVFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_BprhgVFtEequLZ0OGbrLHA" origin="_BprhQVFtEequLZ0OGbrLHA" image="_BprhZ1FtEequLZ0OGbrLHA"/>
+    <multiRules xmi:id="_BprhglFtEequLZ0OGbrLHA">
+      <lhs xmi:id="_BpsIEFFtEequLZ0OGbrLHA" name="Lhs">
+        <nodes xmi:id="_BpsIEVFtEequLZ0OGbrLHA" name="" outgoing="_BpsIE1FtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security"/>
+        </nodes>
+        <nodes xmi:id="_BpsIElFtEequLZ0OGbrLHA" name="" incoming="_BpsIE1FtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SecurityAlternative"/>
+        </nodes>
+        <edges xmi:id="_BpsIE1FtEequLZ0OGbrLHA" source="_BpsIEVFtEequLZ0OGbrLHA" target="_BpsIElFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security/SecurityAlternative"/>
+        </edges>
+      </lhs>
+      <rhs xmi:id="_BpsIFFFtEequLZ0OGbrLHA" name="Rhs">
+        <nodes xmi:id="_BpsIFVFtEequLZ0OGbrLHA" name="" outgoing="_BpsIGFFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security"/>
+        </nodes>
+        <nodes xmi:id="_BpsIFlFtEequLZ0OGbrLHA" name="" incoming="_BpsIGFFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SecurityAlternative"/>
+          <attributes xmi:id="_BpsIF1FtEequLZ0OGbrLHA" value="false">
+            <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SecurityAlternative/selected"/>
+          </attributes>
+        </nodes>
+        <edges xmi:id="_BpsIGFFtEequLZ0OGbrLHA" source="_BpsIFVFtEequLZ0OGbrLHA" target="_BpsIFlFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security/SecurityAlternative"/>
+        </edges>
+      </rhs>
+      <mappings xmi:id="_BpsIGVFtEequLZ0OGbrLHA" origin="_BpsIEVFtEequLZ0OGbrLHA" image="_BpsIFVFtEequLZ0OGbrLHA"/>
+      <mappings xmi:id="_BpsIGlFtEequLZ0OGbrLHA" origin="_BpsIElFtEequLZ0OGbrLHA" image="_BpsIFlFtEequLZ0OGbrLHA"/>
+      <multiMappings xmi:id="_BpsIG1FtEequLZ0OGbrLHA" origin="_BprhN1FtEequLZ0OGbrLHA" image="_BpsIEVFtEequLZ0OGbrLHA"/>
+      <multiMappings xmi:id="_BpsIHFFtEequLZ0OGbrLHA" origin="_BprhV1FtEequLZ0OGbrLHA" image="_BpsIFVFtEequLZ0OGbrLHA"/>
+    </multiRules>
+    <multiRules xmi:id="_BpsIHVFtEequLZ0OGbrLHA">
+      <lhs xmi:id="_BpsIHlFtEequLZ0OGbrLHA" name="Lhs">
+        <nodes xmi:id="_BpsIH1FtEequLZ0OGbrLHA" name="" outgoing="_BpsIIVFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionAlgorithms"/>
+        </nodes>
+        <nodes xmi:id="_BpsIIFFtEequLZ0OGbrLHA" name="" incoming="_BpsIIVFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionAlgorithmsAlternative"/>
+        </nodes>
+        <edges xmi:id="_BpsIIVFtEequLZ0OGbrLHA" source="_BpsIH1FtEequLZ0OGbrLHA" target="_BpsIIFFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionAlgorithms/EncryptionAlgorithmsAlternative"/>
+        </edges>
+      </lhs>
+      <rhs xmi:id="_BpsIIlFtEequLZ0OGbrLHA" name="Rhs">
+        <nodes xmi:id="_BpsII1FtEequLZ0OGbrLHA" name="" outgoing="_BpsIJlFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionAlgorithms"/>
+        </nodes>
+        <nodes xmi:id="_BpsIJFFtEequLZ0OGbrLHA" name="" incoming="_BpsIJlFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionAlgorithmsAlternative"/>
+          <attributes xmi:id="_BpsIJVFtEequLZ0OGbrLHA" value="false">
+            <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionAlgorithmsAlternative/selected"/>
+          </attributes>
+        </nodes>
+        <edges xmi:id="_BpsIJlFtEequLZ0OGbrLHA" source="_BpsII1FtEequLZ0OGbrLHA" target="_BpsIJFFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//EncryptionAlgorithms/EncryptionAlgorithmsAlternative"/>
+        </edges>
+      </rhs>
+      <mappings xmi:id="_BpsIJ1FtEequLZ0OGbrLHA" origin="_BpsIH1FtEequLZ0OGbrLHA" image="_BpsII1FtEequLZ0OGbrLHA"/>
+      <mappings xmi:id="_BpsIKFFtEequLZ0OGbrLHA" origin="_BpsIIFFtEequLZ0OGbrLHA" image="_BpsIJFFtEequLZ0OGbrLHA"/>
+      <multiMappings xmi:id="_BpsIKVFtEequLZ0OGbrLHA" origin="_BprhOVFtEequLZ0OGbrLHA" image="_BpsIH1FtEequLZ0OGbrLHA"/>
+      <multiMappings xmi:id="_BpsIKlFtEequLZ0OGbrLHA" origin="_BprhWVFtEequLZ0OGbrLHA" image="_BpsII1FtEequLZ0OGbrLHA"/>
+    </multiRules>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_BpsIK1FtEequLZ0OGbrLHA" name="Act_Security_r6">
+    <lhs xmi:id="_BpsILFFtEequLZ0OGbrLHA" name="Lhs">
+      <nodes xmi:id="_BpsILVFtEequLZ0OGbrLHA" name="" incoming="_BpsIOFFtEequLZ0OGbrLHA" outgoing="_BpsIPlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationImplementations"/>
+      </nodes>
+      <nodes xmi:id="_BpsILlFtEequLZ0OGbrLHA" name="" incoming="_BpsIOVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Authenticate"/>
+      </nodes>
+      <nodes xmi:id="_BpsIL1FtEequLZ0OGbrLHA" name="" incoming="_BpsIOlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//DigitalCertificate"/>
+      </nodes>
+      <nodes xmi:id="_BpsIMFFtEequLZ0OGbrLHA" name="" incoming="_BpsIO1FtEequLZ0OGbrLHA" outgoing="_BpsIOFFtEequLZ0OGbrLHA _BpsIPFFtEequLZ0OGbrLHA _BpsIPVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Authentication"/>
+        <attributes xmi:id="_BpsIMVFtEequLZ0OGbrLHA" value="false">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SecurityAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BpsIMlFtEequLZ0OGbrLHA" name="" incoming="_BpsIPFFtEequLZ0OGbrLHA" outgoing="_BpsIOlFtEequLZ0OGbrLHA _BpsIP1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationMechanism"/>
+      </nodes>
+      <nodes xmi:id="_BpsIM1FtEequLZ0OGbrLHA" name="" outgoing="_BpsIO1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security"/>
+        <attributes xmi:id="_BpsINFFtEequLZ0OGbrLHA" value="false">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FQAsAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BpsINVFtEequLZ0OGbrLHA" name="" incoming="_BpsIPVFtEequLZ0OGbrLHA" outgoing="_BpsIOVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationOperations"/>
+      </nodes>
+      <nodes xmi:id="_BpsINlFtEequLZ0OGbrLHA" name="" incoming="_BpsIPlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationImplementationsAlternative"/>
+      </nodes>
+      <nodes xmi:id="_BpsIN1FtEequLZ0OGbrLHA" name="" incoming="_BpsIP1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationMechanismAlternative"/>
+      </nodes>
+      <edges xmi:id="_BpsIOFFtEequLZ0OGbrLHA" source="_BpsIMFFtEequLZ0OGbrLHA" target="_BpsILVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Authentication/authenticationimplementations"/>
+      </edges>
+      <edges xmi:id="_BpsIOVFtEequLZ0OGbrLHA" source="_BpsINVFtEequLZ0OGbrLHA" target="_BpsILlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationOperations/authenticate"/>
+      </edges>
+      <edges xmi:id="_BpsIOlFtEequLZ0OGbrLHA" source="_BpsIMlFtEequLZ0OGbrLHA" target="_BpsIL1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationMechanism/AuthenticationMechanismAlternative"/>
+      </edges>
+      <edges xmi:id="_BpsIO1FtEequLZ0OGbrLHA" source="_BpsIM1FtEequLZ0OGbrLHA" target="_BpsIMFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security/SecurityAlternative"/>
+      </edges>
+      <edges xmi:id="_BpsIPFFtEequLZ0OGbrLHA" source="_BpsIMFFtEequLZ0OGbrLHA" target="_BpsIMlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Authentication/authenticationmechanism"/>
+      </edges>
+      <edges xmi:id="_BpsIPVFtEequLZ0OGbrLHA" source="_BpsIMFFtEequLZ0OGbrLHA" target="_BpsINVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Authentication/authenticationoperations"/>
+      </edges>
+      <edges xmi:id="_BpsIPlFtEequLZ0OGbrLHA" source="_BpsILVFtEequLZ0OGbrLHA" target="_BpsINlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationImplementations/AuthenticationImplementationsAlternative"/>
+      </edges>
+      <edges xmi:id="_BpsIP1FtEequLZ0OGbrLHA" source="_BpsIMlFtEequLZ0OGbrLHA" target="_BpsIN1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationMechanism/AuthenticationMechanismAlternative"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_BpsIQFFtEequLZ0OGbrLHA" name="Rhs">
+      <nodes xmi:id="_BpsIQVFtEequLZ0OGbrLHA" name="" incoming="_BpsIU1FtEequLZ0OGbrLHA" outgoing="_BpsIWVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationImplementations"/>
+        <attributes xmi:id="_BpsIQlFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationImplementations/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BpsIQ1FtEequLZ0OGbrLHA" name="" incoming="_BpsIVFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Authenticate"/>
+        <attributes xmi:id="_BpsIRFFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Authenticate/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BpsIRVFtEequLZ0OGbrLHA" name="" incoming="_BpsIVVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//DigitalCertificate"/>
+        <attributes xmi:id="_BpsIRlFtEequLZ0OGbrLHA" value="false">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationMechanismAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BpsIR1FtEequLZ0OGbrLHA" name="" incoming="_BpsIVlFtEequLZ0OGbrLHA" outgoing="_BpsIU1FtEequLZ0OGbrLHA _BpsIV1FtEequLZ0OGbrLHA _BpsIWFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Authentication"/>
+        <attributes xmi:id="_BpsISFFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SecurityAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BpsISVFtEequLZ0OGbrLHA" name="" incoming="_BpsIV1FtEequLZ0OGbrLHA" outgoing="_BpsIVVFtEequLZ0OGbrLHA _BpsIWlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationMechanism"/>
+        <attributes xmi:id="_BpsISlFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationMechanism/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BpsIS1FtEequLZ0OGbrLHA" name="" outgoing="_BpsIVlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security"/>
+        <attributes xmi:id="_BpsITFFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FQAsAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BpsITVFtEequLZ0OGbrLHA" name="" incoming="_BpsIWFFtEequLZ0OGbrLHA" outgoing="_BpsIVFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationOperations"/>
+        <attributes xmi:id="_BpsITlFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationOperations/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BpsIT1FtEequLZ0OGbrLHA" name="" incoming="_BpsIWVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationImplementationsAlternative"/>
+        <attributes xmi:id="_BpsIUFFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationImplementationsAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_BpsIUVFtEequLZ0OGbrLHA" name="" incoming="_BpsIWlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationMechanismAlternative"/>
+        <attributes xmi:id="_BpsIUlFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationMechanismAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <edges xmi:id="_BpsIU1FtEequLZ0OGbrLHA" source="_BpsIR1FtEequLZ0OGbrLHA" target="_BpsIQVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Authentication/authenticationimplementations"/>
+      </edges>
+      <edges xmi:id="_BpsIVFFtEequLZ0OGbrLHA" source="_BpsITVFtEequLZ0OGbrLHA" target="_BpsIQ1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationOperations/authenticate"/>
+      </edges>
+      <edges xmi:id="_BpsIVVFtEequLZ0OGbrLHA" source="_BpsISVFtEequLZ0OGbrLHA" target="_BpsIRVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationMechanism/AuthenticationMechanismAlternative"/>
+      </edges>
+      <edges xmi:id="_BpsIVlFtEequLZ0OGbrLHA" source="_BpsIS1FtEequLZ0OGbrLHA" target="_BpsIR1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security/SecurityAlternative"/>
+      </edges>
+      <edges xmi:id="_BpsIV1FtEequLZ0OGbrLHA" source="_BpsIR1FtEequLZ0OGbrLHA" target="_BpsISVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Authentication/authenticationmechanism"/>
+      </edges>
+      <edges xmi:id="_BpsIWFFtEequLZ0OGbrLHA" source="_BpsIR1FtEequLZ0OGbrLHA" target="_BpsITVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Authentication/authenticationoperations"/>
+      </edges>
+      <edges xmi:id="_BpsIWVFtEequLZ0OGbrLHA" source="_BpsIQVFtEequLZ0OGbrLHA" target="_BpsIT1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationImplementations/AuthenticationImplementationsAlternative"/>
+      </edges>
+      <edges xmi:id="_BpsIWlFtEequLZ0OGbrLHA" source="_BpsISVFtEequLZ0OGbrLHA" target="_BpsIUVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationMechanism/AuthenticationMechanismAlternative"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_BpsIW1FtEequLZ0OGbrLHA" origin="_BpsILVFtEequLZ0OGbrLHA" image="_BpsIQVFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_BpsIXFFtEequLZ0OGbrLHA" origin="_BpsILlFtEequLZ0OGbrLHA" image="_BpsIQ1FtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_BpsIXVFtEequLZ0OGbrLHA" origin="_BpsIL1FtEequLZ0OGbrLHA" image="_BpsIRVFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_BpsIXlFtEequLZ0OGbrLHA" origin="_BpsIMFFtEequLZ0OGbrLHA" image="_BpsIR1FtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_BpsIX1FtEequLZ0OGbrLHA" origin="_BpsIMlFtEequLZ0OGbrLHA" image="_BpsISVFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_BpsIYFFtEequLZ0OGbrLHA" origin="_BpsIM1FtEequLZ0OGbrLHA" image="_BpsIS1FtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_BpsIYVFtEequLZ0OGbrLHA" origin="_BpsINVFtEequLZ0OGbrLHA" image="_BpsITVFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_BpsIYlFtEequLZ0OGbrLHA" origin="_BpsINlFtEequLZ0OGbrLHA" image="_BpsIT1FtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_BpsIY1FtEequLZ0OGbrLHA" origin="_BpsIN1FtEequLZ0OGbrLHA" image="_BpsIUVFtEequLZ0OGbrLHA"/>
+    <multiRules xmi:id="_BpsIZFFtEequLZ0OGbrLHA">
+      <lhs xmi:id="_BpsIZVFtEequLZ0OGbrLHA" name="Lhs">
+        <nodes xmi:id="_BpsIZlFtEequLZ0OGbrLHA" name="" outgoing="_BpsIaFFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationMechanism"/>
+        </nodes>
+        <nodes xmi:id="_BpsIZ1FtEequLZ0OGbrLHA" name="" incoming="_BpsIaFFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationMechanismAlternative"/>
+        </nodes>
+        <edges xmi:id="_BpsIaFFtEequLZ0OGbrLHA" source="_BpsIZlFtEequLZ0OGbrLHA" target="_BpsIZ1FtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationMechanism/AuthenticationMechanismAlternative"/>
+        </edges>
+      </lhs>
+      <rhs xmi:id="_BpsIaVFtEequLZ0OGbrLHA" name="Rhs">
+        <nodes xmi:id="_BpsIalFtEequLZ0OGbrLHA" name="" outgoing="_BpsIbVFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationMechanism"/>
+        </nodes>
+        <nodes xmi:id="_BpsIa1FtEequLZ0OGbrLHA" name="" incoming="_BpsIbVFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationMechanismAlternative"/>
+          <attributes xmi:id="_BpsIbFFtEequLZ0OGbrLHA" value="false">
+            <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationMechanismAlternative/selected"/>
+          </attributes>
+        </nodes>
+        <edges xmi:id="_BpsIbVFtEequLZ0OGbrLHA" source="_BpsIalFtEequLZ0OGbrLHA" target="_BpsIa1FtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//AuthenticationMechanism/AuthenticationMechanismAlternative"/>
+        </edges>
+      </rhs>
+      <mappings xmi:id="_BpsIblFtEequLZ0OGbrLHA" origin="_BpsIZlFtEequLZ0OGbrLHA" image="_BpsIalFtEequLZ0OGbrLHA"/>
+      <mappings xmi:id="_BpsIb1FtEequLZ0OGbrLHA" origin="_BpsIZ1FtEequLZ0OGbrLHA" image="_BpsIa1FtEequLZ0OGbrLHA"/>
+      <multiMappings xmi:id="_BpsIcFFtEequLZ0OGbrLHA" origin="_BpsIMlFtEequLZ0OGbrLHA" image="_BpsIZlFtEequLZ0OGbrLHA"/>
+      <multiMappings xmi:id="_BpsIcVFtEequLZ0OGbrLHA" origin="_BpsISVFtEequLZ0OGbrLHA" image="_BpsIalFtEequLZ0OGbrLHA"/>
+    </multiRules>
+    <multiRules xmi:id="_BpsIclFtEequLZ0OGbrLHA">
+      <lhs xmi:id="_BpsIc1FtEequLZ0OGbrLHA" name="Lhs">
+        <nodes xmi:id="_BpsIdFFtEequLZ0OGbrLHA" name="" outgoing="_BpsIdlFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security"/>
+        </nodes>
+        <nodes xmi:id="_BpsIdVFtEequLZ0OGbrLHA" name="" incoming="_BpsIdlFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SecurityAlternative"/>
+        </nodes>
+        <edges xmi:id="_BpsIdlFtEequLZ0OGbrLHA" source="_BpsIdFFtEequLZ0OGbrLHA" target="_BpsIdVFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security/SecurityAlternative"/>
+        </edges>
+      </lhs>
+      <rhs xmi:id="_BpsId1FtEequLZ0OGbrLHA" name="Rhs">
+        <nodes xmi:id="_BpsIeFFtEequLZ0OGbrLHA" name="" outgoing="_BpsIe1FtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security"/>
+        </nodes>
+        <nodes xmi:id="_BpsIeVFtEequLZ0OGbrLHA" name="" incoming="_BpsIe1FtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SecurityAlternative"/>
+          <attributes xmi:id="_BpsIelFtEequLZ0OGbrLHA" value="false">
+            <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SecurityAlternative/selected"/>
+          </attributes>
+        </nodes>
+        <edges xmi:id="_BpsIe1FtEequLZ0OGbrLHA" source="_BpsIeFFtEequLZ0OGbrLHA" target="_BpsIeVFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Security/SecurityAlternative"/>
+        </edges>
+      </rhs>
+      <mappings xmi:id="_BpsIfFFtEequLZ0OGbrLHA" origin="_BpsIdFFtEequLZ0OGbrLHA" image="_BpsIeFFtEequLZ0OGbrLHA"/>
+      <mappings xmi:id="_BpsIfVFtEequLZ0OGbrLHA" origin="_BpsIdVFtEequLZ0OGbrLHA" image="_BpsIeVFtEequLZ0OGbrLHA"/>
+      <multiMappings xmi:id="_BpsIflFtEequLZ0OGbrLHA" origin="_BpsIM1FtEequLZ0OGbrLHA" image="_BpsIdFFtEequLZ0OGbrLHA"/>
+      <multiMappings xmi:id="_BpsIf1FtEequLZ0OGbrLHA" origin="_BpsIS1FtEequLZ0OGbrLHA" image="_BpsIeFFtEequLZ0OGbrLHA"/>
+    </multiRules>
+  </units>
+</henshin:Module>
