@@ -33,14 +33,14 @@ import org.eclipse.emf.henshin.model.Rule;
  * "preserve"; edges are irrelevant; only attributes are changed; multi-rules
  * have only one nesting level; no application conditions).
  * 
- * @author Daniel Strüber
+ * @author Daniel StrÃ¼ber
  *
  */
 public class ConfigurationEngine implements Engine {
 	Map<Rule, MatchingInfo> rule2matchingInfo = new HashMap<Rule, MatchingInfo>();
 
-	public static boolean OPTION_DETERMINISTIC = false;
-	public static boolean OPTION_STOP_AFTER_FIRST = true;
+//	public static boolean OPTION_DETERMINISTIC = false;
+//	public static boolean OPTION_STOP_AFTER_FIRST = true;
 
 	@Override
 	public Iterable<Match> findMatches(Rule rule, EGraph graph, Match partialMatch) {
@@ -359,9 +359,16 @@ public class ConfigurationEngine implements Engine {
 		return null;
 	}
 
+	private Map<String, Object> options = null;
+	
 	@Override
 	public Map<String, Object> getOptions()  {
-		return null;
+		if (options == null) {
+			options = new HashMap<>();
+			options.put(OPTION_DETERMINISTIC, false);
+			options.put(OPTION_STOP_AFTER_FIRST, true);
+		}
+		return options;
 	}
 
 	@Override
