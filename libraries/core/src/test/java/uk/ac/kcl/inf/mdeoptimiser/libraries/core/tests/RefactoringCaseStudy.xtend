@@ -32,6 +32,8 @@ class RefactoringCaseStudy {
 		validationHelper = new ValidationTestHelper()
 		pathPrefix = "gen/"
 	}
+	
+	
 
 	// MODEL A
 	@Test
@@ -72,6 +74,9 @@ class RefactoringCaseStudy {
 
 		runTestSearch(model, testInfo)
 	}
+	
+	
+	
 	
 	// MODEL B
 	@Test

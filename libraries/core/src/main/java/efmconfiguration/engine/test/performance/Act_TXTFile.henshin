@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_Bxc88FFtEequLZ0OGbrLHA" name="Act_TXTFile">
+  <imports href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_Bxc88VFtEequLZ0OGbrLHA" name="Act_TXTFile_r1">
+    <lhs xmi:id="_Bxc88lFtEequLZ0OGbrLHA" name="Lhs">
+      <nodes xmi:id="_Bxc881FtEequLZ0OGbrLHA" name="" outgoing="_Bxc8_lFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Persistence"/>
+      </nodes>
+      <nodes xmi:id="_Bxc89FFtEequLZ0OGbrLHA" name="" incoming="_Bxc8_FFtEequLZ0OGbrLHA" outgoing="_Bxc9AFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileType"/>
+      </nodes>
+      <nodes xmi:id="_Bxc89VFtEequLZ0OGbrLHA" name="" incoming="_Bxc8_VFtEequLZ0OGbrLHA" outgoing="_Bxc9AVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileStorageImplementations"/>
+      </nodes>
+      <nodes xmi:id="_Bxc89lFtEequLZ0OGbrLHA" name="" incoming="_Bxc8_lFtEequLZ0OGbrLHA" outgoing="_Bxc8_FFtEequLZ0OGbrLHA _Bxc8_VFtEequLZ0OGbrLHA _Bxc8_1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileStorage"/>
+      </nodes>
+      <nodes xmi:id="_Bxc891FtEequLZ0OGbrLHA" name="" incoming="_Bxc8_1FtEequLZ0OGbrLHA" outgoing="_Bxc9AlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileStorageOperations"/>
+      </nodes>
+      <nodes xmi:id="_Bxc8-FFtEequLZ0OGbrLHA" name="" incoming="_Bxc9AFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//TXTFile"/>
+        <attributes xmi:id="_Bxc8-VFtEequLZ0OGbrLHA" value="false">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileTypeAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bxc8-lFtEequLZ0OGbrLHA" name="" incoming="_Bxc9AVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//JavaIO"/>
+      </nodes>
+      <nodes xmi:id="_Bxc8-1FtEequLZ0OGbrLHA" name="" incoming="_Bxc9AlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileStorageOperationsAlternative"/>
+      </nodes>
+      <edges xmi:id="_Bxc8_FFtEequLZ0OGbrLHA" source="_Bxc89lFtEequLZ0OGbrLHA" target="_Bxc89FFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileStorage/filetype"/>
+      </edges>
+      <edges xmi:id="_Bxc8_VFtEequLZ0OGbrLHA" source="_Bxc89lFtEequLZ0OGbrLHA" target="_Bxc89VFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileStorage/filestorageimplementations"/>
+      </edges>
+      <edges xmi:id="_Bxc8_lFtEequLZ0OGbrLHA" source="_Bxc881FtEequLZ0OGbrLHA" target="_Bxc89lFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Persistence/PersistenceAlternative"/>
+      </edges>
+      <edges xmi:id="_Bxc8_1FtEequLZ0OGbrLHA" source="_Bxc89lFtEequLZ0OGbrLHA" target="_Bxc891FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileStorage/filestorageoperations"/>
+      </edges>
+      <edges xmi:id="_Bxc9AFFtEequLZ0OGbrLHA" source="_Bxc89FFtEequLZ0OGbrLHA" target="_Bxc8-FFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileType/FileTypeAlternative"/>
+      </edges>
+      <edges xmi:id="_Bxc9AVFtEequLZ0OGbrLHA" source="_Bxc89VFtEequLZ0OGbrLHA" target="_Bxc8-lFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileStorageImplementations/javaio"/>
+      </edges>
+      <edges xmi:id="_Bxc9AlFtEequLZ0OGbrLHA" source="_Bxc891FtEequLZ0OGbrLHA" target="_Bxc8-1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileStorageOperations/FileStorageOperationsAlternative"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_Bxc9A1FtEequLZ0OGbrLHA" name="Rhs">
+      <nodes xmi:id="_Bxc9BFFtEequLZ0OGbrLHA" name="" outgoing="_Bxc9FlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Persistence"/>
+        <attributes xmi:id="_Bxc9BVFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FQAsAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bxc9BlFtEequLZ0OGbrLHA" name="" incoming="_Bxc9FFFtEequLZ0OGbrLHA" outgoing="_Bxc9GFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileType"/>
+        <attributes xmi:id="_Bxc9B1FtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileType/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bxc9CFFtEequLZ0OGbrLHA" name="" incoming="_Bxc9FVFtEequLZ0OGbrLHA" outgoing="_Bxc9GVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileStorageImplementations"/>
+        <attributes xmi:id="_Bxc9CVFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileStorageImplementations/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bxc9ClFtEequLZ0OGbrLHA" name="" incoming="_Bxc9FlFtEequLZ0OGbrLHA" outgoing="_Bxc9FFFtEequLZ0OGbrLHA _Bxc9FVFtEequLZ0OGbrLHA _Bxc9F1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileStorage"/>
+        <attributes xmi:id="_Bxc9C1FtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//PersistenceAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bxc9DFFtEequLZ0OGbrLHA" name="" incoming="_Bxc9F1FtEequLZ0OGbrLHA" outgoing="_Bxc9GlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileStorageOperations"/>
+        <attributes xmi:id="_Bxc9DVFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileStorageOperations/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bxc9DlFtEequLZ0OGbrLHA" name="" incoming="_Bxc9GFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//TXTFile"/>
+        <attributes xmi:id="_Bxc9D1FtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileTypeAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bxc9EFFtEequLZ0OGbrLHA" name="" incoming="_Bxc9GVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//JavaIO"/>
+        <attributes xmi:id="_Bxc9EVFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//JavaIO/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bxc9ElFtEequLZ0OGbrLHA" name="" incoming="_Bxc9GlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileStorageOperationsAlternative"/>
+        <attributes xmi:id="_Bxc9E1FtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileStorageOperationsAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <edges xmi:id="_Bxc9FFFtEequLZ0OGbrLHA" source="_Bxc9ClFtEequLZ0OGbrLHA" target="_Bxc9BlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileStorage/filetype"/>
+      </edges>
+      <edges xmi:id="_Bxc9FVFtEequLZ0OGbrLHA" source="_Bxc9ClFtEequLZ0OGbrLHA" target="_Bxc9CFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileStorage/filestorageimplementations"/>
+      </edges>
+      <edges xmi:id="_Bxc9FlFtEequLZ0OGbrLHA" source="_Bxc9BFFtEequLZ0OGbrLHA" target="_Bxc9ClFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Persistence/PersistenceAlternative"/>
+      </edges>
+      <edges xmi:id="_Bxc9F1FtEequLZ0OGbrLHA" source="_Bxc9ClFtEequLZ0OGbrLHA" target="_Bxc9DFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileStorage/filestorageoperations"/>
+      </edges>
+      <edges xmi:id="_Bxc9GFFtEequLZ0OGbrLHA" source="_Bxc9BlFtEequLZ0OGbrLHA" target="_Bxc9DlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileType/FileTypeAlternative"/>
+      </edges>
+      <edges xmi:id="_Bxc9GVFtEequLZ0OGbrLHA" source="_Bxc9CFFtEequLZ0OGbrLHA" target="_Bxc9EFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileStorageImplementations/javaio"/>
+      </edges>
+      <edges xmi:id="_Bxc9GlFtEequLZ0OGbrLHA" source="_Bxc9DFFtEequLZ0OGbrLHA" target="_Bxc9ElFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileStorageOperations/FileStorageOperationsAlternative"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_Bxc9G1FtEequLZ0OGbrLHA" origin="_Bxc881FtEequLZ0OGbrLHA" image="_Bxc9BFFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bxc9HFFtEequLZ0OGbrLHA" origin="_Bxc89FFtEequLZ0OGbrLHA" image="_Bxc9BlFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bxc9HVFtEequLZ0OGbrLHA" origin="_Bxc89VFtEequLZ0OGbrLHA" image="_Bxc9CFFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bxc9HlFtEequLZ0OGbrLHA" origin="_Bxc89lFtEequLZ0OGbrLHA" image="_Bxc9ClFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bxc9H1FtEequLZ0OGbrLHA" origin="_Bxc891FtEequLZ0OGbrLHA" image="_Bxc9DFFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bxc9IFFtEequLZ0OGbrLHA" origin="_Bxc8-FFtEequLZ0OGbrLHA" image="_Bxc9DlFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bxc9IVFtEequLZ0OGbrLHA" origin="_Bxc8-lFtEequLZ0OGbrLHA" image="_Bxc9EFFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bxc9IlFtEequLZ0OGbrLHA" origin="_Bxc8-1FtEequLZ0OGbrLHA" image="_Bxc9ElFtEequLZ0OGbrLHA"/>
+    <multiRules xmi:id="_Bxc9I1FtEequLZ0OGbrLHA">
+      <lhs xmi:id="_Bxc9JFFtEequLZ0OGbrLHA" name="Lhs">
+        <nodes xmi:id="_Bxc9JVFtEequLZ0OGbrLHA" name="" outgoing="_Bxc9J1FtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileType"/>
+        </nodes>
+        <nodes xmi:id="_Bxc9JlFtEequLZ0OGbrLHA" name="" incoming="_Bxc9J1FtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileTypeAlternative"/>
+        </nodes>
+        <edges xmi:id="_Bxc9J1FtEequLZ0OGbrLHA" source="_Bxc9JVFtEequLZ0OGbrLHA" target="_Bxc9JlFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileType/FileTypeAlternative"/>
+        </edges>
+      </lhs>
+      <rhs xmi:id="_Bxc9KFFtEequLZ0OGbrLHA" name="Rhs">
+        <nodes xmi:id="_Bxc9KVFtEequLZ0OGbrLHA" name="" outgoing="_Bxc9LFFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileType"/>
+        </nodes>
+        <nodes xmi:id="_Bxc9KlFtEequLZ0OGbrLHA" name="" incoming="_Bxc9LFFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileTypeAlternative"/>
+          <attributes xmi:id="_Bxc9K1FtEequLZ0OGbrLHA" value="false">
+            <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileTypeAlternative/selected"/>
+          </attributes>
+        </nodes>
+        <edges xmi:id="_Bxc9LFFtEequLZ0OGbrLHA" source="_Bxc9KVFtEequLZ0OGbrLHA" target="_Bxc9KlFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FileType/FileTypeAlternative"/>
+        </edges>
+      </rhs>
+      <mappings xmi:id="_Bxc9LVFtEequLZ0OGbrLHA" origin="_Bxc9JVFtEequLZ0OGbrLHA" image="_Bxc9KVFtEequLZ0OGbrLHA"/>
+      <mappings xmi:id="_Bxc9LlFtEequLZ0OGbrLHA" origin="_Bxc9JlFtEequLZ0OGbrLHA" image="_Bxc9KlFtEequLZ0OGbrLHA"/>
+      <multiMappings xmi:id="_Bxc9L1FtEequLZ0OGbrLHA" origin="_Bxc89FFtEequLZ0OGbrLHA" image="_Bxc9JVFtEequLZ0OGbrLHA"/>
+      <multiMappings xmi:id="_Bxc9MFFtEequLZ0OGbrLHA" origin="_Bxc9BlFtEequLZ0OGbrLHA" image="_Bxc9KVFtEequLZ0OGbrLHA"/>
+    </multiRules>
+  </units>
+</henshin:Module>

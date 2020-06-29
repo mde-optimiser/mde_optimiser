@@ -1,20 +1,23 @@
 # Travis CI build file
 
 language: java
+install: 
+    - sudo apt-get install ant
 
 cache:
      directories:
         - $HOME/.m2
 
 jdk:
-  - oraclejdk11
+    - oraclejdk11
+
+services:
+    - xvfb
 
 before_script:
     - cd build/ant
     - pwd
     - "export DISPLAY=:99.0"
-    - "sh -e /etc/init.d/xvfb start"
-    - sleep 3 # give xvfb some time to start
 
 script:
     # This bypasses an issue on the travis CI platform where a connection is made through a proxy and
