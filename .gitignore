@@ -1,6 +1,11 @@
-Ignore Intellij project files
+#Ignore Intellij project files
 *.iml
 .idea/
+
+#Ignore Eclipse project files
+.settings/
+.classpath
+.project
 
 # XTend Ignore Files
 bin
@@ -37,6 +42,7 @@ profiler/
 libraries/rulegen/src/resources/cases/
 libraries/rulegen/src/**/*.henshin_diagram
 libraries/rulegen/src/resources/expected/new/
+libraries/rulegen/src/resources/expected/new/iterative/
 
 # Ignore CBIAggr workspace directory created by.antlr headless Eclipse
 build/ant/workspace/
@@ -52,6 +58,8 @@ repositories/output/
 #Ignore target file generated from template
 interfaces/eclipse/mopt/xtext/src/uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.mopt.xtext.target/uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.mopt.xtext.target.target
 
+languages/mopt/xtext/uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext/src/main/java/**/*.xtend
+
 languages/mopt/xtext/src/.antlr-generator-3.2.0-patch.jar
 languages/mopt/xtext/src/.flattened-pom.xml
 languages/mopt/xtext/.antlr-generator-3.2.0-patch.jar
@@ -61,3 +69,8 @@ node_modules/
 
 # Ignore results folders
 mdeo-results/
+
+# Ignore generated pom file
+
+build/maven/pom.xml
+libraries/rulegen/src/resources/iterative/new/iterative/

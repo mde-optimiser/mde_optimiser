@@ -1,18 +1,9 @@
 package uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.mutation.selection;
 
 import org.eclipse.emf.henshin.model.Unit;
-import org.moeaframework.Instrumenter;
-import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmSpec;
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.guidance.Solution;
 
 public interface OperatorSelectionStrategy {
-
-  /**
-   * Invoked when the search starts.
-   *
-   * @param algorithmSpec configured algorithm spec
-   * @param algorithmStepInstrumenter algorithm step size instrumenter
-   */
-  void initialize(AlgorithmSpec algorithmSpec, Instrumenter algorithmStepInstrumenter);
 
   /** Register a tried operator in the current step. */
   void addTriedOperator(Unit operator);
@@ -33,5 +24,5 @@ public interface OperatorSelectionStrategy {
    *
    * @return next untried operator to be applied
    */
-  Unit getNextOperator();
+  Unit getNextOperator(Solution solution);
 }

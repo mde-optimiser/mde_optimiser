@@ -152,13 +152,13 @@
       <nodes xmi:id="_MBdccBXaEeapG6DfWhSTtQ" outgoing="_PDOkUBXaEeapG6DfWhSTtQ _PSl2ABXaEeapG6DfWhSTtQ _QJu5YBXaEeapG6DfWhSTtQ">
         <type href="architectureCRA.ecore#//ClassModel"/>
       </nodes>
-      <nodes xmi:id="_MXyRwBXaEeapG6DfWhSTtQ" name="c1" incoming="_PDOkUBXaEeapG6DfWhSTtQ _XvquEIhEEee7qaBoH-VMlg" outgoing="_RhogcBXaEeapG6DfWhSTtQ">
+      <nodes xmi:id="_MXyRwBXaEeapG6DfWhSTtQ" name="c1" incoming="_PDOkUBXaEeapG6DfWhSTtQ" outgoing="_RhogcBXaEeapG6DfWhSTtQ">
         <type href="architectureCRA.ecore#//Class"/>
       </nodes>
       <nodes xmi:id="_MeDR0BXaEeapG6DfWhSTtQ" name="c2" incoming="_PSl2ABXaEeapG6DfWhSTtQ">
         <type href="architectureCRA.ecore#//Class"/>
       </nodes>
-      <nodes xmi:id="_M0LS0BXaEeapG6DfWhSTtQ" incoming="_QJu5YBXaEeapG6DfWhSTtQ _RhogcBXaEeapG6DfWhSTtQ" outgoing="_XvquEIhEEee7qaBoH-VMlg">
+      <nodes xmi:id="_M0LS0BXaEeapG6DfWhSTtQ" incoming="_QJu5YBXaEeapG6DfWhSTtQ _RhogcBXaEeapG6DfWhSTtQ">
         <type href="architectureCRA.ecore#//Feature"/>
       </nodes>
       <edges xmi:id="_PDOkUBXaEeapG6DfWhSTtQ" source="_MBdccBXaEeapG6DfWhSTtQ" target="_MXyRwBXaEeapG6DfWhSTtQ">
@@ -173,9 +173,6 @@
       <edges xmi:id="_RhogcBXaEeapG6DfWhSTtQ" source="_MXyRwBXaEeapG6DfWhSTtQ" target="_M0LS0BXaEeapG6DfWhSTtQ">
         <type href="architectureCRA.ecore#//Class/encapsulates"/>
       </edges>
-      <edges xmi:id="_XvquEIhEEee7qaBoH-VMlg" source="_M0LS0BXaEeapG6DfWhSTtQ" target="_MXyRwBXaEeapG6DfWhSTtQ">
-        <type href="architectureCRA.ecore#//Feature/isEncapsulatedBy"/>
-      </edges>
     </lhs>
     <rhs xmi:id="_KTqd4BXaEeapG6DfWhSTtQ" name="Rhs">
       <nodes xmi:id="_MBdccRXaEeapG6DfWhSTtQ" outgoing="_PDOkURXaEeapG6DfWhSTtQ _PSl2ARXaEeapG6DfWhSTtQ _QJu5YRXaEeapG6DfWhSTtQ">
@@ -184,10 +181,10 @@
       <nodes xmi:id="_MXyRwRXaEeapG6DfWhSTtQ" name="c1" incoming="_PDOkURXaEeapG6DfWhSTtQ">
         <type href="architectureCRA.ecore#//Class"/>
       </nodes>
-      <nodes xmi:id="_MeDR0RXaEeapG6DfWhSTtQ" name="c2" incoming="_PSl2ARXaEeapG6DfWhSTtQ _Yd9-gIhEEee7qaBoH-VMlg" outgoing="_QwzgcBXaEeapG6DfWhSTtQ">
+      <nodes xmi:id="_MeDR0RXaEeapG6DfWhSTtQ" name="c2" incoming="_PSl2ARXaEeapG6DfWhSTtQ" outgoing="_QwzgcBXaEeapG6DfWhSTtQ">
         <type href="architectureCRA.ecore#//Class"/>
       </nodes>
-      <nodes xmi:id="_M0LS0RXaEeapG6DfWhSTtQ" incoming="_QJu5YRXaEeapG6DfWhSTtQ _QwzgcBXaEeapG6DfWhSTtQ" outgoing="_Yd9-gIhEEee7qaBoH-VMlg">
+      <nodes xmi:id="_M0LS0RXaEeapG6DfWhSTtQ" incoming="_QJu5YRXaEeapG6DfWhSTtQ _QwzgcBXaEeapG6DfWhSTtQ">
         <type href="architectureCRA.ecore#//Feature"/>
       </nodes>
       <edges xmi:id="_PDOkURXaEeapG6DfWhSTtQ" source="_MBdccRXaEeapG6DfWhSTtQ" target="_MXyRwRXaEeapG6DfWhSTtQ">
@@ -201,9 +198,6 @@
       </edges>
       <edges xmi:id="_QwzgcBXaEeapG6DfWhSTtQ" source="_MeDR0RXaEeapG6DfWhSTtQ" target="_M0LS0RXaEeapG6DfWhSTtQ">
         <type href="architectureCRA.ecore#//Class/encapsulates"/>
-      </edges>
-      <edges xmi:id="_Yd9-gIhEEee7qaBoH-VMlg" source="_M0LS0RXaEeapG6DfWhSTtQ" target="_MeDR0RXaEeapG6DfWhSTtQ">
-        <type href="architectureCRA.ecore#//Feature/isEncapsulatedBy"/>
       </edges>
     </rhs>
     <mappings xmi:id="_MBdcchXaEeapG6DfWhSTtQ" origin="_MBdccBXaEeapG6DfWhSTtQ" image="_MBdccRXaEeapG6DfWhSTtQ"/>
@@ -252,209 +246,5 @@
       </nodes>
     </rhs>
     <mappings xmi:id="_g7LychXcEeaaFYH0yhaZhQ" origin="_g7LycBXcEeaaFYH0yhaZhQ" image="_g7LycRXcEeaaFYH0yhaZhQ"/>
-  </units>
-  <units xsi:type="henshin:Rule" xmi:id="_fyVrYIhBEee7qaBoH-VMlg" name="swapFeature">
-    <lhs xmi:id="_fyW5gIhBEee7qaBoH-VMlg" name="Lhs">
-      <nodes xmi:id="_lLKKMIhBEee7qaBoH-VMlg" outgoing="_quNjEIhBEee7qaBoH-VMlg _rNb1sIhBEee7qaBoH-VMlg _rc8RUIhBEee7qaBoH-VMlg">
-        <type href="architectureCRA.ecore#//ClassModel"/>
-      </nodes>
-      <nodes xmi:id="_mPq7MIhBEee7qaBoH-VMlg" outgoing="_sjjUEIhBEee7qaBoH-VMlg">
-        <type href="architectureCRA.ecore#//Class"/>
-      </nodes>
-      <nodes xmi:id="_nIahEIhBEee7qaBoH-VMlg" incoming="_rNb1sIhBEee7qaBoH-VMlg" outgoing="_4ODMUIhBEee7qaBoH-VMlg">
-        <type href="architectureCRA.ecore#//Class"/>
-      </nodes>
-      <nodes xmi:id="_ofFZEIhBEee7qaBoH-VMlg" incoming="_quNjEIhBEee7qaBoH-VMlg _sjjUEIhBEee7qaBoH-VMlg">
-        <type href="architectureCRA.ecore#//Feature"/>
-      </nodes>
-      <nodes xmi:id="_pvIrsIhBEee7qaBoH-VMlg" incoming="_rc8RUIhBEee7qaBoH-VMlg _4ODMUIhBEee7qaBoH-VMlg">
-        <type href="architectureCRA.ecore#//Feature"/>
-      </nodes>
-      <edges xmi:id="_quNjEIhBEee7qaBoH-VMlg" source="_lLKKMIhBEee7qaBoH-VMlg" target="_ofFZEIhBEee7qaBoH-VMlg">
-        <type href="architectureCRA.ecore#//ClassModel/features"/>
-      </edges>
-      <edges xmi:id="_rNb1sIhBEee7qaBoH-VMlg" source="_lLKKMIhBEee7qaBoH-VMlg" target="_nIahEIhBEee7qaBoH-VMlg">
-        <type href="architectureCRA.ecore#//ClassModel/classes"/>
-      </edges>
-      <edges xmi:id="_rc8RUIhBEee7qaBoH-VMlg" source="_lLKKMIhBEee7qaBoH-VMlg" target="_pvIrsIhBEee7qaBoH-VMlg">
-        <type href="architectureCRA.ecore#//ClassModel/features"/>
-      </edges>
-      <edges xmi:id="_sjjUEIhBEee7qaBoH-VMlg" source="_mPq7MIhBEee7qaBoH-VMlg" target="_ofFZEIhBEee7qaBoH-VMlg">
-        <type href="architectureCRA.ecore#//Class/encapsulates"/>
-      </edges>
-      <edges xmi:id="_4ODMUIhBEee7qaBoH-VMlg" source="_nIahEIhBEee7qaBoH-VMlg" target="_pvIrsIhBEee7qaBoH-VMlg">
-        <type href="architectureCRA.ecore#//Class/encapsulates"/>
-      </edges>
-      <formula xsi:type="henshin:NestedCondition" xmi:id="_SpJ1UohGEee7qaBoH-VMlg">
-        <conclusion xmi:id="_SpJ1U4hGEee7qaBoH-VMlg">
-          <nodes xmi:id="_SpJ1VIhGEee7qaBoH-VMlg" outgoing="_SpJ1WIhGEee7qaBoH-VMlg _SpKcYYhGEee7qaBoH-VMlg _SpKcZIhGEee7qaBoH-VMlg">
-            <type href="architectureCRA.ecore#//ClassModel"/>
-          </nodes>
-          <nodes xmi:id="_SpJ1VohGEee7qaBoH-VMlg" incoming="_SpJ1WIhGEee7qaBoH-VMlg _SpKcZ4hGEee7qaBoH-VMlg">
-            <type href="architectureCRA.ecore#//Feature"/>
-          </nodes>
-          <nodes xmi:id="_SpJ1WYhGEee7qaBoH-VMlg" incoming="_SpKcYYhGEee7qaBoH-VMlg _bXYwwIhGEee7qaBoH-VMlg" outgoing="_SpKcaIhGEee7qaBoH-VMlg _aMd1wIhGEee7qaBoH-VMlg">
-            <type href="architectureCRA.ecore#//Class"/>
-          </nodes>
-          <nodes xmi:id="_SpKcYohGEee7qaBoH-VMlg" incoming="_SpKcZIhGEee7qaBoH-VMlg _SpKcaIhGEee7qaBoH-VMlg">
-            <type href="architectureCRA.ecore#//Feature"/>
-          </nodes>
-          <nodes xmi:id="_SpKcZYhGEee7qaBoH-VMlg" incoming="_T1HSIIhGEee7qaBoH-VMlg" outgoing="_SpKcZ4hGEee7qaBoH-VMlg _W4YO0IhGEee7qaBoH-VMlg">
-            <type href="architectureCRA.ecore#//Class"/>
-          </nodes>
-          <nodes xmi:id="_SpIAIIhGEee7qaBoH-VMlg" incoming="_W4YO0IhGEee7qaBoH-VMlg" outgoing="_T1HSIIhGEee7qaBoH-VMlg">
-            <type href="architectureCRA.ecore#//Feature"/>
-          </nodes>
-          <nodes xmi:id="_ZM_VwIhGEee7qaBoH-VMlg" incoming="_aMd1wIhGEee7qaBoH-VMlg" outgoing="_bXYwwIhGEee7qaBoH-VMlg">
-            <type href="architectureCRA.ecore#//Feature"/>
-          </nodes>
-          <edges xmi:id="_SpJ1WIhGEee7qaBoH-VMlg" source="_SpJ1VIhGEee7qaBoH-VMlg" target="_SpJ1VohGEee7qaBoH-VMlg">
-            <type href="architectureCRA.ecore#//ClassModel/features"/>
-          </edges>
-          <edges xmi:id="_SpKcYYhGEee7qaBoH-VMlg" source="_SpJ1VIhGEee7qaBoH-VMlg" target="_SpJ1WYhGEee7qaBoH-VMlg">
-            <type href="architectureCRA.ecore#//ClassModel/classes"/>
-          </edges>
-          <edges xmi:id="_SpKcZIhGEee7qaBoH-VMlg" source="_SpJ1VIhGEee7qaBoH-VMlg" target="_SpKcYohGEee7qaBoH-VMlg">
-            <type href="architectureCRA.ecore#//ClassModel/features"/>
-          </edges>
-          <edges xmi:id="_SpKcZ4hGEee7qaBoH-VMlg" source="_SpKcZYhGEee7qaBoH-VMlg" target="_SpJ1VohGEee7qaBoH-VMlg">
-            <type href="architectureCRA.ecore#//Class/encapsulates"/>
-          </edges>
-          <edges xmi:id="_SpKcaIhGEee7qaBoH-VMlg" source="_SpJ1WYhGEee7qaBoH-VMlg" target="_SpKcYohGEee7qaBoH-VMlg">
-            <type href="architectureCRA.ecore#//Class/encapsulates"/>
-          </edges>
-          <edges xmi:id="_T1HSIIhGEee7qaBoH-VMlg" source="_SpIAIIhGEee7qaBoH-VMlg" target="_SpKcZYhGEee7qaBoH-VMlg">
-            <type href="architectureCRA.ecore#//Feature/isEncapsulatedBy"/>
-          </edges>
-          <edges xmi:id="_W4YO0IhGEee7qaBoH-VMlg" source="_SpKcZYhGEee7qaBoH-VMlg" target="_SpIAIIhGEee7qaBoH-VMlg">
-            <type href="architectureCRA.ecore#//Class/encapsulates"/>
-          </edges>
-          <edges xmi:id="_aMd1wIhGEee7qaBoH-VMlg" source="_SpJ1WYhGEee7qaBoH-VMlg" target="_ZM_VwIhGEee7qaBoH-VMlg">
-            <type href="architectureCRA.ecore#//Class/encapsulates"/>
-          </edges>
-          <edges xmi:id="_bXYwwIhGEee7qaBoH-VMlg" source="_ZM_VwIhGEee7qaBoH-VMlg" target="_SpJ1WYhGEee7qaBoH-VMlg">
-            <type href="architectureCRA.ecore#//Feature/isEncapsulatedBy"/>
-          </edges>
-        </conclusion>
-        <mappings xmi:id="_SpJ1VYhGEee7qaBoH-VMlg" origin="_lLKKMIhBEee7qaBoH-VMlg" image="_SpJ1VIhGEee7qaBoH-VMlg"/>
-        <mappings xmi:id="_SpJ1V4hGEee7qaBoH-VMlg" origin="_ofFZEIhBEee7qaBoH-VMlg" image="_SpJ1VohGEee7qaBoH-VMlg"/>
-        <mappings xmi:id="_SpKcYIhGEee7qaBoH-VMlg" origin="_nIahEIhBEee7qaBoH-VMlg" image="_SpJ1WYhGEee7qaBoH-VMlg"/>
-        <mappings xmi:id="_SpKcY4hGEee7qaBoH-VMlg" origin="_pvIrsIhBEee7qaBoH-VMlg" image="_SpKcYohGEee7qaBoH-VMlg"/>
-        <mappings xmi:id="_SpKcZohGEee7qaBoH-VMlg" origin="_mPq7MIhBEee7qaBoH-VMlg" image="_SpKcZYhGEee7qaBoH-VMlg"/>
-      </formula>
-    </lhs>
-    <rhs xmi:id="_fyW5gYhBEee7qaBoH-VMlg" name="Rhs">
-      <nodes xmi:id="_lLKKMYhBEee7qaBoH-VMlg" outgoing="_quNjEYhBEee7qaBoH-VMlg _rNb1sYhBEee7qaBoH-VMlg _rc8RUYhBEee7qaBoH-VMlg _q_TTEIhBEee7qaBoH-VMlg">
-        <type href="architectureCRA.ecore#//ClassModel"/>
-      </nodes>
-      <nodes xmi:id="_mPq7MYhBEee7qaBoH-VMlg" incoming="_q_TTEIhBEee7qaBoH-VMlg" outgoing="_4pQhoIhBEee7qaBoH-VMlg">
-        <type href="architectureCRA.ecore#//Class"/>
-      </nodes>
-      <nodes xmi:id="_nIahEYhBEee7qaBoH-VMlg" incoming="_rNb1sYhBEee7qaBoH-VMlg" outgoing="_uZN1MIhBEee7qaBoH-VMlg">
-        <type href="architectureCRA.ecore#//Class"/>
-      </nodes>
-      <nodes xmi:id="_ofFZEYhBEee7qaBoH-VMlg" incoming="_quNjEYhBEee7qaBoH-VMlg _uZN1MIhBEee7qaBoH-VMlg">
-        <type href="architectureCRA.ecore#//Feature"/>
-      </nodes>
-      <nodes xmi:id="_pvJSwIhBEee7qaBoH-VMlg" incoming="_rc8RUYhBEee7qaBoH-VMlg _4pQhoIhBEee7qaBoH-VMlg">
-        <type href="architectureCRA.ecore#//Feature"/>
-      </nodes>
-      <edges xmi:id="_quNjEYhBEee7qaBoH-VMlg" source="_lLKKMYhBEee7qaBoH-VMlg" target="_ofFZEYhBEee7qaBoH-VMlg">
-        <type href="architectureCRA.ecore#//ClassModel/features"/>
-      </edges>
-      <edges xmi:id="_rNb1sYhBEee7qaBoH-VMlg" source="_lLKKMYhBEee7qaBoH-VMlg" target="_nIahEYhBEee7qaBoH-VMlg">
-        <type href="architectureCRA.ecore#//ClassModel/classes"/>
-      </edges>
-      <edges xmi:id="_rc8RUYhBEee7qaBoH-VMlg" source="_lLKKMYhBEee7qaBoH-VMlg" target="_pvJSwIhBEee7qaBoH-VMlg">
-        <type href="architectureCRA.ecore#//ClassModel/features"/>
-      </edges>
-      <edges xmi:id="_uZN1MIhBEee7qaBoH-VMlg" source="_nIahEYhBEee7qaBoH-VMlg" target="_ofFZEYhBEee7qaBoH-VMlg">
-        <type href="architectureCRA.ecore#//Class/encapsulates"/>
-      </edges>
-      <edges xmi:id="_4pQhoIhBEee7qaBoH-VMlg" source="_mPq7MYhBEee7qaBoH-VMlg" target="_pvJSwIhBEee7qaBoH-VMlg">
-        <type href="architectureCRA.ecore#//Class/encapsulates"/>
-      </edges>
-      <edges xmi:id="_q_TTEIhBEee7qaBoH-VMlg" source="_lLKKMYhBEee7qaBoH-VMlg" target="_mPq7MYhBEee7qaBoH-VMlg">
-        <type href="architectureCRA.ecore#//ClassModel/classes"/>
-      </edges>
-    </rhs>
-    <mappings xmi:id="_lLKKMohBEee7qaBoH-VMlg" origin="_lLKKMIhBEee7qaBoH-VMlg" image="_lLKKMYhBEee7qaBoH-VMlg"/>
-    <mappings xmi:id="_mPq7MohBEee7qaBoH-VMlg" origin="_mPq7MIhBEee7qaBoH-VMlg" image="_mPq7MYhBEee7qaBoH-VMlg"/>
-    <mappings xmi:id="_nIahEohBEee7qaBoH-VMlg" origin="_nIahEIhBEee7qaBoH-VMlg" image="_nIahEYhBEee7qaBoH-VMlg"/>
-    <mappings xmi:id="_ofFZEohBEee7qaBoH-VMlg" origin="_ofFZEIhBEee7qaBoH-VMlg" image="_ofFZEYhBEee7qaBoH-VMlg"/>
-    <mappings xmi:id="_pvJSwYhBEee7qaBoH-VMlg" origin="_pvIrsIhBEee7qaBoH-VMlg" image="_pvJSwIhBEee7qaBoH-VMlg"/>
-  </units>
-  <units xsi:type="henshin:Rule" xmi:id="_HvS6YIhHEee7qaBoH-VMlg" name="createClassAndTakeFeature">
-    <lhs xmi:id="_HvS6YYhHEee7qaBoH-VMlg" name="Lhs">
-      <nodes xmi:id="_HvS6YohHEee7qaBoH-VMlg" name="model" outgoing="_KaHh4IhHEee7qaBoH-VMlg">
-        <type href="architectureCRA.ecore#//ClassModel"/>
-      </nodes>
-      <nodes xmi:id="_HvS6Y4hHEee7qaBoH-VMlg" incoming="_NYVmgIhHEee7qaBoH-VMlg">
-        <type href="architectureCRA.ecore#//Feature"/>
-      </nodes>
-      <nodes xmi:id="_JzRkUIhHEee7qaBoH-VMlg" incoming="_KaHh4IhHEee7qaBoH-VMlg" outgoing="_NYVmgIhHEee7qaBoH-VMlg">
-        <type href="architectureCRA.ecore#//Class"/>
-      </nodes>
-      <edges xmi:id="_KaHh4IhHEee7qaBoH-VMlg" source="_HvS6YohHEee7qaBoH-VMlg" target="_JzRkUIhHEee7qaBoH-VMlg">
-        <type href="architectureCRA.ecore#//ClassModel/classes"/>
-      </edges>
-      <edges xmi:id="_NYVmgIhHEee7qaBoH-VMlg" source="_JzRkUIhHEee7qaBoH-VMlg" target="_HvS6Y4hHEee7qaBoH-VMlg">
-        <type href="architectureCRA.ecore#//Class/encapsulates"/>
-      </edges>
-      <formula xsi:type="henshin:NestedCondition" xmi:id="_LxQT84hHEee7qaBoH-VMlg">
-        <conclusion xmi:id="_LxQT9IhHEee7qaBoH-VMlg">
-          <nodes xmi:id="_LxQT9YhHEee7qaBoH-VMlg" name="model" outgoing="_LxQT-YhHEee7qaBoH-VMlg">
-            <type href="architectureCRA.ecore#//ClassModel"/>
-          </nodes>
-          <nodes xmi:id="_LxQT94hHEee7qaBoH-VMlg" incoming="_LxQT-YhHEee7qaBoH-VMlg _MXplkIhHEee7qaBoH-VMlg" outgoing="_MuxFEIhHEee7qaBoH-VMlg">
-            <type href="architectureCRA.ecore#//Class"/>
-          </nodes>
-          <nodes xmi:id="_LxQ7AIhHEee7qaBoH-VMlg">
-            <type href="architectureCRA.ecore#//Feature"/>
-          </nodes>
-          <nodes xmi:id="_LxQT8IhHEee7qaBoH-VMlg" incoming="_MuxFEIhHEee7qaBoH-VMlg" outgoing="_MXplkIhHEee7qaBoH-VMlg">
-            <type href="architectureCRA.ecore#//Feature"/>
-          </nodes>
-          <edges xmi:id="_LxQT-YhHEee7qaBoH-VMlg" source="_LxQT9YhHEee7qaBoH-VMlg" target="_LxQT94hHEee7qaBoH-VMlg">
-            <type href="architectureCRA.ecore#//ClassModel/classes"/>
-          </edges>
-          <edges xmi:id="_MXplkIhHEee7qaBoH-VMlg" source="_LxQT8IhHEee7qaBoH-VMlg" target="_LxQT94hHEee7qaBoH-VMlg">
-            <type href="architectureCRA.ecore#//Feature/isEncapsulatedBy"/>
-          </edges>
-          <edges xmi:id="_MuxFEIhHEee7qaBoH-VMlg" source="_LxQT94hHEee7qaBoH-VMlg" target="_LxQT8IhHEee7qaBoH-VMlg">
-            <type href="architectureCRA.ecore#//Class/encapsulates"/>
-          </edges>
-        </conclusion>
-        <mappings xmi:id="_LxQT9ohHEee7qaBoH-VMlg" origin="_HvS6YohHEee7qaBoH-VMlg" image="_LxQT9YhHEee7qaBoH-VMlg"/>
-        <mappings xmi:id="_LxQT-IhHEee7qaBoH-VMlg" origin="_JzRkUIhHEee7qaBoH-VMlg" image="_LxQT94hHEee7qaBoH-VMlg"/>
-        <mappings xmi:id="_LxQ7AYhHEee7qaBoH-VMlg" origin="_HvS6Y4hHEee7qaBoH-VMlg" image="_LxQ7AIhHEee7qaBoH-VMlg"/>
-      </formula>
-    </lhs>
-    <rhs xmi:id="_HvS6bohHEee7qaBoH-VMlg" name="Rhs">
-      <nodes xmi:id="_HvS6b4hHEee7qaBoH-VMlg" name="model" outgoing="_HvS6cohHEee7qaBoH-VMlg _KaHh4YhHEee7qaBoH-VMlg">
-        <type href="architectureCRA.ecore#//ClassModel"/>
-      </nodes>
-      <nodes xmi:id="_HvS6cIhHEee7qaBoH-VMlg" incoming="_HvS6cohHEee7qaBoH-VMlg" outgoing="_HvS6c4hHEee7qaBoH-VMlg">
-        <type href="architectureCRA.ecore#//Class"/>
-      </nodes>
-      <nodes xmi:id="_HvS6cYhHEee7qaBoH-VMlg" incoming="_HvS6c4hHEee7qaBoH-VMlg">
-        <type href="architectureCRA.ecore#//Feature"/>
-      </nodes>
-      <nodes xmi:id="_JzRkUYhHEee7qaBoH-VMlg" incoming="_KaHh4YhHEee7qaBoH-VMlg">
-        <type href="architectureCRA.ecore#//Class"/>
-      </nodes>
-      <edges xmi:id="_HvS6cohHEee7qaBoH-VMlg" source="_HvS6b4hHEee7qaBoH-VMlg" target="_HvS6cIhHEee7qaBoH-VMlg">
-        <type href="architectureCRA.ecore#//ClassModel/classes"/>
-      </edges>
-      <edges xmi:id="_HvS6c4hHEee7qaBoH-VMlg" source="_HvS6cIhHEee7qaBoH-VMlg" target="_HvS6cYhHEee7qaBoH-VMlg">
-        <type href="architectureCRA.ecore#//Class/encapsulates"/>
-      </edges>
-      <edges xmi:id="_KaHh4YhHEee7qaBoH-VMlg" source="_HvS6b4hHEee7qaBoH-VMlg" target="_JzRkUYhHEee7qaBoH-VMlg">
-        <type href="architectureCRA.ecore#//ClassModel/classes"/>
-      </edges>
-    </rhs>
-    <mappings xmi:id="_HvS6dIhHEee7qaBoH-VMlg" origin="_HvS6YohHEee7qaBoH-VMlg" image="_HvS6b4hHEee7qaBoH-VMlg"/>
-    <mappings xmi:id="_HvS6dYhHEee7qaBoH-VMlg" origin="_HvS6Y4hHEee7qaBoH-VMlg" image="_HvS6cYhHEee7qaBoH-VMlg"/>
-    <mappings xmi:id="_JzRkUohHEee7qaBoH-VMlg" origin="_JzRkUIhHEee7qaBoH-VMlg" image="_JzRkUYhHEee7qaBoH-VMlg"/>
   </units>
 </henshin:Module>

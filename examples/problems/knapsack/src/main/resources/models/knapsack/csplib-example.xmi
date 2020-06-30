@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ASCII"?>
+<models.knapsack:Plan xmi:version="2.0" 
+	xmlns:xmi="http://www.omg.org/XMI" 
+	xmlns:models.knapsack="http://uk.ac.kcl.inf.mdeoptimiser.examples/knapsack/1.0">
+  <items name="a" weight="15.0" gain="10.0"/>
+  <items name="b" weight="25.0" gain="20.0"/>
+  <items name="c" weight="45.0" gain="40.0"/>
+  <items name="d" weight="50.0" gain="40.0"/>
+  <items name="e" weight="60.0" gain="50.0"/>
+  <knapsacks capacity="100.0"/>
+</models.knapsack:Plan>
+

@@ -190,10 +190,8 @@ terminal ALGORITHM_FACTORY returns ecore::EString:
 	('moea'|'ecj')
 ;
 
-//One initial algorithm - org.moeaframework.algorithm.StandardAlgorithms
-//These should each require its own properties
 terminal ALGORITHM_NAME returns ecore::EString:
-	('eMOEA' | 'eNSGAII' | 'NSGAII'| 'NSGAIII' | 'SPEA2')
+	('NSGAII'| 'IBEA' | 'SPEA2' | 'SMSMOEA' | 'VEGA' | 'PESA2' | 'PAES' | 'RANDOM')
 ;
 
 terminal URL returns ecore::EString:

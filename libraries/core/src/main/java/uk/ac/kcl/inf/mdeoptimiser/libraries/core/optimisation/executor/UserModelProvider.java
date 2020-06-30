@@ -4,7 +4,6 @@ import com.google.common.collect.Lists;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.LinkedList;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.henshin.model.resource.HenshinResourceSet;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.IModelInitialiser;
@@ -36,17 +35,17 @@ public class UserModelProvider implements IModelProvider {
       e.printStackTrace();
       throw new RuntimeException("Unable to load model from: " + path);
     }
-    resource.getAllContents().next();
+    var model = resource.getContents().get(0);
 
     /**
      * If there is a model initialiser, run it on models after they have been loaded from the
      * resource set.
      */
     if (this.modelInitialiser != null) {
-      return modelInitialiser.initialise(resource.getAllContents().next());
+      return modelInitialiser.initialise(model);
     }
 
-    return new Solution(resource.getAllContents().next(), new LinkedList<String>());
+    return new Solution(model);
   }
 
   public Iterator<Solution> initialModels(EPackage metamodel) {

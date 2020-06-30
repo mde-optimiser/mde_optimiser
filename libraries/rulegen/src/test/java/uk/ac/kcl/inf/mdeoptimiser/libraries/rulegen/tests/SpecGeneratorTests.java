@@ -1,5 +1,7 @@
 package uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.tests;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,22 +15,20 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.henshin.model.resource.HenshinResourceFactory;
 import org.eclipse.emf.henshin.model.resource.HenshinResourceSet;
-import org.hamcrest.collection.IsIterableContainingInAnyOrder;
-
 import org.eclipse.xtext.testing.extensions.InjectionExtension;
+import org.hamcrest.collection.IsIterableContainingInAnyOrder;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import static org.hamcrest.MatcherAssert.assertThat;
-import uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.metamodel.Multiplicity;
-import uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.tests.utils.MetamodelLoader;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.generator.specs.RepairSpec;
-import uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.metamodel.MetamodelWrapper;
-import uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.metamodel.RuleSpec;
-import uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.generator.specs.SpecsGenerator;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.generator.specs.RepairSpecType;
+import uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.generator.specs.SpecsGenerator;
+import uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.metamodel.MetamodelWrapper;
+import uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.metamodel.Multiplicity;
+import uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.metamodel.RuleSpec;
+import uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.tests.utils.MetamodelLoader;
 
 @ExtendWith(InjectionExtension.class)
 public class SpecGeneratorTests {
@@ -70,7 +70,7 @@ public class SpecGeneratorTests {
   public List<RepairSpec> getRepairSpecsFromSet(Set<List<RepairSpec>> combinations) {
     var generatedSpecs = new ArrayList<RepairSpec>();
 
-    combinations.forEach ( combination -> generatedSpecs.addAll(combination));
+    combinations.forEach(combination -> generatedSpecs.addAll(combination));
 
     return generatedSpecs;
   }
@@ -113,15 +113,16 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-
-    });
-
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
   }
   // 0 .. l
   /*
@@ -148,20 +149,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 0 .. *
   /*
    * Create node multiplicity pattern ([0..1] to [0..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_01_0Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_01_0Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -181,13 +187,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. 1
   /*
@@ -214,13 +224,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. l
   /*
@@ -247,20 +261,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. *
   /*
    * Create node multiplicity pattern ([0..1] to [1..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_01_1Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_01_1Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -280,15 +299,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // k .. k
   /*
@@ -315,13 +336,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // k .. l
   /*
@@ -348,20 +373,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // k .. *
   /*
    * Create node multiplicity pattern ([0..1] to [k..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_01_kStar_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_01_kStar_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -381,13 +411,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   //
   //
@@ -420,13 +454,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 0 .. l
   /*
@@ -453,20 +491,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 0 .. *
   /*
    * Create node multiplicity pattern ([0..n] to [0..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_0n_0Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_0n_0Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -486,13 +529,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. 1
   /*
@@ -519,13 +566,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. l
   /*
@@ -552,20 +603,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. *
   /*
    * Create node multiplicity pattern ([0..n] to [1..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_0n_1Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_0n_1Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -585,13 +641,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // k .. k
   /*
@@ -618,13 +678,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // k .. l
   /*
@@ -651,20 +715,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // k .. *
   /*
    * Create node multiplicity pattern ([0..n] to [k..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_0n_kStar_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_0n_kStar_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -684,13 +753,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   //
   //
@@ -703,7 +776,8 @@ public class SpecGeneratorTests {
    * Create node multiplicity pattern ([0..*] to [0..1])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_0Star_01_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_0Star_01_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -723,20 +797,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 0 .. l
   /*
    * Create node multiplicity pattern ([0..*] to [0..l]
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_0Star_0l_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_0Star_0l_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -756,20 +835,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 0 .. *
   /*
    * Create node multiplicity pattern ([0..*] to [0..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_0Star_0Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_0Star_0Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -789,20 +873,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. 1
   /*
    * Create node multiplicity pattern ([0..*] to [1..1])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_0Star_11_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_0Star_11_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -822,20 +911,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. l
   /*
    * Create node multiplicity pattern ([0..*] to [1..l])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_0Star_1l_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_0Star_1l_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -855,20 +949,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. *
   /*
    * Create node multiplicity pattern ([0..*] to [1..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_0Star_1Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_0Star_1Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -888,20 +987,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 2 .. 2
   /*
    * Create node multiplicity pattern ([0..*] to [k..k])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_0Star_kk_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_0Star_kk_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -921,20 +1025,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 2 .. l
   /*
    * Create node multiplicity pattern ([0..*] to [2..l])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_0Star_2l_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_0Star_2l_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -954,20 +1063,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 2 .. *
   /*
    * Create node multiplicity pattern ([0..*] to [2..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_0Star_2Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_0Star_2Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -987,13 +1101,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   //
   //
@@ -1026,13 +1144,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 0 .. l
   /*
@@ -1059,20 +1181,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 0 .. *
   /*
    * Create node multiplicity pattern ([1..1] to [0..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_11_0Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_11_0Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -1092,13 +1219,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. 1
   /*
@@ -1126,10 +1257,9 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-
-
-    assertThat(getRepairSpecsFromSet(combinations),
-            IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+    assertThat(
+        getRepairSpecsFromSet(combinations),
+        IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
     Assertions.assertEquals(0, combinations.size());
   }
 
@@ -1158,20 +1288,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. *
   /*
    * Create node multiplicity pattern ([1..1] to [1..*]
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_11_1Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_11_1Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -1194,13 +1329,17 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // k .. k
   /*
@@ -1228,10 +1367,9 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-
-
-    assertThat(getRepairSpecsFromSet(combinations),
-            IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+    assertThat(
+        getRepairSpecsFromSet(combinations),
+        IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
     Assertions.assertEquals(0, combinations.size());
   }
 
@@ -1263,22 +1401,25 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // k .. *
   /*
    * Create node multiplicity pattern ([1..1] to [k..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_11_kStar_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_11_kStar_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -1301,15 +1442,17 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   //
   //
@@ -1342,14 +1485,18 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(2, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(2, combinations.size());
+            });
+  }
 
   // 0 .. l
   /*
@@ -1376,21 +1523,26 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(2, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(2, combinations.size());
+            });
+  }
 
   // 0 .. *
   /*
    * Create node multiplicity pattern ([1..n] to [0..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_1n_0Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_1n_0Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -1410,14 +1562,16 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    });
-
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
   }
 
   // 1 .. 1
@@ -1448,15 +1602,17 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
 
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. l
   /*
@@ -1486,23 +1642,26 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
 
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(2, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(2, combinations.size());
+            });
+  }
 
   // 1 .. *
   /*
    * Create node multiplicity pattern ([1..n] to [1..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_1n_1Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_1n_1Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -1525,15 +1684,17 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // k .. k
   /*
@@ -1560,13 +1721,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // k .. l
   /*
@@ -1596,23 +1761,26 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
 
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(2, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(2, combinations.size());
+            });
+  }
 
   // k .. *
   /*
    * Create node multiplicity pattern ([1..n] to [k..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_1n_kStar_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_1n_kStar_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -1635,15 +1803,17 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   //
   //
@@ -1656,7 +1826,8 @@ public class SpecGeneratorTests {
    * Create node multiplicity pattern ([1..*] to [0..1])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_1Star_01_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_1Star_01_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -1676,21 +1847,26 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(2, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(2, combinations.size());
+            });
+  }
 
   // 0 .. l
   /*
    * Create node multiplicity pattern ([1..*] to [0..l])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_1Star_0l_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_1Star_0l_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -1710,21 +1886,26 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(2, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(2, combinations.size());
+            });
+  }
 
   // 0 .. *
   /*
    * Create node multiplicity pattern ([1..*] to [0..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_1Star_0Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_1Star_0Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -1744,20 +1925,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. 1
   /*
    * Create node multiplicity pattern ([1..*] to [1..1])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_1Star_11_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_1Star_11_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -1780,22 +1966,25 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
 
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. l
   /*
    * Create node multiplicity pattern ([1..*] to [1..l])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_1Star_1l_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_1Star_1l_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -1818,23 +2007,26 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
 
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(2, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(2, combinations.size());
+            });
+  }
 
   // 1 .. *
   /*
    * Create node multiplicity pattern ([1..*] to [1..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_1Star_1Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_1Star_1Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -1857,22 +2049,25 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // k .. k
   /*
    * Create node multiplicity pattern ([1..*] to [k..k])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_1Star_kk_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_1Star_kk_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -1892,20 +2087,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // k .. l
   /*
    * Create node multiplicity pattern ([1..*] to [k..l])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_1Star_kl_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_1Star_kl_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -1928,23 +2128,26 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
 
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(2, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(2, combinations.size());
+            });
+  }
 
   // k .. *
   /*
    * Create node multiplicity pattern ([1..*] to [k..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_1Star_kStar_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_1Star_kStar_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -1967,15 +2170,17 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   //
   //
@@ -2011,15 +2216,17 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 0 .. l
   /*
@@ -2049,22 +2256,25 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 0 .. *
   /*
    * Create node multiplicity pattern ([n..n] to [0..*]
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_nn_0Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_nn_0Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -2087,15 +2297,17 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. 1
   /*
@@ -2125,15 +2337,17 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. l
   /*
@@ -2163,23 +2377,26 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
-      // expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR)));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+              // expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR)));
 
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. *
   /*
    * Create node multiplicity pattern ([n..n] to [1..*]
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_nn_1Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_nn_1Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -2202,15 +2419,17 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // k .. k
   /*
@@ -2241,16 +2460,15 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-//		node.getEReferences().forEach [edge |
-//					//expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
-//					//expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
-//					//expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR_MANY));
-//				]
+    //		node.getEReferences().forEach [edge |
+    //					//expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    //					//expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
+    //					//expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR_MANY));
+    //				]
 
-
-
-    assertThat(getRepairSpecsFromSet(combinations),
-            IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+    assertThat(
+        getRepairSpecsFromSet(combinations),
+        IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
     Assertions.assertEquals(0, combinations.size());
   }
 
@@ -2282,16 +2500,15 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-//		node.getEReferences().forEach (edge ->
-//					//expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
-//					//expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
-//					//expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR_MANY));
-//    );
+    //		node.getEReferences().forEach (edge ->
+    //					//expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    //					//expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
+    //					//expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR_MANY));
+    //    );
 
-
-
-    assertThat(getRepairSpecsFromSet(combinations),
-            IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+    assertThat(
+        getRepairSpecsFromSet(combinations),
+        IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
     Assertions.assertEquals(0, combinations.size());
   }
 
@@ -2323,22 +2540,25 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // k .. *
   /*
    * Create node multiplicity pattern ([n..n] to [k..*]
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_nn_kStar_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_nn_kStar_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -2361,15 +2581,17 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   //
   //
@@ -2402,15 +2624,19 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR_MANY));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR_MANY));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(3, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(3, combinations.size());
+            });
+  }
 
   // 0 .. l
   /*
@@ -2437,22 +2663,27 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR_MANY));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR_MANY));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(3, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(3, combinations.size());
+            });
+  }
 
   // 0 .. *
   /*
    * Create node multiplicity pattern ([n..m] to [0..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_nm_0Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_nm_0Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -2472,13 +2703,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. 1
   /*
@@ -2508,18 +2743,18 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR_MANY));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR_MANY));
 
-
-
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(2, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(2, combinations.size());
+            });
+  }
 
   // 1 .. l
   /*
@@ -2549,26 +2784,27 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR_MANY));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR_MANY));
 
-
-
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(3, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(3, combinations.size());
+            });
+  }
 
   // 1 .. *
   /*
    * Create node multiplicity pattern ([n..m] to [1..*]
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_nm_1Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_nm_1Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -2591,17 +2827,17 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-
-
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // k .. k
   /*
@@ -2628,14 +2864,18 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR_MANY));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR_MANY));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(2, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(2, combinations.size());
+            });
+  }
 
   // k .. l
   /*
@@ -2665,26 +2905,27 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR_MANY));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR_MANY));
 
-
-
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(3, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(3, combinations.size());
+            });
+  }
 
   // k .. *
   /*
    * Create node multiplicity pattern ([n..m] to [k..*]
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_nm_kStar_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_nm_kStar_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -2707,15 +2948,17 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   //
   //
@@ -2728,7 +2971,8 @@ public class SpecGeneratorTests {
    * Create node multiplicity pattern ([n..*] to [0..1])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_nStar_01_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_nStar_01_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -2748,22 +2992,27 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR_MANY));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR_MANY));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(3, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(3, combinations.size());
+            });
+  }
 
   // 0 .. l
   /*
    * Create node multiplicity pattern ([n..*] to [0..l])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_nStar_0l_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_nStar_0l_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -2783,24 +3032,27 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR_MANY));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR_MANY));
 
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(3, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(3, combinations.size());
+            });
+  }
 
   // 0 .. *
   /*
    * Create node multiplicity pattern ([n..*] to [0..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_nStar_0Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_nStar_0Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -2820,20 +3072,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. 1
   /*
    * Create node multiplicity pattern ([n..*] to [1..1]
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_nStar_11_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_nStar_11_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -2856,25 +3113,26 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR_MANY));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR_MANY));
 
-
-
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(2, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(2, combinations.size());
+            });
+  }
 
   // 1 .. l
   /*
    * Create node multiplicity pattern ([n..*] to [1..l]
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_nStar_1l_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_nStar_1l_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -2897,26 +3155,27 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR_MANY));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR_MANY));
 
-
-
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(3, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(3, combinations.size());
+            });
+  }
 
   // 1 .. *
   /*
    * Create node multiplicity pattern ([n..*] to [1..*]
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_nStar_1Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_nStar_1Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -2939,24 +3198,25 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-
-
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // k .. k
   /*
    * Create node multiplicity pattern ([n..*] to [k..k]
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_nStar_kk_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_nStar_kk_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -2979,21 +3239,26 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR_MANY));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR_MANY));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(2, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(2, combinations.size());
+            });
+  }
 
   // k .. l
   /*
    * Create node multiplicity pattern ([n..*] to [k..l]
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_nStar_kl_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_nStar_kl_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -3016,26 +3281,27 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR_MANY));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR));
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE_LB_REPAIR_MANY));
 
-
-
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(3, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(3, combinations.size());
+            });
+  }
 
   // k .. *
   /*
    * Create node multiplicity pattern ([n..*] to [k..*]
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_nStar_kStar_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenCreatingANodeWith_nStar_kStar_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -3058,17 +3324,17 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-
-
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // Multiple edges
   // TODO add tests for multiple edges and iterative repairs
@@ -3097,16 +3363,17 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CREATE));
 
-
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // /////////////////////////////////////////////////////////////////////////
   //
@@ -3146,13 +3413,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 0 .. l
   /*
@@ -3179,20 +3450,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 0 .. *
   /*
    * Delete node multiplicity pattern ([0..1] to [0..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_01_0Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_01_0Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -3212,13 +3488,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. 1
   /*
@@ -3245,13 +3525,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. l
   /*
@@ -3278,20 +3562,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. *
   /*
    * Delete node multiplicity pattern ([0..1] to [1..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_01_1Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_01_1Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -3311,21 +3600,24 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // k .. k
   /*
    * Delete node multiplicity pattern ([0..1] to [k..k])
    */
-  // TODO This I think is a bug as you can't do single repair, when ub of the opposite is > ub of the target node for repair
+  // TODO This I think is a bug as you can't do single repair, when ub of the opposite is > ub of
+  // the target node for repair
   @Test
   public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_01_kk_Multiplicity() {
 
@@ -3347,14 +3639,18 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR));
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR_MANY));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR));
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR_MANY));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(2, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(2, combinations.size());
+            });
+  }
 
   // k .. l
   /*
@@ -3381,20 +3677,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // k .. *
   /*
    * Delete node multiplicity pattern ([0..1] to [k..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_01_kStar_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_01_kStar_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -3414,13 +3715,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   //
   //
@@ -3453,13 +3758,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 0 .. l
   /*
@@ -3486,20 +3795,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 0 .. *
   /*
    * Delete node multiplicity pattern ([0..n] to [0..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_0n_0Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_0n_0Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -3519,13 +3833,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. 1
   /*
@@ -3552,13 +3870,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. l
   /*
@@ -3585,20 +3907,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. *
   /*
    * Delete node multiplicity pattern ([0..n] to [1..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_0n_1Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_0n_1Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -3618,15 +3945,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // k .. k
   /*
@@ -3653,14 +3982,18 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR));
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR_MANY));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR));
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR_MANY));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(2, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(2, combinations.size());
+            });
+  }
 
   // k .. l
   /*
@@ -3687,20 +4020,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // k .. *
   /*
    * Delete node multiplicity pattern ([0..n] to [k..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_0n_kStar_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_0n_kStar_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -3720,13 +4058,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   //
   //
@@ -3739,7 +4081,8 @@ public class SpecGeneratorTests {
    * Delete node multiplicity pattern ([0..*] to [0..1])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_0Star_01_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_0Star_01_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -3759,20 +4102,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 0 .. l
   /*
    * Delete node multiplicity pattern ([0..*] to [0..l])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_0Star_0l_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_0Star_0l_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -3792,20 +4140,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 0 .. *
   /*
    * Delete node multiplicity pattern ([0..*] to [0..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_0Star_0Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_0Star_0Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -3825,20 +4178,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. 1
   /*
    * Delete node multiplicity pattern ([0..*] to [1..1])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_0Star_11_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_0Star_11_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -3858,20 +4216,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. l
   /*
    * Delete node multiplicity pattern ([0..*] to [1..l])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_0Star_1l_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_0Star_1l_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -3891,20 +4254,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. *
   /*
    * Delete node multiplicity pattern ([0..*] to [1..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_0Star_1Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_0Star_1Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -3924,20 +4292,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 2 .. 2
   /*
    * Delete node multiplicity pattern ([0..*] to [k..k])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_0Star_kk_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_0Star_kk_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -3957,21 +4330,26 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR));
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR_MANY));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR));
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR_MANY));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(2, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(2, combinations.size());
+            });
+  }
 
   // 2 .. l
   /*
    * Delete node multiplicity pattern ([0..*] to [2..l])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_0Star_2l_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_0Star_2l_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -3991,20 +4369,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 2 .. *
   /*
    * Delete node multiplicity pattern ([0..*] to [2..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_0Star_2Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_0Star_2Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -4024,13 +4407,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   //
   //
@@ -4063,13 +4450,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 0 .. l
   /*
@@ -4096,20 +4487,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 0 .. *
   /*
    * Delete node multiplicity pattern ([1..1] to [0..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_11_0Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_11_0Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -4129,13 +4525,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. 1
   /*
@@ -4162,10 +4562,9 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-
-
-    assertThat(getRepairSpecsFromSet(combinations),
-            IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+    assertThat(
+        getRepairSpecsFromSet(combinations),
+        IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
     Assertions.assertEquals(0, combinations.size());
   }
 
@@ -4194,20 +4593,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. *
   /*
    * Delete node multiplicity pattern ([1..1] to [1..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_11_1Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_11_1Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -4227,15 +4631,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // k .. k
   /*
@@ -4262,10 +4668,9 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-
-
-    assertThat(getRepairSpecsFromSet(combinations),
-            IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+    assertThat(
+        getRepairSpecsFromSet(combinations),
+        IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
     Assertions.assertEquals(0, combinations.size());
   }
 
@@ -4294,20 +4699,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // k .. *
   /*
    * Delete node multiplicity pattern ([1..1] to [k..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_11_kStar_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_11_kStar_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -4327,13 +4737,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   //
   //
@@ -4366,13 +4780,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 0 .. l
   /*
@@ -4399,20 +4817,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 0 .. *
   /*
    * Delete node multiplicity pattern ([1..n] to [0..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_1n_0Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_1n_0Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -4432,13 +4855,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. 1
   /*
@@ -4465,13 +4892,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. l
   /*
@@ -4498,20 +4929,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. *
   /*
    * Delete node multiplicity pattern ([1..n] to [1..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_1n_1Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_1n_1Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -4531,13 +4967,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // k .. k
   /*
@@ -4564,13 +5004,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // k .. l
   /*
@@ -4597,20 +5041,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // k .. *
   /*
    * Delete node multiplicity pattern ([1..n] to [k..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_1n_kStar_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_1n_kStar_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -4630,14 +5079,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   //
   //
@@ -4650,7 +5102,8 @@ public class SpecGeneratorTests {
    * Delete node multiplicity pattern ([1..*] to [0..1])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_1Star_01_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_1Star_01_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -4670,20 +5123,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 0 .. l
   /*
    * Delete node multiplicity pattern ([1..*] to [0..l])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_1Star_0l_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_1Star_0l_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -4703,20 +5161,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 0 .. *
   /*
    * Delete node multiplicity pattern ([1..*] to [0..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_1Star_0Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_1Star_0Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -4736,20 +5199,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. 1
   /*
    * Delete node multiplicity pattern ([1..*] to [1..1])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_1Star_11_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_1Star_11_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -4769,20 +5237,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. l
   /*
    * Delete node multiplicity pattern ([1..*] to [1..l])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_1Star_1l_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_1Star_1l_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -4802,20 +5275,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. *
   /*
    * Delete node multiplicity pattern ([1..*] to [1..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_1Star_1Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_1Star_1Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -4835,20 +5313,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // k .. k
   /*
    * Delete node multiplicity pattern ([1..*] to [k..k])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_1Star_kk_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_1Star_kk_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -4868,22 +5351,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR));
 
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // k .. l
   /*
    * Delete node multiplicity pattern ([1..*] to [k..l])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_1Star_kl_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_1Star_kl_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -4903,22 +5389,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // k .. *
   /*
    * Delete node multiplicity pattern ([1..*] to [k..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_1Star_kStar_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_1Star_kStar_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -4938,13 +5427,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   //
   //
@@ -4980,14 +5473,17 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 0 .. l
   /*
@@ -5017,22 +5513,25 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 0 .. *
   /*
    * Delete node multiplicity pattern ([n..n] to [0..*]
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_nn_0Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_nn_0Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -5055,15 +5554,17 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. 1
   /*
@@ -5093,12 +5594,9 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-
-
-
-
-    assertThat(getRepairSpecsFromSet(combinations),
-            IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+    assertThat(
+        getRepairSpecsFromSet(combinations),
+        IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
     Assertions.assertEquals(0, combinations.size());
   }
 
@@ -5130,22 +5628,25 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. *
   /*
    * Delete node multiplicity pattern ([n..n] to [1..*]
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_nn_1Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_nn_1Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -5168,15 +5669,17 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // k .. k
   /*
@@ -5206,12 +5709,9 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-
-
-
-
-    assertThat(getRepairSpecsFromSet(combinations),
-            IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+    assertThat(
+        getRepairSpecsFromSet(combinations),
+        IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
     Assertions.assertEquals(0, combinations.size());
   }
 
@@ -5242,12 +5742,9 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-
-
-
-
-    assertThat(getRepairSpecsFromSet(combinations),
-            IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+    assertThat(
+        getRepairSpecsFromSet(combinations),
+        IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
     Assertions.assertEquals(0, combinations.size());
   }
 
@@ -5279,22 +5776,25 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // k .. *
   /*
    * Delete node multiplicity pattern ([n..n] to [k..*]
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_nn_kStar_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_nn_kStar_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -5317,15 +5817,17 @@ public class SpecGeneratorTests {
 
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-
-
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   //
   //
@@ -5358,13 +5860,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 0 .. l
   /*
@@ -5391,20 +5897,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 0 .. *
   /*
    * Delete node multiplicity pattern ([n..m] to [0..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_nm_0Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_nm_0Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -5424,13 +5935,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. 1
   /*
@@ -5457,14 +5972,19 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR));
-      // expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR_MANY)));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR));
+              // expectedSpecs.add(new RepairSpec(node, edge,
+              // RepairSpecType.DELETE_LB_REPAIR_MANY)));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. l
   /*
@@ -5491,20 +6011,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. *
   /*
    * Delete node multiplicity pattern ([n..m] to [1..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_nm_1Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_nm_1Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -5524,13 +6049,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // k .. k
   /*
@@ -5557,14 +6086,18 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR));
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR_MANY));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR));
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR_MANY));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(2, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(2, combinations.size());
+            });
+  }
 
   // k .. l
   /*
@@ -5591,22 +6124,28 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
-      // expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR));
-      // expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR_MANY)));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+              // expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR));
+              // expectedSpecs.add(new RepairSpec(node, edge,
+              // RepairSpecType.DELETE_LB_REPAIR_MANY)));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // k .. *
   /*
    * Delete node multiplicity pattern ([n..m] to [k..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_nm_kStar_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_nm_kStar_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -5626,13 +6165,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   //
   //
@@ -5645,7 +6188,8 @@ public class SpecGeneratorTests {
    * Delete node multiplicity pattern ([n..*] to [0..1])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_nStar_01_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_nStar_01_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -5665,20 +6209,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 0 .. l
   /*
    * Delete node multiplicity pattern ([n..*] to [0..l])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_nStar_0l_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_nStar_0l_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -5698,20 +6247,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 0 .. *
   /*
    * Delete node multiplicity pattern ([n..*] to [0..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_nStar_0Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_nStar_0Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -5731,20 +6285,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. 1
   /*
    * Delete node multiplicity pattern ([n..*] to [1..1])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_nStar_11_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_nStar_11_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -5764,20 +6323,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. l
   /*
    * Delete node multiplicity pattern ([n..*] to [1..l])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_nStar_1l_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_nStar_1l_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -5797,20 +6361,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // 1 .. *
   /*
    * Delete node multiplicity pattern ([n..*] to [1..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_nStar_1Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_nStar_1Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -5830,20 +6399,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // k .. k
   /*
    * Delete node multiplicity pattern ([n..*] to [k..k])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_nStar_kk_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_nStar_kk_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -5863,21 +6437,26 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR));
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR_MANY));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR));
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE_LB_REPAIR_MANY));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(2, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(2, combinations.size());
+            });
+  }
 
   // k .. l
   /*
    * Delete node multiplicity pattern ([n..*] to [k..l])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_nStar_kl_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_nStar_kl_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -5897,20 +6476,25 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // k .. *
   /*
    * Delete node multiplicity pattern ([n..*] to [k..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_nStar_kStar_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenDeletingANodeWith_nStar_kStar_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -5930,13 +6514,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.DELETE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // /////////////////////////////////////////////////////////////////////////
   //
@@ -5969,13 +6557,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.ADD));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.ADD));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   /*
    * Add edge multiplicity pattern ([0..1] to [1..2])
@@ -6001,19 +6593,24 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.ADD));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.ADD));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   /*
    * Add edge multiplicity pattern ([0..1] to [1..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenAddingAnEdgeWith_01_1Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenAddingAnEdgeWith_01_1Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -6033,19 +6630,24 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.ADD));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.ADD));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   /*
    * Add edge multiplicity pattern ([0..1] to [2..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenAddingAnEdgeWith_01_2Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenAddingAnEdgeWith_01_2Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -6065,13 +6667,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.ADD));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.ADD));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   /*
    * Add edge multiplicity pattern ([0..1] to [1..1])
@@ -6097,13 +6703,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   /*
    * Add edge multiplicity pattern ([0..1] to [2..2])
@@ -6129,19 +6739,24 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   /*
    * Add edge multiplicity pattern ([1..*] to [0..1])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenAddingAnEdgeWith_1Star_01_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenAddingAnEdgeWith_1Star_01_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -6161,19 +6776,24 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.ADD));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.ADD));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   /*
    * Add edge multiplicity pattern ([1..*] to [1..2])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenAddingAnEdgeWith_1Star_12_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenAddingAnEdgeWith_1Star_12_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -6193,19 +6813,24 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.ADD));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.ADD));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   /*
    * Add edge multiplicity pattern ([1..*] to [1..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenAddingAnEdgeWith_1Star_1Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenAddingAnEdgeWith_1Star_1Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -6225,19 +6850,24 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.ADD));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.ADD));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   /*
    * Add edge multiplicity pattern ([1..*] to [2..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenAddingAnEdgeWith_1Star_2Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenAddingAnEdgeWith_1Star_2Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -6257,19 +6887,24 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.ADD));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.ADD));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   /*
    * Add edge multiplicity pattern ([1..*] to [1..1])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenAddingAnEdgeWith_1Star_11_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenAddingAnEdgeWith_1Star_11_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -6289,19 +6924,24 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   /*
    * Add edge multiplicity pattern ([1..*] to [2..2])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenAddingAnEdgeWith_1Star_22_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenAddingAnEdgeWith_1Star_22_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -6321,13 +6961,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   /*
    * Add edge multiplicity pattern ([1..1] to [0..1])
@@ -6353,13 +6997,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   /*
    * Add edge multiplicity pattern ([1..1] to [1..2])
@@ -6385,19 +7033,24 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   /*
    * Add edge multiplicity pattern ([1..1] to [1..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenAddingAnEdgeWith_11_1Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenAddingAnEdgeWith_11_1Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -6417,19 +7070,24 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   /*
    * Add edge multiplicity pattern ([1..1] to [2..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenAddingAnEdgeWith_11_2Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenAddingAnEdgeWith_11_2Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -6449,13 +7107,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   /*
    * Add edge multiplicity pattern ([1..1] to [1..1])
@@ -6481,13 +7143,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   /*
    * Add edge multiplicity pattern ([1..1] to [2..2])
@@ -6513,19 +7179,24 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   /*
    * Add edge multiplicity pattern ([1..*] to [0..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenAddingAnEdgeWith_1Star_0Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenAddingAnEdgeWith_1Star_0Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -6545,13 +7216,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.ADD));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.ADD));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   // /////////////////////////////////////////////////////////////////////////
   //
@@ -6564,7 +7239,8 @@ public class SpecGeneratorTests {
    * Remove edge multiplicity pattern ([1..*] to [0..1])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenRemovingAnEdgeWith_1Star_01_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenRemovingAnEdgeWith_1Star_01_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -6584,19 +7260,24 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.REMOVE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.REMOVE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   /*
    * Remove edge multiplicity pattern ([0..*] to [0..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenRemovingAnEdgeWith_0Star_0Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenRemovingAnEdgeWith_0Star_0Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -6616,19 +7297,24 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.REMOVE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.REMOVE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   /*
    * Remove edge multiplicity pattern ([0..*] to [1..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenRemovingAnEdgeWith_0Star_1Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenRemovingAnEdgeWith_0Star_1Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -6648,19 +7334,24 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.REMOVE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.REMOVE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   /*
    * Remove edge multiplicity pattern ([0..*] to [2..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenRemovingAnEdgeWith_0Star_2Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenRemovingAnEdgeWith_0Star_2Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -6680,19 +7371,24 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.REMOVE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.REMOVE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   /*
    * Remove edge multiplicity pattern ([0..*] to [1..1])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenRemovingAnEdgeWith_0Star_11_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenRemovingAnEdgeWith_0Star_11_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -6712,19 +7408,24 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   /*
    * Remove edge multiplicity pattern ([0..*] to [2..2])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenRemovingAnEdgeWith_0Star_22_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenRemovingAnEdgeWith_0Star_22_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -6744,19 +7445,24 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   /*
    * Remove edge multiplicity pattern ([1..*] to [0..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenRemovingAnEdgeWith_1Star_0Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenRemovingAnEdgeWith_1Star_0Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -6776,19 +7482,24 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.REMOVE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.REMOVE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   /*
    * Remove edge multiplicity pattern ([1..*] to [1..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenRemovingAnEdgeWith_1Star_1Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenRemovingAnEdgeWith_1Star_1Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -6808,19 +7519,24 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.REMOVE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.REMOVE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   /*
    * Remove edge multiplicity pattern ([1..*] to [2..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenRemovingAnEdgeWith_1Star_2Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenRemovingAnEdgeWith_1Star_2Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -6840,19 +7556,24 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.REMOVE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.REMOVE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   /*
    * Remove edge multiplicity pattern ([1..*] to [1..1])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenRemovingAnEdgeWith_1Star_11_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenRemovingAnEdgeWith_1Star_11_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -6872,19 +7593,24 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   /*
    * Remove edge multiplicity pattern ([1..*] to [2..2])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenRemovingAnEdgeWith_1Star_22_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenRemovingAnEdgeWith_1Star_22_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -6904,19 +7630,24 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   /*
    * Remove edge multiplicity pattern ([1..1] to [0..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenRemovingAnEdgeWith_11_0Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenRemovingAnEdgeWith_11_0Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -6936,19 +7667,24 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   /*
    * Remove edge multiplicity pattern ([1..1] to [1..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenRemovingAnEdgeWith_11_1Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenRemovingAnEdgeWith_11_1Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -6968,13 +7704,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   /*
    * Remove edge multiplicity pattern ([1..1] to [1..1])
@@ -7000,19 +7740,24 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   /*
    * Remove edge multiplicity pattern ([2..2] to [0..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenRemovingAnEdgeWith_22_0Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenRemovingAnEdgeWith_22_0Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -7032,19 +7777,24 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   /*
    * Remove edge multiplicity pattern ([2..2] to [1..*])
    */
   @Test
-  public void assertThatTheCorrectSetOfRulesIsGeneratedWhenRemovingAnEdgeWith_22_1Star_Multiplicity() {
+  public void
+      assertThatTheCorrectSetOfRulesIsGeneratedWhenRemovingAnEdgeWith_22_1Star_Multiplicity() {
 
     // Original metamodel with 0..* 0..* multiplicities
     this.multiplicities.add(new Multiplicity("A", "edgeAB", 2, 2, this.metamodel));
@@ -7064,13 +7814,17 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 
   /*
    * Remove edge multiplicity pattern ([2..2] to [2..2])
@@ -7096,12 +7850,15 @@ public class SpecGeneratorTests {
     var node = metamodelWrapper.getNode(ruleSpec.getNode());
     var expectedSpecs = new ArrayList<RepairSpec>();
 
-    node.getEReferences().forEach(edge -> {
-      expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
+    node.getEReferences()
+        .forEach(
+            edge -> {
+              expectedSpecs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
 
-      assertThat(getRepairSpecsFromSet(combinations),
-              IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
-      Assertions.assertEquals(1, combinations.size());
-    }); }
-
+              assertThat(
+                  getRepairSpecsFromSet(combinations),
+                  IsIterableContainingInAnyOrder.containsInAnyOrder(expectedSpecs.toArray()));
+              Assertions.assertEquals(1, combinations.size());
+            });
+  }
 }

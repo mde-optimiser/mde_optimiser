@@ -1746,7 +1746,7 @@ public class MoptGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//terminal ALGORITHM_NAME:
-	//	'eMOEA' | 'eNSGAII' | 'NSGAII' | 'NSGAIII' | 'SPEA2';
+	//	'NSGAII' | 'IBEA' | 'SPEA2' | 'SMSMOEA' | 'VEGA' | 'PESA2' | 'PAES' | 'RANDOM';
 	public TerminalRule getALGORITHM_NAMERule() {
 		return tALGORITHM_NAME;
 	}

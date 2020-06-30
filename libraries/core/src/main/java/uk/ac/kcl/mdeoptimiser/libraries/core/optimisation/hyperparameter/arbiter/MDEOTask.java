@@ -22,7 +22,6 @@ import org.moeaframework.analysis.collector.Accumulator;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.Optimisation;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.OptimisationInterpreter;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.MoeaFrameworkAlgorithmConfiguration;
-import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.MoeaOptimisation;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.SearchResult;
 
 public class MDEOTask implements Callable<OptimizationResult> {
@@ -192,13 +191,15 @@ public class MDEOTask implements Callable<OptimizationResult> {
       String moptProjectPath,
       Optimisation optimisationSpec,
       MDEOHyperparametersConfiguration currentConfiguration) {
+
     var optimisationModel = EcoreUtil2.copy(optimisationSpec);
     var optimisationInterpreter = new OptimisationInterpreter(moptProjectPath, optimisationModel);
+
     var algorithmConfiguration =
         new MoeaFrameworkAlgorithmConfiguration(
             optimisationModel.getSolver(), optimisationInterpreter.getSolutionGenerator());
     algorithmConfiguration.updateParameters(currentConfiguration);
-    var moeaOptimisation = new MoeaOptimisation();
-    return moeaOptimisation.execute(algorithmConfiguration);
+
+    return optimisationInterpreter.start(algorithmConfiguration);
   }
 }

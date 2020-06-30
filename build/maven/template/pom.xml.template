@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001 XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>uk.ac.kcl.inf.mdeoptimiser</groupId>
   <artifactId>uk.ac.kcl.inf.mdeoptimiser.parent</artifactId>
@@ -14,12 +15,7 @@
     <module>../../interfaces/cli</module>
     <module>../../libraries/rulegen</module>
     <module>../../libraries/core</module>
-    <module>../../examples/problems/argumentation</module>
-    <module>../../examples/problems/cra</module>
-    <module>../../examples/problems/nrp</module>
-    <module>../../examples/problems/scrum-planning</module>
-    <module>../../examples/problems/stack</module>
-    <module>../../examples/generators/configuration</module>
+    <module>../../examples/problems</module>
   </modules>
 
   <properties>

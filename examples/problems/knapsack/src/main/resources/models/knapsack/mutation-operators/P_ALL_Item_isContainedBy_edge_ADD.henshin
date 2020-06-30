@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_BmUAkKRGEeqOweWgv_Iujg" name="P_ALL_Item_isContainedBy_edge_ADD" description="Adds to Item edge of type isContainedBy">
+  <imports href="http://uk.ac.kcl.inf.mdeoptimiser.examples/knapsack/1.0#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_BmUAkaRGEeqOweWgv_Iujg" name="addToItem_isContainedBy_Knapsack" description="Adds to Item's reference isContainedBy the target Knapsack">
+    <lhs xmi:id="_BmUAkqRGEeqOweWgv_Iujg" name="Lhs">
+      <nodes xmi:id="_BmUAk6RGEeqOweWgv_Iujg" name="Selected">
+        <type href="http://uk.ac.kcl.inf.mdeoptimiser.examples/knapsack/1.0#//Item"/>
+      </nodes>
+      <nodes xmi:id="_BmUAlKRGEeqOweWgv_Iujg" name="NewTarget">
+        <type href="http://uk.ac.kcl.inf.mdeoptimiser.examples/knapsack/1.0#//Knapsack"/>
+      </nodes>
+      <formula xsi:type="henshin:And" xmi:id="_BmUAlaRGEeqOweWgv_Iujg">
+        <left xsi:type="henshin:Not" xmi:id="_BmUAlqRGEeqOweWgv_Iujg">
+          <child xsi:type="henshin:NestedCondition" xmi:id="_BmUAl6RGEeqOweWgv_Iujg">
+            <conclusion xmi:id="_BmUAmKRGEeqOweWgv_Iujg" name="Item_ub0">
+              <nodes xmi:id="_BmUAmaRGEeqOweWgv_Iujg" name="" outgoing="_BmUAm6RGEeqOweWgv_Iujg">
+                <type href="http://uk.ac.kcl.inf.mdeoptimiser.examples/knapsack/1.0#//Item"/>
+              </nodes>
+              <nodes xmi:id="_BmUAmqRGEeqOweWgv_Iujg" name="" incoming="_BmUAm6RGEeqOweWgv_Iujg">
+                <type href="http://uk.ac.kcl.inf.mdeoptimiser.examples/knapsack/1.0#//Knapsack"/>
+              </nodes>
+              <edges xmi:id="_BmUAm6RGEeqOweWgv_Iujg" source="_BmUAmaRGEeqOweWgv_Iujg" target="_BmUAmqRGEeqOweWgv_Iujg">
+                <type href="http://uk.ac.kcl.inf.mdeoptimiser.examples/knapsack/1.0#//Item/isContainedBy"/>
+              </edges>
+            </conclusion>
+            <mappings xmi:id="_BmUAnKRGEeqOweWgv_Iujg" origin="_BmUAk6RGEeqOweWgv_Iujg" image="_BmUAmaRGEeqOweWgv_Iujg"/>
+          </child>
+        </left>
+        <right xsi:type="henshin:Not" xmi:id="_BmUAnaRGEeqOweWgv_Iujg">
+          <child xsi:type="henshin:NestedCondition" xmi:id="_BmUAnqRGEeqOweWgv_Iujg">
+            <conclusion xmi:id="_BmUAn6RGEeqOweWgv_Iujg" name="edgeub">
+              <nodes xmi:id="_BmUAoKRGEeqOweWgv_Iujg" name="" outgoing="_BmUAoqRGEeqOweWgv_Iujg">
+                <type href="http://uk.ac.kcl.inf.mdeoptimiser.examples/knapsack/1.0#//Item"/>
+              </nodes>
+              <nodes xmi:id="_BmUAoaRGEeqOweWgv_Iujg" name="" incoming="_BmUAoqRGEeqOweWgv_Iujg">
+                <type href="http://uk.ac.kcl.inf.mdeoptimiser.examples/knapsack/1.0#//Knapsack"/>
+              </nodes>
+              <edges xmi:id="_BmUAoqRGEeqOweWgv_Iujg" source="_BmUAoKRGEeqOweWgv_Iujg" target="_BmUAoaRGEeqOweWgv_Iujg">
+                <type href="http://uk.ac.kcl.inf.mdeoptimiser.examples/knapsack/1.0#//Item/isContainedBy"/>
+              </edges>
+            </conclusion>
+            <mappings xmi:id="_BmUAo6RGEeqOweWgv_Iujg" origin="_BmUAk6RGEeqOweWgv_Iujg" image="_BmUAoKRGEeqOweWgv_Iujg"/>
+            <mappings xmi:id="_BmUApKRGEeqOweWgv_Iujg" origin="_BmUAlKRGEeqOweWgv_Iujg" image="_BmUAoaRGEeqOweWgv_Iujg"/>
+          </child>
+        </right>
+      </formula>
+    </lhs>
+    <rhs xmi:id="_BmUApaRGEeqOweWgv_Iujg" name="Rhs">
+      <nodes xmi:id="_BmUApqRGEeqOweWgv_Iujg" name="Selected" incoming="_BmUAqaRGEeqOweWgv_Iujg" outgoing="_BmUAqKRGEeqOweWgv_Iujg">
+        <type href="http://uk.ac.kcl.inf.mdeoptimiser.examples/knapsack/1.0#//Item"/>
+      </nodes>
+      <nodes xmi:id="_BmUAp6RGEeqOweWgv_Iujg" name="NewTarget" incoming="_BmUAqKRGEeqOweWgv_Iujg" outgoing="_BmUAqaRGEeqOweWgv_Iujg">
+        <type href="http://uk.ac.kcl.inf.mdeoptimiser.examples/knapsack/1.0#//Knapsack"/>
+      </nodes>
+      <edges xmi:id="_BmUAqKRGEeqOweWgv_Iujg" source="_BmUApqRGEeqOweWgv_Iujg" target="_BmUAp6RGEeqOweWgv_Iujg">
+        <type href="http://uk.ac.kcl.inf.mdeoptimiser.examples/knapsack/1.0#//Item/isContainedBy"/>
+      </edges>
+      <edges xmi:id="_BmUAqaRGEeqOweWgv_Iujg" source="_BmUAp6RGEeqOweWgv_Iujg" target="_BmUApqRGEeqOweWgv_Iujg">
+        <type href="http://uk.ac.kcl.inf.mdeoptimiser.examples/knapsack/1.0#//Knapsack/contains"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_BmUAqqRGEeqOweWgv_Iujg" origin="_BmUAk6RGEeqOweWgv_Iujg" image="_BmUApqRGEeqOweWgv_Iujg"/>
+    <mappings xmi:id="_BmUAq6RGEeqOweWgv_Iujg" origin="_BmUAlKRGEeqOweWgv_Iujg" image="_BmUAp6RGEeqOweWgv_Iujg"/>
+  </units>
+</henshin:Module>

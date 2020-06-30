@@ -1,14 +1,11 @@
 package uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.algorithms;
 
 import java.util.Properties;
-import org.moeaframework.algorithm.NSGAII;
-import org.moeaframework.core.Algorithm;
-import org.moeaframework.core.NondominatedSortingPopulation;
-import org.moeaframework.core.Problem;
-import org.moeaframework.core.Variation;
+import org.moeaframework.algorithm.*;
+import org.moeaframework.core.*;
+import org.moeaframework.core.fitness.HypervolumeFitnessEvaluator;
 import org.moeaframework.core.operator.GAVariation;
 import org.moeaframework.core.operator.RandomInitialization;
-import org.moeaframework.core.operator.TournamentSelection;
 import org.moeaframework.core.spi.AlgorithmProvider;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.Parameter;
 import uk.ac.kcl.inf.mdeoptimiser.languages.validation.algorithm.UnexpectedAlgorithmException;
@@ -23,14 +20,34 @@ public class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
 
   public Algorithm getAlgorithm(String algorithm, Properties properties, Problem problem) {
     switch (algorithm) {
+      case "SPEA2":
+        this.algorithm = createSPEA2(problem, properties);
+        break;
+      case "SMSMOEA":
+        this.algorithm = createSMSMOEA(problem, properties);
+      case "IBEA":
+        this.algorithm = createIBEA(problem, properties);
+        break;
       case "NSGAII":
         this.algorithm = createNSGAII(problem, properties);
         break;
+      case "VEGA":
+        this.algorithm = createVEGA(problem, properties);
+      case "PESA2":
+        this.algorithm = createPESA2(problem, properties);
+      case "PAES":
+        this.algorithm = createPAES(problem, properties);
+      case "RANDOM":
+        this.algorithm = createRandom(problem, properties);
       default:
         throw new UnexpectedAlgorithmException(algorithm);
     }
 
     return this.algorithm;
+  }
+
+  private Initialization getRandomInitialization(Problem problem, Properties properties) {
+    return new RandomInitialization(problem, (Integer) properties.get("populationSize"));
   }
 
   public Variation getVariation(Properties properties) {
@@ -82,49 +99,110 @@ public class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
     var initialization =
         new RandomInitialization(problem, (Integer) properties.get("populationSize"));
 
-    var selection = new TournamentSelection(2);
-
     return new NSGAII(
         problem,
         new NondominatedSortingPopulation(),
         null, // no archive
-        selection,
+        null, // default selection the the one built in
         getVariation(properties),
-        initialization);
+        getRandomInitialization(problem, properties));
   }
 
-  //
-  //	def Algorithm createSPEA2(Problem problem, Properties properties) {
-  //
-  //		var initialization = new RandomInitialization(problem, properties.get("populationSize") as
-  // Integer)
-  //
-  //		new SPEA2(
-  //				problem,
-  //				initialization,
-  //				getVariation(properties),
-  //				properties.get("populationSize") as Integer,
-  //				1
-  //			);
-  //	}
-  //
-  //	def Algorithm createeMOEA(Problem problem, Properties properties) {
-  //
-  //		//Create an initial random population of population size
-  //		var initialization = new RandomInitialization(problem, properties.get("populationSize") as
-  // Integer)
-  //
-  //		var selection = new TournamentSelection(2);
-  //
-  //		new EpsilonMOEA(
-  //				problem,
-  //				new NondominatedSortingPopulation(),
-  //				//TODO This must be a user configurable parameter
-  //				new EpsilonBoxDominanceArchive(0.01),
-  //				selection,
-  //				getVariation(properties),
-  //				initialization
-  //			);
-  //	}
+  // http://moeaframework.org/javadoc/org/moeaframework/algorithm/VEGA.html
+  public Algorithm createVEGA(Problem problem, Properties properties) {
+    // Create an initial random population of population size
+    var initialization =
+        new RandomInitialization(problem, (Integer) properties.get("populationSize"));
 
+    return new VEGA(
+        problem,
+        new NondominatedSortingPopulation(),
+        null, // no archive
+        getRandomInitialization(problem, properties),
+        getVariation(properties));
+  }
+
+  // http://moeaframework.org/javadoc/org/moeaframework/algorithm/SPEA2.html
+  public Algorithm createSPEA2(Problem problem, Properties properties) {
+
+    var initialization =
+        new RandomInitialization(problem, (Integer) properties.get("populationSize"));
+
+    //
+    //      Parameters:
+    //      problem - the problem
+    //      initialization - the initialization procedure
+    //      variation - the variation operator
+    //      numberOfOffspring - the number of offspring generated each iteration
+    //      k - niching parameter specifying that crowding is computed using the k-th nearest
+    // neighbor, recommend k=1
+
+    return new SPEA2(
+        problem,
+        getRandomInitialization(problem, properties),
+        getVariation(properties),
+        (Integer) properties.get("populationSize"),
+        1);
+  }
+
+  // http://moeaframework.org/javadoc/org/moeaframework/algorithm/SMSEMOA.html
+  //  Parameters:
+  //  problem - the problem
+  //  initialization - the initialization operator
+  //  variation - the variation operator
+  //  fitnessEvaluator - the fitness evaluator
+
+  public Algorithm createSMSMOEA(Problem problem, Properties properties) {
+
+    var initialization =
+        new RandomInitialization(problem, (Integer) properties.get("populationSize"));
+
+    return new SMSEMOA(
+        problem,
+        getRandomInitialization(problem, properties),
+        getVariation(properties),
+        new HypervolumeFitnessEvaluator(problem));
+  }
+
+  public Algorithm createIBEA(Problem problem, Properties properties) {
+
+    return new IBEA(
+        problem,
+        null,
+        getRandomInitialization(problem, properties),
+        getVariation(properties),
+        new HypervolumeFitnessEvaluator(problem));
+  }
+
+  public Algorithm createPESA2(Problem problem, Properties properties) {
+
+    var bisections = 0;
+    var archiveSize = 0;
+
+    return new PESA2(
+        problem,
+        getVariation(properties),
+        getRandomInitialization(problem, properties),
+        bisections,
+        archiveSize);
+  }
+
+  public Algorithm createPAES(Problem problem, Properties properties) {
+
+    var bisections = (Integer) properties.get("bisections");
+    var archiveSize = (Integer) properties.get("archive.size");
+
+    return new PESA2(
+        problem,
+        getVariation(properties),
+        getRandomInitialization(problem, properties),
+        bisections,
+        archiveSize);
+  }
+
+  public Algorithm createRandom(Problem problem, Properties properties) {
+
+    return new RandomSearch(
+        problem, getRandomInitialization(problem, properties), new NondominatedPopulation());
+  }
 }

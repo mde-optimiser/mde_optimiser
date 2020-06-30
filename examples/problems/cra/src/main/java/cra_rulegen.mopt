@@ -1,6 +1,6 @@
 problem {
 	basepath <src/main/resources/models/cra/>
-	metamodel <architectureCRA.ecore>
+	metamodel <metamodel.emf>
 	model <TTC_InputRDG_C.xmi>
 }
 goal {

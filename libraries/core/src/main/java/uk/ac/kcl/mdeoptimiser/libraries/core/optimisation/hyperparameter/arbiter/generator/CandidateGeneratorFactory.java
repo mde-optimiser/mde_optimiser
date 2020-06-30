@@ -82,9 +82,16 @@ public class CandidateGeneratorFactory {
   }
 
   public Parameter getParameter(ParameterSearchSpec parameterSearchSpec, String keyName) {
-    return parameterSearchSpec.getParameters().stream()
-        .filter(parameter -> parameter.getName().equals(keyName))
-        .findFirst()
-        .get();
+
+    var parameter =
+        parameterSearchSpec.getParameters().stream()
+            .filter(p -> p.getName().equals(keyName))
+            .findFirst();
+
+    if (parameter.isPresent()) {
+      return parameter.get();
+    }
+
+    throw new RuntimeException(String.format("Unable to find parameter %s. ", keyName));
   }
 }

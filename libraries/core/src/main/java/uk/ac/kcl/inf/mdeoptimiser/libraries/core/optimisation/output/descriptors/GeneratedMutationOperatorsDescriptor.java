@@ -48,6 +48,6 @@ public class GeneratedMutationOperatorsDescriptor implements ResultsDescriptor {
       resourceSet.writeModel(rule, modelPath);
     }
 
-    resourceSet.writeModel(metamodel, metamodel.getName() + ".ecore");
+    // resourceSet.writeModel(metamodel, metamodel.getName() + ".ecore");
   }
 }

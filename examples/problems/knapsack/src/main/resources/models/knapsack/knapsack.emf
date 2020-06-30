@@ -1,0 +1,22 @@
+@namespace(uri="http://uk.ac.kcl.inf.mdeoptimiser.examples/knapsack/1.0", prefix="models.knapsack")
+package ecore;
+
+class Plan extends NamedElement {
+	!ordered val Item[*] items;
+	!ordered val Knapsack[*] knapsacks;
+}
+
+class Item extends NamedElement {
+	attr Double[1] weight;
+	attr Double[1] gain;
+	ref Knapsack[0..1]#contains  isContainedBy;
+}
+
+class Knapsack extends NamedElement {
+	attr Double[1] capacity;
+	ref Item[0..*]#isContainedBy contains;
+}
+
+abstract class NamedElement {
+	attr String[1] name;
+}

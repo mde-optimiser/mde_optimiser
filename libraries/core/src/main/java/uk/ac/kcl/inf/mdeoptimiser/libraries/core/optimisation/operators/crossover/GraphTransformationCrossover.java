@@ -1,7 +1,6 @@
 package uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.crossover;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -44,7 +43,7 @@ public class GraphTransformationCrossover implements CrossoverStrategy {
         if (henshinExecutor.runRuleOperator(operator, graph, parents)) {
 
           return graph.getRoots().stream()
-              .map(root -> new Solution(root, new LinkedList<String>()))
+              .map(root -> new Solution(root))
               .collect(Collectors.toList());
         }
 
@@ -52,7 +51,7 @@ public class GraphTransformationCrossover implements CrossoverStrategy {
         if (henshinExecutor.runUnitOperator(operator, graph, parents)) {
 
           return graph.getRoots().stream()
-              .map(root -> new Solution(root, new LinkedList<String>()))
+              .map(root -> new Solution(root))
               .collect(Collectors.toList());
         }
       }

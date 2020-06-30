@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_BmXq8KRGEeqOweWgv_Iujg" name="P_ALL_Item_isContainedBy_edge_REMOVE" description="Removes Item edge of type isContainedBy">
+  <imports href="http://uk.ac.kcl.inf.mdeoptimiser.examples/knapsack/1.0#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_BmXq8aRGEeqOweWgv_Iujg" name="removeFromItem_isContainedBy_Knapsack" description="Removes from Item's reference isContainedBy the target Knapsack">
+    <lhs xmi:id="_BmXq8qRGEeqOweWgv_Iujg" name="LHS">
+      <nodes xmi:id="_BmXq86RGEeqOweWgv_Iujg" name="Selected" incoming="_BmXq9qRGEeqOweWgv_Iujg" outgoing="_BmXq9aRGEeqOweWgv_Iujg">
+        <type href="http://uk.ac.kcl.inf.mdeoptimiser.examples/knapsack/1.0#//Item"/>
+      </nodes>
+      <nodes xmi:id="_BmXq9KRGEeqOweWgv_Iujg" name="OldTarget" incoming="_BmXq9aRGEeqOweWgv_Iujg" outgoing="_BmXq9qRGEeqOweWgv_Iujg">
+        <type href="http://uk.ac.kcl.inf.mdeoptimiser.examples/knapsack/1.0#//Knapsack"/>
+      </nodes>
+      <edges xmi:id="_BmXq9aRGEeqOweWgv_Iujg" source="_BmXq86RGEeqOweWgv_Iujg" target="_BmXq9KRGEeqOweWgv_Iujg">
+        <type href="http://uk.ac.kcl.inf.mdeoptimiser.examples/knapsack/1.0#//Item/isContainedBy"/>
+      </edges>
+      <edges xmi:id="_BmXq9qRGEeqOweWgv_Iujg" source="_BmXq9KRGEeqOweWgv_Iujg" target="_BmXq86RGEeqOweWgv_Iujg">
+        <type href="http://uk.ac.kcl.inf.mdeoptimiser.examples/knapsack/1.0#//Knapsack/contains"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_BmXq96RGEeqOweWgv_Iujg" name="RHS">
+      <nodes xmi:id="_BmXq-KRGEeqOweWgv_Iujg" name="Selected">
+        <type href="http://uk.ac.kcl.inf.mdeoptimiser.examples/knapsack/1.0#//Item"/>
+      </nodes>
+      <nodes xmi:id="_BmXq-aRGEeqOweWgv_Iujg" name="OldTarget">
+        <type href="http://uk.ac.kcl.inf.mdeoptimiser.examples/knapsack/1.0#//Knapsack"/>
+      </nodes>
+    </rhs>
+    <mappings xmi:id="_BmXq-qRGEeqOweWgv_Iujg" origin="_BmXq86RGEeqOweWgv_Iujg" image="_BmXq-KRGEeqOweWgv_Iujg"/>
+    <mappings xmi:id="_BmXq-6RGEeqOweWgv_Iujg" origin="_BmXq9KRGEeqOweWgv_Iujg" image="_BmXq-aRGEeqOweWgv_Iujg"/>
+  </units>
+</henshin:Module>

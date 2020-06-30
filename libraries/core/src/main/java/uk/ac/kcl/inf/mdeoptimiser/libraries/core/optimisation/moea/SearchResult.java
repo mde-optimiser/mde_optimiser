@@ -7,11 +7,9 @@ import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.problem.MoeaO
 
 public class SearchResult {
 
-  Instrumenter instrumenter;
-
-  MoeaFrameworkAlgorithmConfiguration moeaFrameworkAlgorithmConfiguration;
-
-  MoeaOptimisationProblem moeaProblem;
+  private Instrumenter instrumenter;
+  private MoeaFrameworkAlgorithmConfiguration moeaFrameworkAlgorithmConfiguration;
+  private MoeaOptimisationProblem moeaProblem;
 
   public SearchResult(
       MoeaFrameworkAlgorithmConfiguration moeaFrameworkAlgorithmConfiguration,

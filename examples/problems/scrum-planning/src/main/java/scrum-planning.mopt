@@ -1,6 +1,6 @@
 problem {
 	basepath <src/main/resources/models/scrum/planning/>
-	metamodel <SprintPlanning.ecore>
+	metamodel <models.scrum.planning.SprintPlanning.ePackage>
 	model <sprint-planning-model-5-stakeholders-119-items.xmi>
 }
 goal {

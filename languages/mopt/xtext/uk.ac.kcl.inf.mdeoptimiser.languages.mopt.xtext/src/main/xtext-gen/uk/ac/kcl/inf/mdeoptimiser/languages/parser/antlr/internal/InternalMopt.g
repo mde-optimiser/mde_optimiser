@@ -8462,7 +8462,7 @@ RULE_SOLVER_ENGINE : ('henshin'|'momot'|'efmconfig');
 
 RULE_ALGORITHM_FACTORY : ('moea'|'ecj');
 
-RULE_ALGORITHM_NAME : ('eMOEA'|'eNSGAII'|'NSGAII'|'NSGAIII'|'SPEA2');
+RULE_ALGORITHM_NAME : ('NSGAII'|'IBEA'|'SPEA2'|'SMSMOEA'|'VEGA'|'PESA2'|'PAES'|'RANDOM');
 
 RULE_URL : '<' ( options {greedy=false;} : . )*'>';
 

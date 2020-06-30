@@ -65,6 +65,10 @@
 	<unit id="org.jfree.jcommon" version="1.0.21"/>
 	<unit id="org.hamcrest.java-hamcrest" version="2.0.0.0"/>
 	<unit id="org.sidiff.serge" version="0.0.0" />
+	<unit id="com.github.oshi.oshi-core" version="0.0.0" />
+    <unit id="com.github.oshi.oshi-core.source" version="0.0.0" />
+    <unit id="org.apache.commons.lang3" version="3.8.1"/>
+	<unit id="org.apache.commons.math3" version="3.6.1"/>
 	<repository location="file://home/alxbrd/projects/alxbrd/github/mde_optimiser/repositories/output/p2/p2.mdeoptimiser.repository"/>
 </location>
 </locations>

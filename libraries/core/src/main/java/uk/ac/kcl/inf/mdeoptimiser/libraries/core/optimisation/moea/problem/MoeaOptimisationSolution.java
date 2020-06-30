@@ -1,5 +1,7 @@
 package uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.problem;
 
+import static uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.problem.MoeaOptimisationSolutionAttributes.SOLUTION_PARENT;
+
 import java.util.LinkedHashMap;
 import org.moeaframework.core.Solution;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.executor.SolutionGenerator;
@@ -10,6 +12,19 @@ public class MoeaOptimisationSolution extends Solution {
 
   public MoeaOptimisationSolution(MoeaOptimisationSolution moeaOptimisationSolution) {
     super(moeaOptimisationSolution);
+
+    // Set a pointer to the parent of this solution. This can be used to check child/parent
+    // domination
+
+    Solution lightCopy =
+        new MoeaOptimisationSolution(
+            moeaOptimisationSolution.getNumberOfObjectives(),
+            moeaOptimisationSolution.getNumberOfConstraints());
+    lightCopy.setConstraints(moeaOptimisationSolution.getConstraints());
+    lightCopy.setObjectives(moeaOptimisationSolution.getObjectives());
+
+    this.setAttribute(SOLUTION_PARENT, lightCopy);
+
     this.setModel(moeaOptimisationSolution.getModel());
     this.setSolutionGenerator(moeaOptimisationSolution.getSolutionGenerator());
   }

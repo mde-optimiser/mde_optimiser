@@ -7,17 +7,17 @@ import org.eclipse.xtext.conversion.IValueConverterService;
 import uk.ac.kcl.inf.mdeoptimiser.languages.values.MoptValueConverter;
 
 /**
- * Use this class to register components to be used at runtime / without the Equinox extension registry.
+ * Use this class to register components to be used at runtime / without the Equinox extension
+ * registry.
  */
 public class MoptRuntimeModule extends AbstractMoptRuntimeModule {
 
   /**
-   * Provide our own value conversion code so that we can do a bit of pre-procesing on
-   * some elements of the language
+   * Provide our own value conversion code so that we can do a bit of pre-procesing on some elements
+   * of the language
    */
   @Override
   public Class<? extends IValueConverterService> bindIValueConverterService() {
     return MoptValueConverter.class;
   }
-
 }

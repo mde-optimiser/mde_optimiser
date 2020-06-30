@@ -8,6 +8,7 @@ import org.moeaframework.core.EvolutionaryAlgorithm;
 import org.moeaframework.core.Population;
 import org.moeaframework.core.Solution;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.problem.MoeaOptimisationSolution;
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.problem.MoeaOptimisationSolutionAttributes;
 
 /** Collects the population from an {@link EvolutionaryAlgorithm}. */
 public class PopulationCollector implements Collector {
@@ -55,12 +56,23 @@ public class PopulationCollector implements Collector {
 
     for (Solution solution : population) {
 
-      Solution lightCopy =
+      // Make a copy of the variable but discard the EObject as it's kept in the Approximation Set
+      var solutionModel = ((MoeaOptimisationSolution) solution).getModel();
+      var copyModel =
+          new uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.guidance.Solution(
+              solutionModel, true);
+
+      MoeaOptimisationSolution lightCopy =
           new MoeaOptimisationSolution(
               solution.getNumberOfObjectives(), solution.getNumberOfConstraints());
       lightCopy.setConstraints(solution.getConstraints());
       lightCopy.setObjectives(solution.getObjectives());
+      lightCopy.setModel(copyModel);
 
+      // TODO Might need light copying here too
+      lightCopy.setAttribute(
+          MoeaOptimisationSolutionAttributes.SOLUTION_PARENT,
+          (Solution) solution.getAttribute(MoeaOptimisationSolutionAttributes.SOLUTION_PARENT));
       list.add(lightCopy);
     }
 

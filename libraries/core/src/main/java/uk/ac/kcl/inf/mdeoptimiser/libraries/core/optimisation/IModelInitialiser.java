@@ -9,5 +9,5 @@ public interface IModelInitialiser {
    * Take an instance of an EObject and apply a custom initialisation strategy to change the
    * structure of the population in the initial search.
    */
-  public Solution initialise(EObject model);
+  Solution initialise(EObject model);
 }

@@ -44,7 +44,9 @@ public class SingleObjectiveScoreFunction extends BaseScoreFunction {
   public double getMedian(List<Double> results) {
 
     var stats = new DescriptiveStatistics();
-    results.forEach(result -> stats.addValue(result));
+
+    // Multiply by -1 to reflect minimisation
+    results.forEach(result -> stats.addValue(-1 * result));
 
     return stats.getPercentile(50);
   }
