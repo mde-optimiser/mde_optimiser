@@ -1,0 +1,29 @@
+problem {
+	basepath <src/main/resources/models/scrum/planning/>
+	metamodel <SprintPlanning.ecore>
+	model <sprint-planning-model-5-stakeholders-119-items.xmi>
+}
+goal {
+	objective MinimiseCustomerSatisfactionIndex minimise java { "models.scrum.planning.fitness.MinimiseCustomerSatisfactionIndex" }
+	objective MinimiseSprintEffortDeviation minimise java { "models.scrum.planning.fitness.MinimiseSprintEffortDeviation" }
+	constraint HasNoUnassignedWorkItems java { "models.scrum.planning.fitness.HasNoUnassignedWorkItems" }
+	constraint HasTheAllowedMaximalNumberOfSprints java { "models.scrum.planning.fitness.HasTheAllowedMaximalNumberOfSprints" }
+}
+search {
+	mutate using <sprint.henshin> unit "createSprint"
+	mutate using <sprint.henshin> unit "deleteSprint"
+	mutate using <sprint.henshin> unit "addItemToSprint"
+	mutate using <sprint.henshin> unit "moveItemBetweenSprints"
+}
+solver {
+	optimisation provider moea algorithm NSGAII {
+		population: 40
+		variation: mutation
+		mutation.step: 1
+		mutation.strategy: random
+	}
+	termination {
+		evolutions: 500
+	}
+	batches 1
+}

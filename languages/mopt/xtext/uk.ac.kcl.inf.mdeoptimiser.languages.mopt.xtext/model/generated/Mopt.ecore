@@ -45,6 +45,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="terminationCondition" eType="#//TerminationConditionSpec"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameterSearch" eType="#//ParameterSearchSpec"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="algorithmBatches" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BasePathSpec">
@@ -124,6 +126,10 @@
         eType="#//Parameter" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TerminationConditionSpec">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="#//Parameter" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParameterSearchSpec">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
         eType="#//Parameter" containment="true"/>
   </eClassifiers>

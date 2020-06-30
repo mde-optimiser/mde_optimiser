@@ -42,6 +42,7 @@ SolverSpec:
 		"optimisation" "provider"  algorithmFactory=ALGORITHM_FACTORY
 		"algorithm" algorithm=AlgorithmSpec
 		"termination" terminationCondition=TerminationConditionSpec
+		("parameter" "search" parameterSearch=ParameterSearchSpec)?
 		("batches" algorithmBatches=INT)?
 	"}"
 ;
@@ -144,6 +145,16 @@ TerminationConditionSpec:
 		parameters+=Parameter+
 		
 	"}"
+;
+
+/**
+ * Hyperparameter search spec configuration
+ */
+ParameterSearchSpec:
+	{ParameterSearchSpec}
+	"{"
+		parameters+=Parameter+
+	"}"	
 ;
 
 Parameter:

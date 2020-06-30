@@ -37,6 +37,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Mopt.ecore#//SolverSpec/algorithmFactory"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Mopt.ecore#//SolverSpec/algorithm"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Mopt.ecore#//SolverSpec/terminationCondition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Mopt.ecore#//SolverSpec/parameterSearch"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Mopt.ecore#//SolverSpec/algorithmBatches"/>
     </genClasses>
     <genClasses ecoreClass="Mopt.ecore#//BasePathSpec">
@@ -106,6 +107,9 @@
     </genClasses>
     <genClasses ecoreClass="Mopt.ecore#//TerminationConditionSpec">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Mopt.ecore#//TerminationConditionSpec/parameters"/>
+    </genClasses>
+    <genClasses ecoreClass="Mopt.ecore#//ParameterSearchSpec">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Mopt.ecore#//ParameterSearchSpec/parameters"/>
     </genClasses>
     <genClasses ecoreClass="Mopt.ecore#//Parameter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Mopt.ecore#//Parameter/name"/>

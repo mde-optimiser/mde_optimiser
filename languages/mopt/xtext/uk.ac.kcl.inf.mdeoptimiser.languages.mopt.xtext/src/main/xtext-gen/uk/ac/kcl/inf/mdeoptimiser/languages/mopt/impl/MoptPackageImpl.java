@@ -30,6 +30,7 @@ import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ObjectiveInterpreterSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.Optimisation;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.Parameter;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterFunction;
+import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterSearchSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterValue;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProblemSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ReportInterpreterSpec;
@@ -194,6 +195,13 @@ public class MoptPackageImpl extends EPackageImpl implements MoptPackage
    * @generated
    */
   private EClass terminationConditionSpecEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass parameterSearchSpecEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -517,9 +525,19 @@ public class MoptPackageImpl extends EPackageImpl implements MoptPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getSolverSpec_ParameterSearch()
+  {
+    return (EReference)solverSpecEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EAttribute getSolverSpec_AlgorithmBatches()
   {
-    return (EAttribute)solverSpecEClass.getEStructuralFeatures().get(4);
+    return (EAttribute)solverSpecEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -1047,6 +1065,26 @@ public class MoptPackageImpl extends EPackageImpl implements MoptPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getParameterSearchSpec()
+  {
+    return parameterSearchSpecEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getParameterSearchSpec_Parameters()
+  {
+    return (EReference)parameterSearchSpecEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getParameter()
   {
     return parameterEClass;
@@ -1189,6 +1227,7 @@ public class MoptPackageImpl extends EPackageImpl implements MoptPackage
     createEAttribute(solverSpecEClass, SOLVER_SPEC__ALGORITHM_FACTORY);
     createEReference(solverSpecEClass, SOLVER_SPEC__ALGORITHM);
     createEReference(solverSpecEClass, SOLVER_SPEC__TERMINATION_CONDITION);
+    createEReference(solverSpecEClass, SOLVER_SPEC__PARAMETER_SEARCH);
     createEAttribute(solverSpecEClass, SOLVER_SPEC__ALGORITHM_BATCHES);
 
     basePathSpecEClass = createEClass(BASE_PATH_SPEC);
@@ -1258,6 +1297,9 @@ public class MoptPackageImpl extends EPackageImpl implements MoptPackage
 
     terminationConditionSpecEClass = createEClass(TERMINATION_CONDITION_SPEC);
     createEReference(terminationConditionSpecEClass, TERMINATION_CONDITION_SPEC__PARAMETERS);
+
+    parameterSearchSpecEClass = createEClass(PARAMETER_SEARCH_SPEC);
+    createEReference(parameterSearchSpecEClass, PARAMETER_SEARCH_SPEC__PARAMETERS);
 
     parameterEClass = createEClass(PARAMETER);
     createEAttribute(parameterEClass, PARAMETER__NAME);
@@ -1334,6 +1376,7 @@ public class MoptPackageImpl extends EPackageImpl implements MoptPackage
     initEAttribute(getSolverSpec_AlgorithmFactory(), ecorePackage.getEString(), "algorithmFactory", null, 0, 1, SolverSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSolverSpec_Algorithm(), this.getAlgorithmSpec(), null, "algorithm", null, 0, 1, SolverSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSolverSpec_TerminationCondition(), this.getTerminationConditionSpec(), null, "terminationCondition", null, 0, 1, SolverSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSolverSpec_ParameterSearch(), this.getParameterSearchSpec(), null, "parameterSearch", null, 0, 1, SolverSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getSolverSpec_AlgorithmBatches(), ecorePackage.getEInt(), "algorithmBatches", null, 0, 1, SolverSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(basePathSpecEClass, BasePathSpec.class, "BasePathSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1403,6 +1446,9 @@ public class MoptPackageImpl extends EPackageImpl implements MoptPackage
 
     initEClass(terminationConditionSpecEClass, TerminationConditionSpec.class, "TerminationConditionSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getTerminationConditionSpec_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, TerminationConditionSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(parameterSearchSpecEClass, ParameterSearchSpec.class, "ParameterSearchSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getParameterSearchSpec_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, ParameterSearchSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getParameter_Name(), ecorePackage.getEString(), "name", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

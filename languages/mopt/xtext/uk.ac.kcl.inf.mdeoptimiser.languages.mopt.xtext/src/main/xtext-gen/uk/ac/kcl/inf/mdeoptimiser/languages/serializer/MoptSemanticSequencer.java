@@ -73,6 +73,7 @@ import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.MultiplicityRefinementSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ObjectiveInterpreterSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.Optimisation;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterFunction;
+import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterSearchSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterValue;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProblemSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ReportInterpreterSpec;
@@ -139,6 +140,9 @@ public class MoptSemanticSequencer extends XbaseSemanticSequencer {
 				return; 
 			case MoptPackage.PARAMETER_FUNCTION:
 				sequence_ParameterFunction(context, (ParameterFunction) semanticObject); 
+				return; 
+			case MoptPackage.PARAMETER_SEARCH_SPEC:
+				sequence_ParameterSearchSpec(context, (ParameterSearchSpec) semanticObject); 
 				return; 
 			case MoptPackage.PARAMETER_VALUE:
 				sequence_ParameterValue(context, (ParameterValue) semanticObject); 
@@ -650,6 +654,18 @@ public class MoptSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     ParameterSearchSpec returns ParameterSearchSpec
+	 *
+	 * Constraint:
+	 *     parameters+=Parameter+
+	 */
+	protected void sequence_ParameterSearchSpec(ISerializationContext context, ParameterSearchSpec semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     ParameterValue returns ParameterValue
 	 *
 	 * Constraint:
@@ -776,6 +792,7 @@ public class MoptSemanticSequencer extends XbaseSemanticSequencer {
 	 *         algorithmFactory=ALGORITHM_FACTORY 
 	 *         algorithm=AlgorithmSpec 
 	 *         terminationCondition=TerminationConditionSpec 
+	 *         parameterSearch=ParameterSearchSpec? 
 	 *         algorithmBatches=INT?
 	 *     )
 	 */

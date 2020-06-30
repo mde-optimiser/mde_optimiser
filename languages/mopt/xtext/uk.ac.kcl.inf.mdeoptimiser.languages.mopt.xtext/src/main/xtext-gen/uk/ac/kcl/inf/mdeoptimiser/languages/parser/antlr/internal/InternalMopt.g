@@ -560,15 +560,44 @@ ruleSolverSpec returns [EObject current=null]
 			)
 		)
 		(
-			otherlv_11='batches'
+			otherlv_11='parameter'
 			{
-				newLeafNode(otherlv_11, grammarAccess.getSolverSpecAccess().getBatchesKeyword_10_0());
+				newLeafNode(otherlv_11, grammarAccess.getSolverSpecAccess().getParameterKeyword_10_0());
+			}
+			otherlv_12='search'
+			{
+				newLeafNode(otherlv_12, grammarAccess.getSolverSpecAccess().getSearchKeyword_10_1());
 			}
 			(
 				(
-					lv_algorithmBatches_12_0=RULE_INT
 					{
-						newLeafNode(lv_algorithmBatches_12_0, grammarAccess.getSolverSpecAccess().getAlgorithmBatchesINTTerminalRuleCall_10_1_0());
+						newCompositeNode(grammarAccess.getSolverSpecAccess().getParameterSearchParameterSearchSpecParserRuleCall_10_2_0());
+					}
+					lv_parameterSearch_13_0=ruleParameterSearchSpec
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getSolverSpecRule());
+						}
+						set(
+							$current,
+							"parameterSearch",
+							lv_parameterSearch_13_0,
+							"uk.ac.kcl.inf.mdeoptimiser.languages.Mopt.ParameterSearchSpec");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)?
+		(
+			otherlv_14='batches'
+			{
+				newLeafNode(otherlv_14, grammarAccess.getSolverSpecAccess().getBatchesKeyword_11_0());
+			}
+			(
+				(
+					lv_algorithmBatches_15_0=RULE_INT
+					{
+						newLeafNode(lv_algorithmBatches_15_0, grammarAccess.getSolverSpecAccess().getAlgorithmBatchesINTTerminalRuleCall_11_1_0());
 					}
 					{
 						if ($current==null) {
@@ -577,15 +606,15 @@ ruleSolverSpec returns [EObject current=null]
 						setWithLastConsumed(
 							$current,
 							"algorithmBatches",
-							lv_algorithmBatches_12_0,
+							lv_algorithmBatches_15_0,
 							"org.eclipse.xtext.xbase.Xbase.INT");
 					}
 				)
 			)
 		)?
-		otherlv_13='}'
+		otherlv_16='}'
 		{
-			newLeafNode(otherlv_13, grammarAccess.getSolverSpecAccess().getRightCurlyBracketKeyword_11());
+			newLeafNode(otherlv_16, grammarAccess.getSolverSpecAccess().getRightCurlyBracketKeyword_12());
 		}
 	)
 ;
@@ -1826,6 +1855,59 @@ ruleTerminationConditionSpec returns [EObject current=null]
 		otherlv_3='}'
 		{
 			newLeafNode(otherlv_3, grammarAccess.getTerminationConditionSpecAccess().getRightCurlyBracketKeyword_3());
+		}
+	)
+;
+
+// Entry rule entryRuleParameterSearchSpec
+entryRuleParameterSearchSpec returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getParameterSearchSpecRule()); }
+	iv_ruleParameterSearchSpec=ruleParameterSearchSpec
+	{ $current=$iv_ruleParameterSearchSpec.current; }
+	EOF;
+
+// Rule ParameterSearchSpec
+ruleParameterSearchSpec returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getParameterSearchSpecAccess().getParameterSearchSpecAction_0(),
+					$current);
+			}
+		)
+		otherlv_1='{'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getParameterSearchSpecAccess().getLeftCurlyBracketKeyword_1());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getParameterSearchSpecAccess().getParametersParameterParserRuleCall_2_0());
+				}
+				lv_parameters_2_0=ruleParameter
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getParameterSearchSpecRule());
+					}
+					add(
+						$current,
+						"parameters",
+						lv_parameters_2_0,
+						"uk.ac.kcl.inf.mdeoptimiser.languages.Mopt.Parameter");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)+
+		otherlv_3='}'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getParameterSearchSpecAccess().getRightCurlyBracketKeyword_3());
 		}
 	)
 ;

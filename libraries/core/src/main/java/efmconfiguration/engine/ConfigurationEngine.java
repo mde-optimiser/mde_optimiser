@@ -56,10 +56,11 @@ public class ConfigurationEngine implements Engine {
 		if (matchingInfo.abstract2concrete.keySet().isEmpty() && rule.getMultiRules().isEmpty()) {
 			return wrapMappingsIntoMatchList(rule, matchingInfo, mappingsConcrete, graph);
 		} else {
-			if (OPTION_STOP_AFTER_FIRST)
+			if ((Boolean) this.getOptions().get("OPTION_STOP_AFTER_FIRST")) {
 				return createOneMatch(rule, matchingInfo, mappingsConcrete, graph);
-			else
+			} else {
 				return createMatches(rule, matchingInfo, mappingsConcrete, graph);
+			}
 		}
 	}
 
@@ -142,7 +143,7 @@ public class ConfigurationEngine implements Engine {
 
 	private boolean getNextCombination(MatchingInfo matchingInfo, LinkedHashMap<Node, Integer> node2pointer,
 			long possibleCombinations, Set<String> usedCombinations) {
-		if (OPTION_DETERMINISTIC) {
+		if ((Boolean) this.getOptions().get("OPTION_DETERMINISTIC")) {
 			return CombinationProvider.countOneUp(matchingInfo, node2pointer);
 		} else {
 			return CombinationProvider.getRandomAssignment(matchingInfo, node2pointer, possibleCombinations,
@@ -173,7 +174,7 @@ public class ConfigurationEngine implements Engine {
 	}
 
 	private void assignInitially(MatchingInfo matchingInfo, Node node, Map<Node, Integer> node2pointer) {
-		if (OPTION_DETERMINISTIC) {
+		if ((Boolean) this.getOptions().get("OPTION_DETERMINISTIC")) {
 			node2pointer.put(node, 0);
 		} else {
 			node2pointer.put(node, CombinationProvider.getRandomPosition(matchingInfo, node));
@@ -365,8 +366,8 @@ public class ConfigurationEngine implements Engine {
 	public Map<String, Object> getOptions()  {
 		if (options == null) {
 			options = new HashMap<>();
-			options.put(OPTION_DETERMINISTIC, false);
-			options.put(OPTION_STOP_AFTER_FIRST, true);
+			options.put("OPTION_DETERMINISTIC", false);
+			options.put("OPTION_STOP_AFTER_FIRST", true);
 		}
 		return options;
 	}

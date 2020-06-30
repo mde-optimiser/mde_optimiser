@@ -80,7 +80,7 @@ class CaseStudyTestsRandomMutationStrategy {
 			problem {
 				basepath <src/test/resources/models/cra/>
 				metamodel <architectureCRA.ecore>
-				model <TTC_InputRDG_D.xmi>
+				model <TTC_InputRDG_A.xmi>
 			}
 			goal {
 				objective CRA maximise java { "models.moea.MaximiseCRA" }
@@ -100,7 +100,7 @@ class CaseStudyTestsRandomMutationStrategy {
 					mutation.strategy: random
 				}
 				termination {
-					evolutions: 500
+					evolutions: 100
 				}
 				batches 1
 			}
@@ -108,7 +108,6 @@ class CaseStudyTestsRandomMutationStrategy {
 
 		runTestSearch(model, testInfo)
 	}
-	
 	
 	@Test
 	def void craRulegenMutationStepSizeFixedStrategyA(TestInfo testInfo) {
@@ -884,11 +883,11 @@ class CaseStudyTestsRandomMutationStrategy {
 				optimisation provider moea algorithm NSGAII {
 					population: 40
 					variation: mutation
-					mutation.step: 5
+					mutation.step: 1
 					mutation.strategy: random
 				}
 				termination {
-					evolutions: 500
+					evolutions: 100
 				}
 				batches 1
 			}

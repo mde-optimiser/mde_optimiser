@@ -7,35 +7,35 @@ import at.ac.tuwien.big.momot.search.engine.MomotEngine;
 import efmconfiguration.engine.ConfigurationEngine;
 
 public class HenshinEngineFactory {
-	
+
 	private SolverSpec solverSpec;
 	private static Engine MOMOT_ENGINE;
 	private static Engine MDEO_ENGINE;
 	private static Engine EFMCONFIG_ENGINE;
-	
+
 	static {
 		MOMOT_ENGINE = new MomotEngine();
 		MDEO_ENGINE = new EngineImpl();
 		EFMCONFIG_ENGINE = new ConfigurationEngine();
 	}
 
-	
+
 	public HenshinEngineFactory(SolverSpec solverSpec){
 		this.solverSpec = solverSpec;
 	}
-	
+
 	/**
 	 * If a different Henshin Engine is configured, initialise it from the factory.
 	 * By default run the classic Henshin Engine.
 	 */
 	public Engine create() {
-		
+
 		String solverEngine = this.solverSpec.getSolverEngine();
-		
+
 		if(solverEngine == null) {
 			solverEngine = "mdeo";
 		}
-		
+
 		switch(solverEngine) {
 			case "efmconfig":
 				return EFMCONFIG_ENGINE;
