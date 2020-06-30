@@ -22591,7 +22591,7 @@ RULE_ADD_EDGE : 'ADD';
 
 RULE_REMOVE_EDGE : 'REMOVE';
 
-RULE_SOLVER_ENGINE : ('henshin'|'momot');
+RULE_SOLVER_ENGINE : ('henshin'|'momot'|'efmconfig');
 
 RULE_ALGORITHM_FACTORY : ('moea'|'ecj');
 
