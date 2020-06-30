@@ -23,22 +23,14 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import efmconfiguration.engine.ConfigurationEngine;;
+import efmconfiguration.engine.ConfigurationEngine;
+import org.junit.jupiter.api.BeforeEach;;
 
 public class TestConfigurationEngineAllMatches {
-	@BeforeClass
-	public static void setup() {
-		ConfigurationEngine.OPTION_STOP_AFTER_FIRST = false;
-	}
-	
-	@AfterClass
-	public static void teardown() {
-		ConfigurationEngine.OPTION_STOP_AFTER_FIRST = true;
-	}
-	
+
 	@Test
 	public void testActSMSTransfer() {
-		HenshinResourceSet resourceSet = new HenshinResourceSet("src/main/java/efmconfiguration/engine/test");
+		HenshinResourceSet resourceSet = new HenshinResourceSet("src/test/java/efmconfiguration/engine/test");
 
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());
 		Resource model = resourceSet.getResource("config_screen3active.xmi");
@@ -48,7 +40,9 @@ public class TestConfigurationEngineAllMatches {
 		Rule ruleActSMSTransfer = (Rule) module.getUnit("Act_SMSTransfer");
 
 		ConfigurationEngine engine = new ConfigurationEngine();
-		
+		engine.getOptions().put("OPTION_STOP_AFTER_FIRST", false);
+
+
 		Iterable<Match> matches = engine.findMatches(ruleActSMSTransfer, graph, null);
 		Iterator<Match> it = matches.iterator();
 		assertTrue(it.hasNext());
@@ -63,7 +57,7 @@ public class TestConfigurationEngineAllMatches {
 
 	@Test
 	public void testDeScreen3SimplifiedInapplicable() {
-		HenshinResourceSet resourceSet = new HenshinResourceSet("src/main/java/efmconfiguration/engine/test");
+		HenshinResourceSet resourceSet = new HenshinResourceSet("src/test/java/efmconfiguration/engine/test");
 
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());
 		Resource model = resourceSet.getResource("config_screen1active.xmi");
@@ -73,7 +67,8 @@ public class TestConfigurationEngineAllMatches {
 		Rule ruleDeScreen3Simplified = (Rule) module.getUnit("De_Screen3_Simplified");
 
 		ConfigurationEngine engine = new ConfigurationEngine();
-	
+
+
 		Iterable<Match> matches = engine.findMatches(ruleDeScreen3Simplified, graph, null);
 		Iterator<Match> it = matches.iterator();
 		assertFalse(it.hasNext());
@@ -81,7 +76,7 @@ public class TestConfigurationEngineAllMatches {
 
 	@Test
 	public void testDeScreen3SimplifiedApplicable() {
-		HenshinResourceSet resourceSet = new HenshinResourceSet("src/main/java/efmconfiguration/engine/test");
+		HenshinResourceSet resourceSet = new HenshinResourceSet("src/test/java/efmconfiguration/engine/test");
 
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());
 		Resource model = resourceSet.getResource("config_screen3active.xmi");
@@ -91,6 +86,7 @@ public class TestConfigurationEngineAllMatches {
 		Rule ruleDeScreen3Simplified = (Rule) module.getUnit("De_Screen3_Simplified");
 
 		ConfigurationEngine engine = new ConfigurationEngine();
+    engine.getOptions().put("OPTION_STOP_AFTER_FIRST", false);
 
 		Iterable<Match> matches = engine.findMatches(ruleDeScreen3Simplified, graph, null);
 		Iterator<Match> it = matches.iterator();
@@ -107,7 +103,7 @@ public class TestConfigurationEngineAllMatches {
 
 	@Test
 	public void testDeScreen3SimplifiedAdditionalOrGroup() {
-		HenshinResourceSet resourceSet = new HenshinResourceSet("src/main/java/efmconfiguration/engine/test");
+		HenshinResourceSet resourceSet = new HenshinResourceSet("src/test/java/efmconfiguration/engine/test");
 
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());
 		Resource model = resourceSet.getResource("config_screen3active.xmi");
@@ -117,6 +113,7 @@ public class TestConfigurationEngineAllMatches {
 		Rule ruleDeScreen3Simplified = (Rule) module.getUnit("De_Screen3_Simplified_AdditionalOrGroup");
 
 		ConfigurationEngine engine = new ConfigurationEngine();
+    engine.getOptions().put("OPTION_STOP_AFTER_FIRST", false);
 
 		Iterable<Match> matches = engine.findMatches(ruleDeScreen3Simplified, graph, null);
 		Iterator<Match> it = matches.iterator();
@@ -132,7 +129,7 @@ public class TestConfigurationEngineAllMatches {
 
 	@Test
 	public void testDeScreen3Applicable() {
-		HenshinResourceSet resourceSet = new HenshinResourceSet("src/main/java/efmconfiguration/engine/test");
+		HenshinResourceSet resourceSet = new HenshinResourceSet("src/test/java/efmconfiguration/engine/test");
 
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());
 		Resource model = resourceSet.getResource("config_screen3active.xmi");
@@ -143,6 +140,7 @@ public class TestConfigurationEngineAllMatches {
 		Rule multiRule1 = ruleDeScreen3.getMultiRules().get(0);
 
 		ConfigurationEngine engine = new ConfigurationEngine();
+    engine.getOptions().put("OPTION_STOP_AFTER_FIRST", false);
 
 		Iterable<Match> matches = engine.findMatches(ruleDeScreen3, graph, null);
 		Iterator<Match> it = matches.iterator();
@@ -166,7 +164,7 @@ public class TestConfigurationEngineAllMatches {
 
 	@Test
 	public void testDeScreen3AdditionalOrGroupApplicable() {
-		HenshinResourceSet resourceSet = new HenshinResourceSet("src/main/java/efmconfiguration/engine/test");
+		HenshinResourceSet resourceSet = new HenshinResourceSet("src/test/java/efmconfiguration/engine/test");
 
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());
 		Resource model = resourceSet.getResource("config_screen3active.xmi");
@@ -177,6 +175,7 @@ public class TestConfigurationEngineAllMatches {
 		Rule multiRule1 = ruleDeScreen3.getMultiRules().get(0);
 
 		ConfigurationEngine engine = new ConfigurationEngine();
+    engine.getOptions().put("OPTION_STOP_AFTER_FIRST", false);
 
 		List<Match> matches = new ArrayList<Match>();
 		engine.findMatches(ruleDeScreen3, graph, null).forEach(matches::add);
@@ -195,7 +194,7 @@ public class TestConfigurationEngineAllMatches {
 
 	@Test
 	public void testDeScreen3AdditionalOrGroup2MultiRulesApplicable() {
-		HenshinResourceSet resourceSet = new HenshinResourceSet("src/main/java/efmconfiguration/engine/test");
+		HenshinResourceSet resourceSet = new HenshinResourceSet("src/test/java/efmconfiguration/engine/test");
 
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());
 		Resource model = resourceSet.getResource("config_screen3active.xmi");
@@ -207,6 +206,7 @@ public class TestConfigurationEngineAllMatches {
 		Rule multiRule2 = ruleDeScreen3.getMultiRules().get(1);
 
 		ConfigurationEngine engine = new ConfigurationEngine();
+    engine.getOptions().put("OPTION_STOP_AFTER_FIRST", false);
 
 		List<Match> matches = new ArrayList<Match>();
 		engine.findMatches(ruleDeScreen3, graph, null).forEach(matches::add);

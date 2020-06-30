@@ -38,7 +38,7 @@ public class TestConfigurationEngine {
 	
 	@Test
 	public void testActSMSTransfer() {
-		HenshinResourceSet resourceSet = new HenshinResourceSet("src/main/java/efmconfiguration/engine/test");
+		HenshinResourceSet resourceSet = new HenshinResourceSet("src/test/java/efmconfiguration/engine/test");
 
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());
 		Resource model = resourceSet.getResource("config_screen3active.xmi");
@@ -63,7 +63,7 @@ public class TestConfigurationEngine {
 
 	@Test
 	public void testDeScreen3SimplifiedInapplicable() {
-		HenshinResourceSet resourceSet = new HenshinResourceSet("src/main/java/efmconfiguration/engine/test");
+		HenshinResourceSet resourceSet = new HenshinResourceSet("src/test/java/efmconfiguration/engine/test");
 
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());
 		Resource model = resourceSet.getResource("config_screen1active.xmi");
@@ -81,7 +81,7 @@ public class TestConfigurationEngine {
 
 	@Test
 	public void testDeScreen3SimplifiedApplicable() {
-		HenshinResourceSet resourceSet = new HenshinResourceSet("src/main/java/efmconfiguration/engine/test");
+		HenshinResourceSet resourceSet = new HenshinResourceSet("src/test/java/efmconfiguration/engine/test");
 
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());
 		Resource model = resourceSet.getResource("config_screen3active.xmi");
@@ -102,7 +102,7 @@ public class TestConfigurationEngine {
 
 	@Test
 	public void testDeScreen3SimplifiedAdditionalOrGroup() {
-		HenshinResourceSet resourceSet = new HenshinResourceSet("src/main/java/efmconfiguration/engine/test");
+		HenshinResourceSet resourceSet = new HenshinResourceSet("src/test/java/efmconfiguration/engine/test");
 
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());
 		Resource model = resourceSet.getResource("config_screen3active.xmi");
@@ -127,7 +127,7 @@ public class TestConfigurationEngine {
 
 	@Test
 	public void testDeScreen3Applicable() {
-		HenshinResourceSet resourceSet = new HenshinResourceSet("src/main/java/efmconfiguration/engine/test");
+		HenshinResourceSet resourceSet = new HenshinResourceSet("src/test/java/efmconfiguration/engine/test");
 
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());
 		Resource model = resourceSet.getResource("config_screen3active.xmi");
@@ -158,7 +158,7 @@ public class TestConfigurationEngine {
 
 	@Test
 	public void testDeScreen3AdditionalOrGroupApplicable() {
-		HenshinResourceSet resourceSet = new HenshinResourceSet("src/main/java/efmconfiguration/engine/test");
+		HenshinResourceSet resourceSet = new HenshinResourceSet("src/test/java/efmconfiguration/engine/test");
 
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());
 		Resource model = resourceSet.getResource("config_screen3active.xmi");
@@ -187,7 +187,7 @@ public class TestConfigurationEngine {
 
 	@Test
 	public void testDeScreen3AdditionalOrGroup2MultiRulesApplicable() {
-		HenshinResourceSet resourceSet = new HenshinResourceSet("src/main/java/efmconfiguration/engine/test");
+		HenshinResourceSet resourceSet = new HenshinResourceSet("src/test/java/efmconfiguration/engine/test");
 
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());
 		Resource model = resourceSet.getResource("config_screen3active.xmi");
