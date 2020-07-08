@@ -6,10 +6,7 @@ import java.nio.file.Paths;
 import java.util.Date;
 import org.eclipse.xtext.testing.util.ParseHelper;
 import org.eclipse.xtext.testing.validation.ValidationTestHelper;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInfo;
+import org.junit.jupiter.api.*;
 import uk.ac.kcl.inf.mdeoptimiser.languages.MoptStandaloneSetup;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.Optimisation;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.OptimisationInterpreter;
@@ -33,6 +30,7 @@ public class SearchCaseStudy {
 
   // MODEL A
   @Test
+  @Disabled
   public void knapsackModelA(TestInfo testInfo) throws Exception {
 
     var modelSpec =
