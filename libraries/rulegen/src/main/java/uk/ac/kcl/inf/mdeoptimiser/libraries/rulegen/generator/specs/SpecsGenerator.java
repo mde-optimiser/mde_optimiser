@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
-
 import org.eclipse.emf.ecore.EReference;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.metamodel.MetamodelWrapper;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.metamodel.RuleSpec;
@@ -210,55 +209,57 @@ public class SpecsGenerator {
 
     List<EReference> references = node.getEReferences();
 
-    //If one edge is specified only, filter out the rest.
-    if(ruleSpec.isEdge()){
-      references = references.stream().filter(reference -> reference.getName().equals(ruleSpec.getEdge())).collect(Collectors.toList());
+    // If one edge is specified only, filter out the rest.
+    if (ruleSpec.isEdge()) {
+      references =
+          references.stream()
+              .filter(reference -> reference.getName().equals(ruleSpec.getEdge()))
+              .collect(Collectors.toList());
     }
 
-    references
-        .forEach(
-            edge -> {
-              var repairs = new HashSet<RepairSpec>();
+    references.forEach(
+        edge -> {
+          var repairs = new HashSet<RepairSpec>();
 
-              if (edge.getEOpposite() == null || edge.getEOpposite().getLowerBound() == 0) {
+          if (edge.getEOpposite() == null || edge.getEOpposite().getLowerBound() == 0) {
 
-                if (edge.getLowerBound() == edge.getUpperBound()) {
-                  repairs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
-                } else {
-                  repairs.add(new RepairSpec(node, edge, RepairSpecType.ADD));
-                }
+            if (edge.getLowerBound() == edge.getUpperBound()) {
+              repairs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
+            } else {
+              repairs.add(new RepairSpec(node, edge, RepairSpecType.ADD));
+            }
 
+          } else {
+
+            //				if(edge.upperBound != -1) {
+            //					if(edge.EOpposite.lowerBound == edge.EOpposite.upperBound) {
+            //							repairs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE));
+            //					} else {
+            //							repairs.add(new RepairSpec(node, edge, RepairSpecType.ADD));
+            //					}
+            //				}
+            //
+            //				if(edge.upperBound == -1) {
+            //					if(edge.EOpposite.lowerBound == edge.EOpposite.upperBound) {
+            //							repairs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE));
+            //					} else {
+            //							repairs.add(new RepairSpec(node, edge, RepairSpecType.ADD));
+            //					}
+            //				}
+
+            if (edge.getLowerBound() == edge.getUpperBound()) {
+              repairs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
+            } else {
+              if (edge.getEOpposite().getLowerBound() == edge.getEOpposite().getUpperBound()) {
+                repairs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE));
               } else {
-
-                //				if(edge.upperBound != -1) {
-                //					if(edge.EOpposite.lowerBound == edge.EOpposite.upperBound) {
-                //							repairs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE));
-                //					} else {
-                //							repairs.add(new RepairSpec(node, edge, RepairSpecType.ADD));
-                //					}
-                //				}
-                //
-                //				if(edge.upperBound == -1) {
-                //					if(edge.EOpposite.lowerBound == edge.EOpposite.upperBound) {
-                //							repairs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE));
-                //					} else {
-                //							repairs.add(new RepairSpec(node, edge, RepairSpecType.ADD));
-                //					}
-                //				}
-
-                if (edge.getLowerBound() == edge.getUpperBound()) {
-                  repairs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
-                } else {
-                  if (edge.getEOpposite().getLowerBound() == edge.getEOpposite().getUpperBound()) {
-                    repairs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE));
-                  } else {
-                    repairs.add(new RepairSpec(node, edge, RepairSpecType.ADD));
-                  }
-                }
+                repairs.add(new RepairSpec(node, edge, RepairSpecType.ADD));
               }
+            }
+          }
 
-              repairSpecs.put(edge, repairs);
-            });
+          repairSpecs.put(edge, repairs);
+        });
 
     return repairSpecs;
   }
@@ -272,57 +273,59 @@ public class SpecsGenerator {
 
     List<EReference> references = node.getEReferences();
 
-    //If one edge is specified only, filter out the rest.
-    if(ruleSpec.isEdge()){
-      references = references.stream().filter(reference -> reference.getName().equals(ruleSpec.getEdge())).collect(Collectors.toList());
+    // If one edge is specified only, filter out the rest.
+    if (ruleSpec.isEdge()) {
+      references =
+          references.stream()
+              .filter(reference -> reference.getName().equals(ruleSpec.getEdge()))
+              .collect(Collectors.toList());
     }
 
-    references
-        .forEach(
-            edge -> {
-              var repairs = new HashSet<RepairSpec>();
+    references.forEach(
+        edge -> {
+          var repairs = new HashSet<RepairSpec>();
 
-              if (edge.getEOpposite() == null || edge.getEOpposite().getLowerBound() == 0) {
+          if (edge.getEOpposite() == null || edge.getEOpposite().getLowerBound() == 0) {
 
-                if (edge.getLowerBound() == edge.getUpperBound()) {
-                  repairs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
-                } else {
-                  repairs.add(new RepairSpec(node, edge, RepairSpecType.REMOVE));
-                }
+            if (edge.getLowerBound() == edge.getUpperBound()) {
+              repairs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
+            } else {
+              repairs.add(new RepairSpec(node, edge, RepairSpecType.REMOVE));
+            }
 
+          } else {
+
+            if (edge.getLowerBound() == edge.getUpperBound()) {
+              repairs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
+            } else {
+              if (edge.getEOpposite().getLowerBound() == edge.getEOpposite().getUpperBound()) {
+                repairs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE));
               } else {
-
-                if (edge.getLowerBound() == edge.getUpperBound()) {
-                  repairs.add(new RepairSpec(node, edge, RepairSpecType.SWAP));
-                } else {
-                  if (edge.getEOpposite().getLowerBound() == edge.getEOpposite().getUpperBound()) {
-                    repairs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE));
-                  } else {
-                    repairs.add(new RepairSpec(node, edge, RepairSpecType.REMOVE));
-                  }
-                }
-
-                //				if(edge.lowerBound !== -1){
-                //
-                //					if(edge.EOpposite.lowerBound == edge.EOpposite.upperBound){
-                //						repairs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE))
-                //					} else {
-                //						repairs.add(new RepairSpec(node, edge, RepairSpecType.REMOVE))
-                //					}
-                //				}
-                //
-                //				if(edge.lowerBound == -1){
-                //					if(edge.EOpposite.lowerBound == edge.EOpposite.upperBound){
-                //						repairs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE))
-                //					} else {
-                //						repairs.add(new RepairSpec(node, edge, RepairSpecType.REMOVE))
-                //					}
-                //				}
-
+                repairs.add(new RepairSpec(node, edge, RepairSpecType.REMOVE));
               }
+            }
 
-              repairSpecs.put(edge, repairs);
-            });
+            //				if(edge.lowerBound !== -1){
+            //
+            //					if(edge.EOpposite.lowerBound == edge.EOpposite.upperBound){
+            //						repairs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE))
+            //					} else {
+            //						repairs.add(new RepairSpec(node, edge, RepairSpecType.REMOVE))
+            //					}
+            //				}
+            //
+            //				if(edge.lowerBound == -1){
+            //					if(edge.EOpposite.lowerBound == edge.EOpposite.upperBound){
+            //						repairs.add(new RepairSpec(node, edge, RepairSpecType.CHANGE))
+            //					} else {
+            //						repairs.add(new RepairSpec(node, edge, RepairSpecType.REMOVE))
+            //					}
+            //				}
+
+          }
+
+          repairSpecs.put(edge, repairs);
+        });
 
     return repairSpecs;
   }

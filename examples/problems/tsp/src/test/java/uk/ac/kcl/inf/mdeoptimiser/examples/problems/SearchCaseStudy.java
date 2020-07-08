@@ -36,33 +36,33 @@ public class SearchCaseStudy {
   public void TSPModelA(TestInfo testInfo) throws Exception {
 
     var modelSpec =
-            String.join(
-                    System.getProperty("line.separator"),
-                    "problem {\n" +
-                            "\tbasepath <src/main/resources/models/tsp/>\n" +
-                            "\tmetamodel <models.tsp.fitness.TSP.TSPPackage>\n" +
-                            "\tmodel <br17.atsp.xmi>\n" +
-                            "}\n" +
-                            "goal {\n" +
-                            "\trefine metamodel {\"City\", \"next\", 1, 1}",
-                            "\tobjective MinimiseDistanceTravelled minimise java { \"models.tsp.fitness.MinimiseDistanceTravelled\" }\n" +
-                            "\tconstraint MinimiseUnvisitedCities java { \"models.tsp.fitness.MinimiseUnvisitedCities\" }\n" +
-                            "}\n" +
-                            "search { \n" +
-                            "\tmutate {\"City\", \"next\"}\n" +
-                            "}\n" +
-                            "solver {\n" +
-                            "\toptimisation provider moea algorithm NSGAII {\n" +
-                            "\t\tpopulation: 100\n" +
-                            "\t\tvariation: mutation\n" +
-                            "\t\tmutation.step: annealing(1500, 10)\n" +
-                            "\t\tmutation.strategy: random\n" +
-                            "\t}\n" +
-                            "\ttermination {\n" +
-                            "\t\tevolutions: 1500\n" +
-                            "\t}\n" +
-                            "\tbatches 1\n" +
-                            "}");
+        String.join(
+            System.getProperty("line.separator"),
+            "problem {\n"
+                + "\tbasepath <src/main/resources/models/tsp/>\n"
+                + "\tmetamodel <models.tsp.fitness.TSP.TSPPackage>\n"
+                + "\tmodel <br17.atsp.xmi>\n"
+                + "}\n"
+                + "goal {\n"
+                + "\trefine metamodel {\"City\", \"next\", 1, 1}",
+            "\tobjective MinimiseDistanceTravelled minimise java { \"models.tsp.fitness.MinimiseDistanceTravelled\" }\n"
+                + "\tconstraint MinimiseUnvisitedCities java { \"models.tsp.fitness.MinimiseUnvisitedCities\" }\n"
+                + "}\n"
+                + "search { \n"
+                + "\tmutate {\"City\", \"next\"}\n"
+                + "}\n"
+                + "solver {\n"
+                + "\toptimisation provider moea algorithm NSGAII {\n"
+                + "\t\tpopulation: 100\n"
+                + "\t\tvariation: mutation\n"
+                + "\t\tmutation.step: annealing(1500, 10)\n"
+                + "\t\tmutation.strategy: random\n"
+                + "\t}\n"
+                + "\ttermination {\n"
+                + "\t\tevolutions: 1500\n"
+                + "\t}\n"
+                + "\tbatches 1\n"
+                + "}");
 
     var model = parseHelper.parse(modelSpec);
 
@@ -82,11 +82,11 @@ public class SearchCaseStudy {
     if (model != null) {
 
       var mdeoResultsOutput =
-              new MDEOResultsOutput(
-                      new Date(),
-                      Paths.get(pathPrefix),
-                      Paths.get(testInfo.getTestMethod().get().getName()),
-                      model);
+          new MDEOResultsOutput(
+              new Date(),
+              Paths.get(pathPrefix),
+              Paths.get(testInfo.getTestMethod().get().getName()),
+              model);
 
       var experimentId = 0;
       do {
@@ -99,11 +99,11 @@ public class SearchCaseStudy {
         var experimentDuration = (endTime - startTime) / 1000000;
 
         mdeoResultsOutput.logBatch(
-                new MDEOBatch(
-                        experimentId,
-                        experimentDuration,
-                        optimisationOutcome,
-                        optimisationInterpreter.getSearchSpecification().getRulegenOperators()));
+            new MDEOBatch(
+                experimentId,
+                experimentDuration,
+                optimisationOutcome,
+                optimisationInterpreter.getSearchSpecification().getRulegenOperators()));
 
         experimentId++;
       } while (experimentId < model.getSolver().getAlgorithmBatches());
