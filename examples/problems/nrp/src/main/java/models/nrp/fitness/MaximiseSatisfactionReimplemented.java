@@ -74,8 +74,8 @@ public class MaximiseSatisfactionReimplemented implements IGuidanceFunction {
 
     var maxRealisation =
         requirement.getRealisations().stream()
-            .filter(x -> isImplemented(x))
-            .max(Comparator.comparing(x -> x.getPercentage()))
+            .filter(this::isImplemented)
+            .max(Comparator.comparing(RequirementRealisation::getPercentage))
             .get()
             .getPercentage();
 

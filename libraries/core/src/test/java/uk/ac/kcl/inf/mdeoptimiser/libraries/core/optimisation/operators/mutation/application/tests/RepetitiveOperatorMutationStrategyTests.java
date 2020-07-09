@@ -56,7 +56,7 @@ public class RepetitiveOperatorMutationStrategyTests {
     Unit operator_5 = mock(Unit.class);
     lenient().when(operator_5.getName()).thenReturn("test5");
 
-    lenient().when(mutationStepSizeStrategy.getNextStepSize(mock(Solution.class))).thenReturn(5);
+    lenient().when(mutationStepSizeStrategy.getNextStepSize(any(Solution.class))).thenReturn(5);
     lenient()
         .when(operatorSelectionStrategy.getNextOperator(solution))
         .thenReturn(operator_1, operator_2, operator_3, operator_4, operator_5);
@@ -109,7 +109,7 @@ public class RepetitiveOperatorMutationStrategyTests {
     assertEquals(expectedAppliedOperators, outcome);
 
     // Step size was queried once
-    verify(mutationStepSizeStrategy, times(1)).getNextStepSize(mock(Solution.class));
+    verify(mutationStepSizeStrategy, times(1)).getNextStepSize(any(Solution.class));
 
     // Operator to apply was queried once
     verify(operatorSelectionStrategy, times(1)).getNextOperator(solution);

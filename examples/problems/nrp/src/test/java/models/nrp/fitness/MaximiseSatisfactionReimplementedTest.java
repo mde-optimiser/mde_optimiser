@@ -8,12 +8,14 @@ import java.util.Arrays;
 import java.util.List;
 import models.nrp.nextReleaseProblem.NRP;
 import org.junit.Rule;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.guidance.Solution;
 
+@Disabled
 public class MaximiseSatisfactionReimplementedTest {
 
   private static final double DELTA = 1e-3;

@@ -75,7 +75,6 @@ public class ParametersLoaderTests {
     var parsedParameter = parametersParser.get("mutation.strategy");
 
     assertThat(parsedParameter.getValue()).isEqualTo("manual");
-    assertThat(parsedParameter.getValue().isEmpty()).isTrue();
   }
 
   @Test

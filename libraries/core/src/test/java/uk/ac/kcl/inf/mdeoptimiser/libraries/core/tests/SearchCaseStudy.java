@@ -100,19 +100,19 @@ public class SearchCaseStudy {
     NondominatedPopulation population2 = new NondominatedPopulation();
     var solutionB = new Solution(1, 2, 2);
     solutionB.setObjectives(new double[] {-15, 0});
-    solutionA.setConstraints(new double[] {-4, 1});
+    solutionB.setConstraints(new double[] {-4, 1});
     population2.add(solutionB);
     //    population2.add(new Solution(new double[] {-4.0, 0}));
     //    population2.add(new Solution(new double[] {-2.0, 0}));
 
-    System.out.println(indicator.evaluate(population1));
-    System.out.println(indicator.evaluate(population2));
+    //    System.out.println(indicator.evaluate(population1));
+    //    System.out.println(indicator.evaluate(population2));
+    //
+    //    System.out.println("HV");
+    //    System.out.println(hvIndicator.evaluate(population1));
+    //    System.out.println(hvIndicator.evaluate(population2));
 
-    System.out.println("HV");
-    System.out.println(hvIndicator.evaluate(population1));
-    System.out.println(hvIndicator.evaluate(population2));
-
-    assertTrue(indicator.evaluate(population1) < indicator.evaluate(population2));
+    assertTrue((indicator.evaluate(population1) - indicator.evaluate(population2)) > 0);
   }
 
   @Test
