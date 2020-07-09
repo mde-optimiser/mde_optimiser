@@ -40,11 +40,30 @@ Build order:
 
 ### Using Java Only
 
-mvn archetype:generate
+mvn archetype:generate \
 	-DgroupId={project-packaging} \
 	-DartifactId={project-name} \
 	-DarchetypeArtifactId=maven-archetype-quickstart \
 	-DinteractiveMode=false
+
+
+Some other maven archetypes:
+
+mvn archetype:generate \ 
+-DgroupId={group-id} \
+-DartifactId={artifact-id} \
+-DarchetypeArtifactId=maven-archetype-quickstart \
+-DarchetypeVersion=1.4 \
+-DinteractiveMode=false 
+
+mvn archetype:generate \
+-DgroupId={group-id} \
+-DartifactId={artifact-id} \
+-DarchetypeGroupId=com.thepracticaldeveloper \
+-DarchetypeArtifactId=archetype-java-basic-tpd \ 
+-DarchetypeVersion=1.0.0 \
+-Djava-version=9
+
 
 More Maven project configuration settings example site:
 https://www.mkyong.com/maven/how-to-create-a-java-project-with-maven/

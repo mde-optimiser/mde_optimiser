@@ -1,0 +1,27 @@
+problem {
+	basepath <src/main/resources/models/knapsack/>
+	metamodel <models.knapsack.ecore.EcorePackage>
+	model <csplib-example.xmi>
+}
+goal {
+	objective MaximiseGain maximise java { "models.knapsack.fitness.MaximiseGain" }
+	objective MinimiseWeight maximise java { "models.knapsack.fitness.MinimiseWeight" }
+	constraint WeightConstraint java { "models.knapsack.fitness.WeightConstraint" }
+}
+search {
+	mutate using <evolvers.henshin> unit "addToItem_isContainedBy_Knapsack"
+	mutate using <evolvers.henshin> unit "removeFromItem_isContainedBy_Knapsack"
+}
+solver {
+	optimisation provider moea algorithm NSGAII {
+		population: 40
+		variation: mutation
+		mutation.step: 1
+		mutation.strategy: random
+	}
+	termination {
+		evolutions: 500
+	}
+	batches 1
+}
+

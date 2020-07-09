@@ -1,0 +1,7 @@
+Objective values:
+MinimiseCustomerSatisfactionIndex: 0.551232502197523
+MinimiseSprintEffortDeviation: 1.1785113019775793
+
+Constraint values:
+HasNoUnassignedWorkItems: 0.0
+HasTheAllowedMaximalNumberOfSprints: 0.0

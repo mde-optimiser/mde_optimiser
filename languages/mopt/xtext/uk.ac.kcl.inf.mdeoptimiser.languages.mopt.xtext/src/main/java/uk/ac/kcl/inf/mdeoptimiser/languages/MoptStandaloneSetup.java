@@ -3,13 +3,10 @@
  */
 package uk.ac.kcl.inf.mdeoptimiser.languages;
 
-
-/**
- * Initialization support for running Xtext languages without Equinox extension registry.
- */
+/** Initialization support for running Xtext languages without Equinox extension registry. */
 public class MoptStandaloneSetup extends MoptStandaloneSetupGenerated {
 
-	public static void doSetup() {
-		new MoptStandaloneSetup().createInjectorAndDoEMFRegistration();
-	}
+  public static void doSetup() {
+    new MoptStandaloneSetup().createInjectorAndDoEMFRegistration();
+  }
 }

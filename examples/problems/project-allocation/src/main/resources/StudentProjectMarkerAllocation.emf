@@ -1,0 +1,42 @@
+@namespace(uri="http://www.example.org/StudentProjectMarkerAllocation", prefix="StudentProjectMarkerAllocation")
+package StudentProjectMarkerAllocation;
+
+import "http://www.eclipse.org/emf/2003/XMLType";
+
+class Academic {
+  ref Project[*]#supervisor projects;
+  ref Project[+]#secondMarker secondMarker;
+  ref Project[+]#thirdMarker thirdMarker;
+  ref MarkingTeam[*]#academics markingTeam;
+  attr type.String name;
+  attr type.String number;
+  attr type.String email;
+}
+
+class Project {
+  ref Academic[1]#projects supervisor;
+  ref Student#project student;
+  ref Academic[1]#secondMarker secondMarker;
+  ref Academic[1]#thirdMarker thirdMarker;
+  attr type.String title;
+  attr type.String stage;
+}
+
+class Student {
+  ref Project[1]#student project;
+  attr type.String email;
+  attr type.String name;
+  attr type.String number;
+}
+
+class MarkingTeam {
+	attr type.Integer number;
+	ref Academic[*]#markingTeam academics;
+}
+
+class MarkerAllocationModel {
+  val Student[+] students;
+  val Project[+] projects;
+  val Academic[+] academics;
+  val MarkingTeam[*] markingTeams;
+}

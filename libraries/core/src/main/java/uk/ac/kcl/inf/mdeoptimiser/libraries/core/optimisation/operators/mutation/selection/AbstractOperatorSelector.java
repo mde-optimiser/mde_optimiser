@@ -3,33 +3,26 @@ package uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.mutatio
 import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.emf.henshin.model.Unit;
-import org.moeaframework.Instrumenter;
-import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.AlgorithmSpec;
-import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.henshin.HenshinExecutor;
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.SearchOperatorConfiguration;
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.mutation.selection.credit.OperatorCreditStrategy;
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.parameters.AbstractStrategyParameter;
 
-public abstract class AbstractOperatorSelector implements OperatorSelectionStrategy {
+public abstract class AbstractOperatorSelector extends AbstractStrategyParameter
+    implements OperatorSelectionStrategy {
 
-  protected HenshinExecutor henshinExecutor;
   protected List<Unit> triedOperators;
+  protected OperatorCreditStrategy operatorCreditStrategy;
 
-  protected AlgorithmSpec algorithmSpec;
-  protected Instrumenter algorithmStepInstrumenter;
-
-  public AbstractOperatorSelector(HenshinExecutor henshinExecutor) {
-    this.henshinExecutor = henshinExecutor;
-    this.triedOperators = new ArrayList<Unit>();
+  public AbstractOperatorSelector(SearchOperatorConfiguration searchOperatorConfiguration) {
+    this(searchOperatorConfiguration, null);
   }
 
-  /**
-   * Invoked when the search starts.
-   *
-   * @param algorithmSpec configured algorithm spec
-   * @param algorithmStepInstrumenter algorithm step size instrumenter
-   */
-  @Override
-  public void initialize(AlgorithmSpec algorithmSpec, Instrumenter algorithmStepInstrumenter) {
-    this.algorithmSpec = algorithmSpec;
-    this.algorithmStepInstrumenter = algorithmStepInstrumenter;
+  public AbstractOperatorSelector(
+      SearchOperatorConfiguration searchOperatorConfiguration,
+      OperatorCreditStrategy operatorCreditStrategy) {
+    super(searchOperatorConfiguration);
+    this.operatorCreditStrategy = operatorCreditStrategy;
+    this.triedOperators = new ArrayList<Unit>();
   }
 
   /** Register a tried operator in the current step. */
@@ -45,12 +38,39 @@ public abstract class AbstractOperatorSelector implements OperatorSelectionStrat
    */
   @Override
   public boolean hasUntriedOperators() {
-    return triedOperators.size() < this.henshinExecutor.getMutationOperators().size();
+    return triedOperators.size() < this.getOperators().size();
   }
 
   /** Flush the list of tried operators to start a new step. */
   @Override
   public void flushTriedOperators() {
     this.triedOperators.clear();
+  }
+
+  /**
+   * Get the list of configured operators.
+   *
+   * @return a list of individual operators as configured in the DSL
+   */
+  protected List<Unit> getOperators() {
+    return this.getSearchOperatorConfiguration().getHenshinExecutor().getMutationOperators();
+  }
+
+  /**
+   * Return a list of operators for which the application failed.
+   *
+   * @return list of tried operators
+   */
+  protected List<Unit> getTriedOperators() {
+    return this.triedOperators;
+  }
+
+  /**
+   * Specify the DSL key for this mutation strategy.
+   *
+   * @return
+   */
+  protected String getStrategyParameterKey() {
+    return "mutation.selection";
   }
 }

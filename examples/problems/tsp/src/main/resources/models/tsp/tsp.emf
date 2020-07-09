@@ -1,0 +1,22 @@
+@namespace(uri="http://uk.ac.kcl.inf.mdeoptimiser.examples/tsp/1.0", prefix="models.tsp")
+package TSP;
+
+class Region {
+	attr String[1] name;
+	!ordered val City[*] cities;
+	!ordered val Distance[*] distances;
+}
+
+class City {
+	attr String[1] name;
+	attr boolean[1] start;
+	ref Distance[*]#from origin;
+	ref Distance[*]#to destination;
+	ref City[0..1] next;
+}
+
+class Distance {
+	attr Double[1] distance;
+	ref City[1]#origin from;
+	ref City[1]#destination to;
+}

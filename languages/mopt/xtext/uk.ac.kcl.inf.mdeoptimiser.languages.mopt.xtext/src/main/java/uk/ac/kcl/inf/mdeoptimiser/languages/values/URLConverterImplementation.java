@@ -6,18 +6,18 @@ import org.eclipse.xtext.nodemodel.INode;
 
 /**
  * Value converter for URL strings. Removes leading and ending "<" ">" characters.
- * 
+ *
  * @author Steffen Zschaler
  */
 public class URLConverterImplementation implements IValueConverter<String> {
-	
-	@Override
+
+  @Override
   public String toString(String value) throws ValueConverterException {
-	  return "<" + value + ">";
-	}
-	
-	@Override
+    return "<" + value + ">";
+  }
+
+  @Override
   public String toValue(String string, INode node) throws ValueConverterException {
-		return string.substring(1, string.length() - 1);
-	}
+    return string.substring(1, string.length() - 1);
+  }
 }

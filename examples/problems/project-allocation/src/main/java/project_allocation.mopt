@@ -1,0 +1,30 @@
+problem {
+	basepath <src/main/resources/>
+	metamodel <models.project.allocation.ecore.StudentProjectMarkerAllocation.StudentProjectMarkerAllocationPackage>
+	model <ug_pg_allocation.xmi>
+}
+goal {
+	objective MinimiseNumberOfMarkingTeams maximise java { "models.project.allocation.fitness.MinimiseNumberOfMarkingTeams" }
+	objective MinimiseMarkerAverageLoadDeviation minimise java { "models.project.allocation.fitness.MinimiseMarkerAverageLoadDeviation" }
+	constraint MinimiseSmallMarkingTeams java { "models.project.allocation.fitness.MinimiseSmallMarkingTeams" }
+	constraint MinimiseLargeMarkingTeams java { "models.project.allocation.fitness.MinimiseLargeMarkingTeams" }
+	constraint MinimiseProjectsWithoutMarkers java { "models.project.allocation.fitness.MinimiseProjectsWithoutMarkers" }
+}
+search {
+	mutate using <project-marking-allocation.henshin> unit "second_marker_allocation"
+	mutate using <project-marking-allocation.henshin> unit "swap_second_markers"
+	mutate using <project-marking-allocation.henshin> unit "change_second_marker"
+}
+solver {
+	optimisation provider moea algorithm NSGAII {
+		population: 100
+		variation: mutation
+		mutation.step: 3
+		mutation.strategy: repetitive
+	}
+	termination {
+		evolutions: 2000
+	}
+	batches 1
+	
+}

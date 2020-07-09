@@ -1,0 +1,26 @@
+problem {
+	basepath <src/main/resources/models/tsp/>
+	metamodel <models.tsp.fitness.TSP.TSPPackage>
+	model <br17.atsp.xmi>
+}
+goal {
+	refine metamodel {"City", "next", 1, 1}
+	objective MinimiseDistanceTravelled minimise java { "models.tsp.fitness.MinimiseDistanceTravelled" }
+	constraint MinimiseUnvisitedCities java { "models.tsp.fitness.MinimiseUnvisitedCities" }
+}
+search { 
+	mutate {"City", "next"}
+}
+solver {
+	optimisation provider moea algorithm NSGAII {
+		population: 40
+		variation: mutation
+		mutation.step: 1
+		mutation.strategy: random
+	}
+	termination {
+		evolutions: 500
+	}
+	batches 1
+}
+

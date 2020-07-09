@@ -1,7 +1,6 @@
 package uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output.descriptors;
 
 import com.google.common.io.Files;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.charset.Charset;
@@ -10,6 +9,8 @@ import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
+import java.util.stream.Collectors;
+import org.eclipse.emf.henshin.model.NamedElement;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.henshin.ResourceSetWrapper;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.problem.MoeaOptimisationSolution;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output.MDEOBatch;
@@ -73,10 +74,9 @@ public class TextDescriptor implements ResultsDescriptor {
       batchWriter.println();
       batchWriter.close();
 
-      batchOverallOutput.append(Files.asCharSource(outputFile, Charset.defaultCharset()));
+      batchOverallOutput.append(Files.toString(outputFile, Charset.defaultCharset()));
 
-    } catch (FileNotFoundException e) {
-      // TODO Auto-generated catch block
+    } catch (IOException e) {
       e.printStackTrace();
     }
   }
@@ -103,13 +103,33 @@ public class TextDescriptor implements ResultsDescriptor {
     }
 
     infoWriter.println("");
+    infoWriter.println("Parent mutation steps:");
+
+    var mutationSteps = solution.getModel().getParentMutationSteps();
+    infoWriter.println(
+        String.format(
+            "Steps: %s",
+            mutationSteps.stream()
+                .map(s -> String.format("[x=%s, sigma=%s]", s.getFirst(), s.getSecond()))
+                .collect(Collectors.joining(" -> "))));
+
+    infoWriter.println("");
 
     var transformations = solution.getModel().getTransformationsChain();
     if (transformations.size() > 0) {
       infoWriter.println("Transformations chain:");
       infoWriter.println(String.format("Length: %s", transformations.size()));
       infoWriter.println(
-          String.format("Sequence: %s", String.join(" -> ", transformations.toString())));
+          String.format(
+              "Sequence: %s",
+              transformations.stream()
+                  .map(
+                      step ->
+                          step.stream()
+                              .map(NamedElement::getName)
+                              .collect(Collectors.toList())
+                              .toString())
+                  .collect(Collectors.joining(" -> "))));
     }
   }
 }

@@ -41,7 +41,6 @@ import org.eclipse.xtext.validation.IResourceValidator;
 import org.eclipse.xtext.xbase.DefaultXbaseRuntimeModule;
 import org.eclipse.xtext.xbase.annotations.validation.DerivedStateAwareResourceValidator;
 import org.eclipse.xtext.xbase.imports.RewritableImportSection;
-import org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer;
 import org.eclipse.xtext.xbase.jvmmodel.JvmLocationInFileProvider;
 import org.eclipse.xtext.xbase.scoping.XImportSectionNamespaceScopeProvider;
 import org.eclipse.xtext.xbase.scoping.XbaseQualifiedNameProvider;
@@ -53,7 +52,6 @@ import org.eclipse.xtext.xbase.typesystem.internal.LogicalContainerAwareReentran
 import org.eclipse.xtext.xbase.validation.FeatureNameValidator;
 import org.eclipse.xtext.xbase.validation.LogicalContainerAwareFeatureNameValidator;
 import org.eclipse.xtext.xbase.validation.XbaseConfigurableIssueCodes;
-import uk.ac.kcl.inf.mdeoptimiser.languages.jvmmodel.MoptJvmModelInferrer;
 import uk.ac.kcl.inf.mdeoptimiser.languages.parser.antlr.MoptAntlrTokenFileProvider;
 import uk.ac.kcl.inf.mdeoptimiser.languages.parser.antlr.MoptParser;
 import uk.ac.kcl.inf.mdeoptimiser.languages.parser.antlr.internal.InternalMoptLexer;
@@ -235,11 +233,6 @@ public abstract class AbstractMoptRuntimeModule extends DefaultXbaseRuntimeModul
 	// contributed by org.eclipse.xtext.xtext.generator.xbase.XbaseGeneratorFragment2
 	public Class<? extends IResourceValidator> bindIResourceValidator() {
 		return DerivedStateAwareResourceValidator.class;
-	}
-	
-	// contributed by org.eclipse.xtext.xtext.generator.xbase.XbaseGeneratorFragment2
-	public Class<? extends IJvmModelInferrer> bindIJvmModelInferrer() {
-		return MoptJvmModelInferrer.class;
 	}
 	
 }

@@ -53,7 +53,7 @@ public class BatchReportsDescriptor implements ResultsDescriptor {
 
   public void writeReportInfo(File outputFile, MDEOBatch batch) {
 
-    BufferedWriter writer = null;
+    BufferedWriter writer;
     try {
       writer = new BufferedWriter(new FileWriter(outputFile));
 

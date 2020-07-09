@@ -5,11 +5,9 @@ import java.util.LinkedList;
 import java.util.Random;
 import org.moeaframework.core.Solution;
 import org.moeaframework.core.Variation;
-import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.executor.SolutionGenerator;
 
 public class MoeaProbabilisticVariation implements Variation {
 
-  SolutionGenerator solutionGenerator;
   Variation crossoverOperator;
   Variation mutationOperator;
   double crossoverRate;
@@ -17,7 +15,6 @@ public class MoeaProbabilisticVariation implements Variation {
 
   public MoeaProbabilisticVariation(
       Variation crossover, Variation mutation, double crossoverRate, double mutationRate) {
-    this.solutionGenerator = solutionGenerator;
     this.crossoverOperator = crossover;
     this.mutationOperator = mutation;
     this.crossoverRate = crossoverRate;

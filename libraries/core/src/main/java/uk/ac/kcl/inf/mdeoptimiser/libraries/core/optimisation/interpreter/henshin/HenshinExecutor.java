@@ -1,10 +1,11 @@
 package uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.henshin;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.eclipse.emf.henshin.interpreter.EGraph;
 import org.eclipse.emf.henshin.interpreter.Engine;
+import org.eclipse.emf.henshin.interpreter.impl.ChangeImpl;
 import org.eclipse.emf.henshin.interpreter.impl.EGraphImpl;
 import org.eclipse.emf.henshin.interpreter.impl.RuleApplicationImpl;
 import org.eclipse.emf.henshin.interpreter.impl.UnitApplicationImpl;
@@ -42,12 +43,15 @@ public class HenshinExecutor {
     this.engine = new HenshinEngineFactory(solverSpec).create();
 
     engine.getOptions().put(Engine.OPTION_DETERMINISTIC, false);
+    // Disable Warnings
+    ChangeImpl.PRINT_WARNINGS = false;
 
     this.unitRunner = new MdeoUnitApplicationImpl(engine);
     this.ruleRunner = new MdeoRuleApplicationImpl(engine);
 
     this.mutationOperators = mutationOperators;
     this.crossoverOperators = crossoverOperators;
+    this.evolverParametersFactory = evolverParametersFactory;
   }
 
   public boolean runRuleOperator(Unit operator, EGraph graph, List<Solution> object) {
@@ -101,10 +105,10 @@ public class HenshinExecutor {
   public boolean operatorApplied(Unit operator, EGraphImpl graph, Solution candidateSolution) {
 
     if (operator.eClass().getClassifierID() == HenshinPackage.RULE) {
-      return this.runRuleOperator(operator, graph, Arrays.asList(candidateSolution));
+      return this.runRuleOperator(operator, graph, Collections.singletonList(candidateSolution));
     }
 
-    return this.runUnitOperator(operator, graph, Arrays.asList(candidateSolution));
+    return this.runUnitOperator(operator, graph, Collections.singletonList(candidateSolution));
   }
 
   public List<Unit> getMutationOperators() {
@@ -112,7 +116,6 @@ public class HenshinExecutor {
   }
 
   public List<Unit> getCrossoverOperators() {
-
     return this.crossoverOperators;
   }
 

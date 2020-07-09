@@ -20,6 +20,10 @@ public class ResourceSetWrapper {
     this.resourceSet = new HenshinResourceSet();
   }
 
+  public ResourceSetWrapper(String path) {
+    this(Path.of(path));
+  }
+
   public ResourceSetWrapper(Path path) {
     this.resourceSet = new HenshinResourceSet(path.toAbsolutePath().toString());
   }
@@ -38,6 +42,7 @@ public class ResourceSetWrapper {
   }
 
   public void writeModel(EObject model, String path) {
+
     var resource = this.resourceSet.createResource(URI.createFileURI(path));
     if (resource.isLoaded()) {
       resource.getContents().clear();

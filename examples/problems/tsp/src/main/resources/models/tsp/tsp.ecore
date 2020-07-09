@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="TSP" nsURI="http://uk.ac.kcl.inf.mdeoptimiser.examples/tsp/1.0"
+    nsPrefix="models.tsp">
+  <eClassifiers xsi:type="ecore:EClass" name="Region">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cities" ordered="false"
+        upperBound="-1" eType="#//City" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="distances" ordered="false"
+        upperBound="-1" eType="#//Distance" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="City">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="origin" upperBound="-1"
+        eType="#//Distance" eOpposite="#//Distance/from"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="destination" upperBound="-1"
+        eType="#//Distance" eOpposite="#//Distance/to"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="next" eType="#//City"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Distance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="distance" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="from" lowerBound="1" eType="#//City"
+        eOpposite="#//City/origin"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="to" lowerBound="1" eType="#//City"
+        eOpposite="#//City/destination"/>
+  </eClassifiers>
+</ecore:EPackage>

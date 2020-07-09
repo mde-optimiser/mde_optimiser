@@ -1,26 +1,30 @@
 package uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea;
 
 import java.util.Properties;
+import org.eclipse.emf.common.util.EList;
+import org.moeaframework.core.Problem;
 import org.moeaframework.core.TerminationCondition;
+import org.moeaframework.core.spi.AlgorithmFactory;
+import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.Parameter;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.SolverSpec;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.executor.SolutionGenerator;
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.algorithms.MoeaOptimisationAlgorithmProvider;
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.problem.MoeaOptimisationProblem;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.termination.conditions.TerminationConditionAdapter;
 import uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter.MDEOHyperparametersConfiguration;
 
 // TODO This should become a template for all the types of parameters supported
 public class MoeaFrameworkAlgorithmConfiguration {
 
-  int populationSize;
-
   private Properties properties;
-
   private SolverSpec solverSpec;
+  private TerminationCondition terminationCondition;
+  private MDEOHyperparametersConfiguration hyperparameters;
+
+  private AlgorithmFactory algorithmFactory;
+  private Problem problem;
 
   private SolutionGenerator solutionGenerator;
-
-  private TerminationCondition terminationCondition;
-
-  private MDEOHyperparametersConfiguration hyperparameters;
 
   public MoeaFrameworkAlgorithmConfiguration(
       SolverSpec solverSpec, SolutionGenerator solutionGenerator) {
@@ -60,8 +64,12 @@ public class MoeaFrameworkAlgorithmConfiguration {
                   .getValue()
                   .getNumeric()));
     }
-    // properties.put("maxEvolutions", optimisationSpec.algorithmPopulation *
-    // optimisationSpec.algorithmEvolutions)
+
+    populateNumericParameter(
+        properties, this.solverSpec.getAlgorithm().getParameters(), "archive.size");
+    populateNumericParameter(
+        properties, this.solverSpec.getAlgorithm().getParameters(), "bisections");
+
     properties.put("solutionGenerator", solutionGenerator);
     // Crossover and mutation or mutation only
     properties.put(
@@ -70,9 +78,53 @@ public class MoeaFrameworkAlgorithmConfiguration {
             .filter(p -> p.getName().equals("variation"))
             .findFirst()
             .get());
-    // properties.put("terminationCondition", new TerminationConditionAdapter(solverSpec).condition)
 
     return properties;
+  }
+
+  /**
+   * Populate additional parameters in the properties using the configured parameter key
+   *
+   * @param properties
+   * @param parameters
+   * @param parameterKey
+   */
+  private void populateNumericParameter(
+      Properties properties, EList<Parameter> parameters, String parameterKey) {
+    var parameter = parameters.stream().filter(p -> p.getName().equals(parameterKey)).findFirst();
+    parameter.ifPresent(p -> properties.put(parameterKey, p.getValue().getNumeric()));
+  }
+
+  /**
+   * Build an instance of the MOEAOptimisationProblem class using the configured search specificaion
+   *
+   * @return an instance of the MOEAOptimisationProblem
+   */
+  public Problem getProblem() {
+
+    if (this.problem == null) {
+      this.problem = new MoeaOptimisationProblem(this.solutionGenerator);
+      // TODO
+      this.solutionGenerator.setProblem(this.problem);
+    }
+
+    return this.problem;
+  }
+
+  /**
+   * Initialise the algorithm factory and register the MDEO algorithm provider in MOEAFramework.
+   *
+   * @return algorithmFactory object containing the MDEO algorithm provider
+   */
+  public AlgorithmFactory getAlgorithmFactory() {
+
+    if (this.algorithmFactory == null) {
+      var algorithmFactory = new AlgorithmFactory();
+      algorithmFactory.addProvider(new MoeaOptimisationAlgorithmProvider());
+      this.algorithmFactory = algorithmFactory;
+    }
+
+    return this.algorithmFactory;
   }
 
   public TerminationCondition getTerminationCondition() {

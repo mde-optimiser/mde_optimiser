@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_aanvUDg4EeqPWISK_Itx9w">
+  <imports href="http://www.example.org/StudentProjectMarkerAllocation#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_g3V90Dl6EeqyLMgyfTuvrA" name="second_marker_allocation">
+    <lhs xmi:id="_g3bdYDl6EeqyLMgyfTuvrA" name="Lhs">
+      <nodes xmi:id="_kDZDEDl6EeqyLMgyfTuvrA">
+        <type href="http://www.example.org/StudentProjectMarkerAllocation#//Academic"/>
+      </nodes>
+      <nodes xmi:id="_kpCt0Dl6EeqyLMgyfTuvrA">
+        <type href="http://www.example.org/StudentProjectMarkerAllocation#//Project"/>
+      </nodes>
+      <formula xsi:type="henshin:Not" xmi:id="_nP7QgDl6EeqyLMgyfTuvrA">
+        <child xsi:type="henshin:NestedCondition" xmi:id="_nP7QgTl6EeqyLMgyfTuvrA">
+          <conclusion xmi:id="_nP7Qgjl6EeqyLMgyfTuvrA">
+            <nodes xmi:id="_nP7Qgzl6EeqyLMgyfTuvrA" outgoing="_mp-DwDl6EeqyLMgyfTuvrA _rcvPMDl6EeqyLMgyfTuvrA">
+              <type href="http://www.example.org/StudentProjectMarkerAllocation#//Project"/>
+            </nodes>
+            <nodes xmi:id="_nP7QhTl6EeqyLMgyfTuvrA" incoming="_mp-DwDl6EeqyLMgyfTuvrA">
+              <type href="http://www.example.org/StudentProjectMarkerAllocation#//Academic"/>
+            </nodes>
+            <nodes xmi:id="_o8SrsDl6EeqyLMgyfTuvrA" incoming="_rcvPMDl6EeqyLMgyfTuvrA">
+              <type href="http://www.example.org/StudentProjectMarkerAllocation#//Academic"/>
+            </nodes>
+            <edges xmi:id="_mp-DwDl6EeqyLMgyfTuvrA" source="_nP7Qgzl6EeqyLMgyfTuvrA" target="_nP7QhTl6EeqyLMgyfTuvrA">
+              <type href="http://www.example.org/StudentProjectMarkerAllocation#//Project/supervisor"/>
+            </edges>
+            <edges xmi:id="_rcvPMDl6EeqyLMgyfTuvrA" source="_nP7Qgzl6EeqyLMgyfTuvrA" target="_o8SrsDl6EeqyLMgyfTuvrA">
+              <type href="http://www.example.org/StudentProjectMarkerAllocation#//Project/secondMarker"/>
+            </edges>
+          </conclusion>
+          <mappings xmi:id="_nP7QhDl6EeqyLMgyfTuvrA" origin="_kpCt0Dl6EeqyLMgyfTuvrA" image="_nP7Qgzl6EeqyLMgyfTuvrA"/>
+          <mappings xmi:id="_nP7Qhjl6EeqyLMgyfTuvrA" origin="_kDZDEDl6EeqyLMgyfTuvrA" image="_nP7QhTl6EeqyLMgyfTuvrA"/>
+        </child>
+      </formula>
+    </lhs>
+    <rhs xmi:id="_g3bdYTl6EeqyLMgyfTuvrA" name="Rhs">
+      <nodes xmi:id="_kDZDETl6EeqyLMgyfTuvrA" incoming="_l8tJkDmEEeqyLMgyfTuvrA" outgoing="_lZjkwDl6EeqyLMgyfTuvrA">
+        <type href="http://www.example.org/StudentProjectMarkerAllocation#//Academic"/>
+      </nodes>
+      <nodes xmi:id="_kpDU4Dl6EeqyLMgyfTuvrA" incoming="_lZjkwDl6EeqyLMgyfTuvrA" outgoing="_l8tJkDmEEeqyLMgyfTuvrA">
+        <type href="http://www.example.org/StudentProjectMarkerAllocation#//Project"/>
+      </nodes>
+      <edges xmi:id="_lZjkwDl6EeqyLMgyfTuvrA" source="_kDZDETl6EeqyLMgyfTuvrA" target="_kpDU4Dl6EeqyLMgyfTuvrA">
+        <type href="http://www.example.org/StudentProjectMarkerAllocation#//Academic/secondMarker"/>
+      </edges>
+      <edges xmi:id="_l8tJkDmEEeqyLMgyfTuvrA" source="_kpDU4Dl6EeqyLMgyfTuvrA" target="_kDZDETl6EeqyLMgyfTuvrA">
+        <type href="http://www.example.org/StudentProjectMarkerAllocation#//Project/secondMarker"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_kDZDEjl6EeqyLMgyfTuvrA" origin="_kDZDEDl6EeqyLMgyfTuvrA" image="_kDZDETl6EeqyLMgyfTuvrA"/>
+    <mappings xmi:id="_kpDU4Tl6EeqyLMgyfTuvrA" origin="_kpCt0Dl6EeqyLMgyfTuvrA" image="_kpDU4Dl6EeqyLMgyfTuvrA"/>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_rOisEDmDEeqyLMgyfTuvrA" name="swap_second_markers">
+    <lhs xmi:id="_rOisETmDEeqyLMgyfTuvrA" name="Lhs">
+      <nodes xmi:id="_rOisEjmDEeqyLMgyfTuvrA" incoming="_2P_AQDmDEeqyLMgyfTuvrA" outgoing="_rOisFDmDEeqyLMgyfTuvrA">
+        <type href="http://www.example.org/StudentProjectMarkerAllocation#//Academic"/>
+      </nodes>
+      <nodes xmi:id="_rOisEzmDEeqyLMgyfTuvrA" incoming="_rOisFDmDEeqyLMgyfTuvrA" outgoing="_2P_AQDmDEeqyLMgyfTuvrA">
+        <type href="http://www.example.org/StudentProjectMarkerAllocation#//Project"/>
+      </nodes>
+      <nodes xmi:id="_uVnKsDmDEeqyLMgyfTuvrA" incoming="_BLBxgDmEEeqyLMgyfTuvrA" outgoing="__IJ60DmDEeqyLMgyfTuvrA">
+        <type href="http://www.example.org/StudentProjectMarkerAllocation#//Academic"/>
+      </nodes>
+      <nodes xmi:id="_vjcPwDmDEeqyLMgyfTuvrA" incoming="__IJ60DmDEeqyLMgyfTuvrA" outgoing="_BLBxgDmEEeqyLMgyfTuvrA">
+        <type href="http://www.example.org/StudentProjectMarkerAllocation#//Project"/>
+      </nodes>
+      <edges xmi:id="_rOisFDmDEeqyLMgyfTuvrA" source="_rOisEjmDEeqyLMgyfTuvrA" target="_rOisEzmDEeqyLMgyfTuvrA">
+        <type href="http://www.example.org/StudentProjectMarkerAllocation#//Academic/secondMarker"/>
+      </edges>
+      <edges xmi:id="_2P_AQDmDEeqyLMgyfTuvrA" source="_rOisEzmDEeqyLMgyfTuvrA" target="_rOisEjmDEeqyLMgyfTuvrA">
+        <type href="http://www.example.org/StudentProjectMarkerAllocation#//Project/secondMarker"/>
+      </edges>
+      <edges xmi:id="__IJ60DmDEeqyLMgyfTuvrA" source="_uVnKsDmDEeqyLMgyfTuvrA" target="_vjcPwDmDEeqyLMgyfTuvrA">
+        <type href="http://www.example.org/StudentProjectMarkerAllocation#//Academic/secondMarker"/>
+      </edges>
+      <edges xmi:id="_BLBxgDmEEeqyLMgyfTuvrA" source="_vjcPwDmDEeqyLMgyfTuvrA" target="_uVnKsDmDEeqyLMgyfTuvrA">
+        <type href="http://www.example.org/StudentProjectMarkerAllocation#//Project/secondMarker"/>
+      </edges>
+      <formula xsi:type="henshin:Not" xmi:id="_6qrC4DmDEeqyLMgyfTuvrA">
+        <child xsi:type="henshin:NestedCondition" xmi:id="_6qrC4TmDEeqyLMgyfTuvrA">
+          <conclusion xmi:id="_6qrC4jmDEeqyLMgyfTuvrA">
+            <nodes xmi:id="_6qrC4zmDEeqyLMgyfTuvrA" outgoing="_4qy10DmDEeqyLMgyfTuvrA">
+              <type href="http://www.example.org/StudentProjectMarkerAllocation#//Academic"/>
+            </nodes>
+            <nodes xmi:id="_6qrC5TmDEeqyLMgyfTuvrA" incoming="_4qy10DmDEeqyLMgyfTuvrA">
+              <type href="http://www.example.org/StudentProjectMarkerAllocation#//Project"/>
+            </nodes>
+            <nodes xmi:id="_HoiAcDmEEeqyLMgyfTuvrA" outgoing="_Gitn4DmEEeqyLMgyfTuvrA">
+              <type href="http://www.example.org/StudentProjectMarkerAllocation#//Academic"/>
+            </nodes>
+            <nodes xmi:id="_HoiAcjmEEeqyLMgyfTuvrA" incoming="_Gitn4DmEEeqyLMgyfTuvrA">
+              <type href="http://www.example.org/StudentProjectMarkerAllocation#//Project"/>
+            </nodes>
+            <edges xmi:id="_4qy10DmDEeqyLMgyfTuvrA" source="_6qrC4zmDEeqyLMgyfTuvrA" target="_6qrC5TmDEeqyLMgyfTuvrA">
+              <type href="http://www.example.org/StudentProjectMarkerAllocation#//Academic/projects"/>
+            </edges>
+            <edges xmi:id="_Gitn4DmEEeqyLMgyfTuvrA" source="_HoiAcDmEEeqyLMgyfTuvrA" target="_HoiAcjmEEeqyLMgyfTuvrA">
+              <type href="http://www.example.org/StudentProjectMarkerAllocation#//Academic/projects"/>
+            </edges>
+          </conclusion>
+          <mappings xmi:id="_6qrC5DmDEeqyLMgyfTuvrA" origin="_rOisEjmDEeqyLMgyfTuvrA" image="_6qrC4zmDEeqyLMgyfTuvrA"/>
+          <mappings xmi:id="_6qrp8DmDEeqyLMgyfTuvrA" origin="_vjcPwDmDEeqyLMgyfTuvrA" image="_6qrC5TmDEeqyLMgyfTuvrA"/>
+          <mappings xmi:id="_HoiAcTmEEeqyLMgyfTuvrA" origin="_uVnKsDmDEeqyLMgyfTuvrA" image="_HoiAcDmEEeqyLMgyfTuvrA"/>
+          <mappings xmi:id="_HoiAczmEEeqyLMgyfTuvrA" origin="_rOisEzmDEeqyLMgyfTuvrA" image="_HoiAcjmEEeqyLMgyfTuvrA"/>
+        </child>
+      </formula>
+    </lhs>
+    <rhs xmi:id="_rOisHjmDEeqyLMgyfTuvrA" name="Rhs">
+      <nodes xmi:id="_rOisHzmDEeqyLMgyfTuvrA" incoming="_VmnE4DmEEeqyLMgyfTuvrA" outgoing="_4AhJwDmDEeqyLMgyfTuvrA">
+        <type href="http://www.example.org/StudentProjectMarkerAllocation#//Academic"/>
+      </nodes>
+      <nodes xmi:id="_rOisIDmDEeqyLMgyfTuvrA" incoming="_CtkiUDmEEeqyLMgyfTuvrA" outgoing="_dEhA4DmEEeqyLMgyfTuvrA">
+        <type href="http://www.example.org/StudentProjectMarkerAllocation#//Project"/>
+      </nodes>
+      <nodes xmi:id="_uVnxwDmDEeqyLMgyfTuvrA" incoming="_dEhA4DmEEeqyLMgyfTuvrA" outgoing="_CtkiUDmEEeqyLMgyfTuvrA">
+        <type href="http://www.example.org/StudentProjectMarkerAllocation#//Academic"/>
+      </nodes>
+      <nodes xmi:id="_vjcPwTmDEeqyLMgyfTuvrA" incoming="_4AhJwDmDEeqyLMgyfTuvrA" outgoing="_VmnE4DmEEeqyLMgyfTuvrA">
+        <type href="http://www.example.org/StudentProjectMarkerAllocation#//Project"/>
+      </nodes>
+      <edges xmi:id="_4AhJwDmDEeqyLMgyfTuvrA" source="_rOisHzmDEeqyLMgyfTuvrA" target="_vjcPwTmDEeqyLMgyfTuvrA">
+        <type href="http://www.example.org/StudentProjectMarkerAllocation#//Academic/secondMarker"/>
+      </edges>
+      <edges xmi:id="_CtkiUDmEEeqyLMgyfTuvrA" source="_uVnxwDmDEeqyLMgyfTuvrA" target="_rOisIDmDEeqyLMgyfTuvrA">
+        <type href="http://www.example.org/StudentProjectMarkerAllocation#//Academic/secondMarker"/>
+      </edges>
+      <edges xmi:id="_dEhA4DmEEeqyLMgyfTuvrA" source="_rOisIDmDEeqyLMgyfTuvrA" target="_uVnxwDmDEeqyLMgyfTuvrA">
+        <type href="http://www.example.org/StudentProjectMarkerAllocation#//Project/secondMarker"/>
+      </edges>
+      <edges xmi:id="_VmnE4DmEEeqyLMgyfTuvrA" source="_vjcPwTmDEeqyLMgyfTuvrA" target="_rOisHzmDEeqyLMgyfTuvrA">
+        <type href="http://www.example.org/StudentProjectMarkerAllocation#//Project/secondMarker"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_rOisITmDEeqyLMgyfTuvrA" origin="_rOisEjmDEeqyLMgyfTuvrA" image="_rOisHzmDEeqyLMgyfTuvrA"/>
+    <mappings xmi:id="_rOisIjmDEeqyLMgyfTuvrA" origin="_rOisEzmDEeqyLMgyfTuvrA" image="_rOisIDmDEeqyLMgyfTuvrA"/>
+    <mappings xmi:id="_uVnxwTmDEeqyLMgyfTuvrA" origin="_uVnKsDmDEeqyLMgyfTuvrA" image="_uVnxwDmDEeqyLMgyfTuvrA"/>
+    <mappings xmi:id="_vjcPwjmDEeqyLMgyfTuvrA" origin="_vjcPwDmDEeqyLMgyfTuvrA" image="_vjcPwTmDEeqyLMgyfTuvrA"/>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_W6uoQDm9EeqyLMgyfTuvrA" name="change_second_marker">
+    <lhs xmi:id="_W6vPUDm9EeqyLMgyfTuvrA" name="Lhs">
+      <nodes xmi:id="_W6vPUTm9EeqyLMgyfTuvrA" incoming="_W6vPVDm9EeqyLMgyfTuvrA" outgoing="_W6vPUzm9EeqyLMgyfTuvrA">
+        <type href="http://www.example.org/StudentProjectMarkerAllocation#//Academic"/>
+      </nodes>
+      <nodes xmi:id="_W6vPUjm9EeqyLMgyfTuvrA" incoming="_W6vPUzm9EeqyLMgyfTuvrA" outgoing="_W6vPVDm9EeqyLMgyfTuvrA">
+        <type href="http://www.example.org/StudentProjectMarkerAllocation#//Project"/>
+      </nodes>
+      <nodes xmi:id="_Z5CMcDm9EeqyLMgyfTuvrA">
+        <type href="http://www.example.org/StudentProjectMarkerAllocation#//Academic"/>
+      </nodes>
+      <edges xmi:id="_W6vPUzm9EeqyLMgyfTuvrA" source="_W6vPUTm9EeqyLMgyfTuvrA" target="_W6vPUjm9EeqyLMgyfTuvrA">
+        <type href="http://www.example.org/StudentProjectMarkerAllocation#//Academic/secondMarker"/>
+      </edges>
+      <edges xmi:id="_W6vPVDm9EeqyLMgyfTuvrA" source="_W6vPUjm9EeqyLMgyfTuvrA" target="_W6vPUTm9EeqyLMgyfTuvrA">
+        <type href="http://www.example.org/StudentProjectMarkerAllocation#//Project/secondMarker"/>
+      </edges>
+      <formula xsi:type="henshin:Not" xmi:id="_hTAqsDm9EeqyLMgyfTuvrA">
+        <child xsi:type="henshin:NestedCondition" xmi:id="_hTAqsTm9EeqyLMgyfTuvrA">
+          <conclusion xmi:id="_hTAqsjm9EeqyLMgyfTuvrA">
+            <nodes xmi:id="_hTAqszm9EeqyLMgyfTuvrA" outgoing="_guGm0Dm9EeqyLMgyfTuvrA _wT76UDoMEeq-IaDB2A3V8w">
+              <type href="http://www.example.org/StudentProjectMarkerAllocation#//Project"/>
+            </nodes>
+            <nodes xmi:id="_hTAqtTm9EeqyLMgyfTuvrA" incoming="_guGm0Dm9EeqyLMgyfTuvrA _wT76UDoMEeq-IaDB2A3V8w">
+              <type href="http://www.example.org/StudentProjectMarkerAllocation#//Academic"/>
+            </nodes>
+            <edges xmi:id="_guGm0Dm9EeqyLMgyfTuvrA" source="_hTAqszm9EeqyLMgyfTuvrA" target="_hTAqtTm9EeqyLMgyfTuvrA">
+              <type href="http://www.example.org/StudentProjectMarkerAllocation#//Project/supervisor"/>
+            </edges>
+            <edges xmi:id="_wT76UDoMEeq-IaDB2A3V8w" source="_hTAqszm9EeqyLMgyfTuvrA" target="_hTAqtTm9EeqyLMgyfTuvrA">
+              <type href="http://www.example.org/StudentProjectMarkerAllocation#//Project/secondMarker"/>
+            </edges>
+          </conclusion>
+          <mappings xmi:id="_hTAqtDm9EeqyLMgyfTuvrA" origin="_W6vPUjm9EeqyLMgyfTuvrA" image="_hTAqszm9EeqyLMgyfTuvrA"/>
+          <mappings xmi:id="_hTAqtjm9EeqyLMgyfTuvrA" origin="_Z5CMcDm9EeqyLMgyfTuvrA" image="_hTAqtTm9EeqyLMgyfTuvrA"/>
+        </child>
+      </formula>
+    </lhs>
+    <rhs xmi:id="_W6vPVTm9EeqyLMgyfTuvrA" name="Rhs">
+      <nodes xmi:id="_W6vPVjm9EeqyLMgyfTuvrA">
+        <type href="http://www.example.org/StudentProjectMarkerAllocation#//Academic"/>
+      </nodes>
+      <nodes xmi:id="_W6vPVzm9EeqyLMgyfTuvrA" incoming="_cSunsDm9EeqyLMgyfTuvrA">
+        <type href="http://www.example.org/StudentProjectMarkerAllocation#//Project"/>
+      </nodes>
+      <nodes xmi:id="_Z5CMcTm9EeqyLMgyfTuvrA" outgoing="_cSunsDm9EeqyLMgyfTuvrA">
+        <type href="http://www.example.org/StudentProjectMarkerAllocation#//Academic"/>
+      </nodes>
+      <edges xmi:id="_cSunsDm9EeqyLMgyfTuvrA" source="_Z5CMcTm9EeqyLMgyfTuvrA" target="_W6vPVzm9EeqyLMgyfTuvrA">
+        <type href="http://www.example.org/StudentProjectMarkerAllocation#//Academic/secondMarker"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_W6vPWDm9EeqyLMgyfTuvrA" origin="_W6vPUTm9EeqyLMgyfTuvrA" image="_W6vPVjm9EeqyLMgyfTuvrA"/>
+    <mappings xmi:id="_W6vPWTm9EeqyLMgyfTuvrA" origin="_W6vPUjm9EeqyLMgyfTuvrA" image="_W6vPVzm9EeqyLMgyfTuvrA"/>
+    <mappings xmi:id="_Z5CMcjm9EeqyLMgyfTuvrA" origin="_Z5CMcDm9EeqyLMgyfTuvrA" image="_Z5CMcTm9EeqyLMgyfTuvrA"/>
+  </units>
+</henshin:Module>

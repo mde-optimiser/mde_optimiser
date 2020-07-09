@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="StudentProjectMarkerAllocation" nsURI="http://www.example.org/StudentProjectMarkerAllocation"
+    nsPrefix="StudentProjectMarkerAllocation">
+  <eClassifiers xsi:type="ecore:EClass" name="Academic">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="projects" upperBound="-1"
+        eType="#//Project" eOpposite="#//Project/supervisor"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="secondMarker" lowerBound="1"
+        upperBound="-1" eType="#//Project" eOpposite="#//Project/secondMarker"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="thirdMarker" lowerBound="1"
+        upperBound="-1" eType="#//Project" eOpposite="#//Project/thirdMarker"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="markingTeam" upperBound="-1"
+        eType="#//MarkingTeam" eOpposite="#//MarkingTeam/academics"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="number" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="email" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Project">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="supervisor" lowerBound="1"
+        eType="#//Academic" eOpposite="#//Academic/projects"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="student" eType="#//Student"
+        eOpposite="#//Student/project"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="secondMarker" lowerBound="1"
+        eType="#//Academic" eOpposite="#//Academic/secondMarker"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="thirdMarker" lowerBound="1"
+        eType="#//Academic" eOpposite="#//Academic/thirdMarker"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stage" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Student">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="project" lowerBound="1"
+        eType="#//Project" eOpposite="#//Project/student"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="email" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="number" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MarkingTeam">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="number" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Integer"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="academics" upperBound="-1"
+        eType="#//Academic" eOpposite="#//Academic/markingTeam"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MarkerAllocationModel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="students" lowerBound="1"
+        upperBound="-1" eType="#//Student" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="projects" lowerBound="1"
+        upperBound="-1" eType="#//Project" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="academics" lowerBound="1"
+        upperBound="-1" eType="#//Academic" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="markingTeams" upperBound="-1"
+        eType="#//MarkingTeam" containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

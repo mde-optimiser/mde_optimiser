@@ -9,7 +9,6 @@ import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -112,39 +111,8 @@ public class MDEOResultsOutput {
             .map(batch -> batch.duration)
             .collect(Collectors.averagingDouble(Long::doubleValue));
 
-    var averageObjectiveValues = new HashMap<String, Double>();
     var formatter = new SimpleDateFormat("HH:mm:ss.SSS");
     formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
-
-    for (var i = 0; i < batches.size(); i++) {
-
-      var batch = batches.get(i);
-      var sumBatchObjectives = new HashMap<String, Double>();
-
-      batch.solutions.forEach(
-          solution -> {
-            solution
-                .getFormattedObjectives()
-                .forEach(
-                    (p1, p2) -> {
-                      if (sumBatchObjectives.containsKey(p1)) {
-                        sumBatchObjectives.put(p1, sumBatchObjectives.get(p1) + p2);
-                      } else {
-                        sumBatchObjectives.put(p1, p2);
-                      }
-                    });
-          });
-
-      sumBatchObjectives.forEach(
-          (p1, p2) -> {
-            if (averageObjectiveValues.containsKey(p1)) {
-              averageObjectiveValues.put(
-                  p1, averageObjectiveValues.get(p1) + p2 / batch.getSolutions().size());
-            } else {
-              averageObjectiveValues.put(p1, p2);
-            }
-          });
-    }
 
     try {
       var infoWriter = new PrintWriter(new File(outcomePath + "overall-results.txt"));

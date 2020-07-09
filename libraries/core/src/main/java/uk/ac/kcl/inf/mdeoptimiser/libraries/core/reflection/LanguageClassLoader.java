@@ -55,7 +55,7 @@ public class LanguageClassLoader {
 
     try {
 
-      var packageInterface = (Class<EPackage>) load(functionSpec.getLocation());
+      var packageInterface = (Class<EPackage>) loadClass(functionSpec.getLocation());
 
       return (EPackage) packageInterface.getDeclaredField("eINSTANCE").get(null);
 
@@ -76,13 +76,20 @@ public class LanguageClassLoader {
     return (IModelInitialiser) load(functionSpec.getInitialiser());
   }
 
-  private static Object load(String name) {
-    try {
-      return Class.forName(name).getDeclaredConstructor().newInstance();
+  private static Class<?> loadClass(String name) {
 
+    try {
+      return Class.forName(name);
     } catch (ClassNotFoundException e) {
       e.printStackTrace();
       throw new RuntimeException(String.format("Invalid class path: %s", name));
+    }
+  }
+
+  private static Object load(String name) {
+    try {
+      return loadClass(name).getDeclaredConstructor().newInstance();
+
     } catch (IllegalAccessException e) {
       e.printStackTrace();
       throw new RuntimeException(

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated tsp -->
+      <package
+            uri="http://uk.ac.kcl.inf.mdeoptimiser.examples/tsp/1.0"
+            class="models.tsp.fitness.TSP.TSPPackage"
+            genModel="src/main/resources/models/tsp/tsp.genmodel"/>
+   </extension>
+
+</plugin>

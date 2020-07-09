@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="ecore" nsURI="http://uk.ac.kcl.inf.mdeoptimiser.examples/rulegen/iterative/1.0"
+    nsPrefix="rulegen.iterative">
+  <eClassifiers xsi:type="ecore:EClass" name="Context" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodeA" ordered="false"
+        upperBound="-1" eType="#//A" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodeB" ordered="false"
+        upperBound="-1" eType="#//B" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodeC" ordered="false"
+        upperBound="-1" eType="#//C" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodeD" ordered="false"
+        upperBound="-1" eType="#//D" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodeE" ordered="false"
+        upperBound="-1" eType="#//E" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodeF" ordered="false"
+        upperBound="-1" eType="#//F" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="A" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="edgeAB" upperBound="-1"
+        eType="#//B" eOpposite="#//B/edgeBA"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="B" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="edgeBA" upperBound="-1"
+        eType="#//A" eOpposite="#//A/edgeAB"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="edgeBC" upperBound="-1"
+        eType="#//C" eOpposite="#//C/edgeCB"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="C" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="edgeCB" upperBound="-1"
+        eType="#//B" eOpposite="#//B/edgeBC"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="edgeCD" upperBound="-1"
+        eType="#//D" eOpposite="#//D/edgeDC"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="D" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="edgeDC" upperBound="-1"
+        eType="#//C" eOpposite="#//C/edgeCD"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="edgeDE" upperBound="-1"
+        eType="#//E" eOpposite="#//E/edgeED"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="E" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="edgeED" upperBound="-1"
+        eType="#//D" eOpposite="#//D/edgeDE"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="edgeEF" upperBound="-1"
+        eType="#//F" eOpposite="#//F/edgeFE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="F" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="edgeFE" upperBound="-1"
+        eType="#//E" eOpposite="#//E/edgeEF"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>
