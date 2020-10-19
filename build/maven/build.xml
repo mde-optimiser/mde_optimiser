@@ -7,7 +7,9 @@
     <target name="dist" depends="render.maven.properties.template, maven.build"/>
 
     <target name="maven.build">
-        <exec dir="." executable="mvn" failifexecutionfails="true" failonerror="true">
+        <exec dir="." executable="cmd" failifexecutionfails="true" failonerror="true">
+			<arg value="/c"/>
+			<arg value="mvn"/>
             <arg value="clean" />
             <arg value="deploy" />
             <arg value="--quiet" />
@@ -20,8 +22,10 @@
     <target name="load-build-version">
 
       <echo message="Updating version string from Git"/>
-      <exec executable="git" outputproperty="ant.build.branch"
+      <exec executable="cmd" outputproperty="ant.build.branch"
               failifexecutionfails="true">
+			  <arg value="/c"/>
+			  <arg value="git"/>
               <arg value="rev-parse"/>
               <arg value="--short"/>
               <arg value="HEAD" />
