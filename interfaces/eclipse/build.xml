@@ -7,7 +7,9 @@
     <target name="dist" depends="maven.build"/>
 
     <target name="maven.build" depends="render.target.template">
-        <exec dir="." executable="mvn" failifexecutionfails="true" failonerror="true">
+        <exec dir="." executable="cmd" failifexecutionfails="true" failonerror="true">
+			<arg value="/c"/>
+			<arg value="mvn"/>
             <arg value="-f" />
             <arg value="src/pom.xml"/>
             <arg value="clean" />
