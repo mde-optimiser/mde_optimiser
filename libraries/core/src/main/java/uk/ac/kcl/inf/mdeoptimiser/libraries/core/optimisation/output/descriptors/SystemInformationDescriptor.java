@@ -35,7 +35,7 @@ public class SystemInformationDescriptor implements ResultsDescriptor {
       batchWriter.println();
       batchWriter.write(getJavaVersion());
       batchWriter.println();
-      batchWriter.write(getHardwareInfo());
+      //   batchWriter.write(getHardwareInfo());
       batchWriter.close();
 
     } catch (IOException e) {
