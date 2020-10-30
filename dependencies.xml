@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project name="dependencies" default="depend.all">
-    <dirname property="dependencies.basedir" file="${ant.file.dependencies}"/>
+    <!--<dirname property="dependencies.basedir" file="${ant.file.dependencies}"/>-->
+	<dirname property="dependencies.basedir.raw" file="${ant.file.dependencies}"/>
+	<path id="dependencies.basedir.path">
+		<pathelement path="${dependencies.basedir.raw}" />
+	</path>
+	<pathconvert targetos="unix" property="dependencies.basedir" refid="dependencies.basedir.path"/>
 
     <!-- ================================================================== -->
     <target name="depend.all" depends="depend.maven, depend.eclipse">
