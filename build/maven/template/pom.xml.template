@@ -147,6 +147,23 @@
     								<ignore></ignore>
     							</action>
     						</pluginExecution>
+							<pluginExecution>
+    							<pluginExecutionFilter>
+    								<groupId>
+    									com.coveo
+    								</groupId>
+    								<artifactId>
+    									fmt-maven-plugin
+    								</artifactId>
+    								<versionRange>[2.8,)</versionRange>
+    								<goals>
+    									<goal>format</goal>
+    								</goals>
+    							</pluginExecutionFilter>
+    							<action>
+    								<ignore></ignore>
+    							</action>
+    						</pluginExecution>
     					</pluginExecutions>
     				</lifecycleMappingMetadata>
     			</configuration>
