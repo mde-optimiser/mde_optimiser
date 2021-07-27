@@ -1,7 +1,11 @@
 package uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.termination.conditions;
 
 import com.google.common.collect.Streams;
+
+import java.util.Arrays;
 import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
+
 import org.apache.commons.math3.ml.distance.EuclideanDistance;
 import org.moeaframework.core.Algorithm;
 import org.moeaframework.core.Population;
@@ -15,7 +19,7 @@ public class DeltaTerminationCondition implements TerminationCondition {
   Algorithm algorithm;
 
   Population lastPopulation;
-  double lastDistance;
+  double smallestDeltaExceedingDistance = Double.POSITIVE_INFINITY;
   int unchangedDeltaSteps;
 
   public DeltaTerminationCondition(Parameter deltaParameter, Parameter deltaStepsParameter) {
@@ -76,39 +80,43 @@ public class DeltaTerminationCondition implements TerminationCondition {
                   return Streams.stream(lastPopulation.iterator())
                       .map(
                           lastSolution -> {
-                            double currentDistance = 0d;
+                            double[] lastSolutionVector = lastSolution.getObjectives();
+                            double[] currentSolutionVector = currentSolution.getObjectives();                 
 
                             if (this.algorithm.getProblem().getNumberOfConstraints() > 0) {
-                              currentDistance +=
-                                  distanceMeasure.compute(
-                                      lastSolution.getConstraints(),
-                                      currentSolution.getConstraints());
-                            }
+                            
+                              lastSolutionVector = DoubleStream.concat(
+                            		  Arrays.stream(lastSolutionVector), 
+                            		  Arrays.stream(lastSolution.getConstraints())).toArray();
+                              currentSolutionVector = DoubleStream.concat(
+                            		  Arrays.stream(currentSolutionVector), 
+                            		  Arrays.stream(currentSolution.getConstraints())).toArray();
+                            }     
 
-                            currentDistance +=
-                                distanceMeasure.compute(
-                                    lastSolution.getObjectives(), currentSolution.getObjectives());
-
+                            double currentDistance = distanceMeasure.compute(
+                                    lastSolutionVector,
+                                    currentSolutionVector);
                             return currentDistance;
                           })
-                      .collect(Collectors.summarizingDouble(Double::doubleValue))
-                      .getSum();
+                      .mapToDouble(d -> d)
+                      .min().orElseThrow(); //There should be a min as both populations are not empty.
                 })
-            .collect(Collectors.summarizingDouble(Double::doubleValue))
-            .getSum();
+            .collect(Collectors.summingDouble(Double::doubleValue));
 
     if (totalDistance == 0d) {
       return false;
     }
 
-    var delta = totalDistance / this.lastDistance * 100;
-
-    this.lastDistance = totalDistance;
-
-    if (delta < this.delta) {
-      return false;
+    if (!(this.smallestDeltaExceedingDistance == Double.POSITIVE_INFINITY)) {
+    	var delta = totalDistance / this.smallestDeltaExceedingDistance * 100;
+    	if (delta < this.delta) {
+    		return false;
+    	}
     }
 
+//    if (smallestDeltaExceedingDistance > totalDistance) {
+  	this.smallestDeltaExceedingDistance = totalDistance;
+//    }
     return true;
   }
 }
