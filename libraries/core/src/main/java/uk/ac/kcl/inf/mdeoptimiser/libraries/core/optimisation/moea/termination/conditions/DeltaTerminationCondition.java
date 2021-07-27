@@ -49,7 +49,7 @@ public class DeltaTerminationCondition implements TerminationCondition {
 
     } else {
 
-      if (isDeltaThresholdChange(algorithm.getResult(), lastPopulation)) {
+      if (!isDeltaThresholdChange(algorithm.getResult(), lastPopulation)) {
         this.unchangedDeltaSteps++;
         return this.unchangedDeltaSteps > deltaSteps;
 
@@ -66,7 +66,7 @@ public class DeltaTerminationCondition implements TerminationCondition {
     var distanceMeasure = new EuclideanDistance();
 
     if (currentPopulation.isEmpty() || lastPopulation.isEmpty()) {
-      return false;
+      return true;
     }
 
     double totalDistance =
@@ -91,24 +91,24 @@ public class DeltaTerminationCondition implements TerminationCondition {
 
                             return currentDistance;
                           })
-                      .collect(Collectors.summarizingDouble(x -> x + x))
+                      .collect(Collectors.summarizingDouble(Double::doubleValue))
                       .getSum();
                 })
-            .collect(Collectors.summarizingDouble(x -> x + x))
+            .collect(Collectors.summarizingDouble(Double::doubleValue))
             .getSum();
 
     if (totalDistance == 0d) {
-      return true;
+      return false;
     }
 
-    var delta = (this.lastDistance - totalDistance) / totalDistance * 100;
+    var delta = totalDistance / this.lastDistance * 100;
 
     this.lastDistance = totalDistance;
 
-    if (Math.abs(delta) < this.delta) {
-      return true;
+    if (delta < this.delta) {
+      return false;
     }
 
-    return false;
+    return true;
   }
 }
