@@ -1,11 +1,9 @@
 package uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.termination.conditions;
 
 import com.google.common.collect.Streams;
-
 import java.util.Arrays;
 import java.util.stream.Collectors;
 import java.util.stream.DoubleStream;
-
 import org.apache.commons.math3.ml.distance.EuclideanDistance;
 import org.moeaframework.core.Algorithm;
 import org.moeaframework.core.Population;
@@ -19,7 +17,7 @@ public class DeltaTerminationCondition implements TerminationCondition {
   Algorithm algorithm;
 
   Population lastPopulation;
-  double smallestDeltaExceedingDistance = Double.POSITIVE_INFINITY;
+  double lastDeltaExceedingDistance = Double.POSITIVE_INFINITY;
   int unchangedDeltaSteps;
 
   public DeltaTerminationCondition(Parameter deltaParameter, Parameter deltaStepsParameter) {
@@ -65,6 +63,19 @@ public class DeltaTerminationCondition implements TerminationCondition {
     }
   }
 
+  /**
+   * Checks if the difference between the current and last population exceeds at least a defined 
+   * percentage (delta) of the last meaningful difference recorded for the current optimization run.
+   * This difference is defined by the sum of the distances of each element of the current 
+   * population from the last population. The distance of each such element, in turn, is defined by 
+   * the minimum of the euclidean distances to all elements of the last population.
+   * A difference is considered meaningful if this check return true. In that case it will be used as
+   * the reference for the delta calculation of follow-up calls to this method.
+   * 
+   * @param currentPopulation
+   * @param lastPopulation
+   * @return
+   */
   private boolean isDeltaThresholdChange(Population currentPopulation, Population lastPopulation) {
 
     var distanceMeasure = new EuclideanDistance();
@@ -81,25 +92,29 @@ public class DeltaTerminationCondition implements TerminationCondition {
                       .map(
                           lastSolution -> {
                             double[] lastSolutionVector = lastSolution.getObjectives();
-                            double[] currentSolutionVector = currentSolution.getObjectives();                 
+                            double[] currentSolutionVector = currentSolution.getObjectives();
 
                             if (this.algorithm.getProblem().getNumberOfConstraints() > 0) {
-                            
-                              lastSolutionVector = DoubleStream.concat(
-                            		  Arrays.stream(lastSolutionVector), 
-                            		  Arrays.stream(lastSolution.getConstraints())).toArray();
-                              currentSolutionVector = DoubleStream.concat(
-                            		  Arrays.stream(currentSolutionVector), 
-                            		  Arrays.stream(currentSolution.getConstraints())).toArray();
-                            }     
 
-                            double currentDistance = distanceMeasure.compute(
-                                    lastSolutionVector,
-                                    currentSolutionVector);
+                              lastSolutionVector =
+                                  DoubleStream.concat(
+                                          Arrays.stream(lastSolutionVector),
+                                          Arrays.stream(lastSolution.getConstraints()))
+                                      .toArray();
+                              currentSolutionVector =
+                                  DoubleStream.concat(
+                                          Arrays.stream(currentSolutionVector),
+                                          Arrays.stream(currentSolution.getConstraints()))
+                                      .toArray();
+                            }
+
+                            double currentDistance =
+                                distanceMeasure.compute(lastSolutionVector, currentSolutionVector);
                             return currentDistance;
                           })
                       .mapToDouble(d -> d)
-                      .min().orElseThrow(); //There should be a min as both populations are not empty.
+                      .min()
+                      .orElseThrow(); // There should be a min as both populations are not empty.
                 })
             .collect(Collectors.summingDouble(Double::doubleValue));
 
@@ -107,16 +122,14 @@ public class DeltaTerminationCondition implements TerminationCondition {
       return false;
     }
 
-    if (!(this.smallestDeltaExceedingDistance == Double.POSITIVE_INFINITY)) {
-    	var delta = totalDistance / this.smallestDeltaExceedingDistance * 100;
-    	if (delta < this.delta) {
-    		return false;
-    	}
+    if (!(this.lastDeltaExceedingDistance == Double.POSITIVE_INFINITY)) {
+      var delta = totalDistance / this.lastDeltaExceedingDistance * 100;
+      if (delta < this.delta) {
+        return false;
+      }
     }
 
-//    if (smallestDeltaExceedingDistance > totalDistance) {
-  	this.smallestDeltaExceedingDistance = totalDistance;
-//    }
+    this.lastDeltaExceedingDistance = totalDistance;
     return true;
   }
 }
