@@ -17,7 +17,7 @@ public class DeltaTerminationCondition implements TerminationCondition {
   Algorithm algorithm;
 
   Population lastPopulation;
-  double lastDeltaExceedingDistance = Double.POSITIVE_INFINITY;
+  double totalDistanceSinceStart = 0;
   int unchangedDeltaSteps;
 
   public DeltaTerminationCondition(Parameter deltaParameter, Parameter deltaStepsParameter) {
@@ -42,25 +42,20 @@ public class DeltaTerminationCondition implements TerminationCondition {
 
   @Override
   public boolean shouldTerminate(Algorithm algorithm) {
+	boolean terminate = false;
     if (lastPopulation == null) {
-
       lastPopulation = algorithm.getResult();
       unchangedDeltaSteps = 0;
-
-      return false;
-
     } else {
-
       if (!isDeltaThresholdChange(algorithm.getResult(), lastPopulation)) {
         this.unchangedDeltaSteps++;
-        return this.unchangedDeltaSteps > deltaSteps;
-
+        terminate = this.unchangedDeltaSteps > deltaSteps;
       } else {
-        lastPopulation = algorithm.getResult();
+    	lastPopulation = algorithm.getResult();
         this.unchangedDeltaSteps = 0;
-        return false;
       }
     }
+    return terminate;
   }
 
   /**
@@ -73,22 +68,22 @@ public class DeltaTerminationCondition implements TerminationCondition {
    * for the delta calculation of follow-up calls to this method.
    *
    * @param currentPopulation
-   * @param lastPopulation
+   * @param lastDeltaExceedingPopulation
    * @return
    */
-  private boolean isDeltaThresholdChange(Population currentPopulation, Population lastPopulation) {
+  private boolean isDeltaThresholdChange(Population currentPopulation, Population lastDeltaExceedingPopulation) {
 
     var distanceMeasure = new EuclideanDistance();
 
-    if (currentPopulation.isEmpty() || lastPopulation.isEmpty()) {
+    if (currentPopulation.isEmpty() || lastDeltaExceedingPopulation.isEmpty()) {
       return true;
     }
 
-    double totalDistance =
+    double distanceToLastExeecdingPopulation =
         Streams.stream(currentPopulation.iterator())
             .map(
                 currentSolution -> {
-                  return Streams.stream(lastPopulation.iterator())
+                  return Streams.stream(lastDeltaExceedingPopulation.iterator())
                       .map(
                           lastSolution -> {
                             double[] lastSolutionVector = lastSolution.getObjectives();
@@ -108,9 +103,9 @@ public class DeltaTerminationCondition implements TerminationCondition {
                                       .toArray();
                             }
 
-                            double currentDistance =
+                            double solutionDistance =
                                 distanceMeasure.compute(lastSolutionVector, currentSolutionVector);
-                            return currentDistance;
+                            return solutionDistance;
                           })
                       .mapToDouble(d -> d)
                       .min()
@@ -118,18 +113,19 @@ public class DeltaTerminationCondition implements TerminationCondition {
                 })
             .collect(Collectors.summingDouble(Double::doubleValue));
 
-    if (totalDistance == 0d) {
+    if (distanceToLastExeecdingPopulation == 0d) {
       return false;
     }
 
-    if (!(this.lastDeltaExceedingDistance == Double.POSITIVE_INFINITY)) {
-      var delta = totalDistance / this.lastDeltaExceedingDistance * 100;
+    if (!(this.totalDistanceSinceStart == 0)) {
+      var delta = distanceToLastExeecdingPopulation / this.totalDistanceSinceStart * 100;
       if (delta < this.delta) {
         return false;
       }
     }
+    
+    totalDistanceSinceStart += distanceToLastExeecdingPopulation;
 
-    this.lastDeltaExceedingDistance = totalDistance;
     return true;
   }
 }
