@@ -1,7 +1,9 @@
 package uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.termination.conditions;
 
 import com.google.common.collect.Streams;
+import java.util.Arrays;
 import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
 import org.apache.commons.math3.ml.distance.EuclideanDistance;
 import org.moeaframework.core.Algorithm;
 import org.moeaframework.core.Population;
@@ -15,7 +17,7 @@ public class DeltaTerminationCondition implements TerminationCondition {
   Algorithm algorithm;
 
   Population lastPopulation;
-  double lastDistance;
+  double totalDistanceSinceStart = 0;
   int unchangedDeltaSteps;
 
   public DeltaTerminationCondition(Parameter deltaParameter, Parameter deltaStepsParameter) {
@@ -40,75 +42,90 @@ public class DeltaTerminationCondition implements TerminationCondition {
 
   @Override
   public boolean shouldTerminate(Algorithm algorithm) {
+	boolean terminate = false;
     if (lastPopulation == null) {
-
       lastPopulation = algorithm.getResult();
       unchangedDeltaSteps = 0;
-
-      return false;
-
     } else {
-
-      if (isDeltaThresholdChange(algorithm.getResult(), lastPopulation)) {
+      if (!isDeltaThresholdChange(algorithm.getResult(), lastPopulation)) {
         this.unchangedDeltaSteps++;
-        return this.unchangedDeltaSteps > deltaSteps;
-
+        terminate = this.unchangedDeltaSteps > deltaSteps;
       } else {
-        lastPopulation = algorithm.getResult();
+    	lastPopulation = algorithm.getResult();
         this.unchangedDeltaSteps = 0;
-        return false;
       }
     }
+    return terminate;
   }
 
-  private boolean isDeltaThresholdChange(Population currentPopulation, Population lastPopulation) {
+  /**
+   * Checks if the difference between the current and last population exceeds at least a defined
+   * percentage (delta) of the last meaningful difference recorded for the current optimization run.
+   * This difference is defined by the sum of the distances of each element of the current
+   * population from the last population. The distance of each such element, in turn, is defined by
+   * the minimum of the euclidean distances to all elements of the last population. A difference is
+   * considered meaningful if this check return true. In that case it will be used as the reference
+   * for the delta calculation of follow-up calls to this method.
+   *
+   * @param currentPopulation
+   * @param lastDeltaExceedingPopulation
+   * @return
+   */
+  private boolean isDeltaThresholdChange(Population currentPopulation, Population lastDeltaExceedingPopulation) {
 
     var distanceMeasure = new EuclideanDistance();
 
-    if (currentPopulation.isEmpty() || lastPopulation.isEmpty()) {
-      return false;
+    if (currentPopulation.isEmpty() || lastDeltaExceedingPopulation.isEmpty()) {
+      return true;
     }
 
-    double totalDistance =
+    double distanceToLastExeecdingPopulation =
         Streams.stream(currentPopulation.iterator())
             .map(
                 currentSolution -> {
-                  return Streams.stream(lastPopulation.iterator())
+                  return Streams.stream(lastDeltaExceedingPopulation.iterator())
                       .map(
                           lastSolution -> {
-                            double currentDistance = 0d;
+                            double[] lastSolutionVector = lastSolution.getObjectives();
+                            double[] currentSolutionVector = currentSolution.getObjectives();
 
                             if (this.algorithm.getProblem().getNumberOfConstraints() > 0) {
-                              currentDistance +=
-                                  distanceMeasure.compute(
-                                      lastSolution.getConstraints(),
-                                      currentSolution.getConstraints());
+
+                              lastSolutionVector =
+                                  DoubleStream.concat(
+                                          Arrays.stream(lastSolutionVector),
+                                          Arrays.stream(lastSolution.getConstraints()))
+                                      .toArray();
+                              currentSolutionVector =
+                                  DoubleStream.concat(
+                                          Arrays.stream(currentSolutionVector),
+                                          Arrays.stream(currentSolution.getConstraints()))
+                                      .toArray();
                             }
 
-                            currentDistance +=
-                                distanceMeasure.compute(
-                                    lastSolution.getObjectives(), currentSolution.getObjectives());
-
-                            return currentDistance;
+                            double solutionDistance =
+                                distanceMeasure.compute(lastSolutionVector, currentSolutionVector);
+                            return solutionDistance;
                           })
-                      .collect(Collectors.summarizingDouble(x -> x + x))
-                      .getSum();
+                      .mapToDouble(d -> d)
+                      .min()
+                      .orElseThrow(); // There should be a min as both populations are not empty.
                 })
-            .collect(Collectors.summarizingDouble(x -> x + x))
-            .getSum();
+            .collect(Collectors.summingDouble(Double::doubleValue));
 
-    if (totalDistance == 0d) {
-      return true;
+    if (distanceToLastExeecdingPopulation == 0d) {
+      return false;
     }
 
-    var delta = (this.lastDistance - totalDistance) / totalDistance * 100;
-
-    this.lastDistance = totalDistance;
-
-    if (Math.abs(delta) < this.delta) {
-      return true;
+    if (!(this.totalDistanceSinceStart == 0)) {
+      var delta = distanceToLastExeecdingPopulation / this.totalDistanceSinceStart * 100;
+      if (delta < this.delta) {
+        return false;
+      }
     }
+    
+    totalDistanceSinceStart += distanceToLastExeecdingPopulation;
 
-    return false;
+    return true;
   }
 }
