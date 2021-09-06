@@ -74,3 +74,14 @@ mdeo-results/
 
 build/maven/pom.xml
 libraries/rulegen/src/resources/iterative/new/iterative/
+
+# Ignore generated target file
+interfaces/eclipse/src/uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.target/uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.target.target
+
+# Fix eclipse build
+!interfaces/eclipse/**/.project
+!interfaces/eclipse/**/.classpath
+!languages/mopt/**/.project
+!languages/mopt/**/.classpath
+
+

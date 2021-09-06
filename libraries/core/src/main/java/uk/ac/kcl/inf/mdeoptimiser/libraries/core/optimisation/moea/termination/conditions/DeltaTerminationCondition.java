@@ -42,7 +42,7 @@ public class DeltaTerminationCondition implements TerminationCondition {
 
   @Override
   public boolean shouldTerminate(Algorithm algorithm) {
-	boolean terminate = false;
+    boolean terminate = false;
     if (lastPopulation == null) {
       lastPopulation = algorithm.getResult();
       unchangedDeltaSteps = 0;
@@ -51,7 +51,7 @@ public class DeltaTerminationCondition implements TerminationCondition {
         this.unchangedDeltaSteps++;
         terminate = this.unchangedDeltaSteps > deltaSteps;
       } else {
-    	lastPopulation = algorithm.getResult();
+        lastPopulation = algorithm.getResult();
         this.unchangedDeltaSteps = 0;
       }
     }
@@ -71,7 +71,8 @@ public class DeltaTerminationCondition implements TerminationCondition {
    * @param lastDeltaExceedingPopulation
    * @return
    */
-  private boolean isDeltaThresholdChange(Population currentPopulation, Population lastDeltaExceedingPopulation) {
+  private boolean isDeltaThresholdChange(
+      Population currentPopulation, Population lastDeltaExceedingPopulation) {
 
     var distanceMeasure = new EuclideanDistance();
 
@@ -123,7 +124,7 @@ public class DeltaTerminationCondition implements TerminationCondition {
         return false;
       }
     }
-    
+
     totalDistanceSinceStart += distanceToLastExeecdingPopulation;
 
     return true;
