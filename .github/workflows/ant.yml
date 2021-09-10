@@ -21,7 +21,7 @@ jobs:
       with:
         java-version: '11'
         distribution: 'adopt'
-    - uses: GabrielBB/xvfb-action@v1
+      uses: GabrielBB/xvfb-action@v1
     - name: Build with Ant
       working-directory: ./build/ant
       run: ant -noinput -buildfile build.xml
