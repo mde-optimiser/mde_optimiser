@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin
+      name="%pluginName"
+      id="uk.ac.kcl.inf.mdeoptimiser.examples.problems.project.allocation"
+      version="1.0.0"
+      provider-name="%providerName">
+
+   <requires>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.emf.ecore" export="true"/>
+   </requires>
+
+   <runtime>
+      <library name=".">
+         <export name="*"/>
+      </library>
+   </runtime>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated StudentProjectMarkerAllocation -->
+      <package
+            uri="http://www.example.org/StudentProjectMarkerAllocation"
+            class="models.project.allocation.ecore.StudentProjectMarkerAllocation.StudentProjectMarkerAllocationPackage"
+            genModel="src/main/resources/StudentProjectMarkerAllocation.genmodel"/>
+   </extension>
+
+</plugin>

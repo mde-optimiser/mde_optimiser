@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>uk.ac.kcl.mdeoptimise</groupId>
+    <artifactId>scrum.planning.solutions.generator</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.alxbrd</groupId>
+            <artifactId>dynemf</artifactId>
+            <version>master</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.emf</groupId>
+            <artifactId>ecore</artifactId>
+            <version>2.3.0-v200706262000</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.eclipse.emf/common -->
+        <dependency>
+            <groupId>org.eclipse.emf</groupId>
+            <artifactId>common</artifactId>
+            <version>2.3.0-v200706262000</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.eclipse.emf/ecore-xmi -->
+        <dependency>
+            <groupId>org.eclipse.emf</groupId>
+            <artifactId>ecore-xmi</artifactId>
+            <version>2.2.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>0.12</version>
+        </dependency>
+
+    </dependencies>
+</project>

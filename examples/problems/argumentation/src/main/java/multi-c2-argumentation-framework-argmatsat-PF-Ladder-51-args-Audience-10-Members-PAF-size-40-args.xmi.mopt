@@ -1,0 +1,15 @@
+basepath <src/main/resources/models/argumentation/configuration-2/>
+metamodel <argumentation.ecore>
+model <PF-Tree-52-args-Audience-100-Members-PAF-size-40-args.xmi>
+objective MaximisePFWithAcceptableTopics maximise java { "models.argumentation.fitness.MaximisePFWithAcceptableTopicsArgMatSat" }
+objective MinimiseArgumentsPutForward minimise java { "models.argumentation.fitness.MinimiseArgumentsPutForward" }
+mutate using <multiADD_edge_putsForward_to_Persuader_rules.henshin> unit "multiAddToPersuader_putsForward_Argument"
+mutate using <multiREMOVE_edge_putsForward_to_Persuader_rules.henshin> unit "multiRemoveFromPersuader_putsForward_Argument"
+mutate {"Persuader", "putsForward"}
+optimisation provider moea algorithm NSGAII variation mutation parameters {
+	population: 30
+}
+termination {
+	evolutions: 250
+}
+batches 10

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="testfm" nsURI="http://testfm/" nsPrefix="testfm">
+  <eClassifiers xsi:type="ecore:EClass" name="MobileMedia">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mediamanagement" lowerBound="1"
+        eType="#//MediaManagement" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="screensize" lowerBound="1"
+        eType="#//ScreenSize" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="speakertype" lowerBound="1"
+        eType="#//SpeakerType" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MediaManagement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="smstransfer" eType="#//SMSTransfer"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="copymedia" eType="#//CopyMedia"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SMSTransfer">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="receivephoto" lowerBound="1"
+        eType="#//ReceivePhoto" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sendphoto" lowerBound="1"
+        upperBound="-1" eType="#//SendPhoto" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReceivePhoto">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SendPhoto">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ScreenSize">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="screensizealternative"
+        upperBound="-1" eType="#//ScreenSizeAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ScreenSizeAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Screen1" eSuperTypes="#//ScreenSizeAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Screen2" eSuperTypes="#//ScreenSizeAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Screen3" eSuperTypes="#//ScreenSizeAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CopyMedia">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Speaker3" eSuperTypes="#//SpeakerAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Speaker2" eSuperTypes="#//SpeakerAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SpeakerAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Speaker1" eSuperTypes="#//SpeakerAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SpeakerType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="speakeralternative" upperBound="-1"
+        eType="#//SpeakerAlternative" containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

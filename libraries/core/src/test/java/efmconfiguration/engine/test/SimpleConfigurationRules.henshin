@@ -1,0 +1,707 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_lvYO8Gn6EequxcIDnOdtqA">
+  <imports href="SimpleFeatureModel.ecore#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_nODzcGn6EequxcIDnOdtqA" name="Act_SMSTransfer">
+    <lhs xmi:id="_nOpCQGn6EequxcIDnOdtqA" name="Lhs">
+      <nodes xmi:id="_tHGqcGn6EequxcIDnOdtqA" outgoing="_9EIH0Gn6EequxcIDnOdtqA _9SkzgGn6EequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//SMSTransfer"/>
+        <attributes xmi:id="_w1vfYGn6EequxcIDnOdtqA" value="false">
+          <type href="SimpleFeatureModel.ecore#//SMSTransfer/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_u9CRUGn6EequxcIDnOdtqA" incoming="_9EIH0Gn6EequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ReceivePhoto"/>
+      </nodes>
+      <nodes xmi:id="_2IytYGn6EequxcIDnOdtqA" incoming="_9SkzgGn6EequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//SendPhoto"/>
+      </nodes>
+      <nodes xmi:id="_bLxQ0Gn7EequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//CopyMedia"/>
+      </nodes>
+      <edges xmi:id="_9EIH0Gn6EequxcIDnOdtqA" source="_tHGqcGn6EequxcIDnOdtqA" target="_u9CRUGn6EequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//SMSTransfer/receivephoto"/>
+      </edges>
+      <edges xmi:id="_9SkzgGn6EequxcIDnOdtqA" source="_tHGqcGn6EequxcIDnOdtqA" target="_2IytYGn6EequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//SMSTransfer/sendphoto"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_nOppUGn6EequxcIDnOdtqA" name="Rhs">
+      <nodes xmi:id="_tHH4kGn6EequxcIDnOdtqA" outgoing="_9EIH0Wn6EequxcIDnOdtqA _9SkzgWn6EequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//SMSTransfer"/>
+        <attributes xmi:id="_w1vfYWn6EequxcIDnOdtqA" value="true">
+          <type href="SimpleFeatureModel.ecore#//SMSTransfer/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_u9EGgGn6EequxcIDnOdtqA" incoming="_9EIH0Wn6EequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ReceivePhoto"/>
+        <attributes xmi:id="_x6LX4Gn6EequxcIDnOdtqA" value="true">
+          <type href="SimpleFeatureModel.ecore#//ReceivePhoto/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_2IytYWn6EequxcIDnOdtqA" incoming="_9SkzgWn6EequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//SendPhoto"/>
+        <attributes xmi:id="_25Fh4Gn6EequxcIDnOdtqA" value="true">
+          <type href="SimpleFeatureModel.ecore#//SendPhoto/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_bLye8Gn7EequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//CopyMedia"/>
+        <attributes xmi:id="_cOZygGn7EequxcIDnOdtqA" value="true">
+          <type href="SimpleFeatureModel.ecore#//CopyMedia/selected"/>
+        </attributes>
+      </nodes>
+      <edges xmi:id="_9EIH0Wn6EequxcIDnOdtqA" source="_tHH4kGn6EequxcIDnOdtqA" target="_u9EGgGn6EequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//SMSTransfer/receivephoto"/>
+      </edges>
+      <edges xmi:id="_9SkzgWn6EequxcIDnOdtqA" source="_tHH4kGn6EequxcIDnOdtqA" target="_2IytYWn6EequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//SMSTransfer/sendphoto"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_tHIfoGn6EequxcIDnOdtqA" origin="_tHGqcGn6EequxcIDnOdtqA" image="_tHH4kGn6EequxcIDnOdtqA"/>
+    <mappings xmi:id="_u9EGgWn6EequxcIDnOdtqA" origin="_u9CRUGn6EequxcIDnOdtqA" image="_u9EGgGn6EequxcIDnOdtqA"/>
+    <mappings xmi:id="_2IytYmn6EequxcIDnOdtqA" origin="_2IytYGn6EequxcIDnOdtqA" image="_2IytYWn6EequxcIDnOdtqA"/>
+    <mappings xmi:id="_bLye8Wn7EequxcIDnOdtqA" origin="_bLxQ0Gn7EequxcIDnOdtqA" image="_bLye8Gn7EequxcIDnOdtqA"/>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_EElLcGn-EequxcIDnOdtqA" name="De_Screen3_Simplified">
+    <lhs xmi:id="_EEtHQGn-EequxcIDnOdtqA" name="Lhs">
+      <nodes xmi:id="_InyQ4Gn-EequxcIDnOdtqA" outgoing="_R8pHcGn-EequxcIDnOdtqA _SJ2dAGn-EequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSize"/>
+      </nodes>
+      <nodes xmi:id="_JzdZ0Gn-EequxcIDnOdtqA" incoming="_R8pHcGn-EequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//Screen3"/>
+        <attributes xmi:id="_N2o7YGn-EequxcIDnOdtqA" value="true">
+          <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_KhF74Gn-EequxcIDnOdtqA" incoming="_SJ2dAGn-EequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative"/>
+      </nodes>
+      <edges xmi:id="_R8pHcGn-EequxcIDnOdtqA" source="_InyQ4Gn-EequxcIDnOdtqA" target="_JzdZ0Gn-EequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+      </edges>
+      <edges xmi:id="_SJ2dAGn-EequxcIDnOdtqA" source="_InyQ4Gn-EequxcIDnOdtqA" target="_KhF74Gn-EequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_EEtHQWn-EequxcIDnOdtqA" name="Rhs">
+      <nodes xmi:id="_InyQ4Wn-EequxcIDnOdtqA" outgoing="_R8pHcWn-EequxcIDnOdtqA _SJ2dAWn-EequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSize"/>
+        <attributes xmi:id="_LUqt4Gn-EequxcIDnOdtqA" value="true">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_JzdZ0Wn-EequxcIDnOdtqA" incoming="_R8pHcWn-EequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//Screen3"/>
+        <attributes xmi:id="_N2o7YWn-EequxcIDnOdtqA" value="false">
+          <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_KhGi8Gn-EequxcIDnOdtqA" incoming="_SJ2dAWn-EequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative"/>
+        <attributes xmi:id="_OWYLYGn-EequxcIDnOdtqA" value="true">
+          <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <edges xmi:id="_R8pHcWn-EequxcIDnOdtqA" source="_InyQ4Wn-EequxcIDnOdtqA" target="_JzdZ0Wn-EequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+      </edges>
+      <edges xmi:id="_SJ2dAWn-EequxcIDnOdtqA" source="_InyQ4Wn-EequxcIDnOdtqA" target="_KhGi8Gn-EequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_InyQ4mn-EequxcIDnOdtqA" origin="_InyQ4Gn-EequxcIDnOdtqA" image="_InyQ4Wn-EequxcIDnOdtqA"/>
+    <mappings xmi:id="_JzdZ0mn-EequxcIDnOdtqA" origin="_JzdZ0Gn-EequxcIDnOdtqA" image="_JzdZ0Wn-EequxcIDnOdtqA"/>
+    <mappings xmi:id="_KhGi8Wn-EequxcIDnOdtqA" origin="_KhF74Gn-EequxcIDnOdtqA" image="_KhGi8Gn-EequxcIDnOdtqA"/>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_6d6G8GoPEequxcIDnOdtqA" name="De_Screen3_Simplified_AdditionalOrGroup">
+    <lhs xmi:id="_6d6G8WoPEequxcIDnOdtqA" name="Lhs">
+      <nodes xmi:id="_6d6G8moPEequxcIDnOdtqA" outgoing="_6d6G9moPEequxcIDnOdtqA _6d6G92oPEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSize"/>
+      </nodes>
+      <nodes xmi:id="_6d6G82oPEequxcIDnOdtqA" incoming="_6d6G9moPEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//Screen3"/>
+        <attributes xmi:id="_6d6G9GoPEequxcIDnOdtqA" value="true">
+          <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_6d6G9WoPEequxcIDnOdtqA" incoming="_6d6G92oPEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative"/>
+      </nodes>
+      <nodes xmi:id="_iEqOsGoQEequxcIDnOdtqA" outgoing="_np1ugGoQEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//SpeakerType"/>
+      </nodes>
+      <nodes xmi:id="_nPdfoGoQEequxcIDnOdtqA" incoming="_np1ugGoQEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//SpeakerAlternative"/>
+      </nodes>
+      <edges xmi:id="_6d6G9moPEequxcIDnOdtqA" source="_6d6G8moPEequxcIDnOdtqA" target="_6d6G82oPEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+      </edges>
+      <edges xmi:id="_6d6G92oPEequxcIDnOdtqA" source="_6d6G8moPEequxcIDnOdtqA" target="_6d6G9WoPEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+      </edges>
+      <edges xmi:id="_np1ugGoQEequxcIDnOdtqA" source="_iEqOsGoQEequxcIDnOdtqA" target="_nPdfoGoQEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//SpeakerType/speakeralternative"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_6d6G-GoPEequxcIDnOdtqA" name="Rhs">
+      <nodes xmi:id="_6d6G-WoPEequxcIDnOdtqA" outgoing="_6d6G_2oPEequxcIDnOdtqA _6d6HAGoPEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSize"/>
+        <attributes xmi:id="_6d6G-moPEequxcIDnOdtqA" value="true">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_6d6G-2oPEequxcIDnOdtqA" incoming="_6d6G_2oPEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//Screen3"/>
+        <attributes xmi:id="_6d6G_GoPEequxcIDnOdtqA" value="false">
+          <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_6d6G_WoPEequxcIDnOdtqA" incoming="_6d6HAGoPEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative"/>
+        <attributes xmi:id="_6d6G_moPEequxcIDnOdtqA" value="true">
+          <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_iEqOsWoQEequxcIDnOdtqA" outgoing="_np2VkGoQEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//SpeakerType"/>
+        <attributes xmi:id="_oRu08GoQEequxcIDnOdtqA" value="true">
+          <type href="SimpleFeatureModel.ecore#//SpeakerType/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_nPdfoWoQEequxcIDnOdtqA" incoming="_np2VkGoQEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//SpeakerAlternative"/>
+        <attributes xmi:id="_tYcQEGoQEequxcIDnOdtqA" value="true">
+          <type href="SimpleFeatureModel.ecore#//SpeakerAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <edges xmi:id="_6d6G_2oPEequxcIDnOdtqA" source="_6d6G-WoPEequxcIDnOdtqA" target="_6d6G-2oPEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+      </edges>
+      <edges xmi:id="_6d6HAGoPEequxcIDnOdtqA" source="_6d6G-WoPEequxcIDnOdtqA" target="_6d6G_WoPEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+      </edges>
+      <edges xmi:id="_np2VkGoQEequxcIDnOdtqA" source="_iEqOsWoQEequxcIDnOdtqA" target="_nPdfoWoQEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//SpeakerType/speakeralternative"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_6d6HAWoPEequxcIDnOdtqA" origin="_6d6G8moPEequxcIDnOdtqA" image="_6d6G-WoPEequxcIDnOdtqA"/>
+    <mappings xmi:id="_6d6HAmoPEequxcIDnOdtqA" origin="_6d6G82oPEequxcIDnOdtqA" image="_6d6G-2oPEequxcIDnOdtqA"/>
+    <mappings xmi:id="_6d6HA2oPEequxcIDnOdtqA" origin="_6d6G9WoPEequxcIDnOdtqA" image="_6d6G_WoPEequxcIDnOdtqA"/>
+    <mappings xmi:id="_iEqOsmoQEequxcIDnOdtqA" origin="_iEqOsGoQEequxcIDnOdtqA" image="_iEqOsWoQEequxcIDnOdtqA"/>
+    <mappings xmi:id="_nPdfomoQEequxcIDnOdtqA" origin="_nPdfoGoQEequxcIDnOdtqA" image="_nPdfoWoQEequxcIDnOdtqA"/>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_Jq48kGoSEequxcIDnOdtqA" name="De_Screen3">
+    <lhs xmi:id="_Jq48kWoSEequxcIDnOdtqA" name="Lhs">
+      <nodes xmi:id="_Jq48kmoSEequxcIDnOdtqA" outgoing="_Jq48lmoSEequxcIDnOdtqA _Jq48l2oSEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSize"/>
+      </nodes>
+      <nodes xmi:id="_Jq48k2oSEequxcIDnOdtqA" incoming="_Jq48lmoSEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//Screen3"/>
+        <attributes xmi:id="_Jq48lGoSEequxcIDnOdtqA" value="true">
+          <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Jq48lWoSEequxcIDnOdtqA" incoming="_Jq48l2oSEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative"/>
+      </nodes>
+      <edges xmi:id="_Jq48lmoSEequxcIDnOdtqA" source="_Jq48kmoSEequxcIDnOdtqA" target="_Jq48k2oSEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+      </edges>
+      <edges xmi:id="_Jq48l2oSEequxcIDnOdtqA" source="_Jq48kmoSEequxcIDnOdtqA" target="_Jq48lWoSEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_Jq48mGoSEequxcIDnOdtqA" name="Rhs">
+      <nodes xmi:id="_Jq48mWoSEequxcIDnOdtqA" outgoing="_Jq48n2oSEequxcIDnOdtqA _Jq48oGoSEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSize"/>
+        <attributes xmi:id="_Jq48mmoSEequxcIDnOdtqA" value="true">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Jq48m2oSEequxcIDnOdtqA" incoming="_Jq48n2oSEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//Screen3"/>
+        <attributes xmi:id="_Jq48nGoSEequxcIDnOdtqA" value="false">
+          <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Jq48nWoSEequxcIDnOdtqA" incoming="_Jq48oGoSEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative"/>
+        <attributes xmi:id="_Jq48nmoSEequxcIDnOdtqA" value="true">
+          <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <edges xmi:id="_Jq48n2oSEequxcIDnOdtqA" source="_Jq48mWoSEequxcIDnOdtqA" target="_Jq48m2oSEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+      </edges>
+      <edges xmi:id="_Jq48oGoSEequxcIDnOdtqA" source="_Jq48mWoSEequxcIDnOdtqA" target="_Jq48nWoSEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_Jq48oWoSEequxcIDnOdtqA" origin="_Jq48kmoSEequxcIDnOdtqA" image="_Jq48mWoSEequxcIDnOdtqA"/>
+    <mappings xmi:id="_Jq48omoSEequxcIDnOdtqA" origin="_Jq48k2oSEequxcIDnOdtqA" image="_Jq48m2oSEequxcIDnOdtqA"/>
+    <mappings xmi:id="_Jq48o2oSEequxcIDnOdtqA" origin="_Jq48lWoSEequxcIDnOdtqA" image="_Jq48nWoSEequxcIDnOdtqA"/>
+    <multiRules xmi:id="_NBnn0GoSEequxcIDnOdtqA">
+      <lhs xmi:id="_NBo18GoSEequxcIDnOdtqA" name="Lhs">
+        <nodes xmi:id="_NBqEFWoSEequxcIDnOdtqA" outgoing="_NBqEGmoSEequxcIDnOdtqA _NBqEHWoSEequxcIDnOdtqA _OcdOIGoSEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize"/>
+        </nodes>
+        <nodes xmi:id="_NBqEF2oSEequxcIDnOdtqA" incoming="_NBqEGmoSEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//Screen3"/>
+          <attributes xmi:id="_NBqEGGoSEequxcIDnOdtqA" value="true">
+            <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative/selected"/>
+          </attributes>
+        </nodes>
+        <nodes xmi:id="_NBqEG2oSEequxcIDnOdtqA" incoming="_NBqEHWoSEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative"/>
+        </nodes>
+        <nodes xmi:id="_MNxwEGoSEequxcIDnOdtqA" incoming="_OcdOIGoSEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative"/>
+        </nodes>
+        <edges xmi:id="_NBqEGmoSEequxcIDnOdtqA" source="_NBqEFWoSEequxcIDnOdtqA" target="_NBqEF2oSEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+        </edges>
+        <edges xmi:id="_NBqEHWoSEequxcIDnOdtqA" source="_NBqEFWoSEequxcIDnOdtqA" target="_NBqEG2oSEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+        </edges>
+        <edges xmi:id="_OcdOIGoSEequxcIDnOdtqA" source="_NBqEFWoSEequxcIDnOdtqA" target="_MNxwEGoSEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+        </edges>
+      </lhs>
+      <rhs xmi:id="_NBo18WoSEequxcIDnOdtqA" name="Rhs">
+        <nodes xmi:id="_NBpdAGoSEequxcIDnOdtqA" outgoing="_NBqEEGoSEequxcIDnOdtqA _NBqEFGoSEequxcIDnOdtqA _OcdOIWoSEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize"/>
+          <attributes xmi:id="_NBpdAWoSEequxcIDnOdtqA" value="true">
+            <type href="SimpleFeatureModel.ecore#//ScreenSize/selected"/>
+          </attributes>
+        </nodes>
+        <nodes xmi:id="_NBpdA2oSEequxcIDnOdtqA" incoming="_NBqEEGoSEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//Screen3"/>
+          <attributes xmi:id="_NBpdBGoSEequxcIDnOdtqA" value="false">
+            <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative/selected"/>
+          </attributes>
+        </nodes>
+        <nodes xmi:id="_NBqEEWoSEequxcIDnOdtqA" incoming="_NBqEFGoSEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative"/>
+          <attributes xmi:id="_NBqEEmoSEequxcIDnOdtqA" value="true">
+            <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative/selected"/>
+          </attributes>
+        </nodes>
+        <nodes xmi:id="_MNy-MGoSEequxcIDnOdtqA" incoming="_OcdOIWoSEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative"/>
+          <attributes xmi:id="_Nov5QWoSEequxcIDnOdtqA" value="false">
+            <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative/selected"/>
+          </attributes>
+        </nodes>
+        <edges xmi:id="_NBqEEGoSEequxcIDnOdtqA" source="_NBpdAGoSEequxcIDnOdtqA" target="_NBpdA2oSEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+        </edges>
+        <edges xmi:id="_NBqEFGoSEequxcIDnOdtqA" source="_NBpdAGoSEequxcIDnOdtqA" target="_NBqEEWoSEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+        </edges>
+        <edges xmi:id="_OcdOIWoSEequxcIDnOdtqA" source="_NBpdAGoSEequxcIDnOdtqA" target="_MNy-MGoSEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+        </edges>
+      </rhs>
+      <mappings xmi:id="_NBqEHmoSEequxcIDnOdtqA" origin="_NBqEFWoSEequxcIDnOdtqA" image="_NBpdAGoSEequxcIDnOdtqA"/>
+      <mappings xmi:id="_NBqEH2oSEequxcIDnOdtqA" origin="_NBqEF2oSEequxcIDnOdtqA" image="_NBpdA2oSEequxcIDnOdtqA"/>
+      <mappings xmi:id="_NBqEIGoSEequxcIDnOdtqA" origin="_NBqEG2oSEequxcIDnOdtqA" image="_NBqEEWoSEequxcIDnOdtqA"/>
+      <mappings xmi:id="_MNy-MWoSEequxcIDnOdtqA" origin="_MNxwEGoSEequxcIDnOdtqA" image="_MNy-MGoSEequxcIDnOdtqA"/>
+      <multiMappings xmi:id="_NBpdAmoSEequxcIDnOdtqA" origin="_Jq48mWoSEequxcIDnOdtqA" image="_NBpdAGoSEequxcIDnOdtqA"/>
+      <multiMappings xmi:id="_NBpdBWoSEequxcIDnOdtqA" origin="_Jq48m2oSEequxcIDnOdtqA" image="_NBpdA2oSEequxcIDnOdtqA"/>
+      <multiMappings xmi:id="_NBqEE2oSEequxcIDnOdtqA" origin="_Jq48nWoSEequxcIDnOdtqA" image="_NBqEEWoSEequxcIDnOdtqA"/>
+      <multiMappings xmi:id="_NBqEFmoSEequxcIDnOdtqA" origin="_Jq48kmoSEequxcIDnOdtqA" image="_NBqEFWoSEequxcIDnOdtqA"/>
+      <multiMappings xmi:id="_NBqEGWoSEequxcIDnOdtqA" origin="_Jq48k2oSEequxcIDnOdtqA" image="_NBqEF2oSEequxcIDnOdtqA"/>
+      <multiMappings xmi:id="_NBqEHGoSEequxcIDnOdtqA" origin="_Jq48lWoSEequxcIDnOdtqA" image="_NBqEG2oSEequxcIDnOdtqA"/>
+    </multiRules>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_az66EGoSEequxcIDnOdtqA" name="De_Screen3_AdditionalOrGroup">
+    <lhs xmi:id="_az66EWoSEequxcIDnOdtqA" name="Lhs">
+      <nodes xmi:id="_az66EmoSEequxcIDnOdtqA" outgoing="_az66GGoSEequxcIDnOdtqA _WnEAMGqjEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSize"/>
+      </nodes>
+      <nodes xmi:id="_az66E2oSEequxcIDnOdtqA" incoming="_az66GGoSEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//Screen3"/>
+        <attributes xmi:id="_az66FGoSEequxcIDnOdtqA" value="true">
+          <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_az66FmoSEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//SpeakerType"/>
+      </nodes>
+      <nodes xmi:id="_WAdTMGqjEequxcIDnOdtqA" incoming="_WnEAMGqjEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative"/>
+      </nodes>
+      <edges xmi:id="_az66GGoSEequxcIDnOdtqA" source="_az66EmoSEequxcIDnOdtqA" target="_az66E2oSEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+      </edges>
+      <edges xmi:id="_WnEAMGqjEequxcIDnOdtqA" source="_az66EmoSEequxcIDnOdtqA" target="_WAdTMGqjEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_az66G2oSEequxcIDnOdtqA" name="Rhs">
+      <nodes xmi:id="_az66HGoSEequxcIDnOdtqA" outgoing="_az66JmoSEequxcIDnOdtqA _WnEAMWqjEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSize"/>
+        <attributes xmi:id="_az66HWoSEequxcIDnOdtqA" value="true">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_az66HmoSEequxcIDnOdtqA" incoming="_az66JmoSEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//Screen3"/>
+        <attributes xmi:id="_az66H2oSEequxcIDnOdtqA" value="false">
+          <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_az66ImoSEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//SpeakerType"/>
+        <attributes xmi:id="_az66I2oSEequxcIDnOdtqA" value="false">
+          <type href="SimpleFeatureModel.ecore#//SpeakerType/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_WAdTMWqjEequxcIDnOdtqA" incoming="_WnEAMWqjEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative"/>
+        <attributes xmi:id="_XSqh8GqjEequxcIDnOdtqA" value="true">
+          <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <edges xmi:id="_az66JmoSEequxcIDnOdtqA" source="_az66HGoSEequxcIDnOdtqA" target="_az66HmoSEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+      </edges>
+      <edges xmi:id="_WnEAMWqjEequxcIDnOdtqA" source="_az66HGoSEequxcIDnOdtqA" target="_WAdTMWqjEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_az66KWoSEequxcIDnOdtqA" origin="_az66EmoSEequxcIDnOdtqA" image="_az66HGoSEequxcIDnOdtqA"/>
+    <mappings xmi:id="_az66KmoSEequxcIDnOdtqA" origin="_az66E2oSEequxcIDnOdtqA" image="_az66HmoSEequxcIDnOdtqA"/>
+    <mappings xmi:id="_az66LGoSEequxcIDnOdtqA" origin="_az66FmoSEequxcIDnOdtqA" image="_az66ImoSEequxcIDnOdtqA"/>
+    <mappings xmi:id="_WAdTMmqjEequxcIDnOdtqA" origin="_WAdTMGqjEequxcIDnOdtqA" image="_WAdTMWqjEequxcIDnOdtqA"/>
+    <multiRules xmi:id="_eTJaAGoSEequxcIDnOdtqA">
+      <lhs xmi:id="_eTLPMGoSEequxcIDnOdtqA" name="Lhs">
+        <nodes xmi:id="_eTLPPWoSEequxcIDnOdtqA" outgoing="_eTLPQmoSEequxcIDnOdtqA _az66GWoSEequxcIDnOdtqA _WnEnQGqjEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize"/>
+        </nodes>
+        <nodes xmi:id="_eTLPP2oSEequxcIDnOdtqA" incoming="_eTLPQmoSEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//Screen3"/>
+          <attributes xmi:id="_eTLPQGoSEequxcIDnOdtqA" value="true">
+            <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative/selected"/>
+          </attributes>
+        </nodes>
+        <nodes xmi:id="_az66FWoSEequxcIDnOdtqA" incoming="_az66GWoSEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative"/>
+        </nodes>
+        <nodes xmi:id="_eTLPUGoSEequxcIDnOdtqA" outgoing="_az66GmoSEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//SpeakerType"/>
+        </nodes>
+        <nodes xmi:id="_az66F2oSEequxcIDnOdtqA" incoming="_az66GmoSEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//SpeakerAlternative"/>
+        </nodes>
+        <nodes xmi:id="_WAdTNWqjEequxcIDnOdtqA" incoming="_WnEnQGqjEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative"/>
+        </nodes>
+        <edges xmi:id="_eTLPQmoSEequxcIDnOdtqA" source="_eTLPPWoSEequxcIDnOdtqA" target="_eTLPP2oSEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+        </edges>
+        <edges xmi:id="_az66GWoSEequxcIDnOdtqA" source="_eTLPPWoSEequxcIDnOdtqA" target="_az66FWoSEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+        </edges>
+        <edges xmi:id="_az66GmoSEequxcIDnOdtqA" source="_eTLPUGoSEequxcIDnOdtqA" target="_az66F2oSEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//SpeakerType/speakeralternative"/>
+        </edges>
+        <edges xmi:id="_WnEnQGqjEequxcIDnOdtqA" source="_eTLPPWoSEequxcIDnOdtqA" target="_WAdTNWqjEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+        </edges>
+      </lhs>
+      <rhs xmi:id="_eTLPMWoSEequxcIDnOdtqA" name="Rhs">
+        <nodes xmi:id="_eTLPMmoSEequxcIDnOdtqA" outgoing="_eTLPOGoSEequxcIDnOdtqA _az66J2oSEequxcIDnOdtqA _WnEAMmqjEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize"/>
+          <attributes xmi:id="_eTLPM2oSEequxcIDnOdtqA" value="true">
+            <type href="SimpleFeatureModel.ecore#//ScreenSize/selected"/>
+          </attributes>
+        </nodes>
+        <nodes xmi:id="_eTLPNWoSEequxcIDnOdtqA" incoming="_eTLPOGoSEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//Screen3"/>
+          <attributes xmi:id="_eTLPNmoSEequxcIDnOdtqA" value="false">
+            <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative/selected"/>
+          </attributes>
+        </nodes>
+        <nodes xmi:id="_az66IGoSEequxcIDnOdtqA" incoming="_az66J2oSEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative"/>
+          <attributes xmi:id="_az66IWoSEequxcIDnOdtqA" value="false">
+            <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative/selected"/>
+          </attributes>
+        </nodes>
+        <nodes xmi:id="_eTLPSWoSEequxcIDnOdtqA" outgoing="_az66KGoSEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//SpeakerType"/>
+          <attributes xmi:id="_eTLPSmoSEequxcIDnOdtqA" value="true">
+            <type href="SimpleFeatureModel.ecore#//SpeakerType/selected"/>
+          </attributes>
+        </nodes>
+        <nodes xmi:id="_az66JGoSEequxcIDnOdtqA" incoming="_az66KGoSEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//SpeakerAlternative"/>
+          <attributes xmi:id="_az66JWoSEequxcIDnOdtqA" value="false">
+            <type href="SimpleFeatureModel.ecore#//SpeakerAlternative/selected"/>
+          </attributes>
+        </nodes>
+        <nodes xmi:id="_WAdTM2qjEequxcIDnOdtqA" incoming="_WnEAMmqjEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative"/>
+        </nodes>
+        <edges xmi:id="_eTLPOGoSEequxcIDnOdtqA" source="_eTLPMmoSEequxcIDnOdtqA" target="_eTLPNWoSEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+        </edges>
+        <edges xmi:id="_az66J2oSEequxcIDnOdtqA" source="_eTLPMmoSEequxcIDnOdtqA" target="_az66IGoSEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+        </edges>
+        <edges xmi:id="_az66KGoSEequxcIDnOdtqA" source="_eTLPSWoSEequxcIDnOdtqA" target="_az66JGoSEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//SpeakerType/speakeralternative"/>
+        </edges>
+        <edges xmi:id="_WnEAMmqjEequxcIDnOdtqA" source="_eTLPMmoSEequxcIDnOdtqA" target="_WAdTM2qjEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+        </edges>
+      </rhs>
+      <mappings xmi:id="_eTLPRmoSEequxcIDnOdtqA" origin="_eTLPPWoSEequxcIDnOdtqA" image="_eTLPMmoSEequxcIDnOdtqA"/>
+      <mappings xmi:id="_eTLPR2oSEequxcIDnOdtqA" origin="_eTLPP2oSEequxcIDnOdtqA" image="_eTLPNWoSEequxcIDnOdtqA"/>
+      <mappings xmi:id="_eTLPVWoSEequxcIDnOdtqA" origin="_eTLPUGoSEequxcIDnOdtqA" image="_eTLPSWoSEequxcIDnOdtqA"/>
+      <mappings xmi:id="_az66K2oSEequxcIDnOdtqA" origin="_az66FWoSEequxcIDnOdtqA" image="_az66IGoSEequxcIDnOdtqA"/>
+      <mappings xmi:id="_az66LWoSEequxcIDnOdtqA" origin="_az66F2oSEequxcIDnOdtqA" image="_az66JGoSEequxcIDnOdtqA"/>
+      <mappings xmi:id="_WAdTN2qjEequxcIDnOdtqA" origin="_WAdTNWqjEequxcIDnOdtqA" image="_WAdTM2qjEequxcIDnOdtqA"/>
+      <multiMappings xmi:id="_eTLPNGoSEequxcIDnOdtqA" origin="_az66HGoSEequxcIDnOdtqA" image="_eTLPMmoSEequxcIDnOdtqA"/>
+      <multiMappings xmi:id="_eTLPN2oSEequxcIDnOdtqA" origin="_az66HmoSEequxcIDnOdtqA" image="_eTLPNWoSEequxcIDnOdtqA"/>
+      <multiMappings xmi:id="_eTLPPmoSEequxcIDnOdtqA" origin="_az66EmoSEequxcIDnOdtqA" image="_eTLPPWoSEequxcIDnOdtqA"/>
+      <multiMappings xmi:id="_eTLPQWoSEequxcIDnOdtqA" origin="_az66E2oSEequxcIDnOdtqA" image="_eTLPP2oSEequxcIDnOdtqA"/>
+      <multiMappings xmi:id="_eTLPS2oSEequxcIDnOdtqA" origin="_az66ImoSEequxcIDnOdtqA" image="_eTLPSWoSEequxcIDnOdtqA"/>
+      <multiMappings xmi:id="_eTLPUWoSEequxcIDnOdtqA" origin="_az66FmoSEequxcIDnOdtqA" image="_eTLPUGoSEequxcIDnOdtqA"/>
+      <multiMappings xmi:id="_WAdTNGqjEequxcIDnOdtqA" origin="_WAdTMWqjEequxcIDnOdtqA" image="_WAdTM2qjEequxcIDnOdtqA"/>
+      <multiMappings xmi:id="_WAdTNmqjEequxcIDnOdtqA" origin="_WAdTMGqjEequxcIDnOdtqA" image="_WAdTNWqjEequxcIDnOdtqA"/>
+    </multiRules>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_1R5gYGqkEequxcIDnOdtqA" name="De_Screen3_AdditionalOrGroup_2MultiRules">
+    <lhs xmi:id="_1R5gYWqkEequxcIDnOdtqA" name="Lhs">
+      <nodes xmi:id="_1R5gYmqkEequxcIDnOdtqA" outgoing="_1R5gZ2qkEequxcIDnOdtqA _1R5gaGqkEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSize"/>
+      </nodes>
+      <nodes xmi:id="_1R5gY2qkEequxcIDnOdtqA" incoming="_1R5gZ2qkEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//Screen3"/>
+        <attributes xmi:id="_1R5gZGqkEequxcIDnOdtqA" value="true">
+          <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_1R5gZWqkEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//SpeakerType"/>
+      </nodes>
+      <nodes xmi:id="_1R5gZmqkEequxcIDnOdtqA" incoming="_1R5gaGqkEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative"/>
+      </nodes>
+      <edges xmi:id="_1R5gZ2qkEequxcIDnOdtqA" source="_1R5gYmqkEequxcIDnOdtqA" target="_1R5gY2qkEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+      </edges>
+      <edges xmi:id="_1R5gaGqkEequxcIDnOdtqA" source="_1R5gYmqkEequxcIDnOdtqA" target="_1R5gZmqkEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_1R5gaWqkEequxcIDnOdtqA" name="Rhs">
+      <nodes xmi:id="_1R5gamqkEequxcIDnOdtqA" outgoing="_1R5gcmqkEequxcIDnOdtqA _1R5gc2qkEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSize"/>
+        <attributes xmi:id="_1R5ga2qkEequxcIDnOdtqA" value="true">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_1R5gbGqkEequxcIDnOdtqA" incoming="_1R5gcmqkEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//Screen3"/>
+        <attributes xmi:id="_1R5gbWqkEequxcIDnOdtqA" value="false">
+          <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_1R5gbmqkEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//SpeakerType"/>
+        <attributes xmi:id="_1R5gb2qkEequxcIDnOdtqA" value="false">
+          <type href="SimpleFeatureModel.ecore#//SpeakerType/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_1R5gcGqkEequxcIDnOdtqA" incoming="_1R5gc2qkEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative"/>
+        <attributes xmi:id="_1R5gcWqkEequxcIDnOdtqA" value="true">
+          <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <edges xmi:id="_1R5gcmqkEequxcIDnOdtqA" source="_1R5gamqkEequxcIDnOdtqA" target="_1R5gbGqkEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+      </edges>
+      <edges xmi:id="_1R5gc2qkEequxcIDnOdtqA" source="_1R5gamqkEequxcIDnOdtqA" target="_1R5gcGqkEequxcIDnOdtqA">
+        <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_1R5gdGqkEequxcIDnOdtqA" origin="_1R5gYmqkEequxcIDnOdtqA" image="_1R5gamqkEequxcIDnOdtqA"/>
+    <mappings xmi:id="_1R5gdWqkEequxcIDnOdtqA" origin="_1R5gY2qkEequxcIDnOdtqA" image="_1R5gbGqkEequxcIDnOdtqA"/>
+    <mappings xmi:id="_1R5gdmqkEequxcIDnOdtqA" origin="_1R5gZWqkEequxcIDnOdtqA" image="_1R5gbmqkEequxcIDnOdtqA"/>
+    <mappings xmi:id="_1R5gd2qkEequxcIDnOdtqA" origin="_1R5gZmqkEequxcIDnOdtqA" image="_1R5gcGqkEequxcIDnOdtqA"/>
+    <multiRules xmi:id="_3igREGqkEequxcIDnOdtqA" name="1">
+      <lhs xmi:id="_3igREWqkEequxcIDnOdtqA" name="Lhs">
+        <nodes xmi:id="_3igRImqkEequxcIDnOdtqA" outgoing="_3igRJ2qkEequxcIDnOdtqA _3igRKmqkEequxcIDnOdtqA _1R5ggmqkEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize"/>
+        </nodes>
+        <nodes xmi:id="_3igRJGqkEequxcIDnOdtqA" incoming="_3igRJ2qkEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//Screen3"/>
+          <attributes xmi:id="_3igRJWqkEequxcIDnOdtqA" value="true">
+            <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative/selected"/>
+          </attributes>
+        </nodes>
+        <nodes xmi:id="_3igRKGqkEequxcIDnOdtqA" incoming="_3igRKmqkEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative"/>
+        </nodes>
+        <nodes xmi:id="_1R5gfWqkEequxcIDnOdtqA" incoming="_1R5ggmqkEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative"/>
+        </nodes>
+        <nodes xmi:id="_3ig4IWqkEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//SpeakerType"/>
+        </nodes>
+        <edges xmi:id="_3igRJ2qkEequxcIDnOdtqA" source="_3igRImqkEequxcIDnOdtqA" target="_3igRJGqkEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+        </edges>
+        <edges xmi:id="_3igRKmqkEequxcIDnOdtqA" source="_3igRImqkEequxcIDnOdtqA" target="_3igRKGqkEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+        </edges>
+        <edges xmi:id="_1R5ggmqkEequxcIDnOdtqA" source="_3igRImqkEequxcIDnOdtqA" target="_1R5gfWqkEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+        </edges>
+      </lhs>
+      <rhs xmi:id="_3igREmqkEequxcIDnOdtqA" name="Rhs">
+        <nodes xmi:id="_3igRE2qkEequxcIDnOdtqA" outgoing="_3igRGWqkEequxcIDnOdtqA _3igRHWqkEequxcIDnOdtqA _1R5gkmqkEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize"/>
+          <attributes xmi:id="_3igRFGqkEequxcIDnOdtqA" value="true">
+            <type href="SimpleFeatureModel.ecore#//ScreenSize/selected"/>
+          </attributes>
+        </nodes>
+        <nodes xmi:id="_3igRFmqkEequxcIDnOdtqA" incoming="_3igRGWqkEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//Screen3"/>
+          <attributes xmi:id="_3igRF2qkEequxcIDnOdtqA" value="false">
+            <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative/selected"/>
+          </attributes>
+        </nodes>
+        <nodes xmi:id="_3igRGmqkEequxcIDnOdtqA" incoming="_3igRHWqkEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative"/>
+          <attributes xmi:id="_3igRG2qkEequxcIDnOdtqA" value="true">
+            <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative/selected"/>
+          </attributes>
+        </nodes>
+        <nodes xmi:id="_1R5gimqkEequxcIDnOdtqA" incoming="_1R5gkmqkEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative"/>
+          <attributes xmi:id="_1R5gi2qkEequxcIDnOdtqA" value="false">
+            <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative/selected"/>
+          </attributes>
+        </nodes>
+        <nodes xmi:id="_3igRMGqkEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//SpeakerType"/>
+          <attributes xmi:id="_3igRMWqkEequxcIDnOdtqA" value="false">
+            <type href="SimpleFeatureModel.ecore#//SpeakerType/selected"/>
+          </attributes>
+        </nodes>
+        <edges xmi:id="_3igRGWqkEequxcIDnOdtqA" source="_3igRE2qkEequxcIDnOdtqA" target="_3igRFmqkEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+        </edges>
+        <edges xmi:id="_3igRHWqkEequxcIDnOdtqA" source="_3igRE2qkEequxcIDnOdtqA" target="_3igRGmqkEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+        </edges>
+        <edges xmi:id="_1R5gkmqkEequxcIDnOdtqA" source="_3igRE2qkEequxcIDnOdtqA" target="_1R5gimqkEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+        </edges>
+      </rhs>
+      <mappings xmi:id="_3igRLmqkEequxcIDnOdtqA" origin="_3igRImqkEequxcIDnOdtqA" image="_3igRE2qkEequxcIDnOdtqA"/>
+      <mappings xmi:id="_3igRL2qkEequxcIDnOdtqA" origin="_3igRJGqkEequxcIDnOdtqA" image="_3igRFmqkEequxcIDnOdtqA"/>
+      <mappings xmi:id="_3ig4I2qkEequxcIDnOdtqA" origin="_3ig4IWqkEequxcIDnOdtqA" image="_3igRMGqkEequxcIDnOdtqA"/>
+      <mappings xmi:id="_3ig4JGqkEequxcIDnOdtqA" origin="_3igRKGqkEequxcIDnOdtqA" image="_3igRGmqkEequxcIDnOdtqA"/>
+      <mappings xmi:id="_1R5gmGqkEequxcIDnOdtqA" origin="_1R5gfWqkEequxcIDnOdtqA" image="_1R5gimqkEequxcIDnOdtqA"/>
+      <multiMappings xmi:id="_3igRFWqkEequxcIDnOdtqA" origin="_1R5gamqkEequxcIDnOdtqA" image="_3igRE2qkEequxcIDnOdtqA"/>
+      <multiMappings xmi:id="_3igRGGqkEequxcIDnOdtqA" origin="_1R5gbGqkEequxcIDnOdtqA" image="_3igRFmqkEequxcIDnOdtqA"/>
+      <multiMappings xmi:id="_3igRHGqkEequxcIDnOdtqA" origin="_1R5gcGqkEequxcIDnOdtqA" image="_3igRGmqkEequxcIDnOdtqA"/>
+      <multiMappings xmi:id="_3igRI2qkEequxcIDnOdtqA" origin="_1R5gYmqkEequxcIDnOdtqA" image="_3igRImqkEequxcIDnOdtqA"/>
+      <multiMappings xmi:id="_3igRJmqkEequxcIDnOdtqA" origin="_1R5gY2qkEequxcIDnOdtqA" image="_3igRJGqkEequxcIDnOdtqA"/>
+      <multiMappings xmi:id="_3igRKWqkEequxcIDnOdtqA" origin="_1R5gZmqkEequxcIDnOdtqA" image="_3igRKGqkEequxcIDnOdtqA"/>
+      <multiMappings xmi:id="_3ig4IGqkEequxcIDnOdtqA" origin="_1R5gbmqkEequxcIDnOdtqA" image="_3igRMGqkEequxcIDnOdtqA"/>
+      <multiMappings xmi:id="_3ig4ImqkEequxcIDnOdtqA" origin="_1R5gZWqkEequxcIDnOdtqA" image="_3ig4IWqkEequxcIDnOdtqA"/>
+    </multiRules>
+    <multiRules xmi:id="_5m3VgGqkEequxcIDnOdtqA" name="2">
+      <lhs xmi:id="_5m3VgWqkEequxcIDnOdtqA" name="Lhs">
+        <nodes xmi:id="_5m3VjmqkEequxcIDnOdtqA" outgoing="_5m3Vk2qkEequxcIDnOdtqA _5m3VlmqkEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize"/>
+        </nodes>
+        <nodes xmi:id="_5m3VkGqkEequxcIDnOdtqA" incoming="_5m3Vk2qkEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//Screen3"/>
+          <attributes xmi:id="_5m3VkWqkEequxcIDnOdtqA" value="true">
+            <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative/selected"/>
+          </attributes>
+        </nodes>
+        <nodes xmi:id="_5m3VlGqkEequxcIDnOdtqA" incoming="_5m3VlmqkEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative"/>
+        </nodes>
+        <nodes xmi:id="_5m38mGqkEequxcIDnOdtqA" outgoing="_1R5gg2qkEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//SpeakerType"/>
+        </nodes>
+        <nodes xmi:id="_1R5gf2qkEequxcIDnOdtqA" incoming="_1R5gg2qkEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//SpeakerAlternative"/>
+        </nodes>
+        <edges xmi:id="_5m3Vk2qkEequxcIDnOdtqA" source="_5m3VjmqkEequxcIDnOdtqA" target="_5m3VkGqkEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+        </edges>
+        <edges xmi:id="_5m3VlmqkEequxcIDnOdtqA" source="_5m3VjmqkEequxcIDnOdtqA" target="_5m3VlGqkEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+        </edges>
+        <edges xmi:id="_1R5gg2qkEequxcIDnOdtqA" source="_5m38mGqkEequxcIDnOdtqA" target="_1R5gf2qkEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//SpeakerType/speakeralternative"/>
+        </edges>
+      </lhs>
+      <rhs xmi:id="_5m3VgmqkEequxcIDnOdtqA" name="Rhs">
+        <nodes xmi:id="_5m3Vg2qkEequxcIDnOdtqA" outgoing="_5m3ViWqkEequxcIDnOdtqA _5m3VjWqkEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize"/>
+          <attributes xmi:id="_5m3VhGqkEequxcIDnOdtqA" value="true">
+            <type href="SimpleFeatureModel.ecore#//ScreenSize/selected"/>
+          </attributes>
+        </nodes>
+        <nodes xmi:id="_5m3VhmqkEequxcIDnOdtqA" incoming="_5m3ViWqkEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//Screen3"/>
+          <attributes xmi:id="_5m3Vh2qkEequxcIDnOdtqA" value="false">
+            <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative/selected"/>
+          </attributes>
+        </nodes>
+        <nodes xmi:id="_5m3VimqkEequxcIDnOdtqA" incoming="_5m3VjWqkEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative"/>
+          <attributes xmi:id="_5m3Vi2qkEequxcIDnOdtqA" value="true">
+            <type href="SimpleFeatureModel.ecore#//ScreenSizeAlternative/selected"/>
+          </attributes>
+        </nodes>
+        <nodes xmi:id="_5m38kWqkEequxcIDnOdtqA" outgoing="_1R5gk2qkEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//SpeakerType"/>
+          <attributes xmi:id="_5m38kmqkEequxcIDnOdtqA" value="false">
+            <type href="SimpleFeatureModel.ecore#//SpeakerType/selected"/>
+          </attributes>
+        </nodes>
+        <nodes xmi:id="_1R5gjmqkEequxcIDnOdtqA" incoming="_1R5gk2qkEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//SpeakerAlternative"/>
+          <attributes xmi:id="_1R5gj2qkEequxcIDnOdtqA" value="false">
+            <type href="SimpleFeatureModel.ecore#//SpeakerAlternative/selected"/>
+          </attributes>
+        </nodes>
+        <edges xmi:id="_5m3ViWqkEequxcIDnOdtqA" source="_5m3Vg2qkEequxcIDnOdtqA" target="_5m3VhmqkEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+        </edges>
+        <edges xmi:id="_5m3VjWqkEequxcIDnOdtqA" source="_5m3Vg2qkEequxcIDnOdtqA" target="_5m3VimqkEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//ScreenSize/screensizealternative"/>
+        </edges>
+        <edges xmi:id="_1R5gk2qkEequxcIDnOdtqA" source="_5m38kWqkEequxcIDnOdtqA" target="_1R5gjmqkEequxcIDnOdtqA">
+          <type href="SimpleFeatureModel.ecore#//SpeakerType/speakeralternative"/>
+        </edges>
+      </rhs>
+      <mappings xmi:id="_5m3Vl2qkEequxcIDnOdtqA" origin="_5m3VjmqkEequxcIDnOdtqA" image="_5m3Vg2qkEequxcIDnOdtqA"/>
+      <mappings xmi:id="_5m38kGqkEequxcIDnOdtqA" origin="_5m3VkGqkEequxcIDnOdtqA" image="_5m3VhmqkEequxcIDnOdtqA"/>
+      <mappings xmi:id="_5m38nWqkEequxcIDnOdtqA" origin="_5m38mGqkEequxcIDnOdtqA" image="_5m38kWqkEequxcIDnOdtqA"/>
+      <mappings xmi:id="_5m38nmqkEequxcIDnOdtqA" origin="_5m3VlGqkEequxcIDnOdtqA" image="_5m3VimqkEequxcIDnOdtqA"/>
+      <mappings xmi:id="_1R5gmWqkEequxcIDnOdtqA" origin="_1R5gf2qkEequxcIDnOdtqA" image="_1R5gjmqkEequxcIDnOdtqA"/>
+      <multiMappings xmi:id="_5m3VhWqkEequxcIDnOdtqA" origin="_1R5gamqkEequxcIDnOdtqA" image="_5m3Vg2qkEequxcIDnOdtqA"/>
+      <multiMappings xmi:id="_5m3ViGqkEequxcIDnOdtqA" origin="_1R5gbGqkEequxcIDnOdtqA" image="_5m3VhmqkEequxcIDnOdtqA"/>
+      <multiMappings xmi:id="_5m3VjGqkEequxcIDnOdtqA" origin="_1R5gcGqkEequxcIDnOdtqA" image="_5m3VimqkEequxcIDnOdtqA"/>
+      <multiMappings xmi:id="_5m3Vj2qkEequxcIDnOdtqA" origin="_1R5gYmqkEequxcIDnOdtqA" image="_5m3VjmqkEequxcIDnOdtqA"/>
+      <multiMappings xmi:id="_5m3VkmqkEequxcIDnOdtqA" origin="_1R5gY2qkEequxcIDnOdtqA" image="_5m3VkGqkEequxcIDnOdtqA"/>
+      <multiMappings xmi:id="_5m3VlWqkEequxcIDnOdtqA" origin="_1R5gZmqkEequxcIDnOdtqA" image="_5m3VlGqkEequxcIDnOdtqA"/>
+      <multiMappings xmi:id="_5m38k2qkEequxcIDnOdtqA" origin="_1R5gbmqkEequxcIDnOdtqA" image="_5m38kWqkEequxcIDnOdtqA"/>
+      <multiMappings xmi:id="_5m38mWqkEequxcIDnOdtqA" origin="_1R5gZWqkEequxcIDnOdtqA" image="_5m38mGqkEequxcIDnOdtqA"/>
+    </multiRules>
+  </units>
+</henshin:Module>

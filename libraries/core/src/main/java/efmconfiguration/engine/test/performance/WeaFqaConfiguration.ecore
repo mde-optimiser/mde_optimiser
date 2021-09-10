@@ -1,0 +1,707 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="FeatureModelConfiguration" nsURI="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0" nsPrefix="FeatureModelConfiguration">
+  <eClassifiers xsi:type="ecore:EClass" name="FQAs">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="FQAsAlternative" upperBound="-1" eType="//FQAsAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Security" eSuperTypes="//FQAsAlternative">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="SecurityAlternative" upperBound="-1" eType="//SecurityAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FQAsAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Encryption" eSuperTypes="//SecurityAlternative">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="encryptionalgorithms" lowerBound="1" eType="//EncryptionAlgorithms" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="keysize" eType="//KeySize" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="encryptionimplementations" lowerBound="1" eType="//EncryptionImplementations" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="encryptionoperations" lowerBound="1" eType="//EncryptionOperations" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mode" lowerBound="1" eType="//Mode" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="padding" lowerBound="1" eType="//Padding" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SecurityAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EncryptionAlgorithms">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="EncryptionAlgorithmsAlternative" upperBound="-1" eType="//EncryptionAlgorithmsAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Asymmetric" eSuperTypes="//EncryptionAlgorithmsAlternative">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="AsymmetricAlternative" upperBound="-1" eType="//AsymmetricAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EncryptionAlgorithmsAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RSA" eSuperTypes="//AsymmetricAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AsymmetricAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DSA" eSuperTypes="//AsymmetricAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ECDSA" eSuperTypes="//AsymmetricAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Symmetric" eSuperTypes="//EncryptionAlgorithmsAlternative">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="SymmetricAlternative" upperBound="-1" eType="//SymmetricAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AES" eSuperTypes="//SymmetricAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SymmetricAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DESede" eSuperTypes="//SymmetricAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Blowfish" eSuperTypes="//SymmetricAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DES" eSuperTypes="//SymmetricAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="KeySize">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EncryptionImplementations">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="EncryptionImplementationsAlternative" upperBound="-1" eType="//EncryptionImplementationsAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JavaxCrypto" eSuperTypes="//EncryptionImplementationsAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EncryptionImplementationsAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BouncyCastle" eSuperTypes="//EncryptionImplementationsAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EncryptionOperations">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="EncryptionOperationsAlternative" upperBound="-1" eType="//EncryptionOperationsAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Encrypt" eSuperTypes="//EncryptionOperationsAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EncryptionOperationsAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Decrypt" eSuperTypes="//EncryptionOperationsAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Mode">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ModeAlternative" upperBound="-1" eType="//ModeAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CBC" eSuperTypes="//ModeAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ModeAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ECB" eSuperTypes="//ModeAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CFB" eSuperTypes="//ModeAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CTR" eSuperTypes="//ModeAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CTS" eSuperTypes="//ModeAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Padding">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="PaddingAlternative" upperBound="-1" eType="//PaddingAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PKCS5" eSuperTypes="//PaddingAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PaddingAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PKCS1" eSuperTypes="//PaddingAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OAEP" eSuperTypes="//PaddingAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Authentication" eSuperTypes="//SecurityAlternative">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="authenticationimplementations" lowerBound="1" eType="//AuthenticationImplementations" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="authenticationoperations" lowerBound="1" eType="//AuthenticationOperations" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="authenticationmechanism" lowerBound="1" eType="//AuthenticationMechanism" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="passwordlength" eType="//PasswordLength" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="passwordtype" eType="//PasswordType" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="limitedsession" eType="//LimitedSession" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="authenticationlogging" eType="//AuthenticationLogging" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="anonymoususer" eType="//AnonymousUser" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AuthenticationImplementations">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="AuthenticationImplementationsAlternative" upperBound="-1" eType="//AuthenticationImplementationsAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JAAS" eSuperTypes="//AuthenticationImplementationsAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AuthenticationImplementationsAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SpringSecurity" eSuperTypes="//AuthenticationImplementationsAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AuthenticationOperations">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="authenticate" lowerBound="1" eType="//Authenticate" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Authenticate">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AuthenticationMechanism">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="AuthenticationMechanismAlternative" upperBound="-1" eType="//AuthenticationMechanismAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UserPassword" eSuperTypes="//AuthenticationMechanismAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AuthenticationMechanismAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DigitalCertificate" eSuperTypes="//AuthenticationMechanismAlternative">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pseudonymouscertificate" eType="//PseudonymousCertificate" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PseudonymousCertificate">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Biometric" eSuperTypes="//AuthenticationMechanismAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SocialID" eSuperTypes="//AuthenticationMechanismAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Pin" eSuperTypes="//AuthenticationMechanismAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MatrixCode" eSuperTypes="//AuthenticationMechanismAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PasswordLength">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PasswordType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="PasswordTypeAlternative" upperBound="-1" eType="//PasswordTypeAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Numeric" eSuperTypes="//PasswordTypeAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PasswordTypeAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Alphanumeric" eSuperTypes="//PasswordTypeAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SpecialChars" eSuperTypes="//PasswordTypeAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LimitedSession">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AuthenticationLogging">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AnonymousUser">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Hashing" eSuperTypes="//SecurityAlternative">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hashingimplementations" lowerBound="1" eType="//HashingImplementations" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hashingoperations" lowerBound="1" eType="//HashingOperations" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hashingalgorithms" lowerBound="1" eType="//HashingAlgorithms" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HashingImplementations">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="HashingImplementationsAlternative" upperBound="-1" eType="//HashingImplementationsAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JavaSecurityMessageDigest" eSuperTypes="//HashingImplementationsAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HashingImplementationsAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Guava" eSuperTypes="//HashingImplementationsAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HashingOperations">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hash" lowerBound="1" eType="//Hash" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Hash">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HashingAlgorithms">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="HashingAlgorithmsAlternative" upperBound="-1" eType="//HashingAlgorithmsAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MD5" eSuperTypes="//HashingAlgorithmsAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HashingAlgorithmsAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SHA1" eSuperTypes="//HashingAlgorithmsAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SHA256" eSuperTypes="//HashingAlgorithmsAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SHA512" eSuperTypes="//HashingAlgorithmsAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Confidentiality" eSuperTypes="//SecurityAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Privacy" eSuperTypes="//SecurityAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Integrity" eSuperTypes="//SecurityAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Non_Repudiation" eSuperTypes="//SecurityAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Usability" eSuperTypes="//FQAsAlternative">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="UsabilityAlternative" upperBound="-1" eType="//UsabilityAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Logging" eSuperTypes="//UsabilityAlternative">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="loggingoperations" lowerBound="1" eType="//LoggingOperations" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="loggingimplementations" lowerBound="1" eType="//LoggingImplementations" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="handler" lowerBound="1" eType="//Handler" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="format" lowerBound="1" eType="//Format" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="level" lowerBound="1" eType="//Level" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cypheredmessages" eType="//CypheredMessages" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="historylog" eType="//HistoryLog" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="errorlog" eType="//ErrorLog" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UsabilityAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LoggingOperations">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="log" lowerBound="1" eType="//Log" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Log">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LoggingImplementations">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="LoggingImplementationsAlternative" upperBound="-1" eType="//LoggingImplementationsAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Log4J" eSuperTypes="//LoggingImplementationsAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LoggingImplementationsAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LogBack" eSuperTypes="//LoggingImplementationsAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="JavaUtilLogging" eSuperTypes="//LoggingImplementationsAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SimpleImplementationSLF4J" eSuperTypes="//LoggingImplementationsAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Handler">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="HandlerAlternative" upperBound="-1" eType="//HandlerAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConsoleLog" eSuperTypes="//HandlerAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HandlerAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FileLog" eSuperTypes="//HandlerAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DatabaseLog" eSuperTypes="//HandlerAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Format">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="FormatAlternative" upperBound="-1" eType="//FormatAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TXT" eSuperTypes="//FormatAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FormatAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="XML" eSuperTypes="//FormatAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HTML" eSuperTypes="//FormatAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="JSON" eSuperTypes="//FormatAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Level">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="LevelAlternative" upperBound="-1" eType="//LevelAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Trace" eSuperTypes="//LevelAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LevelAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Debug" eSuperTypes="//LevelAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Info" eSuperTypes="//LevelAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Warning" eSuperTypes="//LevelAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Error" eSuperTypes="//LevelAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CypheredMessages">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HistoryLog">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ErrorLog">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tracefile" eType="//TraceFile" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TraceFile">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ContextualHelp" eSuperTypes="//UsabilityAlternative">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contextualhelpoperations" lowerBound="1" eType="//ContextualHelpOperations" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contextualhelpimplementations" lowerBound="1" eType="//ContextualHelpImplementations" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="helptype" lowerBound="1" eType="//HelpType" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="usertype" lowerBound="1" eType="//UserType" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="authenticateduser" eType="//AuthenticatedUser" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ContextualHelpOperations">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="showhelp" lowerBound="1" eType="//ShowHelp" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ShowHelp">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ContextualHelpImplementations">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="javawizardapi" lowerBound="1" eType="//JavaWizardAPI" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JavaWizardAPI">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HelpType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="HelpTypeAlternative" upperBound="-1" eType="//HelpTypeAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Tutorial" eSuperTypes="//HelpTypeAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HelpTypeAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Wizard" eSuperTypes="//HelpTypeAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="UserType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="UserTypeAlternative" upperBound="-1" eType="//UserTypeAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Beginner" eSuperTypes="//UserTypeAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="UserTypeAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Intermediate" eSuperTypes="//UserTypeAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Advanced" eSuperTypes="//UserTypeAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Expert" eSuperTypes="//UserTypeAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AuthenticatedUser">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExecutionControl" eSuperTypes="//UsabilityAlternative">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="executioncontrol_1" lowerBound="1" eType="//ExecutionControl_1" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="shortcuts" eType="//Shortcuts" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExecutionControl_1">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ExecutionControl_1Alternative" upperBound="-1" eType="//ExecutionControl_1Alternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Undo" eSuperTypes="//ExecutionControl_1Alternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExecutionControl_1Alternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Redo" eSuperTypes="//ExecutionControl_1Alternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Cancel" eSuperTypes="//ExecutionControl_1Alternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GoBack" eSuperTypes="//ExecutionControl_1Alternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Shortcuts">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Internationalization" eSuperTypes="//UsabilityAlternative">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="locale" lowerBound="1" eType="//Locale" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Locale">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Feedback" eSuperTypes="//UsabilityAlternative">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="FeedbackAlternative" upperBound="-1" eType="//FeedbackAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InteractionFeedback" eSuperTypes="//FeedbackAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FeedbackAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProgressFeedback" eSuperTypes="//FeedbackAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SystemStatusDisplay" eSuperTypes="//FeedbackAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Alerts" eSuperTypes="//FeedbackAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Persistence" eSuperTypes="//FQAsAlternative">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="PersistenceAlternative" upperBound="-1" eType="//PersistenceAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FileStorage" eSuperTypes="//PersistenceAlternative">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="filestorageoperations" lowerBound="1" eType="//FileStorageOperations" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="filetype" lowerBound="1" eType="//FileType" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="filestorageimplementations" lowerBound="1" eType="//FileStorageImplementations" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="temporalfile" eType="//TemporalFile" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PersistenceAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FileStorageOperations">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="FileStorageOperationsAlternative" upperBound="-1" eType="//FileStorageOperationsAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CreateFile" eSuperTypes="//FileStorageOperationsAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FileStorageOperationsAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ModifyFile" eSuperTypes="//FileStorageOperationsAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DeleteFile" eSuperTypes="//FileStorageOperationsAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FileType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="FileTypeAlternative" upperBound="-1" eType="//FileTypeAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Binary" eSuperTypes="//FileTypeAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FileTypeAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TXTFile" eSuperTypes="//FileTypeAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="XMLFile" eSuperTypes="//FileTypeAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="JSONFile" eSuperTypes="//FileTypeAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FileStorageImplementations">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="javaio" lowerBound="1" eType="//JavaIO" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JavaIO">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TemporalFile">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DatabaseStorage" eSuperTypes="//PersistenceAlternative">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="databasestorageoperations" lowerBound="1" eType="//DatabaseStorageOperations" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="databasestorageimplementations" lowerBound="1" eType="//DatabaseStorageImplementations" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="databasetype" lowerBound="1" eType="//DatabaseType" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="datatype" lowerBound="1" eType="//DataType" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="securedatabase" eType="//SecureDatabase" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DatabaseStorageOperations">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="DatabaseStorageOperationsAlternative" upperBound="-1" eType="//DatabaseStorageOperationsAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Store" eSuperTypes="//DatabaseStorageOperationsAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DatabaseStorageOperationsAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Query" eSuperTypes="//DatabaseStorageOperationsAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DatabaseStorageImplementations">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="DatabaseStorageImplementationsAlternative" upperBound="-1" eType="//DatabaseStorageImplementationsAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MySQL" eSuperTypes="//DatabaseStorageImplementationsAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DatabaseStorageImplementationsAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MongoDB" eSuperTypes="//DatabaseStorageImplementationsAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OracleDB" eSuperTypes="//DatabaseStorageImplementationsAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DatabaseType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="DatabaseTypeAlternative" upperBound="-1" eType="//DatabaseTypeAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Relational" eSuperTypes="//DatabaseTypeAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DatabaseTypeAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NoSQL" eSuperTypes="//DatabaseTypeAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DataType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="DataTypeAlternative" upperBound="-1" eType="//DataTypeAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Integers" eSuperTypes="//DataTypeAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DataTypeAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Strings" eSuperTypes="//DataTypeAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Floats" eSuperTypes="//DataTypeAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Objects" eSuperTypes="//DataTypeAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SecureDatabase">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ContextAwareness" eSuperTypes="//FQAsAlternative">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ContextAwarenessAlternative" upperBound="-1" eType="//ContextAwarenessAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LocationAware" eSuperTypes="//ContextAwarenessAlternative">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="LocationAwareAlternative" upperBound="-1" eType="//LocationAwareAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ContextAwarenessAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GPS" eSuperTypes="//LocationAwareAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LocationAwareAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WiFiLocation" eSuperTypes="//LocationAwareAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TimeAware" eSuperTypes="//ContextAwarenessAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DeviceAware" eSuperTypes="//ContextAwarenessAlternative">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="DeviceAwareAlternative" upperBound="-1" eType="//DeviceAwareAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BatteryStatus" eSuperTypes="//DeviceAwareAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DeviceAwareAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IRSensor" eSuperTypes="//DeviceAwareAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="UserAware" eSuperTypes="//ContextAwarenessAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EnvironmentAware" eSuperTypes="//ContextAwarenessAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Performance" eSuperTypes="//FQAsAlternative">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="caching" lowerBound="1" eType="//Caching" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Caching">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cachingoperations" lowerBound="1" eType="//CachingOperations" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cachingimplementations" lowerBound="1" eType="//CachingImplementations" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="maxsizecache" lowerBound="1" eType="//MaxSizeCache" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cachetype" lowerBound="1" eType="//CacheType" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="maxlifeseconds" eType="//MaxLifeSeconds" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eternalobjects" eType="//EternalObjects" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CachingOperations">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CachingOperationsAlternative" upperBound="-1" eType="//CachingOperationsAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CacheStore" eSuperTypes="//CachingOperationsAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CachingOperationsAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CacheQuery" eSuperTypes="//CachingOperationsAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CacheUpdate" eSuperTypes="//CachingOperationsAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CachingImplementations">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CachingImplementationsAlternative" upperBound="-1" eType="//CachingImplementationsAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JavaCachingSystem" eSuperTypes="//CachingImplementationsAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CachingImplementationsAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Caffeine" eSuperTypes="//CachingImplementationsAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MaxSizeCache">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CacheType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CacheTypeAlternative" upperBound="-1" eType="//CacheTypeAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LocalCache" eSuperTypes="//CacheTypeAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CacheTypeAlternative" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RemoteCache" eSuperTypes="//CacheTypeAlternative"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MaxLifeSeconds">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EternalObjects">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+</ecore:EPackage>

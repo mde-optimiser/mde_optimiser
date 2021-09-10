@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_Bw1R4FFtEequLZ0OGbrLHA" name="Act_TXT">
+  <imports href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_Bw1R4VFtEequLZ0OGbrLHA" name="Act_TXT_r1">
+    <lhs xmi:id="_Bw1R4lFtEequLZ0OGbrLHA" name="Lhs">
+      <nodes xmi:id="_Bw1R41FtEequLZ0OGbrLHA" name="" incoming="_Bw1R81FtEequLZ0OGbrLHA" outgoing="_Bw1R9FFtEequLZ0OGbrLHA _Bw1R9lFtEequLZ0OGbrLHA _Bw1R-VFtEequLZ0OGbrLHA _Bw1R-lFtEequLZ0OGbrLHA _Bw1R_FFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Logging"/>
+      </nodes>
+      <nodes xmi:id="_Bw1R5FFtEequLZ0OGbrLHA" name="" incoming="_Bw1R9FFtEequLZ0OGbrLHA" outgoing="_Bw1R91FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingImplementations"/>
+      </nodes>
+      <nodes xmi:id="_Bw1R5VFtEequLZ0OGbrLHA" name="" incoming="_Bw1R9VFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Log"/>
+      </nodes>
+      <nodes xmi:id="_Bw1R5lFtEequLZ0OGbrLHA" name="" incoming="_Bw1R9lFtEequLZ0OGbrLHA" outgoing="_Bw1R_1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Handler"/>
+      </nodes>
+      <nodes xmi:id="_Bw1R51FtEequLZ0OGbrLHA" name="" incoming="_Bw1R91FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SimpleImplementationSLF4J"/>
+        <attributes xmi:id="_Bw1R6FFtEequLZ0OGbrLHA" value="false">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingImplementationsAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bw1R6VFtEequLZ0OGbrLHA" name="" incoming="_Bw1R-FFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//TXT"/>
+        <attributes xmi:id="_Bw1R6lFtEequLZ0OGbrLHA" value="false">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FormatAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bw1R61FtEequLZ0OGbrLHA" name="" incoming="_Bw1R-VFtEequLZ0OGbrLHA" outgoing="_Bw1R9VFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingOperations"/>
+      </nodes>
+      <nodes xmi:id="_Bw1R7FFtEequLZ0OGbrLHA" name="" incoming="_Bw1R-lFtEequLZ0OGbrLHA" outgoing="_Bw1R-FFtEequLZ0OGbrLHA _Bw1R-1FtEequLZ0OGbrLHA _Bw1R_VFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Format"/>
+      </nodes>
+      <nodes xmi:id="_Bw1R7VFtEequLZ0OGbrLHA" name="" incoming="_Bw1R-1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//XML"/>
+      </nodes>
+      <nodes xmi:id="_Bw1R7lFtEequLZ0OGbrLHA" name="" incoming="_Bw1R_FFtEequLZ0OGbrLHA" outgoing="_Bw1R_lFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Level"/>
+      </nodes>
+      <nodes xmi:id="_Bw1R71FtEequLZ0OGbrLHA" name="" outgoing="_Bw1R81FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Usability"/>
+      </nodes>
+      <nodes xmi:id="_Bw1R8FFtEequLZ0OGbrLHA" name="" incoming="_Bw1R_VFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FormatAlternative"/>
+      </nodes>
+      <nodes xmi:id="_Bw1R8VFtEequLZ0OGbrLHA" name="" incoming="_Bw1R_lFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LevelAlternative"/>
+      </nodes>
+      <nodes xmi:id="_Bw1R8lFtEequLZ0OGbrLHA" name="" incoming="_Bw1R_1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//HandlerAlternative"/>
+      </nodes>
+      <edges xmi:id="_Bw1R81FtEequLZ0OGbrLHA" source="_Bw1R71FtEequLZ0OGbrLHA" target="_Bw1R41FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Usability/UsabilityAlternative"/>
+      </edges>
+      <edges xmi:id="_Bw1R9FFtEequLZ0OGbrLHA" source="_Bw1R41FtEequLZ0OGbrLHA" target="_Bw1R5FFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Logging/loggingimplementations"/>
+      </edges>
+      <edges xmi:id="_Bw1R9VFtEequLZ0OGbrLHA" source="_Bw1R61FtEequLZ0OGbrLHA" target="_Bw1R5VFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingOperations/log"/>
+      </edges>
+      <edges xmi:id="_Bw1R9lFtEequLZ0OGbrLHA" source="_Bw1R41FtEequLZ0OGbrLHA" target="_Bw1R5lFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Logging/handler"/>
+      </edges>
+      <edges xmi:id="_Bw1R91FtEequLZ0OGbrLHA" source="_Bw1R5FFtEequLZ0OGbrLHA" target="_Bw1R51FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingImplementations/LoggingImplementationsAlternative"/>
+      </edges>
+      <edges xmi:id="_Bw1R-FFtEequLZ0OGbrLHA" source="_Bw1R7FFtEequLZ0OGbrLHA" target="_Bw1R6VFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Format/FormatAlternative"/>
+      </edges>
+      <edges xmi:id="_Bw1R-VFtEequLZ0OGbrLHA" source="_Bw1R41FtEequLZ0OGbrLHA" target="_Bw1R61FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Logging/loggingoperations"/>
+      </edges>
+      <edges xmi:id="_Bw1R-lFtEequLZ0OGbrLHA" source="_Bw1R41FtEequLZ0OGbrLHA" target="_Bw1R7FFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Logging/format"/>
+      </edges>
+      <edges xmi:id="_Bw1R-1FtEequLZ0OGbrLHA" source="_Bw1R7FFtEequLZ0OGbrLHA" target="_Bw1R7VFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Format/FormatAlternative"/>
+      </edges>
+      <edges xmi:id="_Bw1R_FFtEequLZ0OGbrLHA" source="_Bw1R41FtEequLZ0OGbrLHA" target="_Bw1R7lFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Logging/level"/>
+      </edges>
+      <edges xmi:id="_Bw1R_VFtEequLZ0OGbrLHA" source="_Bw1R7FFtEequLZ0OGbrLHA" target="_Bw1R8FFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Format/FormatAlternative"/>
+      </edges>
+      <edges xmi:id="_Bw1R_lFtEequLZ0OGbrLHA" source="_Bw1R7lFtEequLZ0OGbrLHA" target="_Bw1R8VFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Level/LevelAlternative"/>
+      </edges>
+      <edges xmi:id="_Bw1R_1FtEequLZ0OGbrLHA" source="_Bw1R5lFtEequLZ0OGbrLHA" target="_Bw1R8lFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Handler/HandlerAlternative"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_Bw1SAFFtEequLZ0OGbrLHA" name="Rhs">
+      <nodes xmi:id="_Bw1SAVFtEequLZ0OGbrLHA" name="" incoming="_Bw1SHVFtEequLZ0OGbrLHA" outgoing="_Bw1SHlFtEequLZ0OGbrLHA _Bw1SIFFtEequLZ0OGbrLHA _Bw1SI1FtEequLZ0OGbrLHA _Bw1SJFFtEequLZ0OGbrLHA _Bw1SJlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Logging"/>
+        <attributes xmi:id="_Bw1SAlFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//UsabilityAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bw1SA1FtEequLZ0OGbrLHA" name="" incoming="_Bw1SHlFtEequLZ0OGbrLHA" outgoing="_Bw1SIVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingImplementations"/>
+        <attributes xmi:id="_Bw1SBFFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingImplementations/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bw1SBVFtEequLZ0OGbrLHA" name="" incoming="_Bw1SH1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Log"/>
+        <attributes xmi:id="_Bw1SBlFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Log/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bw1SB1FtEequLZ0OGbrLHA" name="" incoming="_Bw1SIFFtEequLZ0OGbrLHA" outgoing="_Bw1SKVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Handler"/>
+        <attributes xmi:id="_Bw1SCFFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Handler/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bw1SCVFtEequLZ0OGbrLHA" name="" incoming="_Bw1SIVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SimpleImplementationSLF4J"/>
+        <attributes xmi:id="_Bw1SClFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingImplementationsAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bw1SC1FtEequLZ0OGbrLHA" name="" incoming="_Bw1SIlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//TXT"/>
+        <attributes xmi:id="_Bw1SDFFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FormatAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bw1SDVFtEequLZ0OGbrLHA" name="" incoming="_Bw1SI1FtEequLZ0OGbrLHA" outgoing="_Bw1SH1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingOperations"/>
+        <attributes xmi:id="_Bw1SDlFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingOperations/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bw1SD1FtEequLZ0OGbrLHA" name="" incoming="_Bw1SJFFtEequLZ0OGbrLHA" outgoing="_Bw1SIlFtEequLZ0OGbrLHA _Bw1SJVFtEequLZ0OGbrLHA _Bw1SJ1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Format"/>
+        <attributes xmi:id="_Bw1SEFFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Format/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bw1SEVFtEequLZ0OGbrLHA" name="" incoming="_Bw1SJVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//XML"/>
+        <attributes xmi:id="_Bw1SElFtEequLZ0OGbrLHA" value="false">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FormatAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bw1SE1FtEequLZ0OGbrLHA" name="" incoming="_Bw1SJlFtEequLZ0OGbrLHA" outgoing="_Bw1SKFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Level"/>
+        <attributes xmi:id="_Bw1SFFFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Level/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bw1SFVFtEequLZ0OGbrLHA" name="" outgoing="_Bw1SHVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Usability"/>
+        <attributes xmi:id="_Bw1SFlFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FQAsAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bw1SF1FtEequLZ0OGbrLHA" name="" incoming="_Bw1SJ1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FormatAlternative"/>
+        <attributes xmi:id="_Bw1SGFFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FormatAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bw1SGVFtEequLZ0OGbrLHA" name="" incoming="_Bw1SKFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LevelAlternative"/>
+        <attributes xmi:id="_Bw1SGlFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LevelAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bw1SG1FtEequLZ0OGbrLHA" name="" incoming="_Bw1SKVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//HandlerAlternative"/>
+        <attributes xmi:id="_Bw1SHFFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//HandlerAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <edges xmi:id="_Bw1SHVFtEequLZ0OGbrLHA" source="_Bw1SFVFtEequLZ0OGbrLHA" target="_Bw1SAVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Usability/UsabilityAlternative"/>
+      </edges>
+      <edges xmi:id="_Bw1SHlFtEequLZ0OGbrLHA" source="_Bw1SAVFtEequLZ0OGbrLHA" target="_Bw1SA1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Logging/loggingimplementations"/>
+      </edges>
+      <edges xmi:id="_Bw1SH1FtEequLZ0OGbrLHA" source="_Bw1SDVFtEequLZ0OGbrLHA" target="_Bw1SBVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingOperations/log"/>
+      </edges>
+      <edges xmi:id="_Bw1SIFFtEequLZ0OGbrLHA" source="_Bw1SAVFtEequLZ0OGbrLHA" target="_Bw1SB1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Logging/handler"/>
+      </edges>
+      <edges xmi:id="_Bw1SIVFtEequLZ0OGbrLHA" source="_Bw1SA1FtEequLZ0OGbrLHA" target="_Bw1SCVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingImplementations/LoggingImplementationsAlternative"/>
+      </edges>
+      <edges xmi:id="_Bw1SIlFtEequLZ0OGbrLHA" source="_Bw1SD1FtEequLZ0OGbrLHA" target="_Bw1SC1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Format/FormatAlternative"/>
+      </edges>
+      <edges xmi:id="_Bw1SI1FtEequLZ0OGbrLHA" source="_Bw1SAVFtEequLZ0OGbrLHA" target="_Bw1SDVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Logging/loggingoperations"/>
+      </edges>
+      <edges xmi:id="_Bw1SJFFtEequLZ0OGbrLHA" source="_Bw1SAVFtEequLZ0OGbrLHA" target="_Bw1SD1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Logging/format"/>
+      </edges>
+      <edges xmi:id="_Bw1SJVFtEequLZ0OGbrLHA" source="_Bw1SD1FtEequLZ0OGbrLHA" target="_Bw1SEVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Format/FormatAlternative"/>
+      </edges>
+      <edges xmi:id="_Bw1SJlFtEequLZ0OGbrLHA" source="_Bw1SAVFtEequLZ0OGbrLHA" target="_Bw1SE1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Logging/level"/>
+      </edges>
+      <edges xmi:id="_Bw1SJ1FtEequLZ0OGbrLHA" source="_Bw1SD1FtEequLZ0OGbrLHA" target="_Bw1SF1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Format/FormatAlternative"/>
+      </edges>
+      <edges xmi:id="_Bw1SKFFtEequLZ0OGbrLHA" source="_Bw1SE1FtEequLZ0OGbrLHA" target="_Bw1SGVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Level/LevelAlternative"/>
+      </edges>
+      <edges xmi:id="_Bw1SKVFtEequLZ0OGbrLHA" source="_Bw1SB1FtEequLZ0OGbrLHA" target="_Bw1SG1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Handler/HandlerAlternative"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_Bw1SKlFtEequLZ0OGbrLHA" origin="_Bw1R41FtEequLZ0OGbrLHA" image="_Bw1SAVFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bw1SK1FtEequLZ0OGbrLHA" origin="_Bw1R5FFtEequLZ0OGbrLHA" image="_Bw1SA1FtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bw1SLFFtEequLZ0OGbrLHA" origin="_Bw1R5VFtEequLZ0OGbrLHA" image="_Bw1SBVFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bw1SLVFtEequLZ0OGbrLHA" origin="_Bw1R5lFtEequLZ0OGbrLHA" image="_Bw1SB1FtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bw1SLlFtEequLZ0OGbrLHA" origin="_Bw1R51FtEequLZ0OGbrLHA" image="_Bw1SCVFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bw1SL1FtEequLZ0OGbrLHA" origin="_Bw1R6VFtEequLZ0OGbrLHA" image="_Bw1SC1FtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bw1SMFFtEequLZ0OGbrLHA" origin="_Bw1R61FtEequLZ0OGbrLHA" image="_Bw1SDVFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bw1SMVFtEequLZ0OGbrLHA" origin="_Bw1R7FFtEequLZ0OGbrLHA" image="_Bw1SD1FtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bw1SMlFtEequLZ0OGbrLHA" origin="_Bw1R7VFtEequLZ0OGbrLHA" image="_Bw1SEVFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bw1SM1FtEequLZ0OGbrLHA" origin="_Bw1R7lFtEequLZ0OGbrLHA" image="_Bw1SE1FtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bw1SNFFtEequLZ0OGbrLHA" origin="_Bw1R71FtEequLZ0OGbrLHA" image="_Bw1SFVFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bw1SNVFtEequLZ0OGbrLHA" origin="_Bw1R8FFtEequLZ0OGbrLHA" image="_Bw1SF1FtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bw1SNlFtEequLZ0OGbrLHA" origin="_Bw1R8VFtEequLZ0OGbrLHA" image="_Bw1SGVFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bw1SN1FtEequLZ0OGbrLHA" origin="_Bw1R8lFtEequLZ0OGbrLHA" image="_Bw1SG1FtEequLZ0OGbrLHA"/>
+    <multiRules xmi:id="_Bw1SOFFtEequLZ0OGbrLHA">
+      <lhs xmi:id="_Bw1SOVFtEequLZ0OGbrLHA" name="Lhs">
+        <nodes xmi:id="_Bw1SOlFtEequLZ0OGbrLHA" name="" outgoing="_Bw1SPFFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingImplementations"/>
+        </nodes>
+        <nodes xmi:id="_Bw1SO1FtEequLZ0OGbrLHA" name="" incoming="_Bw1SPFFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingImplementationsAlternative"/>
+        </nodes>
+        <edges xmi:id="_Bw1SPFFtEequLZ0OGbrLHA" source="_Bw1SOlFtEequLZ0OGbrLHA" target="_Bw1SO1FtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingImplementations/LoggingImplementationsAlternative"/>
+        </edges>
+      </lhs>
+      <rhs xmi:id="_Bw1SPVFtEequLZ0OGbrLHA" name="Rhs">
+        <nodes xmi:id="_Bw1SPlFtEequLZ0OGbrLHA" name="" outgoing="_Bw1SQVFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingImplementations"/>
+        </nodes>
+        <nodes xmi:id="_Bw1SP1FtEequLZ0OGbrLHA" name="" incoming="_Bw1SQVFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingImplementationsAlternative"/>
+          <attributes xmi:id="_Bw1SQFFtEequLZ0OGbrLHA" value="false">
+            <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingImplementationsAlternative/selected"/>
+          </attributes>
+        </nodes>
+        <edges xmi:id="_Bw1SQVFtEequLZ0OGbrLHA" source="_Bw1SPlFtEequLZ0OGbrLHA" target="_Bw1SP1FtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingImplementations/LoggingImplementationsAlternative"/>
+        </edges>
+      </rhs>
+      <mappings xmi:id="_Bw1SQlFtEequLZ0OGbrLHA" origin="_Bw1SOlFtEequLZ0OGbrLHA" image="_Bw1SPlFtEequLZ0OGbrLHA"/>
+      <mappings xmi:id="_Bw1SQ1FtEequLZ0OGbrLHA" origin="_Bw1SO1FtEequLZ0OGbrLHA" image="_Bw1SP1FtEequLZ0OGbrLHA"/>
+      <multiMappings xmi:id="_Bw1SRFFtEequLZ0OGbrLHA" origin="_Bw1R5FFtEequLZ0OGbrLHA" image="_Bw1SOlFtEequLZ0OGbrLHA"/>
+      <multiMappings xmi:id="_Bw1SRVFtEequLZ0OGbrLHA" origin="_Bw1SA1FtEequLZ0OGbrLHA" image="_Bw1SPlFtEequLZ0OGbrLHA"/>
+    </multiRules>
+    <multiRules xmi:id="_Bw1SRlFtEequLZ0OGbrLHA">
+      <lhs xmi:id="_Bw1SR1FtEequLZ0OGbrLHA" name="Lhs">
+        <nodes xmi:id="_Bw1SSFFtEequLZ0OGbrLHA" name="" outgoing="_Bw1SSlFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Format"/>
+        </nodes>
+        <nodes xmi:id="_Bw1SSVFtEequLZ0OGbrLHA" name="" incoming="_Bw1SSlFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FormatAlternative"/>
+        </nodes>
+        <edges xmi:id="_Bw1SSlFtEequLZ0OGbrLHA" source="_Bw1SSFFtEequLZ0OGbrLHA" target="_Bw1SSVFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Format/FormatAlternative"/>
+        </edges>
+      </lhs>
+      <rhs xmi:id="_Bw1SS1FtEequLZ0OGbrLHA" name="Rhs">
+        <nodes xmi:id="_Bw1STFFtEequLZ0OGbrLHA" name="" outgoing="_Bw1ST1FtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Format"/>
+        </nodes>
+        <nodes xmi:id="_Bw1STVFtEequLZ0OGbrLHA" name="" incoming="_Bw1ST1FtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FormatAlternative"/>
+          <attributes xmi:id="_Bw1STlFtEequLZ0OGbrLHA" value="false">
+            <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FormatAlternative/selected"/>
+          </attributes>
+        </nodes>
+        <edges xmi:id="_Bw1ST1FtEequLZ0OGbrLHA" source="_Bw1STFFtEequLZ0OGbrLHA" target="_Bw1STVFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Format/FormatAlternative"/>
+        </edges>
+      </rhs>
+      <mappings xmi:id="_Bw1SUFFtEequLZ0OGbrLHA" origin="_Bw1SSFFtEequLZ0OGbrLHA" image="_Bw1STFFtEequLZ0OGbrLHA"/>
+      <mappings xmi:id="_Bw1SUVFtEequLZ0OGbrLHA" origin="_Bw1SSVFtEequLZ0OGbrLHA" image="_Bw1STVFtEequLZ0OGbrLHA"/>
+      <multiMappings xmi:id="_Bw1SUlFtEequLZ0OGbrLHA" origin="_Bw1R7FFtEequLZ0OGbrLHA" image="_Bw1SSFFtEequLZ0OGbrLHA"/>
+      <multiMappings xmi:id="_Bw1SU1FtEequLZ0OGbrLHA" origin="_Bw1SD1FtEequLZ0OGbrLHA" image="_Bw1STFFtEequLZ0OGbrLHA"/>
+    </multiRules>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_Bw1SVFFtEequLZ0OGbrLHA" name="Act_TXT_r2">
+    <lhs xmi:id="_Bw1SVVFtEequLZ0OGbrLHA" name="Lhs">
+      <nodes xmi:id="_Bw1SVlFtEequLZ0OGbrLHA" name="" incoming="_Bw1SZFFtEequLZ0OGbrLHA" outgoing="_Bw1SZVFtEequLZ0OGbrLHA _Bw1SZ1FtEequLZ0OGbrLHA _Bw1SalFtEequLZ0OGbrLHA _Bw1Sa1FtEequLZ0OGbrLHA _Bw1SbFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Logging"/>
+      </nodes>
+      <nodes xmi:id="_Bw1SV1FtEequLZ0OGbrLHA" name="" incoming="_Bw1SZVFtEequLZ0OGbrLHA" outgoing="_Bw1SaFFtEequLZ0OGbrLHA _Bw1SbVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingImplementations"/>
+      </nodes>
+      <nodes xmi:id="_Bw1SWFFtEequLZ0OGbrLHA" name="" incoming="_Bw1SZlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Log"/>
+      </nodes>
+      <nodes xmi:id="_Bw1SWVFtEequLZ0OGbrLHA" name="" incoming="_Bw1SZ1FtEequLZ0OGbrLHA" outgoing="_Bw1Sb1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Handler"/>
+      </nodes>
+      <nodes xmi:id="_Bw1SWlFtEequLZ0OGbrLHA" name="" incoming="_Bw1SaFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SimpleImplementationSLF4J"/>
+      </nodes>
+      <nodes xmi:id="_Bw1SW1FtEequLZ0OGbrLHA" name="" incoming="_Bw1SaVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//TXT"/>
+        <attributes xmi:id="_Bw1SXFFtEequLZ0OGbrLHA" value="false">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FormatAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bw1SXVFtEequLZ0OGbrLHA" name="" incoming="_Bw1SalFtEequLZ0OGbrLHA" outgoing="_Bw1SZlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingOperations"/>
+      </nodes>
+      <nodes xmi:id="_Bw1SXlFtEequLZ0OGbrLHA" name="" incoming="_Bw1Sa1FtEequLZ0OGbrLHA" outgoing="_Bw1SaVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Format"/>
+      </nodes>
+      <nodes xmi:id="_Bw1SX1FtEequLZ0OGbrLHA" name="" incoming="_Bw1SbFFtEequLZ0OGbrLHA" outgoing="_Bw1SblFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Level"/>
+      </nodes>
+      <nodes xmi:id="_Bw1SYFFtEequLZ0OGbrLHA" name="" outgoing="_Bw1SZFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Usability"/>
+      </nodes>
+      <nodes xmi:id="_Bw1SYVFtEequLZ0OGbrLHA" name="" incoming="_Bw1SbVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingImplementationsAlternative"/>
+      </nodes>
+      <nodes xmi:id="_Bw1SYlFtEequLZ0OGbrLHA" name="" incoming="_Bw1SblFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LevelAlternative"/>
+      </nodes>
+      <nodes xmi:id="_Bw1SY1FtEequLZ0OGbrLHA" name="" incoming="_Bw1Sb1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//HandlerAlternative"/>
+      </nodes>
+      <edges xmi:id="_Bw1SZFFtEequLZ0OGbrLHA" source="_Bw1SYFFtEequLZ0OGbrLHA" target="_Bw1SVlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Usability/UsabilityAlternative"/>
+      </edges>
+      <edges xmi:id="_Bw1SZVFtEequLZ0OGbrLHA" source="_Bw1SVlFtEequLZ0OGbrLHA" target="_Bw1SV1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Logging/loggingimplementations"/>
+      </edges>
+      <edges xmi:id="_Bw1SZlFtEequLZ0OGbrLHA" source="_Bw1SXVFtEequLZ0OGbrLHA" target="_Bw1SWFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingOperations/log"/>
+      </edges>
+      <edges xmi:id="_Bw1SZ1FtEequLZ0OGbrLHA" source="_Bw1SVlFtEequLZ0OGbrLHA" target="_Bw1SWVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Logging/handler"/>
+      </edges>
+      <edges xmi:id="_Bw1SaFFtEequLZ0OGbrLHA" source="_Bw1SV1FtEequLZ0OGbrLHA" target="_Bw1SWlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingImplementations/LoggingImplementationsAlternative"/>
+      </edges>
+      <edges xmi:id="_Bw1SaVFtEequLZ0OGbrLHA" source="_Bw1SXlFtEequLZ0OGbrLHA" target="_Bw1SW1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Format/FormatAlternative"/>
+      </edges>
+      <edges xmi:id="_Bw1SalFtEequLZ0OGbrLHA" source="_Bw1SVlFtEequLZ0OGbrLHA" target="_Bw1SXVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Logging/loggingoperations"/>
+      </edges>
+      <edges xmi:id="_Bw1Sa1FtEequLZ0OGbrLHA" source="_Bw1SVlFtEequLZ0OGbrLHA" target="_Bw1SXlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Logging/format"/>
+      </edges>
+      <edges xmi:id="_Bw1SbFFtEequLZ0OGbrLHA" source="_Bw1SVlFtEequLZ0OGbrLHA" target="_Bw1SX1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Logging/level"/>
+      </edges>
+      <edges xmi:id="_Bw1SbVFtEequLZ0OGbrLHA" source="_Bw1SV1FtEequLZ0OGbrLHA" target="_Bw1SYVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingImplementations/LoggingImplementationsAlternative"/>
+      </edges>
+      <edges xmi:id="_Bw1SblFtEequLZ0OGbrLHA" source="_Bw1SX1FtEequLZ0OGbrLHA" target="_Bw1SYlFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Level/LevelAlternative"/>
+      </edges>
+      <edges xmi:id="_Bw1Sb1FtEequLZ0OGbrLHA" source="_Bw1SWVFtEequLZ0OGbrLHA" target="_Bw1SY1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Handler/HandlerAlternative"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_Bw1ScFFtEequLZ0OGbrLHA" name="Rhs">
+      <nodes xmi:id="_Bw1ScVFtEequLZ0OGbrLHA" name="" incoming="_Bw1Si1FtEequLZ0OGbrLHA" outgoing="_Bw1SjFFtEequLZ0OGbrLHA _Bw1SjlFtEequLZ0OGbrLHA _Bw1SkVFtEequLZ0OGbrLHA _Bw1SklFtEequLZ0OGbrLHA _Bw1Sk1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Logging"/>
+        <attributes xmi:id="_Bw1SclFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//UsabilityAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bw1Sc1FtEequLZ0OGbrLHA" name="" incoming="_Bw1SjFFtEequLZ0OGbrLHA" outgoing="_Bw1Sj1FtEequLZ0OGbrLHA _Bw1SlFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingImplementations"/>
+        <attributes xmi:id="_Bw1SdFFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingImplementations/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bw1SdVFtEequLZ0OGbrLHA" name="" incoming="_Bw1SjVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Log"/>
+        <attributes xmi:id="_Bw1SdlFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Log/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bw1Sd1FtEequLZ0OGbrLHA" name="" incoming="_Bw1SjlFtEequLZ0OGbrLHA" outgoing="_Bw1SllFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Handler"/>
+        <attributes xmi:id="_Bw1SeFFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Handler/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bw1SeVFtEequLZ0OGbrLHA" name="" incoming="_Bw1Sj1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//SimpleImplementationSLF4J"/>
+        <attributes xmi:id="_Bw1SelFtEequLZ0OGbrLHA" value="false">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingImplementationsAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bw1Se1FtEequLZ0OGbrLHA" name="" incoming="_Bw1SkFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//TXT"/>
+        <attributes xmi:id="_Bw1SfFFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FormatAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bw1SfVFtEequLZ0OGbrLHA" name="" incoming="_Bw1SkVFtEequLZ0OGbrLHA" outgoing="_Bw1SjVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingOperations"/>
+        <attributes xmi:id="_Bw1SflFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingOperations/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bw1Sf1FtEequLZ0OGbrLHA" name="" incoming="_Bw1SklFtEequLZ0OGbrLHA" outgoing="_Bw1SkFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Format"/>
+        <attributes xmi:id="_Bw1SgFFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Format/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bw1SgVFtEequLZ0OGbrLHA" name="" incoming="_Bw1Sk1FtEequLZ0OGbrLHA" outgoing="_Bw1SlVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Level"/>
+        <attributes xmi:id="_Bw1SglFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Level/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bw1Sg1FtEequLZ0OGbrLHA" name="" outgoing="_Bw1Si1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Usability"/>
+        <attributes xmi:id="_Bw1ShFFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FQAsAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bw1ShVFtEequLZ0OGbrLHA" name="" incoming="_Bw1SlFFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingImplementationsAlternative"/>
+        <attributes xmi:id="_Bw1ShlFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingImplementationsAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bw1Sh1FtEequLZ0OGbrLHA" name="" incoming="_Bw1SlVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LevelAlternative"/>
+        <attributes xmi:id="_Bw1SiFFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LevelAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_Bw1SiVFtEequLZ0OGbrLHA" name="" incoming="_Bw1SllFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//HandlerAlternative"/>
+        <attributes xmi:id="_Bw1SilFtEequLZ0OGbrLHA" value="true">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//HandlerAlternative/selected"/>
+        </attributes>
+      </nodes>
+      <edges xmi:id="_Bw1Si1FtEequLZ0OGbrLHA" source="_Bw1Sg1FtEequLZ0OGbrLHA" target="_Bw1ScVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Usability/UsabilityAlternative"/>
+      </edges>
+      <edges xmi:id="_Bw1SjFFtEequLZ0OGbrLHA" source="_Bw1ScVFtEequLZ0OGbrLHA" target="_Bw1Sc1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Logging/loggingimplementations"/>
+      </edges>
+      <edges xmi:id="_Bw1SjVFtEequLZ0OGbrLHA" source="_Bw1SfVFtEequLZ0OGbrLHA" target="_Bw1SdVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingOperations/log"/>
+      </edges>
+      <edges xmi:id="_Bw1SjlFtEequLZ0OGbrLHA" source="_Bw1ScVFtEequLZ0OGbrLHA" target="_Bw1Sd1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Logging/handler"/>
+      </edges>
+      <edges xmi:id="_Bw1Sj1FtEequLZ0OGbrLHA" source="_Bw1Sc1FtEequLZ0OGbrLHA" target="_Bw1SeVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingImplementations/LoggingImplementationsAlternative"/>
+      </edges>
+      <edges xmi:id="_Bw1SkFFtEequLZ0OGbrLHA" source="_Bw1Sf1FtEequLZ0OGbrLHA" target="_Bw1Se1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Format/FormatAlternative"/>
+      </edges>
+      <edges xmi:id="_Bw1SkVFtEequLZ0OGbrLHA" source="_Bw1ScVFtEequLZ0OGbrLHA" target="_Bw1SfVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Logging/loggingoperations"/>
+      </edges>
+      <edges xmi:id="_Bw1SklFtEequLZ0OGbrLHA" source="_Bw1ScVFtEequLZ0OGbrLHA" target="_Bw1Sf1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Logging/format"/>
+      </edges>
+      <edges xmi:id="_Bw1Sk1FtEequLZ0OGbrLHA" source="_Bw1ScVFtEequLZ0OGbrLHA" target="_Bw1SgVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Logging/level"/>
+      </edges>
+      <edges xmi:id="_Bw1SlFFtEequLZ0OGbrLHA" source="_Bw1Sc1FtEequLZ0OGbrLHA" target="_Bw1ShVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingImplementations/LoggingImplementationsAlternative"/>
+      </edges>
+      <edges xmi:id="_Bw1SlVFtEequLZ0OGbrLHA" source="_Bw1SgVFtEequLZ0OGbrLHA" target="_Bw1Sh1FtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Level/LevelAlternative"/>
+      </edges>
+      <edges xmi:id="_Bw1SllFtEequLZ0OGbrLHA" source="_Bw1Sd1FtEequLZ0OGbrLHA" target="_Bw1SiVFtEequLZ0OGbrLHA">
+        <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Handler/HandlerAlternative"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_Bw1Sl1FtEequLZ0OGbrLHA" origin="_Bw1SVlFtEequLZ0OGbrLHA" image="_Bw1ScVFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bw1SmFFtEequLZ0OGbrLHA" origin="_Bw1SV1FtEequLZ0OGbrLHA" image="_Bw1Sc1FtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bw1SmVFtEequLZ0OGbrLHA" origin="_Bw1SWFFtEequLZ0OGbrLHA" image="_Bw1SdVFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bw1SmlFtEequLZ0OGbrLHA" origin="_Bw1SWVFtEequLZ0OGbrLHA" image="_Bw1Sd1FtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bw1Sm1FtEequLZ0OGbrLHA" origin="_Bw1SWlFtEequLZ0OGbrLHA" image="_Bw1SeVFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bw1SnFFtEequLZ0OGbrLHA" origin="_Bw1SW1FtEequLZ0OGbrLHA" image="_Bw1Se1FtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bw1SnVFtEequLZ0OGbrLHA" origin="_Bw1SXVFtEequLZ0OGbrLHA" image="_Bw1SfVFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bw1SnlFtEequLZ0OGbrLHA" origin="_Bw1SXlFtEequLZ0OGbrLHA" image="_Bw1Sf1FtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bw1Sn1FtEequLZ0OGbrLHA" origin="_Bw1SX1FtEequLZ0OGbrLHA" image="_Bw1SgVFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bw1SoFFtEequLZ0OGbrLHA" origin="_Bw1SYFFtEequLZ0OGbrLHA" image="_Bw1Sg1FtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bw1SoVFtEequLZ0OGbrLHA" origin="_Bw1SYVFtEequLZ0OGbrLHA" image="_Bw1ShVFtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bw1SolFtEequLZ0OGbrLHA" origin="_Bw1SYlFtEequLZ0OGbrLHA" image="_Bw1Sh1FtEequLZ0OGbrLHA"/>
+    <mappings xmi:id="_Bw1So1FtEequLZ0OGbrLHA" origin="_Bw1SY1FtEequLZ0OGbrLHA" image="_Bw1SiVFtEequLZ0OGbrLHA"/>
+    <multiRules xmi:id="_Bw1SpFFtEequLZ0OGbrLHA">
+      <lhs xmi:id="_Bw1SpVFtEequLZ0OGbrLHA" name="Lhs">
+        <nodes xmi:id="_Bw1SplFtEequLZ0OGbrLHA" name="" outgoing="_Bw1SqFFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingImplementations"/>
+        </nodes>
+        <nodes xmi:id="_Bw1Sp1FtEequLZ0OGbrLHA" name="" incoming="_Bw1SqFFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingImplementationsAlternative"/>
+        </nodes>
+        <edges xmi:id="_Bw1SqFFtEequLZ0OGbrLHA" source="_Bw1SplFtEequLZ0OGbrLHA" target="_Bw1Sp1FtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingImplementations/LoggingImplementationsAlternative"/>
+        </edges>
+      </lhs>
+      <rhs xmi:id="_Bw1SqVFtEequLZ0OGbrLHA" name="Rhs">
+        <nodes xmi:id="_Bw1SqlFtEequLZ0OGbrLHA" name="" outgoing="_Bw1SrVFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingImplementations"/>
+        </nodes>
+        <nodes xmi:id="_Bw1Sq1FtEequLZ0OGbrLHA" name="" incoming="_Bw1SrVFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingImplementationsAlternative"/>
+          <attributes xmi:id="_Bw1SrFFtEequLZ0OGbrLHA" value="false">
+            <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingImplementationsAlternative/selected"/>
+          </attributes>
+        </nodes>
+        <edges xmi:id="_Bw1SrVFtEequLZ0OGbrLHA" source="_Bw1SqlFtEequLZ0OGbrLHA" target="_Bw1Sq1FtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//LoggingImplementations/LoggingImplementationsAlternative"/>
+        </edges>
+      </rhs>
+      <mappings xmi:id="_Bw1SrlFtEequLZ0OGbrLHA" origin="_Bw1SplFtEequLZ0OGbrLHA" image="_Bw1SqlFtEequLZ0OGbrLHA"/>
+      <mappings xmi:id="_Bw1Sr1FtEequLZ0OGbrLHA" origin="_Bw1Sp1FtEequLZ0OGbrLHA" image="_Bw1Sq1FtEequLZ0OGbrLHA"/>
+      <multiMappings xmi:id="_Bw1SsFFtEequLZ0OGbrLHA" origin="_Bw1SV1FtEequLZ0OGbrLHA" image="_Bw1SplFtEequLZ0OGbrLHA"/>
+      <multiMappings xmi:id="_Bw1SsVFtEequLZ0OGbrLHA" origin="_Bw1Sc1FtEequLZ0OGbrLHA" image="_Bw1SqlFtEequLZ0OGbrLHA"/>
+    </multiRules>
+    <multiRules xmi:id="_Bw1SslFtEequLZ0OGbrLHA">
+      <lhs xmi:id="_Bw1Ss1FtEequLZ0OGbrLHA" name="Lhs">
+        <nodes xmi:id="_Bw1StFFtEequLZ0OGbrLHA" name="" outgoing="_Bw1StlFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Format"/>
+        </nodes>
+        <nodes xmi:id="_Bw1StVFtEequLZ0OGbrLHA" name="" incoming="_Bw1StlFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FormatAlternative"/>
+        </nodes>
+        <edges xmi:id="_Bw1StlFtEequLZ0OGbrLHA" source="_Bw1StFFtEequLZ0OGbrLHA" target="_Bw1StVFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Format/FormatAlternative"/>
+        </edges>
+      </lhs>
+      <rhs xmi:id="_Bw1St1FtEequLZ0OGbrLHA" name="Rhs">
+        <nodes xmi:id="_Bw1SuFFtEequLZ0OGbrLHA" name="" outgoing="_Bw1Su1FtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Format"/>
+        </nodes>
+        <nodes xmi:id="_Bw1SuVFtEequLZ0OGbrLHA" name="" incoming="_Bw1Su1FtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FormatAlternative"/>
+          <attributes xmi:id="_Bw1SulFtEequLZ0OGbrLHA" value="false">
+            <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//FormatAlternative/selected"/>
+          </attributes>
+        </nodes>
+        <edges xmi:id="_Bw1Su1FtEequLZ0OGbrLHA" source="_Bw1SuFFtEequLZ0OGbrLHA" target="_Bw1SuVFtEequLZ0OGbrLHA">
+          <type href="http://www.kcl.ac.uk/inf/mdeoptimiser/featureModelConfiguration/1.0#//Format/FormatAlternative"/>
+        </edges>
+      </rhs>
+      <mappings xmi:id="_Bw1SvFFtEequLZ0OGbrLHA" origin="_Bw1StFFtEequLZ0OGbrLHA" image="_Bw1SuFFtEequLZ0OGbrLHA"/>
+      <mappings xmi:id="_Bw1SvVFtEequLZ0OGbrLHA" origin="_Bw1StVFtEequLZ0OGbrLHA" image="_Bw1SuVFtEequLZ0OGbrLHA"/>
+      <multiMappings xmi:id="_Bw1SvlFtEequLZ0OGbrLHA" origin="_Bw1SXlFtEequLZ0OGbrLHA" image="_Bw1StFFtEequLZ0OGbrLHA"/>
+      <multiMappings xmi:id="_Bw1Sv1FtEequLZ0OGbrLHA" origin="_Bw1Sf1FtEequLZ0OGbrLHA" image="_Bw1SuFFtEequLZ0OGbrLHA"/>
+    </multiRules>
+  </units>
+</henshin:Module>

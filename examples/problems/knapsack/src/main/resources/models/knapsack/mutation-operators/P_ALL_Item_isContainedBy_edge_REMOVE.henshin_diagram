@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_m3jpgKRGEeqpzsILEtcQ2g" type="Henshin" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_m4WTsKRGEeqpzsILEtcQ2g" type="2001" fontName="Sans" italic="true" lineColor="0">
+    <children xmi:type="notation:DecorationNode" xmi:id="_m4W6wKRGEeqpzsILEtcQ2g" type="5001"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_m4W6waRGEeqpzsILEtcQ2g" type="7001">
+      <children xmi:type="notation:Shape" xmi:id="_m4Yv8KRGEeqpzsILEtcQ2g" type="3001" fontName="Sans">
+        <children xmi:type="notation:DecorationNode" xmi:id="_m4Yv8qRGEeqpzsILEtcQ2g" type="5002"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_m4Yv86RGEeqpzsILEtcQ2g" type="5003"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_m4Yv9KRGEeqpzsILEtcQ2g" type="7002">
+          <styles xmi:type="notation:SortingStyle" xmi:id="_m4Yv9aRGEeqpzsILEtcQ2g"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_m4Yv9qRGEeqpzsILEtcQ2g"/>
+        </children>
+        <element xmi:type="henshin:Node" href="P_ALL_Item_isContainedBy_edge_REMOVE.henshin#_BmXq86RGEeqOweWgv_Iujg"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_m4Yv8aRGEeqpzsILEtcQ2g" x="6" y="22"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_m4ZXAKRGEeqpzsILEtcQ2g" type="3001" fontName="Sans">
+        <children xmi:type="notation:DecorationNode" xmi:id="_m4ZXAqRGEeqpzsILEtcQ2g" type="5002"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_m4ZXA6RGEeqpzsILEtcQ2g" type="5003"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_m4ZXBKRGEeqpzsILEtcQ2g" type="7002">
+          <styles xmi:type="notation:SortingStyle" xmi:id="_m4ZXBaRGEeqpzsILEtcQ2g"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_m4ZXBqRGEeqpzsILEtcQ2g"/>
+        </children>
+        <element xmi:type="henshin:Node" href="P_ALL_Item_isContainedBy_edge_REMOVE.henshin#_BmXq9KRGEeqOweWgv_Iujg"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_m4ZXAaRGEeqpzsILEtcQ2g" x="300" y="22"/>
+      </children>
+    </children>
+    <element xmi:type="henshin:Rule" href="P_ALL_Item_isContainedBy_edge_REMOVE.henshin#_BmXq8aRGEeqOweWgv_Iujg"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_m4WTsaRGEeqpzsILEtcQ2g" x="27" y="51" width="445" height="110"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_m3jpgaRGEeqpzsILEtcQ2g"/>
+  <element xmi:type="henshin:Module" href="P_ALL_Item_isContainedBy_edge_REMOVE.henshin#_BmXq8KRGEeqOweWgv_Iujg"/>
+  <edges xmi:type="notation:Connector" xmi:id="_m4ig8KRGEeqpzsILEtcQ2g" type="4001" source="_m4Yv8KRGEeqpzsILEtcQ2g" target="_m4ZXAKRGEeqpzsILEtcQ2g">
+    <children xmi:type="notation:DecorationNode" xmi:id="_m4ig86RGEeqpzsILEtcQ2g" type="6001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_m4ig9KRGEeqpzsILEtcQ2g" x="36" y="8"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_m4ig9aRGEeqpzsILEtcQ2g" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_m4ig9qRGEeqpzsILEtcQ2g" x="38" y="22"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_m4ig8aRGEeqpzsILEtcQ2g" fontName="Sans"/>
+    <element xmi:type="henshin:Edge" href="P_ALL_Item_isContainedBy_edge_REMOVE.henshin#_BmXq9aRGEeqOweWgv_Iujg"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_m4ig8qRGEeqpzsILEtcQ2g" points="[44, 16, 17, 6]$[-31, -11, -58, -21]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_m4jIAKRGEeqpzsILEtcQ2g" type="4001" source="_m4ZXAKRGEeqpzsILEtcQ2g" target="_m4Yv8KRGEeqpzsILEtcQ2g">
+    <children xmi:type="notation:DecorationNode" xmi:id="_m4jIA6RGEeqpzsILEtcQ2g" type="6001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_m4jIBKRGEeqpzsILEtcQ2g" x="21" y="12"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_m4jIBaRGEeqpzsILEtcQ2g" type="6002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_m4jvEKRGEeqpzsILEtcQ2g" x="27" y="24"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_m4jIAaRGEeqpzsILEtcQ2g" fontName="Sans"/>
+    <element xmi:type="henshin:Edge" href="P_ALL_Item_isContainedBy_edge_REMOVE.henshin#_BmXq9qRGEeqOweWgv_Iujg"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_m4jIAqRGEeqpzsILEtcQ2g" points="[-7, -14, 283, 0]$[-7, -14, 283, 0]$[-266, -14, 24, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_uuE50KRGEeqpzsILEtcQ2g" id="(0.032520325203252036,0.21428571428571427)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_ua--sKRGEeqpzsILEtcQ2g" id="(0.7272727272727273,0.11904761904761904)"/>
+  </edges>
+</notation:Diagram>

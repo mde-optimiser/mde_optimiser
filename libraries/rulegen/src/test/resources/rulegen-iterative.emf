@@ -1,0 +1,46 @@
+@namespace(uri="http://uk.ac.kcl.inf.mdeoptimiser.examples/rulegen/iterative/1.0", prefix="rulegen.iterative")
+package ecore;
+
+class Context extends NamedElement {
+	!ordered val A[*] nodeA;
+	!ordered val B[*] nodeB;
+	!ordered val C[*] nodeC;
+	!ordered val D[*] nodeD;
+	!ordered val E[*] nodeE;
+	!ordered val F[*] nodeF;
+}
+
+class A extends NamedElement {
+	ref B[*]#edgeBA  edgeAB;
+}
+
+class B extends NamedElement {
+	ref A[*]#edgeAB edgeBA;
+	ref C[*]#edgeCB  edgeBC;	
+}
+
+
+class C extends NamedElement {
+	ref B[*]#edgeBC edgeCB;
+	ref D[*]#edgeDC  edgeCD;
+}
+
+
+class D extends NamedElement {
+	ref C[*]#edgeCD edgeDC;
+	ref E[*]#edgeED  edgeDE;
+}
+
+class E extends NamedElement {
+	ref D[*]#edgeDE edgeED;
+	ref F[*]#edgeFE  edgeEF;
+}
+
+
+class F extends NamedElement {
+	ref E[*]#edgeEF edgeFE;
+}
+
+abstract class NamedElement {
+	attr String[1] name;
+}

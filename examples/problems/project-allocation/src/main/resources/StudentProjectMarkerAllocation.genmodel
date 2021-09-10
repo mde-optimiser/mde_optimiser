@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/uk.ac.kcl.inf.mdeoptimiser.examples.problems.project.allocation/src/main/java"
+    modelPluginID="uk.ac.kcl.inf.mdeoptimiser.examples.problems.project.allocation"
+    modelName="StudentProjectMarkerAllocation" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" bundleManifest="false" complianceLevel="11.0"
+    copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>StudentProjectMarkerAllocation.ecore</foreignModel>
+  <genPackages prefix="StudentProjectMarkerAllocation" basePackage="models.project.allocation.ecore"
+      disposableProviderFactory="true" ecorePackage="StudentProjectMarkerAllocation.ecore#/">
+    <genClasses ecoreClass="StudentProjectMarkerAllocation.ecore#//Academic">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference StudentProjectMarkerAllocation.ecore#//Academic/projects"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference StudentProjectMarkerAllocation.ecore#//Academic/firstMarker"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference StudentProjectMarkerAllocation.ecore#//Academic/secondMarker"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference StudentProjectMarkerAllocation.ecore#//Academic/thirdMarker"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StudentProjectMarkerAllocation.ecore#//Academic/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StudentProjectMarkerAllocation.ecore#//Academic/number"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StudentProjectMarkerAllocation.ecore#//Academic/email"/>
+    </genClasses>
+    <genClasses ecoreClass="StudentProjectMarkerAllocation.ecore#//Project">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference StudentProjectMarkerAllocation.ecore#//Project/supervisor"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference StudentProjectMarkerAllocation.ecore#//Project/student"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference StudentProjectMarkerAllocation.ecore#//Project/firstMarker"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference StudentProjectMarkerAllocation.ecore#//Project/secondMarker"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference StudentProjectMarkerAllocation.ecore#//Project/thirdMarker"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StudentProjectMarkerAllocation.ecore#//Project/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StudentProjectMarkerAllocation.ecore#//Project/stage"/>
+    </genClasses>
+    <genClasses ecoreClass="StudentProjectMarkerAllocation.ecore#//Student">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference StudentProjectMarkerAllocation.ecore#//Student/project"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StudentProjectMarkerAllocation.ecore#//Student/email"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StudentProjectMarkerAllocation.ecore#//Student/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StudentProjectMarkerAllocation.ecore#//Student/number"/>
+    </genClasses>
+    <genClasses ecoreClass="StudentProjectMarkerAllocation.ecore#//MarkerAllocationModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference StudentProjectMarkerAllocation.ecore#//MarkerAllocationModel/students"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference StudentProjectMarkerAllocation.ecore#//MarkerAllocationModel/projects"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference StudentProjectMarkerAllocation.ecore#//MarkerAllocationModel/academics"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

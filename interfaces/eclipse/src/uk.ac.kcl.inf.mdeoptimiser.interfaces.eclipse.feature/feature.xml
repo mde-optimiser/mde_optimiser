@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature"
+      label="MDEOptimiser"
+      version="1.0.0.qualifier">
+
+
+  <!-- <url>
+      <discovery label="MOPT Dependencies" url="http://blog.onboot.org/mdeo_repo/develop/"/>
+   </url> -->
+
+   <requires>
+      <import plugin="org.eclipse.xtext.ui"/>
+      <import plugin="org.eclipse.xtext.ui.shared"/>
+      <import plugin="org.eclipse.xtext.ui.codetemplates.ui"/>
+      <import plugin="org.eclipse.ui.editors" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.ide" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.builder"/>
+      <import plugin="org.eclipse.compare"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.jdt.debug.ui"/>
+      <import plugin="org.eclipse.jdt.launching" version="3.8.100" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.common"/>
+      <import plugin="org.eclipse.ocl" version="3.6.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ocl.ecore" version="3.6.0" match="greaterOrEqual"/>
+      <import plugin="org.moeaframework"/>
+      <import plugin="com.github.mifmif.generex" version="1.0.2" match="greaterOrEqual"/>
+      <import plugin="dk.brics.automaton" version="1.11.0.8" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.apache.log4j"/>
+      <import plugin="uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext"/>
+      <import plugin="org.eclipse.xtext.common.types.ui"/>
+      <import plugin="org.eclipse.xtext.xbase.lib" version="2.15.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.xbase.ui"/>
+      <!--This cannot be resolved from the target for some reason. Is it needed? -->
+      <!--<import plugin="org.antlr.runtime" version="3.2.0" match="perfect"/>-->
+      <import plugin="org.eclipse.jdt.core"/>
+      <import plugin="org.eclipse.jdt.ui"/>
+      <import plugin="uk.ac.kcl.inf.mdeoptimiser.interfaces.cli"/>
+      <import plugin="uk.ac.kcl.inf.mdeoptimiser.libraries.core"/>
+      <import plugin="uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen"/>
+      <import plugin="org.eclipse.emf.henshin.interpreter" version="1.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.henshin.model" version="1.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.henshin.trace" version="1.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.common.types"/>
+      <import plugin="com.google.guava"/>
+      <import plugin="org.eclipse.xtend.lib.macro"/>
+      <import plugin="org.apache.commons.lang3" />
+      <import plugin="org.apache.commons.math3" />
+   </requires>
+
+   <plugin
+         id="uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

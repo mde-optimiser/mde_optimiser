@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="build" default="dist">
+<import file="build-common.xml"/>
+
+    <property environment="env" />
+    <!-- Default build configuration to local if there is no other flag
+    provided to the ant build task -->
+    <condition property="build.environment" value="${env.build.environment}">
+        <isset property="env.build.environment" />
+    </condition>
+
+    <condition property="build.environment" value="local">
+        <not>
+            <isset property="env.build.environment" />
+        </not>
+    </condition>
+
+    <target name="dist" depends="depend.all" description="Build distributable">
+        <echo message="${ant.project.name} - building all monorepo components using '${build.environment}'  environment configuration"/>
+    </target>
+</project>

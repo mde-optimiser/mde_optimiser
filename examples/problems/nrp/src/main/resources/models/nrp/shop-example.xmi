@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NRP:NRP xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:NRP="http://model.nrp"
+    xsi:schemaLocation="http://model.nrp nextReleaseProblem.ecore">
+  <customers
+      name="Shop Manager"
+      value="0.6"
+      desires="//@requirements.1/@valuation.0 //@requirements.2/@valuation.0 //@requirements.0/@valuation.0"/>
+  <customers
+      name="Shop Clerk"
+      value="0.4"
+      desires="//@requirements.2/@valuation.0 //@requirements.4/@valuation.0 //@requirements.3/@valuation.0"/>
+  <availableArtifacts
+      name="Barcode Scanning System"
+      requires="//@availableArtifacts.2"
+      realisation="//@requirements.2/@realisation.0 //@requirements.1/@realisation.0 //@requirements.3/@realisation.0">
+    <costs amount="120.0"/>
+  </availableArtifacts>
+  <availableArtifacts
+      name="RFID System"
+      requires="//@availableArtifacts.2"
+      realisation="//@requirements.1/@realisation.1 //@requirements.2/@realisation.1 //@requirements.3/@realisation.1">
+    <costs amount="200.0"/>
+  </availableArtifacts>
+  <availableArtifacts
+      name="Stock Management System"
+      realisation="//@requirements.4/@realisation.0 //@requirements.0/@realisation.0">
+    <costs amount="230.0"/>
+  </availableArtifacts>
+  <requirements
+      name="Monthly Reports">
+    <valuation
+        value="1.0"
+        desiredBy="//@customers.0"/>
+    <realisation
+        softwareartifact="//@availableArtifacts.2"/>
+  </requirements>
+  <requirements
+      name="Email Notification">
+    <valuation
+        value="0.8"
+        desiredBy="//@customers.0"/>
+    <realisation
+        percentage="0.9"
+        softwareartifact="//@availableArtifacts.0"/>
+    <realisation
+        softwareartifact="//@availableArtifacts.1"/>
+  </requirements>
+  <requirements
+      name="Automatic Stock Ordering">
+    <valuation
+        value="1.0"
+        desiredBy="//@customers.0 //@customers.1"/>
+    <realisation
+        percentage="0.9"
+        softwareartifact="//@availableArtifacts.0"/>
+    <realisation
+        softwareartifact="//@availableArtifacts.1"/>
+  </requirements>
+  <requirements
+      name="Easier Stock Handling">
+    <valuation
+        value="0.9"
+        desiredBy="//@customers.1"/>
+    <realisation
+        percentage="0.8"
+        softwareartifact="//@availableArtifacts.0"/>
+    <realisation
+        softwareartifact="//@availableArtifacts.1"/>
+  </requirements>
+  <requirements
+      name="Better User Interface">
+    <valuation
+        value="0.6"
+        desiredBy="//@customers.1"/>
+    <realisation
+        softwareartifact="//@availableArtifacts.2"/>
+  </requirements>
+</NRP:NRP>
