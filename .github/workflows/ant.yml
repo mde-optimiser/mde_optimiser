@@ -26,6 +26,6 @@ jobs:
       with:
         working-directory: ./build/ant
         run: |
-        ant -noinput -buildfile build.xml
-        echo "$GITHUB_CONTEXT"
-        pwd
+          ant -noinput -buildfile build.xml
+          echo "$GITHUB_CONTEXT"
+          pwd
