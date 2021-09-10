@@ -26,5 +26,3 @@ jobs:
       with:
         working-directory: ./build/ant
         run: ant -noinput -buildfile build.xml
-        env:
-          DISPLAY: :99.0
