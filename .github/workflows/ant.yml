@@ -25,4 +25,4 @@ jobs:
       uses: GabrielBB/xvfb-action@v1
       with:
         working-directory: ./build/ant
-        run: echo $GITHUB_CONTEXT
+        run: env
