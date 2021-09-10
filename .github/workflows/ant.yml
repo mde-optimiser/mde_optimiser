@@ -25,4 +25,7 @@ jobs:
       uses: GabrielBB/xvfb-action@v1
       with:
         working-directory: ./build/ant
-        run: ant -noinput -buildfile build.xml
+        run: |
+        ant -noinput -buildfile build.xml
+        echo "$GITHUB_CONTEXT"
+        pwd
