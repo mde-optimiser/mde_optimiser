@@ -71,6 +71,6 @@ git config user.email "ci@mde-optimiser.github.io"
 
 git commit -m "Published build id: $GITHUB_RUN_NUMBER"
 
-#git push origin gh-pages
+git push origin gh-pages
 
 echo "Artifacts deployed to $GITHUB_REPOSITORY repository in github.com."
