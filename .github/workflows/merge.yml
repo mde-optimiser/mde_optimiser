@@ -29,6 +29,7 @@ jobs:
     - name: Deploy files
       shell: bash
       run: |
+        /usr/bin/ls -la
         /usr/bin/chmod +x ./build/publish-artifacts.sh
         /usr/bin/bash ./build/publish-artifacts.sh
       
