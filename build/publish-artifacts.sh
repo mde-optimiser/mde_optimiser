@@ -18,7 +18,7 @@ pwd
 
 rm -rf gh-pages
 
-git clone -b gh-pages https://github.com/mde-optimiser/mde_optimiser.git gh-pages
+git clone -b gh-pages --depth=1 https://github.com/mde-optimiser/mde_optimiser.git gh-pages
 
 cd gh-pages
 
