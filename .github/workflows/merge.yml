@@ -26,5 +26,4 @@ jobs:
         working-directory: ./build/ant
         run: |
           ant -noinput -buildfile build.xml
-          cd ../
-          bash ./publish-artifacts.sh
+          bash ../publish-artifacts.sh
