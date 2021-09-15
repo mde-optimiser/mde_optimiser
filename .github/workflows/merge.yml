@@ -26,6 +26,11 @@ jobs:
         working-directory: ./build/ant
         run: |
           ant -noinput -buildfile build.xml
-          /usr/bin/chmod +x ../publish-artifacts.sh
-          /usr/bin/bash ../publish-artifacts.sh
-
+    - name: Deploy files
+      shell: bash
+      with:
+        working-directory: ./build
+      run: |
+        /usr/bin/chmod +x ../publish-artifacts.sh
+        /usr/bin/bash ../publish-artifacts.sh
+      
