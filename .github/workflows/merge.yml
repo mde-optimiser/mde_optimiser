@@ -29,7 +29,8 @@ jobs:
     - name: Deploy files
       shell: bash
       run: |
-	/usr/bin/find ./repositories/
+        /usr/bin/pwd
+        /usr/bin/find ./repositories/
         /usr/bin/chmod +x ./build/publish-artifacts.sh
         /usr/bin/bash ./build/publish-artifacts.sh
       
