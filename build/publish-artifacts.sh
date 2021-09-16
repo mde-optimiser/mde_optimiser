@@ -37,28 +37,28 @@ echo "Preparing Maven repository"
 REPO_OUTPUT_MAVEN="$REPO_OUTPUT/maven"
 
 mkdir -p $REPO_OUTPUT_MAVEN
-mv ./mde_optimiser/repositories/output/m2/m2.mdeoptimiser.repository/* $REPO_OUTPUT_MAVEN/
+mv ./repositories/output/m2/m2.mdeoptimiser.repository/* $REPO_OUTPUT_MAVEN/
 
 echo "Preparing P2 repository for MDEO Libs"
 
 REPO_OUTPUT_P2_LIBS="$REPO_OUTPUT/p2/artifacts/libraries"
 
 mkdir -p $REPO_OUTPUT_P2_LIBS
-mv ./mde_optimiser/repositories/output/p2/p2.mdeoptimiser.repository/* $REPO_OUTPUT_P2_LIBS
+mv ./repositories/output/p2/p2.mdeoptimiser.repository/* $REPO_OUTPUT_P2_LIBS
 
 echo "Preparing P2 repository for Eclipse UI"
 
 REPO_OUTPUT_P2_ECLIPSE="$REPO_OUTPUT/p2/artifacts/eclipse"
 
 mkdir -p $REPO_OUTPUT_P2_ECLIPSE
-mv ./mde_optimiser/interfaces/eclipse/src/uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.repository/target/* $REPO_OUTPUT_P2_ECLIPSE
+mv ./interfaces/eclipse/src/uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.repository/target/* $REPO_OUTPUT_P2_ECLIPSE
 
 echo "Preparing Eclipse P2 composite update site"
 
 REPO_OUTPUT_P2_COMPOSITE="downloads/p2/"
 
 mkdir -p $REPO_OUTPUT_P2_COMPOSITE
-cp -r ./mde_optimiser/repositories/composite/* $REPO_OUTPUT_P2_COMPOSITE
+cp -r ./repositories/composite/* $REPO_OUTPUT_P2_COMPOSITE
 
 echo "Preparation completed."
 

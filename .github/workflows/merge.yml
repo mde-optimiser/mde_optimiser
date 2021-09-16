@@ -29,11 +29,6 @@ jobs:
     - name: Deploy files
       shell: bash
       run: |
-        /usr/bin/ls -la
-        /usr/bin/ls -la repositories/
-        /usr/bin/ls -la repositories/output/       
-        /usr/bin/ls -la repositories/output/m2/
-        /usr/bin/ls -la repositories/output/m2/m2.mdeoptimiser.repository/
         /usr/bin/chmod +x ./build/publish-artifacts.sh
         /usr/bin/bash ./build/publish-artifacts.sh
       
