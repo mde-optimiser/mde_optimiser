@@ -33,4 +33,5 @@ jobs:
         /usr/bin/find ./repositories/
         /usr/bin/chmod +x ./build/publish-artifacts.sh
         /usr/bin/bash ./build/publish-artifacts.sh
-      
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
