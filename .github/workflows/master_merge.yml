@@ -1,17 +1,16 @@
 # This workflow will build a Java project with Ant
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-ant
 
-name: PR Build
+name: Master Build
 
 on:
   pull_request:
-    branches: [ master, develop ]
-    types: [assigned, opened, synchronize, reopened]
-
+    branches: [ master ]
+    types: [ closed ]
 
 jobs:
-  build:
-    if: github.event.pull_request.merged == false
+  deploy:
+    if: ${{ github.event.pull_request.merged }}
     runs-on: ubuntu-latest
 
     steps:
@@ -25,4 +24,12 @@ jobs:
       uses: GabrielBB/xvfb-action@v1
       with:
         working-directory: ./build/ant
-        run: ant -noinput -buildfile build.xml
+        run: |
+          ant -noinput -buildfile build.xml
+    - name: Deploy files
+      shell: bash
+      run: |
+        /usr/bin/chmod +x ./build/publish-artifacts.sh
+        /usr/bin/bash ./build/publish-artifacts.sh
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
