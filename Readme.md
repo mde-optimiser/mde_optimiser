@@ -30,14 +30,9 @@ http://mde-optimiser.github.io/mde_optimiser/downloads/p2/develop/
 
 
 
-
 #### Development Version:
 
 http://mde-optimiser.github.io/mde_optimiser/downloads/p2/develop/
-
-Status:
-
-
 
 
 ## Development Environment Configuration
