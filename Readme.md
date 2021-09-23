@@ -1,13 +1,13 @@
 ## MDE Optimiser
 
-This is the main repository for the MDEOptimiser tool. The website can be found at [http://mde-optimiser.github.io](http://mde-optimiser.github.io)
+This is the main repository for  [MDEOptimiser](http://mde-optimiser.github.io).
 
 ## Build status
 
 | Branch       | Status                                     |
 | ------------- |:-----------------------------------------:|
 | Develop       | [![Dev Build](https://github.com/mde-optimiser/mde_optimiser/actions/workflows/dev_merge.yml/badge.svg)](https://github.com/mde-optimiser/mde_optimiser/actions/workflows/dev_merge.yml) |
-| Release       |    |
+| Release       |  [![Master Build](https://github.com/mde-optimiser/mde_optimiser/actions/workflows/master_merge.yml/badge.svg)](https://github.com/mde-optimiser/mde_optimiser/actions/workflows/master_merge.yml)  |
 
 ### Installation URLs
 
