@@ -2,12 +2,13 @@
 
 This is the main repository for  [MDEOptimiser](http://mde-optimiser.github.io).
 
+
 ## Build status
 
 | Branch       | Status                                     |
-| ------------- |:-----------------------------------------:|
-| Develop       | [![Dev Build](https://github.com/mde-optimiser/mde_optimiser/actions/workflows/dev_merge.yml/badge.svg)](https://github.com/mde-optimiser/mde_optimiser/actions/workflows/dev_merge.yml) |
-| Release       |  [![Master Build](https://github.com/mde-optimiser/mde_optimiser/actions/workflows/master_merge.yml/badge.svg)](https://github.com/mde-optimiser/mde_optimiser/actions/workflows/master_merge.yml)  |
+| -------------|:-----------------------------------------:|
+| Develop      | [![Dev Build](https://github.com/mde-optimiser/mde_optimiser/actions/workflows/dev_merge.yml/badge.svg)](https://github.com/mde-optimiser/mde_optimiser/actions/workflows/dev_merge.yml) |
+| Release      | [![Master Build](https://github.com/mde-optimiser/mde_optimiser/actions/workflows/master_merge.yml/badge.svg)](https://github.com/mde-optimiser/mde_optimiser/actions/workflows/master_merge.yml)  |
 
 ### Installation URLs
 
