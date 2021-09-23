@@ -1,15 +1,43 @@
 ## MDE Optimiser
 
-This is the main repository for the MDEOptimiser tool.
+This is the main repository for the MDEOptimiser tool. The website can be found at [http://mde-optimiser.github.io](http://mde-optimiser.github.io)
+
+## Build status
+
+| Branch       | Status                                     |
+| ------------- |:-----------------------------------------:|
+| Develop       | [![Dev Build](https://github.com/mde-optimiser/mde_optimiser/actions/workflows/dev_merge.yml/badge.svg)](https://github.com/mde-optimiser/mde_optimiser/actions/workflows/dev_merge.yml) |
+| Release       |    |
 
 ### Installation URLs
 
 Requirements:
-Eclipse Version 2019-03
-Java 11
 
-Eclipse Development Version:
+	Eclipse Version 2019-03
+	Java 11
+
+Install the version of MDEOptimiser you would like to
+use from one of the Eclipse Update sites below.
+
+
+
+| Version       | Update Site                               |
+| ------------- |:-----------------------------------------:|
+| Develop       | [http://mde-optimiser.github.io/mdeo_repo/src/composite/develop/](http://mde-optimiser.github.io/mdeo_repo/src/composite/develop/) |
+| Release       | [http://mde-optimiser.github.io/mdeo_repo/src/composite/release/](http://mde-optimiser.github.io/mdeo_repo/src/composite/release/) |
+
 http://mde-optimiser.github.io/mde_optimiser/downloads/p2/develop/
+
+
+
+
+#### Development Version:
+
+http://mde-optimiser.github.io/mde_optimiser/downloads/p2/develop/
+
+Status:
+
+
 
 
 ## Development Environment Configuration
