@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>uk.ac.kcl.inf.mdeoptimiser.examples.problems</groupId>
+  <artifactId>uk.ac.kcl.inf.mdeoptimiser.examples.problems.tsp</artifactId>
+  <versioning>
+    <versions>
+      <version>1.0.0-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20210923222606</lastUpdated>
+  </versioning>
+</metadata>
