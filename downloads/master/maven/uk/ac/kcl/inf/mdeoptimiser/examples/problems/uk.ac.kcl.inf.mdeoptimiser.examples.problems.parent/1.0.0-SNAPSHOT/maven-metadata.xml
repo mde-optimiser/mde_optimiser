@@ -2,25 +2,25 @@
 <metadata modelVersion="1.1.0">
   <groupId>uk.ac.kcl.inf.mdeoptimiser.examples.problems</groupId>
   <artifactId>uk.ac.kcl.inf.mdeoptimiser.examples.problems.parent</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
   <versioning>
+    <lastUpdated>20220407232927</lastUpdated>
     <snapshot>
-      <timestamp>20210923.222606</timestamp>
+      <timestamp>20220407.232927</timestamp>
       <buildNumber>1</buildNumber>
     </snapshot>
-    <lastUpdated>20210923222606</lastUpdated>
     <snapshotVersions>
       <snapshotVersion>
         <extension>pom</extension>
-        <value>1.0.0-20210923.222606-1</value>
-        <updated>20210923222606</updated>
+        <value>1.0.0-20220407.232927-1</value>
+        <updated>20220407232927</updated>
       </snapshotVersion>
       <snapshotVersion>
         <classifier>jar-with-dependencies</classifier>
         <extension>jar</extension>
-        <value>1.0.0-20210923.222606-1</value>
-        <updated>20210923222606</updated>
+        <value>1.0.0-20220407.232927-1</value>
+        <updated>20220407232927</updated>
       </snapshotVersion>
     </snapshotVersions>
   </versioning>
+  <version>1.0.0-SNAPSHOT</version>
 </metadata>
