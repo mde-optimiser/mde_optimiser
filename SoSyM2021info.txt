@@ -1,0 +1,2 @@
+This branch represents the MDEO version used to perform experiments for the following SoSyM2021 paper:
+https://github.com/Leative/SoSyM21-MDO-framework-evaluation-extended
