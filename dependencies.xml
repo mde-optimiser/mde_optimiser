@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project name="dependencies" default="depend.all">
-    <dirname property="dependencies.basedir" file="${ant.file.dependencies}"/>
+    
+	<condition property="isWindows">
+		<os family="windows" />
+	</condition>
+	
+	<target name="windows.directory.format" if="isWindows">
+		<dirname property="dependencies.basedir.windows" file="${ant.file.dependencies}"/>
+        <path id="dependencies.basedir.path">
+			<pathelement path="${dependencies.basedir.windows}" />
+		</path>
+		<pathconvert targetos="unix" property="dependencies.basedir" refid="dependencies.basedir.path"/>
+    </target>
+	
+	<target name="unix.directory.format" unless="isWindows">
+	     <dirname property="dependencies.basedir" file="${ant.file.dependencies}"/>
+    </target>
 
     <!-- ================================================================== -->
     <target name="depend.all" depends="depend.maven, depend.eclipse">
@@ -8,7 +23,7 @@
 
     <!-- Maven Builds -->
     <!-- ================================================================== -->
-    <target name="depend.maven">
+    <target name="depend.maven" depends="windows.directory.format, unix.directory.format">
             <ant dir="${dependencies.basedir}/build/maven" inheritAll="true"/>
     </target>
 
