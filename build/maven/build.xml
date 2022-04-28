@@ -2,11 +2,23 @@
 <project name="mopt.xtext" default="default">
     <import file="../ant/build-common.xml"/>
 
+	<condition property="isWindows">
+		<os family="windows" />
+	</condition>
 
+    <target name="dist" depends="render.maven.properties.template, maven.build, maven.build.windows"/>
 
-    <target name="dist" depends="render.maven.properties.template, maven.build"/>
-
-    <target name="maven.build">
+    <target name="maven.build.windows" if="isWindows">
+        <exec dir="." executable="cmd" failifexecutionfails="true" failonerror="true">
+			<arg value="/c"/>
+			<arg value="mvn"/>
+            <arg value="clean" />
+            <arg value="deploy" />
+            <arg value="--quiet" />
+        </exec>
+    </target>
+	
+	<target name="maven.build" unless="isWindows">
         <exec dir="." executable="mvn" failifexecutionfails="true" failonerror="true">
             <arg value="clean" />
             <arg value="deploy" />
@@ -16,27 +28,39 @@
 
 
     <!-- Load current build version http://llbit.se/?p=1876 -->
-
-    <target name="load-build-version">
-
+	
+	<target name="load-build-version.windows" if="isWindows">
       <echo message="Updating version string from Git"/>
+      <exec executable="cmd" outputproperty="ant.build.branch"
+              failifexecutionfails="true">
+			  <arg value="/c"/>
+			  <arg value="git"/>
+              <arg value="rev-parse"/>
+              <arg value="--short"/>
+              <arg value="HEAD" />
+      </exec>
+    </target>
+
+    <target name="load-build-version" unless="isWindows">
+      <echo message="Updating version string from Git"/>	  
       <exec executable="git" outputproperty="ant.build.branch"
               failifexecutionfails="true">
               <arg value="rev-parse"/>
               <arg value="--short"/>
               <arg value="HEAD" />
       </exec>
+	</target>
 
+	<target name="load-build-version-set-time" depends="load-build-version.windows, load-build-version">
       <echo message="Loading current timestamp"/>
       <tstamp>
           <format property="ant.build.timestamp" pattern="yyyy.MM.dd.HHmmss"/>
       </tstamp>
-
     </target>
 
     <!-- Render target file from a template to point to the local maven repository -->
 
-    <target name="render.maven.properties.template" depends="load-build-version">
+    <target name="render.maven.properties.template" depends="load-build-version-set-time">
 
         <!-- Copy task that replaces values and copies the files -->
         <copy todir="./" verbose="true" overwrite="true" failonerror="true">

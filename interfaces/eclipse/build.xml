@@ -2,11 +2,29 @@
 <project name="mopt.xtext" default="default">
     <import file="../../build/ant/build-common.xml"/>
 
+	<condition property="isWindows">
+		<os family="windows" />
+	</condition>
 
+    <target name="dist" depends="maven.build, maven.build.windows"/>
+	
+	<target name="maven.build.windows" depends="render.target.template" if="isWindows">
+        <exec dir="." executable="cmd" failifexecutionfails="true" failonerror="true">
+			<arg value="/c"/>
+			<arg value="mvn"/>
+            <arg value="-f" />
+            <arg value="src/pom.xml"/>
+            <arg value="clean" />
+            <arg value="install" />
+            <arg value="--quiet" />
+            <arg value="-Dmaven.wagon.http.ssl.insecure=true" />
+            <arg value="-Dmaven.wagon.http.ssl.allowall=true" /> 
+            <arg value="-Dmaven.wagon.http.ssl.ignore.validity.dates=true" />
+            
+        </exec>
+    </target>
 
-    <target name="dist" depends="maven.build"/>
-
-    <target name="maven.build" depends="render.target.template">
+    <target name="maven.build" depends="render.target.template" unless="isWindows">
         <exec dir="." executable="mvn" failifexecutionfails="true" failonerror="true">
             <arg value="-f" />
             <arg value="src/pom.xml"/>
