@@ -12,10 +12,7 @@ import java.util.Set;
 import javax.script.ScriptEngine;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.henshin.interpreter.Change;
-import org.eclipse.emf.henshin.interpreter.EGraph;
-import org.eclipse.emf.henshin.interpreter.Engine;
-import org.eclipse.emf.henshin.interpreter.Match;
+import org.eclipse.emf.henshin.interpreter.*;
 import org.eclipse.emf.henshin.interpreter.impl.ChangeImpl.AttributeChangeImpl;
 import org.eclipse.emf.henshin.interpreter.impl.ChangeImpl.CompoundChangeImpl;
 import org.eclipse.emf.henshin.interpreter.impl.MatchImpl;
@@ -393,4 +390,14 @@ public class ConfigurationEngine implements Engine {
 
   @Override
   public void shutdown() {}
+
+  @Override
+  public void setMonitor(ApplicationMonitor applicationMonitor) {
+
+  }
+
+  @Override
+  public ApplicationMonitor getMonitor() {
+    return null;
+  }
 }
