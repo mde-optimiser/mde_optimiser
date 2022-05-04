@@ -2,42 +2,42 @@
 <metadata modelVersion="1.1.0">
   <groupId>uk.ac.kcl.inf.mdeoptimiser.examples.problems</groupId>
   <artifactId>uk.ac.kcl.inf.mdeoptimiser.examples.problems.tsp</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
   <versioning>
+    <lastUpdated>20220504111736</lastUpdated>
     <snapshot>
-      <timestamp>20210923.225101</timestamp>
+      <timestamp>20220504.111736</timestamp>
       <buildNumber>1</buildNumber>
     </snapshot>
-    <lastUpdated>20210923225101</lastUpdated>
     <snapshotVersions>
       <snapshotVersion>
         <extension>jar</extension>
-        <value>1.0.0-20210923.225101-1</value>
-        <updated>20210923225101</updated>
+        <value>1.0.0-20220504.111736-1</value>
+        <updated>20220504111736</updated>
       </snapshotVersion>
       <snapshotVersion>
         <extension>pom</extension>
-        <value>1.0.0-20210923.225101-1</value>
-        <updated>20210923225101</updated>
+        <value>1.0.0-20220504.111736-1</value>
+        <updated>20220504111736</updated>
       </snapshotVersion>
       <snapshotVersion>
         <classifier>jar-with-dependencies</classifier>
         <extension>jar</extension>
-        <value>1.0.0-20210923.225101-1</value>
-        <updated>20210923225101</updated>
+        <value>1.0.0-20220504.111736-1</value>
+        <updated>20220504111736</updated>
       </snapshotVersion>
       <snapshotVersion>
         <classifier>sources</classifier>
         <extension>jar</extension>
-        <value>1.0.0-20210923.225101-1</value>
-        <updated>20210923225101</updated>
+        <value>1.0.0-20220504.111736-1</value>
+        <updated>20220504111736</updated>
       </snapshotVersion>
       <snapshotVersion>
         <classifier>test-sources</classifier>
         <extension>jar</extension>
-        <value>1.0.0-20210923.225101-1</value>
-        <updated>20210923225101</updated>
+        <value>1.0.0-20220504.111736-1</value>
+        <updated>20220504111736</updated>
       </snapshotVersion>
     </snapshotVersions>
   </versioning>
+  <version>1.0.0-SNAPSHOT</version>
 </metadata>
