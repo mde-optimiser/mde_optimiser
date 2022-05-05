@@ -21,6 +21,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="modelInitialiser" eType="#//ModelInitialiserSpec"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="problemParts" eType="#//ProblemPartSpecifier"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GoalSpec">
     <eStructuralFeatures xsi:type="ecore:EReference" name="refinements" upperBound="-1"
@@ -71,6 +73,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModelInitialiserSpec">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="initialiser" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProblemPartSpecifier">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="problemPartSpecifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RulegenSpec">
     <eStructuralFeatures xsi:type="ecore:EReference" name="nodeSpec" eType="#//RulegenNode"

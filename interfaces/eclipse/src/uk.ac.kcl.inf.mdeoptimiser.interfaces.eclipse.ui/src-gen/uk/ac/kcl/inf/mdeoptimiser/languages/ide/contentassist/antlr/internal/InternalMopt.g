@@ -325,6 +325,31 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+// Entry rule entryRuleProblemPartSpecifier
+entryRuleProblemPartSpecifier
+:
+{ before(grammarAccess.getProblemPartSpecifierRule()); }
+	 ruleProblemPartSpecifier
+{ after(grammarAccess.getProblemPartSpecifierRule()); } 
+	 EOF 
+;
+
+// Rule ProblemPartSpecifier
+ruleProblemPartSpecifier 
+	@init {
+		int stackSize = keepStackSize();
+	}
+	:
+	(
+		{ before(grammarAccess.getProblemPartSpecifierAccess().getGroup()); }
+		(rule__ProblemPartSpecifier__Group__0)
+		{ after(grammarAccess.getProblemPartSpecifierAccess().getGroup()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 // Entry rule entryRuleRulegenSpec
 entryRuleRulegenSpec
 :
@@ -4108,6 +4133,7 @@ rule__ProblemSpec__Group__6
 	}
 :
 	rule__ProblemSpec__Group__6__Impl
+	rule__ProblemSpec__Group__7
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -4119,9 +4145,35 @@ rule__ProblemSpec__Group__6__Impl
 	}
 :
 (
-	{ before(grammarAccess.getProblemSpecAccess().getRightCurlyBracketKeyword_6()); }
+	{ before(grammarAccess.getProblemSpecAccess().getProblemPartsAssignment_6()); }
+	(rule__ProblemSpec__ProblemPartsAssignment_6)?
+	{ after(grammarAccess.getProblemSpecAccess().getProblemPartsAssignment_6()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ProblemSpec__Group__7
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__ProblemSpec__Group__7__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ProblemSpec__Group__7__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getProblemSpecAccess().getRightCurlyBracketKeyword_7()); }
 	'}'
-	{ after(grammarAccess.getProblemSpecAccess().getRightCurlyBracketKeyword_6()); }
+	{ after(grammarAccess.getProblemSpecAccess().getRightCurlyBracketKeyword_7()); }
 )
 ;
 finally {
@@ -5614,6 +5666,141 @@ rule__ModelInitialiserSpec__Group__3__Impl
 	{ before(grammarAccess.getModelInitialiserSpecAccess().getInitialiserAssignment_3()); }
 	(rule__ModelInitialiserSpec__InitialiserAssignment_3)
 	{ after(grammarAccess.getModelInitialiserSpecAccess().getInitialiserAssignment_3()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__ProblemPartSpecifier__Group__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__ProblemPartSpecifier__Group__0__Impl
+	rule__ProblemPartSpecifier__Group__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ProblemPartSpecifier__Group__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getProblemPartSpecifierAccess().getDefineKeyword_0()); }
+	'define'
+	{ after(grammarAccess.getProblemPartSpecifierAccess().getDefineKeyword_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ProblemPartSpecifier__Group__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__ProblemPartSpecifier__Group__1__Impl
+	rule__ProblemPartSpecifier__Group__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ProblemPartSpecifier__Group__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getProblemPartSpecifierAccess().getProblemKeyword_1()); }
+	'problem'
+	{ after(grammarAccess.getProblemPartSpecifierAccess().getProblemKeyword_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ProblemPartSpecifier__Group__2
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__ProblemPartSpecifier__Group__2__Impl
+	rule__ProblemPartSpecifier__Group__3
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ProblemPartSpecifier__Group__2__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getProblemPartSpecifierAccess().getPartKeyword_2()); }
+	'part'
+	{ after(grammarAccess.getProblemPartSpecifierAccess().getPartKeyword_2()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ProblemPartSpecifier__Group__3
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__ProblemPartSpecifier__Group__3__Impl
+	rule__ProblemPartSpecifier__Group__4
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ProblemPartSpecifier__Group__3__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getProblemPartSpecifierAccess().getUsingKeyword_3()); }
+	'using'
+	{ after(grammarAccess.getProblemPartSpecifierAccess().getUsingKeyword_3()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ProblemPartSpecifier__Group__4
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__ProblemPartSpecifier__Group__4__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ProblemPartSpecifier__Group__4__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getProblemPartSpecifierAccess().getProblemPartSpecifierAssignment_4()); }
+	(rule__ProblemPartSpecifier__ProblemPartSpecifierAssignment_4)
+	{ after(grammarAccess.getProblemPartSpecifierAccess().getProblemPartSpecifierAssignment_4()); }
 )
 ;
 finally {
@@ -19492,6 +19679,21 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+rule__ProblemSpec__ProblemPartsAssignment_6
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getProblemSpecAccess().getProblemPartsProblemPartSpecifierParserRuleCall_6_0()); }
+		ruleProblemPartSpecifier
+		{ after(grammarAccess.getProblemSpecAccess().getProblemPartsProblemPartSpecifierParserRuleCall_6_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__GoalSpec__RefinementsAssignment_2
 	@init {
 		int stackSize = keepStackSize();
@@ -19831,6 +20033,21 @@ rule__ModelInitialiserSpec__InitialiserAssignment_3
 		{ before(grammarAccess.getModelInitialiserSpecAccess().getInitialiserURLTerminalRuleCall_3_0()); }
 		RULE_URL
 		{ after(grammarAccess.getModelInitialiserSpecAccess().getInitialiserURLTerminalRuleCall_3_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ProblemPartSpecifier__ProblemPartSpecifierAssignment_4
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getProblemPartSpecifierAccess().getProblemPartSpecifierURLTerminalRuleCall_4_0()); }
+		RULE_URL
+		{ after(grammarAccess.getProblemPartSpecifierAccess().getProblemPartSpecifierURLTerminalRuleCall_4_0()); }
 	)
 ;
 finally {

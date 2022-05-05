@@ -15,6 +15,8 @@ import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.Optimisation;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.IGuidanceFunction;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.IModelInitialiser;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.IModelProvider;
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.IProblemPartSpecifier;
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.executor.EmptyProblemPartSpecifier;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.executor.UserModelProvider;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.guidance.GuidanceFunctionAdapter;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.guidance.GuidanceFunctionsFactory;
@@ -241,6 +243,16 @@ public class SearchSpecification implements ISearchSpecification {
     }
 
     return null;
+  }
+
+  @Override
+  public IProblemPartSpecifier getProblemPartSpecifier() {
+
+    if (this.getOptimisationModel().getProblem().getProblemParts() != null) {
+      return LanguageClassLoader.load(this.getOptimisationModel().getProblem().getProblemParts());
+    }
+
+    return new EmptyProblemPartSpecifier();
   }
 
   @Override

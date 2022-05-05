@@ -94,6 +94,15 @@
 									</instructions>
 								</artifact>
 								<artifact>
+									<id>MDO-crossover:MDO-crossover:0.0.1-SNAPSHOT</id>
+									<source>true</source>
+									<instructions>
+										<Import-Package>*;resolution:=optional</Import-Package>
+										<Export-Package>*</Export-Package>
+										<Require-Capability>osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version=1.8))</Require-Capability>
+									</instructions>
+								</artifact>
+								<artifact>
 									<id>org.moeaframework:moeaframework:2.13.beta</id>
 									<source>true</source>
 									<instructions>

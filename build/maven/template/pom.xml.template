@@ -16,6 +16,7 @@
     <module>../../libraries/rulegen</module>
     <module>../../libraries/core</module>
     <module>../../examples/problems</module>
+	<module>../../../MDO-crossover-implementation</module>
   </modules>
 
   <properties>

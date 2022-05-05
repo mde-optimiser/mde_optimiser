@@ -86,7 +86,9 @@ public class MoptGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cModelModelPathSpecParserRuleCall_4_0 = (RuleCall)cModelAssignment_4.eContents().get(0);
 		private final Assignment cModelInitialiserAssignment_5 = (Assignment)cGroup.eContents().get(5);
 		private final RuleCall cModelInitialiserModelInitialiserSpecParserRuleCall_5_0 = (RuleCall)cModelInitialiserAssignment_5.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cProblemPartsAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cProblemPartsProblemPartSpecifierParserRuleCall_6_0 = (RuleCall)cProblemPartsAssignment_6.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//ProblemSpec:
 		//	"problem" "{"
@@ -94,11 +96,12 @@ public class MoptGrammarAccess extends AbstractGrammarElementFinder {
 		//	metamodel=MetaModelSpec
 		//	model=ModelPathSpec
 		//	modelInitialiser=ModelInitialiserSpec?
+		//	problemParts=ProblemPartSpecifier?
 		//	"}";
 		@Override public ParserRule getRule() { return rule; }
 		
 		//"problem" "{" basepath=BasePathSpec metamodel=MetaModelSpec model=ModelPathSpec modelInitialiser=ModelInitialiserSpec?
-		//"}"
+		//problemParts=ProblemPartSpecifier? "}"
 		public Group getGroup() { return cGroup; }
 		
 		//"problem"
@@ -131,8 +134,14 @@ public class MoptGrammarAccess extends AbstractGrammarElementFinder {
 		//ModelInitialiserSpec
 		public RuleCall getModelInitialiserModelInitialiserSpecParserRuleCall_5_0() { return cModelInitialiserModelInitialiserSpecParserRuleCall_5_0; }
 		
+		//problemParts=ProblemPartSpecifier?
+		public Assignment getProblemPartsAssignment_6() { return cProblemPartsAssignment_6; }
+		
+		//ProblemPartSpecifier
+		public RuleCall getProblemPartsProblemPartSpecifierParserRuleCall_6_0() { return cProblemPartsProblemPartSpecifierParserRuleCall_6_0; }
+		
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
 	}
 	public class GoalSpecElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.inf.mdeoptimiser.languages.Mopt.GoalSpec");
@@ -572,6 +581,41 @@ public class MoptGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//URL
 		public RuleCall getInitialiserURLTerminalRuleCall_3_0() { return cInitialiserURLTerminalRuleCall_3_0; }
+	}
+	public class ProblemPartSpecifierElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.inf.mdeoptimiser.languages.Mopt.ProblemPartSpecifier");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cDefineKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cProblemKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cPartKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cUsingKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cProblemPartSpecifierAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cProblemPartSpecifierURLTerminalRuleCall_4_0 = (RuleCall)cProblemPartSpecifierAssignment_4.eContents().get(0);
+		
+		//ProblemPartSpecifier:
+		//	"define" "problem" "part" "using" problemPartSpecifier=URL;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//"define" "problem" "part" "using" problemPartSpecifier=URL
+		public Group getGroup() { return cGroup; }
+		
+		//"define"
+		public Keyword getDefineKeyword_0() { return cDefineKeyword_0; }
+		
+		//"problem"
+		public Keyword getProblemKeyword_1() { return cProblemKeyword_1; }
+		
+		//"part"
+		public Keyword getPartKeyword_2() { return cPartKeyword_2; }
+		
+		//"using"
+		public Keyword getUsingKeyword_3() { return cUsingKeyword_3; }
+		
+		//problemPartSpecifier=URL
+		public Assignment getProblemPartSpecifierAssignment_4() { return cProblemPartSpecifierAssignment_4; }
+		
+		//URL
+		public RuleCall getProblemPartSpecifierURLTerminalRuleCall_4_0() { return cProblemPartSpecifierURLTerminalRuleCall_4_0; }
 	}
 	public class RulegenSpecElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "uk.ac.kcl.inf.mdeoptimiser.languages.Mopt.RulegenSpec");
@@ -1291,6 +1335,7 @@ public class MoptGrammarAccess extends AbstractGrammarElementFinder {
 	private final ObjectiveInterpreterSpecElements pObjectiveInterpreterSpec;
 	private final ConstraintInterpreterSpecElements pConstraintInterpreterSpec;
 	private final ModelInitialiserSpecElements pModelInitialiserSpec;
+	private final ProblemPartSpecifierElements pProblemPartSpecifier;
 	private final RulegenSpecElements pRulegenSpec;
 	private final RulegenNodeElements pRulegenNode;
 	private final RulegenEdgeElements pRulegenEdge;
@@ -1341,6 +1386,7 @@ public class MoptGrammarAccess extends AbstractGrammarElementFinder {
 		this.pObjectiveInterpreterSpec = new ObjectiveInterpreterSpecElements();
 		this.pConstraintInterpreterSpec = new ConstraintInterpreterSpecElements();
 		this.pModelInitialiserSpec = new ModelInitialiserSpecElements();
+		this.pProblemPartSpecifier = new ProblemPartSpecifierElements();
 		this.pRulegenSpec = new RulegenSpecElements();
 		this.pRulegenNode = new RulegenNodeElements();
 		this.pRulegenEdge = new RulegenEdgeElements();
@@ -1418,6 +1464,7 @@ public class MoptGrammarAccess extends AbstractGrammarElementFinder {
 	//	metamodel=MetaModelSpec
 	//	model=ModelPathSpec
 	//	modelInitialiser=ModelInitialiserSpec?
+	//	problemParts=ProblemPartSpecifier?
 	//	"}";
 	public ProblemSpecElements getProblemSpecAccess() {
 		return pProblemSpec;
@@ -1539,6 +1586,16 @@ public class MoptGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getModelInitialiserSpecRule() {
 		return getModelInitialiserSpecAccess().getRule();
+	}
+	
+	//ProblemPartSpecifier:
+	//	"define" "problem" "part" "using" problemPartSpecifier=URL;
+	public ProblemPartSpecifierElements getProblemPartSpecifierAccess() {
+		return pProblemPartSpecifier;
+	}
+	
+	public ParserRule getProblemPartSpecifierRule() {
+		return getProblemPartSpecifierAccess().getRule();
 	}
 	
 	//RulegenSpec:

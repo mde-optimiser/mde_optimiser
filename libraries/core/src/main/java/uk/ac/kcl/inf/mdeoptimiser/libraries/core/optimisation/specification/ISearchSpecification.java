@@ -10,6 +10,7 @@ import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.Optimisation;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.IGuidanceFunction;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.IModelInitialiser;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.IModelProvider;
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.IProblemPartSpecifier;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.metamodel.Multiplicity;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.metamodel.RuleSpec;
 
@@ -34,6 +35,8 @@ public interface ISearchSpecification {
   IModelProvider getModelProvider();
 
   IModelInitialiser getModelInitialiser();
+
+  IProblemPartSpecifier getProblemPartSpecifier();
 
   List<IGuidanceFunction> getObjectiveFunctions();
 

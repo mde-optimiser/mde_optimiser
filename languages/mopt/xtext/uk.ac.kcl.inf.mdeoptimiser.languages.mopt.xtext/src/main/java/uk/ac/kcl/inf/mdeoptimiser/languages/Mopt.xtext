@@ -17,6 +17,7 @@ ProblemSpec:
 		metamodel=MetaModelSpec
 		model=ModelPathSpec
 		modelInitialiser=ModelInitialiserSpec?
+		problemParts=ProblemPartSpecifier?
 	"}"
 ;
 
@@ -81,6 +82,10 @@ ConstraintInterpreterSpec:
 
 ModelInitialiserSpec:
 	"initialise" "models" "using" initialiser=URL
+;
+
+ProblemPartSpecifier:
+	"define" "problem" "part" "using" problemPartSpecifier=URL
 ;
 
 RulegenSpec:

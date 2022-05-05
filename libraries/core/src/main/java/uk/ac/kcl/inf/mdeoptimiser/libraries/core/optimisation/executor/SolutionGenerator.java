@@ -167,7 +167,8 @@ public class SolutionGenerator {
   private CrossoverStrategy getCrossoverStrategy() {
 
     if (this.crossoverStrategy == null) {
-      this.crossoverStrategy = new CrossoverStrategyFactory(henshinExecutor).getStrategy(null);
+      this.crossoverStrategy =
+          new CrossoverStrategyFactory(this.getSearchOperatorConfiguration()).getStrategy();
     }
 
     return this.crossoverStrategy;

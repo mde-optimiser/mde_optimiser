@@ -75,6 +75,7 @@ import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.Optimisation;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterFunction;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterSearchSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterValue;
+import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProblemPartSpecifier;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProblemSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ReportInterpreterSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.RulegenEdge;
@@ -146,6 +147,9 @@ public class MoptSemanticSequencer extends XbaseSemanticSequencer {
 				return; 
 			case MoptPackage.PARAMETER_VALUE:
 				sequence_ParameterValue(context, (ParameterValue) semanticObject); 
+				return; 
+			case MoptPackage.PROBLEM_PART_SPECIFIER:
+				sequence_ProblemPartSpecifier(context, (ProblemPartSpecifier) semanticObject); 
 				return; 
 			case MoptPackage.PROBLEM_SPEC:
 				sequence_ProblemSpec(context, (ProblemSpec) semanticObject); 
@@ -699,10 +703,28 @@ public class MoptSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     ProblemPartSpecifier returns ProblemPartSpecifier
+	 *
+	 * Constraint:
+	 *     problemPartSpecifier=URL
+	 */
+	protected void sequence_ProblemPartSpecifier(ISerializationContext context, ProblemPartSpecifier semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MoptPackage.Literals.PROBLEM_PART_SPECIFIER__PROBLEM_PART_SPECIFIER) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MoptPackage.Literals.PROBLEM_PART_SPECIFIER__PROBLEM_PART_SPECIFIER));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getProblemPartSpecifierAccess().getProblemPartSpecifierURLTerminalRuleCall_4_0(), semanticObject.getProblemPartSpecifier());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     ProblemSpec returns ProblemSpec
 	 *
 	 * Constraint:
-	 *     (basepath=BasePathSpec metamodel=MetaModelSpec model=ModelPathSpec modelInitialiser=ModelInitialiserSpec?)
+	 *     (basepath=BasePathSpec metamodel=MetaModelSpec model=ModelPathSpec modelInitialiser=ModelInitialiserSpec? problemParts=ProblemPartSpecifier?)
 	 */
 	protected void sequence_ProblemSpec(ISerializationContext context, ProblemSpec semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

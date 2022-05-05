@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProblemSpec#getMetamodel <em>Metamodel</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProblemSpec#getModel <em>Model</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProblemSpec#getModelInitialiser <em>Model Initialiser</em>}</li>
+ *   <li>{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProblemSpec#getProblemParts <em>Problem Parts</em>}</li>
  * </ul>
  *
  * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.MoptPackage#getProblemSpec()
@@ -129,5 +130,31 @@ public interface ProblemSpec extends EObject
    * @generated
    */
   void setModelInitialiser(ModelInitialiserSpec value);
+
+  /**
+   * Returns the value of the '<em><b>Problem Parts</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Problem Parts</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Problem Parts</em>' containment reference.
+   * @see #setProblemParts(ProblemPartSpecifier)
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.MoptPackage#getProblemSpec_ProblemParts()
+   * @model containment="true"
+   * @generated
+   */
+  ProblemPartSpecifier getProblemParts();
+
+  /**
+   * Sets the value of the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProblemSpec#getProblemParts <em>Problem Parts</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Problem Parts</em>' containment reference.
+   * @see #getProblemParts()
+   * @generated
+   */
+  void setProblemParts(ProblemPartSpecifier value);
 
 } // ProblemSpec
