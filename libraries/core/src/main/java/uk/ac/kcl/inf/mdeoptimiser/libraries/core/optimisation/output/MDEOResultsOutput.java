@@ -146,7 +146,7 @@ public class MDEOResultsOutput {
     descriptors.add(new GeneratedMutationOperatorsDescriptor());
     descriptors.add(new ExperimentCSVSerializer());
     descriptors.add(new AccumulatorSerialiser());
-    descriptors.add(new SystemInformationDescriptor());
+    //descriptors.add(new SystemInformationDescriptor());
     descriptors.add(new MoptSpecSerialiser(this.moptFile));
     return descriptors;
   }

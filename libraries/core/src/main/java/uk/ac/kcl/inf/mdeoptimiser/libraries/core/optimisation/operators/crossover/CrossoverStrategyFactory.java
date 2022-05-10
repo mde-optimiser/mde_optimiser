@@ -27,6 +27,7 @@ public class CrossoverStrategyFactory {
           var engine = searchOperatorConfiguration.getHenshinExecutor().getEngine();
           var crossoverImpl = new crossover.ProblemPartCrossover(problemParts, engine);
           crossoverStrategy = new ProblemPartCrossover(crossoverImpl);
+          break;
 
         default:
           throw new UnexpectedAlgorithmParameterException(strategyParameter.getValue());
