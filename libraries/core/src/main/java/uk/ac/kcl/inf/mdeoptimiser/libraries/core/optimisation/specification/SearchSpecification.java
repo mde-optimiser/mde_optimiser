@@ -33,6 +33,7 @@ public class SearchSpecification implements ISearchSpecification {
 
   List<Unit> breedingOperators;
   List<Unit> mutationOperators;
+  List<Unit> repairOperators;
   IPath projectRootPath;
 
   Map<EPackage, List<Module>> generatedOperators;
@@ -104,6 +105,26 @@ public class SearchSpecification implements ISearchSpecification {
     }
 
     return mutationOperators;
+  }
+  
+  public List<Unit> getRepairOperators() {
+    if (this.repairOperators != null) {
+      return this.repairOperators;
+    }
+    
+    repairOperators = new LinkedList<Unit>();
+    
+    repairOperators.addAll(
+        model.getSearch().getEvolvers().stream()
+            .filter(operator -> operator.getEvolverType().getName().equals("REPAIR"))
+            .map(
+                operator ->
+                    getResourceSet()
+                        .getModule(URI.createURI(operator.getRule_location()), false)
+                        .getUnit(operator.getUnit()))
+            .collect(Collectors.toList()));
+
+    return repairOperators;
   }
 
   public List<Multiplicity> getMultiplicityRefinements() {

@@ -131,7 +131,7 @@ ParameterFunction:
 ;
 
 enum EvolverType:
-    MUTATE='mutate' | BREED='breed';
+    MUTATE='mutate' | BREED='breed' | REPAIR='repair';
 
 SignedInteger returns ecore::EIntegerObject:
   '-'? INT;
