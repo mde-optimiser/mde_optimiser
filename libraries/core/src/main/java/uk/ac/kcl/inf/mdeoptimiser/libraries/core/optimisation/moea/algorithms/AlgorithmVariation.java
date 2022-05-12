@@ -1,5 +1,8 @@
 package uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.algorithms;
 
+import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.XNumberLiteral;
+
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.Parameter;
 import uk.ac.kcl.inf.mdeoptimiser.languages.validation.algorithm.UnexpectedAlgorithmParameterException;
 
@@ -48,23 +51,34 @@ public class AlgorithmVariation {
    * @returns true if the specified mutation strategy is probabilistic
    */
   public boolean isProbabilisticVariation() {
+    var value = parameter.getValue();
+    boolean isProbabilistic = value.getParametric() != null
+		        && value.getParametric().equals("probabilistic");
+    if (isProbabilistic 
+        && (value.getParams().size() != 2 
+          || !(value.getParams().get(0) instanceof XNumberLiteral)
+          || !(value.getParams().get(1) instanceof XNumberLiteral))) {
+      throw new UnexpectedAlgorithmParameterException("Wrong arguments for probabilistic variation.");
+    }
 
-    return parameter.getValue().getParametric() != null
-        && parameter.getValue().getParametric().equals("probabilistic");
+    return isProbabilistic;
   }
 
-  // TODO What is this?
   public Double getCrossoverRate() {
-    if (this.isProbabilisticVariation()) {}
-
-    return 0.0d;
+    Double crossRate = 0.0d;
+    if (this.isProbabilisticVariation()) {
+      XNumberLiteral number = (XNumberLiteral) parameter.getValue().getParams().get(0);
+      crossRate = Double.parseDouble(number.getValue());
+    }
+	  return crossRate;
   }
 
-  // TODO What is this?
   public Double getMutationRate() {
-
-    if (this.isProbabilisticVariation()) {}
-
-    return 0.0d;
+    Double mutationRate = 0.0d;
+    if (this.isProbabilisticVariation()) {
+      XNumberLiteral number = (XNumberLiteral) parameter.getValue().getParams().get(1);
+      mutationRate = Double.parseDouble(number.getValue());
+    }
+    return mutationRate;
   }
 }

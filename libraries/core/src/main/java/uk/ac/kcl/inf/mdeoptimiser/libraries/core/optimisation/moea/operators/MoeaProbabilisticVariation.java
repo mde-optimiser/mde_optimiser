@@ -32,7 +32,7 @@ public class MoeaProbabilisticVariation implements Variation {
 
     if (crossoverProbability <= crossoverRate) {
 
-      System.out.println("Running crossover with probability: " + crossoverProbability);
+      //System.out.println("Running crossover with probability: " + crossoverProbability);
 
       if (result.length == crossoverOperator.getArity()) {
         result = crossoverOperator.evolve(result);
@@ -44,7 +44,7 @@ public class MoeaProbabilisticVariation implements Variation {
                 result.length, this.getArity()));
       }
     } else {
-      System.out.println("Not running crossover this run");
+      //System.out.println("Not running crossover this run");
     }
 
     var solutions = new LinkedList<Solution>();
@@ -53,10 +53,10 @@ public class MoeaProbabilisticVariation implements Variation {
 
       var mutationProbability = random.nextDouble();
       if (mutationProbability <= mutationRate) {
-        System.out.println("Running mutation with probability: " + mutationProbability);
+        //System.out.println("Running mutation with probability: " + mutationProbability);
         solutions.addAll(Arrays.asList(mutationOperator.evolve(new Solution[] {aResult})));
       } else {
-        System.out.println("Not running mutation this run");
+        //System.out.println("Not running mutation this run");
         solutions.add(aResult);
       }
     }
