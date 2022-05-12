@@ -60,8 +60,8 @@ public class MoeaProbabilisticVariation implements Variation {
         solutions.add(aResult);
       }
     }
-
-    return (Solution[]) solutions.toArray();
+    Solution[] solutionArray = new Solution[solutions.size()];
+    return solutions.toArray(solutionArray);
   }
 
   /**
