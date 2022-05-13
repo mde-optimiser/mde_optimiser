@@ -8519,6 +8519,14 @@ ruleEvolverType returns [Enumerator current=null]
 				newLeafNode(enumLiteral_1, grammarAccess.getEvolverTypeAccess().getBREEDEnumLiteralDeclaration_1());
 			}
 		)
+		    |
+		(
+			enumLiteral_2='repair'
+			{
+				$current = grammarAccess.getEvolverTypeAccess().getREPAIREnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_2, grammarAccess.getEvolverTypeAccess().getREPAIREnumLiteralDeclaration_2());
+			}
+		)
 	)
 ;
 

@@ -17,7 +17,7 @@ public class RepairStrategyFactory {
       var strategyParameter =
           this.searchOperatorConfiguration
               .getSearchOperatorParameterInterpreter()
-              .get("repair.strategy");
+              .get("rep.strategy");
 
       switch (strategyParameter.getValue()) {
         case "sequential":

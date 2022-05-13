@@ -9,6 +9,7 @@
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="Mopt.ecore#//EvolverType">
       <genEnumLiterals ecoreEnumLiteral="Mopt.ecore#//EvolverType/MUTATE"/>
       <genEnumLiterals ecoreEnumLiteral="Mopt.ecore#//EvolverType/BREED"/>
+      <genEnumLiterals ecoreEnumLiteral="Mopt.ecore#//EvolverType/REPAIR"/>
     </genEnums>
     <genClasses ecoreClass="Mopt.ecore#//Optimisation">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Mopt.ecore#//Optimisation/problem"/>

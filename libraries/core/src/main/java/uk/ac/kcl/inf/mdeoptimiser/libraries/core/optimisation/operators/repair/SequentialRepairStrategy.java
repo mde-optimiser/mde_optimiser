@@ -33,7 +33,7 @@ public class SequentialRepairStrategy implements RepairStrategy {
     for (Unit unit : operators) {
       while (executor.operatorApplied(unit, graph, solution)) {
         appliedOps.add(unit);
-        System.out.println("Repair applied " + unit.getName());
+        System.out.println("SequentialRepairStrategy: repair applied '" + unit.getName() + "'");
       }
     }
     solution.getTransformationsChain().add(appliedOps);

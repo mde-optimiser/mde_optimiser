@@ -23,7 +23,7 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalMoptParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_SOLVER_ENGINE", "RULE_ALGORITHM_FACTORY", "RULE_INT", "RULE_URL", "RULE_OBJECTIVE_TENDENCY", "RULE_ENTITY_TYPE", "RULE_STRING", "RULE_CREATE_NODE", "RULE_DELETE_NODE", "RULE_ADD_EDGE", "RULE_REMOVE_EDGE", "RULE_ALGORITHM_NAME", "RULE_ID", "RULE_HEX", "RULE_DECIMAL", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'problem'", "'{'", "'}'", "'goal'", "'search'", "'solver'", "'engine'", "'optimisation'", "'provider'", "'algorithm'", "'termination'", "'parameter'", "'batches'", "'basepath'", "'metamodel'", "'model'", "'objective'", "'constraint'", "'initialise'", "'models'", "'using'", "'define'", "'part'", "'mutate'", "','", "'report'", "'unit'", "'parameters'", "'refine'", "'=>'", "'('", "')'", "'-'", "':'", "'='", "'+='", "'-='", "'*='", "'/='", "'%='", "'<'", "'>'", "'>='", "'||'", "'&&'", "'=='", "'!='", "'==='", "'!=='", "'instanceof'", "'->'", "'..<'", "'..'", "'<>'", "'?:'", "'+'", "'*'", "'**'", "'/'", "'%'", "'!'", "'as'", "'++'", "'--'", "'.'", "'::'", "'?.'", "'#'", "'['", "']'", "'|'", "';'", "'if'", "'else'", "'switch'", "'default'", "'case'", "'for'", "'while'", "'do'", "'var'", "'val'", "'extends'", "'static'", "'import'", "'extension'", "'super'", "'new'", "'false'", "'true'", "'null'", "'typeof'", "'throw'", "'return'", "'try'", "'finally'", "'synchronized'", "'catch'", "'?'", "'&'", "'breed'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_SOLVER_ENGINE", "RULE_ALGORITHM_FACTORY", "RULE_INT", "RULE_URL", "RULE_OBJECTIVE_TENDENCY", "RULE_ENTITY_TYPE", "RULE_STRING", "RULE_CREATE_NODE", "RULE_DELETE_NODE", "RULE_ADD_EDGE", "RULE_REMOVE_EDGE", "RULE_ALGORITHM_NAME", "RULE_ID", "RULE_HEX", "RULE_DECIMAL", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'problem'", "'{'", "'}'", "'goal'", "'search'", "'solver'", "'engine'", "'optimisation'", "'provider'", "'algorithm'", "'termination'", "'parameter'", "'batches'", "'basepath'", "'metamodel'", "'model'", "'objective'", "'constraint'", "'initialise'", "'models'", "'using'", "'define'", "'part'", "'mutate'", "','", "'report'", "'unit'", "'parameters'", "'refine'", "'=>'", "'('", "')'", "'-'", "':'", "'='", "'+='", "'-='", "'*='", "'/='", "'%='", "'<'", "'>'", "'>='", "'||'", "'&&'", "'=='", "'!='", "'==='", "'!=='", "'instanceof'", "'->'", "'..<'", "'..'", "'<>'", "'?:'", "'+'", "'*'", "'**'", "'/'", "'%'", "'!'", "'as'", "'++'", "'--'", "'.'", "'::'", "'?.'", "'#'", "'['", "']'", "'|'", "';'", "'if'", "'else'", "'switch'", "'default'", "'case'", "'for'", "'while'", "'do'", "'var'", "'val'", "'extends'", "'static'", "'import'", "'extension'", "'super'", "'new'", "'false'", "'true'", "'null'", "'typeof'", "'throw'", "'return'", "'try'", "'finally'", "'synchronized'", "'catch'", "'?'", "'&'", "'breed'", "'repair'"
     };
     public static final int RULE_SOLVER_ENGINE=4;
     public static final int RULE_HEX=17;
@@ -101,6 +101,7 @@ public class InternalMoptParser extends AbstractInternalAntlrParser {
     public static final int T__70=70;
     public static final int T__121=121;
     public static final int T__71=71;
+    public static final int T__124=124;
     public static final int T__72=72;
     public static final int T__123=123;
     public static final int T__120=120;
@@ -1139,7 +1140,7 @@ public class InternalMoptParser extends AbstractInternalAntlrParser {
 
 
                 }
-                else if ( (LA7_0==123) ) {
+                else if ( ((LA7_0>=123 && LA7_0<=124)) ) {
                     alt7=1;
                 }
 
@@ -23373,37 +23374,47 @@ public class InternalMoptParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEvolverType"
-    // InternalMopt.g:8499:1: ruleEvolverType returns [Enumerator current=null] : ( (enumLiteral_0= 'mutate' ) | (enumLiteral_1= 'breed' ) ) ;
+    // InternalMopt.g:8499:1: ruleEvolverType returns [Enumerator current=null] : ( (enumLiteral_0= 'mutate' ) | (enumLiteral_1= 'breed' ) | (enumLiteral_2= 'repair' ) ) ;
     public final Enumerator ruleEvolverType() throws RecognitionException {
         Enumerator current = null;
 
         Token enumLiteral_0=null;
         Token enumLiteral_1=null;
+        Token enumLiteral_2=null;
 
 
         	enterRule();
 
         try {
-            // InternalMopt.g:8505:2: ( ( (enumLiteral_0= 'mutate' ) | (enumLiteral_1= 'breed' ) ) )
-            // InternalMopt.g:8506:2: ( (enumLiteral_0= 'mutate' ) | (enumLiteral_1= 'breed' ) )
+            // InternalMopt.g:8505:2: ( ( (enumLiteral_0= 'mutate' ) | (enumLiteral_1= 'breed' ) | (enumLiteral_2= 'repair' ) ) )
+            // InternalMopt.g:8506:2: ( (enumLiteral_0= 'mutate' ) | (enumLiteral_1= 'breed' ) | (enumLiteral_2= 'repair' ) )
             {
-            // InternalMopt.g:8506:2: ( (enumLiteral_0= 'mutate' ) | (enumLiteral_1= 'breed' ) )
-            int alt140=2;
-            int LA140_0 = input.LA(1);
-
-            if ( (LA140_0==46) ) {
+            // InternalMopt.g:8506:2: ( (enumLiteral_0= 'mutate' ) | (enumLiteral_1= 'breed' ) | (enumLiteral_2= 'repair' ) )
+            int alt140=3;
+            switch ( input.LA(1) ) {
+            case 46:
+                {
                 alt140=1;
-            }
-            else if ( (LA140_0==123) ) {
+                }
+                break;
+            case 123:
+                {
                 alt140=2;
-            }
-            else {
+                }
+                break;
+            case 124:
+                {
+                alt140=3;
+                }
+                break;
+            default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
                     new NoViableAltException("", 140, 0, input);
 
                 throw nvae;
             }
+
             switch (alt140) {
                 case 1 :
                     // InternalMopt.g:8507:3: (enumLiteral_0= 'mutate' )
@@ -23435,6 +23446,25 @@ public class InternalMoptParser extends AbstractInternalAntlrParser {
 
                       				current = grammarAccess.getEvolverTypeAccess().getBREEDEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                       				newLeafNode(enumLiteral_1, grammarAccess.getEvolverTypeAccess().getBREEDEnumLiteralDeclaration_1());
+                      			
+                    }
+
+                    }
+
+
+                    }
+                    break;
+                case 3 :
+                    // InternalMopt.g:8523:3: (enumLiteral_2= 'repair' )
+                    {
+                    // InternalMopt.g:8523:3: (enumLiteral_2= 'repair' )
+                    // InternalMopt.g:8524:4: enumLiteral_2= 'repair'
+                    {
+                    enumLiteral_2=(Token)match(input,124,FOLLOW_2); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      				current = grammarAccess.getEvolverTypeAccess().getREPAIREnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+                      				newLeafNode(enumLiteral_2, grammarAccess.getEvolverTypeAccess().getREPAIREnumLiteralDeclaration_2());
                       			
                     }
 
@@ -28132,8 +28162,8 @@ public class InternalMoptParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0008008000000000L});
     public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0008018002000000L});
     public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000010002000000L});
-    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0001400002000000L,0x0800000000000000L});
-    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000400002000000L,0x0800000000000000L});
+    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0001400002000000L,0x1800000000000000L});
+    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000400002000000L,0x1800000000000000L});
     public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000400002000000L});
     public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000060000000L});
     public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000000000010L});
