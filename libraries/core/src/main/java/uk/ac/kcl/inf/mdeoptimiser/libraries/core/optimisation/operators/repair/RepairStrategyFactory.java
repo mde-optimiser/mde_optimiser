@@ -25,6 +25,7 @@ public class RepairStrategyFactory {
           break;
         case "none":
           repairStrategy = new SkipRepairStrategy();
+          break;
 
         default:
           throw new UnexpectedAlgorithmParameterException(strategyParameter.getValue());

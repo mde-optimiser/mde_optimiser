@@ -31,10 +31,12 @@ public class SequentialRepairStrategy implements RepairStrategy {
 
     LinkedList<Unit> appliedOps = new LinkedList<>();
     for (Unit unit : operators) {
+      int count = 0;
       while (executor.operatorApplied(unit, graph, solution)) {
         appliedOps.add(unit);
-        System.out.println("SequentialRepairStrategy: repair applied '" + unit.getName() + "'");
+        count++;
       }
+      System.out.println("SequentialRepairStrategy: applied '" + unit.getName() + "' " + count + " times.");
     }
     solution.getTransformationsChain().add(appliedOps);
   }
