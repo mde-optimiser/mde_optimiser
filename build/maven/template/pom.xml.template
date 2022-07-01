@@ -16,7 +16,6 @@
     <module>../../libraries/rulegen</module>
     <module>../../libraries/core</module>
     <module>../../examples/problems</module>
-	<module>../../../MDO-crossover-implementation</module>
   </modules>
 
   <properties>
@@ -55,6 +54,10 @@
       <repository>
 		<id>m2.moeaframework</id>
 		<url>https://mde-optimiser.github.io/mdeo_repo/repository/m2/moeaframework/</url>
+	  </repository>
+	  <repository>
+		<id>m2.mdo-over</id>
+		<url>https://mdo-over.github.io/m2repo/</url>
 	  </repository>
   </repositories>
   <!-- Load JUnit 5 Bom -->

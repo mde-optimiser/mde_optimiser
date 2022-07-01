@@ -40,7 +40,7 @@
       <import plugin="uk.ac.kcl.inf.mdeoptimiser.interfaces.cli"/>
       <import plugin="uk.ac.kcl.inf.mdeoptimiser.libraries.core"/>
       <import plugin="uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen"/>
-      <import plugin="MDO-crossover"/>
+      <import plugin="de.uni_marburg.mdo-over"/>
       <import plugin="org.eclipse.emf.henshin.interpreter" version="1.7.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.henshin.model" version="1.7.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.henshin.trace" version="1.7.0" match="greaterOrEqual"/>
