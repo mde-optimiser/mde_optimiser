@@ -3,22 +3,22 @@
   <groupId>uk.ac.kcl.inf.mdeoptimiser.examples.problems</groupId>
   <artifactId>uk.ac.kcl.inf.mdeoptimiser.examples.problems.parent</artifactId>
   <versioning>
-    <lastUpdated>20220714085531</lastUpdated>
+    <lastUpdated>20220714214400</lastUpdated>
     <snapshot>
-      <timestamp>20220714.085531</timestamp>
+      <timestamp>20220714.214400</timestamp>
       <buildNumber>1</buildNumber>
     </snapshot>
     <snapshotVersions>
       <snapshotVersion>
         <extension>pom</extension>
-        <value>1.0.0-20220714.085531-1</value>
-        <updated>20220714085531</updated>
+        <value>1.0.0-20220714.214400-1</value>
+        <updated>20220714214400</updated>
       </snapshotVersion>
       <snapshotVersion>
         <classifier>jar-with-dependencies</classifier>
         <extension>jar</extension>
-        <value>1.0.0-20220714.085531-1</value>
-        <updated>20220714085531</updated>
+        <value>1.0.0-20220714.214400-1</value>
+        <updated>20220714214400</updated>
       </snapshotVersion>
     </snapshotVersions>
   </versioning>
