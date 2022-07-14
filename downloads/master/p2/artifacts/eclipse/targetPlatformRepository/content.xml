@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <?metadataRepository version='1.2.0'?>
 <repository name='TychoTargetPlatform' type='org.eclipse.equinox.internal.p2.metadata.repository.LocalMetadataRepository' version='0.0.1'>
-  <units size='173'>
+  <units size='187'>
     <unit id='org.apache.batik.util' version='1.10.0.v20180703-1553' singleton='false'>
       <update id='org.apache.batik.util' range='[0.0.0,1.10.0.v20180703-1553)' severity='0'/>
       <properties size='7'>
@@ -39,33 +39,6 @@
         <instructions size='1'>
           <instruction key='manifest'>
             Bundle-SymbolicName: org.apache.batik.util&#xA;Bundle-Version: 1.10.0.v20180703-1553
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature.feature.jar' version='1.0.0.202204072335'>
-      <properties size='4'>
-        <property name='org.eclipse.equinox.p2.name' value='MDEOptimiser'/>
-        <property name='maven-groupId' value='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse'/>
-        <property name='maven-artifactId' value='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature'/>
-        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
-      </properties>
-      <provides size='3'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature.feature.jar' version='1.0.0.202204072335'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='feature' version='1.0.0'/>
-        <provided namespace='org.eclipse.update.feature' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature' version='1.0.0.202204072335'/>
-      </provides>
-      <filter>
-        (org.eclipse.update.install.features=true)
-      </filter>
-      <artifacts size='1'>
-        <artifact classifier='org.eclipse.update.feature' id='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature' version='1.0.0.202204072335'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='1'>
-          <instruction key='zipped'>
-            true
           </instruction>
         </instructions>
       </touchpointData>
@@ -342,6 +315,71 @@
         </instructions>
       </touchpointData>
     </unit>
+    <unit id='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature.feature.jar' version='1.0.0.202207142244'>
+      <properties size='4'>
+        <property name='org.eclipse.equinox.p2.name' value='MDEOptimiser'/>
+        <property name='maven-groupId' value='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse'/>
+        <property name='maven-artifactId' value='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature'/>
+        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+      </properties>
+      <provides size='3'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature.feature.jar' version='1.0.0.202207142244'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='feature' version='1.0.0'/>
+        <provided namespace='org.eclipse.update.feature' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature' version='1.0.0.202207142244'/>
+      </provides>
+      <filter>
+        (org.eclipse.update.install.features=true)
+      </filter>
+      <artifacts size='1'>
+        <artifact classifier='org.eclipse.update.feature' id='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature' version='1.0.0.202207142244'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='zipped'>
+            true
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.slf4j.api' version='1.7.10.v20170428-1633' singleton='false'>
+      <update id='org.slf4j.api' range='[0.0.0,1.7.10.v20170428-1633)' severity='0'/>
+      <properties size='8'>
+        <property name='df_LT.bundleVendor' value='Eclipse Orbit'/>
+        <property name='df_LT.bundleName' value='SLF4J API Module'/>
+        <property name='org.eclipse.equinox.p2.name' value='%bundleName'/>
+        <property name='org.eclipse.equinox.p2.description' value='The slf4j API'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%bundleVendor'/>
+        <property name='maven-groupId' value='org.eclipse.orbit.bundles'/>
+        <property name='maven-artifactId' value='org.slf4j.api'/>
+        <property name='maven-version' value='1.7.10-SNAPSHOT'/>
+      </properties>
+      <provides size='7'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.slf4j.api' version='1.7.10.v20170428-1633'/>
+        <provided namespace='osgi.bundle' name='org.slf4j.api' version='1.7.10.v20170428-1633'/>
+        <provided namespace='java.package' name='org.slf4j' version='1.7.10'/>
+        <provided namespace='java.package' name='org.slf4j.helpers' version='1.7.10'/>
+        <provided namespace='java.package' name='org.slf4j.spi' version='1.7.10'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <requires size='3'>
+        <required namespace='java.package' name='org.slf4j' range='[1.7.0,2.0.0)'/>
+        <required namespace='java.package' name='org.slf4j.helpers' range='[1.7.0,2.0.0)'/>
+        <required namespace='java.package' name='org.slf4j.spi' range='[1.7.0,2.0.0)'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.slf4j.api' version='1.7.10.v20170428-1633'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: org.slf4j.api&#xA;Bundle-Version: 1.7.10.v20170428-1633
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
     <unit id='org.eclipse.emf.ecore.xmi' version='2.15.0.v20180706-1146'>
       <update id='org.eclipse.emf.ecore.xmi' range='[0.0.0,2.15.0.v20180706-1146)' severity='0'/>
       <properties size='8'>
@@ -597,6 +635,71 @@
         </instructions>
       </touchpointData>
     </unit>
+    <unit id='uk.ac.kcl.inf.mdeoptimiser.interfaces.cli' version='1.0.0.20220714223857' singleton='false'>
+      <update id='uk.ac.kcl.inf.mdeoptimiser.interfaces.cli' range='[0.0.0,1.0.0.20220714223857)' severity='0'/>
+      <properties size='1'>
+        <property name='org.eclipse.equinox.p2.name' value='uk.ac.kcl.inf.mdeoptimiser.interfaces.cli'/>
+      </properties>
+      <provides size='4'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.cli' version='1.0.0.20220714223857'/>
+        <provided namespace='osgi.bundle' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.cli' version='1.0.0.20220714223857'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.cli' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='12'>
+        <required namespace='java.package' name='com.google.inject' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.apache.commons.cli' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.emf.common.util' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.emf.ecore.resource' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.mopt' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.specification' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter.saver' range='0.0.0' optional='true' greedy='false'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='uk.ac.kcl.inf.mdeoptimiser.interfaces.cli' version='1.0.0.20220714223857'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: uk.ac.kcl.inf.mdeoptimiser.interfaces.cli&#xA;Bundle-Version: 1.0.0.20220714223857
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.sidiff.common.henshin' version='1.0.0.201904091733' singleton='false'>
+      <update id='org.sidiff.common.henshin' range='[0.0.0,1.0.0.201904091733)' severity='0'/>
+      <properties size='2'>
+        <property name='org.eclipse.equinox.p2.name' value='Common utils for Henshin transformations'/>
+        <property name='org.eclipse.equinox.p2.provider' value='www.sidiff.org'/>
+      </properties>
+      <provides size='4'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.sidiff.common.henshin' version='1.0.0.201904091733'/>
+        <provided namespace='osgi.bundle' name='org.sidiff.common.henshin' version='1.0.0.201904091733'/>
+        <provided namespace='java.package' name='org.sidiff.common.henshin' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='2'>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.henshin.interpreter' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore.xmi' range='0.0.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.sidiff.common.henshin' version='1.0.0.201904091733'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: org.sidiff.common.henshin&#xA;Bundle-Version: 1.0.0.201904091733
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
     <unit id='org.eclipse.ltk.ui.refactoring' version='3.9.300.v20190216-1303' generation='2'>
       <update id='org.eclipse.ltk.ui.refactoring' range='[0.0.0,3.9.300.v20190216-1303)' severity='0'/>
       <properties size='8'>
@@ -747,64 +850,6 @@
         <instructions size='1'>
           <instruction key='manifest'>
             Bundle-SymbolicName: org.eclipse.e4.ui.widgets&#xA;Bundle-Version: 1.2.300.v20180920-1522
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen' version='1.0.0.20220407233157' singleton='false'>
-      <update id='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen' range='[0.0.0,1.0.0.20220407233157)' severity='0'/>
-      <properties size='1'>
-        <property name='org.eclipse.equinox.p2.name' value='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen'/>
-      </properties>
-      <provides size='13'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen' version='1.0.0.20220407233157'/>
-        <provided namespace='osgi.bundle' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen' version='1.0.0.20220407233157'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.exceptions' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.generator' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.generator.commands' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.generator.commands.edge' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.generator.commands.node' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.generator.commands.repairs' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.generator.specs' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.lang' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.metamodel' version='0.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
-      </provides>
-      <requires size='24'>
-        <required namespace='java.package' name='com.google.common.collect' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.emf.common.util' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.emf.ecore' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.emf.ecore.resource' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.emf.ecore.util' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.emf.henshin.model' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.emf.henshin.model.resource' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.sidiff.common.emf.extensions.impl' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.sidiff.common.henshin' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.sidiff.serge.configuration' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.sidiff.serge.core' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.sidiff.serge.exceptions' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.sidiff.serge.filter' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.sidiff.serge.generators.actions' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.sidiff.serge.generators.conditions' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.sidiff.serge.util' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.exceptions' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.generator' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.generator.commands' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.generator.commands.edge' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.generator.commands.node' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.generator.specs' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.lang' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.metamodel' range='0.0.0' optional='true' greedy='false'/>
-      </requires>
-      <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen' version='1.0.0.20220407233157'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='1'>
-          <instruction key='manifest'>
-            Bundle-SymbolicName: uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen&#xA;Bundle-Version: 1.0.0.20220407233157
           </instruction>
         </instructions>
       </touchpointData>
@@ -1265,6 +1310,64 @@
         </instructions>
       </touchpointData>
     </unit>
+    <unit id='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen' version='1.0.0.20220714223857' singleton='false'>
+      <update id='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen' range='[0.0.0,1.0.0.20220714223857)' severity='0'/>
+      <properties size='1'>
+        <property name='org.eclipse.equinox.p2.name' value='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen'/>
+      </properties>
+      <provides size='13'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen' version='1.0.0.20220714223857'/>
+        <provided namespace='osgi.bundle' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen' version='1.0.0.20220714223857'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.exceptions' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.generator' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.generator.commands' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.generator.commands.edge' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.generator.commands.node' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.generator.commands.repairs' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.generator.specs' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.lang' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.metamodel' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='24'>
+        <required namespace='java.package' name='com.google.common.collect' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.emf.common.util' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.emf.ecore' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.emf.ecore.resource' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.emf.ecore.util' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.emf.henshin.model' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.emf.henshin.model.resource' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.sidiff.common.emf.extensions.impl' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.sidiff.common.henshin' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.sidiff.serge.configuration' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.sidiff.serge.core' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.sidiff.serge.exceptions' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.sidiff.serge.filter' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.sidiff.serge.generators.actions' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.sidiff.serge.generators.conditions' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.sidiff.serge.util' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.exceptions' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.generator' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.generator.commands' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.generator.commands.edge' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.generator.commands.node' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.generator.specs' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.lang' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.metamodel' range='0.0.0' optional='true' greedy='false'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen' version='1.0.0.20220714223857'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen&#xA;Bundle-Version: 1.0.0.20220714223857
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
     <unit id='org.w3c.dom.svg' version='1.1.0.v201011041433' singleton='false'>
       <update id='org.w3c.dom.svg' range='[0.0.0,1.1.0.v201011041433)' severity='0'/>
       <properties size='8'>
@@ -1472,210 +1575,6 @@
         <instructions size='1'>
           <instruction key='manifest'>
             Bundle-SymbolicName: org.eclipse.e4.emf.xpath&#xA;Bundle-Version: 0.2.200.v20180828-0227
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id='uk.ac.kcl.inf.mdeoptimiser.libraries.core' version='1.0.0.20220407233157' singleton='false'>
-      <update id='uk.ac.kcl.inf.mdeoptimiser.libraries.core' range='[0.0.0,1.0.0.20220407233157)' severity='0'/>
-      <properties size='1'>
-        <property name='org.eclipse.equinox.p2.name' value='uk.ac.kcl.inf.mdeoptimiser.libraries.core'/>
-      </properties>
-      <provides size='46'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core' version='1.0.0.20220407233157'/>
-        <provided namespace='osgi.bundle' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core' version='1.0.0.20220407233157'/>
-        <provided namespace='java.package' name='at.ac.tuwien.big.moea.util' version='0.0.0'/>
-        <provided namespace='java.package' name='at.ac.tuwien.big.momot.search.engine' version='0.0.0'/>
-        <provided namespace='java.package' name='at.ac.tuwien.big.momot.search.engine.script' version='0.0.0'/>
-        <provided namespace='java.package' name='at.ac.tuwien.big.momot.search.engine.script.ocl' version='0.0.0'/>
-        <provided namespace='java.package' name='efmconfiguration.engine' version='0.0.0'/>
-        <provided namespace='java.package' name='efmconfiguration.engine.test.performance' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.executor' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.evolvers.parameters' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.evolvers.parameters.functions' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.guidance' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.guidance.java' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.guidance.ocl' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.henshin' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.henshin.engine' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.algorithms' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.indicators' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.instrumentation' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.listeners' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.operators' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.problem' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.termination.conditions' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.crossover' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.mutation.application' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.mutation.repair' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.mutation.selection' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.mutation.selection.credit' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.mutation.step' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output.descriptors' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.parameters' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.specification' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.reflection' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.exception' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter.generator' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter.saver' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter.score' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter.termination.condition' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.reporting' version='0.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
-      </provides>
-      <requires size='101'>
-        <required namespace='java.package' name='at.ac.tuwien.big.moea.util' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='at.ac.tuwien.big.momot.search.engine' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='at.ac.tuwien.big.momot.search.engine.script' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='at.ac.tuwien.big.momot.search.engine.script.ocl' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='com.google.common.base' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='com.google.common.collect' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='com.google.common.io' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='com.google.gson' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='com.google.gson.stream' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='com.mifmif.common.regex' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='efmconfiguration.engine' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='javax.script' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.apache.commons.io' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.apache.commons.lang3' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.apache.commons.lang3.math' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.apache.commons.math3.ml.distance' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.apache.commons.math3.stat.descriptive' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.apache.commons.math3.util' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.deeplearning4j.arbiter.optimize.api' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.deeplearning4j.arbiter.optimize.api.data' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.deeplearning4j.arbiter.optimize.api.evaluation' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.deeplearning4j.arbiter.optimize.api.saving' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.deeplearning4j.arbiter.optimize.api.score' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.deeplearning4j.arbiter.optimize.api.termination' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.deeplearning4j.arbiter.optimize.config' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.deeplearning4j.arbiter.optimize.generator' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.deeplearning4j.arbiter.optimize.parameter.integer' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.deeplearning4j.arbiter.optimize.runner' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.deeplearning4j.arbiter.optimize.runner.listener' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.core.runtime' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.emf.common.util' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.emf.ecore' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.emf.ecore.impl' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.emf.ecore.resource' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.emf.ecore.util' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.emf.ecore.xmi.impl' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.emf.henshin.interpreter' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.emf.henshin.interpreter.impl' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.emf.henshin.model' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.emf.henshin.model.resource' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.emf.henshin.model.util' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.ocl' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.ocl.ecore' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.ocl.expressions' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.ocl.helper' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext.xbase' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.moeaframework' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.moeaframework.algorithm' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.moeaframework.analysis.collector' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.moeaframework.analysis.plot' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.moeaframework.core' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.moeaframework.core.fitness' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.moeaframework.core.operator' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.moeaframework.core.spi' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.moeaframework.core.termination' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.moeaframework.core.variable' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.moeaframework.problem' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.moeaframework.util.progress' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.nd4j.shade.jackson.annotation' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='oshi' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='oshi.hardware' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='oshi.software.os' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.mopt' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.validation.algorithm' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.executor' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.evolvers.parameters' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.evolvers.parameters.functions' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.guidance' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.guidance.java' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.guidance.ocl' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.henshin' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.henshin.engine' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.algorithms' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.instrumentation' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.listeners' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.operators' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.problem' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.termination.conditions' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.crossover' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.mutation.application' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.mutation.repair' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.mutation.selection' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.mutation.selection.credit' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.mutation.step' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output.descriptors' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.parameters' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.specification' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.reflection' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.metamodel' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter.generator' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter.saver' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter.score' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter.termination.condition' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.reporting' range='0.0.0' optional='true' greedy='false'/>
-      </requires>
-      <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='uk.ac.kcl.inf.mdeoptimiser.libraries.core' version='1.0.0.20220407233157'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='1'>
-          <instruction key='manifest'>
-            Bundle-SymbolicName: uk.ac.kcl.inf.mdeoptimiser.libraries.core&#xA;Bundle-Version: 1.0.0.20220407233157
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui.source' version='1.0.0.202204072335' singleton='false'>
-      <update id='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui.source' range='[0.0.0,1.0.0.202204072335)' severity='0'/>
-      <properties size='9'>
-        <property name='df_LT.bundleVendor' value='My Company'/>
-        <property name='df_LT.bundleName' value='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui Source'/>
-        <property name='org.eclipse.equinox.p2.name' value='%bundleName'/>
-        <property name='org.eclipse.equinox.p2.provider' value='%bundleVendor'/>
-        <property name='org.eclipse.equinox.p2.bundle.localization' value='OSGI-INF/l10n/bundle-src'/>
-        <property name='maven-groupId' value='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse'/>
-        <property name='maven-artifactId' value='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui'/>
-        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
-        <property name='maven-classifier' value='sources'/>
-      </properties>
-      <provides size='5'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui.source' version='1.0.0.202204072335'/>
-        <provided namespace='osgi.bundle' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui.source' version='1.0.0.202204072335'/>
-        <provided namespace='osgi.identity' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui.source' version='1.0.0.202204072335'>
-          <properties size='1'>
-            <property name='type' value='osgi.bundle'/>
-          </properties>
-        </provided>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='source' version='1.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
-      </provides>
-      <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui.source' version='1.0.0.202204072335'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='1'>
-          <instruction key='manifest'>
-            Bundle-SymbolicName: uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui.source&#xA;Bundle-Version: 1.0.0.202204072335
           </instruction>
         </instructions>
       </touchpointData>
@@ -2139,96 +2038,60 @@
         </instructions>
       </touchpointData>
     </unit>
-    <unit id='uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext' version='1.0.0.20220407233157' singleton='false'>
-      <update id='uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext' range='[0.0.0,1.0.0.20220407233157)' severity='0'/>
-      <properties size='1'>
-        <property name='org.eclipse.equinox.p2.name' value='uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext'/>
+    <unit id='javax.xml' version='1.3.4.v201005080400' singleton='false'>
+      <update id='javax.xml' range='[0.0.0,1.3.4.v201005080400)' severity='0'/>
+      <properties size='8'>
+        <property name='df_LT.Bundle-Vendor.0' value='Eclipse Orbit'/>
+        <property name='df_LT.Bundle-Name.0' value='JAXP XML'/>
+        <property name='org.eclipse.equinox.p2.name' value='%Bundle-Name.0'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%Bundle-Vendor.0'/>
+        <property name='iplog.bug_id' value='2166'/>
+        <property name='iplog.contact.name' value='David Williams'/>
+        <property name='iplog.contact.email' value='david_williams@us.ibm.com'/>
+        <property name='org.eclipse.equinox.p2.bundle.localization' value='plugin'/>
       </properties>
-      <provides size='17'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext' version='1.0.0.20220407233157'/>
-        <provided namespace='osgi.bundle' name='uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext' version='1.0.0.20220407233157'/>
-        <provided namespace='java.package' name='model.generated' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.jvmmodel' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.mopt' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.mopt.util' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.parser.antlr' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.parser.antlr.internal' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.scoping' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.serializer' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.services' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.validation' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.validation.algorithm' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.values' version='0.0.0'/>
+      <provides size='29'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='javax.xml' version='1.3.4.v201005080400'/>
+        <provided namespace='osgi.bundle' name='javax.xml' version='1.3.4.v201005080400'/>
+        <provided namespace='java.package' name='javax.xml' version='1.3.0'/>
+        <provided namespace='java.package' name='javax.xml.datatype' version='1.3.0'/>
+        <provided namespace='java.package' name='javax.xml.namespace' version='1.3.0'/>
+        <provided namespace='java.package' name='javax.xml.parsers' version='1.3.0'/>
+        <provided namespace='java.package' name='javax.xml.transform' version='1.3.0'/>
+        <provided namespace='java.package' name='javax.xml.transform.dom' version='1.3.0'/>
+        <provided namespace='java.package' name='javax.xml.transform.sax' version='1.3.0'/>
+        <provided namespace='java.package' name='javax.xml.transform.stream' version='1.3.0'/>
+        <provided namespace='java.package' name='javax.xml.validation' version='1.3.0'/>
+        <provided namespace='java.package' name='javax.xml.xpath' version='1.3.0'/>
+        <provided namespace='java.package' name='org.apache.xmlcommons' version='1.3.4'/>
+        <provided namespace='java.package' name='org.w3c.dom' version='3.0.0'/>
+        <provided namespace='java.package' name='org.w3c.dom.bootstrap' version='3.0.0'/>
+        <provided namespace='java.package' name='org.w3c.dom.css' version='2.0.0'/>
+        <provided namespace='java.package' name='org.w3c.dom.events' version='2.0.0'/>
+        <provided namespace='java.package' name='org.w3c.dom.html' version='2.0.0'/>
+        <provided namespace='java.package' name='org.w3c.dom.ls' version='2.0.0'/>
+        <provided namespace='java.package' name='org.w3c.dom.ranges' version='2.0.0'/>
+        <provided namespace='java.package' name='org.w3c.dom.stylesheets' version='2.0.0'/>
+        <provided namespace='java.package' name='org.w3c.dom.traversal' version='2.0.0'/>
+        <provided namespace='java.package' name='org.w3c.dom.views' version='2.0.0'/>
+        <provided namespace='java.package' name='org.w3c.dom.xpath' version='3.0.0'/>
+        <provided namespace='java.package' name='org.xml.sax' version='2.0.2'/>
+        <provided namespace='java.package' name='org.xml.sax.ext' version='2.0.2'/>
+        <provided namespace='java.package' name='org.xml.sax.helpers' version='2.0.2'/>
         <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
       </provides>
-      <requires size='56'>
-        <required namespace='java.package' name='com.google.inject' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='com.google.inject.binder' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='com.google.inject.name' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.antlr.runtime' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.emf.common.notify' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.emf.common.notify.impl' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.emf.common.util' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.emf.ecore' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.emf.ecore.impl' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.emf.ecore.plugin' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.emf.ecore.resource' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.emf.ecore.util' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext.common.services' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext.common.types' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext.common.types.xtext' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext.conversion' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext.naming' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext.nodemodel' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext.parser' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext.parser.antlr' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext.parser.impl' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext.preferences' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext.resource' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext.resource.containers' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext.resource.impl' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext.scoping' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext.serializer' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext.serializer.acceptor' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext.serializer.analysis' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext.serializer.diagnostic' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext.serializer.impl' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext.serializer.sequencer' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext.service' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext.util' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext.validation' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext.xbase' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext.xbase.annotations.validation' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext.xbase.jvmmodel' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext.xbase.scoping' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext.xbase.scoping.batch' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext.xbase.serializer' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext.xbase.services' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext.xbase.typesystem.internal' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext.xbase.validation' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.xtext.xtype' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.mopt' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.parser.antlr' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.parser.antlr.internal' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.scoping' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.serializer' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.services' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.validation' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.validation.algorithm' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.values' range='0.0.0' optional='true' greedy='false'/>
+      <requires size='1'>
+        <required namespace='osgi.bundle' name='org.eclipse.osgi' range='0.0.0'/>
       </requires>
       <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext' version='1.0.0.20220407233157'/>
+        <artifact classifier='osgi.bundle' id='javax.xml' version='1.3.4.v201005080400'/>
       </artifacts>
       <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
       <touchpointData size='1'>
         <instructions size='1'>
           <instruction key='manifest'>
-            Bundle-SymbolicName: uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext&#xA;Bundle-Version: 1.0.0.20220407233157
+            Bundle-SymbolicName: javax.xml&#xA;Bundle-Version: 1.3.4.v201005080400
           </instruction>
         </instructions>
       </touchpointData>
@@ -2699,6 +2562,106 @@
         </instructions>
       </touchpointData>
     </unit>
+    <unit id='org.apache.xml.resolver' version='1.2.0.v201005080400' singleton='false'>
+      <update id='org.apache.xml.resolver' range='[0.0.0,1.2.0.v201005080400)' severity='0'/>
+      <properties size='8'>
+        <property name='df_LT.Bundle-Vendor.0' value='Eclipse Orbit'/>
+        <property name='df_LT.Bundle-Name.0' value='Apache XmlResolver'/>
+        <property name='org.eclipse.equinox.p2.name' value='%Bundle-Name.0'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%Bundle-Vendor.0'/>
+        <property name='iplog.bug_id' value='2136'/>
+        <property name='iplog.contact.name' value='David Williams'/>
+        <property name='iplog.contact.email' value='david_williams@us.ibm.com'/>
+        <property name='org.eclipse.equinox.p2.bundle.localization' value='plugin'/>
+      </properties>
+      <provides size='11'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.apache.xml.resolver' version='1.2.0.v201005080400'/>
+        <provided namespace='osgi.bundle' name='org.apache.xml.resolver' version='1.2.0.v201005080400'/>
+        <provided namespace='java.package' name='org.apache.env' version='1.2.0'/>
+        <provided namespace='java.package' name='org.apache.xml.resolver' version='1.2.0'/>
+        <provided namespace='java.package' name='org.apache.xml.resolver.apps' version='1.2.0'/>
+        <provided namespace='java.package' name='org.apache.xml.resolver.etc' version='1.2.0'/>
+        <provided namespace='java.package' name='org.apache.xml.resolver.helpers' version='1.2.0'/>
+        <provided namespace='java.package' name='org.apache.xml.resolver.readers' version='1.2.0'/>
+        <provided namespace='java.package' name='org.apache.xml.resolver.tools' version='1.2.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <requires size='1'>
+        <required namespace='osgi.bundle' name='org.eclipse.osgi' range='0.0.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.apache.xml.resolver' version='1.2.0.v201005080400'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: org.apache.xml.resolver&#xA;Bundle-Version: 1.2.0.v201005080400
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='com.github.oshi.oshi-core' version='3.13.1' singleton='false'>
+      <update id='com.github.oshi.oshi-core' range='[0.0.0,3.13.1)' severity='0'/>
+      <properties size='1'>
+        <property name='org.eclipse.equinox.p2.name' value='oshi-core'/>
+      </properties>
+      <provides size='30'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='com.github.oshi.oshi-core' version='3.13.1'/>
+        <provided namespace='osgi.bundle' name='com.github.oshi.oshi-core' version='3.13.1'/>
+        <provided namespace='java.package' name='oshi' version='3.13.1'/>
+        <provided namespace='java.package' name='oshi.data.windows' version='3.13.1'/>
+        <provided namespace='java.package' name='oshi.hardware' version='3.13.1'/>
+        <provided namespace='java.package' name='oshi.hardware.common' version='3.13.1'/>
+        <provided namespace='java.package' name='oshi.hardware.platform.linux' version='3.13.1'/>
+        <provided namespace='java.package' name='oshi.hardware.platform.mac' version='3.13.1'/>
+        <provided namespace='java.package' name='oshi.hardware.platform.unix.freebsd' version='3.13.1'/>
+        <provided namespace='java.package' name='oshi.hardware.platform.unix.solaris' version='3.13.1'/>
+        <provided namespace='java.package' name='oshi.hardware.platform.windows' version='3.13.1'/>
+        <provided namespace='java.package' name='oshi.jna.platform.linux' version='3.13.1'/>
+        <provided namespace='java.package' name='oshi.jna.platform.mac' version='3.13.1'/>
+        <provided namespace='java.package' name='oshi.jna.platform.unix' version='3.13.1'/>
+        <provided namespace='java.package' name='oshi.jna.platform.unix.freebsd' version='3.13.1'/>
+        <provided namespace='java.package' name='oshi.jna.platform.windows' version='3.13.1'/>
+        <provided namespace='java.package' name='oshi.software.common' version='3.13.1'/>
+        <provided namespace='java.package' name='oshi.software.os' version='3.13.1'/>
+        <provided namespace='java.package' name='oshi.software.os.linux' version='3.13.1'/>
+        <provided namespace='java.package' name='oshi.software.os.mac' version='3.13.1'/>
+        <provided namespace='java.package' name='oshi.software.os.unix.freebsd' version='3.13.1'/>
+        <provided namespace='java.package' name='oshi.software.os.unix.solaris' version='3.13.1'/>
+        <provided namespace='java.package' name='oshi.software.os.windows' version='3.13.1'/>
+        <provided namespace='java.package' name='oshi.util' version='3.13.1'/>
+        <provided namespace='java.package' name='oshi.util.platform.linux' version='3.13.1'/>
+        <provided namespace='java.package' name='oshi.util.platform.mac' version='3.13.1'/>
+        <provided namespace='java.package' name='oshi.util.platform.unix.freebsd' version='3.13.1'/>
+        <provided namespace='java.package' name='oshi.util.platform.unix.solaris' version='3.13.1'/>
+        <provided namespace='java.package' name='oshi.util.platform.windows' version='3.13.1'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='9'>
+        <required namespace='java.package' name='com.sun.management' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='com.sun.jna' range='[5.3.0,6.0.0)'/>
+        <required namespace='java.package' name='com.sun.jna.platform.linux' range='[5.3.0,6.0.0)'/>
+        <required namespace='java.package' name='com.sun.jna.platform.mac' range='[5.3.0,6.0.0)'/>
+        <required namespace='java.package' name='com.sun.jna.platform.unix.solaris' range='[5.3.0,6.0.0)'/>
+        <required namespace='java.package' name='com.sun.jna.platform.win32' range='[5.3.0,6.0.0)'/>
+        <required namespace='java.package' name='com.sun.jna.platform.win32.COM' range='[5.3.0,6.0.0)'/>
+        <required namespace='java.package' name='com.sun.jna.ptr' range='[5.3.0,6.0.0)'/>
+        <required namespace='java.package' name='org.slf4j' range='[1.7.0,2.0.0)'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='com.github.oshi.oshi-core' version='3.13.1'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: com.github.oshi.oshi-core&#xA;Bundle-Version: 3.13.1
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
     <unit id='org.apache.batik.css' version='1.10.0.v20180703-1553' singleton='false'>
       <update id='org.apache.batik.css' range='[0.0.0,1.10.0.v20180703-1553)' severity='0'/>
       <properties size='7'>
@@ -2869,6 +2832,49 @@
         <instructions size='1'>
           <instruction key='manifest'>
             Bundle-SymbolicName: org.eclipse.ui.navigator.resources; singleton:=true&#xA;Bundle-Version: 3.6.400.v20190222-1251
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.eclipse.emf.henshin.trace' version='1.7.0.202206300804' generation='2'>
+      <update id='org.eclipse.emf.henshin.trace' range='[0.0.0,1.7.0.202206300804)' severity='0'/>
+      <properties size='8'>
+        <property name='df_LT.pluginName' value='Henshin Trace Model'/>
+        <property name='df_LT.providerName' value='Eclipse Modeling Project'/>
+        <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
+        <property name='org.eclipse.equinox.p2.bundle.localization' value='plugin'/>
+        <property name='maven-groupId' value='org.eclipse.emf.henshin'/>
+        <property name='maven-artifactId' value='org.eclipse.emf.henshin.trace'/>
+        <property name='maven-version' value='1.7.0-SNAPSHOT'/>
+      </properties>
+      <provides size='8'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.henshin.trace' version='1.7.0.202206300804'/>
+        <provided namespace='osgi.bundle' name='org.eclipse.emf.henshin.trace' version='1.7.0.202206300804'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin.trace' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin.trace.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin.trace.util' version='0.0.0'/>
+        <provided namespace='osgi.identity' name='org.eclipse.emf.henshin.trace' version='1.7.0.202206300804'>
+          <properties size='1'>
+            <property name='type' value='osgi.bundle'/>
+          </properties>
+        </provided>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <requires size='3'>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='3.6.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore' range='2.6.0'/>
+        <requiredProperties namespace='osgi.ee' match='(&amp;(osgi.ee=JavaSE)(version=1.7))'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.eclipse.emf.henshin.trace' version='1.7.0.202206300804'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: org.eclipse.emf.henshin.trace;singleton:=true&#xA;Bundle-Version: 1.7.0.202206300804
           </instruction>
         </instructions>
       </touchpointData>
@@ -3165,6 +3171,44 @@
         </instructions>
       </touchpointData>
     </unit>
+    <unit id='org.sidiff.common' version='1.0.0.201904091733' singleton='false'>
+      <update id='org.sidiff.common' range='[0.0.0,1.0.0.201904091733)' severity='0'/>
+      <properties size='2'>
+        <property name='org.eclipse.equinox.p2.name' value='SiDiff Common Utilities'/>
+        <property name='org.eclipse.equinox.p2.provider' value='www.sidiff.org'/>
+      </properties>
+      <provides size='13'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.sidiff.common' version='1.0.0.201904091733'/>
+        <provided namespace='osgi.bundle' name='org.sidiff.common' version='1.0.0.201904091733'/>
+        <provided namespace='java.package' name='org.sidiff.common' version='0.0.0'/>
+        <provided namespace='java.package' name='org.sidiff.common.adaption' version='0.0.0'/>
+        <provided namespace='java.package' name='org.sidiff.common.app' version='0.0.0'/>
+        <provided namespace='java.package' name='org.sidiff.common.collections' version='0.0.0'/>
+        <provided namespace='java.package' name='org.sidiff.common.exceptions' version='0.0.0'/>
+        <provided namespace='java.package' name='org.sidiff.common.io' version='0.0.0'/>
+        <provided namespace='java.package' name='org.sidiff.common.lcs' version='0.0.0'/>
+        <provided namespace='java.package' name='org.sidiff.common.logging' version='0.0.0'/>
+        <provided namespace='java.package' name='org.sidiff.common.util' version='0.0.0'/>
+        <provided namespace='java.package' name='org.sidiff.common.xml' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='3'>
+        <required namespace='osgi.bundle' name='org.apache.xerces' range='2.9.0'/>
+        <required namespace='java.package' name='org.osgi.framework' range='1.5.0'/>
+        <required namespace='java.package' name='org.osgi.service.log' range='1.3.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.sidiff.common' version='1.0.0.201904091733'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: org.sidiff.common&#xA;Bundle-Version: 1.0.0.201904091733
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
     <unit id='org.eclipse.xtext.xtext.generator' version='2.17.0.v20190304-0545' generation='2'>
       <update id='org.eclipse.xtext.xtext.generator' range='[0.0.0,2.17.0.v20190304-0545)' severity='0'/>
       <properties size='5'>
@@ -3253,6 +3297,42 @@
         <instructions size='1'>
           <instruction key='manifest'>
             Bundle-SymbolicName: org.eclipse.xtext.xtext.generator;singleton:=true&#xA;Bundle-Version: 2.17.0.v20190304-0545
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui.source' version='1.0.0.202207142244' singleton='false'>
+      <update id='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui.source' range='[0.0.0,1.0.0.202207142244)' severity='0'/>
+      <properties size='9'>
+        <property name='df_LT.bundleVendor' value='My Company'/>
+        <property name='df_LT.bundleName' value='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui Source'/>
+        <property name='org.eclipse.equinox.p2.name' value='%bundleName'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%bundleVendor'/>
+        <property name='org.eclipse.equinox.p2.bundle.localization' value='OSGI-INF/l10n/bundle-src'/>
+        <property name='maven-groupId' value='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse'/>
+        <property name='maven-artifactId' value='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui'/>
+        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+        <property name='maven-classifier' value='sources'/>
+      </properties>
+      <provides size='5'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui.source' version='1.0.0.202207142244'/>
+        <provided namespace='osgi.bundle' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui.source' version='1.0.0.202207142244'/>
+        <provided namespace='osgi.identity' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui.source' version='1.0.0.202207142244'>
+          <properties size='1'>
+            <property name='type' value='osgi.bundle'/>
+          </properties>
+        </provided>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='source' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui.source' version='1.0.0.202207142244'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui.source&#xA;Bundle-Version: 1.0.0.202207142244
           </instruction>
         </instructions>
       </touchpointData>
@@ -4137,91 +4217,50 @@
         </instructions>
       </touchpointData>
     </unit>
-    <unit id='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature.source.feature.jar' version='1.0.0.202204072335'>
-      <properties size='5'>
-        <property name='org.eclipse.equinox.p2.name' value='MDEOptimiser Developer Resources'/>
-        <property name='maven-groupId' value='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse'/>
-        <property name='maven-artifactId' value='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature'/>
-        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
-        <property name='maven-classifier' value='sources-feature'/>
+    <unit id='org.sidiff.serge' version='1.0.0.201904091733'>
+      <update id='org.sidiff.serge' range='[0.0.0,1.0.0.201904091733)' severity='0'/>
+      <properties size='2'>
+        <property name='org.eclipse.equinox.p2.name' value='SERGe (SiDiff Edit Rule Generator)'/>
+        <property name='org.eclipse.equinox.p2.provider' value='www.sidiff.org'/>
       </properties>
-      <provides size='3'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature.source.feature.jar' version='1.0.0.202204072335'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='feature' version='1.0.0'/>
-        <provided namespace='org.eclipse.update.feature' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature.source' version='1.0.0.202204072335'/>
+      <provides size='12'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.sidiff.serge' version='1.0.0.201904091733'/>
+        <provided namespace='osgi.bundle' name='org.sidiff.serge' version='1.0.0.201904091733'/>
+        <provided namespace='java.package' name='org.sidiff.serge' version='0.0.0'/>
+        <provided namespace='java.package' name='org.sidiff.serge.exceptions' version='0.0.0'/>
+        <provided namespace='java.package' name='org.sidiff.serge.settings' version='0.0.0'/>
+        <provided namespace='java.package' name='org.sidiff.serge.core' version='0.0.0'/>
+        <provided namespace='java.package' name='org.sidiff.serge.configuration' version='0.0.0'/>
+        <provided namespace='java.package' name='org.sidiff.serge.filter' version='0.0.0'/>
+        <provided namespace='java.package' name='org.sidiff.serge.generators.conditions' version='0.0.0'/>
+        <provided namespace='java.package' name='org.sidiff.serge.generators.actions' version='0.0.0'/>
+        <provided namespace='java.package' name='org.sidiff.serge.util' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
       </provides>
-      <filter>
-        (org.eclipse.update.install.features=true)
-      </filter>
+      <requires size='11'>
+        <required namespace='osgi.bundle' name='org.eclipse.ui' range='3.104.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='3.8.1'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='3.8.0'/>
+        <required namespace='osgi.bundle' name='org.sidiff.common' range='1.0.0'/>
+        <required namespace='osgi.bundle' name='org.sidiff.common.emf' range='1.0.0'/>
+        <required namespace='osgi.bundle' name='org.sidiff.common.henshin' range='0.0.1'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.henshin.model' range='1.4.0'/>
+        <required namespace='osgi.bundle' name='org.silift.common.util' range='0.1.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.henshin.interpreter' range='1.4.0'/>
+        <required namespace='osgi.bundle' name='org.sidiff.common.emf.extensions' range='1.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore' range='0.0.0'/>
+      </requires>
       <artifacts size='1'>
-        <artifact classifier='org.eclipse.update.feature' id='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature.source' version='1.0.0.202204072335'/>
+        <artifact classifier='osgi.bundle' id='org.sidiff.serge' version='1.0.0.201904091733'/>
       </artifacts>
       <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
       <touchpointData size='1'>
         <instructions size='1'>
-          <instruction key='zipped'>
-            true
+          <instruction key='manifest'>
+            Bundle-SymbolicName: org.sidiff.serge;singleton:=true&#xA;Bundle-Version: 1.0.0.201904091733
           </instruction>
         </instructions>
       </touchpointData>
-    </unit>
-    <unit id='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature.feature.group' version='1.0.0.202204072335' singleton='false'>
-      <update id='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature.feature.group' range='[0.0.0,1.0.0.202204072335)' severity='0'/>
-      <properties size='5'>
-        <property name='org.eclipse.equinox.p2.name' value='MDEOptimiser'/>
-        <property name='org.eclipse.equinox.p2.type.group' value='true'/>
-        <property name='maven-groupId' value='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse'/>
-        <property name='maven-artifactId' value='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature'/>
-        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
-      </properties>
-      <provides size='1'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature.feature.group' version='1.0.0.202204072335'/>
-      </provides>
-      <requires size='38'>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.xtext.ui' range='0.0.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.xtext.ui.shared' range='0.0.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.xtext.ui.codetemplates.ui' range='0.0.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui.editors' range='3.5.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui.ide' range='3.5.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.xtext.builder' range='0.0.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.compare' range='0.0.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui' range='0.0.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.jdt.debug.ui' range='0.0.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.jdt.launching' range='3.8.100'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.common' range='0.0.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ocl' range='3.6.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ocl.ecore' range='3.6.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.moeaframework' range='0.0.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='com.github.mifmif.generex' range='1.0.2'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='dk.brics.automaton' range='1.11.0.8'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.resources' range='0.0.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.runtime' range='0.0.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.apache.log4j' range='0.0.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext' range='0.0.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.xtext.common.types.ui' range='0.0.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.xtext.xbase.lib' range='2.15.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.xtext.xbase.ui' range='0.0.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.jdt.core' range='0.0.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.jdt.ui' range='0.0.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.cli' range='0.0.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core' range='0.0.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen' range='0.0.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.henshin.interpreter' range='1.5.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.henshin.model' range='1.5.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.henshin.trace' range='1.5.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.xtext.common.types' range='0.0.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='com.google.guava' range='0.0.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.xtend.lib.macro' range='0.0.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.apache.commons.lang3' range='0.0.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.apache.commons.math3' range='0.0.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui' range='[1.0.0.202204072335,1.0.0.202204072335]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature.feature.jar' range='[1.0.0.202204072335,1.0.0.202204072335]'>
-          <filter>
-            (org.eclipse.update.install.features=true)
-          </filter>
-        </required>
-      </requires>
-      <touchpoint id='null' version='0.0.0'/>
     </unit>
     <unit id='org.eclipse.e4.ui.bindings' version='0.12.400.v20190131-1604' generation='2'>
       <update id='org.eclipse.e4.ui.bindings' range='[0.0.0,0.12.400.v20190131-1604)' severity='0'/>
@@ -4279,51 +4318,6 @@
         </instructions>
       </touchpointData>
     </unit>
-    <unit id='org.eclipse.emf.henshin.model' version='1.7.0.202201251604'>
-      <update id='org.eclipse.emf.henshin.model' range='[0.0.0,1.7.0.202201251604)' severity='0'/>
-      <properties size='8'>
-        <property name='df_LT.pluginName' value='Henshin Model'/>
-        <property name='df_LT.providerName' value='Eclipse Modeling Project'/>
-        <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
-        <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
-        <property name='org.eclipse.equinox.p2.bundle.localization' value='plugin'/>
-        <property name='maven-groupId' value='org.eclipse.emf.henshin'/>
-        <property name='maven-artifactId' value='org.eclipse.emf.henshin.model'/>
-        <property name='maven-version' value='1.7.0-SNAPSHOT'/>
-      </properties>
-      <provides size='14'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.henshin.model' version='1.7.0.202201251604'/>
-        <provided namespace='osgi.bundle' name='org.eclipse.emf.henshin.model' version='1.7.0.202201251604'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin' version='0.0.0'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin.model' version='0.0.0'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin.model.actions' version='0.0.0'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin.model.compact' version='0.0.0'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin.model.exporters' version='0.0.0'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin.model.impl' version='0.0.0'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin.model.importers' version='0.0.0'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin.model.resource' version='0.0.0'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin.model.staticanalysis' version='0.0.0'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin.model.util' version='0.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
-      </provides>
-      <requires size='3'>
-        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='3.6.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore' range='2.6.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore.xmi' range='2.6.0'/>
-      </requires>
-      <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='org.eclipse.emf.henshin.model' version='1.7.0.202201251604'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='1'>
-          <instruction key='manifest'>
-            Bundle-SymbolicName: org.eclipse.emf.henshin.model;singleton:=true&#xA;Bundle-Version: 1.7.0.202201251604
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
     <unit id='org.eclipse.xtext.common.types.edit' version='2.17.0.v20190304-1216' generation='2'>
       <update id='org.eclipse.xtext.common.types.edit' range='[0.0.0,2.17.0.v20190304-1216)' severity='0'/>
       <properties size='8'>
@@ -4362,6 +4356,59 @@
         <instructions size='1'>
           <instruction key='manifest'>
             Bundle-SymbolicName: org.eclipse.xtext.common.types.edit;singleton:=true&#xA;Bundle-Version: 2.17.0.v20190304-1216
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.eclipse.emf.henshin.interpreter' version='1.7.0.202206300804' generation='2'>
+      <update id='org.eclipse.emf.henshin.interpreter' range='[0.0.0,1.7.0.202206300804)' severity='0'/>
+      <properties size='8'>
+        <property name='df_LT.pluginName' value='Henshin Interpreter'/>
+        <property name='df_LT.providerName' value='Eclipse Modeling Project'/>
+        <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
+        <property name='org.eclipse.equinox.p2.bundle.localization' value='plugin'/>
+        <property name='maven-groupId' value='org.eclipse.emf.henshin'/>
+        <property name='maven-artifactId' value='org.eclipse.emf.henshin.interpreter'/>
+        <property name='maven-version' value='1.7.0-SNAPSHOT'/>
+      </properties>
+      <provides size='13'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.henshin.interpreter' version='1.7.0.202206300804'/>
+        <provided namespace='osgi.bundle' name='org.eclipse.emf.henshin.interpreter' version='1.7.0.202206300804'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin.interpreter' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin.interpreter.debug' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin.interpreter.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin.interpreter.info' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin.interpreter.matching.conditions' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin.interpreter.matching.constraints' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin.interpreter.monitoring' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin.interpreter.util' version='0.0.0'/>
+        <provided namespace='osgi.identity' name='org.eclipse.emf.henshin.interpreter' version='1.7.0.202206300804'>
+          <properties size='1'>
+            <property name='type' value='osgi.bundle'/>
+          </properties>
+        </provided>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <requires size='8'>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore.xmi' range='2.5.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore.change' range='2.5.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.henshin.model' range='0.9.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='3.6.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.debug.core' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.common' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore' range='0.0.0'/>
+        <requiredProperties namespace='osgi.ee' match='(&amp;(osgi.ee=JavaSE)(version=1.8))'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.eclipse.emf.henshin.interpreter' version='1.7.0.202206300804'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: org.eclipse.emf.henshin.interpreter;singleton:=true&#xA;Bundle-Version: 1.7.0.202206300804
           </instruction>
         </instructions>
       </touchpointData>
@@ -4707,30 +4754,6 @@
         </instructions>
       </touchpointData>
     </unit>
-    <unit id='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature.source.feature.group' version='1.0.0.202204072335' singleton='false'>
-      <update id='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature.source.feature.group' range='[0.0.0,1.0.0.202204072335)' severity='0'/>
-      <properties size='6'>
-        <property name='org.eclipse.equinox.p2.name' value='MDEOptimiser Developer Resources'/>
-        <property name='org.eclipse.equinox.p2.type.group' value='true'/>
-        <property name='maven-groupId' value='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse'/>
-        <property name='maven-artifactId' value='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature'/>
-        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
-        <property name='maven-classifier' value='sources-feature'/>
-      </properties>
-      <provides size='1'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature.source.feature.group' version='1.0.0.202204072335'/>
-      </provides>
-      <requires size='3'>
-        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature.feature.group' range='[1.0.0.202204072335,1.0.0.202204072335]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui.source' range='[1.0.0.202204072335,1.0.0.202204072335]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature.source.feature.jar' range='[1.0.0.202204072335,1.0.0.202204072335]'>
-          <filter>
-            (org.eclipse.update.install.features=true)
-          </filter>
-        </required>
-      </requires>
-      <touchpoint id='null' version='0.0.0'/>
-    </unit>
     <unit id='org.eclipse.xtext.util' version='2.17.0.v20190304-0545' singleton='false' generation='2'>
       <update id='org.eclipse.xtext.util' range='[0.0.0,2.17.0.v20190304-0545)' severity='0'/>
       <properties size='5'>
@@ -4910,43 +4933,6 @@
         <instructions size='1'>
           <instruction key='manifest'>
             Bundle-SymbolicName: org.eclipse.jdt.core.manipulation; singleton:=true&#xA;Bundle-Version: 1.11.100.v20190301-1946
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id='uk.ac.kcl.inf.mdeoptimiser.interfaces.cli' version='1.0.0.20220407233157' singleton='false'>
-      <update id='uk.ac.kcl.inf.mdeoptimiser.interfaces.cli' range='[0.0.0,1.0.0.20220407233157)' severity='0'/>
-      <properties size='1'>
-        <property name='org.eclipse.equinox.p2.name' value='uk.ac.kcl.inf.mdeoptimiser.interfaces.cli'/>
-      </properties>
-      <provides size='4'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.cli' version='1.0.0.20220407233157'/>
-        <provided namespace='osgi.bundle' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.cli' version='1.0.0.20220407233157'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.cli' version='0.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
-      </provides>
-      <requires size='12'>
-        <required namespace='java.package' name='com.google.inject' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.apache.commons.cli' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.emf.common.util' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='org.eclipse.emf.ecore.resource' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.mopt' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.specification' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter' range='0.0.0' optional='true' greedy='false'/>
-        <required namespace='java.package' name='uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter.saver' range='0.0.0' optional='true' greedy='false'/>
-      </requires>
-      <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='uk.ac.kcl.inf.mdeoptimiser.interfaces.cli' version='1.0.0.20220407233157'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='1'>
-          <instruction key='manifest'>
-            Bundle-SymbolicName: uk.ac.kcl.inf.mdeoptimiser.interfaces.cli&#xA;Bundle-Version: 1.0.0.20220407233157
           </instruction>
         </instructions>
       </touchpointData>
@@ -5417,6 +5403,36 @@
         </instructions>
       </touchpointData>
     </unit>
+    <unit id='org.sidiff.common.emf.extensions' version='1.0.0.201904091733' singleton='false'>
+      <update id='org.sidiff.common.emf.extensions' range='[0.0.0,1.0.0.201904091733)' severity='0'/>
+      <properties size='2'>
+        <property name='org.eclipse.equinox.p2.name' value='Extensions'/>
+        <property name='org.eclipse.equinox.p2.provider' value='www.sidiff.org'/>
+      </properties>
+      <provides size='5'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.sidiff.common.emf.extensions' version='1.0.0.201904091733'/>
+        <provided namespace='osgi.bundle' name='org.sidiff.common.emf.extensions' version='1.0.0.201904091733'/>
+        <provided namespace='java.package' name='org.sidiff.common.emf.extensions' version='0.0.0'/>
+        <provided namespace='java.package' name='org.sidiff.common.emf.extensions.impl' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='3'>
+        <required namespace='osgi.bundle' name='org.sidiff.common' range='1.0.0'/>
+        <required namespace='osgi.bundle' name='org.sidiff.common.emf' range='1.0.0'/>
+        <required namespace='java.package' name='org.osgi.framework' range='1.3.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.sidiff.common.emf.extensions' version='1.0.0.201904091733'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: org.sidiff.common.emf.extensions&#xA;Bundle-Version: 1.0.0.201904091733
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
     <unit id='org.eclipse.xtext.ui.shared' version='2.17.0.v20190304-1216' generation='2'>
       <update id='org.eclipse.xtext.ui.shared' range='[0.0.0,2.17.0.v20190304-1216)' severity='0'/>
       <properties size='6'>
@@ -5834,6 +5850,81 @@
         <instructions size='1'>
           <instruction key='manifest'>
             Bundle-SymbolicName: com.google.inject&#xA;Bundle-Version: 3.0.0.v201605172100
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.apache.xerces' version='2.9.0.v201101211617' singleton='false'>
+      <update id='org.apache.xerces' range='[0.0.0,2.9.0.v201101211617)' severity='0'/>
+      <properties size='8'>
+        <property name='df_LT.Bundle-Vendor.0' value='Eclipse Orbit'/>
+        <property name='df_LT.Bundle-Name.0' value='Apache Xerces-J'/>
+        <property name='org.eclipse.equinox.p2.name' value='%Bundle-Name.0'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%Bundle-Vendor.0'/>
+        <property name='iplog.bug_id' value='2095'/>
+        <property name='iplog.contact.name' value='David Williams'/>
+        <property name='iplog.contact.email' value='david_williams@us.ibm.com'/>
+        <property name='org.eclipse.equinox.p2.bundle.localization' value='plugin'/>
+      </properties>
+      <provides size='43'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.apache.xerces' version='2.9.0.v201101211617'/>
+        <provided namespace='osgi.bundle' name='org.apache.xerces' version='2.9.0.v201101211617'/>
+        <provided namespace='java.package' name='META-INF.services' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.html.dom' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.wml' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.wml.dom' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.xerces.dom' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.xerces.dom.events' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.xerces.dom3.as' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.xerces.impl' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.xerces.impl.dtd' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.xerces.impl.dtd.models' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.xerces.impl.dv' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.xerces.impl.dv.dtd' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.xerces.impl.dv.util' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.xerces.impl.dv.xs' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.xerces.impl.io' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.xerces.impl.msg' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.xerces.impl.validation' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.xerces.impl.xpath' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.xerces.impl.xpath.regex' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.xerces.impl.xs' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.xerces.impl.xs.identity' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.xerces.impl.xs.models' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.xerces.impl.xs.opti' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.xerces.impl.xs.traversers' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.xerces.impl.xs.util' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.xerces.jaxp' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.xerces.jaxp.datatype' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.xerces.jaxp.validation' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.xerces.parsers' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.xerces.util' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.xerces.xinclude' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.xerces.xni' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.xerces.xni.grammars' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.xerces.xni.parser' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.xerces.xpointer' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.xerces.xs' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.xerces.xs.datatypes' version='2.9.0'/>
+        <provided namespace='java.package' name='org.apache.xml.serialize' version='2.9.0'/>
+        <provided namespace='java.package' name='org.w3c.dom.html' version='2.9.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <requires size='4'>
+        <required namespace='osgi.bundle' name='org.eclipse.osgi' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='javax.xml' range='[1.3.4,2.0.0)'/>
+        <required namespace='osgi.bundle' name='org.apache.xml.resolver' range='[1.2.0,2.0.0)'/>
+        <required namespace='osgi.bundle' name='org.apache.xml.serializer' range='[2.7.1,3.0.0)'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.apache.xerces' version='2.9.0.v201101211617'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: org.apache.xerces&#xA;Bundle-Version: 2.9.0.v201101211617
           </instruction>
         </instructions>
       </touchpointData>
@@ -6580,6 +6671,103 @@
         </instructions>
       </touchpointData>
     </unit>
+    <unit id='org.eclipse.emf.henshin.model' version='1.7.0.202206300804' generation='2'>
+      <update id='org.eclipse.emf.henshin.model' range='[0.0.0,1.7.0.202206300804)' severity='0'/>
+      <properties size='8'>
+        <property name='df_LT.pluginName' value='Henshin Model'/>
+        <property name='df_LT.providerName' value='Eclipse Modeling Project'/>
+        <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
+        <property name='org.eclipse.equinox.p2.bundle.localization' value='plugin'/>
+        <property name='maven-groupId' value='org.eclipse.emf.henshin'/>
+        <property name='maven-artifactId' value='org.eclipse.emf.henshin.model'/>
+        <property name='maven-version' value='1.7.0-SNAPSHOT'/>
+      </properties>
+      <provides size='15'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.henshin.model' version='1.7.0.202206300804'/>
+        <provided namespace='osgi.bundle' name='org.eclipse.emf.henshin.model' version='1.7.0.202206300804'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin.model' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin.model.actions' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin.model.compact' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin.model.exporters' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin.model.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin.model.importers' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin.model.resource' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin.model.staticanalysis' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.emf.henshin.model.util' version='0.0.0'/>
+        <provided namespace='osgi.identity' name='org.eclipse.emf.henshin.model' version='1.7.0.202206300804'>
+          <properties size='1'>
+            <property name='type' value='osgi.bundle'/>
+          </properties>
+        </provided>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <requires size='4'>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='3.6.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore' range='2.6.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore.xmi' range='2.6.0'/>
+        <requiredProperties namespace='osgi.ee' match='(&amp;(osgi.ee=JavaSE)(version=11))'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.eclipse.emf.henshin.model' version='1.7.0.202206300804'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: org.eclipse.emf.henshin.model;singleton:=true&#xA;Bundle-Version: 1.7.0.202206300804
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.sidiff.common.emf' version='1.0.0.201904091733' singleton='false'>
+      <update id='org.sidiff.common.emf' range='[0.0.0,1.0.0.201904091733)' severity='0'/>
+      <properties size='2'>
+        <property name='org.eclipse.equinox.p2.name' value='Modelmanagement and -access Utilities'/>
+        <property name='org.eclipse.equinox.p2.provider' value='www.sidiff.org'/>
+      </properties>
+      <provides size='16'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.sidiff.common.emf' version='1.0.0.201904091733'/>
+        <provided namespace='osgi.bundle' name='org.sidiff.common.emf' version='1.0.0.201904091733'/>
+        <provided namespace='java.package' name='org.sidiff.common.emf' version='0.0.0'/>
+        <provided namespace='java.package' name='org.sidiff.common.emf.access' version='0.0.0'/>
+        <provided namespace='java.package' name='org.sidiff.common.emf.access.path' version='0.0.0'/>
+        <provided namespace='java.package' name='org.sidiff.common.emf.access.tree' version='0.0.0'/>
+        <provided namespace='java.package' name='org.sidiff.common.emf.access.value' version='0.0.0'/>
+        <provided namespace='java.package' name='org.sidiff.common.emf.adapters' version='0.0.0'/>
+        <provided namespace='java.package' name='org.sidiff.common.emf.annotation' version='0.0.0'/>
+        <provided namespace='java.package' name='org.sidiff.common.emf.collections' version='0.0.0'/>
+        <provided namespace='java.package' name='org.sidiff.common.emf.derivation' version='0.0.0'/>
+        <provided namespace='java.package' name='org.sidiff.common.emf.ecore' version='0.0.0'/>
+        <provided namespace='java.package' name='org.sidiff.common.emf.exceptions' version='0.0.0'/>
+        <provided namespace='java.package' name='org.sidiff.common.emf.internal' version='0.0.0'/>
+        <provided namespace='java.package' name='org.sidiff.common.emf.modelstorage' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='8'>
+        <required namespace='osgi.bundle' name='org.sidiff.common' range='0.0.1'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore' range='2.4.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore.xmi' range='2.4.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ocl' range='1.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ocl.ecore' range='1.3.0'/>
+        <required namespace='java.package' name='org.eclipse.core.runtime' range='3.4.0'/>
+        <required namespace='java.package' name='org.eclipse.osgi.framework.console' range='1.0.0'/>
+        <required namespace='java.package' name='org.osgi.framework' range='1.5.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.sidiff.common.emf' version='1.0.0.201904091733'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: org.sidiff.common.emf&#xA;Bundle-Version: 1.0.0.201904091733
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
     <unit id='org.apache.commons.math3' version='3.6.1' singleton='false'>
       <update id='org.apache.commons.math3' range='[0.0.0,3.6.1)' severity='0'/>
       <properties size='4'>
@@ -6889,6 +7077,41 @@
         <provided namespace='osgi.ee' name='JavaSE/compact3' version='11.0.0'/>
       </provides>
       <touchpoint id='org.eclipse.equinox.p2.native' version='1.0.0'/>
+    </unit>
+    <unit id='org.apache.xml.serializer' version='2.7.1.v201005080400' singleton='false'>
+      <update id='org.apache.xml.serializer' range='[0.0.0,2.7.1.v201005080400)' severity='0'/>
+      <properties size='8'>
+        <property name='df_LT.Bundle-Vendor.0' value='Eclipse Orbit'/>
+        <property name='df_LT.Bundle-Name.0' value='Apache XML Commons Serializer'/>
+        <property name='org.eclipse.equinox.p2.name' value='%Bundle-Name.0'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%Bundle-Vendor.0'/>
+        <property name='iplog.bug_id' value='2134'/>
+        <property name='iplog.contact.name' value='David Williams'/>
+        <property name='iplog.contact.email' value='david_williams@us.ibm.com'/>
+        <property name='org.eclipse.equinox.p2.bundle.localization' value='plugin'/>
+      </properties>
+      <provides size='6'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.apache.xml.serializer' version='2.7.1.v201005080400'/>
+        <provided namespace='osgi.bundle' name='org.apache.xml.serializer' version='2.7.1.v201005080400'/>
+        <provided namespace='java.package' name='org.apache.xml.serializer' version='2.7.1'/>
+        <provided namespace='java.package' name='org.apache.xml.serializer.dom3' version='2.7.1'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <requires size='1'>
+        <required namespace='osgi.bundle' name='org.eclipse.osgi' range='0.0.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.apache.xml.serializer' version='2.7.1.v201005080400'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: org.apache.xml.serializer&#xA;Bundle-Version: 2.7.1.v201005080400
+          </instruction>
+        </instructions>
+      </touchpointData>
     </unit>
     <unit id='org.antlr.runtime' version='3.2.0.v201101311130' singleton='false'>
       <update id='org.antlr.runtime' range='[0.0.0,3.2.0.v201101311130)' severity='0'/>
@@ -7763,83 +7986,6 @@
         </instructions>
       </touchpointData>
     </unit>
-    <unit id='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui' version='1.0.0.202204072335' generation='2'>
-      <update id='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui' range='[0.0.0,1.0.0.202204072335)' severity='0'/>
-      <properties size='5'>
-        <property name='org.eclipse.equinox.p2.name' value='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui'/>
-        <property name='org.eclipse.equinox.p2.provider' value='My Company'/>
-        <property name='maven-groupId' value='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse'/>
-        <property name='maven-artifactId' value='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui'/>
-        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
-      </properties>
-      <provides size='11'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui' version='1.0.0.202204072335'/>
-        <provided namespace='osgi.bundle' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui' version='1.0.0.202204072335'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.ui.contentassist' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.ui.quickfix' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.ui.editor' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.ide.contentassist.antlr' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.ide.contentassist.antlr.internal' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui.internal' version='0.0.0'/>
-        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui.internal' version='0.0.0'/>
-        <provided namespace='osgi.identity' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui' version='1.0.0.202204072335'>
-          <properties size='1'>
-            <property name='type' value='osgi.bundle'/>
-          </properties>
-        </provided>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
-      </provides>
-      <requires size='37'>
-        <required namespace='osgi.bundle' name='uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.common.types.ui' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.ui' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.ui.shared' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.ui.codetemplates.ui' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.ui.editors' range='3.5.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.ui.ide' range='3.5.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtend.lib' range='2.14.0' optional='true' greedy='false'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.xbase.lib' range='2.15.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.xbase.ui' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.builder' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.compare' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.ui' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.jdt.debug.ui' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.jdt.core' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.jdt.ui' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.jdt.launching' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.cli' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.common' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.henshin.interpreter' range='1.5.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.henshin.model' range='1.5.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.ocl' range='3.6.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.ocl.ecore' range='3.6.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.henshin.trace' range='1.5.0'/>
-        <required namespace='osgi.bundle' name='org.moeaframework' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtext.common.types' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='com.github.mifmif.generex' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='dk.brics.automaton' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='com.google.guava' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.xtend.lib.macro' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.antlr.runtime' range='[3.2.0,3.2.1)'/>
-        <required namespace='java.package' name='org.apache.log4j' range='0.0.0'/>
-        <requiredProperties namespace='osgi.ee' match='(&amp;(osgi.ee=JavaSE)(version=11))'/>
-      </requires>
-      <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui' version='1.0.0.202204072335'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='1'>
-          <instruction key='manifest'>
-            Bundle-SymbolicName: uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui; singleton:=true&#xA;Bundle-Version: 1.0.0.202204072335
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
     <unit id='org.apache.commons.cli' version='1.2.0' singleton='false'>
       <update id='org.apache.commons.cli' range='[0.0.0,1.2.0)' severity='0'/>
       <properties size='4'>
@@ -7906,6 +8052,83 @@
         <instructions size='1'>
           <instruction key='manifest'>
             Bundle-SymbolicName: org.eclipse.emf.ecore.editor;singleton:=true&#xA;Bundle-Version: 2.16.0.v20181104-0733
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui' version='1.0.0.202207142244' generation='2'>
+      <update id='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui' range='[0.0.0,1.0.0.202207142244)' severity='0'/>
+      <properties size='5'>
+        <property name='org.eclipse.equinox.p2.name' value='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui'/>
+        <property name='org.eclipse.equinox.p2.provider' value='My Company'/>
+        <property name='maven-groupId' value='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse'/>
+        <property name='maven-artifactId' value='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui'/>
+        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+      </properties>
+      <provides size='11'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui' version='1.0.0.202207142244'/>
+        <provided namespace='osgi.bundle' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui' version='1.0.0.202207142244'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.ui.contentassist' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.ui.quickfix' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.ui.editor' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.ide.contentassist.antlr' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.ide.contentassist.antlr.internal' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui.internal' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui.internal' version='0.0.0'/>
+        <provided namespace='osgi.identity' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui' version='1.0.0.202207142244'>
+          <properties size='1'>
+            <property name='type' value='osgi.bundle'/>
+          </properties>
+        </provided>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='37'>
+        <required namespace='osgi.bundle' name='uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.common.types.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.ui.shared' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.ui.codetemplates.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.editors' range='3.5.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.ide' range='3.5.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtend.lib' range='2.14.0' optional='true' greedy='false'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.xbase.lib' range='2.15.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.xbase.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.builder' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.compare' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.jdt.debug.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.jdt.core' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.jdt.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.jdt.launching' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.cli' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.common' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.henshin.interpreter' range='1.5.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.henshin.model' range='1.5.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ocl' range='3.6.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ocl.ecore' range='3.6.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.henshin.trace' range='1.5.0'/>
+        <required namespace='osgi.bundle' name='org.moeaframework' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtext.common.types' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='com.github.mifmif.generex' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='dk.brics.automaton' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='com.google.guava' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.xtend.lib.macro' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.antlr.runtime' range='[3.2.0,3.2.1)'/>
+        <required namespace='java.package' name='org.apache.log4j' range='0.0.0'/>
+        <requiredProperties namespace='osgi.ee' match='(&amp;(osgi.ee=JavaSE)(version=11))'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui' version='1.0.0.202207142244'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui; singleton:=true&#xA;Bundle-Version: 1.0.0.202207142244
           </instruction>
         </instructions>
       </touchpointData>
@@ -8537,6 +8760,201 @@
         </instructions>
       </touchpointData>
     </unit>
+    <unit id='uk.ac.kcl.inf.mdeoptimiser.libraries.core' version='1.0.0.20220714223857' singleton='false'>
+      <update id='uk.ac.kcl.inf.mdeoptimiser.libraries.core' range='[0.0.0,1.0.0.20220714223857)' severity='0'/>
+      <properties size='1'>
+        <property name='org.eclipse.equinox.p2.name' value='uk.ac.kcl.inf.mdeoptimiser.libraries.core'/>
+      </properties>
+      <provides size='46'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core' version='1.0.0.20220714223857'/>
+        <provided namespace='osgi.bundle' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core' version='1.0.0.20220714223857'/>
+        <provided namespace='java.package' name='at.ac.tuwien.big.moea.util' version='0.0.0'/>
+        <provided namespace='java.package' name='at.ac.tuwien.big.momot.search.engine' version='0.0.0'/>
+        <provided namespace='java.package' name='at.ac.tuwien.big.momot.search.engine.script' version='0.0.0'/>
+        <provided namespace='java.package' name='at.ac.tuwien.big.momot.search.engine.script.ocl' version='0.0.0'/>
+        <provided namespace='java.package' name='efmconfiguration.engine' version='0.0.0'/>
+        <provided namespace='java.package' name='efmconfiguration.engine.test.performance' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.executor' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.evolvers.parameters' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.evolvers.parameters.functions' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.guidance' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.guidance.java' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.guidance.ocl' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.henshin' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.henshin.engine' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.algorithms' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.indicators' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.instrumentation' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.listeners' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.operators' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.problem' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.termination.conditions' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.crossover' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.mutation.application' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.mutation.repair' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.mutation.selection' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.mutation.selection.credit' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.mutation.step' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output.descriptors' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.parameters' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.specification' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.reflection' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.exception' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter.generator' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter.saver' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter.score' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter.termination.condition' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.reporting' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='101'>
+        <required namespace='java.package' name='at.ac.tuwien.big.moea.util' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='at.ac.tuwien.big.momot.search.engine' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='at.ac.tuwien.big.momot.search.engine.script' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='at.ac.tuwien.big.momot.search.engine.script.ocl' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='com.google.common.base' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='com.google.common.collect' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='com.google.common.io' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='com.google.gson' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='com.google.gson.stream' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='com.mifmif.common.regex' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='efmconfiguration.engine' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='javax.script' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.apache.commons.io' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.apache.commons.lang3' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.apache.commons.lang3.math' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.apache.commons.math3.ml.distance' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.apache.commons.math3.stat.descriptive' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.apache.commons.math3.util' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.deeplearning4j.arbiter.optimize.api' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.deeplearning4j.arbiter.optimize.api.data' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.deeplearning4j.arbiter.optimize.api.evaluation' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.deeplearning4j.arbiter.optimize.api.saving' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.deeplearning4j.arbiter.optimize.api.score' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.deeplearning4j.arbiter.optimize.api.termination' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.deeplearning4j.arbiter.optimize.config' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.deeplearning4j.arbiter.optimize.generator' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.deeplearning4j.arbiter.optimize.parameter.integer' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.deeplearning4j.arbiter.optimize.runner' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.deeplearning4j.arbiter.optimize.runner.listener' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.core.runtime' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.emf.common.util' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.emf.ecore' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.emf.ecore.impl' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.emf.ecore.resource' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.emf.ecore.util' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.emf.ecore.xmi.impl' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.emf.henshin.interpreter' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.emf.henshin.interpreter.impl' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.emf.henshin.model' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.emf.henshin.model.resource' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.emf.henshin.model.util' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.ocl' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.ocl.ecore' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.ocl.expressions' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.ocl.helper' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext.xbase' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.moeaframework' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.moeaframework.algorithm' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.moeaframework.analysis.collector' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.moeaframework.analysis.plot' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.moeaframework.core' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.moeaframework.core.fitness' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.moeaframework.core.operator' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.moeaframework.core.spi' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.moeaframework.core.termination' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.moeaframework.core.variable' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.moeaframework.problem' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.moeaframework.util.progress' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.nd4j.shade.jackson.annotation' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='oshi' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='oshi.hardware' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='oshi.software.os' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.mopt' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.validation.algorithm' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.executor' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.evolvers.parameters' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.evolvers.parameters.functions' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.guidance' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.guidance.java' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.guidance.ocl' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.henshin' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.henshin.engine' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.algorithms' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.instrumentation' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.listeners' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.operators' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.problem' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.termination.conditions' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.crossover' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.mutation.application' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.mutation.repair' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.mutation.selection' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.mutation.selection.credit' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.mutation.step' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.output.descriptors' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.parameters' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.specification' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core.reflection' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.metamodel' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter.generator' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter.saver' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter.score' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.hyperparameter.arbiter.termination.condition' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.mdeoptimiser.libraries.core.optimisation.reporting' range='0.0.0' optional='true' greedy='false'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='uk.ac.kcl.inf.mdeoptimiser.libraries.core' version='1.0.0.20220714223857'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: uk.ac.kcl.inf.mdeoptimiser.libraries.core&#xA;Bundle-Version: 1.0.0.20220714223857
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='com.sun.jna' version='5.3.0' singleton='false'>
+      <update id='com.sun.jna' range='[0.0.0,5.3.0)' severity='0'/>
+      <properties size='3'>
+        <property name='org.eclipse.equinox.p2.name' value='jna'/>
+        <property name='org.eclipse.equinox.p2.description' value='JNA Library'/>
+        <property name='org.eclipse.equinox.p2.provider' value='JNA Development Team'/>
+      </properties>
+      <provides size='6'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='com.sun.jna' version='5.3.0'/>
+        <provided namespace='osgi.bundle' name='com.sun.jna' version='5.3.0'/>
+        <provided namespace='java.package' name='com.sun.jna' version='5.3.0'/>
+        <provided namespace='java.package' name='com.sun.jna.ptr' version='5.3.0'/>
+        <provided namespace='java.package' name='com.sun.jna.win32' version='5.3.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='com.sun.jna' version='5.3.0'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: com.sun.jna&#xA;Bundle-Version: 5.3.0
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
     <unit id='org.eclipse.osgi.util' version='3.5.200.v20190115-2323' singleton='false' generation='2'>
       <update id='org.eclipse.osgi.util' range='[0.0.0,3.5.200.v20190115-2323)' severity='0'/>
       <properties size='12'>
@@ -8587,6 +9005,100 @@
         <instructions size='1'>
           <instruction key='manifest'>
             Bundle-SymbolicName: org.eclipse.osgi.util&#xA;Bundle-Version: 3.5.200.v20190115-2323
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext' version='1.0.0.20220714223857' singleton='false'>
+      <update id='uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext' range='[0.0.0,1.0.0.20220714223857)' severity='0'/>
+      <properties size='1'>
+        <property name='org.eclipse.equinox.p2.name' value='uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext'/>
+      </properties>
+      <provides size='17'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext' version='1.0.0.20220714223857'/>
+        <provided namespace='osgi.bundle' name='uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext' version='1.0.0.20220714223857'/>
+        <provided namespace='java.package' name='model.generated' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.jvmmodel' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.mopt' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.mopt.util' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.parser.antlr' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.parser.antlr.internal' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.scoping' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.serializer' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.services' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.validation' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.validation.algorithm' version='0.0.0'/>
+        <provided namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.values' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='56'>
+        <required namespace='java.package' name='com.google.inject' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='com.google.inject.binder' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='com.google.inject.name' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.antlr.runtime' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.emf.common.notify' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.emf.common.notify.impl' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.emf.common.util' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.emf.ecore' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.emf.ecore.impl' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.emf.ecore.plugin' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.emf.ecore.resource' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.emf.ecore.util' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext.common.services' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext.common.types' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext.common.types.xtext' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext.conversion' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext.naming' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext.nodemodel' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext.parser' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext.parser.antlr' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext.parser.impl' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext.preferences' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext.resource' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext.resource.containers' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext.resource.impl' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext.scoping' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext.serializer' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext.serializer.acceptor' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext.serializer.analysis' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext.serializer.diagnostic' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext.serializer.impl' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext.serializer.sequencer' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext.service' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext.util' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext.validation' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext.xbase' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext.xbase.annotations.validation' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext.xbase.jvmmodel' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext.xbase.scoping' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext.xbase.scoping.batch' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext.xbase.serializer' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext.xbase.services' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext.xbase.typesystem.internal' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext.xbase.validation' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.eclipse.xtext.xtype' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.mopt' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.parser.antlr' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.parser.antlr.internal' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.scoping' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.serializer' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.services' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.validation' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.validation.algorithm' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='java.package' name='uk.ac.kcl.inf.mdeoptimiser.languages.values' range='0.0.0' optional='true' greedy='false'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext' version='1.0.0.20220714223857'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext&#xA;Bundle-Version: 1.0.0.20220714223857
           </instruction>
         </instructions>
       </touchpointData>
@@ -8915,90 +9427,6 @@
         </instructions>
       </touchpointData>
     </unit>
-    <unit id='org.eclipse.emf.henshin.interpreter' version='1.7.0.202201251604'>
-      <update id='org.eclipse.emf.henshin.interpreter' range='[0.0.0,1.7.0.202201251604)' severity='0'/>
-      <properties size='8'>
-        <property name='df_LT.pluginName' value='Henshin Interpreter'/>
-        <property name='df_LT.providerName' value='Eclipse Modeling Project'/>
-        <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
-        <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
-        <property name='org.eclipse.equinox.p2.bundle.localization' value='plugin'/>
-        <property name='maven-groupId' value='org.eclipse.emf.henshin'/>
-        <property name='maven-artifactId' value='org.eclipse.emf.henshin.interpreter'/>
-        <property name='maven-version' value='1.7.0-SNAPSHOT'/>
-      </properties>
-      <provides size='12'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.henshin.interpreter' version='1.7.0.202201251604'/>
-        <provided namespace='osgi.bundle' name='org.eclipse.emf.henshin.interpreter' version='1.7.0.202201251604'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin.interpreter' version='0.0.0'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin.interpreter.debug' version='0.0.0'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin.interpreter.impl' version='0.0.0'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin.interpreter.info' version='0.0.0'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin.interpreter.matching.conditions' version='0.0.0'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin.interpreter.matching.constraints' version='0.0.0'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin.interpreter.monitoring' version='0.0.0'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin.interpreter.util' version='0.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
-      </provides>
-      <requires size='7'>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore.xmi' range='2.5.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore.change' range='2.5.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.henshin.model' range='0.9.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='3.6.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.debug.core' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.common' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore' range='0.0.0'/>
-      </requires>
-      <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='org.eclipse.emf.henshin.interpreter' version='1.7.0.202201251604'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='1'>
-          <instruction key='manifest'>
-            Bundle-SymbolicName: org.eclipse.emf.henshin.interpreter;singleton:=true&#xA;Bundle-Version: 1.7.0.202201251604
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id='org.eclipse.emf.henshin.trace' version='1.7.0.202201251604'>
-      <update id='org.eclipse.emf.henshin.trace' range='[0.0.0,1.7.0.202201251604)' severity='0'/>
-      <properties size='8'>
-        <property name='df_LT.pluginName' value='Henshin Trace Model'/>
-        <property name='df_LT.providerName' value='Eclipse Modeling Project'/>
-        <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
-        <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
-        <property name='org.eclipse.equinox.p2.bundle.localization' value='plugin'/>
-        <property name='maven-groupId' value='org.eclipse.emf.henshin'/>
-        <property name='maven-artifactId' value='org.eclipse.emf.henshin.trace'/>
-        <property name='maven-version' value='1.7.0-SNAPSHOT'/>
-      </properties>
-      <provides size='7'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.henshin.trace' version='1.7.0.202201251604'/>
-        <provided namespace='osgi.bundle' name='org.eclipse.emf.henshin.trace' version='1.7.0.202201251604'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin.trace' version='0.0.0'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin.trace.impl' version='0.0.0'/>
-        <provided namespace='java.package' name='org.eclipse.emf.henshin.trace.util' version='0.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
-      </provides>
-      <requires size='2'>
-        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='3.6.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore' range='2.6.0'/>
-      </requires>
-      <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='org.eclipse.emf.henshin.trace' version='1.7.0.202201251604'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='1'>
-          <instruction key='manifest'>
-            Bundle-SymbolicName: org.eclipse.emf.henshin.trace;singleton:=true&#xA;Bundle-Version: 1.7.0.202201251604
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
     <unit id='org.eclipse.jdt.ui' version='3.17.0.v20190304-0658' generation='2'>
       <update id='org.eclipse.jdt.ui' range='[0.0.0,3.17.0.v20190304-0658)' severity='0'/>
       <properties size='8'>
@@ -9230,6 +9658,72 @@
         <instructions size='1'>
           <instruction key='manifest'>
             Bundle-SymbolicName: org.apache.felix.scr&#xA;Bundle-Version: 2.1.14.v20190123-1619
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature.source.feature.jar' version='1.0.0.202207142244'>
+      <properties size='5'>
+        <property name='org.eclipse.equinox.p2.name' value='MDEOptimiser Developer Resources'/>
+        <property name='maven-groupId' value='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse'/>
+        <property name='maven-artifactId' value='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature'/>
+        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+        <property name='maven-classifier' value='sources-feature'/>
+      </properties>
+      <provides size='3'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature.source.feature.jar' version='1.0.0.202207142244'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='feature' version='1.0.0'/>
+        <provided namespace='org.eclipse.update.feature' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature.source' version='1.0.0.202207142244'/>
+      </provides>
+      <filter>
+        (org.eclipse.update.install.features=true)
+      </filter>
+      <artifacts size='1'>
+        <artifact classifier='org.eclipse.update.feature' id='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature.source' version='1.0.0.202207142244'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='zipped'>
+            true
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='com.sun.jna.platform' version='5.3.0' singleton='false'>
+      <update id='com.sun.jna.platform' range='[0.0.0,5.3.0)' severity='0'/>
+      <properties size='3'>
+        <property name='org.eclipse.equinox.p2.name' value='jna-platform'/>
+        <property name='org.eclipse.equinox.p2.description' value='JNA Platform Library'/>
+        <property name='org.eclipse.equinox.p2.provider' value='JNA Development Team'/>
+      </properties>
+      <provides size='14'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='com.sun.jna.platform' version='5.3.0'/>
+        <provided namespace='osgi.bundle' name='com.sun.jna.platform' version='5.3.0'/>
+        <provided namespace='java.package' name='com.sun.jna.platform' version='5.3.0'/>
+        <provided namespace='java.package' name='com.sun.jna.platform.dnd' version='5.3.0'/>
+        <provided namespace='java.package' name='com.sun.jna.platform.linux' version='5.3.0'/>
+        <provided namespace='java.package' name='com.sun.jna.platform.mac' version='5.3.0'/>
+        <provided namespace='java.package' name='com.sun.jna.platform.unix' version='5.3.0'/>
+        <provided namespace='java.package' name='com.sun.jna.platform.unix.solaris' version='5.3.0'/>
+        <provided namespace='java.package' name='com.sun.jna.platform.win32' version='5.3.0'/>
+        <provided namespace='java.package' name='com.sun.jna.platform.win32.COM' version='5.3.0'/>
+        <provided namespace='java.package' name='com.sun.jna.platform.win32.COM.tlb' version='5.3.0'/>
+        <provided namespace='java.package' name='com.sun.jna.platform.win32.COM.tlb.imp' version='5.3.0'/>
+        <provided namespace='java.package' name='com.sun.jna.platform.wince' version='5.3.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='1'>
+        <required namespace='osgi.bundle' name='com.sun.jna' range='5.3.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='com.sun.jna.platform' version='5.3.0'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: com.sun.jna.platform&#xA;Bundle-Version: 5.3.0
           </instruction>
         </instructions>
       </touchpointData>
@@ -9700,6 +10194,50 @@
         </instructions>
       </touchpointData>
     </unit>
+    <unit id='org.silift.common.util' version='1.0.0.201904091733' singleton='false'>
+      <update id='org.silift.common.util' range='[0.0.0,1.0.0.201904091733)' severity='0'/>
+      <properties size='2'>
+        <property name='org.eclipse.equinox.p2.name' value='Difference-specific utilities'/>
+        <property name='org.eclipse.equinox.p2.provider' value='www.sidiff.org'/>
+      </properties>
+      <provides size='10'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.silift.common.util' version='1.0.0.201904091733'/>
+        <provided namespace='osgi.bundle' name='org.silift.common.util' version='1.0.0.201904091733'/>
+        <provided namespace='java.package' name='org.silift.common.util.access' version='0.0.0'/>
+        <provided namespace='java.package' name='org.silift.common.util.collections' version='0.0.0'/>
+        <provided namespace='java.package' name='org.silift.common.util.emf' version='0.0.0'/>
+        <provided namespace='java.package' name='org.silift.common.util.exceptions' version='0.0.0'/>
+        <provided namespace='java.package' name='org.silift.common.util.file' version='0.0.0'/>
+        <provided namespace='java.package' name='org.silift.common.util.ui' version='0.0.0'/>
+        <provided namespace='java.package' name='org.silift.common.util.ui.widgets' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='12'>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='3.8.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='3.7.101'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore.xmi' range='2.8.1'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.workbench' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.ide' range='3.8.2'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.filesystem' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.sidiff.common' range='1.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.swt' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.commands' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.expressions' range='3.4.401'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui' range='3.104.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore.editor' range='0.0.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.silift.common.util' version='1.0.0.201904091733'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: org.silift.common.util&#xA;Bundle-Version: 1.0.0.201904091733
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
     <unit id='dk.brics.automaton' version='1.11.0.8' singleton='false'>
       <update id='dk.brics.automaton' range='[0.0.0,1.11.0.8)' severity='0'/>
       <properties size='1'>
@@ -9778,6 +10316,71 @@
         </instructions>
       </touchpointData>
     </unit>
+    <unit id='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature.feature.group' version='1.0.0.202207142244' singleton='false'>
+      <update id='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature.feature.group' range='[0.0.0,1.0.0.202207142244)' severity='0'/>
+      <properties size='5'>
+        <property name='org.eclipse.equinox.p2.name' value='MDEOptimiser'/>
+        <property name='org.eclipse.equinox.p2.type.group' value='true'/>
+        <property name='maven-groupId' value='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse'/>
+        <property name='maven-artifactId' value='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature'/>
+        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+      </properties>
+      <provides size='1'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature.feature.group' version='1.0.0.202207142244'/>
+      </provides>
+      <requires size='45'>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.xtext.ui' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.xtext.ui.shared' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.xtext.ui.codetemplates.ui' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui.editors' range='3.5.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui.ide' range='3.5.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.xtext.builder' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.compare' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.jdt.debug.ui' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.jdt.launching' range='3.8.100'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.common' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ocl' range='3.6.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ocl.ecore' range='3.6.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.moeaframework' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='com.github.mifmif.generex' range='1.0.2'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='dk.brics.automaton' range='1.11.0.8'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.resources' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.runtime' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.apache.log4j' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.xtext.common.types.ui' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.xtext.xbase.lib' range='2.15.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.xtext.xbase.ui' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.jdt.core' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.jdt.ui' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.cli' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.libraries.core' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.henshin.interpreter' range='1.7.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.henshin.model' range='1.7.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.henshin.trace' range='1.7.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.xtext.common.types' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='com.google.guava' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.xtend.lib.macro' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.apache.commons.lang3' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.apache.commons.math3' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.sidiff.serge' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.sidiff.common' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.sidiff.common.emf' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.sidiff.common.emf.extensions' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.silift.common.util' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.sidiff.common.henshin' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='com.github.oshi.oshi-core' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui' range='[1.0.0.202207142244,1.0.0.202207142244]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature.feature.jar' range='[1.0.0.202207142244,1.0.0.202207142244]'>
+          <filter>
+            (org.eclipse.update.install.features=true)
+          </filter>
+        </required>
+      </requires>
+      <touchpoint id='null' version='0.0.0'/>
+    </unit>
     <unit id='org.eclipse.core.contenttype' version='3.7.300.v20190215-2048' generation='2'>
       <update id='org.eclipse.core.contenttype' range='[0.0.0,3.7.300.v20190215-2048)' severity='0'/>
       <properties size='8'>
@@ -9828,6 +10431,30 @@
           </instruction>
         </instructions>
       </touchpointData>
+    </unit>
+    <unit id='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature.source.feature.group' version='1.0.0.202207142244' singleton='false'>
+      <update id='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature.source.feature.group' range='[0.0.0,1.0.0.202207142244)' severity='0'/>
+      <properties size='6'>
+        <property name='org.eclipse.equinox.p2.name' value='MDEOptimiser Developer Resources'/>
+        <property name='org.eclipse.equinox.p2.type.group' value='true'/>
+        <property name='maven-groupId' value='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse'/>
+        <property name='maven-artifactId' value='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature'/>
+        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+        <property name='maven-classifier' value='sources-feature'/>
+      </properties>
+      <provides size='1'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature.source.feature.group' version='1.0.0.202207142244'/>
+      </provides>
+      <requires size='3'>
+        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature.feature.group' range='[1.0.0.202207142244,1.0.0.202207142244]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui.source' range='[1.0.0.202207142244,1.0.0.202207142244]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.feature.source.feature.jar' range='[1.0.0.202207142244,1.0.0.202207142244]'>
+          <filter>
+            (org.eclipse.update.install.features=true)
+          </filter>
+        </required>
+      </requires>
+      <touchpoint id='null' version='0.0.0'/>
     </unit>
     <unit id='org.eclipse.compare' version='3.7.500.v20190218-1850' generation='2'>
       <update id='org.eclipse.compare' range='[0.0.0,3.7.500.v20190218-1850)' severity='0'/>
