@@ -3,16 +3,16 @@
   <groupId>uk.ac.kcl.inf.mdeoptimiser.repositories</groupId>
   <artifactId>uk.ac.kcl.inf.mdeoptimiser.repositories.maven</artifactId>
   <versioning>
-    <lastUpdated>20220504111736</lastUpdated>
+    <lastUpdated>20220714085531</lastUpdated>
     <snapshot>
-      <timestamp>20220504.111736</timestamp>
+      <timestamp>20220714.085531</timestamp>
       <buildNumber>1</buildNumber>
     </snapshot>
     <snapshotVersions>
       <snapshotVersion>
         <extension>pom</extension>
-        <value>1.0.0-20220504.111736-1</value>
-        <updated>20220504111736</updated>
+        <value>1.0.0-20220714.085531-1</value>
+        <updated>20220714085531</updated>
       </snapshotVersion>
     </snapshotVersions>
   </versioning>
