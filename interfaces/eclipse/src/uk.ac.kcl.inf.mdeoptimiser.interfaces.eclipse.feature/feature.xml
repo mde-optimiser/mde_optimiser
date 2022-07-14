@@ -40,14 +40,21 @@
       <import plugin="uk.ac.kcl.inf.mdeoptimiser.interfaces.cli"/>
       <import plugin="uk.ac.kcl.inf.mdeoptimiser.libraries.core"/>
       <import plugin="uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen"/>
-      <import plugin="org.eclipse.emf.henshin.interpreter" version="1.5.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.emf.henshin.model" version="1.5.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.emf.henshin.trace" version="1.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.henshin.interpreter" version="1.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.henshin.model" version="1.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.henshin.trace" version="1.7.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtext.common.types"/>
       <import plugin="com.google.guava"/>
       <import plugin="org.eclipse.xtend.lib.macro"/>
       <import plugin="org.apache.commons.lang3" />
       <import plugin="org.apache.commons.math3" />
+      <import plugin="org.sidiff.serge" />
+      <import plugin="org.sidiff.common" />
+      <import plugin="org.sidiff.common.emf" />
+      <import plugin="org.sidiff.common.emf.extensions" />
+      <import plugin="org.silift.common.util" />
+      <import plugin="org.sidiff.common.henshin" />
+      <import plugin="com.github.oshi.oshi-core" />
    </requires>
 
    <plugin

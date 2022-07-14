@@ -112,13 +112,13 @@
 		<dependency>
 			<groupId>org.eclipse.emf</groupId>
 			<artifactId>org.eclipse.emf.henshin.interpreter</artifactId>
-			<version>1.5.0</version>
+			<version>1.7.0</version>
 		</dependency>
         <!--CPA Dependency -->
         <dependency>
             <groupId>org.eclipse.emf</groupId>
             <artifactId>org.eclipse.emf.henshin.multicda.cpa</artifactId>
-            <version>1.5.0</version>
+            <version>1.7.0</version>
         </dependency>
 		<dependency>
 			<groupId>org.eclipse.ocl</groupId>
@@ -144,7 +144,7 @@
 		<dependency>
 			<groupId>org.eclipse.emf</groupId>
 			<artifactId>org.eclipse.emf.henshin.trace</artifactId>
-			<version>1.5.0</version>
+			<version>1.7.0</version>
 		</dependency>
 		<!-- System information -->
 		<dependency>

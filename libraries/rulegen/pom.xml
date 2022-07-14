@@ -85,7 +85,7 @@
 		<dependency>
 			<groupId>org.eclipse.emf</groupId>
 			<artifactId>org.eclipse.emf.henshin.model</artifactId>
-			<version>1.5.0</version>
+			<version>1.7.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.sidiff.serge</groupId>

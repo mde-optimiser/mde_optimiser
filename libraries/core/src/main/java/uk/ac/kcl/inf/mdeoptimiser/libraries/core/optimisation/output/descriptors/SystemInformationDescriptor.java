@@ -13,12 +13,20 @@ public class SystemInformationDescriptor implements ResultsDescriptor {
   SystemInfo systemInfo;
 
   public SystemInformationDescriptor() {
-    this.systemInfo = new SystemInfo();
+    try {
+      this.systemInfo = new SystemInfo();
+    } catch(Exception e){
+      System.out.println("Hardware not supported by system descriptor. This feature will be ignored.");
+    }
   }
 
   @Override
   public void generateDescription(
       Path batchOutputPath, MDEOBatch batch, StringBuilder batchOverallOutput) {
+
+    if(this.systemInfo == null){
+      return;
+    }
 
     var batchInfoPath =
         Paths.get(
