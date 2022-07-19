@@ -65,9 +65,9 @@ public class MoeaFrameworkAlgorithmConfiguration {
                   .getNumeric()));
     }
 
-    populateNumericParameter(
+    populateIntegerParameter(
         properties, this.solverSpec.getAlgorithm().getParameters(), "archive.size");
-    populateNumericParameter(
+    populateIntegerParameter(
         properties, this.solverSpec.getAlgorithm().getParameters(), "bisections");
 
     properties.put("solutionGenerator", solutionGenerator);
@@ -89,10 +89,11 @@ public class MoeaFrameworkAlgorithmConfiguration {
    * @param parameters
    * @param parameterKey
    */
-  private void populateNumericParameter(
+  private void populateIntegerParameter(
       Properties properties, EList<Parameter> parameters, String parameterKey) {
     var parameter = parameters.stream().filter(p -> p.getName().equals(parameterKey)).findFirst();
-    parameter.ifPresent(p -> properties.put(parameterKey, p.getValue().getNumeric()));
+    parameter.ifPresent(
+        p -> properties.put(parameterKey, Integer.parseInt(p.getValue().getNumeric())));
   }
 
   /**

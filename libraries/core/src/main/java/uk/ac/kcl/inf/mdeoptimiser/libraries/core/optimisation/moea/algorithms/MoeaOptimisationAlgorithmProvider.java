@@ -25,6 +25,7 @@ public class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
         break;
       case "SMSMOEA":
         this.algorithm = createSMSMOEA(problem, properties);
+        break;
       case "IBEA":
         this.algorithm = createIBEA(problem, properties);
         break;
@@ -33,10 +34,13 @@ public class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
         break;
       case "VEGA":
         this.algorithm = createVEGA(problem, properties);
+        break;
       case "PESA2":
         this.algorithm = createPESA2(problem, properties);
+        break;
       case "PAES":
         this.algorithm = createPAES(problem, properties);
+        break;
       case "RANDOM":
         this.algorithm = createRandom(problem, properties);
       default:
@@ -175,9 +179,8 @@ public class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
   }
 
   public Algorithm createPESA2(Problem problem, Properties properties) {
-
-    var bisections = 0;
-    var archiveSize = 0;
+    var bisections = (Integer) properties.get("bisections");
+    var archiveSize = (Integer) properties.get("archive.size");
 
     return new PESA2(
         problem,
@@ -192,12 +195,7 @@ public class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
     var bisections = (Integer) properties.get("bisections");
     var archiveSize = (Integer) properties.get("archive.size");
 
-    return new PESA2(
-        problem,
-        getVariation(properties),
-        getRandomInitialization(problem, properties),
-        bisections,
-        archiveSize);
+    return new PAES(problem, getVariation(properties), bisections, archiveSize);
   }
 
   public Algorithm createRandom(Problem problem, Properties properties) {
