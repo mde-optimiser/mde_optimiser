@@ -30,7 +30,7 @@ public class MoeaProbabilisticVariation implements Variation {
     // Apply crossover with probability specified by the user
     var crossoverProbability = random.nextDouble();
 
-    if (crossoverProbability <= crossoverRate) {
+    if (crossoverProbability < crossoverRate) {
 
       //System.out.println("Running crossover with probability: " + crossoverProbability);
 
@@ -52,7 +52,7 @@ public class MoeaProbabilisticVariation implements Variation {
     for (Solution aResult : result) {
 
       var mutationProbability = random.nextDouble();
-      if (mutationProbability <= mutationRate) {
+      if (mutationProbability < mutationRate) {
         //System.out.println("Running mutation with probability: " + mutationProbability);
         solutions.addAll(Arrays.asList(mutationOperator.evolve(new Solution[] {aResult})));
       } else {
