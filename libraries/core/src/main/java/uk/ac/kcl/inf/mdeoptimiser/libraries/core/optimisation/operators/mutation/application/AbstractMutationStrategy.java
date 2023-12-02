@@ -29,6 +29,7 @@ public abstract class AbstractMutationStrategy extends AbstractStrategyParameter
   }
 
   public Solution mutate(Solution model) {
+    //TODO copying should consistently be done in the variation's evolve method not in the strategy 
     var candidateSolution = new Solution(model);
 
     var graph = new EGraphImpl(candidateSolution.getModel());

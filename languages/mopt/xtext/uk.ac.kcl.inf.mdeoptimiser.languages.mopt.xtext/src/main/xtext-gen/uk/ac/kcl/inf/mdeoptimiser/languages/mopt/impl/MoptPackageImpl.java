@@ -1510,6 +1510,7 @@ public class MoptPackageImpl extends EPackageImpl implements MoptPackage
     initEEnum(evolverTypeEEnum, EvolverType.class, "EvolverType");
     addEEnumLiteral(evolverTypeEEnum, EvolverType.MUTATE);
     addEEnumLiteral(evolverTypeEEnum, EvolverType.BREED);
+    addEEnumLiteral(evolverTypeEEnum, EvolverType.REPAIR);
 
     // Create resource
     createResource(eNS_URI);

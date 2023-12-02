@@ -1303,12 +1303,14 @@ public class MoptGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cMUTATEMutateKeyword_0_0 = (Keyword)cMUTATEEnumLiteralDeclaration_0.eContents().get(0);
 		private final EnumLiteralDeclaration cBREEDEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
 		private final Keyword cBREEDBreedKeyword_1_0 = (Keyword)cBREEDEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cREPAIREnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cREPAIRRepairKeyword_2_0 = (Keyword)cREPAIREnumLiteralDeclaration_2.eContents().get(0);
 		
 		//enum EvolverType:
-		//	MUTATE='mutate' | BREED='breed';
+		//	MUTATE='mutate' | BREED='breed' | REPAIR='repair';
 		public EnumRule getRule() { return rule; }
 		
-		//MUTATE='mutate' | BREED='breed'
+		//MUTATE='mutate' | BREED='breed' | REPAIR='repair'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//MUTATE='mutate'
@@ -1322,6 +1324,12 @@ public class MoptGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//'breed'
 		public Keyword getBREEDBreedKeyword_1_0() { return cBREEDBreedKeyword_1_0; }
+		
+		//REPAIR='repair'
+		public EnumLiteralDeclaration getREPAIREnumLiteralDeclaration_2() { return cREPAIREnumLiteralDeclaration_2; }
+		
+		//'repair'
+		public Keyword getREPAIRRepairKeyword_2_0() { return cREPAIRRepairKeyword_2_0; }
 	}
 	
 	private final OptimisationElements pOptimisation;
@@ -1686,7 +1694,7 @@ public class MoptGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//enum EvolverType:
-	//	MUTATE='mutate' | BREED='breed';
+	//	MUTATE='mutate' | BREED='breed' | REPAIR='repair';
 	public EvolverTypeElements getEvolverTypeAccess() {
 		return eEvolverType;
 	}

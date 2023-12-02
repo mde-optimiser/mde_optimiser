@@ -21,7 +21,9 @@ public interface ISearchSpecification {
   List<Unit> getBreedingOperators();
 
   List<Unit> getMutationOperators();
-
+  
+  List<Unit> getRepairOperators();
+  
   List<Multiplicity> getMultiplicityRefinements();
 
   List<RuleSpec> getRulegenSpecs();

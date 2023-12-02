@@ -3852,6 +3852,12 @@ rule__EvolverType__Alternatives
 		('breed')
 		{ after(grammarAccess.getEvolverTypeAccess().getBREEDEnumLiteralDeclaration_1()); }
 	)
+	|
+	(
+		{ before(grammarAccess.getEvolverTypeAccess().getREPAIREnumLiteralDeclaration_2()); }
+		('repair')
+		{ after(grammarAccess.getEvolverTypeAccess().getREPAIREnumLiteralDeclaration_2()); }
+	)
 ;
 finally {
 	restoreStackSize(stackSize);

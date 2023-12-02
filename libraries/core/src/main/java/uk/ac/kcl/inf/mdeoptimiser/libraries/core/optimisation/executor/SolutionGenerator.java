@@ -24,6 +24,8 @@ import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.mutation
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.mutation.selection.credit.OperatorCreditStrategyFactory;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.mutation.step.MutationStepSizeStrategy;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.mutation.step.MutationStepSizeStrategyFactory;
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.repair.RepairStrategy;
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.repair.RepairStrategyFactory;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.specification.ISearchSpecification;
 
 public class SolutionGenerator {
@@ -46,6 +48,7 @@ public class SolutionGenerator {
   private SearchOperatorConfiguration searchOperatorConfiguration;
   private OperatorCreditStrategy mutationOperatorCreditStrategy;
   private OperatorRepairStrategy operatorRepairStrategy;
+  private RepairStrategy repairStrategy;
 
   public SolutionGenerator(ISearchSpecification searchSpecification) {
     this.searchSpecification = searchSpecification;
@@ -57,6 +60,7 @@ public class SolutionGenerator {
                 searchSpecification.getOptimisationModel().getSearch().getEvolvers()),
             searchSpecification.getMutationOperators(),
             searchSpecification.getBreedingOperators(),
+            searchSpecification.getRepairOperators(),
             searchSpecification.getOptimisationModel().getSolver());
   }
 
@@ -173,6 +177,14 @@ public class SolutionGenerator {
 
     return this.crossoverStrategy;
   }
+  
+  private RepairStrategy getRepairStrategy() {
+    if (this.repairStrategy == null) {
+      this.repairStrategy =
+          new RepairStrategyFactory(this.getSearchOperatorConfiguration()).getStrategy();
+    }
+    return this.repairStrategy;
+  }
 
   /**
    * Parameter object for mutation strategies.
@@ -229,6 +241,10 @@ public class SolutionGenerator {
    */
   public Solution mutate(Solution model) {
     return this.getMutationStrategy().mutate(model);
+  }
+  
+  public void repair(Solution model) {
+    this.getRepairStrategy().repair(model);
   }
 
   /**

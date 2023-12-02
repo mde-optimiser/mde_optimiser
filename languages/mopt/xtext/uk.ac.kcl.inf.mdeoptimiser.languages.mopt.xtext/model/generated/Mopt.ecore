@@ -124,6 +124,7 @@
   <eClassifiers xsi:type="ecore:EEnum" name="EvolverType">
     <eLiterals name="MUTATE" literal="mutate"/>
     <eLiterals name="BREED" value="1" literal="breed"/>
+    <eLiterals name="REPAIR" value="2" literal="repair"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AlgorithmSpec">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
