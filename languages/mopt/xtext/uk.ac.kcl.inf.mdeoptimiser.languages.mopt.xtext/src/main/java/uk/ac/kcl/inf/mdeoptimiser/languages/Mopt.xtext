@@ -17,6 +17,7 @@ ProblemSpec:
 		metamodel=MetaModelSpec
 		model=ModelPathSpec
 		modelInitialiser=ModelInitialiserSpec?
+		problemParts=ProblemPartSpecifier?
 	"}"
 ;
 
@@ -83,6 +84,10 @@ ModelInitialiserSpec:
 	"initialise" "models" "using" initialiser=URL
 ;
 
+ProblemPartSpecifier:
+	"define" "problem" "part" "using" problemPartSpecifier=URL
+;
+
 RulegenSpec:
 	"mutate" "{" (nodeSpec=RulegenNode | edgeSpec=RulegenEdge) "}"
 ;
@@ -126,7 +131,7 @@ ParameterFunction:
 ;
 
 enum EvolverType:
-    MUTATE='mutate' | BREED='breed';
+    MUTATE='mutate' | BREED='breed' | REPAIR='repair';
 
 SignedInteger returns ecore::EIntegerObject:
   '-'? INT;

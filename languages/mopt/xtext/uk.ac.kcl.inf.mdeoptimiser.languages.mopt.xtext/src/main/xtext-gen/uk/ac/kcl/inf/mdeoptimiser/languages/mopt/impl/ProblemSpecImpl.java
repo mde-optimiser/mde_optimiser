@@ -17,6 +17,7 @@ import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.MetaModelSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ModelInitialiserSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ModelPathSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.MoptPackage;
+import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProblemPartSpecifier;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProblemSpec;
 
 /**
@@ -31,6 +32,7 @@ import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProblemSpec;
  *   <li>{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.ProblemSpecImpl#getMetamodel <em>Metamodel</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.ProblemSpecImpl#getModel <em>Model</em>}</li>
  *   <li>{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.ProblemSpecImpl#getModelInitialiser <em>Model Initialiser</em>}</li>
+ *   <li>{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.ProblemSpecImpl#getProblemParts <em>Problem Parts</em>}</li>
  * </ul>
  *
  * @generated
@@ -76,6 +78,16 @@ public class ProblemSpecImpl extends MinimalEObjectImpl.Container implements Pro
    * @ordered
    */
   protected ModelInitialiserSpec modelInitialiser;
+
+  /**
+   * The cached value of the '{@link #getProblemParts() <em>Problem Parts</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getProblemParts()
+   * @generated
+   * @ordered
+   */
+  protected ProblemPartSpecifier problemParts;
 
   /**
    * <!-- begin-user-doc -->
@@ -295,6 +307,54 @@ public class ProblemSpecImpl extends MinimalEObjectImpl.Container implements Pro
    * <!-- end-user-doc -->
    * @generated
    */
+  public ProblemPartSpecifier getProblemParts()
+  {
+    return problemParts;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetProblemParts(ProblemPartSpecifier newProblemParts, NotificationChain msgs)
+  {
+    ProblemPartSpecifier oldProblemParts = problemParts;
+    problemParts = newProblemParts;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MoptPackage.PROBLEM_SPEC__PROBLEM_PARTS, oldProblemParts, newProblemParts);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setProblemParts(ProblemPartSpecifier newProblemParts)
+  {
+    if (newProblemParts != problemParts)
+    {
+      NotificationChain msgs = null;
+      if (problemParts != null)
+        msgs = ((InternalEObject)problemParts).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MoptPackage.PROBLEM_SPEC__PROBLEM_PARTS, null, msgs);
+      if (newProblemParts != null)
+        msgs = ((InternalEObject)newProblemParts).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MoptPackage.PROBLEM_SPEC__PROBLEM_PARTS, null, msgs);
+      msgs = basicSetProblemParts(newProblemParts, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MoptPackage.PROBLEM_SPEC__PROBLEM_PARTS, newProblemParts, newProblemParts));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -308,6 +368,8 @@ public class ProblemSpecImpl extends MinimalEObjectImpl.Container implements Pro
         return basicSetModel(null, msgs);
       case MoptPackage.PROBLEM_SPEC__MODEL_INITIALISER:
         return basicSetModelInitialiser(null, msgs);
+      case MoptPackage.PROBLEM_SPEC__PROBLEM_PARTS:
+        return basicSetProblemParts(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -330,6 +392,8 @@ public class ProblemSpecImpl extends MinimalEObjectImpl.Container implements Pro
         return getModel();
       case MoptPackage.PROBLEM_SPEC__MODEL_INITIALISER:
         return getModelInitialiser();
+      case MoptPackage.PROBLEM_SPEC__PROBLEM_PARTS:
+        return getProblemParts();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -355,6 +419,9 @@ public class ProblemSpecImpl extends MinimalEObjectImpl.Container implements Pro
         return;
       case MoptPackage.PROBLEM_SPEC__MODEL_INITIALISER:
         setModelInitialiser((ModelInitialiserSpec)newValue);
+        return;
+      case MoptPackage.PROBLEM_SPEC__PROBLEM_PARTS:
+        setProblemParts((ProblemPartSpecifier)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -382,6 +449,9 @@ public class ProblemSpecImpl extends MinimalEObjectImpl.Container implements Pro
       case MoptPackage.PROBLEM_SPEC__MODEL_INITIALISER:
         setModelInitialiser((ModelInitialiserSpec)null);
         return;
+      case MoptPackage.PROBLEM_SPEC__PROBLEM_PARTS:
+        setProblemParts((ProblemPartSpecifier)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -404,6 +474,8 @@ public class ProblemSpecImpl extends MinimalEObjectImpl.Container implements Pro
         return model != null;
       case MoptPackage.PROBLEM_SPEC__MODEL_INITIALISER:
         return modelInitialiser != null;
+      case MoptPackage.PROBLEM_SPEC__PROBLEM_PARTS:
+        return problemParts != null;
     }
     return super.eIsSet(featureID);
   }

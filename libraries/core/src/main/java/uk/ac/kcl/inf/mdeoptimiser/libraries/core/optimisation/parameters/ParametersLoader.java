@@ -18,7 +18,7 @@ public class ParametersLoader {
   }
 
   /**
-   * Parse the parameter stored for the given key. Parse the value un a pair containing the
+   * Parse the parameter stored for the given key. Parse the value of a pair containing the
    * parameter value and any attributes.
    *
    * @param parameterKey

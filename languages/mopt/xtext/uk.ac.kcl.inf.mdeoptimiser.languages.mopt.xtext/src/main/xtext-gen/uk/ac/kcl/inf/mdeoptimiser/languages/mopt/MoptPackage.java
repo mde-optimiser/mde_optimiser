@@ -160,13 +160,22 @@ public interface MoptPackage extends EPackage
   int PROBLEM_SPEC__MODEL_INITIALISER = 3;
 
   /**
+   * The feature id for the '<em><b>Problem Parts</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROBLEM_SPEC__PROBLEM_PARTS = 4;
+
+  /**
    * The number of structural features of the '<em>Problem Spec</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROBLEM_SPEC_FEATURE_COUNT = 4;
+  int PROBLEM_SPEC_FEATURE_COUNT = 5;
 
   /**
    * The meta object id for the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.GoalSpecImpl <em>Goal Spec</em>}' class.
@@ -547,6 +556,34 @@ public interface MoptPackage extends EPackage
   int MODEL_INITIALISER_SPEC_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.ProblemPartSpecifierImpl <em>Problem Part Specifier</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.ProblemPartSpecifierImpl
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getProblemPartSpecifier()
+   * @generated
+   */
+  int PROBLEM_PART_SPECIFIER = 11;
+
+  /**
+   * The feature id for the '<em><b>Problem Part Specifier</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROBLEM_PART_SPECIFIER__PROBLEM_PART_SPECIFIER = 0;
+
+  /**
+   * The number of structural features of the '<em>Problem Part Specifier</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROBLEM_PART_SPECIFIER_FEATURE_COUNT = 1;
+
+  /**
    * The meta object id for the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.RulegenSpecImpl <em>Rulegen Spec</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -554,7 +591,7 @@ public interface MoptPackage extends EPackage
    * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getRulegenSpec()
    * @generated
    */
-  int RULEGEN_SPEC = 11;
+  int RULEGEN_SPEC = 12;
 
   /**
    * The feature id for the '<em><b>Node Spec</b></em>' containment reference.
@@ -591,7 +628,7 @@ public interface MoptPackage extends EPackage
    * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getRulegenNode()
    * @generated
    */
-  int RULEGEN_NODE = 12;
+  int RULEGEN_NODE = 13;
 
   /**
    * The feature id for the '<em><b>Node</b></em>' attribute.
@@ -628,7 +665,7 @@ public interface MoptPackage extends EPackage
    * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getRulegenEdge()
    * @generated
    */
-  int RULEGEN_EDGE = 13;
+  int RULEGEN_EDGE = 14;
 
   /**
    * The feature id for the '<em><b>Node</b></em>' attribute.
@@ -674,7 +711,7 @@ public interface MoptPackage extends EPackage
    * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getReportInterpreterSpec()
    * @generated
    */
-  int REPORT_INTERPRETER_SPEC = 14;
+  int REPORT_INTERPRETER_SPEC = 15;
 
   /**
    * The feature id for the '<em><b>Report Name</b></em>' attribute.
@@ -711,7 +748,7 @@ public interface MoptPackage extends EPackage
    * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getEvolverSpec()
    * @generated
    */
-  int EVOLVER_SPEC = 15;
+  int EVOLVER_SPEC = 16;
 
   /**
    * The feature id for the '<em><b>Evolver Type</b></em>' attribute.
@@ -766,7 +803,7 @@ public interface MoptPackage extends EPackage
    * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getMultiplicityRefinementSpec()
    * @generated
    */
-  int MULTIPLICITY_REFINEMENT_SPEC = 16;
+  int MULTIPLICITY_REFINEMENT_SPEC = 17;
 
   /**
    * The feature id for the '<em><b>Node</b></em>' attribute.
@@ -821,7 +858,7 @@ public interface MoptPackage extends EPackage
    * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getEvolverParameter()
    * @generated
    */
-  int EVOLVER_PARAMETER = 17;
+  int EVOLVER_PARAMETER = 18;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -867,7 +904,7 @@ public interface MoptPackage extends EPackage
    * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getParameterFunction()
    * @generated
    */
-  int PARAMETER_FUNCTION = 18;
+  int PARAMETER_FUNCTION = 19;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -904,7 +941,7 @@ public interface MoptPackage extends EPackage
    * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getAlgorithmSpec()
    * @generated
    */
-  int ALGORITHM_SPEC = 19;
+  int ALGORITHM_SPEC = 20;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -941,7 +978,7 @@ public interface MoptPackage extends EPackage
    * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getTerminationConditionSpec()
    * @generated
    */
-  int TERMINATION_CONDITION_SPEC = 20;
+  int TERMINATION_CONDITION_SPEC = 21;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -969,7 +1006,7 @@ public interface MoptPackage extends EPackage
    * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getParameterSearchSpec()
    * @generated
    */
-  int PARAMETER_SEARCH_SPEC = 21;
+  int PARAMETER_SEARCH_SPEC = 22;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -997,7 +1034,7 @@ public interface MoptPackage extends EPackage
    * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getParameter()
    * @generated
    */
-  int PARAMETER = 22;
+  int PARAMETER = 23;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1034,7 +1071,7 @@ public interface MoptPackage extends EPackage
    * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getParameterValue()
    * @generated
    */
-  int PARAMETER_VALUE = 23;
+  int PARAMETER_VALUE = 24;
 
   /**
    * The feature id for the '<em><b>Numeric</b></em>' attribute.
@@ -1089,7 +1126,7 @@ public interface MoptPackage extends EPackage
    * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getEvolverType()
    * @generated
    */
-  int EVOLVER_TYPE = 24;
+  int EVOLVER_TYPE = 25;
 
 
   /**
@@ -1199,6 +1236,17 @@ public interface MoptPackage extends EPackage
    * @generated
    */
   EReference getProblemSpec_ModelInitialiser();
+
+  /**
+   * Returns the meta object for the containment reference '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProblemSpec#getProblemParts <em>Problem Parts</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Problem Parts</em>'.
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProblemSpec#getProblemParts()
+   * @see #getProblemSpec()
+   * @generated
+   */
+  EReference getProblemSpec_ProblemParts();
 
   /**
    * Returns the meta object for class '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.GoalSpec <em>Goal Spec</em>}'.
@@ -1542,6 +1590,27 @@ public interface MoptPackage extends EPackage
    * @generated
    */
   EAttribute getModelInitialiserSpec_Initialiser();
+
+  /**
+   * Returns the meta object for class '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProblemPartSpecifier <em>Problem Part Specifier</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Problem Part Specifier</em>'.
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProblemPartSpecifier
+   * @generated
+   */
+  EClass getProblemPartSpecifier();
+
+  /**
+   * Returns the meta object for the attribute '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProblemPartSpecifier#getProblemPartSpecifier <em>Problem Part Specifier</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Problem Part Specifier</em>'.
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProblemPartSpecifier#getProblemPartSpecifier()
+   * @see #getProblemPartSpecifier()
+   * @generated
+   */
+  EAttribute getProblemPartSpecifier_ProblemPartSpecifier();
 
   /**
    * Returns the meta object for class '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.RulegenSpec <em>Rulegen Spec</em>}'.
@@ -2143,6 +2212,14 @@ public interface MoptPackage extends EPackage
     EReference PROBLEM_SPEC__MODEL_INITIALISER = eINSTANCE.getProblemSpec_ModelInitialiser();
 
     /**
+     * The meta object literal for the '<em><b>Problem Parts</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PROBLEM_SPEC__PROBLEM_PARTS = eINSTANCE.getProblemSpec_ProblemParts();
+
+    /**
      * The meta object literal for the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.GoalSpecImpl <em>Goal Spec</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2415,6 +2492,24 @@ public interface MoptPackage extends EPackage
      * @generated
      */
     EAttribute MODEL_INITIALISER_SPEC__INITIALISER = eINSTANCE.getModelInitialiserSpec_Initialiser();
+
+    /**
+     * The meta object literal for the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.ProblemPartSpecifierImpl <em>Problem Part Specifier</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.ProblemPartSpecifierImpl
+     * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.MoptPackageImpl#getProblemPartSpecifier()
+     * @generated
+     */
+    EClass PROBLEM_PART_SPECIFIER = eINSTANCE.getProblemPartSpecifier();
+
+    /**
+     * The meta object literal for the '<em><b>Problem Part Specifier</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PROBLEM_PART_SPECIFIER__PROBLEM_PART_SPECIFIER = eINSTANCE.getProblemPartSpecifier_ProblemPartSpecifier();
 
     /**
      * The meta object literal for the '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.impl.RulegenSpecImpl <em>Rulegen Spec</em>}' class.

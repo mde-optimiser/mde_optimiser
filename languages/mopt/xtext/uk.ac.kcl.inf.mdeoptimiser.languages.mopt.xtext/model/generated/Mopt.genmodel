@@ -9,6 +9,7 @@
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="Mopt.ecore#//EvolverType">
       <genEnumLiterals ecoreEnumLiteral="Mopt.ecore#//EvolverType/MUTATE"/>
       <genEnumLiterals ecoreEnumLiteral="Mopt.ecore#//EvolverType/BREED"/>
+      <genEnumLiterals ecoreEnumLiteral="Mopt.ecore#//EvolverType/REPAIR"/>
     </genEnums>
     <genClasses ecoreClass="Mopt.ecore#//Optimisation">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Mopt.ecore#//Optimisation/problem"/>
@@ -21,6 +22,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Mopt.ecore#//ProblemSpec/metamodel"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Mopt.ecore#//ProblemSpec/model"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Mopt.ecore#//ProblemSpec/modelInitialiser"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Mopt.ecore#//ProblemSpec/problemParts"/>
     </genClasses>
     <genClasses ecoreClass="Mopt.ecore#//GoalSpec">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Mopt.ecore#//GoalSpec/refinements"/>
@@ -62,6 +64,9 @@
     </genClasses>
     <genClasses ecoreClass="Mopt.ecore#//ModelInitialiserSpec">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Mopt.ecore#//ModelInitialiserSpec/initialiser"/>
+    </genClasses>
+    <genClasses ecoreClass="Mopt.ecore#//ProblemPartSpecifier">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Mopt.ecore#//ProblemPartSpecifier/problemPartSpecifier"/>
     </genClasses>
     <genClasses ecoreClass="Mopt.ecore#//RulegenSpec">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Mopt.ecore#//RulegenSpec/nodeSpec"/>

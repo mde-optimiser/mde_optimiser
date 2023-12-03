@@ -4,9 +4,11 @@ import java.lang.reflect.InvocationTargetException;
 import org.eclipse.emf.ecore.EPackage;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.MetaModelSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ModelInitialiserSpec;
+import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProblemPartSpecifier;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ReportInterpreterSpec;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.IGuidanceFunction;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.IModelInitialiser;
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.IProblemPartSpecifier;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.evolvers.parameters.EvolverParameterAdapter;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.evolvers.parameters.IEvolverParametersFunction;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.guidance.GuidanceFunctionAdapter;
@@ -74,6 +76,17 @@ public class LanguageClassLoader {
    */
   public static IModelInitialiser load(ModelInitialiserSpec functionSpec) {
     return (IModelInitialiser) load(functionSpec.getInitialiser());
+  }
+
+  /**
+   * Load a class instance specifying the problem part of the model from a specified file in the
+   * mopt file.
+   *
+   * @param functionSpec object containing the interpreted mopt specification for this class.
+   * @return an instance of the loaded class
+   */
+  public static IProblemPartSpecifier load(ProblemPartSpecifier functionSpec) {
+    return (IProblemPartSpecifier) load(functionSpec.getProblemPartSpecifier());
   }
 
   private static Class<?> loadClass(String name) {

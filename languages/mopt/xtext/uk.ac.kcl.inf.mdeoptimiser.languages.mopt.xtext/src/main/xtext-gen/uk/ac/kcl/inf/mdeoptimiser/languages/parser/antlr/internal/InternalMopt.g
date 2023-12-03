@@ -256,9 +256,28 @@ ruleProblemSpec returns [EObject current=null]
 				}
 			)
 		)?
-		otherlv_6='}'
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getProblemSpecAccess().getProblemPartsProblemPartSpecifierParserRuleCall_6_0());
+				}
+				lv_problemParts_6_0=ruleProblemPartSpecifier
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getProblemSpecRule());
+					}
+					set(
+						$current,
+						"problemParts",
+						lv_problemParts_6_0,
+						"uk.ac.kcl.inf.mdeoptimiser.languages.Mopt.ProblemPartSpecifier");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)?
+		otherlv_7='}'
 		{
-			newLeafNode(otherlv_6, grammarAccess.getProblemSpecAccess().getRightCurlyBracketKeyword_6());
+			newLeafNode(otherlv_7, grammarAccess.getProblemSpecAccess().getRightCurlyBracketKeyword_7());
 		}
 	)
 ;
@@ -974,6 +993,59 @@ ruleModelInitialiserSpec returns [EObject current=null]
 						$current,
 						"initialiser",
 						lv_initialiser_3_0,
+						"uk.ac.kcl.inf.mdeoptimiser.languages.Mopt.URL");
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleProblemPartSpecifier
+entryRuleProblemPartSpecifier returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getProblemPartSpecifierRule()); }
+	iv_ruleProblemPartSpecifier=ruleProblemPartSpecifier
+	{ $current=$iv_ruleProblemPartSpecifier.current; }
+	EOF;
+
+// Rule ProblemPartSpecifier
+ruleProblemPartSpecifier returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='define'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getProblemPartSpecifierAccess().getDefineKeyword_0());
+		}
+		otherlv_1='problem'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getProblemPartSpecifierAccess().getProblemKeyword_1());
+		}
+		otherlv_2='part'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getProblemPartSpecifierAccess().getPartKeyword_2());
+		}
+		otherlv_3='using'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getProblemPartSpecifierAccess().getUsingKeyword_3());
+		}
+		(
+			(
+				lv_problemPartSpecifier_4_0=RULE_URL
+				{
+					newLeafNode(lv_problemPartSpecifier_4_0, grammarAccess.getProblemPartSpecifierAccess().getProblemPartSpecifierURLTerminalRuleCall_4_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getProblemPartSpecifierRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"problemPartSpecifier",
+						lv_problemPartSpecifier_4_0,
 						"uk.ac.kcl.inf.mdeoptimiser.languages.Mopt.URL");
 				}
 			)
@@ -8445,6 +8517,14 @@ ruleEvolverType returns [Enumerator current=null]
 			{
 				$current = grammarAccess.getEvolverTypeAccess().getBREEDEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
 				newLeafNode(enumLiteral_1, grammarAccess.getEvolverTypeAccess().getBREEDEnumLiteralDeclaration_1());
+			}
+		)
+		    |
+		(
+			enumLiteral_2='repair'
+			{
+				$current = grammarAccess.getEvolverTypeAccess().getREPAIREnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_2, grammarAccess.getEvolverTypeAccess().getREPAIREnumLiteralDeclaration_2());
 			}
 		)
 	)

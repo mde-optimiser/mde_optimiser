@@ -32,6 +32,7 @@ import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.Parameter;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterFunction;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterSearchSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ParameterValue;
+import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProblemPartSpecifier;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProblemSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ReportInterpreterSpec;
 import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.RulegenEdge;
@@ -125,6 +126,13 @@ public class MoptPackageImpl extends EPackageImpl implements MoptPackage
    * @generated
    */
   private EClass modelInitialiserSpecEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass problemPartSpecifierEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -388,6 +396,16 @@ public class MoptPackageImpl extends EPackageImpl implements MoptPackage
   public EReference getProblemSpec_ModelInitialiser()
   {
     return (EReference)problemSpecEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getProblemSpec_ProblemParts()
+  {
+    return (EReference)problemSpecEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -708,6 +726,26 @@ public class MoptPackageImpl extends EPackageImpl implements MoptPackage
   public EAttribute getModelInitialiserSpec_Initialiser()
   {
     return (EAttribute)modelInitialiserSpecEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getProblemPartSpecifier()
+  {
+    return problemPartSpecifierEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getProblemPartSpecifier_ProblemPartSpecifier()
+  {
+    return (EAttribute)problemPartSpecifierEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1211,6 +1249,7 @@ public class MoptPackageImpl extends EPackageImpl implements MoptPackage
     createEReference(problemSpecEClass, PROBLEM_SPEC__METAMODEL);
     createEReference(problemSpecEClass, PROBLEM_SPEC__MODEL);
     createEReference(problemSpecEClass, PROBLEM_SPEC__MODEL_INITIALISER);
+    createEReference(problemSpecEClass, PROBLEM_SPEC__PROBLEM_PARTS);
 
     goalSpecEClass = createEClass(GOAL_SPEC);
     createEReference(goalSpecEClass, GOAL_SPEC__REFINEMENTS);
@@ -1252,6 +1291,9 @@ public class MoptPackageImpl extends EPackageImpl implements MoptPackage
 
     modelInitialiserSpecEClass = createEClass(MODEL_INITIALISER_SPEC);
     createEAttribute(modelInitialiserSpecEClass, MODEL_INITIALISER_SPEC__INITIALISER);
+
+    problemPartSpecifierEClass = createEClass(PROBLEM_PART_SPECIFIER);
+    createEAttribute(problemPartSpecifierEClass, PROBLEM_PART_SPECIFIER__PROBLEM_PART_SPECIFIER);
 
     rulegenSpecEClass = createEClass(RULEGEN_SPEC);
     createEReference(rulegenSpecEClass, RULEGEN_SPEC__NODE_SPEC);
@@ -1360,6 +1402,7 @@ public class MoptPackageImpl extends EPackageImpl implements MoptPackage
     initEReference(getProblemSpec_Metamodel(), this.getMetaModelSpec(), null, "metamodel", null, 0, 1, ProblemSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProblemSpec_Model(), this.getModelPathSpec(), null, "model", null, 0, 1, ProblemSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProblemSpec_ModelInitialiser(), this.getModelInitialiserSpec(), null, "modelInitialiser", null, 0, 1, ProblemSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProblemSpec_ProblemParts(), this.getProblemPartSpecifier(), null, "problemParts", null, 0, 1, ProblemSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(goalSpecEClass, GoalSpec.class, "GoalSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getGoalSpec_Refinements(), this.getMultiplicityRefinementSpec(), null, "refinements", null, 0, -1, GoalSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1401,6 +1444,9 @@ public class MoptPackageImpl extends EPackageImpl implements MoptPackage
 
     initEClass(modelInitialiserSpecEClass, ModelInitialiserSpec.class, "ModelInitialiserSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getModelInitialiserSpec_Initialiser(), ecorePackage.getEString(), "initialiser", null, 0, 1, ModelInitialiserSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(problemPartSpecifierEClass, ProblemPartSpecifier.class, "ProblemPartSpecifier", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getProblemPartSpecifier_ProblemPartSpecifier(), ecorePackage.getEString(), "problemPartSpecifier", null, 0, 1, ProblemPartSpecifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(rulegenSpecEClass, RulegenSpec.class, "RulegenSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getRulegenSpec_NodeSpec(), this.getRulegenNode(), null, "nodeSpec", null, 0, 1, RulegenSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1464,6 +1510,7 @@ public class MoptPackageImpl extends EPackageImpl implements MoptPackage
     initEEnum(evolverTypeEEnum, EvolverType.class, "EvolverType");
     addEEnumLiteral(evolverTypeEEnum, EvolverType.MUTATE);
     addEEnumLiteral(evolverTypeEEnum, EvolverType.BREED);
+    addEEnumLiteral(evolverTypeEEnum, EvolverType.REPAIR);
 
     // Create resource
     createResource(eNS_URI);

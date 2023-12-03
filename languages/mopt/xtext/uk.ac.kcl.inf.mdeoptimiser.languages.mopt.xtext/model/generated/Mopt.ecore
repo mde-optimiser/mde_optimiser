@@ -21,6 +21,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="modelInitialiser" eType="#//ModelInitialiserSpec"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="problemParts" eType="#//ProblemPartSpecifier"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GoalSpec">
     <eStructuralFeatures xsi:type="ecore:EReference" name="refinements" upperBound="-1"
@@ -72,6 +74,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="ModelInitialiserSpec">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="initialiser" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProblemPartSpecifier">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="problemPartSpecifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RulegenSpec">
     <eStructuralFeatures xsi:type="ecore:EReference" name="nodeSpec" eType="#//RulegenNode"
         containment="true"/>
@@ -119,6 +124,7 @@
   <eClassifiers xsi:type="ecore:EEnum" name="EvolverType">
     <eLiterals name="MUTATE" literal="mutate"/>
     <eLiterals name="BREED" value="1" literal="breed"/>
+    <eLiterals name="REPAIR" value="2" literal="repair"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AlgorithmSpec">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
