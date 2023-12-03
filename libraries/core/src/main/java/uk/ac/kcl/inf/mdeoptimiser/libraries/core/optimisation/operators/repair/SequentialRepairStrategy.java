@@ -9,9 +9,8 @@ import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.guidan
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.henshin.HenshinExecutor;
 
 /**
- * Tries to applies all repair operators in the order of their definition. Each operator is applied as often as
- * possible. If an operator is not applicable the repair continues with the next operator. applicable but continues with
- * the next one.
+ * Tries to apply all repair operators in the order of their definition. Each operator is applied as often as
+ * possible. If an operator is not applicable the repair continues with the next operator.
  * 
  * @author S. John
  *
