@@ -6,9 +6,9 @@ import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.guidan
 
 public class ProblemPartCrossover implements CrossoverStrategy {
 
-  private crossover.ProblemPartCrossover crossover;
+  private de.uni_marburg.mdo_over.crossover.ProblemPartCrossover crossover;
 
-  public ProblemPartCrossover(crossover.ProblemPartCrossover crossover) {
+  public ProblemPartCrossover(de.uni_marburg.mdo_over.crossover.ProblemPartCrossover crossover) {
     this.crossover = crossover;
   }
 

@@ -25,7 +25,7 @@ public class CrossoverStrategyFactory {
           var problemPartSpecifier = searchSpec.getProblemPartSpecifier();
           var problemParts = problemPartSpecifier.getProblemPart(searchSpec.getMetamodel());
           var engine = searchOperatorConfiguration.getHenshinExecutor().getEngine();
-          var crossoverImpl = new crossover.ProblemPartCrossover(problemParts, engine);
+          var crossoverImpl = new de.uni_marburg.mdo_over.crossover.ProblemPartCrossover(problemParts, engine);
           crossoverStrategy = new ProblemPartCrossover(crossoverImpl);
           break;
 
