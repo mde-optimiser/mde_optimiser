@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project name="mopt.xtext" default="default">
     <import file="../../build/ant/build-common.xml"/>
+	<import file="../../dependencies.xml"/>
 
 	<condition property="isWindows">
 		<os family="windows" />
@@ -24,7 +25,7 @@
         </exec>
     </target>
 
-    <target name="maven.build" depends="render.target.template" unless="isWindows">
+    <target name="maven.build" depends="render.target.template, unix.directory.format" unless="isWindows">
         <exec dir="." executable="mvn" failifexecutionfails="true" failonerror="true">
             <arg value="-f" />
             <arg value="src/pom.xml"/>
@@ -40,7 +41,7 @@
 
     <!-- Render target file from a template to point to the local maven repository -->
 
-    <target name="render.target.template">
+    <target name="render.target.template" depends="unix.directory.format, windows.directory.format">
 
         <!-- Copy task that replaces values and copies the files -->
         <copy todir="src/uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.target/" verbose="true" overwrite="true" failonerror="true">
