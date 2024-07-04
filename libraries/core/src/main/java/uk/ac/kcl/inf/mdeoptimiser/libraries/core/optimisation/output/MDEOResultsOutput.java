@@ -64,7 +64,7 @@ public class MDEOResultsOutput {
 
     // When running custom batches no date is needed
     var outcomePath =
-        Paths.get(projectRoot.toString(), String.format("mdeo-results/experiment-%s/", moptFile));
+        Paths.get(projectRoot.toString(), String.format("mdeo-results/experiment-%s/", moptFile.getFileName()));
 
     if (customBatch == null) {
       var experimentDate = new SimpleDateFormat("yyMMdd-HHmmss").format(experimentStartTime);
