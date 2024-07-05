@@ -78,16 +78,20 @@ public class SystemInformationDescriptor implements ResultsDescriptor {
    * @return string containing hardware information
    */
   public String getHardwareInfo() {
-    var hardwareAbstractionLayer = systemInfo.getHardware();
-    var centralProcessor = hardwareAbstractionLayer.getProcessor();
-    return String.join(
-        "\n",
-        String.format("Processor: %s", centralProcessor.getName()),
-        String.format(
-            "Processor Cores: %s physical %s logical",
-            centralProcessor.getPhysicalProcessorCount(),
-            centralProcessor.getLogicalProcessorCount()),
-        String.format(
-            "Memory: %s GB", hardwareAbstractionLayer.getMemory().getTotal() / 1073741824d));
+	try {
+		var hardwareAbstractionLayer = systemInfo.getHardware();
+		var centralProcessor = hardwareAbstractionLayer.getProcessor();
+		return String.join(
+			"\n",
+			String.format("Processor: %s", centralProcessor.getName()),
+			String.format(
+				"Processor Cores: %s physical %s logical",
+				centralProcessor.getPhysicalProcessorCount(),
+				centralProcessor.getLogicalProcessorCount()),
+			String.format(
+				"Memory: %s GB", hardwareAbstractionLayer.getMemory().getTotal() / 1073741824d));
+	} catch (Exception e) {
+		return "Hardware info not available";
+	}
   }
 }
