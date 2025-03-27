@@ -26,10 +26,9 @@ jobs:
           ant -noinput -buildfile build.xml
 
   deploy:
-    # Temporarily removing the condition, so can test...
-    # # Build and deploy when merging
-    # # Needs to be in a full action because file workspace isn't shared between jobs
-    # if: ${{ github.event.pull_request.merged }}
+    # Build and deploy when merging
+    # Needs to be in a full job because file workspace isn't shared between jobs, so cannot easily refactor
+    if: ${{ github.event.pull_request.merged }}
     runs-on: ubuntu-latest
 
     steps:
@@ -50,6 +49,5 @@ jobs:
         run: |
           /usr/bin/chmod +x ./build/publish-artifacts.sh
           /usr/bin/bash ./build/publish-artifacts.sh
-        # run: echo "Would deploy at this point..."
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
