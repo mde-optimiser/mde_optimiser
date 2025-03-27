@@ -26,15 +26,16 @@ jobs:
 
   deploy:
     needs: build
-    if: ${{ github.event.pull_request.merged }}
+    # Temporarily removing the condition, so can test...
+    # if: ${{ github.event.pull_request.merged }}
     runs-on: ubuntu-latest
 
     steps:
     - name: Deploy files
       shell: bash
-      # run: |
-      #   /usr/bin/chmod +x ./build/publish-artifacts.sh
-      #   /usr/bin/bash ./build/publish-artifacts.sh
-      run: echo "Would deploy at this point..."
+      run: |
+        /usr/bin/chmod +x ./build/publish-artifacts.sh
+        /usr/bin/bash ./build/publish-artifacts.sh
+      # run: echo "Would deploy at this point..."
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
