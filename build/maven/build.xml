@@ -21,7 +21,8 @@
 	<target name="maven.build" unless="isWindows">
         <exec dir="." executable="mvn" failifexecutionfails="true" failonerror="true">
             <arg value="clean" />
-            <arg value="deploy" />
+            <!-- TODO: Consider putting the next into a separate target and use something like compile instead to avoid packaging everything on every commit to a PR. -->
+            <arg value="deploy" /> 
             <arg value="--quiet" />
         </exec>
     </target>
