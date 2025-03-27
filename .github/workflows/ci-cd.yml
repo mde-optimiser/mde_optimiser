@@ -1,13 +1,13 @@
-# Build a PR merging into the develop branch and deploy to the develop update site if PR is merged.
-name: Dev Build
+# Build and potentially deploy code on PRs merging into the develop or master branch
+name: CI/CD
 
 on:
   pull_request:
-    branches: [ develop ]
-    types: [ synchronize, closed ] # Run when there are updates to the code in the PR or when the PR is closed and merged
+    branches: [ master, develop ]
+    types: [assigned, opened, synchronize, reopened, closed ] # Run when there are updates to the code in the PR or when the PR is closed and merged
 
 jobs:
-  build:
+  build: # Always build... 
     runs-on: ubuntu-latest
 
     steps:
