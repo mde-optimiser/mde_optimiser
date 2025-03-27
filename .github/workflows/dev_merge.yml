@@ -1,16 +1,13 @@
-# This workflow will build a Java project with Ant
-# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-ant
-
+# Build a PR merging into the develop branch and deploy to the develop update site if PR is merged.
 name: Dev Build
 
 on:
   pull_request:
     branches: [ develop ]
-    types: [ closed ]
+    types: [ synchronize, closed ] # Run when there are updates to the code in the PR or when the PR is closed and merged
 
 jobs:
-  deploy:
-    if: ${{ github.event.pull_request.merged }}
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -26,10 +23,18 @@ jobs:
         working-directory: ./build/ant
         run: |
           ant -noinput -buildfile build.xml
+
+  deploy:
+    needs: build
+    if: ${{ github.event.pull_request.merged }}
+    runs-on: ubuntu-latest
+
+    steps:
     - name: Deploy files
       shell: bash
-      run: |
-        /usr/bin/chmod +x ./build/publish-artifacts.sh
-        /usr/bin/bash ./build/publish-artifacts.sh
+      # run: |
+      #   /usr/bin/chmod +x ./build/publish-artifacts.sh
+      #   /usr/bin/bash ./build/publish-artifacts.sh
+      run: echo "Would deploy at this point..."
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
