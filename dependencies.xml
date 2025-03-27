@@ -11,10 +11,14 @@
 			<pathelement path="${dependencies.basedir.windows}" />
 		</path>
 		<pathconvert targetos="unix" property="dependencies.basedir" refid="dependencies.basedir.path"/>
+		<echo message="Using windows directory format: ${line.separator}"/>
+		<echo message="dependencies.basedir = ${dependencies.basedir}"/>
     </target>
 	
 	<target name="unix.directory.format" unless="isWindows">
 	     <dirname property="dependencies.basedir" file="${ant.file.dependencies}"/>
+		 <echo message="Using unix directory format: ${line.separator}"/>
+		 <echo message="dependencies.basedir = ${dependencies.basedir}"/>
     </target>
 
     <!-- ================================================================== -->
