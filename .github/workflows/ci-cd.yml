@@ -34,6 +34,7 @@ jobs:
     - name: Deploy files
       shell: bash
       run: |
+        pwd
         /usr/bin/chmod +x ./build/publish-artifacts.sh
         /usr/bin/bash ./build/publish-artifacts.sh
       # run: echo "Would deploy at this point..."
