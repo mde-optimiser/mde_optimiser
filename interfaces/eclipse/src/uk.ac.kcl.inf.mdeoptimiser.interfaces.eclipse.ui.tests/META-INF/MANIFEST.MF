@@ -14,5 +14,5 @@ Require-Bundle: uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.ui,
  org.eclipse.xtext.xbase.junit,
  org.eclipse.core.runtime,
  org.eclipse.ui.workbench;resolution:=optional
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: uk.ac.kcl.inf.mdeoptimiser.languages.ui.tests;x-internal=true

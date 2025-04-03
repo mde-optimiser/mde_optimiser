@@ -42,7 +42,7 @@ Require-Bundle: uk.ac.kcl.inf.mdeoptimiser.languages.mopt.xtext,
  org.eclipse.xtend.lib.macro,
  org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
 Import-Package: org.apache.log4j
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: uk.ac.kcl.inf.mdeoptimiser.languages.ui.contentassist,
  uk.ac.kcl.inf.mdeoptimiser.languages.ui.quickfix,
  uk.ac.kcl.inf.mdeoptimiser.languages.ui.editor,
