@@ -8,12 +8,12 @@
 	<includeBaseDirectory>false</includeBaseDirectory>
 	<fileSets>
 		<fileSet>
-			<outputDirectory>/</outputDirectory>
 			<directory>target/classes</directory>
+			<outputDirectory>./</outputDirectory>
 		</fileSet>
 		<fileSet>
-			<outputDirectory>model/generated</outputDirectory>
 			<directory>model/generated</directory>
+			<outputDirectory>model/generated</outputDirectory>
 		</fileSet>
 	</fileSets>
 </assembly>
