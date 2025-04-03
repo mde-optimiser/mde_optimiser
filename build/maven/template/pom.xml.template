@@ -31,8 +31,8 @@
     <repositories.output.m2.mdeoptimiser>${repositories.output.root}/m2/m2.mdeoptimiser.repository</repositories.output.m2.mdeoptimiser>
     <repositories.output.p2.mdeoptimiser>${repositories.output.root}/p2/p2.mdeoptimiser.repository</repositories.output.p2.mdeoptimiser>
     <repositories.output.p2.eclipse>${repositories.output.root}/p2/p2.eclipse.repository</repositories.output.p2.eclipse>
-    <xtextVersion>2.17.0</xtextVersion>
-    <xtend.version>2.17.0</xtend.version>
+    <xtextVersion>2.38.0</xtextVersion>
+    <xtend.version>2.38.0</xtend.version>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
