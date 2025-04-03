@@ -6,6 +6,15 @@
 		<os family="windows" />
 	</condition>
 
+    <!-- Set skipTests based on environment variable or property -->
+    <!-- So, running eg: ant -DskipTests=true OR export SKIP_TESTS=true && ant (to set an env var - can be used in github to skip for certain builds/branches) -->
+    <condition property="doSkipTests" value='"-Dmaven.test.skip"' else="">
+        <or>
+            <isset property="env.SKIP_TESTS"/>
+            <isset property="skipTests"/>
+        </or>
+    </condition>
+
     <target name="dist" depends="render.maven.properties.template, maven.build, maven.build.windows"/>
 
     <target name="maven.build.windows" if="isWindows">
@@ -15,15 +24,16 @@
             <arg value="clean" />
             <arg value="deploy" />
             <arg value="--quiet" />
+            <arg value="${doSkipTests}" />
         </exec>
     </target>
 	
 	<target name="maven.build" unless="isWindows">
         <exec dir="." executable="mvn" failifexecutionfails="true" failonerror="true">
             <arg value="clean" />
-            <!-- TODO: Consider putting the next into a separate target and use something like compile instead to avoid packaging everything on every commit to a PR. -->
             <arg value="deploy" /> 
             <arg value="--quiet" />
+            <arg value="${doSkipTests}" />
         </exec>
     </target>
 
