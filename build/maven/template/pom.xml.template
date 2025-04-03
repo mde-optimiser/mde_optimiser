@@ -35,6 +35,7 @@
     <xtend.version>2.38.0</xtend.version>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
+    <maven.compiler.release>17</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit-jupiter.version>5.4.1</junit-jupiter.version>
   </properties>
