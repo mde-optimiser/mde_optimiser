@@ -14,7 +14,7 @@
 		<maven.compiler.target>17</maven.compiler.target>
 	    <maven.compiler.release>17</maven.compiler.release>
 		<!-- Tycho settings -->
-		<tycho-version>1.4.0</tycho-version>
+		<tycho-version>4.0.11</tycho-version>
 		<!-- Define overridable properties for tycho-surefire-plugin -->
 		<platformSystemProperties></platformSystemProperties>
 		<moduleProperties></moduleProperties>
@@ -61,15 +61,15 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.eclipse.tycho.extras</groupId>
-				<artifactId>tycho-source-feature-plugin</artifactId>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-source-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<executions>
 					<execution>
-						<id>source-feature</id>
+						<id>feature-source</id>
 						<phase>package</phase>
 						<goals>
-							<goal>source-feature</goal>
+							<goal>feature-source</goal>
 						</goals>
 					</execution>
 				</executions>
@@ -93,6 +93,7 @@
 				<artifactId>target-platform-configuration</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
+					<executionEnvironment>JavaSE-17</executionEnvironment>
 					<target>
 						<artifact>
 							<groupId>uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse</groupId>
@@ -261,6 +262,7 @@
 					<configuration>
 						<compilerArgument>-err:-forbidden</compilerArgument>
 						<useProjectSettings>false</useProjectSettings>
+						<compilerVersion>1.17</compilerVersion>
 					</configuration>
 				</plugin>
 				<!-- to skip running (and compiling) tests use commandline flag: -Dmaven.test.skip
