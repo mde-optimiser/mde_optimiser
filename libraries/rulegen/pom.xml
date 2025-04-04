@@ -85,7 +85,7 @@
 		<dependency>
 			<groupId>org.eclipse.emf</groupId>
 			<artifactId>org.eclipse.emf.henshin.model</artifactId>
-			<version>1.7.0</version>
+			<version>1.8.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.sidiff.serge</groupId>
@@ -110,13 +110,19 @@
 		<dependency>
 			<groupId>org.eclipse.xtext</groupId>
 			<artifactId>org.eclipse.xtext.testing</artifactId>
-			<version>${xtend.version}</version>
+			<version>${xtextVersion}</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.hamcrest/java-hamcrest -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>java-hamcrest</artifactId>
 			<version>2.0.0.0</version>
+			<scope>test</scope>
+		</dependency> -->
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest</artifactId>
+			<version>3.0</version>
 			<scope>test</scope>
 		</dependency>
 
