@@ -29,7 +29,7 @@
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>target-platform-configuration</artifactId>
 				<configuration>
-					<executionEnvironment>JavaSE-17</executionEnvironment>
+					<!-- <executionEnvironment>JavaSE-17</executionEnvironment> -->
 					<dependency-resolution>
 						<extraRequirements>
 							<!-- to get the org.eclipse.osgi.compatibility.state plugin
