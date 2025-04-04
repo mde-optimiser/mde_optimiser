@@ -40,7 +40,7 @@
 
     <!-- Render target file from a template to point to the local maven repository -->
 
-    <target name="render.target.template">
+    <target name="render.target.template" depends="windows.directory.format, unix.directory.format">
 
         <!-- Copy task that replaces values and copies the files -->
         <copy todir="src/uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse.target/" verbose="true" overwrite="true" failonerror="true">
