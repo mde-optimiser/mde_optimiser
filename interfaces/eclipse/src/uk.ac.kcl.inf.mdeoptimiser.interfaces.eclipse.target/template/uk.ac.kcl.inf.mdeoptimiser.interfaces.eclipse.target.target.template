@@ -47,6 +47,13 @@
 			<repository location="http://download.eclipse.org/modeling/emft/henshin/updates/release"/>
 		</location>
 
+		<!-- TODO: Quite old stuff, but currently required by some of the Henshin stuff. Could, alternatively, only load the Henshin bundles we actually depend on.
+		     In particular, henshin.text depends on javax.annotation, but we don't strictly need it. -->
+		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+			<unit id="javax.annotation" version="0.0.0"/>
+			<repository location="https://download.eclipse.org/oomph/simrel-orbit/release/4.28.0"/>
+		</location>
+
 		<!-- Also need to provide access to some Papyrus packages, which Henshin depends on... -->		
 		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 			<unit id="org.eclipse.papyrus.infra.gmfdiag.tooling.runtime" version="0.0.0"/>
