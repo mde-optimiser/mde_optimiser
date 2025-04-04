@@ -262,7 +262,10 @@
 					<configuration>
 						<compilerArgument>-err:-forbidden</compilerArgument>
 						<useProjectSettings>false</useProjectSettings>
-						<compilerVersion>1.17</compilerVersion>
+						<!-- Eclipse 2025-03 requires JavaSE-21. We're compiling all our code to work against 1.17, 
+						     but need to compile the Eclipse stuff against 21. -->
+						<compilerVersion>1.21</compilerVersion>
+						<fork>true</fork>
 					</configuration>
 				</plugin>
 				<!-- to skip running (and compiling) tests use commandline flag: -Dmaven.test.skip
