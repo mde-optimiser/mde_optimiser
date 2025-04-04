@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<project name="mopt.xtext" default="default">
+<project name="mopt.xtext" 
+         default="default"
+         xmlns:if="ant:if"
+         xmlns:unless="ant:unless">
     <import file="../ant/build-common.xml"/>
 
 	<condition property="isWindows">
 		<os family="windows" />
 	</condition>
 
-    <!-- Set skipTests based on environment variable or property -->
+    <!-- Set doSkipTests based on environment variable or property -->
     <!-- So, running eg: ant -DskipTests=true OR export SKIP_TESTS=true && ant (to set an env var - can be used in github to skip for certain builds/branches) -->
-    <condition property="doSkipTests" value='"-Dmaven.test.skip"' else="">
+    <condition property="doSkipTests" value="true">
         <or>
             <isset property="env.SKIP_TESTS"/>
             <isset property="skipTests"/>
+        </or>
+    </condition>
+
+    <!-- Enable skipping of clean to speed up dev builds -->
+    <condition property="doSkipClean" value="true">
+        <or>
+            <isset property="env.SKIP_CLEAN"/>
+            <isset property="skipClean"/>
         </or>
     </condition>
 
@@ -21,19 +32,19 @@
         <exec dir="." executable="cmd" failifexecutionfails="true" failonerror="true">
 			<arg value="/c"/>
 			<arg value="mvn"/>
-            <arg value="clean" />
+            <arg value="clean" if:blank="${doSkipClean}" />
             <arg value="deploy" />
             <arg value="--quiet" />
-            <arg value="${doSkipTests}" />
+            <arg value='"-Dmaven.test.skip"' unless:blank="${doSkipTests}" />
         </exec>
     </target>
 	
 	<target name="maven.build" unless="isWindows">
         <exec dir="." executable="mvn" failifexecutionfails="true" failonerror="true">
-            <arg value="clean" />
+            <arg value="clean" if:blank="${doSkipClean}" />
             <arg value="deploy" /> 
             <arg value="--quiet" />
-            <arg value="${doSkipTests}" />
+            <arg value="-Dmaven.test.skip" unless:blank="${doSkipTests}" />
         </exec>
     </target>
 
