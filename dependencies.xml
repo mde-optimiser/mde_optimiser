@@ -1,35 +1,33 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project name="dependencies" default="depend.all">
-    
-	<condition property="isWindows">
-		<os family="windows" />
-	</condition>
-	
-	<target name="windows.directory.format" if="isWindows">
-		<dirname property="dependencies.basedir.windows" file="${ant.file.dependencies}"/>
-        <path id="dependencies.basedir.path">
-			<pathelement path="${dependencies.basedir.windows}" />
-		</path>
-		<pathconvert targetos="unix" property="dependencies.basedir" refid="dependencies.basedir.path"/>
-    </target>
-	
-	<target name="unix.directory.format" unless="isWindows">
-	     <dirname property="dependencies.basedir" file="${ant.file.dependencies}"/>
-    </target>
+        <condition property="isWindows">
+                <os family="windows" />
+        </condition>
 
-    <!-- ================================================================== -->
-    <target name="depend.all" depends="depend.maven, depend.eclipse">
-    </target>
+        <target name="windows.directory.format" if="isWindows">
+                <dirname property="dependencies.basedir.windows" file="${ant.file.dependencies}"/>
+                <path id="dependencies.basedir.path">
+                        <pathelement path="${dependencies.basedir.windows}" />
+                </path>
+                <pathconvert targetos="unix" property="dependencies.basedir" refid="dependencies.basedir.path"/>
+        </target>
 
-    <!-- Maven Builds -->
-    <!-- ================================================================== -->
-    <target name="depend.maven" depends="windows.directory.format, unix.directory.format">
-            <ant dir="${dependencies.basedir}/build/maven" inheritAll="true"/>
-    </target>
+        <target name="unix.directory.format" unless="isWindows">
+                <dirname property="dependencies.basedir" file="${ant.file.dependencies}"/>
+        </target>
 
-    <!-- Eclipse Builds -->
-    <target name="depend.eclipse" depends="depend.maven">
-            <ant dir="${dependencies.basedir}/interfaces/eclipse" inheritAll="true"/>
-    </target>
+        <!-- ================================================================== -->
+        <target name="depend.all" depends="depend.maven, depend.eclipse">
+        </target>
 
+        <!-- Maven Builds -->
+        <!-- ================================================================== -->
+        <target name="depend.maven" depends="windows.directory.format, unix.directory.format">
+                <ant dir="${dependencies.basedir}/build/maven" inheritAll="true"/>
+        </target>
+
+        <!-- Eclipse Builds -->
+        <target name="depend.eclipse" depends="depend.maven">
+                <ant dir="${dependencies.basedir}/interfaces/eclipse" inheritAll="true"/>
+        </target>
 </project>
