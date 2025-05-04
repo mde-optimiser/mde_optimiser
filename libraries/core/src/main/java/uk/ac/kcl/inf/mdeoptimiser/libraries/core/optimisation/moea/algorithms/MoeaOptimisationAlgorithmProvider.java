@@ -13,6 +13,7 @@ import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.executor.SolutionG
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.operators.MoeaOptimisationCrossoverVariation;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.operators.MoeaOptimisationMutationVariation;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.operators.MoeaProbabilisticVariation;
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.moea.operators.MoeaRepairingOptimisationVariation;
 
 public class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
 
@@ -53,45 +54,43 @@ public class MoeaOptimisationAlgorithmProvider extends AlgorithmProvider {
   public Variation getVariation(Properties properties) {
 
     var algorithmVariation = new AlgorithmVariation((Parameter) properties.get("variationType"));
-
+    var solutionGenerator = (SolutionGenerator) properties.get("solutionGenerator");
     // Check if we have weighted genetic variation
     // TODO: This needs to be refactored and fixed
     if (algorithmVariation.isProbabilisticVariation()) {
       var crossoverVariation =
-          new MoeaOptimisationCrossoverVariation(
-              (SolutionGenerator) properties.get("solutionGenerator"));
+          new MoeaOptimisationCrossoverVariation(solutionGenerator);
       var mutationVariation =
-          new MoeaOptimisationMutationVariation(
-              (SolutionGenerator) properties.get("solutionGenerator"));
-
-      return new MoeaProbabilisticVariation(
+          new MoeaOptimisationMutationVariation(solutionGenerator);
+      var probabilisticVariation = new MoeaProbabilisticVariation(
           crossoverVariation,
           mutationVariation,
           algorithmVariation.getCrossoverRate(),
           algorithmVariation.getMutationRate());
+
+      return new MoeaRepairingOptimisationVariation(solutionGenerator, probabilisticVariation);     
     }
 
     // Check variation type is crossover with mutation
     if (algorithmVariation.isGeneticVariation()) {
       var crossoverVariation =
-          new MoeaOptimisationCrossoverVariation(
-              (SolutionGenerator) properties.get("solutionGenerator"));
+          new MoeaOptimisationCrossoverVariation(solutionGenerator);
       var mutationVariation =
-          new MoeaOptimisationMutationVariation(
-              (SolutionGenerator) properties.get("solutionGenerator"));
+          new MoeaOptimisationMutationVariation(solutionGenerator);
 
-      return new GAVariation(crossoverVariation, mutationVariation);
+      var gaVariation = new GAVariation(crossoverVariation, mutationVariation);
+      return new MoeaRepairingOptimisationVariation(solutionGenerator, gaVariation);
     }
 
     // Check variation type is mutation
     if (algorithmVariation.isMutationVariation()) {
-      return new MoeaOptimisationMutationVariation(
-          (SolutionGenerator) properties.get("solutionGenerator"));
+      var mutationVariation = new MoeaOptimisationMutationVariation(solutionGenerator);
+      return new MoeaRepairingOptimisationVariation(solutionGenerator, mutationVariation);
     }
 
     // Must be crossover only then
-    return new MoeaOptimisationCrossoverVariation(
-        (SolutionGenerator) properties.get("solutionGenerator"));
+    var crossoverVariation = new MoeaOptimisationCrossoverVariation(solutionGenerator);
+    return new MoeaRepairingOptimisationVariation(solutionGenerator, crossoverVariation);
   }
 
   public Algorithm createNSGAII(Problem problem, Properties properties) {

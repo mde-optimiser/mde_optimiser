@@ -18,6 +18,7 @@ public class DefaultParameterSpecs {
     this.defaultParameterSpecs.put("mutation.credit", this.defaultMutationCreditParameter());
     this.defaultParameterSpecs.put("mutation.step", this.defaultMutationStepParameter());
     this.defaultParameterSpecs.put("mutation.repair", this.defaultMutationRepairParameter());
+    this.defaultParameterSpecs.put("rep.strategy", this.defaultRepairStrategyParameter());
   }
 
   /**
@@ -78,5 +79,14 @@ public class DefaultParameterSpecs {
    */
   private ParameterSpec defaultMutationStepParameter() {
     return new ParameterSpec("mutation.step", "fixed", new LinkedList<>(List.of("1")));
+  }
+  
+  /**
+   * Default mutation.step is fixed with a size of 1
+   *
+   * @return a parameter spec containing the default settings
+   */
+  private ParameterSpec defaultRepairStrategyParameter() {
+    return new ParameterSpec("rep.strategy", "none", new LinkedList<>());
   }
 }

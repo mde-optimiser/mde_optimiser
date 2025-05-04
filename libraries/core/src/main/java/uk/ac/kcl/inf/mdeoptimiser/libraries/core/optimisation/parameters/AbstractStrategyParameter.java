@@ -24,7 +24,8 @@ public abstract class AbstractStrategyParameter {
    */
   protected LinkedList<String> getParameterValueKeys() {
     return new LinkedList<>();
-  };
+  }
+  ;
 
   /**
    * Return the configured parameter key for this strategy.
@@ -53,8 +54,13 @@ public abstract class AbstractStrategyParameter {
 
     if (this.populationSize == null) {
       var populationSize =
-          this.getSearchOperatorConfiguration().searchSpecification().getOptimisationModel()
-              .getSolver().getAlgorithm().getParameters().stream()
+          this.getSearchOperatorConfiguration()
+              .searchSpecification()
+              .getOptimisationModel()
+              .getSolver()
+              .getAlgorithm()
+              .getParameters()
+              .stream()
               .filter(parameter -> parameter.getName().equals("population"))
               .findFirst()
               .get();

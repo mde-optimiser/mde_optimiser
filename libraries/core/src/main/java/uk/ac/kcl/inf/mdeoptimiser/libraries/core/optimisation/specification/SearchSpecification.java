@@ -15,6 +15,8 @@ import uk.ac.kcl.inf.mdeoptimiser.languages.mopt.Optimisation;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.IGuidanceFunction;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.IModelInitialiser;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.IModelProvider;
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.IProblemPartSpecifier;
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.executor.EmptyProblemPartSpecifier;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.executor.UserModelProvider;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.guidance.GuidanceFunctionAdapter;
 import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.guidance.GuidanceFunctionsFactory;
@@ -31,6 +33,7 @@ public class SearchSpecification implements ISearchSpecification {
 
   List<Unit> breedingOperators;
   List<Unit> mutationOperators;
+  List<Unit> repairOperators;
   IPath projectRootPath;
 
   Map<EPackage, List<Module>> generatedOperators;
@@ -102,6 +105,26 @@ public class SearchSpecification implements ISearchSpecification {
     }
 
     return mutationOperators;
+  }
+  
+  public List<Unit> getRepairOperators() {
+    if (this.repairOperators != null) {
+      return this.repairOperators;
+    }
+    
+    repairOperators = new LinkedList<Unit>();
+    
+    repairOperators.addAll(
+        model.getSearch().getEvolvers().stream()
+            .filter(operator -> operator.getEvolverType().getName().equals("REPAIR"))
+            .map(
+                operator ->
+                    getResourceSet()
+                        .getModule(URI.createURI(operator.getRule_location()), false)
+                        .getUnit(operator.getUnit()))
+            .collect(Collectors.toList()));
+
+    return repairOperators;
   }
 
   public List<Multiplicity> getMultiplicityRefinements() {
@@ -241,6 +264,16 @@ public class SearchSpecification implements ISearchSpecification {
     }
 
     return null;
+  }
+
+  @Override
+  public IProblemPartSpecifier getProblemPartSpecifier() {
+
+    if (this.getOptimisationModel().getProblem().getProblemParts() != null) {
+      return LanguageClassLoader.load(this.getOptimisationModel().getProblem().getProblemParts());
+    }
+
+    return new EmptyProblemPartSpecifier();
   }
 
   @Override

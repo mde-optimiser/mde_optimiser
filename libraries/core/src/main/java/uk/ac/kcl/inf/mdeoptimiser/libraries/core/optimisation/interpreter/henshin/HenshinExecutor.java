@@ -33,11 +33,13 @@ public class HenshinExecutor {
 
   List<Unit> mutationOperators;
   List<Unit> crossoverOperators;
+  List<Unit> repairOperators;
 
   public HenshinExecutor(
       IEvolverParametersFactory evolverParametersFactory,
       List<Unit> mutationOperators,
       List<Unit> crossoverOperators,
+      List<Unit> repairOperators,
       SolverSpec solverSpec) {
 
     this.engine = new HenshinEngineFactory(solverSpec).create();
@@ -51,6 +53,7 @@ public class HenshinExecutor {
 
     this.mutationOperators = mutationOperators;
     this.crossoverOperators = crossoverOperators;
+    this.repairOperators = repairOperators;
     this.evolverParametersFactory = evolverParametersFactory;
   }
 
@@ -117,6 +120,10 @@ public class HenshinExecutor {
 
   public List<Unit> getCrossoverOperators() {
     return this.crossoverOperators;
+  }
+  
+  public List<Unit> getRepairOperators() {
+    return this.repairOperators;
   }
 
   public Engine getEngine() {

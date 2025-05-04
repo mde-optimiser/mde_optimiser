@@ -92,6 +92,7 @@ public class MoptParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getObjectiveInterpreterSpecAccess().getGroup(), "rule__ObjectiveInterpreterSpec__Group__0");
 			builder.put(grammarAccess.getConstraintInterpreterSpecAccess().getGroup(), "rule__ConstraintInterpreterSpec__Group__0");
 			builder.put(grammarAccess.getModelInitialiserSpecAccess().getGroup(), "rule__ModelInitialiserSpec__Group__0");
+			builder.put(grammarAccess.getProblemPartSpecifierAccess().getGroup(), "rule__ProblemPartSpecifier__Group__0");
 			builder.put(grammarAccess.getRulegenSpecAccess().getGroup(), "rule__RulegenSpec__Group__0");
 			builder.put(grammarAccess.getRulegenNodeAccess().getGroup(), "rule__RulegenNode__Group__0");
 			builder.put(grammarAccess.getRulegenNodeAccess().getGroup_1(), "rule__RulegenNode__Group_1__0");
@@ -301,6 +302,7 @@ public class MoptParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getProblemSpecAccess().getMetamodelAssignment_3(), "rule__ProblemSpec__MetamodelAssignment_3");
 			builder.put(grammarAccess.getProblemSpecAccess().getModelAssignment_4(), "rule__ProblemSpec__ModelAssignment_4");
 			builder.put(grammarAccess.getProblemSpecAccess().getModelInitialiserAssignment_5(), "rule__ProblemSpec__ModelInitialiserAssignment_5");
+			builder.put(grammarAccess.getProblemSpecAccess().getProblemPartsAssignment_6(), "rule__ProblemSpec__ProblemPartsAssignment_6");
 			builder.put(grammarAccess.getGoalSpecAccess().getRefinementsAssignment_2(), "rule__GoalSpec__RefinementsAssignment_2");
 			builder.put(grammarAccess.getGoalSpecAccess().getObjectivesAssignment_3(), "rule__GoalSpec__ObjectivesAssignment_3");
 			builder.put(grammarAccess.getGoalSpecAccess().getConstraintsAssignment_4(), "rule__GoalSpec__ConstraintsAssignment_4");
@@ -324,6 +326,7 @@ public class MoptParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getConstraintInterpreterSpecAccess().getConstraintTypeAssignment_2(), "rule__ConstraintInterpreterSpec__ConstraintTypeAssignment_2");
 			builder.put(grammarAccess.getConstraintInterpreterSpecAccess().getConstraintSpecAssignment_4(), "rule__ConstraintInterpreterSpec__ConstraintSpecAssignment_4");
 			builder.put(grammarAccess.getModelInitialiserSpecAccess().getInitialiserAssignment_3(), "rule__ModelInitialiserSpec__InitialiserAssignment_3");
+			builder.put(grammarAccess.getProblemPartSpecifierAccess().getProblemPartSpecifierAssignment_4(), "rule__ProblemPartSpecifier__ProblemPartSpecifierAssignment_4");
 			builder.put(grammarAccess.getRulegenSpecAccess().getNodeSpecAssignment_2_0(), "rule__RulegenSpec__NodeSpecAssignment_2_0");
 			builder.put(grammarAccess.getRulegenSpecAccess().getEdgeSpecAssignment_2_1(), "rule__RulegenSpec__EdgeSpecAssignment_2_1");
 			builder.put(grammarAccess.getRulegenNodeAccess().getNodeAssignment_0(), "rule__RulegenNode__NodeAssignment_0");

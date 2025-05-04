@@ -38,6 +38,7 @@ public class MoeaOptimisationSolution extends Solution {
         solutionGenerator.getOptimisationModel().getGoal().getObjectives().size(),
         solutionGenerator.getOptimisationModel().getGoal().getConstraints().size());
     this.solutionGenerator = solutionGenerator;
+    // TODO most likely the mutation here should not be done as the Variables randomize() method will be called by the algorithm anyways.
     setModel(solutionGenerator.mutate(solutionGenerator.getInitialSolutions().next()));
   }
 

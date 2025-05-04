@@ -131,6 +131,11 @@ public class MoptAdapterFactory extends AdapterFactoryImpl
         return createModelInitialiserSpecAdapter();
       }
       @Override
+      public Adapter caseProblemPartSpecifier(ProblemPartSpecifier object)
+      {
+        return createProblemPartSpecifierAdapter();
+      }
+      @Override
       public Adapter caseRulegenSpec(RulegenSpec object)
       {
         return createRulegenSpecAdapter();
@@ -378,6 +383,21 @@ public class MoptAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createModelInitialiserSpecAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProblemPartSpecifier <em>Problem Part Specifier</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see uk.ac.kcl.inf.mdeoptimiser.languages.mopt.ProblemPartSpecifier
+   * @generated
+   */
+  public Adapter createProblemPartSpecifierAdapter()
   {
     return null;
   }

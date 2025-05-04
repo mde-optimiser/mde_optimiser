@@ -1,16 +1,39 @@
 package uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.crossover;
 
-import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.henshin.HenshinExecutor;
+import uk.ac.kcl.inf.mdeoptimiser.languages.validation.algorithm.UnexpectedAlgorithmParameterException;
+import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.operators.SearchOperatorConfiguration;
 
 public class CrossoverStrategyFactory {
 
-  HenshinExecutor henshinExecutor;
+  private CrossoverStrategy crossoverStrategy;
+  private SearchOperatorConfiguration searchOperatorConfiguration;
 
-  public CrossoverStrategyFactory(HenshinExecutor henshinExecutor) {
-    this.henshinExecutor = henshinExecutor;
+  public CrossoverStrategyFactory(SearchOperatorConfiguration searchOperatorConfiguration) {
+    this.searchOperatorConfiguration = searchOperatorConfiguration;
   }
 
-  public CrossoverStrategy getStrategy(String strategy) {
-    return null;
+  public CrossoverStrategy getStrategy() {
+    if (this.crossoverStrategy == null) {
+      var strategyParameter =
+          this.searchOperatorConfiguration
+              .getSearchOperatorParameterInterpreter()
+              .get("crossover.strategy");
+
+      switch (strategyParameter.getValue()) {
+        case "problempart":
+          var searchSpec = searchOperatorConfiguration.searchSpecification();
+          var problemPartSpecifier = searchSpec.getProblemPartSpecifier();
+          var problemParts = problemPartSpecifier.getProblemPart(searchSpec.getMetamodel());
+          var engine = searchOperatorConfiguration.getHenshinExecutor().getEngine();
+          var crossoverImpl = new de.uni_marburg.mdo_over.crossover.ProblemPartCrossover(problemParts, engine);
+          crossoverStrategy = new ProblemPartCrossover(crossoverImpl);
+          break;
+
+        default:
+          throw new UnexpectedAlgorithmParameterException(strategyParameter.getValue());
+      }
+    }
+
+    return this.crossoverStrategy;
   }
 }

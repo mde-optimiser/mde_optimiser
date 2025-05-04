@@ -52,6 +52,7 @@
 	<unit id="uk.ac.kcl.inf.mdeoptimiser.libraries.core.source" version="0.0.0" />
 	<unit id="uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen" version="0.0.0" />
 	<unit id="uk.ac.kcl.inf.mdeoptimiser.libraries.rulegen.source" version="0.0.0" />
+	<unit id="de.uni_marburg.mdo-over" version="0.0.0" />
 	<unit id="org.moeaframework" version="0.0.0" />
 	<unit id="org.moeaframework.source" version="0.0.0" />
 	<unit id="com.github.mifmif.generex" version="0.0.0" />

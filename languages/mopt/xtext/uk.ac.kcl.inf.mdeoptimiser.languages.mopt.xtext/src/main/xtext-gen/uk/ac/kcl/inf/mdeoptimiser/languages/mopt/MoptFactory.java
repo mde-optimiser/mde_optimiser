@@ -123,6 +123,15 @@ public interface MoptFactory extends EFactory
   ModelInitialiserSpec createModelInitialiserSpec();
 
   /**
+   * Returns a new object of class '<em>Problem Part Specifier</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Problem Part Specifier</em>'.
+   * @generated
+   */
+  ProblemPartSpecifier createProblemPartSpecifier();
+
+  /**
    * Returns a new object of class '<em>Rulegen Spec</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

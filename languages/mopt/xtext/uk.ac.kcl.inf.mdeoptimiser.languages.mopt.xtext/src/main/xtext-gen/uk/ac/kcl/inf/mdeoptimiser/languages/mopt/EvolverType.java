@@ -38,7 +38,17 @@ public enum EvolverType implements Enumerator
    * @generated
    * @ordered
    */
-  BREED(1, "BREED", "breed");
+  BREED(1, "BREED", "breed"),
+
+  /**
+   * The '<em><b>REPAIR</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #REPAIR_VALUE
+   * @generated
+   * @ordered
+   */
+  REPAIR(2, "REPAIR", "repair");
 
   /**
    * The '<em><b>MUTATE</b></em>' literal value.
@@ -71,6 +81,21 @@ public enum EvolverType implements Enumerator
   public static final int BREED_VALUE = 1;
 
   /**
+   * The '<em><b>REPAIR</b></em>' literal value.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of '<em><b>REPAIR</b></em>' literal object isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @see #REPAIR
+   * @model literal="repair"
+   * @generated
+   * @ordered
+   */
+  public static final int REPAIR_VALUE = 2;
+
+  /**
    * An array of all the '<em><b>Evolver Type</b></em>' enumerators.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -81,6 +106,7 @@ public enum EvolverType implements Enumerator
     {
       MUTATE,
       BREED,
+      REPAIR,
     };
 
   /**
@@ -147,6 +173,7 @@ public enum EvolverType implements Enumerator
     {
       case MUTATE_VALUE: return MUTATE;
       case BREED_VALUE: return BREED;
+      case REPAIR_VALUE: return REPAIR;
     }
     return null;
   }

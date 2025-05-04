@@ -77,6 +77,7 @@ public class MoptFactoryImpl extends EFactoryImpl implements MoptFactory
       case MoptPackage.OBJECTIVE_INTERPRETER_SPEC: return createObjectiveInterpreterSpec();
       case MoptPackage.CONSTRAINT_INTERPRETER_SPEC: return createConstraintInterpreterSpec();
       case MoptPackage.MODEL_INITIALISER_SPEC: return createModelInitialiserSpec();
+      case MoptPackage.PROBLEM_PART_SPECIFIER: return createProblemPartSpecifier();
       case MoptPackage.RULEGEN_SPEC: return createRulegenSpec();
       case MoptPackage.RULEGEN_NODE: return createRulegenNode();
       case MoptPackage.RULEGEN_EDGE: return createRulegenEdge();
@@ -248,6 +249,17 @@ public class MoptFactoryImpl extends EFactoryImpl implements MoptFactory
   {
     ModelInitialiserSpecImpl modelInitialiserSpec = new ModelInitialiserSpecImpl();
     return modelInitialiserSpec;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ProblemPartSpecifier createProblemPartSpecifier()
+  {
+    ProblemPartSpecifierImpl problemPartSpecifier = new ProblemPartSpecifierImpl();
+    return problemPartSpecifier;
   }
 
   /**
