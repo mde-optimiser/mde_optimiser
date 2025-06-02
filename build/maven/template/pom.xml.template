@@ -48,13 +48,20 @@
       </repository>
   </distributionManagement>
   <repositories>
-      <repository>
-          <id>p2.eclipse.repository</id>
-          <url>https://mde-optimiser.github.io/mdeo_repo/repository/m2/eclipse/2019-03/final/</url>
-      </repository>
-      <repository>
-		<id>m2.moeaframework</id>
-		<url>https://mde-optimiser.github.io/mdeo_repo/repository/m2/moeaframework/</url>
+    <repository>
+        <id>p2.henshin.repository</id>
+        <url>https://download.eclipse.org/modeling/emft/henshin/updates/release</url>          
+    </repository>
+    <repository>
+        <id>p2.eclipse.repository</id>
+        <url>https://mde-optimiser.github.io/mdeo_repo/repository/m2/eclipse/2025-03/final/</url>
+        <releases>
+          <updatePolicy>always</updatePolicy>
+        </releases>
+    </repository>
+    <repository>
+      <id>m2.moeaframework</id>
+      <url>https://mde-optimiser.github.io/mdeo_repo/repository/m2/moeaframework/</url>
 	  </repository>
   </repositories>
   <!-- Load JUnit 5 Bom -->

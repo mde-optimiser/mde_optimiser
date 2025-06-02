@@ -14,8 +14,8 @@ This is the main repository for  [MDEOptimiser](http://mde-optimiser.github.io).
 
 Requirements:
 
-	Eclipse Version 2019-03
-	Java 11
+	Eclipse Version 2025-03
+	Java 21
 
 Install the version of MDEOptimiser you would like to
 use from one of the Eclipse Update sites below.
