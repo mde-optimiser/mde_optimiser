@@ -26,25 +26,33 @@
         </or>
     </condition>
 
-    <target name="dist" depends="render.maven.properties.template, maven.build, maven.build.windows"/>
+    <target name="dist" depends="render.skipTests, render.skipClean, render.maven.properties.template, maven.build, maven.build.windows"/>
+
+    <target name="render.skipTests" if="doSkipTests">
+        <echo message="Skipping tests" />
+    </target>
+
+    <target name="render.skipClean" if="doSkipClean">
+        <echo message="Skipping cleaning" />
+    </target>
 
     <target name="maven.build.windows" if="isWindows">
         <exec dir="." executable="cmd" failifexecutionfails="true" failonerror="true">
 			<arg value="/c"/>
 			<arg value="mvn"/>
-            <arg value="clean" if:blank="${doSkipClean}" />
+            <arg value="clean" unless:true="${doSkipClean}" />
             <arg value="deploy" />
             <arg value="--quiet" />
-            <arg value='"-Dmaven.test.skip"' unless:blank="${doSkipTests}" />
+            <arg value='"-Dmaven.test.skip"' if:true="${doSkipTests}" />
         </exec>
     </target>
 	
 	<target name="maven.build" unless="isWindows">
         <exec dir="." executable="mvn" failifexecutionfails="true" failonerror="true">
-            <arg value="clean" if:blank="${doSkipClean}" />
+            <arg value="clean" unless:true="${doSkipClean}" />
             <arg value="deploy" /> 
             <arg value="--quiet" />
-            <arg value="-Dmaven.test.skip" unless:blank="${doSkipTests}" />
+            <arg value="-Dmaven.test.skip" if:true="${doSkipTests}" />
         </exec>
     </target>
 
