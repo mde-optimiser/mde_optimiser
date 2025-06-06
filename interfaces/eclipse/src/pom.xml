@@ -10,9 +10,9 @@
 	<properties>
 		<xtextVersion>2.38.0</xtextVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>17</maven.compiler.source>
-		<maven.compiler.target>17</maven.compiler.target>
-	    <maven.compiler.release>17</maven.compiler.release>
+		<maven.compiler.source>21</maven.compiler.source>
+		<maven.compiler.target>21</maven.compiler.target>
+	    <maven.compiler.release>21</maven.compiler.release>
 		<!-- Tycho settings -->
 		<tycho-version>4.0.11</tycho-version>
 		<!-- Define overridable properties for tycho-surefire-plugin -->

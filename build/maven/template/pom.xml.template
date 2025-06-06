@@ -33,9 +33,9 @@
     <repositories.output.p2.eclipse>${repositories.output.root}/p2/p2.eclipse.repository</repositories.output.p2.eclipse>
     <xtextVersion>2.38.0</xtextVersion>
     <xtend.version>2.38.0</xtend.version>
-    <maven.compiler.source>17</maven.compiler.source>
-    <maven.compiler.target>17</maven.compiler.target>
-    <maven.compiler.release>17</maven.compiler.release>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
+    <maven.compiler.release>21</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit-jupiter.version>5.4.1</junit-jupiter.version>
   </properties>
