@@ -21,7 +21,7 @@ Require-Bundle: uk.ac.kcl.mdeo.ttc18.hsqos,
  org.eclipse.xtext.xbase.ui,
  org.eclipse.jdt.debug.ui
 Import-Package: org.apache.log4j
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-21
 Export-Package: org.xtext.example.mydsl.ui.contentassist,
  org.xtext.example.mydsl.ui.quickfix,
  uk.ac.kcl.mdeo.ttc18.hsqos.ui.internal
