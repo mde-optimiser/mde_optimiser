@@ -31,10 +31,11 @@
     <repositories.output.m2.mdeoptimiser>${repositories.output.root}/m2/m2.mdeoptimiser.repository</repositories.output.m2.mdeoptimiser>
     <repositories.output.p2.mdeoptimiser>${repositories.output.root}/p2/p2.mdeoptimiser.repository</repositories.output.p2.mdeoptimiser>
     <repositories.output.p2.eclipse>${repositories.output.root}/p2/p2.eclipse.repository</repositories.output.p2.eclipse>
-    <xtextVersion>2.17.0</xtextVersion>
-    <xtend.version>2.17.0</xtend.version>
-    <maven.compiler.source>11</maven.compiler.source>
-    <maven.compiler.target>11</maven.compiler.target>
+    <xtextVersion>2.38.0</xtextVersion>
+    <xtend.version>2.38.0</xtend.version>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
+    <maven.compiler.release>21</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit-jupiter.version>5.4.1</junit-jupiter.version>
   </properties>
@@ -47,13 +48,20 @@
       </repository>
   </distributionManagement>
   <repositories>
-      <repository>
-          <id>p2.eclipse.repository</id>
-          <url>https://mde-optimiser.github.io/mdeo_repo/repository/m2/eclipse/2019-03/final/</url>
-      </repository>
-      <repository>
-		<id>m2.moeaframework</id>
-		<url>https://mde-optimiser.github.io/mdeo_repo/repository/m2/moeaframework/</url>
+    <repository>
+        <id>p2.henshin.repository</id>
+        <url>https://download.eclipse.org/modeling/emft/henshin/updates/release</url>          
+    </repository>
+    <repository>
+        <id>p2.eclipse.repository</id>
+        <url>https://mde-optimiser.github.io/mdeo_repo/repository/m2/eclipse/2025-03/final/</url>
+        <releases>
+          <updatePolicy>always</updatePolicy>
+        </releases>
+    </repository>
+    <repository>
+      <id>m2.moeaframework</id>
+      <url>https://mde-optimiser.github.io/mdeo_repo/repository/m2/moeaframework/</url>
 	  </repository>
   </repositories>
   <!-- Load JUnit 5 Bom -->

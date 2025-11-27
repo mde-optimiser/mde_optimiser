@@ -8,12 +8,13 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<xtextVersion>2.17.0</xtextVersion>
+		<xtextVersion>2.38.0</xtextVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>11</maven.compiler.source>
-		<maven.compiler.target>11</maven.compiler.target>
+		<maven.compiler.source>21</maven.compiler.source>
+		<maven.compiler.target>21</maven.compiler.target>
+	    <maven.compiler.release>21</maven.compiler.release>
 		<!-- Tycho settings -->
-		<tycho-version>1.4.0</tycho-version>
+		<tycho-version>4.0.11</tycho-version>
 		<!-- Define overridable properties for tycho-surefire-plugin -->
 		<platformSystemProperties></platformSystemProperties>
 		<moduleProperties></moduleProperties>
@@ -60,15 +61,15 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.eclipse.tycho.extras</groupId>
-				<artifactId>tycho-source-feature-plugin</artifactId>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-source-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<executions>
 					<execution>
-						<id>source-feature</id>
+						<id>feature-source</id>
 						<phase>package</phase>
 						<goals>
-							<goal>source-feature</goal>
+							<goal>feature-source</goal>
 						</goals>
 					</execution>
 				</executions>
@@ -92,6 +93,7 @@
 				<artifactId>target-platform-configuration</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
+					<!-- <executionEnvironment>JavaSE-17</executionEnvironment> -->
 					<target>
 						<artifact>
 							<groupId>uk.ac.kcl.inf.mdeoptimiser.interfaces.eclipse</groupId>
@@ -260,6 +262,11 @@
 					<configuration>
 						<compilerArgument>-err:-forbidden</compilerArgument>
 						<useProjectSettings>false</useProjectSettings>
+						<!-- It seems the below isn't actually needed, now that the BREE has been updated in the manifest files for all plugins. -->
+						<!-- Eclipse 2025-03 requires JavaSE-21. We're compiling all our code to work against 1.17, 
+						     but need to compile the Eclipse stuff against 21. -->
+						<!-- <compilerVersion>1.21</compilerVersion>
+						<fork>true</fork> -->
 					</configuration>
 				</plugin>
 				<!-- to skip running (and compiling) tests use commandline flag: -Dmaven.test.skip

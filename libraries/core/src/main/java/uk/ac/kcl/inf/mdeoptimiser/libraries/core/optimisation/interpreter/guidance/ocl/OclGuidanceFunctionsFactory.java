@@ -14,7 +14,7 @@ import uk.ac.kcl.inf.mdeoptimiser.libraries.core.optimisation.interpreter.guidan
 public class OclGuidanceFunctionsFactory implements IGuidanceFunctionsFactory {
 
   static final OCL<?, EClassifier, ?, ?, ?, ?, ?, ?, ?, Constraint, EClass, EObject>
-      oclInterpreter = OCL.newInstance(EcoreEnvironmentFactory.INSTANCE);
+      oclInterpreter = OCL.newInstanceAbstract(EcoreEnvironmentFactory.INSTANCE);
   static final OCLHelper<EClassifier, ?, ?, Constraint> oclHelper =
       oclInterpreter.createOCLHelper();
 
