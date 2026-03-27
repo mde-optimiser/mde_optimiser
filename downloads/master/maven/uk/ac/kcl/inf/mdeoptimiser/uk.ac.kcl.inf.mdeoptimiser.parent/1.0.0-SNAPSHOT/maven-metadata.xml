@@ -3,16 +3,16 @@
   <groupId>uk.ac.kcl.inf.mdeoptimiser</groupId>
   <artifactId>uk.ac.kcl.inf.mdeoptimiser.parent</artifactId>
   <versioning>
-    <lastUpdated>20220714223333</lastUpdated>
+    <lastUpdated>20260327164415</lastUpdated>
     <snapshot>
-      <timestamp>20220714.223333</timestamp>
+      <timestamp>20260327.164415</timestamp>
       <buildNumber>1</buildNumber>
     </snapshot>
     <snapshotVersions>
       <snapshotVersion>
         <extension>pom</extension>
-        <value>1.0.0-20220714.223333-1</value>
-        <updated>20220714223333</updated>
+        <value>1.0.0-20260327.164415-1</value>
+        <updated>20260327164415</updated>
       </snapshotVersion>
     </snapshotVersions>
   </versioning>
