@@ -59,8 +59,8 @@ public class MoeaProbabilisticVariation implements Variation {
         System.out.println("Not running mutation this run");
       }
     }
-
-    return (Solution[]) solutions.toArray();
+    Solution[] solutionArray = new Solution[solutions.size()];
+    return solutions.toArray(solutionArray);
   }
 
   /**
